@@ -1,0 +1,13 @@
+FROM trzeci/emscripten:sdk-tag-1.38.31-64bit
+
+COPY src/ImageMagick ImageMagick
+
+RUN cd /src/ImageMagick; ./checkout.sh Linux
+
+COPY build/static/linux build
+
+RUN cd /src/build; ./build.sh
+
+COPY src/Native Native
+
+RUN cd /src/Native; ./build.sh
