@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8.8)
 
-project(Magick.NET)
+project(${LIBRARY_NAME})
 
 add_definitions(-DMAGICK_NET_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DMAGICKCORE_HDRI_ENABLE=${HDRI_ENABLE})
 
@@ -29,10 +29,10 @@ else()
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
 endif()
 
-add_library(Magick.NET-${QUANTUM}-x64.Native.dll SHARED ${ALL_FILES})
+add_library(${LIBRARY_NAME} SHARED ${ALL_FILES})
 
 target_link_libraries(
-    Magick.NET-${QUANTUM}-x64.Native.dll
+    ${LIBRARY_NAME}
 
     ${MAGICKWAND}
     ${MAGICKCORE}
