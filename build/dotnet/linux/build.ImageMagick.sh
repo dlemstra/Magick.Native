@@ -1,15 +1,25 @@
 #!/bin/bash
 set -e
 
+export FLAGS="-O3 -fPIC"
+export STRICT_FLAGS="${FLAGS} -Wall"
+export CONFIGURE="./configure"
+export MAKE="make"
+
 cd /src/ImageMagick/ImageMagick
 
 # Build zlib
 cd zlib
 chmod +x ./configure
-export CFLAGS="-O3 -fPIC"
-./configure --static
-make install
+$CONFIGURE --static
+$MAKE install CFLAGS="$FLAGS"
+
+# Build libpng
+cd ../png
+autoreconf -fiv
+$CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared
+$MAKE install CFLAGS="$FLAGS"
 
 cd ../ImageMagick
-./configure CFLAGS="-fPIC -Wall -O3" CXXFLAGS="-fPIC -Wall -O3" --disable-shared --disable-openmp --enable-static --enable-delegate-build --with-magick-plus-plus=no --with-utilities=no --disable-docs --with-bzlib=no --with-lzma=no --with-x=no --with-quantum-depth=8 --enable-hdri=no
-make install
+$CONFIGURE --disable-shared --disable-openmp --enable-static --enable-delegate-build --without-threads --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-quantum-depth=8 --disable-hdri PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+$MAKE install CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS"
