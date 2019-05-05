@@ -7,10 +7,7 @@ add_definitions(-DMAGICK_NET_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DM
 include_directories(.)
 include_directories(/usr/local/include/ImageMagick-7/)
 
-find_library(MAGICKCORE libMagickCore-7.${QUANTUM_NAME}.a)
-find_library(MAGICKWAND libMagickWand-7.${QUANTUM_NAME}.a)
-
-find_library(LIBZ libz.a)
+set(LIB_DIR /usr/local/lib/)
 
 file(GLOB_RECURSE ALL_FILES . *.c)
 file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
@@ -34,10 +31,11 @@ add_library(${LIBRARY_NAME} SHARED ${ALL_FILES})
 target_link_libraries(
     ${LIBRARY_NAME}
 
-    ${MAGICKWAND}
-    ${MAGICKCORE}
+    ${LIB_DIR}/libMagickWand-7.${QUANTUM_NAME}.a
+    ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
-    ${LIBZ}
+    ${LIB_DIR}/libz.a
+    ${LIB_DIR}/libpng.a
 
     ${THREADLIB}
 
