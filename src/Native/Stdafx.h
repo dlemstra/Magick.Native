@@ -11,12 +11,21 @@
 // and limitations under the License.
 #pragma once
 
+#if defined(MAGICK_NET_WASM)
+  #define MAGICK_NET_LINUX
+#endif
+
 #if defined(MAGICK_NET_LINUX) || defined(MAGICK_NET_MACOS)
 
 #include <MagickCore/MagickCore.h>
 #include <MagickWand/MagickWand.h>
 
-#define MAGICK_NET_EXPORT __attribute__((visibility("default")))
+#if defined(MAGICK_NET_WASM)
+  #include <emscripten.h>
+  #define MAGICK_NET_EXPORT EMSCRIPTEN_KEEPALIVE
+#else
+  #define MAGICK_NET_EXPORT __attribute__((visibility("default")))
+#endif
 
 #else
 
@@ -40,10 +49,10 @@
 #define MAGICK_NET_STRINGIFY(s) #s
 #if defined(_DEBUG)
 #define MAGICK_NET_LINK_LIB(name) \
- __pragma(comment(lib,MAGICK_NET_STRINGIFY(CORE_DB_##name##_.lib)))
+  __pragma(comment(lib,MAGICK_NET_STRINGIFY(CORE_DB_##name##_.lib)))
 #else
 #define MAGICK_NET_LINK_LIB(name) \
- __pragma(comment(lib,MAGICK_NET_STRINGIFY(CORE_RL_##name##_.lib)))
+  __pragma(comment(lib,MAGICK_NET_STRINGIFY(CORE_RL_##name##_.lib)))
 #endif
 
 #define MAGICK_NET_EXPORT __declspec(dllexport)

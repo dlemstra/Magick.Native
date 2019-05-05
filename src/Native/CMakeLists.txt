@@ -8,15 +8,23 @@ include_directories(.)
 include_directories(/usr/local/include/ImageMagick-7/)
 
 set(LIB_DIR /usr/local/lib/)
+set(CMAKE_CXX_FLAGS "-Wall -O3")
 
 file(GLOB_RECURSE ALL_FILES . *.c)
-file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
-list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
+
+if (PLATFORM STREQUAL "WASM")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s WASM=1 -s ALLOW_MEMORY_GROWTH=1")
+else()
+    file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
+    list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
+endif()
 
 if (APPLE)
     find_library(LIBICONV NAMES libiconv.a PATHS /usr/local/opt/libiconv/lib)
 
     set(STDCPLUSPLUS stdc++)
+elseif (PLATFORM STREQUAL "WASM")
+    list(APPEND ALL_FILES foo.cxx)
 else()
     find_package(Threads REQUIRED)
     set(THREADLIB Threads::Threads)
@@ -26,7 +34,11 @@ else()
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
 endif()
 
-add_library(${LIBRARY_NAME} SHARED ${ALL_FILES})
+if (PLATFORM STREQUAL "WASM")
+    add_executable(${LIBRARY_NAME} ${ALL_FILES})
+else()
+    add_library(${LIBRARY_NAME} SHARED ${ALL_FILES})
+endif()
 
 target_link_libraries(
     ${LIBRARY_NAME}
