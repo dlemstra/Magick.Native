@@ -5,7 +5,7 @@ project(${LIBRARY_NAME})
 add_definitions(-DMAGICK_NET_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DMAGICKCORE_HDRI_ENABLE=${HDRI_ENABLE})
 
 include_directories(.)
-include_directories(/usr/local/include/ImageMagick-7/)
+include_directories(/usr/local/include/ImageMagick-7)
 
 set(LIB_DIR /usr/local/lib/)
 set(CMAKE_CXX_FLAGS "-Wall -O3")
@@ -47,7 +47,16 @@ target_link_libraries(
     ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
     ${LIB_DIR}/libz.a
+    ${LIB_DIR}/libxml2.a
     ${LIB_DIR}/libpng.a
+    ${LIB_DIR}/libturbojpeg.a
+    ${LIB_DIR}/libtiff.a
+    ${LIB_DIR}/libwebp.a
+    ${LIB_DIR}/libwebpmux.a
+    ${LIB_DIR}/libwebpdemux.a
+    ${LIB_DIR}/libopenjp2.a
+    ${LIB_DIR}/liblcms2.a
+    ${LIB_DIR}/libraw_r.a
 
     ${THREADLIB}
 
