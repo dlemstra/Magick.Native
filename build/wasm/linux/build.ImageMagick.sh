@@ -7,7 +7,7 @@ export CONFIGURE="emconfigure ./configure"
 export CMAKE_CONFIGURE="emconfigure cmake"
 export MAKE="emcmake make"
 export SIMD_FLAG="-DWITH_SIMD=0"
-export CPPFLAGS="-I/usr/local/include -I/usr/local/include/openjpeg-2.3 -I/usr/local/include/libxml2 -I/usr/local/include/libraw"
+export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED="--disable-shared"
 
