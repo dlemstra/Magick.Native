@@ -31,6 +31,18 @@ autoreconf -fiv
 $CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
 $MAKE install
 
+# Build freetype
+cd ../freetype
+./autogen.sh
+$CONFIGURE --disable-shared CFLAGS="$FLAGS"
+$MAKE install
+make clean
+mkdir build
+cd build
+$CMAKE_CONFIGURE .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_C_FLAGS="$FLAGS"
+$MAKE install
+cd ..
+
 # Build libjpeg-turbo
 cd ../jpeg
 $CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_FLAG} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
