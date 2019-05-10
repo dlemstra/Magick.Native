@@ -49,11 +49,11 @@ clone_date()
 
 commit=$(<ImageMagick.commit)
 
-if [ ! -d "ImageMagick" ]; then
-  mkdir ImageMagick
+if [ ! -d "libraries" ]; then
+  mkdir libraries
 fi
 
-cd ImageMagick
+cd libraries
 
 clone_commit 'ImageMagick' $commit
 

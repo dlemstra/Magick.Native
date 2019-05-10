@@ -11,7 +11,7 @@ export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED=""
 
-cd /src/ImageMagick/ImageMagick
+cd /src/ImageMagick/libraries
 
 # Build zlib
 cd zlib
