@@ -10,6 +10,8 @@ export SIMD_FLAG="-DWITH_SIMD=1"
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED=""
+export PKG_PATH="/usr/local/lib/pkgconfig"
+export HEIF_HACK=false
 
 cd /src/ImageMagick/libraries
 
@@ -73,6 +75,21 @@ autoreconf -fiv
 $CONFIGURE --disable-shared --prefix=/usr/local CFLAGS="$FLAGS"
 $MAKE install
 
+# Build libde265
+cd ../libde265
+autoreconf -fiv
+$CONFIGURE --disable-shared --disable-sse --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
+$MAKE install
+
+# Build libheif
+cd ../libheif
+autoreconf -fiv
+$CONFIGURE --disable-shared --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+if [ "$HEIF_HACK" = true ]; then
+    for f in examples/*.cc; do echo "" > $f; done
+fi
+$MAKE install
+
 # Build libraw
 cd ../libraw
 chmod +x ./version.sh
@@ -83,5 +100,5 @@ $MAKE install
 
 # Build ImageMagick
 cd ../ImageMagick
-$CONFIGURE --disable-shared --disable-openmp --enable-static --enable-delegate-build --without-threads --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-quantum-depth=8 --disable-hdri  CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+$CONFIGURE --disable-shared --disable-openmp --enable-static --enable-delegate-build --without-threads --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-quantum-depth=8 --disable-hdri  CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
 $MAKE install

@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS "-Wall -O3")
 file(GLOB_RECURSE ALL_FILES . *.c)
 
 if (PLATFORM STREQUAL "WASM")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s WASM=1 -s ALLOW_MEMORY_GROWTH=1")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 --bind -s WASM=1 -s ALLOW_MEMORY_GROWTH=1")
 else()
     file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
@@ -57,6 +57,8 @@ target_link_libraries(
     ${LIB_DIR}/libwebpdemux.a
     ${LIB_DIR}/libopenjp2.a
     ${LIB_DIR}/liblcms2.a
+    ${LIB_DIR}/libheif.a
+    ${LIB_DIR}/libde265.a
     ${LIB_DIR}/libraw_r.a
 
     ${THREADLIB}
