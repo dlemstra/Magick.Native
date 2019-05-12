@@ -56,7 +56,7 @@ autoreconf -fiv
 $CONFIGURE ${CONDITIONAL_DISABLE_SHARED} CFLAGS="$FLAGS"
 $MAKE install
 
-# Build libwebpmux/demux
+# Build libwebp
 cd ../webp
 autoreconf -fiv
 $CONFIGURE --enable-libwebpmux --enable-libwebpdemux --disable-shared CFLAGS="${FLAGS}"
