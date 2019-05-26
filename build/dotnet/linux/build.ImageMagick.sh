@@ -84,12 +84,14 @@ $MAKE install
 # Build libde265
 cd ../libde265
 autoreconf -fiv
+chmod +x ./configure
 $CONFIGURE --disable-shared --disable-sse --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
 
 # Build libheif
 cd ../libheif
 autoreconf -fiv
+chmod +x ./configure
 $CONFIGURE --disable-shared  --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
 if [ "$HEIF_HACK" = true ]; then
     for f in examples/*.cc; do echo "" > $f; done
@@ -100,6 +102,7 @@ $MAKE install
 cd ../libraw
 chmod +x ./version.sh
 chmod +x ./shlib-version.sh
+chmod +x ./configure
 autoreconf -fiv
 $CONFIGURE --disable-shared --disable-examples --disable-openmp --disable-jpeg --disable-jasper --prefix=/usr/local  CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
@@ -124,4 +127,5 @@ buildImageMagick() {
 
 # Build ImageMagick
 cd ../ImageMagick
+autoreconf -fiv
 buildImageMagick "Q8"
