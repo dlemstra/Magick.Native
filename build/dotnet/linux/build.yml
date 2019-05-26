@@ -16,6 +16,6 @@ steps:
   displayName: Copy Native
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: $(System.StagingDirectory)
+    pathtoPublish: $(Build.StagingDirectory)
     artifactName: linux
   displayName: 'Publish Build Artifacts'

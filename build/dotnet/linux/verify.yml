@@ -10,7 +10,7 @@ jobs:
     - task: DownloadBuildArtifacts@0
       inputs:
         artifactName: linux
-        downloadPath: $(System.StagingDirectory)
+        downloadPath: $(Build.StagingDirectory)
       displayName: 'Download Native Libraries'
     - script: $(Build.SourcesDirectory)/build/dotnet/linux/verify.Native.sh
       workingDirectory: $(Build.StagingDirectory)
