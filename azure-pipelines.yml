@@ -19,8 +19,6 @@ resources:
     image: microsoft/dotnet:2.0-runtime
   - container: dotnet_latest
     image: microsoft/dotnet:latest
-  - container: lambda_2_0
-    image: lambci/lambda:dotnetcore2.0
 
 jobs:
 - job: linux_dotnet
@@ -60,7 +58,3 @@ jobs:
 - template: build/dotnet/linux/verify.yml
   parameters:
     container: dotnet_latest
-
-- template: build/dotnet/linux/verify.yml
-  parameters:
-    container: lambda_2_0
