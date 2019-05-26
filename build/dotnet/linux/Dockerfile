@@ -19,3 +19,5 @@ COPY build/dotnet/linux/build.Native.sh build
 COPY src/Native Native
 
 RUN cd /Native; /build/build.Native.sh
+
+COPY build/dotnet/linux/copy.Native.sh build
