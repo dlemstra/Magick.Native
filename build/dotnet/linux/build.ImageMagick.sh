@@ -34,12 +34,12 @@ $MAKE install
 # Build freetype
 cd ../freetype
 ./autogen.sh
-$CONFIGURE --disable-shared CFLAGS="$FLAGS"
+$CONFIGURE --disable-shared --without-bzip2 CFLAGS="$FLAGS"
 $MAKE install
 make clean
 mkdir build
 cd build
-$CMAKE_CONFIGURE .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_C_FLAGS="$FLAGS"
+$CMAKE_CONFIGURE .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 cd ..
 
@@ -90,7 +90,7 @@ $MAKE install
 # Build libheif
 cd ../libheif
 autoreconf -fiv
-$CONFIGURE --disable-shared --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+$CONFIGURE --disable-shared  --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
 if [ "$HEIF_HACK" = true ]; then
     for f in examples/*.cc; do echo "" > $f; done
 fi
