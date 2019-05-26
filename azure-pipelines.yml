@@ -7,12 +7,12 @@ resources:
     options: '--name ci-container -v /usr/bin/docker:/tmp/docker:ro'
 
 jobs:
-- job: linux
+- job: linux-dotnet
   displayName: 'Linux (dotnet)'
   pool:
     vmImage: 'Ubuntu 16.04'
   container: ubuntu
   steps:
-    - script: /tmp/docker exec -t -u 0 ci-container $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}/install.sudo.sh
+    - script: /tmp/docker exec -t -u 0 ci-container $(Build.SourcesDirectory)/build/dotnet/linux/install.sudo.sh
       displayName: Install sudo
     - template: build/dotnet/linux/build.yml
