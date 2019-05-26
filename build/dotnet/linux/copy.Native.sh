@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-echo "" > foo.cxx
-
 copyNative() {
     local quantum=$1
     local target=$2
