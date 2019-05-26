@@ -1,0 +1,3 @@
+steps:
+- script: $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}/build.ImageMagick.sh
+  displayName: Build ImageMagick
