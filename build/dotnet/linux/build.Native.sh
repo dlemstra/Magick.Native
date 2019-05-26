@@ -28,5 +28,3 @@ buildMagickNET() {
 }
 
 buildMagickNET "Q8"
-buildMagickNET "Q16"
-buildMagickNET "Q16-HDRI"
