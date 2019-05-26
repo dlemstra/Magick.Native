@@ -1,10 +1,10 @@
 steps:
 - script: sudo ./install.dependencies.sh
-  workingDirectory: $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}
+  workingDirectory: $(Build.SourcesDirectory)/build/dotnet/linux
   displayName: Install dependencies
 - script: ./checkout.sh Linux
   workingDirectory: $(Build.SourcesDirectory)/src/ImageMagick
   displayName: Clone ImageMagick libraries
-- script: sudo $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}/build.ImageMagick.sh
+- script: sudo $(Build.SourcesDirectory)/build/dotnet/linux/build.ImageMagick.sh
   workingDirectory: $(Build.SourcesDirectory)/src/ImageMagick/libraries
   displayName: Build ImageMagick

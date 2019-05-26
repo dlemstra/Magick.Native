@@ -15,7 +15,4 @@ jobs:
   steps:
     - script: /tmp/docker exec -t -u 0 ci-container $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}/install.sudo.sh
       displayName: Install sudo
-    - template: build/container.yml
-      parameters:
-        type: 'dotnet'
-        platform: 'linux'
+    - template: build/dotnet/linux/build.yml
