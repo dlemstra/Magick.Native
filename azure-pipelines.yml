@@ -4,6 +4,7 @@ resources:
   containers:
   - container: ubuntu
     image: ubuntu:bionic
+    options: '--name ci-container -v /usr/bin/docker:/tmp/docker:ro'
 
 jobs:
 - job: linux
