@@ -1,9 +1,17 @@
-steps:
-- task: DownloadBuildArtifacts@0
-  inputs:
-    artifactName: linux
-    downloadPath: $(System.StagingDirectory)
-  displayName: 'Download Build Artifacts'
-- script: $(Build.SourcesDirectory)/build/dotnet/linux/verify.Native.sh
-  workingDirectory: $(Build.StagingDirectory)
-  displayName: Verify Native
+jobs:
+- job: verify_${{ parameters.container }}
+  displayName: 'Verify (${{ parameters.container }})'
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  dependsOn: linux_dotnet
+  container: ${{ parameters.container }}
+  steps:
+    - checkout: none
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        artifactName: linux
+        downloadPath: $(System.StagingDirectory)
+      displayName: 'Download Native Libraries'
+    - script: $(Build.SourcesDirectory)/build/dotnet/linux/verify.Native.sh
+      workingDirectory: $(Build.StagingDirectory)
+      displayName: Verify Native

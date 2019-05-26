@@ -19,12 +19,6 @@ jobs:
       displayName: Install sudo
     - template: build/dotnet/linux/build.yml
 
-- job: verify_ubuntu_16_04
-  displayName: 'Verify (ubuntu:16.04)'
-  pool:
-    vmImage: 'Ubuntu 16.04'
-  dependsOn: linux_dotnet
-  container: ubuntu_16_04
-  steps:
-    - checkout: none
-    - template: build/dotnet/linux/verify.yml
+- template: build/dotnet/linux/verify.yml
+  parameters:
+    container: ubuntu_16_04
