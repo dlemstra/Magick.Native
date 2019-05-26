@@ -18,7 +18,7 @@ else()
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
 endif()
 
-if (APPLE)
+if (PLATFORM STREQUAL "MACOS")
     find_library(LIBICONV NAMES libiconv.a PATHS /usr/local/opt/libiconv/lib)
 
     set(STDCPLUSPLUS stdc++)
