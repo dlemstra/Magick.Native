@@ -6,7 +6,6 @@ jobs:
   dependsOn: linux_dotnet
   container: ${{ parameters.container }}
   steps:
-    - checkout: none
     - task: DownloadBuildArtifacts@0
       inputs:
         artifactName: linux
