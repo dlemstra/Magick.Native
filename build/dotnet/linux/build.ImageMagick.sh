@@ -45,6 +45,14 @@ $CMAKE_CONFIGURE .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAK
 $MAKE install
 cd ..
 
+# Build fontconfig
+cd ../fontconfig
+autoreconf -fiv
+pip install lxml
+pip install six
+$CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared CFLAGS="$FLAGS"
+$MAKE install
+
 # Build libjpeg-turbo
 cd ../jpeg
 $CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_FLAG} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
