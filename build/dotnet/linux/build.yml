@@ -8,3 +8,6 @@ steps:
 - script: sudo $(Build.SourcesDirectory)/build/dotnet/linux/build.ImageMagick.sh
   workingDirectory: $(Build.SourcesDirectory)/src/ImageMagick/libraries
   displayName: Build ImageMagick
+- script: $(Build.SourcesDirectory)/build/dotnet/linux/build.Native.sh
+  workingDirectory: $(Build.SourcesDirectory)/src/Native
+  displayName: Build Native

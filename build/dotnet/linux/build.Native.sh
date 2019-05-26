@@ -1,12 +1,32 @@
 #!/bin/bash
 set -e
 
-cd /src/Native
-
 echo "" > foo.cxx
 
-mkdir Q8
-cd Q8
+buildMagickNET() {
+    local quantum=$1
 
-cmake .. -DDEPTH=8 -DHDRI_ENABLE=no -DQUANTUM_NAME=Q8 -DLIBRARY_NAME=Magick.NET-Q8-x64.Native.dll -DPLATFORM=LINUX
-make
+    # Set ImageMagick variables
+    local quantum_name=$quantum
+    local hdri_enable=0
+    local depth=8
+    if [ "$quantum" == "Q16" ]; then
+        depth=16
+    elif [ "$quantum" == "Q16-HDRI" ]; then
+        quantum_name=Q16HDRI
+        depth=16
+        hdri_enable=1
+    fi
+
+    mkdir $quantum
+    cd $quantum
+
+    cmake -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=Magick.NET-$quantum-x64.Native.dll -DPLATFORM=LINUX ..
+    make
+
+    cd ..
+}
+
+buildMagickNET "Q8"
+buildMagickNET "Q16"
+buildMagickNET "Q16-HDRI"
