@@ -13,8 +13,6 @@ export CONDITIONAL_DISABLE_SHARED=""
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export HEIF_HACK=false
 
-cd /src/ImageMagick/libraries
-
 # Build zlib
 cd zlib
 chmod +x ./configure
