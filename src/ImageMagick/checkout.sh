@@ -77,7 +77,7 @@ clone_date 'tiff' "$commitDate"
 clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
-if [ "$1" == "macOS" ] || [ "$1" == "Linux" ]; then
+if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
   # Clone fontconfig
   if [ ! -d fontconfig ]; then
     git clone https://gitlab.freedesktop.org/fontconfig/fontconfig fontconfig
