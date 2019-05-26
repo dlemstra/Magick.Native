@@ -1,1 +1,1 @@
-docker run -it -v %~dp0output:/output -w /src magick-dotnet /bin/bash
+docker run -it magick-dotnet-linux /bin/bash
