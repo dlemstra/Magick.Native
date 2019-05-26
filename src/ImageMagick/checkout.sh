@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 clone() {
   local repo=$1
