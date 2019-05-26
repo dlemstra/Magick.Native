@@ -1,7 +1,7 @@
 steps:
 - script: /tmp/docker exec -t -u 0 ci-container $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}/install.sudo.sh
   displayName: Install sudo
-- script: ./install.dependencies.sh
+- script: sudo ./install.dependencies.sh
   workingDirectory: $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}
   displayName: Install dependencies
 - script: ./checkout.sh Linux

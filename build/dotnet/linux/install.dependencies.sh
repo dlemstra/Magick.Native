@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-sudo apt-get update -y
+apt-get update -y
 
-sudo apt-get install -y autoconf git gperf nasm pkg-config
+apt-get install -y autoconf git gperf nasm pkg-config
