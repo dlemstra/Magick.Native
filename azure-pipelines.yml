@@ -2,17 +2,17 @@ name: $(Date:yyyyMMdd.HHmm)
 
 resources:
   containers:
-  - container: ubuntu
+  - container: build
     image: ubuntu:16.04
-    options: '--name ci-container -v /usr/bin/docker:/tmp/docker:ro'
+    options: '--name build -v /usr/bin/docker:/tmp/docker:ro'
 
 jobs:
 - job: linux_dotnet
   displayName: 'Linux (dotnet)'
   pool:
     vmImage: 'Ubuntu 16.04'
-  container: ubuntu
+  container: build
   steps:
-    - script: /tmp/docker exec -t -u 0 ci-container $(Build.SourcesDirectory)/build/dotnet/linux/install.sudo.sh
+    - script: /tmp/docker exec -t -u 0 build $(Build.SourcesDirectory)/build/dotnet/linux/install.sudo.sh
       displayName: Install sudo
     - template: build/dotnet/linux/build.yml
