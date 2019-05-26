@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:16.04
 
 RUN mkdir build
 

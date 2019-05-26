@@ -3,7 +3,7 @@ name: $(Date:yyyyMMdd.HHmm)
 resources:
   containers:
   - container: ubuntu
-    image: ubuntu:bionic
+    image: ubuntu:16.04
     options: '--name ci-container -v /usr/bin/docker:/tmp/docker:ro'
 
 jobs:
