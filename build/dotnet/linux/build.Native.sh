@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export PLATFORM="LINUX"
+
 echo "" > foo.cxx
 
 buildMagickNET() {
@@ -21,7 +23,7 @@ buildMagickNET() {
     mkdir $quantum
     cd $quantum
 
-    cmake -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=Magick.NET-$quantum-x64.Native.dll -DPLATFORM=LINUX ..
+    cmake -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=Magick.NET-$quantum-x64.Native.dll -DPLATFORM=$PLATFORM ..
     make
 
     cd ..
