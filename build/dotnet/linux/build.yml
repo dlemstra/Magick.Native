@@ -17,3 +17,8 @@ steps:
 - script: $(Build.SourcesDirectory)/build/dotnet/linux/copy.Native.sh $(Build.StagingDirectory)
   workingDirectory: $(Build.SourcesDirectory)/src/Native
   displayName: Copy Native
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(System.StagingDirectory)
+    artifactName: linux
+  displayName: 'Publish Build Artifacts'

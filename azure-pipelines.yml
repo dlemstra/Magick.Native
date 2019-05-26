@@ -5,6 +5,8 @@ resources:
   - container: build
     image: ubuntu:16.04
     options: '--name build -v /usr/bin/docker:/tmp/docker:ro'
+  - container: ubuntu_16_04
+    image: ubuntu:16.04
 
 jobs:
 - job: linux_dotnet
@@ -16,3 +18,13 @@ jobs:
     - script: /tmp/docker exec -t -u 0 build $(Build.SourcesDirectory)/build/dotnet/linux/install.sudo.sh
       displayName: Install sudo
     - template: build/dotnet/linux/build.yml
+
+- job: verify_ubuntu_16_04
+  displayName: 'Verify (ubuntu:16.04)'
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  dependsOn: linux_dotnet
+  container: ubuntu_16_04
+  steps:
+    - checkout: none
+    - template: build/dotnet/linux/verify.yml

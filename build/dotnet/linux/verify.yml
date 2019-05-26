@@ -1,0 +1,9 @@
+steps:
+- task: DownloadBuildArtifacts@0
+  inputs:
+    artifactName: linux
+    downloadPath: $(System.StagingDirectory)
+  displayName: 'Download Build Artifacts'
+- script: $(Build.SourcesDirectory)/build/dotnet/linux/verify.Native.sh
+  workingDirectory: $(Build.StagingDirectory)
+  displayName: Verify Native
