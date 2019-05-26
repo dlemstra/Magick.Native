@@ -1,23 +1,15 @@
-FROM trzeci/emscripten:sdk-tag-1.38.31-64bit
-
-RUN apt-get update -y
-
-RUN apt-get install -y autoconf libtool shtool autogen pkg-config gperf nasm
-
-COPY src/ImageMagick ImageMagick
-
-RUN cd /src/ImageMagick; ./checkout.sh Linux
+FROM ubuntu:bionic
 
 RUN mkdir build
 
+COPY build/dotnet/linux/install.dependencies.sh build
+
+RUN cd /build; ./install.dependencies.sh
+
+COPY src/ImageMagick ImageMagick
+
+RUN cd /ImageMagick; ./checkout.sh Linux
+
 COPY build/dotnet/linux/build.ImageMagick.sh build
 
-RUN cd /src/build; ./build.ImageMagick.sh
-
-COPY build/dotnet/linux/build.Native.sh build
-
-COPY src/Native Native
-
-RUN cd /src/build; ./build.Native.sh
-
-COPY build/dotnet/linux/copy.output.sh build
+RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh
