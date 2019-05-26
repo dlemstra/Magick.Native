@@ -16,6 +16,7 @@ if (PLATFORM STREQUAL "WASM")
 else()
     file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
+    set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
@@ -47,6 +48,7 @@ target_link_libraries(
 
     ${LIB_DIR}/libz.a
     ${LIB_DIR}/libxml2.a
+    ${LIBFONTCONFIG}
     ${LIB_DIR}/libfreetype.a
     ${LIB_DIR}/libpng.a
     ${LIB_DIR}/libturbojpeg.a
