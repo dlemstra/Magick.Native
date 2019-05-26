@@ -1,3 +1,7 @@
 steps:
-- script: $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}/build.ImageMagick.sh
+- script: ./checkout.sh Linux
+  workingDirectory: $(Build.SourcesDirectory)/src/ImageMagick
+  displayName: Clone ImageMagick libraries
+- script: ./build.ImageMagick.sh
+  workingDirectory: $(Build.SourcesDirectory)/build/${{ parameters.type }}/${{ parameters.platform }}
   displayName: Build ImageMagick
