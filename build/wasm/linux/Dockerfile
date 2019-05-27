@@ -1,23 +1,23 @@
 FROM trzeci/emscripten:sdk-tag-1.38.31-64bit
 
-RUN apt-get update -y
+RUN mkdir /build
 
-RUN apt-get install -y autoconf libtool shtool autogen pkg-config gperf nasm
+COPY build/wasm/linux/install.dependencies.sh /build
 
-COPY src/ImageMagick ImageMagick
+RUN cd /build; ./install.dependencies.sh
 
-RUN cd /src/ImageMagick; ./checkout.sh Linux
+COPY src/ImageMagick /ImageMagick
 
-RUN mkdir build
+RUN cd /ImageMagick; ./checkout.sh linux
 
-COPY build/wasm/linux/build.ImageMagick.sh build
+COPY build/wasm/linux/build.ImageMagick.sh /build
 
-RUN cd /src/build; ./build.ImageMagick.sh
+RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh
 
-COPY build/wasm/linux/build.Native.sh build
+COPY build/wasm/linux/build.Native.sh /build
 
-COPY src/Native Native
+COPY src/Native /Native
 
-RUN cd /src/build; ./build.Native.sh
+RUN cd /Native; /build/build.Native.sh
 
-COPY build/wasm/linux/copy.output.sh build
+COPY build/wasm/linux/copy.Native.sh /build

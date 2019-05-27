@@ -6,14 +6,14 @@ export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="emconfigure ./configure"
 export CMAKE_CONFIGURE="emconfigure cmake"
 export MAKE="emcmake make"
-export SIMD_FLAG="-DWITH_SIMD=0"
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED="--disable-shared"
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export HEIF_HACK=true
-
-cd /src/ImageMagick/libraries
+export LIBXML_OPTIONS=""
+export SIMD_OPTIONS="-DWITH_SIMD=0"
+export SSE_OPTIONS="--disable-sse"
 
 # Build zlib
 cd zlib
@@ -24,7 +24,7 @@ $MAKE install CFLAGS="$FLAGS"
 # Build libxml
 cd ../libxml
 autoreconf -fiv
-$CONFIGURE --with-python=no --enable-static --disable-shared CFLAGS="$FLAGS"
+$CONFIGURE --with-python=no --enable-static --disable-shared $LIBXML_OPTIONS CFLAGS="$FLAGS"
 $MAKE install
 
 # Build libpng
@@ -36,18 +36,17 @@ $MAKE install
 # Build freetype
 cd ../freetype
 ./autogen.sh
-$CONFIGURE --disable-shared CFLAGS="$FLAGS"
+$CONFIGURE --disable-shared --without-bzip2 CFLAGS="$FLAGS"
 $MAKE install
 make clean
 mkdir build
 cd build
-$CMAKE_CONFIGURE .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_C_FLAGS="$FLAGS"
+$CMAKE_CONFIGURE .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 cd ..
-
 # Build libjpeg-turbo
 cd ../jpeg
-$CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_FLAG} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
+$CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 
 # Build libtiff
@@ -59,6 +58,7 @@ $MAKE install
 # Build libwebp
 cd ../webp
 autoreconf -fiv
+chmod +x ./configure
 $CONFIGURE --enable-libwebpmux --enable-libwebpdemux --disable-shared CFLAGS="${FLAGS}"
 $MAKE install
 
@@ -78,13 +78,15 @@ $MAKE install
 # Build libde265
 cd ../libde265
 autoreconf -fiv
-$CONFIGURE --disable-shared --disable-sse --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
+chmod +x ./configure
+$CONFIGURE --disable-shared $SSE_OPTIONS --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
 
 # Build libheif
 cd ../libheif
 autoreconf -fiv
-$CONFIGURE --disable-shared --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+chmod +x ./configure
+$CONFIGURE --disable-shared --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
 if [ "$HEIF_HACK" = true ]; then
     for f in examples/*.cc; do echo "" > $f; done
 fi
@@ -94,11 +96,30 @@ $MAKE install
 cd ../libraw
 chmod +x ./version.sh
 chmod +x ./shlib-version.sh
+chmod +x ./configure
 autoreconf -fiv
 $CONFIGURE --disable-shared --disable-examples --disable-openmp --disable-jpeg --disable-jasper --prefix=/usr/local  CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
 
+buildImageMagick() {
+    local quantum=$1
+
+    # Set ImageMagick variables
+    local hdri=no
+    local depth=8
+    if [ "$quantum" == "Q16" ]; then
+        depth=16
+    elif [ "$quantum" == "Q16-HDRI" ]; then
+        quantum_name=Q16HDRI
+        depth=16
+        hdri=yes
+    fi
+
+    $CONFIGURE --disable-shared --disable-openmp --enable-static --enable-delegate-build --without-threads --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-quantum-depth=$depth --enable-hdri=$hdri CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+    $MAKE install
+}
+
 # Build ImageMagick
 cd ../ImageMagick
-$CONFIGURE --disable-shared --disable-openmp --enable-static --enable-delegate-build --without-threads --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-quantum-depth=8 --disable-hdri  CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
-$MAKE install
+autoreconf -fiv
+buildImageMagick "Q8"
