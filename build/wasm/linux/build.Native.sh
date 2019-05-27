@@ -2,8 +2,8 @@
 set -e
 
 export PLATFORM="WASM"
-export CMAKE_CONFIGURE="emconfigure cmake"
-export CMAKE_OPTIONS="-DCMAKE_CXX_COMPILER=em++ -DCMAKE_C_COMPILER=emcc"
+export CMAKE_COMMAND="cmake"
+export CMAKE_OPTIONS="-D CMAKE_CXX_COMPILER=em++ -D CMAKE_C_COMPILER=emcc"
 getLibraryName() {
     local quantum=$1
     echo magick-$quantum
@@ -29,7 +29,7 @@ buildMagickNET() {
     mkdir $quantum
     cd $quantum
 
-    $CMAKE_CONFIGURE -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM $CMAKE_OPTIONS ..
+    $CMAKE_COMMAND -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $CMAKE_OPTIONS ..
     make
 
     cd ..
