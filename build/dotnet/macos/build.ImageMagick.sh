@@ -12,7 +12,7 @@ export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED=""
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export HEIF_HACK=false
-export LIBXML_OPTIONS=""
+export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
 
 # Build zlib
 cd zlib
@@ -94,7 +94,7 @@ $MAKE install
 cd ../libheif
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+$CONFIGURE --disable-shared  --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
 if [ "$HEIF_HACK" = true ]; then
     for f in examples/*.cc; do echo "" > $f; done
 fi

@@ -20,7 +20,7 @@ else()
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
-    find_library(LIBICONV NAMES libiconv.a PATHS /usr/local/opt/libiconv/lib)
+    set(LIBICONV /usr/local/opt/libiconv/lib/libiconv.a)
 
     set(STDCPLUSPLUS stdc++)
 elseif (PLATFORM STREQUAL "WASM")
@@ -47,6 +47,7 @@ target_link_libraries(
     ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
     ${LIB_DIR}/libz.a
+    ${LIBICONV}
     ${LIB_DIR}/libxml2.a
     ${LIBFONTCONFIG}
     ${LIB_DIR}/libfreetype.a
@@ -63,8 +64,6 @@ target_link_libraries(
     ${LIB_DIR}/libraw_r.a
 
     ${THREADLIB}
-
-    ${LIBICONV}
 
     ${STDCPLUSPLUS}
 )

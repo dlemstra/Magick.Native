@@ -31,6 +31,15 @@ jobs:
       displayName: Install sudo
     - template: build/dotnet/linux/build.yml
 
+- job: macos_dotnet
+  displayName: 'MacOS (dotnet)'
+  pool:
+    vmImage: macOS 10.13
+  steps:
+    - template: build/dotnet/macos/build.yml
+      parameters:
+        platform: macos
+
 - template: build/dotnet/linux/verify.yml
   parameters:
     container: ubuntu_16_04
