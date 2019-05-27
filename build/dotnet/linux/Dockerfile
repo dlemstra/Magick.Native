@@ -1,23 +1,23 @@
 FROM ubuntu:16.04
 
-RUN mkdir build
+RUN mkdir /build
 
-COPY build/dotnet/linux/install.dependencies.sh build
+COPY build/dotnet/linux/install.dependencies.sh /build
 
 RUN cd /build; ./install.dependencies.sh
 
-COPY src/ImageMagick ImageMagick
+COPY src/ImageMagick /ImageMagick
 
-RUN cd /ImageMagick; ./checkout.sh Linux
+RUN cd /ImageMagick; ./checkout.sh linux
 
-COPY build/dotnet/linux/build.ImageMagick.sh build
+COPY build/dotnet/linux/build.ImageMagick.sh /build
 
 RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh
 
-COPY build/dotnet/linux/build.Native.sh build
+COPY build/dotnet/linux/build.Native.sh /build
 
-COPY src/Native Native
+COPY src/Native /Native
 
 RUN cd /Native; /build/build.Native.sh
 
-COPY build/dotnet/linux/copy.Native.sh build
+COPY build/dotnet/linux/copy.Native.sh /build
