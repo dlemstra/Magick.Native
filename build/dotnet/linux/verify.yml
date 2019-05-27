@@ -3,7 +3,7 @@ jobs:
   displayName: 'Verify (${{ parameters.container }})'
   pool:
     vmImage: 'Ubuntu 16.04'
-  dependsOn: linux_dotnet
+  dependsOn: dotnet_linux
   container: ${{ parameters.container }}
   steps:
     - task: DownloadBuildArtifacts@0
