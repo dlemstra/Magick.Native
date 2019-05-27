@@ -29,7 +29,7 @@ buildMagickNET() {
     mkdir $quantum
     cd $quantum
 
-    $CMAKE_CONFIGURE -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $CMAKE_OPTIONS ..
+    $CMAKE_COMMAND -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $CMAKE_OPTIONS ..
     make
 
     cd ..
