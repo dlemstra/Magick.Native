@@ -6,14 +6,14 @@ export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="./configure"
 export CMAKE_CONFIGURE="cmake"
 export MAKE="make"
-export SIMD_FLAG="-DWITH_SIMD=1"
-export SSE_FLAG=""
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED=""
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export HEIF_HACK=false
 export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
+export SIMD_OPTIONS="-DWITH_SIMD=1"
+export SSE_OPTIONS=""
 
 # Build zlib
 cd zlib
@@ -55,7 +55,7 @@ $MAKE install
 
 # Build libjpeg-turbo
 cd ../jpeg
-$CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_FLAG} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
+$CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 
 # Build libtiff
@@ -88,14 +88,14 @@ $MAKE install
 cd ../libde265
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared $SSE_FLAG --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
+$CONFIGURE --disable-shared $SSE_OPTIONS --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
 
 # Build libheif
 cd ../libheif
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared  --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+$CONFIGURE --disable-shared --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
 if [ "$HEIF_HACK" = true ]; then
     for f in examples/*.cc; do echo "" > $f; done
 fi
