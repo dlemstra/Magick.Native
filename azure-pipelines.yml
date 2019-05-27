@@ -2,9 +2,9 @@ name: $(Date:yyyyMMdd.HHmm)
 
 resources:
   containers:
-  - container: build
+  - container: build_dotnet_linux
     image: ubuntu:16.04
-    options: '--name build -v /usr/bin/docker:/tmp/docker:ro'
+    options: '--name build_dotnet_linux -v /usr/bin/docker:/tmp/docker:ro'
   - container: ubuntu_16_04
     image: ubuntu:16.04
   - container: ubuntu_17_10
@@ -25,9 +25,9 @@ jobs:
   displayName: 'Linux (dotnet)'
   pool:
     vmImage: 'Ubuntu 16.04'
-  container: build
+  container: build_dotnet_linux
   steps:
-    - script: /tmp/docker exec -t -u 0 build $(Build.SourcesDirectory)/build/dotnet/linux/install.sudo.sh
+    - script: /tmp/docker exec -t -u 0 build_dotnet_linux $(Build.SourcesDirectory)/build/dotnet/linux/install.sudo.sh
       displayName: Install sudo
     - template: build/dotnet/linux/build.yml
 
