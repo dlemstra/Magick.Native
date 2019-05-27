@@ -7,6 +7,7 @@ export CONFIGURE="./configure"
 export CMAKE_CONFIGURE="cmake"
 export MAKE="make"
 export SIMD_FLAG="-DWITH_SIMD=1"
+export SSE_FLAG=""
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED=""
@@ -87,7 +88,7 @@ $MAKE install
 cd ../libde265
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared --disable-sse --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
+$CONFIGURE --disable-shared $SSE_FLAG --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
 
 # Build libheif
