@@ -5,6 +5,9 @@ resources:
   - container: build_dotnet_linux
     image: ubuntu:16.04
     options: '--name build_dotnet_linux -v /usr/bin/docker:/tmp/docker:ro'
+  - container: build_wasm_linux
+    image: trzeci/emscripten:sdk-tag-1.38.31-64bit
+    options: '--name build_dotnet_linux -v /usr/bin/docker:/tmp/docker:ro'
   - container: ubuntu_16_04
     image: ubuntu:16.04
   - container: ubuntu_17_10
@@ -39,6 +42,16 @@ jobs:
     - template: build/dotnet/macos/build.yml
       parameters:
         platform: macos
+
+- job: wasm_linux
+  displayName: 'WASM (Linux)'
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  container: build_wasm_linux
+  steps:
+    - script: /tmp/docker exec -t -u 0 build_dotnet_linux $(Build.SourcesDirectory)/build/wasm/linux/install.sudo.sh
+      displayName: Install sudo
+    - template: build/wasm/linux/build.yml
 
 - template: build/dotnet/linux/verify.yml
   parameters:
