@@ -4,7 +4,7 @@ set -e
 export FLAGS="-O3 -fPIC"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="./configure"
-export CMAKE_CONFIGURE="cmake"
+export CMAKE_COMMAND="cmake"
 export MAKE="make"
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
@@ -41,7 +41,7 @@ $MAKE install
 make clean
 mkdir build
 cd build
-$CMAKE_CONFIGURE .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
+$CMAKE_COMMAND .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 cd ..
 
@@ -55,7 +55,7 @@ $MAKE install
 
 # Build libjpeg-turbo
 cd ../jpeg
-$CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
+$CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 
 # Build libtiff
@@ -73,8 +73,8 @@ $MAKE install
 
 # Build openjpeg
 cd ../openjpeg
-$CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS" || true
-$CMAKE_CONFIGURE . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
+$CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS" || true
+$CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 cp bin/libopenjp2.a /usr/local/lib
 
