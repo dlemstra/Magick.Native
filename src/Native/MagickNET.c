@@ -23,11 +23,6 @@ MAGICK_NET_EXPORT const char *MagickNET_Features_Get(void)
   return GetMagickFeatures();
 }
 
-MAGICK_NET_EXPORT const char *MagickNET_ImageMagickVersion_Get(void)
-{
-  return GetMagickVersion(NULL);
-}
-
 MAGICK_NET_EXPORT const TypeInfo **MagickNET_GetFonts(size_t *length, ExceptionInfo **exception)
 {
   const TypeInfo
