@@ -75,6 +75,10 @@ MAGICK_NET_LINK_LIB("ffi")
 MAGICK_NET_LINK_LIB("flif")
 #endif
 
+#if defined(MAGICKCORE_FREETYPE_DELEGATE)
+MAGICK_NET_LINK_LIB("freetype")
+#endif
+
 #if defined(MAGICKCORE_LQR_DELEGATE)
 MAGICK_NET_LINK_LIB("glib")
 #pragma comment(lib, "winmm.lib")
@@ -138,10 +142,6 @@ MAGICK_NET_LINK_LIB("librsvg")
 
 #if defined(MAGICKCORE_TIFF_DELEGATE)
 MAGICK_NET_LINK_LIB("tiff")
-#endif
-
-#if defined(MAGICKCORE_FREETYPE_DELEGATE)
-MAGICK_NET_LINK_LIB("ttf")
 #endif
 
 #if defined(MAGICKCORE_WEBP_DELEGATE)
