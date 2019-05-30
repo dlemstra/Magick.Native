@@ -5,7 +5,7 @@ verifyNative() {
     local quantum=$1
     local folder=$2
 
-    local file=$folder/Magick.NET-$quantum-x64.Native.dll.so
+    local file=$folder/Magick.Native-$quantum-x64.dll.so
 
     if ldd $file 2>&1 | grep "not found"
     then

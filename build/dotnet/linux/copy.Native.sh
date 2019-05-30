@@ -5,7 +5,7 @@ copyNative() {
     local quantum=$1
     local target=$2
 
-    cp $quantum/libMagick.NET-$quantum-x64.Native.dll.so $target/Magick.NET-Q16-HDRI-x64.Native.dll.so
+    cp $quantum/libMagick.Native-$quantum-x64.dll.so $target/Magick.Native-Q16-HDRI-x64.dll.so
 }
 
 copyNative "Q8" $1

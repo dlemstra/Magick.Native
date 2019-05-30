@@ -6,7 +6,7 @@ export CMAKE_COMMAND="cmake"
 export CMAKE_OPTIONS=""
 getLibraryName() {
     local quantum=$1
-    echo Magick.NET-$quantum-x64.Native.dll
+    echo Magick.Native-$quantum-x64.dll
 }
 
 echo "" > foo.cxx
