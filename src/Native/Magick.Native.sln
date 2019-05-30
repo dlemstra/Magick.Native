@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Magick.Native", "Magick.Native.vcxproj", "{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DebugQ8|x64 = DebugQ8|x64
+		DebugQ8|x86 = DebugQ8|x86
+		DebugQ16|x64 = DebugQ16|x64
+		DebugQ16|x86 = DebugQ16|x86
+		DebugQ16-HDRI|x64 = DebugQ16-HDRI|x64
+		DebugQ16-HDRI|x86 = DebugQ16-HDRI|x86
+		ReleaseQ8-OpenMP|x64 = ReleaseQ8-OpenMP|x64
+		ReleaseQ8-OpenMP|x86 = ReleaseQ8-OpenMP|x86
+		ReleaseQ16-OpenMP|x64 = ReleaseQ16-OpenMP|x64
+		ReleaseQ16-OpenMP|x86 = ReleaseQ16-OpenMP|x86
+		ReleaseQ16-HDRI-OpenMP|x64 = ReleaseQ16-HDRI|x64
+		ReleaseQ16-HDRI-OpenMP|x86 = ReleaseQ16-HDRI-OpenMP|x86
+		ReleaseQ8|x64 = ReleaseQ8|x64
+		ReleaseQ8|x86 = ReleaseQ8|x86
+		ReleaseQ16|x64 = ReleaseQ16|x64
+		ReleaseQ16|x86 = ReleaseQ16|x86
+		ReleaseQ16-HDRI|x64 = ReleaseQ16-HDRI|x64
+		ReleaseQ16-HDRI|x86 = ReleaseQ16-HDRI|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x64.ActiveCfg = DebugQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x64.Build.0 = DebugQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x86.ActiveCfg = DebugQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x86.Build.0 = DebugQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16|x64.ActiveCfg = DebugQ16|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16|x64.Build.0 = DebugQ16|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16|x86.ActiveCfg = DebugQ16|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16|x86.Build.0 = DebugQ16|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16-HDRI|x64.ActiveCfg = DebugQ16-HDRI|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16-HDRI|x64.Build.0 = DebugQ16-HDRI|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16-HDRI|x86.ActiveCfg = DebugQ16-HDRI|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16-HDRI|x86.Build.0 = DebugQ16-HDRI|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x64.ActiveCfg = ReleaseQ8-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x64.Build.0 = ReleaseQ8-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x86.ActiveCfg = ReleaseQ8-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x64.ActiveCfg = ReleaseQ16-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x64.Build.0 = ReleaseQ16-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x86.ActiveCfg = ReleaseQ16-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x64.ActiveCfg = ReleaseQ16-HDRI-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x64.Build.0 = ReleaseQ16-HDRI-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x86.ActiveCfg = ReleaseQ16-HDRI-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x64.ActiveCfg = ReleaseQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x64.Build.0 = ReleaseQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x86.ActiveCfg = ReleaseQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x86.Build.0 = ReleaseQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16|x64.ActiveCfg = ReleaseQ16|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16|x64.Build.0 = ReleaseQ16|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16|x86.ActiveCfg = ReleaseQ16|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16|x86.Build.0 = ReleaseQ16|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI|x64.ActiveCfg = ReleaseQ16-HDRI|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI|x64.Build.0 = ReleaseQ16-HDRI|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI|x86.ActiveCfg = ReleaseQ16-HDRI|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI|x86.Build.0 = ReleaseQ16-HDRI|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
+	EndGlobalSection
+EndGlobal

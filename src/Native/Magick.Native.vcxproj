@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugQ8|Win32">
+      <Configuration>DebugQ8</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugQ8|x64">
+      <Configuration>DebugQ8</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugQ16|Win32">
+      <Configuration>DebugQ16</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugQ16|x64">
+      <Configuration>DebugQ16</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugQ16-HDRI|Win32">
+      <Configuration>DebugQ16-HDRI</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugQ16-HDRI|x64">
+      <Configuration>DebugQ16-HDRI</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ8|Win32">
+      <Configuration>ReleaseQ8</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ8|x64">
+      <Configuration>ReleaseQ8</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16|Win32">
+      <Configuration>ReleaseQ16</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16|x64">
+      <Configuration>ReleaseQ16</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16-HDRI|Win32">
+      <Configuration>ReleaseQ16-HDRI</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16-HDRI|x64">
+      <Configuration>ReleaseQ16-HDRI</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ8-OpenMP|x64">
+      <Configuration>ReleaseQ8-OpenMP</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16-HDRI-OpenMP|x64">
+      <Configuration>ReleaseQ16-HDRI-OpenMP</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16-OpenMP|x64">
+      <Configuration>ReleaseQ16-OpenMP</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Condition="$(Configuration.EndsWith('Q8'))">
+    <QuantumType>Q8</QuantumType>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.EndsWith('Q16'))">
+    <QuantumType>Q16</QuantumType>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.EndsWith('Q16-HDRI'))">
+    <QuantumType>Q16-HDRI</QuantumType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='Win32'">
+    <PlatformName>x86</PlatformName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='x64'">
+    <PlatformName>x64</PlatformName>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.Contains('Release'))">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>$(ProjectDir)lib\$(Configuration)\$(PlatformName)\</IntDir>
+    <TargetName>Magick.Native-$(QuantumType)-$(PlatformName)</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\$(Configuration)\$(PlatformName)\Magick.NET.rc" />
+  </ItemGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\ImageMagick\output\includes\$(Configuration);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\ImageMagick\output\libraries\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="$(Configuration.Contains('Debug'))">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="$(Configuration.Contains('Release'))">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="$(Configuration.Contains('OpenMP'))">
+    <ClCompile>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}</ProjectGuid>
+    <RootNamespace>ImageMagick.Native</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemGroup>
+    <ClCompile Include="Colors\MagickColor.c" />
+    <ClCompile Include="Colors\MagickColorCollection.c" />
+    <ClCompile Include="Drawables\DrawingWand.c" />
+    <ClCompile Include="Drawables\PointInfoCollection.c" />
+    <ClCompile Include="Helpers\Environment.c" />
+    <ClCompile Include="Matricis\DoubleMatrix.c" />
+    <ClCompile Include="OpenCL\OpenCL.c" />
+    <ClCompile Include="OpenCL\OpenCLKernelProfileRecord.c" />
+    <ClCompile Include="Optimizers\JpegOptimizer.c" />
+    <ClCompile Include="Statistics\ChannelStatistics.c" />
+    <ClCompile Include="Settings\DrawingSettings.c" />
+    <ClCompile Include="OpenCL\OpenCLDevice.c" />
+    <ClCompile Include="Types\PrimaryInfo.c" />
+    <ClCompile Include="Types\OffsetInfo.c" />
+    <ClCompile Include="Statistics\Statistics.c" />
+    <ClCompile Include="Statistics\ChannelMoments.c" />
+    <ClCompile Include="Statistics\ChannelPerceptualHash.c" />
+    <ClCompile Include="Statistics\Moments.c" />
+    <ClCompile Include="Statistics\PerceptualHash.c" />
+    <ClCompile Include="Types\TypeMetric.c" />
+    <ClCompile Include="Types\ConnectedComponent.c" />
+    <ClCompile Include="Types\PointInfo.c" />
+    <ClCompile Include="Types\StringInfo.c" />
+    <ClCompile Include="Helpers\MagickMemory.c" />
+    <ClCompile Include="Exceptions\MagickExceptionHelper.c" />
+    <ClCompile Include="MagickFormatInfo.c" />
+    <ClCompile Include="MagickImage.c" />
+    <ClCompile Include="MagickImageCollection.c" />
+    <ClCompile Include="MagickNET.c" />
+    <ClCompile Include="Pixels\PixelCollection.c" />
+    <ClCompile Include="Settings\MagickSettings.c" />
+    <ClCompile Include="Quantum.c" />
+    <ClCompile Include="ResourceLimits.c" />
+    <ClCompile Include="Settings\MontageSettings.c" />
+    <ClCompile Include="Settings\QuantizeSettings.c" />
+    <ClCompile Include="Stdafx.c">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Types\MagickGeometry.c" />
+    <ClCompile Include="Types\MagickRectangle.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ItemGroup>
+    <ClInclude Include="Colors\MagickColor.h" />
+    <ClInclude Include="Colors\MagickColorCollection.h" />
+    <ClInclude Include="Drawables\DrawingWand.h" />
+    <ClInclude Include="Drawables\PointInfoCollection.h" />
+    <ClInclude Include="Helpers\Environment.h" />
+    <ClInclude Include="MagickFormatInfo.h" />
+    <ClInclude Include="Matricis\DoubleMatrix.h" />
+    <ClInclude Include="OpenCL\OpenCL.h" />
+    <ClInclude Include="OpenCL\OpenCLKernelProfileRecord.h" />
+    <ClInclude Include="Optimizers\JpegOptimizer.h" />
+    <ClInclude Include="Statistics\ChannelStatistics.h" />
+    <ClInclude Include="Settings\DrawingSettings.h" />
+    <ClInclude Include="OpenCL\OpenCLDevice.h" />
+    <ClInclude Include="Types\PrimaryInfo.h" />
+    <ClInclude Include="Types\OffsetInfo.h" />
+    <ClInclude Include="Statistics\Statistics.h" />
+    <ClInclude Include="Statistics\ChannelMoments.h" />
+    <ClInclude Include="Statistics\ChannelPerceptualHash.h" />
+    <ClInclude Include="Statistics\Moments.h" />
+    <ClInclude Include="Statistics\PerceptualHash.h" />
+    <ClInclude Include="Types\TypeMetric.h" />
+    <ClInclude Include="Types\ConnectedComponent.h" />
+    <ClInclude Include="Types\PointInfo.h" />
+    <ClInclude Include="Types\StringInfo.h" />
+    <ClInclude Include="Helpers\MagickMemory.h" />
+    <ClInclude Include="Exceptions\MagickExceptionHelper.h" />
+    <ClInclude Include="MagickImage.h" />
+    <ClInclude Include="MagickImageCollection.h" />
+    <ClInclude Include="MagickNET.h" />
+    <ClInclude Include="Pixels\PixelCollection.h" />
+    <ClInclude Include="Settings\MagickSettings.h" />
+    <ClInclude Include="Quantum.h" />
+    <ClInclude Include="ResourceLimits.h" />
+    <ClInclude Include="Settings\MontageSettings.h" />
+    <ClInclude Include="Settings\QuantizeSettings.h" />
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="Types\MagickGeometry.h" />
+    <ClInclude Include="Types\MagickRectangle.h" />
+  </ItemGroup>
+</Project>
