@@ -40,8 +40,6 @@ jobs:
     vmImage: macOS 10.13
   steps:
     - template: build/dotnet/macos/build.yml
-      parameters:
-        platform: macos
 
 - job: wasm_linux
   displayName: 'WASM (Linux)'
