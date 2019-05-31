@@ -17,7 +17,7 @@ Global
 		ReleaseQ8-OpenMP|x86 = ReleaseQ8-OpenMP|x86
 		ReleaseQ16-OpenMP|x64 = ReleaseQ16-OpenMP|x64
 		ReleaseQ16-OpenMP|x86 = ReleaseQ16-OpenMP|x86
-		ReleaseQ16-HDRI-OpenMP|x64 = ReleaseQ16-HDRI|x64
+		ReleaseQ16-HDRI-OpenMP|x64 = ReleaseQ16-HDRI-OpenMP|x64
 		ReleaseQ16-HDRI-OpenMP|x86 = ReleaseQ16-HDRI-OpenMP|x86
 		ReleaseQ8|x64 = ReleaseQ8|x64
 		ReleaseQ8|x86 = ReleaseQ8|x86
