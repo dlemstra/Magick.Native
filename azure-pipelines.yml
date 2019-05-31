@@ -24,6 +24,13 @@ resources:
     image: microsoft/dotnet:latest
 
 jobs:
+- job: dotnet_windows
+  displayName: '.NET (Windows)'
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+    - template: build/dotnet/windows/build.yml
+
 - job: dotnet_linux
   displayName: '.NET (Linux)'
   pool:

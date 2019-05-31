@@ -1,6 +1,7 @@
 /src/ImageMagick/libraries/*
 /src/ImageMagick/output/*
 **/output/*
+**/tools/*
 /src/Native/lib
 /src/Native/bin
 /src/Native/.vs
