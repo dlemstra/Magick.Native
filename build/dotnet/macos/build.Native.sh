@@ -36,3 +36,5 @@ buildNative() {
 }
 
 buildNative "Q8"
+buildNative "Q16"
+buildNative "Q16-HDRI"

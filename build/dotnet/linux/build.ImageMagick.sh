@@ -132,3 +132,5 @@ buildImageMagick() {
 cd ../ImageMagick
 autoreconf -fiv
 buildImageMagick "Q8"
+buildImageMagick "Q16"
+buildImageMagick "Q16-HDRI"

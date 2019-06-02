@@ -26,3 +26,11 @@ if ($destination -eq $null) {
 }
 
 copyNative "Release" "Q8" "x86" $destination
+copyNative "Release" "Q8" "x64" $destination
+copyNative "Release" "Q8-OpenMP" "x64" $destination
+copyNative "Release" "Q16" "x86" $destination
+copyNative "Release" "Q16" "x64" $destination
+copyNative "Release" "Q16-OpenMP" "x64" $destination
+copyNative "Release" "Q16-HDRI" "x86" $destination
+copyNative "Release" "Q16-HDRI" "x64" $destination
+copyNative "Release" "Q16-HDRI-OpenMP" "x64" $destination

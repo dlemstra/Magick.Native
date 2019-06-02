@@ -106,3 +106,11 @@ function buildConfigure() {
 
 buildConfigure
 buildImageMagick "Release" "Q8" "x86" "Q8" "/opencl /noHdri /noOpenMP"
+buildImageMagick "Release" "Q8" "x64" "Q8" "/opencl /noHdri /noOpenMP /x64"
+buildImageMagick "Release" "Q8-OpenMP" "x64" "Q8" "/opencl /noHdri /x64"
+buildImageMagick "Release" "Q16" "x86" "Q16" "/opencl /noHdri /noOpenMP"
+buildImageMagick "Release" "Q16" "x64" "Q16" "/opencl /noHdri /noOpenMP /x64"
+buildImageMagick "Release" "Q16-OpenMP" "x64" "Q16" "/opencl /noHdri /x64"
+buildImageMagick "Release" "Q16-HDRI" "x86" "Q16-HDRI" "/opencl /noOpenMP"
+buildImageMagick "Release" "Q16-HDRI" "x64" "Q16-HDRI" "/opencl /noOpenMP /x64"
+buildImageMagick "Release" "Q16-HDRI-OpenMP" "x64" "Q16-HDRI" "/opencl /x64"

@@ -17,3 +17,11 @@ function buildNative($config, $name, $platform) {
 }
 
 buildNative "Release" "Q8" "x86"
+buildNative "Release" "Q8" "x64"
+buildNative "Release" "Q8-OpenMP" "x64"
+buildNative "Release" "Q16" "x86"
+buildNative "Release" "Q16" "x64"
+buildNative "Release" "Q16-OpenMP" "x64"
+buildNative "Release" "Q16-HDRI" "x86"
+buildNative "Release" "Q16-HDRI" "x64"
+buildNative "Release" "Q16-HDRI-OpenMP" "x64"

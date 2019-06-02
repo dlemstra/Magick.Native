@@ -9,3 +9,5 @@ copyNative() {
 }
 
 copyNative "Q8" $1
+copyNative "Q16" $1
+copyNative "Q16-HDRI" $1

@@ -22,3 +22,5 @@ verifyNative() {
 }
 
 verifyNative "Q8" $1
+verifyNative "Q16" $1
+verifyNative "Q16-HDRI" $1
