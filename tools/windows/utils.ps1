@@ -21,7 +21,7 @@ function checkExitCode($msg)
 
 function fullPath($path)
 {
-  return "$PSScriptRoot\..\..\..\$path"
+  return "$PSScriptRoot\..\..\$path"
 }
 
 function buildSolution($solution, $properties)
