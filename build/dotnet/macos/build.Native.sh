@@ -11,7 +11,7 @@ getLibraryName() {
 
 echo "" > foo.cxx
 
-buildMagickNET() {
+buildNative() {
     local quantum=$1
 
     local quantum_name=$quantum
@@ -35,4 +35,4 @@ buildMagickNET() {
     cd ..
 }
 
-buildMagickNET "Q8"
+buildNative "Q8"
