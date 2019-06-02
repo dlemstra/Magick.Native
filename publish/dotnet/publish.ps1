@@ -14,11 +14,11 @@
 
 function createNuGetPackage($version)
 {
-  $path = FullPath "publish\Magick.Native.nuspec"
+  $path = FullPath "publish\dotnet\Magick.Native.nuspec"
   $xml = [xml](Get-Content $path)
   $xml.package.metadata.version = $version
 
-  $nuspecFile = FullPath "publish\files\Magick.Native.nuspec"
+  $nuspecFile = FullPath "publish\dotnet\files\Magick.Native.nuspec"
   $xml.Save($nuspecFile)
 
   $nuget = FullPath "tools\windows\nuget.exe"
