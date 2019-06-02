@@ -1,4 +1,4 @@
 @echo off
-call "tools\init.visualstudio.cmd"
+call "..\..\..\tools\windows\init.visualstudio.cmd"
 
 powershell .\build.ImageMagick.ps1

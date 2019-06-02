@@ -10,7 +10,7 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
-. $PSScriptRoot\utils.ps1
+. $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function patchMagickBaseConfig($name, $platform) {
     $configFile = fullPath "src\ImageMagick\libraries\ImageMagick\MagickCore\magick-baseconfig.h"

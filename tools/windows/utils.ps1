@@ -30,7 +30,7 @@ function buildSolution($solution, $properties)
     $directory = Split-Path -parent $path
     $filename = Split-Path -leaf $path
 
-    & "$PSScriptRoot\tools\nuget.exe" restore $path
+    & "$PSScriptRoot\..\..\..\tools\windows\nuget.exe" restore $path
 
     $location = $(Get-Location)
     Set-Location $directory

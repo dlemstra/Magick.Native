@@ -14,7 +14,7 @@ param (
     [string]$destination = $null
 )
 
-. $PSScriptRoot\utils.ps1
+. $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function copyNative($config, $name, $platform, $destination) {
     $source = fullPath "src\Native\bin\$config$name\$platform\Magick.Native-$name-$platform.dll"

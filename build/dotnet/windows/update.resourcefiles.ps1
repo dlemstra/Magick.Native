@@ -10,7 +10,7 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
-. $PSScriptRoot\utils.ps1
+. $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function setValue($content, $startMatch, $endMatch, $value) {
     $start = $content.IndexOf($startMatch)
