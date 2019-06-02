@@ -93,7 +93,7 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resources\$(Configuration)\$(PlatformName)\Magick.NET.rc" />
+    <ResourceCompile Include="Resources\$(Configuration)\$(PlatformName)\Magick.Native.rc" />
   </ItemGroup>
   <ItemDefinitionGroup>
     <ClCompile>

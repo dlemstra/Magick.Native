@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by Magick.NET.rc
+// Used by Magick.Native.rc
 
 // Next default values for new objects
 // 
