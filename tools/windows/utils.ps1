@@ -29,8 +29,9 @@ function buildSolution($solution, $properties)
     $path = fullPath $solution
     $directory = Split-Path -parent $path
     $filename = Split-Path -leaf $path
+    $nuget = fullPath "tools\windows\nuget.exe"
 
-    & "$PSScriptRoot\..\..\..\tools\windows\nuget.exe" restore $path
+    & $nuget restore $path
 
     $location = $(Get-Location)
     Set-Location $directory
