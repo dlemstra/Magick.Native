@@ -85,3 +85,21 @@ jobs:
 - template: build/dotnet/linux/verify.yml
   parameters:
     container: dotnet_latest
+
+- job: publish
+  displayName: 'Publish libraries'
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+    - template: publish/dotnet/publish.yml
+  dependsOn:
+  - dotnet_windows
+  - dotnet_linux
+  - dotnet_macos
+  - verify_ubuntu_16_04
+  - verify_ubuntu_17_10
+  - verify_ubuntu_18_04
+  - verify_ubuntu_latest
+  - verify_centos_7
+  - verify_dotnet_2_0
+  - verify_dotnet_latest

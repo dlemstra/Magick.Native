@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>Magick.Native</id>
+    <version/>
+    <authors>Dirk Lemstra</authors>
+    <owners>Dirk Lemstra</owners>
+    <license type="expression">Apache-2.0</license>
+    <projectUrl>https://github.com/dlemstra/Magick.Native</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright 2013-2019 Dirk Lemstra</copyright>
+    <description>Magick.Native</description>
+  </metadata>
+  <files>
+    <file src="Magick.Native-Q8-x86.dll" target="content" />
+    <file src="Magick.Native-Q8-x64.dll.so" target="content" />
+    <file src="Magick.Native-Q8-x64.dll.dylib" target="content" />
+  </files>
+</package>
