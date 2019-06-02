@@ -13,17 +13,17 @@
 #include "Stdafx.h"
 #include "PointInfoCollection.h"
 
-MAGICK_NET_EXPORT PointInfo *PointInfoCollection_Create(const size_t length)
+MAGICK_NATIVE_EXPORT PointInfo *PointInfoCollection_Create(const size_t length)
 {
   return (PointInfo *)AcquireMagickMemory(sizeof(PointInfo)*length);
 }
 
-MAGICK_NET_EXPORT void PointInfoCollection_Dispose(PointInfo *instance)
+MAGICK_NATIVE_EXPORT void PointInfoCollection_Dispose(PointInfo *instance)
 {
   RelinquishMagickMemory(instance);
 }
 
-MAGICK_NET_EXPORT void PointInfoCollection_Set(PointInfo *instance, const size_t index, const double x, const double y)
+MAGICK_NATIVE_EXPORT void PointInfoCollection_Set(PointInfo *instance, const size_t index, const double x, const double y)
 {
   instance[index].x = x;
   instance[index].y = y;

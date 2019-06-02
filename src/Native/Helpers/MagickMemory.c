@@ -13,7 +13,7 @@
 #include "Stdafx.h"
 #include "MagickMemory.h"
 
-MAGICK_NET_EXPORT void MagickMemory_Relinquish(void *value)
+MAGICK_NATIVE_EXPORT void MagickMemory_Relinquish(void *value)
 {
   RelinquishMagickMemory(value);
 }

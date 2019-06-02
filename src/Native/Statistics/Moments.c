@@ -13,12 +13,12 @@
 #include "Stdafx.h"
 #include "Moments.h"
 
-MAGICK_NET_EXPORT void Moments_DisposeList(ChannelMoments *list)
+MAGICK_NATIVE_EXPORT void Moments_DisposeList(ChannelMoments *list)
 {
   RelinquishMagickMemory(list);
 }
 
-MAGICK_NET_EXPORT const ChannelMoments *Moments_GetInstance(const ChannelMoments *list, const size_t channel)
+MAGICK_NATIVE_EXPORT const ChannelMoments *Moments_GetInstance(const ChannelMoments *list, const size_t channel)
 {
   return &list[(ChannelType)channel];
 }

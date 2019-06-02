@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT void PerceptualHash_DisposeList(ChannelPerceptualHash *);
+MAGICK_NATIVE_EXPORT void PerceptualHash_DisposeList(ChannelPerceptualHash *);
 
-MAGICK_NET_EXPORT const ChannelPerceptualHash *PerceptualHash_GetInstance(const Image *, const ChannelPerceptualHash *, const size_t);
+MAGICK_NATIVE_EXPORT const ChannelPerceptualHash *PerceptualHash_GetInstance(const Image *, const ChannelPerceptualHash *, const size_t);

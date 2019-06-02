@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT const double ChannelPerceptualHash_GetHclpHuPhash(const ChannelPerceptualHash *, const size_t);
+MAGICK_NATIVE_EXPORT const double ChannelPerceptualHash_GetHclpHuPhash(const ChannelPerceptualHash *, const size_t);
 
-MAGICK_NET_EXPORT const double ChannelPerceptualHash_GetSrgbHuPhash(const ChannelPerceptualHash *, const size_t);
+MAGICK_NATIVE_EXPORT const double ChannelPerceptualHash_GetSrgbHuPhash(const ChannelPerceptualHash *, const size_t);

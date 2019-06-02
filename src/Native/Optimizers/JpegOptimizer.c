@@ -13,7 +13,7 @@
 #include "Stdafx.h"
 #include "JpegOptimizer.h"
 
-#if defined(MAGICK_NET_LINUX) || defined(MAGICK_NET_MACOS)
+#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_MACOS)
 #include <jpeglib.h>
 #include <jerror.h>
 #define fopen_utf8 fopen
@@ -817,7 +817,7 @@ static void JpegOptimizer_Compress(ClientData *client_data, const MagickBooleanT
   TerminateClientData(client_data);
 }
 
-MAGICK_NET_EXPORT void JpegOptimizer_CompressFile(const char *input, const char *output, const MagickBooleanType progressive, const MagickBooleanType lessless, const MagickBooleanType quality, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void JpegOptimizer_CompressFile(const char *input, const char *output, const MagickBooleanType progressive, const MagickBooleanType lessless, const MagickBooleanType quality, ExceptionInfo **exception)
 {
   ClientData
     client_data;
@@ -827,12 +827,12 @@ MAGICK_NET_EXPORT void JpegOptimizer_CompressFile(const char *input, const char 
   client_data.inputFileName = input;
   client_data.outputFileName = output;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   JpegOptimizer_Compress(&client_data, progressive, lessless, quality, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NET_EXPORT void JpegOptimizer_CompressStream(const CustomStreamHandler reader, const CustomStreamHandler writer, const MagickBooleanType progressive, const MagickBooleanType lessless, const MagickBooleanType quality, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void JpegOptimizer_CompressStream(const CustomStreamHandler reader, const CustomStreamHandler writer, const MagickBooleanType progressive, const MagickBooleanType lessless, const MagickBooleanType quality, ExceptionInfo **exception)
 {
   ClientData
     client_data;
@@ -842,7 +842,7 @@ MAGICK_NET_EXPORT void JpegOptimizer_CompressStream(const CustomStreamHandler re
   client_data.reader = reader;
   client_data.writer = writer;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   JpegOptimizer_Compress(&client_data, progressive, lessless, quality, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
 }

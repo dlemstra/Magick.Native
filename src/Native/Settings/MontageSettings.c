@@ -13,7 +13,7 @@
 #include "Stdafx.h"
 #include "MontageSettings.h"
 
-MAGICK_NET_EXPORT MontageInfo *MontageSettings_Create(void)
+MAGICK_NATIVE_EXPORT MontageInfo *MontageSettings_Create(void)
 {
   MontageInfo
     *montage_info;
@@ -28,81 +28,81 @@ MAGICK_NET_EXPORT MontageInfo *MontageSettings_Create(void)
   return montage_info;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_Dispose(MontageInfo *instance)
+MAGICK_NATIVE_EXPORT void MontageSettings_Dispose(MontageInfo *instance)
 {
   DestroyMontageInfo(instance);
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetBackgroundColor(MontageInfo *instance, const PixelInfo *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetBackgroundColor(MontageInfo *instance, const PixelInfo *value)
 {
   if (value != (PixelInfo*)NULL)
     instance->background_color = *value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetBorderColor(MontageInfo *instance, const PixelInfo *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetBorderColor(MontageInfo *instance, const PixelInfo *value)
 {
   if (value != (PixelInfo*)NULL)
     instance->border_color = *value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetBorderWidth(MontageInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetBorderWidth(MontageInfo *instance, const size_t value)
 {
   instance->border_width = value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetFillColor(MontageInfo *instance, const PixelInfo *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetFillColor(MontageInfo *instance, const PixelInfo *value)
 {
   if (value != (PixelInfo*)NULL)
     instance->fill = *value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetFont(MontageInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetFont(MontageInfo *instance, const char *value)
 {
   CloneString(&instance->font, value);
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetFontPointsize(MontageInfo *instance, double value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetFontPointsize(MontageInfo *instance, double value)
 {
   instance->pointsize = value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetFrameGeometry(MontageInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetFrameGeometry(MontageInfo *instance, const char *value)
 {
   CloneString(&instance->frame, value);
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetGeometry(MontageInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetGeometry(MontageInfo *instance, const char *value)
 {
   CloneString(&instance->geometry, value);
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetGravity(MontageInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetGravity(MontageInfo *instance, const size_t value)
 {
   instance->gravity = (GravityType)value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetShadow(MontageInfo *instance, const MagickBooleanType value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetShadow(MontageInfo *instance, const MagickBooleanType value)
 {
   instance->shadow = value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetStrokeColor(MontageInfo *instance, const PixelInfo *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetStrokeColor(MontageInfo *instance, const PixelInfo *value)
 {
   if (value != (PixelInfo*)NULL)
     instance->stroke = *value;
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetTextureFileName(MontageInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetTextureFileName(MontageInfo *instance, const char *value)
 {
   CloneString(&instance->texture, value);
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetTileGeometry(MontageInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetTileGeometry(MontageInfo *instance, const char *value)
 {
   CloneString(&instance->tile, value);
 }
 
-MAGICK_NET_EXPORT void MontageSettings_SetTitle(MontageInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT void MontageSettings_SetTitle(MontageInfo *instance, const char *value)
 {
   CloneString(&instance->title, value);
 }

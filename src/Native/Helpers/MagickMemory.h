@@ -11,4 +11,4 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT void MagickMemory_Relinquish(void *);
+MAGICK_NATIVE_EXPORT void MagickMemory_Relinquish(void *);

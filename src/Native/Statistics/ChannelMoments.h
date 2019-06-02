@@ -11,14 +11,14 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT const PointInfo *ChannelMoments_Centroid_Get(const ChannelMoments *);
+MAGICK_NATIVE_EXPORT const PointInfo *ChannelMoments_Centroid_Get(const ChannelMoments *);
 
-MAGICK_NET_EXPORT const double ChannelMoments_EllipseAngle_Get(const ChannelMoments *);
+MAGICK_NATIVE_EXPORT const double ChannelMoments_EllipseAngle_Get(const ChannelMoments *);
 
-MAGICK_NET_EXPORT const double ChannelMoments_EllipseEccentricity_Get(const ChannelMoments *);
+MAGICK_NATIVE_EXPORT const double ChannelMoments_EllipseEccentricity_Get(const ChannelMoments *);
 
-MAGICK_NET_EXPORT const double ChannelMoments_EllipseIntensity_Get(const ChannelMoments *);
+MAGICK_NATIVE_EXPORT const double ChannelMoments_EllipseIntensity_Get(const ChannelMoments *);
 
-MAGICK_NET_EXPORT const PointInfo *ChannelMoments_EllipseAxis_Get(const ChannelMoments *);
+MAGICK_NATIVE_EXPORT const PointInfo *ChannelMoments_EllipseAxis_Get(const ChannelMoments *);
 
-MAGICK_NET_EXPORT const double ChannelMoments_GetHuInvariants(const ChannelMoments *, const size_t);
+MAGICK_NATIVE_EXPORT const double ChannelMoments_GetHuInvariants(const ChannelMoments *, const size_t);

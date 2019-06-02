@@ -11,8 +11,8 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT PointInfo *PointInfoCollection_Create(const size_t);
+MAGICK_NATIVE_EXPORT PointInfo *PointInfoCollection_Create(const size_t);
 
-MAGICK_NET_EXPORT void PointInfoCollection_Dispose(PointInfo *);
+MAGICK_NATIVE_EXPORT void PointInfoCollection_Dispose(PointInfo *);
 
-MAGICK_NET_EXPORT void PointInfoCollection_Set(PointInfo *, const size_t, const double, const double);
+MAGICK_NATIVE_EXPORT void PointInfoCollection_Set(PointInfo *, const size_t, const double, const double);

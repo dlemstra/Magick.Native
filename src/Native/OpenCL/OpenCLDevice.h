@@ -11,19 +11,19 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT const MagickCLDeviceType OpenCLDevice_DeviceType_Get(const MagickCLDevice);
+MAGICK_NATIVE_EXPORT const MagickCLDeviceType OpenCLDevice_DeviceType_Get(const MagickCLDevice);
 
-MAGICK_NET_EXPORT double OpenCLDevice_BenchmarkScore_Get(const MagickCLDevice);
+MAGICK_NATIVE_EXPORT double OpenCLDevice_BenchmarkScore_Get(const MagickCLDevice);
 
-MAGICK_NET_EXPORT MagickBooleanType OpenCLDevice_IsEnabled_Get(const MagickCLDevice);
-MAGICK_NET_EXPORT void OpenCLDevice_IsEnabled_Set(const MagickCLDevice, const MagickBooleanType);
+MAGICK_NATIVE_EXPORT MagickBooleanType OpenCLDevice_IsEnabled_Get(const MagickCLDevice);
+MAGICK_NATIVE_EXPORT void OpenCLDevice_IsEnabled_Set(const MagickCLDevice, const MagickBooleanType);
 
-MAGICK_NET_EXPORT const char *OpenCLDevice_Name_Get(const MagickCLDevice);
+MAGICK_NATIVE_EXPORT const char *OpenCLDevice_Name_Get(const MagickCLDevice);
 
-MAGICK_NET_EXPORT const char *OpenCLDevice_Version_Get(const MagickCLDevice);
+MAGICK_NATIVE_EXPORT const char *OpenCLDevice_Version_Get(const MagickCLDevice);
 
-MAGICK_NET_EXPORT const KernelProfileRecord *OpenCLDevice_GetKernelProfileRecords(const MagickCLDevice, size_t *);
+MAGICK_NATIVE_EXPORT const KernelProfileRecord *OpenCLDevice_GetKernelProfileRecords(const MagickCLDevice, size_t *);
 
-MAGICK_NET_EXPORT const KernelProfileRecord OpenCLDevice_GetKernelProfileRecord(const KernelProfileRecord *, const size_t);
+MAGICK_NATIVE_EXPORT const KernelProfileRecord OpenCLDevice_GetKernelProfileRecord(const KernelProfileRecord *, const size_t);
 
-MAGICK_NET_EXPORT void OpenCLDevice_SetProfileKernels(const MagickCLDevice, const MagickBooleanType);
+MAGICK_NATIVE_EXPORT void OpenCLDevice_SetProfileKernels(const MagickCLDevice, const MagickBooleanType);

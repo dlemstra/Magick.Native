@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT double PointInfo_X_Get(const PointInfo *);
+MAGICK_NATIVE_EXPORT double PointInfo_X_Get(const PointInfo *);
 
-MAGICK_NET_EXPORT double PointInfo_Y_Get(const PointInfo *);
+MAGICK_NATIVE_EXPORT double PointInfo_Y_Get(const PointInfo *);

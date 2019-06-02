@@ -11,22 +11,22 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT void ConnectedComponent_DisposeList(CCObjectInfo *);
+MAGICK_NATIVE_EXPORT void ConnectedComponent_DisposeList(CCObjectInfo *);
 
-MAGICK_NET_EXPORT double ConnectedComponent_GetArea(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT double ConnectedComponent_GetArea(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT const PointInfo *ConnectedComponent_GetCentroid(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT const PointInfo *ConnectedComponent_GetCentroid(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT const PixelInfo *ConnectedComponent_GetColor(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT const PixelInfo *ConnectedComponent_GetColor(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT size_t ConnectedComponent_GetHeight(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT size_t ConnectedComponent_GetHeight(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT ssize_t ConnectedComponent_GetId(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT ssize_t ConnectedComponent_GetId(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT size_t ConnectedComponent_GetWidth(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT size_t ConnectedComponent_GetWidth(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT ssize_t ConnectedComponent_GetX(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT ssize_t ConnectedComponent_GetX(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT ssize_t ConnectedComponent_GetY(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT ssize_t ConnectedComponent_GetY(const CCObjectInfo *);
 
-MAGICK_NET_EXPORT const CCObjectInfo *ConnectedComponent_GetInstance(const CCObjectInfo *, const size_t);
+MAGICK_NATIVE_EXPORT const CCObjectInfo *ConnectedComponent_GetInstance(const CCObjectInfo *, const size_t);

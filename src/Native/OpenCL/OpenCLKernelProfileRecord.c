@@ -13,27 +13,27 @@
 #include "Stdafx.h"
 #include "OpenCLKernelProfileRecord.h"
 
-MAGICK_NET_EXPORT unsigned long OpenCLKernelProfileRecord_Count_Get(const KernelProfileRecord record)
+MAGICK_NATIVE_EXPORT unsigned long OpenCLKernelProfileRecord_Count_Get(const KernelProfileRecord record)
 {
   return record->count;
 }
 
-MAGICK_NET_EXPORT const char *OpenCLKernelProfileRecord_Name_Get(const KernelProfileRecord record)
+MAGICK_NATIVE_EXPORT const char *OpenCLKernelProfileRecord_Name_Get(const KernelProfileRecord record)
 {
   return record->kernel_name;
 }
 
-MAGICK_NET_EXPORT unsigned long OpenCLKernelProfileRecord_MaximumDuration_Get(const KernelProfileRecord record)
+MAGICK_NATIVE_EXPORT unsigned long OpenCLKernelProfileRecord_MaximumDuration_Get(const KernelProfileRecord record)
 {
   return record->max;
 }
 
-MAGICK_NET_EXPORT unsigned long OpenCLKernelProfileRecord_MinimumDuration_Get(const KernelProfileRecord record)
+MAGICK_NATIVE_EXPORT unsigned long OpenCLKernelProfileRecord_MinimumDuration_Get(const KernelProfileRecord record)
 {
   return record->min;
 }
 
-MAGICK_NET_EXPORT unsigned long OpenCLKernelProfileRecord_TotalDuration_Get(const KernelProfileRecord record)
+MAGICK_NATIVE_EXPORT unsigned long OpenCLKernelProfileRecord_TotalDuration_Get(const KernelProfileRecord record)
 {
   return record->total;
 }

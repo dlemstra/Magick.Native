@@ -20,34 +20,34 @@
     length; \
   length = width*height*strlen(mapping)*sizeof(type);
 
-MAGICK_NET_EXPORT CacheView *PixelCollection_Create(const Image *image, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT CacheView *PixelCollection_Create(const Image *image, ExceptionInfo **exception)
 {
   CacheView
     *result;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   result = AcquireAuthenticCacheView(image, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
   return result;
 }
 
-MAGICK_NET_EXPORT void PixelCollection_Dispose(CacheView *instance)
+MAGICK_NATIVE_EXPORT void PixelCollection_Dispose(CacheView *instance)
 {
   DestroyCacheView(instance);
 }
 
-MAGICK_NET_EXPORT const Quantum *PixelCollection_GetArea(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT const Quantum *PixelCollection_GetArea(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, ExceptionInfo **exception)
 {
   const Quantum
     *pixels;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   pixels = GetCacheViewVirtualPixels(instance, x, y, width, height, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
   return pixels;
 }
 
-MAGICK_NET_EXPORT void PixelCollection_SetArea(CacheView *instance, const size_t x, const  size_t y, const size_t width, const size_t height, const Quantum *values, const size_t length, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const size_t x, const  size_t y, const size_t width, const size_t height, const Quantum *values, const size_t length, ExceptionInfo **exception)
 {
   const Quantum
     *q;
@@ -63,7 +63,7 @@ MAGICK_NET_EXPORT void PixelCollection_SetArea(CacheView *instance, const size_t
   Quantum
     *pixels;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   image = GetCacheViewImage(instance);
   q = values;
   size = image->number_channels*width;
@@ -80,25 +80,25 @@ MAGICK_NET_EXPORT void PixelCollection_SetArea(CacheView *instance, const size_t
       break;
     q += size;
   }
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NET_EXPORT unsigned char *PixelCollection_ToByteArray(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *mapping, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT unsigned char *PixelCollection_ToByteArray(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *mapping, ExceptionInfo **exception)
 {
   ExportStart(unsigned char);
   result = AcquireMagickMemory(length);
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   ExportImagePixels(GetCacheViewImage(instance), x, y, width, height, mapping, CharPixel, result, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
   return result;
 }
 
-MAGICK_NET_EXPORT unsigned short *PixelCollection_ToShortArray(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *mapping, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT unsigned short *PixelCollection_ToShortArray(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *mapping, ExceptionInfo **exception)
 {
   ExportStart(unsigned short);
   result = AcquireMagickMemory(length);
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   ExportImagePixels(GetCacheViewImage(instance), x, y, width, height, mapping, ShortPixel, result, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
   return result;
 }

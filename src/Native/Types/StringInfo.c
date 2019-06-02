@@ -13,12 +13,12 @@
 #include "Stdafx.h"
 #include "StringInfo.h"
 
-MAGICK_NET_EXPORT size_t StringInfo_Length_Get(const StringInfo *instance)
+MAGICK_NATIVE_EXPORT size_t StringInfo_Length_Get(const StringInfo *instance)
 {
   return instance->length;
 }
 
-MAGICK_NET_EXPORT const unsigned char *StringInfo_Datum_Get(const StringInfo *instance)
+MAGICK_NATIVE_EXPORT const unsigned char *StringInfo_Datum_Get(const StringInfo *instance)
 {
   return (const unsigned char *)instance->datum;
 }

@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT void Moments_DisposeList(ChannelMoments *);
+MAGICK_NATIVE_EXPORT void Moments_DisposeList(ChannelMoments *);
 
-MAGICK_NET_EXPORT const ChannelMoments *Moments_GetInstance(const ChannelMoments *, const size_t);
+MAGICK_NATIVE_EXPORT const ChannelMoments *Moments_GetInstance(const ChannelMoments *, const size_t);

@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT KernelInfo *DoubleMatrix_Create(const double *, const size_t);
+MAGICK_NATIVE_EXPORT KernelInfo *DoubleMatrix_Create(const double *, const size_t);
 
-MAGICK_NET_EXPORT void DoubleMatrix_Dispose(KernelInfo *);
+MAGICK_NATIVE_EXPORT void DoubleMatrix_Dispose(KernelInfo *);

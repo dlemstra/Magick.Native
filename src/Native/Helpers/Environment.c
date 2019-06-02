@@ -14,16 +14,16 @@
 #include "Environment.h"
 #include <stdlib.h>
 
-MAGICK_NET_EXPORT void Environment_Initialize(void)
+MAGICK_NATIVE_EXPORT void Environment_Initialize(void)
 {
   MagickCoreGenesis((const char *)NULL, MagickFalse);
   SetMagickResourceLimit(HeightResource, 10000000);
   SetMagickResourceLimit(WidthResource, 10000000);
 }
 
-MAGICK_NET_EXPORT void Environment_SetEnv(const char *name, const char *value)
+MAGICK_NATIVE_EXPORT void Environment_SetEnv(const char *name, const char *value)
 {
-#if defined(MAGICK_NET_LINUX) || defined(MAGICK_NET_MACOS)
+#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_MACOS)
   (void) setenv(name, value, 1);
 #else
   _putenv_s(name, value);

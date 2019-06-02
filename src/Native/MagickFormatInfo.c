@@ -18,24 +18,24 @@ static inline const MagickInfo *GetInfoByName(const char *name, ExceptionInfo **
   const MagickInfo
     *info;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   info = GetMagickInfo(name, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
   return info;
 }
 
-MAGICK_NET_EXPORT char **MagickFormatInfo_CreateList(size_t *length, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT char **MagickFormatInfo_CreateList(size_t *length, ExceptionInfo **exception)
 {
   char
     **coder_list;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   coder_list = GetMagickList("*", length, exceptionInfo);
-  MAGICK_NET_SET_EXCEPTION;
+  MAGICK_NATIVE_SET_EXCEPTION;
   return coder_list;
 }
 
-MAGICK_NET_EXPORT void MagickFormatInfo_DisposeList(char **list, const size_t length)
+MAGICK_NATIVE_EXPORT void MagickFormatInfo_DisposeList(char **list, const size_t length)
 {
   ssize_t
     i;
@@ -48,62 +48,62 @@ MAGICK_NET_EXPORT void MagickFormatInfo_DisposeList(char **list, const size_t le
   RelinquishMagickMemory(list);
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickFormatInfo_CanReadMultithreaded_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_CanReadMultithreaded_Get(const MagickInfo *instance)
 {
   return GetMagickDecoderThreadSupport(instance);
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickFormatInfo_CanWriteMultithreaded_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_CanWriteMultithreaded_Get(const MagickInfo *instance)
 {
   return GetMagickEncoderThreadSupport(instance);
 }
 
-MAGICK_NET_EXPORT const char *MagickFormatInfo_Description_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Description_Get(const MagickInfo *instance)
 {
   return GetMagickDescription(instance);
 }
 
-MAGICK_NET_EXPORT const char *MagickFormatInfo_Format_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Format_Get(const MagickInfo *instance)
 {
   return instance->name;
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickFormatInfo_IsMultiFrame_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsMultiFrame_Get(const MagickInfo *instance)
 {
   return GetMagickAdjoin(instance);
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickFormatInfo_IsReadable_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsReadable_Get(const MagickInfo *instance)
 {
   return GetImageDecoder(instance) != (DecodeImageHandler *)NULL;
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickFormatInfo_IsWritable_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsWritable_Get(const MagickInfo *instance)
 {
   return GetImageEncoder(instance) != (EncodeImageHandler *)NULL;
 }
 
-MAGICK_NET_EXPORT const char *MagickFormatInfo_MimeType_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_MimeType_Get(const MagickInfo *instance)
 {
   return GetMagickMimeType(instance);
 }
 
-MAGICK_NET_EXPORT const char *MagickFormatInfo_Module_Get(const MagickInfo *instance)
+MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Module_Get(const MagickInfo *instance)
 {
   return instance->module;
 }
 
-MAGICK_NET_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **list, const size_t index, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **list, const size_t index, ExceptionInfo **exception)
 {
   return GetInfoByName(list[index], exception);
 }
 
-MAGICK_NET_EXPORT const MagickInfo *MagickFormatInfo_GetInfoByName(const char *name, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoByName(const char *name, ExceptionInfo **exception)
 {
   return GetInfoByName(name, exception);
 }
 
-MAGICK_NET_EXPORT void MagickFormatInfo_Unregister(const char *format)
+MAGICK_NATIVE_EXPORT void MagickFormatInfo_Unregister(const char *format)
 {
   UnregisterMagickInfo(format);
 }

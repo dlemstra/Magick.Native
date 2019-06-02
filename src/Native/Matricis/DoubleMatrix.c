@@ -13,7 +13,7 @@
 #include "Stdafx.h"
 #include "DoubleMatrix.h"
 
-MAGICK_NET_EXPORT KernelInfo *DoubleMatrix_Create(const double *values, const size_t order)
+MAGICK_NATIVE_EXPORT KernelInfo *DoubleMatrix_Create(const double *values, const size_t order)
 {
   KernelInfo
     *kernel;
@@ -21,9 +21,9 @@ MAGICK_NET_EXPORT KernelInfo *DoubleMatrix_Create(const double *values, const si
   ssize_t
     i;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   kernel = AcquireKernelInfo((const char *)NULL, exceptionInfo);
-  MAGICK_NET_DESTROY_EXCEPTION;
+  MAGICK_NATIVE_DESTROY_EXCEPTION;
 
   if (kernel == (KernelInfo *)NULL)
     return (KernelInfo *)NULL;
@@ -42,7 +42,7 @@ MAGICK_NET_EXPORT KernelInfo *DoubleMatrix_Create(const double *values, const si
   return kernel;
 }
 
-MAGICK_NET_EXPORT void DoubleMatrix_Dispose(KernelInfo *instance)
+MAGICK_NATIVE_EXPORT void DoubleMatrix_Dispose(KernelInfo *instance)
 {
   DestroyKernelInfo(instance);
 }

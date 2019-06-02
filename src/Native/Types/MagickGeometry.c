@@ -13,7 +13,7 @@
 #include "Stdafx.h"
 #include "MagickGeometry.h"
 
-MAGICK_NET_EXPORT GeometryInfo *MagickGeometry_Create(void)
+MAGICK_NATIVE_EXPORT GeometryInfo *MagickGeometry_Create(void)
 {
   GeometryInfo
     *geometry_info;
@@ -25,32 +25,32 @@ MAGICK_NET_EXPORT GeometryInfo *MagickGeometry_Create(void)
   return geometry_info;
 }
 
-MAGICK_NET_EXPORT void MagickGeometry_Dispose(GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT void MagickGeometry_Dispose(GeometryInfo *instance)
 {
   RelinquishMagickMemory(instance);
 }
 
-MAGICK_NET_EXPORT double MagickGeometry_X_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT double MagickGeometry_X_Get(const GeometryInfo *instance)
 {
   return instance->xi;
 }
 
-MAGICK_NET_EXPORT double MagickGeometry_Y_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT double MagickGeometry_Y_Get(const GeometryInfo *instance)
 {
   return instance->psi;
 }
 
-MAGICK_NET_EXPORT double MagickGeometry_Width_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT double MagickGeometry_Width_Get(const GeometryInfo *instance)
 {
   return instance->rho;
 }
 
-MAGICK_NET_EXPORT double MagickGeometry_Height_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT double MagickGeometry_Height_Get(const GeometryInfo *instance)
 {
   return instance->sigma;
 }
 
-MAGICK_NET_EXPORT MagickStatusType MagickGeometry_Initialize(GeometryInfo *instance, const char *geometry)
+MAGICK_NATIVE_EXPORT MagickStatusType MagickGeometry_Initialize(GeometryInfo *instance, const char *geometry)
 {
   return ParseGeometry(geometry, instance);
 }

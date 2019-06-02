@@ -13,73 +13,73 @@
 #include "Stdafx.h"
 #include "ResourceLimits.h"
 
-MAGICK_NET_EXPORT MagickSizeType ResourceLimits_Disk_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Disk_Get(void)
 {
   return GetMagickResourceLimit(DiskResource);
 }
 
-MAGICK_NET_EXPORT void ResourceLimits_Disk_Set(const MagickSizeType limit)
+MAGICK_NATIVE_EXPORT void ResourceLimits_Disk_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(DiskResource, limit);
 }
 
-MAGICK_NET_EXPORT MagickSizeType ResourceLimits_Height_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Height_Get(void)
 {
   return GetMagickResourceLimit(HeightResource);
 }
 
-MAGICK_NET_EXPORT void ResourceLimits_Height_Set(const MagickSizeType limit)
+MAGICK_NATIVE_EXPORT void ResourceLimits_Height_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(HeightResource, limit);
 }
 
-MAGICK_NET_EXPORT MagickSizeType ResourceLimits_ListLength_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_ListLength_Get(void)
 {
   return GetMagickResourceLimit(ListLengthResource);
 }
 
-MAGICK_NET_EXPORT void ResourceLimits_ListLength_Set(const MagickSizeType limit)
+MAGICK_NATIVE_EXPORT void ResourceLimits_ListLength_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(ListLengthResource, limit);
 }
 
-MAGICK_NET_EXPORT MagickSizeType ResourceLimits_Memory_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Memory_Get(void)
 {
   return GetMagickResourceLimit(MemoryResource);
 }
 
-MAGICK_NET_EXPORT void ResourceLimits_Memory_Set(const MagickSizeType limit)
+MAGICK_NATIVE_EXPORT void ResourceLimits_Memory_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(AreaResource, limit);
   SetMagickResourceLimit(MemoryResource, limit);
 }
 
-MAGICK_NET_EXPORT MagickSizeType ResourceLimits_Thread_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Thread_Get(void)
 {
   return GetMagickResourceLimit(ThreadResource);
 }
 
-MAGICK_NET_EXPORT void ResourceLimits_Thread_Set(const MagickSizeType limit)
+MAGICK_NATIVE_EXPORT void ResourceLimits_Thread_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(ThreadResource, limit);
 }
 
-MAGICK_NET_EXPORT MagickSizeType ResourceLimits_Throttle_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Throttle_Get(void)
 {
   return GetMagickResourceLimit(ThrottleResource);
 }
 
-MAGICK_NET_EXPORT void ResourceLimits_Throttle_Set(const MagickSizeType limit)
+MAGICK_NATIVE_EXPORT void ResourceLimits_Throttle_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(ThrottleResource, limit);
 }
 
-MAGICK_NET_EXPORT MagickSizeType ResourceLimits_Width_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Width_Get(void)
 {
   return GetMagickResourceLimit(WidthResource);
 }
 
-MAGICK_NET_EXPORT void ResourceLimits_Width_Set(const MagickSizeType limit)
+MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(WidthResource, limit);;
 }

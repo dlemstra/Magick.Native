@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT void MagickColorCollection_DisposeList(PixelInfo *);
+MAGICK_NATIVE_EXPORT void MagickColorCollection_DisposeList(PixelInfo *);
 
-MAGICK_NET_EXPORT PixelInfo *MagickColorCollection_GetInstance(const PixelInfo *, const size_t);
+MAGICK_NATIVE_EXPORT PixelInfo *MagickColorCollection_GetInstance(const PixelInfo *, const size_t);

@@ -14,12 +14,12 @@
 #include "MagickColor.h"
 #include "MagickColorCollection.h"
 
-MAGICK_NET_EXPORT void MagickColorCollection_DisposeList(PixelInfo *list)
+MAGICK_NATIVE_EXPORT void MagickColorCollection_DisposeList(PixelInfo *list)
 {
   RelinquishMagickMemory(list);
 }
 
-MAGICK_NET_EXPORT PixelInfo *MagickColorCollection_GetInstance(const PixelInfo *list, const size_t index)
+MAGICK_NATIVE_EXPORT PixelInfo *MagickColorCollection_GetInstance(const PixelInfo *list, const size_t index)
 {
   return MagickColor_Clone(&list[index]);
 }

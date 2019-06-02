@@ -13,23 +13,23 @@
 #include "Stdafx.h"
 #include "OpenCL.h"
 
-MAGICK_NET_EXPORT MagickCLDevice *OpenCL_GetDevices(size_t *length)
+MAGICK_NATIVE_EXPORT MagickCLDevice *OpenCL_GetDevices(size_t *length)
 {
   MagickCLDevice
     *devices;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   devices = GetOpenCLDevices(length, exceptionInfo);
-  MAGICK_NET_DESTROY_EXCEPTION;
+  MAGICK_NATIVE_DESTROY_EXCEPTION;
   return devices;
 }
 
-MAGICK_NET_EXPORT MagickCLDevice OpenCL_GetDevice(const MagickCLDevice *devices, const size_t index)
+MAGICK_NATIVE_EXPORT MagickCLDevice OpenCL_GetDevice(const MagickCLDevice *devices, const size_t index)
 {
   return devices[index];
 }
 
-MAGICK_NET_EXPORT MagickBooleanType OpenCL_SetEnabled(const MagickBooleanType value)
+MAGICK_NATIVE_EXPORT MagickBooleanType OpenCL_SetEnabled(const MagickBooleanType value)
 {
   return SetOpenCLEnabled(value);
 }

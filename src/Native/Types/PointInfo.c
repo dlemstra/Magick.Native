@@ -13,12 +13,12 @@
 #include "Stdafx.h"
 #include "PointInfo.h"
 
-MAGICK_NET_EXPORT double PointInfo_X_Get(const PointInfo *instance)
+MAGICK_NATIVE_EXPORT double PointInfo_X_Get(const PointInfo *instance)
 {
   return instance->x;
 }
 
-MAGICK_NET_EXPORT double PointInfo_Y_Get(const PointInfo *instance)
+MAGICK_NATIVE_EXPORT double PointInfo_Y_Get(const PointInfo *instance)
 {
   return instance->y;
 }

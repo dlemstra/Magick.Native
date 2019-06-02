@@ -14,52 +14,52 @@
 #include "ConnectedComponent.h"
 #include "Colors/MagickColor.h"
 
-MAGICK_NET_EXPORT void ConnectedComponent_DisposeList(CCObjectInfo *list)
+MAGICK_NATIVE_EXPORT void ConnectedComponent_DisposeList(CCObjectInfo *list)
 {
   RelinquishMagickMemory(list);
 }
 
-MAGICK_NET_EXPORT double ConnectedComponent_GetArea(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT double ConnectedComponent_GetArea(const CCObjectInfo *instance)
 {
   return instance->area;
 }
 
-MAGICK_NET_EXPORT const PointInfo *ConnectedComponent_GetCentroid(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT const PointInfo *ConnectedComponent_GetCentroid(const CCObjectInfo *instance)
 {
   return &instance->centroid;
 }
 
-MAGICK_NET_EXPORT const PixelInfo *ConnectedComponent_GetColor(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT const PixelInfo *ConnectedComponent_GetColor(const CCObjectInfo *instance)
 {
   return MagickColor_Clone(&instance->color);
 }
 
-MAGICK_NET_EXPORT size_t ConnectedComponent_GetHeight(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT size_t ConnectedComponent_GetHeight(const CCObjectInfo *instance)
 {
   return instance->bounding_box.height;
 }
 
-MAGICK_NET_EXPORT ssize_t ConnectedComponent_GetId(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT ssize_t ConnectedComponent_GetId(const CCObjectInfo *instance)
 {
   return instance->id;
 }
 
-MAGICK_NET_EXPORT size_t ConnectedComponent_GetWidth(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT size_t ConnectedComponent_GetWidth(const CCObjectInfo *instance)
 {
   return instance->bounding_box.width;
 }
 
-MAGICK_NET_EXPORT ssize_t ConnectedComponent_GetX(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT ssize_t ConnectedComponent_GetX(const CCObjectInfo *instance)
 {
   return instance->bounding_box.x;
 }
 
-MAGICK_NET_EXPORT ssize_t ConnectedComponent_GetY(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT ssize_t ConnectedComponent_GetY(const CCObjectInfo *instance)
 {
   return instance->bounding_box.y;
 }
 
-MAGICK_NET_EXPORT const CCObjectInfo *ConnectedComponent_GetInstance(const CCObjectInfo *list, const size_t index)
+MAGICK_NATIVE_EXPORT const CCObjectInfo *ConnectedComponent_GetInstance(const CCObjectInfo *list, const size_t index)
 {
   return list + index;
 }

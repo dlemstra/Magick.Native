@@ -23,17 +23,17 @@ static inline size_t AreExceptionsEqual(const ExceptionInfo *a, const ExceptionI
   return MagickTrue;
 }
 
-MAGICK_NET_EXPORT const char *MagickExceptionHelper_Description(const ExceptionInfo *instance)
+MAGICK_NATIVE_EXPORT const char *MagickExceptionHelper_Description(const ExceptionInfo *instance)
 {
   return instance->description;
 }
 
-MAGICK_NET_EXPORT void MagickExceptionHelper_Dispose(ExceptionInfo *instance)
+MAGICK_NATIVE_EXPORT void MagickExceptionHelper_Dispose(ExceptionInfo *instance)
 {
   DestroyExceptionInfo(instance);
 }
 
-MAGICK_NET_EXPORT const ExceptionInfo *MagickExceptionHelper_Related(const ExceptionInfo *instance, const size_t idx)
+MAGICK_NATIVE_EXPORT const ExceptionInfo *MagickExceptionHelper_Related(const ExceptionInfo *instance, const size_t idx)
 {
   const ExceptionInfo
     *p,
@@ -65,7 +65,7 @@ MAGICK_NET_EXPORT const ExceptionInfo *MagickExceptionHelper_Related(const Excep
   return (ExceptionInfo *)NULL;
 }
 
-MAGICK_NET_EXPORT size_t MagickExceptionHelper_RelatedCount(const ExceptionInfo *instance)
+MAGICK_NATIVE_EXPORT size_t MagickExceptionHelper_RelatedCount(const ExceptionInfo *instance)
 {
   const ExceptionInfo
     *p,
@@ -94,12 +94,12 @@ MAGICK_NET_EXPORT size_t MagickExceptionHelper_RelatedCount(const ExceptionInfo 
   return count;
 }
 
-MAGICK_NET_EXPORT const char *MagickExceptionHelper_Message(const ExceptionInfo *instance)
+MAGICK_NATIVE_EXPORT const char *MagickExceptionHelper_Message(const ExceptionInfo *instance)
 {
   return instance->reason;
 }
 
-MAGICK_NET_EXPORT ExceptionType MagickExceptionHelper_Severity(const ExceptionInfo *instance)
+MAGICK_NATIVE_EXPORT ExceptionType MagickExceptionHelper_Severity(const ExceptionInfo *instance)
 {
   return instance->severity;
 }

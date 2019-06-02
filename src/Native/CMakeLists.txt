@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8.8)
 
 project(${LIBRARY_NAME})
 
-add_definitions(-DMAGICK_NET_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DMAGICKCORE_HDRI_ENABLE=${HDRI_ENABLE})
+add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DMAGICKCORE_HDRI_ENABLE=${HDRI_ENABLE})
 
 include_directories(. /usr/local/include /usr/local/include/ImageMagick-7)
 

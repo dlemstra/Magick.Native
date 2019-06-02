@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT void Statistics_DisposeList(ChannelStatistics *);
+MAGICK_NATIVE_EXPORT void Statistics_DisposeList(ChannelStatistics *);
 
-MAGICK_NET_EXPORT const ChannelStatistics *Statistics_GetInstance(const ChannelStatistics *, const size_t);
+MAGICK_NATIVE_EXPORT const ChannelStatistics *Statistics_GetInstance(const ChannelStatistics *, const size_t);

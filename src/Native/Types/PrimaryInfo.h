@@ -11,15 +11,15 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT PrimaryInfo *PrimaryInfo_Create(void);
+MAGICK_NATIVE_EXPORT PrimaryInfo *PrimaryInfo_Create(void);
 
-MAGICK_NET_EXPORT void PrimaryInfo_Dispose(PrimaryInfo *);
+MAGICK_NATIVE_EXPORT void PrimaryInfo_Dispose(PrimaryInfo *);
 
-MAGICK_NET_EXPORT double PrimaryInfo_X_Get(const PrimaryInfo *);
-MAGICK_NET_EXPORT void PrimaryInfo_X_Set(PrimaryInfo *, const double);
+MAGICK_NATIVE_EXPORT double PrimaryInfo_X_Get(const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT void PrimaryInfo_X_Set(PrimaryInfo *, const double);
 
-MAGICK_NET_EXPORT double PrimaryInfo_Y_Get(const PrimaryInfo *);
-MAGICK_NET_EXPORT void PrimaryInfo_Y_Set(PrimaryInfo *, const double);
+MAGICK_NATIVE_EXPORT double PrimaryInfo_Y_Get(const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT void PrimaryInfo_Y_Set(PrimaryInfo *, const double);
 
-MAGICK_NET_EXPORT double PrimaryInfo_Z_Get(const PrimaryInfo *);
-MAGICK_NET_EXPORT void PrimaryInfo_Z_Set(PrimaryInfo *, const double);
+MAGICK_NATIVE_EXPORT double PrimaryInfo_Z_Get(const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT void PrimaryInfo_Z_Set(PrimaryInfo *, const double);

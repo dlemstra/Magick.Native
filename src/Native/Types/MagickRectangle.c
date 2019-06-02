@@ -13,7 +13,7 @@
 #include "Stdafx.h"
 #include "MagickRectangle.h"
 
-MAGICK_NET_EXPORT RectangleInfo *MagickRectangle_Create(void)
+MAGICK_NATIVE_EXPORT RectangleInfo *MagickRectangle_Create(void)
 {
   RectangleInfo
     *rectangle_info;
@@ -25,52 +25,52 @@ MAGICK_NET_EXPORT RectangleInfo *MagickRectangle_Create(void)
   return rectangle_info;
 }
 
-MAGICK_NET_EXPORT void MagickRectangle_Dispose(RectangleInfo *instance)
+MAGICK_NATIVE_EXPORT void MagickRectangle_Dispose(RectangleInfo *instance)
 {
   RelinquishMagickMemory(instance);
 }
 
-MAGICK_NET_EXPORT ssize_t MagickRectangle_X_Get(const RectangleInfo *instance)
+MAGICK_NATIVE_EXPORT ssize_t MagickRectangle_X_Get(const RectangleInfo *instance)
 {
   return instance->x;
 }
 
-MAGICK_NET_EXPORT void MagickRectangle_X_Set(RectangleInfo *instance, const ssize_t value)
+MAGICK_NATIVE_EXPORT void MagickRectangle_X_Set(RectangleInfo *instance, const ssize_t value)
 {
   instance->x = value;
 }
 
-MAGICK_NET_EXPORT ssize_t MagickRectangle_Y_Get(const RectangleInfo *instance)
+MAGICK_NATIVE_EXPORT ssize_t MagickRectangle_Y_Get(const RectangleInfo *instance)
 {
   return instance->y;
 }
 
-MAGICK_NET_EXPORT void MagickRectangle_Y_Set(RectangleInfo *instance, const ssize_t value)
+MAGICK_NATIVE_EXPORT void MagickRectangle_Y_Set(RectangleInfo *instance, const ssize_t value)
 {
   instance->y = value;
 }
 
-MAGICK_NET_EXPORT size_t MagickRectangle_Width_Get(const RectangleInfo *instance)
+MAGICK_NATIVE_EXPORT size_t MagickRectangle_Width_Get(const RectangleInfo *instance)
 {
   return instance->width;
 }
 
-MAGICK_NET_EXPORT void MagickRectangle_Width_Set(RectangleInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickRectangle_Width_Set(RectangleInfo *instance, const size_t value)
 {
   instance->width = value;
 }
 
-MAGICK_NET_EXPORT size_t MagickRectangle_Height_Get(const RectangleInfo *instance)
+MAGICK_NATIVE_EXPORT size_t MagickRectangle_Height_Get(const RectangleInfo *instance)
 {
   return instance->height;
 }
 
-MAGICK_NET_EXPORT void MagickRectangle_Height_Set(RectangleInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickRectangle_Height_Set(RectangleInfo *instance, const size_t value)
 {
   instance->height = value;
 }
 
-MAGICK_NET_EXPORT void MagickRectangle_Initialize(RectangleInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT void MagickRectangle_Initialize(RectangleInfo *instance, const char *value)
 {
   GetGeometry(value, &instance->x, &instance->y, &instance->width, &instance->height);
 }

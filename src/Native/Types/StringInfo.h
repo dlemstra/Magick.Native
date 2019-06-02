@@ -11,6 +11,6 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NET_EXPORT size_t StringInfo_Length_Get(const StringInfo *);
+MAGICK_NATIVE_EXPORT size_t StringInfo_Length_Get(const StringInfo *);
 
-MAGICK_NET_EXPORT const unsigned char *StringInfo_Datum_Get(const StringInfo *);
+MAGICK_NATIVE_EXPORT const unsigned char *StringInfo_Datum_Get(const StringInfo *);

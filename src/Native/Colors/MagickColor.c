@@ -13,7 +13,7 @@
 #include "Stdafx.h"
 #include "MagickColor.h"
 
-MAGICK_NET_EXPORT PixelInfo *MagickColor_Create(void)
+MAGICK_NATIVE_EXPORT PixelInfo *MagickColor_Create(void)
 {
   PixelInfo
     *pixel_info;
@@ -25,79 +25,79 @@ MAGICK_NET_EXPORT PixelInfo *MagickColor_Create(void)
   return pixel_info;
 }
 
-MAGICK_NET_EXPORT void MagickColor_Dispose(PixelInfo *instance)
+MAGICK_NATIVE_EXPORT void MagickColor_Dispose(PixelInfo *instance)
 {
   RelinquishMagickMemory(instance);
 }
 
-MAGICK_NET_EXPORT MagickSizeType MagickColor_Count_Get(const PixelInfo *instance)
+MAGICK_NATIVE_EXPORT MagickSizeType MagickColor_Count_Get(const PixelInfo *instance)
 {
   return instance->count;
 }
 
-MAGICK_NET_EXPORT Quantum MagickColor_Red_Get(const PixelInfo *instance)
+MAGICK_NATIVE_EXPORT Quantum MagickColor_Red_Get(const PixelInfo *instance)
 {
   return (Quantum)instance->red;
 }
 
-MAGICK_NET_EXPORT void MagickColor_Red_Set(PixelInfo *instance, const Quantum value)
+MAGICK_NATIVE_EXPORT void MagickColor_Red_Set(PixelInfo *instance, const Quantum value)
 {
   instance->red = value;
 }
 
-MAGICK_NET_EXPORT Quantum MagickColor_Green_Get(const PixelInfo *instance)
+MAGICK_NATIVE_EXPORT Quantum MagickColor_Green_Get(const PixelInfo *instance)
 {
   return (Quantum)instance->green;
 }
 
-MAGICK_NET_EXPORT void MagickColor_Green_Set(PixelInfo *instance, const Quantum value)
+MAGICK_NATIVE_EXPORT void MagickColor_Green_Set(PixelInfo *instance, const Quantum value)
 {
   instance->green = value;
 }
 
-MAGICK_NET_EXPORT Quantum MagickColor_Blue_Get(const PixelInfo *instance)
+MAGICK_NATIVE_EXPORT Quantum MagickColor_Blue_Get(const PixelInfo *instance)
 {
   return (Quantum)instance->blue;
 }
 
-MAGICK_NET_EXPORT void MagickColor_Blue_Set(PixelInfo *instance, const Quantum value)
+MAGICK_NATIVE_EXPORT void MagickColor_Blue_Set(PixelInfo *instance, const Quantum value)
 {
   instance->blue = value;
 }
 
-MAGICK_NET_EXPORT Quantum MagickColor_Alpha_Get(const PixelInfo *instance)
+MAGICK_NATIVE_EXPORT Quantum MagickColor_Alpha_Get(const PixelInfo *instance)
 {
   return (Quantum)instance->alpha;
 }
 
-MAGICK_NET_EXPORT void MagickColor_Alpha_Set(PixelInfo *instance, const Quantum value)
+MAGICK_NATIVE_EXPORT void MagickColor_Alpha_Set(PixelInfo *instance, const Quantum value)
 {
   instance->alpha = value;
   instance->alpha_trait = value != OpaqueAlpha ? BlendPixelTrait : UndefinedPixelTrait;
 }
 
-MAGICK_NET_EXPORT Quantum MagickColor_Black_Get(const PixelInfo *instance)
+MAGICK_NATIVE_EXPORT Quantum MagickColor_Black_Get(const PixelInfo *instance)
 {
   return (Quantum)instance->black;
 }
 
-MAGICK_NET_EXPORT void MagickColor_Black_Set(PixelInfo *instance, const Quantum value)
+MAGICK_NATIVE_EXPORT void MagickColor_Black_Set(PixelInfo *instance, const Quantum value)
 {
   instance->black = value;
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickColor_IsCMYK_Get(const PixelInfo *color)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickColor_IsCMYK_Get(const PixelInfo *color)
 {
   return color->colorspace == CMYKColorspace ? MagickTrue : MagickFalse;
 }
 
-MAGICK_NET_EXPORT void MagickColor_IsCMYK_Set(PixelInfo *color, MagickBooleanType value)
+MAGICK_NATIVE_EXPORT void MagickColor_IsCMYK_Set(PixelInfo *color, MagickBooleanType value)
 {
   if (value != MagickFalse)
     color->colorspace = CMYKColorspace;
 }
 
-MAGICK_NET_EXPORT PixelInfo *MagickColor_Clone(const PixelInfo *color)
+MAGICK_NATIVE_EXPORT PixelInfo *MagickColor_Clone(const PixelInfo *color)
 {
   PixelInfo
     *pixel_info;
@@ -113,7 +113,7 @@ MAGICK_NET_EXPORT PixelInfo *MagickColor_Clone(const PixelInfo *color)
   return pixel_info;
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickColor_FuzzyEquals(const PixelInfo *instance, const PixelInfo *other, const Quantum fuzz)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickColor_FuzzyEquals(const PixelInfo *instance, const PixelInfo *other, const Quantum fuzz)
 {
   PixelInfo
     p,
@@ -126,7 +126,7 @@ MAGICK_NET_EXPORT MagickBooleanType MagickColor_FuzzyEquals(const PixelInfo *ins
   return IsFuzzyEquivalencePixelInfo(&p, &q);
 }
 
-MAGICK_NET_EXPORT MagickBooleanType MagickColor_Initialize(PixelInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickColor_Initialize(PixelInfo *instance, const char *value)
 {
   MagickBooleanType
     status;
@@ -134,10 +134,10 @@ MAGICK_NET_EXPORT MagickBooleanType MagickColor_Initialize(PixelInfo *instance, 
   PixelInfo
     target_color;
 
-  MAGICK_NET_GET_EXCEPTION;
+  MAGICK_NATIVE_GET_EXCEPTION;
   status = QueryColorCompliance(value, AllCompliance, &target_color, exceptionInfo);
   if (status != MagickFalse)
     *instance = target_color;
-  MAGICK_NET_DESTROY_EXCEPTION;
+  MAGICK_NATIVE_DESTROY_EXCEPTION;
   return status;
 }
