@@ -11,19 +11,19 @@
 // and limitations under the License.
 
 #include "Stdafx.h"
-#include "MagickNET.h"
+#include "Magick.h"
 
-MAGICK_NATIVE_EXPORT const char *MagickNET_Delegates_Get(void)
+MAGICK_NATIVE_EXPORT const char *Magick_Delegates_Get(void)
 {
   return GetMagickDelegates();
 }
 
-MAGICK_NATIVE_EXPORT const char *MagickNET_Features_Get(void)
+MAGICK_NATIVE_EXPORT const char *Magick_Features_Get(void)
 {
   return GetMagickFeatures();
 }
 
-MAGICK_NATIVE_EXPORT const TypeInfo **MagickNET_GetFonts(size_t *length, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT const TypeInfo **Magick_GetFonts(size_t *length, ExceptionInfo **exception)
 {
   const TypeInfo
     **font_families;
@@ -34,7 +34,7 @@ MAGICK_NATIVE_EXPORT const TypeInfo **MagickNET_GetFonts(size_t *length, Excepti
   return font_families;
 }
 
-MAGICK_NATIVE_EXPORT const char *MagickNET_GetFontFamily(const TypeInfo **list, const size_t index)
+MAGICK_NATIVE_EXPORT const char *Magick_GetFontFamily(const TypeInfo **list, const size_t index)
 {
   if (list[index]->stealth != MagickFalse)
     return (const char *) NULL;
@@ -42,7 +42,7 @@ MAGICK_NATIVE_EXPORT const char *MagickNET_GetFontFamily(const TypeInfo **list, 
   return list[index]->family;
 }
 
-MAGICK_NATIVE_EXPORT const char *MagickNET_GetFontName(const TypeInfo **list, const size_t index)
+MAGICK_NATIVE_EXPORT const char *Magick_GetFontName(const TypeInfo **list, const size_t index)
 {
   if (list[index]->stealth != MagickFalse)
     return (const char *) NULL;
@@ -50,27 +50,27 @@ MAGICK_NATIVE_EXPORT const char *MagickNET_GetFontName(const TypeInfo **list, co
   return list[index]->name;
 }
 
-MAGICK_NATIVE_EXPORT void MagickNET_DisposeFonts(TypeInfo **list)
+MAGICK_NATIVE_EXPORT void Magick_DisposeFonts(TypeInfo **list)
 {
   RelinquishMagickMemory((void *) list);
 }
 
-MAGICK_NATIVE_EXPORT void MagickNET_SetRandomSeed(const unsigned long seed)
+MAGICK_NATIVE_EXPORT void Magick_SetRandomSeed(const unsigned long seed)
 {
   SetRandomSecretKey(seed);
 }
 
-MAGICK_NATIVE_EXPORT void MagickNET_SetLogDelegate(const MagickLogMethod method)
+MAGICK_NATIVE_EXPORT void Magick_SetLogDelegate(const MagickLogMethod method)
 {
   SetLogMethod(method);
 }
 
-MAGICK_NATIVE_EXPORT void MagickNET_SetLogEvents(const char *events)
+MAGICK_NATIVE_EXPORT void Magick_SetLogEvents(const char *events)
 {
   SetLogEventMask(events);
 }
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickNET_SetOpenCLEnabled(const MagickBooleanType value)
+MAGICK_NATIVE_EXPORT MagickBooleanType Magick_SetOpenCLEnabled(const MagickBooleanType value)
 {
   return SetOpenCLEnabled(value);
 }
