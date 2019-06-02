@@ -90,7 +90,7 @@ function buildImageMagick($config, $name, $platform, $quantum, $configureOptions
     patchMagickBaseConfig $name $platform
 
     $platformName = "Win32"
-    if ($config.Platform -eq "x64")
+    if ($platform -eq "x64")
     {
         $platformName = "x64";
     }
