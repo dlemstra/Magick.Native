@@ -1,1 +1,10 @@
-src/ImageMagick/ImageMagick
+src/ImageMagick/libraries
+src/ImageMagick/output
+src/Native/.vs
+src/Native/bin
+src/Native/lib
+build/dotnet/linux/output
+build/dotnet/macos/output
+build/dotnet/windows/output
+build/dotnet/windows/tools
+build/wasm/linux/output
