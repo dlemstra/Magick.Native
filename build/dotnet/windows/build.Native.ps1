@@ -10,10 +10,16 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
+param (
+    [string]$config = "Release",
+    [string]$quantumName = $env:QuantumName,
+    [string]$platform = $env:Platform
+)
+
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function buildNative($config, $name, $platform) {
     buildSolution "src\Native\Magick.Native.sln" "Configuration=$config$name,Platform=$platform,PlatformToolset=v141"
 }
 
-buildNative "Release" $env:QuantumName $env:Platform
+buildNative $config $quantumName $platform

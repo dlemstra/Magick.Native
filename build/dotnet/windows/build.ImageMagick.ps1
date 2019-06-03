@@ -10,6 +10,12 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
+param (
+    [string]$config = "Release",
+    [string]$quantumName = $env:QuantumName,
+    [string]$platform = $env:Platform
+)
+
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function patchMagickBaseConfig($name, $platform) {
@@ -123,4 +129,4 @@ function buildConfigure() {
 }
 
 buildConfigure
-buildImageMagick "Release" $env:QuantumName $env:Platform
+buildImageMagick $config $quantumName $platform
