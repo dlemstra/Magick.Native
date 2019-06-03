@@ -22,7 +22,7 @@ steps:
   inputs:
     targetType: filePath
     filePath: build/dotnet/windows/copy.Native.ps1
-    arguments: $(Build.StagingDirectory)
+    arguments: -destination $(Build.StagingDirectory)
   displayName: Copy Native
 - task: PublishBuildArtifacts@1
   inputs:

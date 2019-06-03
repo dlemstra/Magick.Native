@@ -11,7 +11,10 @@
 # and limitations under the License.
 
 param (
-    [string]$destination = $null
+    [string]$config = "Release",
+    [string]$quantumName = $env:QuantumName,
+    [string]$platformName = $env:PlatformName,
+    [parameter(mandatory=$true)][string]$destination = $null
 )
 
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
@@ -25,4 +28,4 @@ if ($destination -eq $null) {
     $destination = fullPath "build\dotnet\windows\output"
 }
 
-copyNative "Release" $env:QuantumName $env:PlatformName $destination
+copyNative $config $quantumName $platformName $destination
