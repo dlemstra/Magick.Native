@@ -65,11 +65,20 @@
   <PropertyGroup Condition="$(Configuration.EndsWith('Q8'))">
     <QuantumType>Q8</QuantumType>
   </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.EndsWith('Q8-OpenMP'))">
+    <QuantumType>Q8-OpenMP</QuantumType>
+  </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.EndsWith('Q16'))">
     <QuantumType>Q16</QuantumType>
   </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.EndsWith('Q16-OpenMP'))">
+    <QuantumType>Q16-OpenMP</QuantumType>
+  </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.EndsWith('Q16-HDRI'))">
     <QuantumType>Q16-HDRI</QuantumType>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.EndsWith('Q16-HDRI-OpenMP'))">
+    <QuantumType>Q16-HDRI-OpenMP</QuantumType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Platform)'=='Win32'">
     <PlatformName>x86</PlatformName>
