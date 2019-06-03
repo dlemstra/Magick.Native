@@ -17,7 +17,7 @@ param (
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function copyNative($config, $quantumName, $platformName, $destination) {
-    $source = fullPath "src\Native\bin\$config$name\$platformName\Magick.Native-$quantumName-$platformName.dll"
+    $source = fullPath "src\Native\bin\$config$quantumName\$platformName\Magick.Native-$quantumName-$platformName.dll"
     Copy-Item $source $destination
 }
 
