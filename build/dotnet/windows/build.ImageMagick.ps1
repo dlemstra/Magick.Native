@@ -75,8 +75,8 @@ function copyLibraries($config, $folder) {
     }
 }
 
-function copyOutput($config, $name) {
-    $folder = "$config$name"
+function copyOutput($config, $name, $platform) {
+    $folder = "$config$name\$platform"
     copyIncludes $folder
     copyResources $folder
     copyLibraries $config $folder
@@ -105,7 +105,7 @@ function buildImageMagick($config, $name, $platform) {
     $configureOptions = getConfigureOptions $name $platform $quantum
     Write-Host "Options: $configureOptions"
 
-    createSolution $quantum $configureOptions
+    createSolution $quantum $configureOptions $platform
     patchMagickBaseConfig $name $platform
 
     $platformName = "Win32"
