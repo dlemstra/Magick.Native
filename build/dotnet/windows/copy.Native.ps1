@@ -16,8 +16,8 @@ param (
 
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
-function copyNative($config, $name, $platform, $destination) {
-    $source = fullPath "src\Native\bin\$config$name\$platform\Magick.Native-$name-$platform.dll"
+function copyNative($config, $quantumName, $platformName, $destination) {
+    $source = fullPath "src\Native\bin\$config$name\$platformName\Magick.Native-$quantumName-$platformName.dll"
     Copy-Item $source $destination
 }
 
@@ -25,4 +25,4 @@ if ($destination -eq $null) {
     $destination = fullPath "build\dotnet\windows\output"
 }
 
-copyNative "Release" $env:QuantumName $env:Platform $destination
+copyNative "Release" $env:QuantumName $env:PlatformName $destination

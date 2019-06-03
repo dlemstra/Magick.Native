@@ -32,31 +32,31 @@ jobs:
     matrix:
       Q8-x86:
         QuantumName: Q8
-        Platform: x86
+        PlatformName: x86
       Q8-x64:
         QuantumName: Q8
-        Platform: x64
+        PlatformName: x64
       Q8-OpenMP-x64:
         QuantumName: Q8-OpenMP
-        Platform: x64
+        PlatformName: x64
       Q16-x86:
         QuantumName: Q16
-        Platform: x86
+        PlatformName: x86
       Q16-x64:
         QuantumName: Q16
-        Platform: x64
+        PlatformName: x64
       Q16-OpenMP-x64:
         QuantumName: Q16-OpenMP
-        Platform: x64
+        PlatformName: x64
       Q16-HDRI-x86:
         QuantumName: Q16-HDRI
-        Platform: x86
+        PlatformName: x86
       Q16-HDRI-x64:
         QuantumName: Q16-HDRI
-        Platform: x64
+        PlatformName: x64
       Q16-HDRI-OpenMP-x64:
         QuantumName: Q16-HDRI-OpenMP
-        Platform: x64
+        PlatformName: x64
   steps:
     - template: build/dotnet/windows/build.yml
 

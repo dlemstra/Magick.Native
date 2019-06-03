@@ -13,13 +13,13 @@
 param (
     [string]$config = "Release",
     [string]$quantumName = $env:QuantumName,
-    [string]$platform = $env:Platform
+    [string]$platformName = $env:PlatformName
 )
 
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
-function buildNative($config, $name, $platform) {
-    buildSolution "src\Native\Magick.Native.sln" "Configuration=$config$name,Platform=$platform,PlatformToolset=v141"
+function buildNative($config, $quantumName, $platformName) {
+    buildSolution "src\Native\Magick.Native.sln" "Configuration=$config$quantumName,Platform=$platform,PlatformToolset=v141"
 }
 
-buildNative $config $quantumName $platform
+buildNative $config $quantumName $platformName
