@@ -16,12 +16,4 @@ function buildNative($config, $name, $platform) {
     buildSolution "src\Native\Magick.Native.sln" "Configuration=$config$name,Platform=$platform,PlatformToolset=v141"
 }
 
-buildNative "Release" "Q8" "x86"
-buildNative "Release" "Q8" "x64"
-buildNative "Release" "Q8-OpenMP" "x64"
-buildNative "Release" "Q16" "x86"
-buildNative "Release" "Q16" "x64"
-buildNative "Release" "Q16-OpenMP" "x64"
-buildNative "Release" "Q16-HDRI" "x86"
-buildNative "Release" "Q16-HDRI" "x64"
-buildNative "Release" "Q16-HDRI-OpenMP" "x64"
+buildNative "Release" $env:QuantumName $env:Platform

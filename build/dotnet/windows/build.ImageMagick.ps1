@@ -82,16 +82,34 @@ function copyOutput($config, $name) {
     copyLibraries $config $folder
 }
 
-function buildImageMagick($config, $name, $platform, $quantum, $configureOptions) {
+function getConfigureOptions($name, $platformName, $quantum) {
+    $options = "/$quantum /opencl"
+    if ($name -inotmatch "-HDRI") {
+        $options = "$options /noHdri"
+    }
+    if ($name -inotmatch "-OpenMP") {
+        $options = "$options /noOpenMP"
+    }
+    if ($platform -eq "x64") {
+        $options = "$options /x64"
+    }
+
+    return $options;
+}
+
+function buildImageMagick($config, $name, $platform) {
     Write-Host ""
-    Write-Host "Static Multi-Threaded DLL runtimes ($quantum-$platform)."
+    Write-Host "Static Multi-Threaded DLL runtimes ($name-$platform)."
+
+    $quantum = $name.split("-")[0]
+    $configureOptions = getConfigureOptions $name $platform $quantum
+    Write-Host "Options: $configureOptions"
 
     createSolution $quantum $configureOptions
     patchMagickBaseConfig $name $platform
 
     $platformName = "Win32"
-    if ($platform -eq "x64")
-    {
+    if ($platform -eq "x64") {
         $platformName = "x64";
     }
 
@@ -105,12 +123,4 @@ function buildConfigure() {
 }
 
 buildConfigure
-buildImageMagick "Release" "Q8" "x86" "Q8" "/opencl /noHdri /noOpenMP"
-buildImageMagick "Release" "Q8" "x64" "Q8" "/opencl /noHdri /noOpenMP /x64"
-buildImageMagick "Release" "Q8-OpenMP" "x64" "Q8" "/opencl /noHdri /x64"
-buildImageMagick "Release" "Q16" "x86" "Q16" "/opencl /noHdri /noOpenMP"
-buildImageMagick "Release" "Q16" "x64" "Q16" "/opencl /noHdri /noOpenMP /x64"
-buildImageMagick "Release" "Q16-OpenMP" "x64" "Q16" "/opencl /noHdri /x64"
-buildImageMagick "Release" "Q16-HDRI" "x86" "Q16-HDRI" "/opencl /noOpenMP"
-buildImageMagick "Release" "Q16-HDRI" "x64" "Q16-HDRI" "/opencl /noOpenMP /x64"
-buildImageMagick "Release" "Q16-HDRI-OpenMP" "x64" "Q16-HDRI" "/opencl /x64"
+buildImageMagick "Release" $env:QuantumName $env:Platform
