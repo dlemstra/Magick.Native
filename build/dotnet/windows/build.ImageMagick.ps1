@@ -121,7 +121,7 @@ function buildImageMagick($config, $name, $platform) {
 
     $options = "Configuration=$config,Platform=$($platformName),PlatformToolset=v141,VCBuildAdditionalOptions=/#arch:SSE"
     buildSolution "src\ImageMagick\libraries\VisualMagick\VisualStaticMT.sln" $options
-    copyOutput $config $name
+    copyOutput $config $name $platform
 }
 
 function buildConfigure() {
