@@ -1,19 +1,25 @@
 steps:
+
 - script: ./install.dependencies.sh
   workingDirectory: $(Build.SourcesDirectory)/build/dotnet/macos
   displayName: Install dependencies
+
 - script: ./checkout.sh macos
   workingDirectory: $(Build.SourcesDirectory)/src/ImageMagick
   displayName: Clone ImageMagick libraries
+
 - script: $(Build.SourcesDirectory)/build/dotnet/macos/build.ImageMagick.sh
   workingDirectory: $(Build.SourcesDirectory)/src/ImageMagick/libraries
   displayName: Build ImageMagick
+
 - script: $(Build.SourcesDirectory)/build/dotnet/macos/build.Native.sh
   workingDirectory: $(Build.SourcesDirectory)/src/Native
   displayName: Build Native
+
 - script: $(Build.SourcesDirectory)/build/dotnet/macos/copy.Native.sh $(Build.StagingDirectory)
   workingDirectory: $(Build.SourcesDirectory)/src/Native
   displayName: Copy Native
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: $(Build.StagingDirectory)

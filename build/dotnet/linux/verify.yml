@@ -6,11 +6,13 @@ jobs:
   dependsOn: dotnet_linux
   container: ${{ parameters.container }}
   steps:
+
     - task: DownloadBuildArtifacts@0
       inputs:
         artifactName: linux
         downloadPath: $(Build.StagingDirectory)
       displayName: 'Download Native Libraries'
+
     - script: $(Build.SourcesDirectory)/build/dotnet/linux/verify.Native.sh
       workingDirectory: $(Build.StagingDirectory)
       displayName: Verify Native
