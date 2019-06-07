@@ -29,7 +29,7 @@ steps:
     targetType: filePath
     filePath: publish/dotnet/publish.ps1
     arguments: -destination $(Build.StagingDirectory)
-  workingDirectory: $(Build.SourcesDirectory)/publish/dotnet
+    workingDirectory: $(Build.SourcesDirectory)/publish/dotnet
   displayName: Create NuGet package
 
 - task: PublishBuildArtifacts@1
