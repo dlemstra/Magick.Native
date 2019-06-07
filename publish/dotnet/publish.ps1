@@ -10,6 +10,10 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
+param (
+    [parameter(mandatory=$true)][string]$destination
+)
+
 . $PSScriptRoot\..\..\tools\windows\utils.ps1
 
 function createNuGetPackage($version)
@@ -23,7 +27,9 @@ function createNuGetPackage($version)
 
   $nuget = FullPath "tools\windows\nuget.exe"
   & $nuget pack $nuspecFile -NoPackageAnalysis
+
+  Copy-Item "*.nupkg" $destination
 }
 
 $version = [string](Get-Date -format "yyyy.MM.dd.HHmm")
-createNuGetPackage $version
+createNuGetPackage $version $destination

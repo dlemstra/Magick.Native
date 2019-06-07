@@ -1,3 +1,3 @@
 @echo off
 
-powershell .\publish.ps1
+powershell .\publish.ps1 -destination files
