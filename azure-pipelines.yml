@@ -29,7 +29,7 @@ jobs:
   pool:
     vmImage: vs2017-win2016
   variables:
-    AMDAPPSDKROOT: $(Build.SourcesDirectory)/src/ImageMagick/includes
+    AMDAPPSDKROOT: $(Build.SourcesDirectory)/src/ImageMagick/includes/OpenCL
   strategy:
     matrix:
       Q8-x86:
