@@ -47,8 +47,9 @@ function writeFfiVersion($fileName, $folder) {
 }
 
 function writeImageMagickVersion($fileName, $folder) {
-    $version = GetVersion "$folder\MagickCore\version.h" "#define MagickLibVersionNumber  " 0
-    Add-Content $fileName "- ImageMagick $version"
+    $packageVersion = GetVersion "$folder\version.sh" "PACKAGE_VERSION='" 1
+    $packageRelease = GetVersion "$folder\version.sh" "PACKAGE_RELEASE=""" 1
+    Add-Content $fileName "- ImageMagick $packageVersion-$packageRelease"
 }
 
 function writePixmanVersion($fileName, $folder) {
