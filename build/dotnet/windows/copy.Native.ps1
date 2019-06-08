@@ -20,8 +20,16 @@ param (
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function copyNative($config, $quantumName, $platformName, $destination) {
+    $target = "$destination\$config$quantumName\$platformName"
+    Remove-Item $target -Recurse -ErrorAction Ignore
+    [void](New-Item -ItemType directory -Path $target)
+
     $source = fullPath "src\Native\bin\$config$quantumName\$platformName\Magick.Native-$quantumName-$platformName.dll"
-    Copy-Item $source $destination
+    Copy-Item $source $target
+    $source = fullPath "src\Native\Resoures\xml\*.xml"
+    Copy-Item $source $target
+    $source = fullPath "src\ImageMagick\output\resources\$config$quantumName\$platformName\*.xml"
+    Copy-Item $source $target
 }
 
 if ($destination -eq $null) {
