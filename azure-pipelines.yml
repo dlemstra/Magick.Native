@@ -77,6 +77,13 @@ jobs:
   steps:
     - template: build/dotnet/macos/build.yml
 
+- job: dotnet_metadata
+  displayName: '.NET (Metadata)'
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+    - template: build/dotnet/metadata/build.yml
+
 - job: wasm_linux
   displayName: 'WASM (Linux)'
   pool:
@@ -125,6 +132,7 @@ jobs:
   - dotnet_windows
   - dotnet_linux
   - dotnet_macos
+  - dotnet_metadata
   - verify_ubuntu_16_04
   - verify_ubuntu_17_10
   - verify_ubuntu_18_04
