@@ -12,15 +12,8 @@
     <description>Magick.Native</description>
   </metadata>
   <files>
-
-    <file src="linux\Magick.Native-Q8-x64.dll.so" target="content" />
-    <file src="linux\Magick.Native-Q16-x64.dll.so" target="content" />
-    <file src="linux\Magick.Native-Q16-HDRI-x64.dll.so" target="content" />
-
-    <file src="macos\Magick.Native-Q8-x64.dll.dylib" target="content" />
-    <file src="macos\Magick.Native-Q16-x64.dll.dylib" target="content" />
-    <file src="macos\Magick.Native-Q16-HDRI-x64.dll.dylib" target="content" />
-
+    <file src="linux\**\*.*" target="content" />
+    <file src="macos\**\*.*" target="content" />
     <file src="windows\**\*.*" target="content" />
   </files>
 </package>
