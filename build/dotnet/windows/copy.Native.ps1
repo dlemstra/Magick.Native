@@ -32,8 +32,4 @@ function copyNative($config, $quantumName, $platformName, $destination) {
     Copy-Item $source $target
 }
 
-if ($destination -eq $null) {
-    $destination = fullPath "build\dotnet\windows\output"
-}
-
 copyNative $config $quantumName $platformName $destination
