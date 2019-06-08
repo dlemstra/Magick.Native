@@ -31,5 +31,4 @@ function createNuGetPackage($version)
   Copy-Item "*.nupkg" $destination
 }
 
-$version = [string](Get-Date -format "yyyy.MM.dd.HHmm")
-createNuGetPackage $version $destination
+createNuGetPackage $env:BUILD_BUILDNUMBER $destination

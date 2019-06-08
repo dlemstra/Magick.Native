@@ -1,4 +1,4 @@
-name: $(Date:yyyyMMdd.HHmm)
+name: $(Date:yyyy.MM.dd.HHmm)
 
 resources:
   containers:
