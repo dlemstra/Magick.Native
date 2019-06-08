@@ -86,9 +86,8 @@ function writeLibraryVersions($folders) {
     }
 }
 
-
 function createLibrariesDocument($destination) {
-    $fileName = "$destination\Libraries.md"
+    $fileName = "$destination\libraries.md"
     [void](New-Item -force $fileName)
 
     Add-Content $fileName "# Libraries"
