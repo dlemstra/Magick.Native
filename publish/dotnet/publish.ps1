@@ -11,6 +11,7 @@
 # and limitations under the License.
 
 param (
+    [string]$version,
     [parameter(mandatory=$true)][string]$destination
 )
 
@@ -31,4 +32,4 @@ function createNuGetPackage($version)
   Copy-Item "*.nupkg" $destination
 }
 
-createNuGetPackage $env:BUILD_BUILDNUMBER $destination
+createNuGetPackage $version $destination

@@ -34,7 +34,7 @@ steps:
   inputs:
     targetType: filePath
     filePath: publish/dotnet/publish.ps1
-    arguments: -destination $(Build.StagingDirectory)
+    arguments: -version $(Build.BuildNumber) -destination $(Build.StagingDirectory)
     workingDirectory: $(Build.SourcesDirectory)/publish/dotnet
   displayName: Create NuGet package
 
