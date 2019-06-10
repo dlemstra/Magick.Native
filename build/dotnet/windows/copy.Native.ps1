@@ -14,7 +14,7 @@ param (
     [string]$config = "Release",
     [string]$quantumName = $env:QuantumName,
     [string]$platformName = $env:PlatformName,
-    [parameter(mandatory=$true)][string]$destination = $null
+    [parameter(mandatory=$true)][string]$destination
 )
 
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
