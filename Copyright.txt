@@ -795,7 +795,7 @@ the FAQ for more information on the distribution of modified source versions.
 
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-26. GNU LESSER GENERAL PUBLIC LICENSE (used by Cairo, Croco, Glib, Librsvg,
+25. GNU LESSER GENERAL PUBLIC LICENSE (used by Cairo, Croco, Glib, Librsvg,
     Lqr, Pango):
 
                   GNU LESSER GENERAL PUBLIC LICENSE
