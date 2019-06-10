@@ -17,7 +17,7 @@ param (
 
 . $PSScriptRoot\..\..\tools\windows\utils.ps1
 
-function createNuGetPackage($version)
+function createNuGetPackage($version, $destination)
 {
   $path = FullPath "publish\dotnet\Magick.Native.nuspec"
   $xml = [xml](Get-Content $path)
