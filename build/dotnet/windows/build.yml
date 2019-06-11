@@ -4,7 +4,7 @@ steps:
   inputs:
     targetType: filePath
     filePath: build/dotnet/windows/install.dependencies.ps1
-    arguments: -pfxUri $(PfxUri)
+    arguments: -pfxUri '$(PfxUri)'
   displayName: Install dependencies
 
 - script: checkout.cmd
@@ -36,7 +36,7 @@ steps:
   inputs:
     targetType: filePath
     filePath: build/dotnet/windows/sign.Native.ps1
-    arguments: -folder $(Build.StagingDirectory) -pfxPassword "$(PfxPassword)"
+    arguments: -folder $(Build.StagingDirectory) -pfxPassword '$(PfxPassword)'
   displayName: Sign Native
 
 - task: PublishBuildArtifacts@1
