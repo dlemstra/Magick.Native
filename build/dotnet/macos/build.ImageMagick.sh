@@ -12,6 +12,7 @@ export CONDITIONAL_DISABLE_SHARED=""
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export HEIF_HACK=false
 export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
+export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
 export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
 
@@ -50,7 +51,7 @@ cd ../fontconfig
 autoreconf -fiv
 pip install lxml
 pip install six
-$CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared CFLAGS="$FLAGS"
+$CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared $FONTCONFIG_OPTIONS CFLAGS="$FLAGS"
 $MAKE install
 
 # Build libjpeg-turbo
