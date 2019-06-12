@@ -48,6 +48,7 @@ cd ..
 
 # Build fontconfig
 cd ../fontconfig
+export PATH=${PATH}:/usr/local/opt/gettext/bin
 autoreconf -fiv
 pip install lxml
 pip install six
