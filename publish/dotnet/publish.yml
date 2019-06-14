@@ -42,4 +42,14 @@ steps:
   inputs:
     pathtoPublish: $(Build.StagingDirectory)
     artifactName: package
-  displayName: 'Publish NuGet package'
+  displayName: Publish NuGet package
+
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    feedsToUse: config
+    externalFeedCredentials: GitHub NuGet registry
+    packagesToPush: $(Build.StagingDirectory)/*.nupkg
+    nuGetFeedType: external
+    publishFeedCredentials: GitHub NuGet registry
+  displayName: Push NuGet package to GitHub
