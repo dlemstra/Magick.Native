@@ -15,6 +15,7 @@ export LIBXML_OPTIONS=""
 export FONTCONFIG_OPTIONS=""
 export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
+export IMAGEMAGICK_OPTIONS=""
 
 # Build zlib
 cd zlib
@@ -125,7 +126,7 @@ buildImageMagick() {
         hdri=yes
     fi
 
-    $CONFIGURE --disable-shared --disable-openmp --enable-static --enable-delegate-build --without-threads --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-quantum-depth=$depth --enable-hdri=$hdri CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+    $CONFIGURE --disable-shared --disable-openmp --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-quantum-depth=$depth --enable-hdri=$hdri $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
     $MAKE install
 }
 
