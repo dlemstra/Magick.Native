@@ -25,7 +25,7 @@ function signLibrary($folder, $quantumName, $platformName, $pfxPassword) {
     }
 
     $pfxFile = fullPath "build\dotnet\windows\ImageMagick.pfx"
-    $signtool = "C:\Program Files (x86)\Windows Kits\10\bin\x64\signtool.exe"
+    $signtool = "C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe"
 
     $fileName = "$folder\Release$quantumName\$platformName\Magick.Native-$quantumName-$platformName.dll"
 
