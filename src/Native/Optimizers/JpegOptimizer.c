@@ -630,47 +630,6 @@ static inline DestinationManager* CreateDestinationManager(j_compress_ptr compre
   return destination;
 }
 
-static void CompressJpeg(j_decompress_ptr decompress_info, j_compress_ptr compress_info,
-  ClientData *client_data)
-{
-  size_t
-    quality;
-
-  compress_info->in_color_space = decompress_info->out_color_space;
-  compress_info->input_components = decompress_info->output_components;
-  compress_info->image_width = decompress_info->image_width;
-  compress_info->image_height = decompress_info->image_height;
-  jpeg_set_defaults(compress_info);
-  if (client_data->quality > 0)
-    quality = client_data->quality;
-  else
-    quality = DetermineQuality(decompress_info);
-  jpeg_set_quality(compress_info, (int) quality, TRUE);
-  compress_info->optimize_coding = TRUE;
-  if (client_data->progressive != FALSE)
-    jpeg_simple_progression(compress_info);
-
-  jpeg_start_compress(compress_info, TRUE);
-
-  while (compress_info->next_scanline < compress_info->image_height)
-  {
-    jpeg_write_scanlines(compress_info, &client_data->buffer[compress_info->next_scanline],
-      (JDIMENSION) client_data->height);
-  }
-}
-
-static void WriteCoefficients(j_decompress_ptr decompress_info, j_compress_ptr compress_info,
-  ClientData *client_data)
-{
-  jpeg_copy_critical_parameters(decompress_info, compress_info);
-
-  compress_info->optimize_coding = TRUE;
-  if (client_data->progressive != FALSE)
-    jpeg_simple_progression(compress_info);
-
-  jpeg_write_coefficients(compress_info, client_data->coefficients);
-}
-
 static void WriteMarkers(j_compress_ptr compress_info, ClientData *client_data)
 {
   register ssize_t
@@ -695,6 +654,51 @@ static void WriteMarkers(j_compress_ptr compress_info, ClientData *client_data)
 
     jpeg_write_marker(compress_info, client_data->markers[i]->code, buffer, length);
   }
+}
+
+static void CompressJpeg(j_decompress_ptr decompress_info, j_compress_ptr compress_info,
+  ClientData *client_data)
+{
+  size_t
+    quality;
+
+  compress_info->in_color_space = decompress_info->out_color_space;
+  compress_info->input_components = decompress_info->output_components;
+  compress_info->image_width = decompress_info->image_width;
+  compress_info->image_height = decompress_info->image_height;
+  jpeg_set_defaults(compress_info);
+  if (client_data->quality > 0)
+    quality = client_data->quality;
+  else
+    quality = DetermineQuality(decompress_info);
+  jpeg_set_quality(compress_info, (int) quality, TRUE);
+  compress_info->optimize_coding = TRUE;
+  if (client_data->progressive != FALSE)
+    jpeg_simple_progression(compress_info);
+
+  jpeg_start_compress(compress_info, TRUE);
+
+  WriteMarkers(compress_info, client_data);
+
+  while (compress_info->next_scanline < compress_info->image_height)
+  {
+    jpeg_write_scanlines(compress_info, &client_data->buffer[compress_info->next_scanline],
+      (JDIMENSION) client_data->height);
+  }
+}
+
+static void WriteCoefficients(j_decompress_ptr decompress_info, j_compress_ptr compress_info,
+  ClientData *client_data)
+{
+  jpeg_copy_critical_parameters(decompress_info, compress_info);
+
+  compress_info->optimize_coding = TRUE;
+  if (client_data->progressive != FALSE)
+    jpeg_simple_progression(compress_info);
+
+  jpeg_write_coefficients(compress_info, client_data->coefficients);
+
+  WriteMarkers(compress_info, client_data);
 }
 
 static boolean WriteJpeg(j_decompress_ptr decompress_info, ClientData *client_data)
@@ -735,8 +739,6 @@ static boolean WriteJpeg(j_decompress_ptr decompress_info, ClientData *client_da
     CompressJpeg(decompress_info, &compress_info, client_data);
   else
     WriteCoefficients(decompress_info, &compress_info, client_data);
-
-  WriteMarkers(&compress_info, client_data);
 
   jpeg_finish_compress(&compress_info);
   jpeg_destroy_compress(&compress_info);
