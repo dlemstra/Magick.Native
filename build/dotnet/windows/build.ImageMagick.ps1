@@ -38,7 +38,7 @@ function createSolution($configureOptions) {
     $path = fullPath "src\ImageMagick\libraries\VisualMagick\configure"
     Set-Location $path
 
-    $options = "/smt /noWizard /VS2017 $configureOptions"
+    $options = "/smt /noWizard /VS2019 $configureOptions"
     Write-Host "Options: $configureOptions"
     Start-Process .\configure.exe -ArgumentList $options -wait
 
@@ -120,13 +120,13 @@ function buildImageMagick($config, $name, $platformName) {
         $platform = "x64";
     }
 
-    $options = "Configuration=$config,Platform=$($platform),PlatformToolset=v141,VCBuildAdditionalOptions=/#arch:SSE"
+    $options = "Configuration=$config,Platform=$($platform),PlatformToolset=v142,VCBuildAdditionalOptions=/#arch:SSE"
     buildSolution "src\ImageMagick\libraries\VisualMagick\VisualStaticMT.sln" $options
     copyOutput $config $name $platformName
 }
 
 function buildConfigure() {
-    buildSolution "src\ImageMagick\libraries\VisualMagick\configure\configure.sln" "Configuration=Release,Platform=Win32,PlatformToolset=v141"
+    buildSolution "src\ImageMagick\libraries\VisualMagick\configure\configure.sln" "Configuration=Release,Platform=Win32,PlatformToolset=v142"
 }
 
 buildConfigure

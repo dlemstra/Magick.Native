@@ -94,7 +94,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <OutDir>$(ProjectDir)bin\$(Configuration)\$(PlatformName)\</OutDir>
     <IntDir>$(ProjectDir)lib\$(Configuration)\$(PlatformName)\</IntDir>
@@ -149,7 +149,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}</ProjectGuid>
     <RootNamespace>ImageMagick.Native</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />

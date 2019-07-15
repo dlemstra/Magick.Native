@@ -27,7 +27,7 @@ jobs:
 - job: dotnet_windows
   displayName: '.NET (Windows)'
   pool:
-    vmImage: vs2017-win2016
+    vmImage: windows-2019
   strategy:
     matrix:
       Q8-x86:
@@ -80,7 +80,7 @@ jobs:
 - job: dotnet_metadata
   displayName: '.NET (Metadata)'
   pool:
-    vmImage: vs2017-win2016
+    vmImage: windows-2019
   steps:
     - template: build/dotnet/metadata/build.yml
 
@@ -125,7 +125,7 @@ jobs:
 - job: publish
   displayName: 'Publish libraries'
   pool:
-    vmImage: vs2017-win2016
+    vmImage: windows-2019
   steps:
     - template: publish/dotnet/publish.yml
   dependsOn:
