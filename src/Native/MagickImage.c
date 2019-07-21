@@ -282,6 +282,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_ClassType_Set(Image *instance, const size_
 
     settings = QuantizeSettings_Create();
     settings->number_colors = MaxColormapSize;
+    settings->tree_depth = 8; // MaxTreeDepth;
     QuantizeImage(settings, instance, exceptionInfo);
     QuantizeSettings_Dispose(settings);
     instance->storage_class = PseudoClass;
