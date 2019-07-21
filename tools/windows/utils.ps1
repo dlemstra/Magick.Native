@@ -24,11 +24,11 @@ function fullPath($path)
   return "$PSScriptRoot\..\..\$path"
 }
 
-function buildSolution($solution, $properties)
+function build($fileName, $properties)
 {
-    $path = fullPath $solution
+    $path = fullPath $fileName
     $directory = Split-Path -parent $path
-    $filename = Split-Path -leaf $path
+    $file = Split-Path -leaf $path
     $nuget = fullPath "tools\windows\nuget.exe"
 
     & $nuget restore $path
@@ -36,7 +36,7 @@ function buildSolution($solution, $properties)
     $location = $(Get-Location)
     Set-Location $directory
 
-    msbuild $filename /t:Rebuild /m ("/p:$($properties)")
+    msbuild $file /t:Rebuild /m ("/p:$($properties)")
     checkExitCode "Failed to build: $($path)"
 
     Set-Location $location
