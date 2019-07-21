@@ -285,7 +285,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_ClassType_Set(Image *instance, const size_
     settings->tree_depth = 8; // MaxTreeDepth;
     QuantizeImage(settings, instance, exceptionInfo);
     QuantizeSettings_Dispose(settings);
-    instance->storage_class = PseudoClass;
   }
   MAGICK_NATIVE_SET_EXCEPTION;
 }
