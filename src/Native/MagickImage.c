@@ -273,7 +273,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_ClassType_Set(Image *instance, const size_
   {
     SyncImage(instance, exceptionInfo);
     instance->colormap = (PixelInfo *) RelinquishMagickMemory(instance->colormap);
-    instance->storage_class = DirectClass;
+    SetImageStorageClass(instance, DirectClass, exception);
   }
   else if ((ClassType) value == PseudoClass && instance->storage_class == DirectClass)
   {
