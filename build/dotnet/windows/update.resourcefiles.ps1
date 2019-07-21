@@ -48,7 +48,7 @@ function updateResourceFile($fileName, $version) {
 }
 
 function updateResourceFiles($version) {
-    $path = fullPath "src\Native\Resources"
+    $path = fullPath "src\Magick.Native\Resources"
 
     Get-ChildItem -Path $path -Filter *.rc -Recurse -File -Name | ForEach-Object {
         updateResourceFile "$path\$_" $version

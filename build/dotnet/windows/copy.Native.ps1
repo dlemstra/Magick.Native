@@ -24,9 +24,9 @@ function copyNative($config, $quantumName, $platformName, $destination) {
     Remove-Item $target -Recurse -ErrorAction Ignore
     [void](New-Item -ItemType directory -Path $target)
 
-    $source = fullPath "src\Native\bin\$config$quantumName\$platformName\Magick.Native-$quantumName-$platformName.dll"
+    $source = fullPath "src\Magick.Native\bin\$config$quantumName\$platformName\Magick.Native-$quantumName-$platformName.dll"
     Copy-Item $source $target
-    $source = fullPath "src\Native\Resources\xml\*.xml"
+    $source = fullPath "src\Magick.Native\Resources\xml\*.xml"
     Copy-Item $source $target
     $source = fullPath "src\ImageMagick\output\resources\$config$quantumName\$platformName\*.xml"
     Copy-Item $source $target
