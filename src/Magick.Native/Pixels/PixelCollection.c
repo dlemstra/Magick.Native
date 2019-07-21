@@ -56,9 +56,9 @@ MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const siz
     *image;
 
   size_t
-    len,
+    remaining,
     r,
-    size;
+    row_size;
 
   Quantum
     *pixels;
@@ -66,19 +66,19 @@ MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const siz
   MAGICK_NATIVE_GET_EXCEPTION;
   image = GetCacheViewImage(instance);
   q = values;
-  size = image->number_channels*width;
+  row_size = image->number_channels * width;
   for (r = 0; r < height; r++)
   {
     pixels = QueueCacheViewAuthenticPixels(instance, x, y + r, width, 1, exceptionInfo);
     if (pixels == (Quantum *)NULL)
       break;
-    len = length - (size*r);
-    memcpy(pixels, q, (size < len ? size : len)*sizeof(*pixels));
+    remaining = length - (row_size * r);
+    memcpy(pixels, q, (row_size < remaining ? row_size : remaining) * sizeof(*pixels));
     if (SyncCacheViewAuthenticPixels(instance, exceptionInfo) == MagickFalse)
       break;
-    if (size > len)
+    if (row_size > remaining)
       break;
-    q += size;
+    q += row_size;
   }
   MAGICK_NATIVE_SET_EXCEPTION;
 }
