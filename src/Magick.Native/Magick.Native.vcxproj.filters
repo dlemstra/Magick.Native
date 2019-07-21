@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="MagickFormatInfo.c" />
+    <ClCompile Include="MagickImage.c" />
+    <ClCompile Include="MagickImageCollection.c" />
+    <ClCompile Include="Magick.c" />
+    <ClCompile Include="Quantum.c" />
+    <ClCompile Include="ResourceLimits.c" />
+    <ClCompile Include="Stdafx.c" />
+    <ClCompile Include="Colors\MagickColor.c">
+      <Filter>Colors</Filter>
+    </ClCompile>
+    <ClCompile Include="Colors\MagickColorCollection.c">
+      <Filter>Colors</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawables\DrawingWand.c">
+      <Filter>Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawables\PointInfoCollection.c">
+      <Filter>Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="Exceptions\MagickExceptionHelper.c">
+      <Filter>Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Environment.c">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\MagickMemory.c">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Matricis\DoubleMatrix.c">
+      <Filter>Matricis</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenCL\OpenCL.c">
+      <Filter>OpenCL</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenCL\OpenCLDevice.c">
+      <Filter>OpenCL</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenCL\OpenCLKernelProfileRecord.c">
+      <Filter>OpenCL</Filter>
+    </ClCompile>
+    <ClCompile Include="Optimizers\JpegOptimizer.c">
+      <Filter>Optimizers</Filter>
+    </ClCompile>
+    <ClCompile Include="Pixels\PixelCollection.c">
+      <Filter>Pixels</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings\DrawingSettings.c">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings\MagickSettings.c">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings\QuantizeSettings.c">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings\MontageSettings.c">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\ChannelMoments.c">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\ChannelPerceptualHash.c">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\ChannelStatistics.c">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\Moments.c">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\PerceptualHash.c">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\Statistics.c">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\ConnectedComponent.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\MagickGeometry.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\MagickRectangle.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\OffsetInfo.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\PointInfo.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\PrimaryInfo.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\StringInfo.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Types\TypeMetric.c">
+      <Filter>Types</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MagickFormatInfo.h" />
+    <ClInclude Include="MagickImage.h" />
+    <ClInclude Include="MagickImageCollection.h" />
+    <ClInclude Include="Magick.h" />
+    <ClInclude Include="Quantum.h" />
+    <ClInclude Include="ResourceLimits.h" />
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="Colors\MagickColor.h">
+      <Filter>Colors</Filter>
+    </ClInclude>
+    <ClInclude Include="Colors\MagickColorCollection.h">
+      <Filter>Colors</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\DrawingWand.h">
+      <Filter>Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawables\PointInfoCollection.h">
+      <Filter>Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions\MagickExceptionHelper.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Environment.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\MagickMemory.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Matricis\DoubleMatrix.h">
+      <Filter>Matricis</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenCL\OpenCL.h">
+      <Filter>OpenCL</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenCL\OpenCLDevice.h">
+      <Filter>OpenCL</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenCL\OpenCLKernelProfileRecord.h">
+      <Filter>OpenCL</Filter>
+    </ClInclude>
+    <ClInclude Include="Optimizers\JpegOptimizer.h">
+      <Filter>Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixels\PixelCollection.h">
+      <Filter>Pixels</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings\DrawingSettings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings\MagickSettings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings\QuantizeSettings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings\MontageSettings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\ChannelMoments.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\ChannelPerceptualHash.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\ChannelStatistics.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\Moments.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\PerceptualHash.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\Statistics.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\ConnectedComponent.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\MagickGeometry.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\MagickRectangle.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\OffsetInfo.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\PointInfo.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\PrimaryInfo.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\StringInfo.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\TypeMetric.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\$(Configuration)\$(PlatformName)\Magick.Native.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Colors">
+      <UniqueIdentifier>{c5ce354f-a324-434b-98e2-b2e8ce780c6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawables">
+      <UniqueIdentifier>{8b60b8e5-a607-48e1-a428-215053e44896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exceptions">
+      <UniqueIdentifier>{e5681f0b-05ee-4957-a85f-8db47a85b69b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{004f925d-64f1-4dac-a76e-828915422a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Matricis">
+      <UniqueIdentifier>{febf89e0-8ed6-4bcf-9840-3e65be4a83ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenCL">
+      <UniqueIdentifier>{621e3593-cbb6-4cad-844e-173d450318ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimizers">
+      <UniqueIdentifier>{7334398f-4af5-490c-aaef-93445a2224da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pixels">
+      <UniqueIdentifier>{31afaf2c-06f9-430a-9caf-3766db874b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{8740346f-9692-4f81-bf8b-605c2f290594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Statistics">
+      <UniqueIdentifier>{afe9f7fd-2cf2-4f6d-9c3f-95ec4ef8b2c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Types">
+      <UniqueIdentifier>{a1d62cd1-5787-401c-a7a3-73c476037f99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
