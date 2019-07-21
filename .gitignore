@@ -1,10 +1,10 @@
 /publish/dotnet/files/*
 /src/ImageMagick/libraries/*
 /src/ImageMagick/output/*
-/src/Native/lib
-/src/Native/bin
-/src/Native/.vs
-/src/Native/*.user
-/src/Native/*.log
+/src/Magick.Native/lib
+/src/Magick.Native/bin
+/src/Magick.Native/.vs
+/src/Magick.Native/*.user
+/src/Magick.Native/*.log
 **/output/*
 **/tools/*

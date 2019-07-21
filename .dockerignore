@@ -1,8 +1,8 @@
 src/ImageMagick/libraries
 src/ImageMagick/output
-src/Native/.vs
-src/Native/bin
-src/Native/lib
+src/Magick.Native/.vs
+src/Magick.Native/bin
+src/Magick.Native/lib
 build/dotnet/linux/output
 build/dotnet/macos/output
 build/dotnet/windows/output

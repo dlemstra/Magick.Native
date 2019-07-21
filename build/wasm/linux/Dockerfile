@@ -16,8 +16,8 @@ RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh
 
 COPY build/wasm/linux/build.Native.sh /build
 
-COPY src/Native /Native
+COPY src/Magick.Native /Magick.Native
 
-RUN cd /Native; /build/build.Native.sh
+RUN cd /Magick.Native; /build/build.Native.sh
 
 COPY build/wasm/linux/copy.Native.sh /build

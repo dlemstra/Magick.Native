@@ -13,11 +13,11 @@ steps:
   displayName: Build ImageMagick
 
 - script: $(Build.SourcesDirectory)/build/wasm/linux/build.Native.sh
-  workingDirectory: $(Build.SourcesDirectory)/src/Native
+  workingDirectory: $(Build.SourcesDirectory)/src/Magick.Native
   displayName: Build Native
 
 - script: $(Build.SourcesDirectory)/build/wasm/linux/copy.Native.sh $(Build.StagingDirectory)
-  workingDirectory: $(Build.SourcesDirectory)/src/Native
+  workingDirectory: $(Build.SourcesDirectory)/src/Magick.Native
   displayName: Copy Native
 
 - task: PublishBuildArtifacts@1
