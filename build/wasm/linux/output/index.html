@@ -29,7 +29,6 @@
         
         Module.onRuntimeInitialized = function()
         {
-            const address = Module._Magick_Delegates_Get()
             document.getElementById('version').innerText = 'Quantum Depth: ' + Module._Quantum_Depth_Get();
             document.getElementById('delegates').innerText = getString(Module._Magick_Delegates_Get());
             document.getElementById('features').innerText =  getString(Module._Magick_Features_Get());
