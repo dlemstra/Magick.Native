@@ -77,8 +77,7 @@ clone_date 'tiff' "$commitDate"
 clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
-# Downloading fftw since the version control they use requires bit complex dependencies to generate the code.
-# TODO: Perhaps maintainig a source code only repo at https://github.com/ImageMagick/fftw.git like the rest ?
+# Downloading fftw library's source code release. TODO: get it from a repository.
 rm -rf fftw* && wget http://www.fftw.org/fftw-3.3.8.tar.gz && tar xvfz fftw-3.3.8.tar.gz && rm -rf fftw*.tar.gz && mv fftw* fftw
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
