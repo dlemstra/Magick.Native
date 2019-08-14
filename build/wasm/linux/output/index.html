@@ -8,6 +8,8 @@
     <div>
         <div style="float: left;padding-right: 2pt">Delegates:</div>
         <div id="delegates"></div>
+        <div style="float: left;padding-right: 2pt">Features:</div>
+        <div id="features"></div>
     </div>
 
     <script type="text/javascript" src="magick-Q8.js"></script>
@@ -27,10 +29,10 @@
         
         Module.onRuntimeInitialized = function()
         {
-            console.log(Module);
-            const version = document.getElementById('version');
-            version.innerText = getString(Module._MagickNET_ImageMagickVersion_Get());
-            delegates.innerText = getString(Module._MagickNET_Delegates_Get());
+            const address = Module._Magick_Delegates_Get()
+            document.getElementById('version').innerText = 'Quantum Depth: ' + Module._Quantum_Depth_Get();
+            document.getElementById('delegates').innerText = getString(Module._Magick_Delegates_Get());
+            document.getElementById('features').innerText =  getString(Module._Magick_Features_Get());
         }
 
     </script>
