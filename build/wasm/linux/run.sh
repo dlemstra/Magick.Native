@@ -1,0 +1,1 @@
+docker run -it -v $PWD:/output -w /src magick-wasm-linux /bin/bash

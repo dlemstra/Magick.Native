@@ -45,6 +45,13 @@ cd build
 $CMAKE_COMMAND .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
 cd ..
+
+# Build fftw
+cd ../fftw
+chmod a+x ./configure
+$CONFIGURE CC=emcc CFLAGS="$FLAGS" --disable-shared --disable-doc --enable-static --disable-fortran --disable-alloca --disable-threads  --disable-openmp --without-g77-wrappers
+$MAKE install 
+
 # Build libjpeg-turbo
 cd ../jpeg
 $CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
