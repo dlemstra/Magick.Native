@@ -2133,8 +2133,9 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetColormap(Image *instance, const size_t 
   if (index >= MaxColormapSize)
     return;
 
-  if (instance->colors < (index + 1))
-    MagickImage_ColormapSize_Set(instance, index + 1, exception);
+  const size_t size = index + 1;
+  if (instance->colors < size)
+    MagickImage_ColormapSize_Set(instance, size, exception);
 
   instance->colormap[index] = *color;
 }
