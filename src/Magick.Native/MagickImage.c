@@ -185,6 +185,8 @@ MAGICK_NATIVE_EXPORT RectangleInfo *MagickImage_BoundingBox_Get(const Image *ins
 
   MAGICK_NATIVE_GET_EXCEPTION;
   result = MagickRectangle_Create();
+  if (result == (RectangleInfo*) NULL)
+    return (RectangleInfo*) NULL;
   *result = GetImageBoundingBox(instance, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return result;
