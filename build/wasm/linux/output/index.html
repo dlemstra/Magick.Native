@@ -2,10 +2,8 @@
 <body>
 
     <div>
-        <div style="float: left;padding-right: 2pt">Version:</div>
-        <div id="version"></div>
-    </div>
-    <div>
+        <div style="float: left;padding-right: 2pt">Quantum Depth:</div>
+        <div id="depth"></div>
         <div style="float: left;padding-right: 2pt">Delegates:</div>
         <div id="delegates"></div>
         <div style="float: left;padding-right: 2pt">Features:</div>
@@ -15,24 +13,24 @@
     <script type="text/javascript" src="magick-Q8.js"></script>
     <script type="text/javascript">
 
-        function getString(offset)
+        MagickNative().then(function(magickNative)
         {
-            let result = '';
-            let i = offset;
-            while (Module.HEAP8[i] != 0)
+            magickNative.getString = function(offset)
             {
-                result += String.fromCharCode(Module.HEAP8[i++]);
-            }
+                let result = '';
+                let i = offset;
+                while (this.HEAP8[i] != 0)
+                {
+                    result += String.fromCharCode(this.HEAP8[i++]);
+                }
 
-            return result;
-        }
-        
-        Module.onRuntimeInitialized = function()
-        {
-            document.getElementById('version').innerText = 'Quantum Depth: ' + Module._Quantum_Depth_Get();
-            document.getElementById('delegates').innerText = getString(Module._Magick_Delegates_Get());
-            document.getElementById('features').innerText =  getString(Module._Magick_Features_Get());
-        }
+                return result;
+            };
+
+            document.getElementById('depth').innerText = magickNative._Quantum_Depth_Get();
+            document.getElementById('delegates').innerText = magickNative.getString(magickNative._Magick_Delegates_Get());
+            document.getElementById('features').innerText =  magickNative.getString(magickNative._Magick_Features_Get());
+        });
 
     </script>
 </body>
