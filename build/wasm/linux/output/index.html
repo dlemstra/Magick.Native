@@ -17,22 +17,22 @@
 
         MagickNative().then(function(magickNative)
         {
-            magickNative.getString = function(offset)
+            const getString = function(offset)
             {
                 let result = '';
                 let i = offset;
-                while (this.HEAP8[i] != 0)
+                while (magickNative.HEAP8[i] != 0)
                 {
-                    result += String.fromCharCode(this.HEAP8[i++]);
+                    result += String.fromCharCode(magickNative.HEAP8[i++]);
                 }
 
                 return result;
             };
 
-            document.getElementById('version').innerText = magickNative.getString(magickNative._Magick_ImageMagickVersion_Get());
+            document.getElementById('version').innerText = getString(magickNative._Magick_ImageMagickVersion_Get());
             document.getElementById('depth').innerText = magickNative._Quantum_Depth_Get();
-            document.getElementById('delegates').innerText = magickNative.getString(magickNative._Magick_Delegates_Get());
-            document.getElementById('features').innerText =  magickNative.getString(magickNative._Magick_Features_Get());
+            document.getElementById('delegates').innerText = getString(magickNative._Magick_Delegates_Get());
+            document.getElementById('features').innerText =  getString(magickNative._Magick_Features_Get());
         });
 
     </script>
