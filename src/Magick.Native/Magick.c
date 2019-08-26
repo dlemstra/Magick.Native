@@ -23,6 +23,11 @@ MAGICK_NATIVE_EXPORT const char *Magick_Features_Get(void)
   return GetMagickFeatures();
 }
 
+MAGICK_NATIVE_EXPORT const char *Magick_ImageMagickVersion_Get(void)
+{
+  return GetMagickVersion(NULL);
+}
+
 MAGICK_NATIVE_EXPORT const TypeInfo **Magick_GetFonts(size_t *length, ExceptionInfo **exception)
 {
   const TypeInfo

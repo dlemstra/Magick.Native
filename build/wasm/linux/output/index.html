@@ -2,7 +2,9 @@
 <body>
 
     <div>
-        <div style="float: left;padding-right: 2pt">Quantum Depth:</div>
+        <div style="float: left;padding-right: 2pt">Version:</div>
+        <div id="version"></div>
+        <div style="float: left;padding-right: 2pt">Quantum depth:</div>
         <div id="depth"></div>
         <div style="float: left;padding-right: 2pt">Delegates:</div>
         <div id="delegates"></div>
@@ -27,6 +29,7 @@
                 return result;
             };
 
+            document.getElementById('version').innerText = magickNative.getString(magickNative._Magick_ImageMagickVersion_Get());
             document.getElementById('depth').innerText = magickNative._Quantum_Depth_Get();
             document.getElementById('delegates').innerText = magickNative.getString(magickNative._Magick_Delegates_Get());
             document.getElementById('features').innerText =  magickNative.getString(magickNative._Magick_Features_Get());

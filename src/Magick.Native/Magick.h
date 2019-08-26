@@ -15,6 +15,8 @@ MAGICK_NATIVE_EXPORT const char *Magick_Delegates_Get(void);
 
 MAGICK_NATIVE_EXPORT const char *Magick_Features_Get(void);
 
+MAGICK_NATIVE_EXPORT const char *Magick_ImageMagickVersion_Get(void);
+
 MAGICK_NATIVE_EXPORT const TypeInfo **Magick_GetFonts(size_t *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT const char *Magick_GetFontFamily(const TypeInfo **, const size_t);
