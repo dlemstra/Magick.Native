@@ -1,0 +1,14 @@
+{
+  "name": "magick.native",
+  "version": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlemstra/Magick.Native.git"
+  },
+  "author": "Dirk Lemstra",
+  "license": "Apache-2.0",
+  "files": [
+    "wasm/magick-Q8.js"
+  ]
+}

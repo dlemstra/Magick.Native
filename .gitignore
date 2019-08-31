@@ -1,4 +1,4 @@
-/publish/dotnet/files/*
+/publish/**/files/*
 /src/ImageMagick/libraries/*
 /src/ImageMagick/output/*
 /src/Magick.Native/lib

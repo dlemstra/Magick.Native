@@ -122,8 +122,8 @@ jobs:
   parameters:
     container: dotnet_latest
 
-- job: publish
-  displayName: 'Publish libraries'
+- job: publish_dotnet
+  displayName: 'Publish .NET libraries'
   pool:
     vmImage: windows-2019
   steps:
@@ -140,3 +140,12 @@ jobs:
   - verify_centos_7
   - verify_dotnet_2_0
   - verify_dotnet_latest
+
+- job: publish_wasm
+  displayName: 'Publish WASM libraries'
+  pool:
+    vmImage: windows-2019
+  steps:
+    - template: publish/wasm/publish.yml
+  dependsOn:
+  - wasm_linux

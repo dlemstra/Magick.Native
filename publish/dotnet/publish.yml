@@ -41,7 +41,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: $(Build.StagingDirectory)
-    artifactName: package
+    artifactName: nuget-package
   displayName: Publish NuGet package
 
 - task: NuGetCommand@2
