@@ -19,6 +19,9 @@ param (
 
 function createNPMPackage($version, $destination)
 {
+  $info = $version.split('.')
+  $version = "0.$($info[0])$($info[1]).$($info[2])$($info[3])"
+
   $path = FullPath "publish\wasm\package.json"
   $content = [IO.File]::ReadAllText($path)
   $content = $content.replace("""version"": """"", """version"": ""$version""")
