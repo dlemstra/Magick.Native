@@ -374,10 +374,7 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_Depth_Get(const Image *instance)
 
 MAGICK_NATIVE_EXPORT void MagickImage_Depth_Set(Image *instance, const size_t value)
 {
-  if (value > MAGICKCORE_QUANTUM_DEPTH)
-    instance->depth = MAGICKCORE_QUANTUM_DEPTH;
-  else
-    instance->depth = value;
+  instance->depth = value;
 }
 
 MAGICK_NATIVE_EXPORT const char *MagickImage_EncodingGeometry_Get(const Image *instance)
