@@ -19,9 +19,9 @@ MAGICK_NATIVE_EXPORT void ConnectedComponent_DisposeList(CCObjectInfo *list)
   RelinquishMagickMemory(list);
 }
 
-MAGICK_NATIVE_EXPORT double ConnectedComponent_GetArea(const CCObjectInfo *instance)
+MAGICK_NATIVE_EXPORT size_t ConnectedComponent_GetArea(const CCObjectInfo *instance)
 {
-  return instance->area;
+  return (size_t) instance->area;
 }
 
 MAGICK_NATIVE_EXPORT const PointInfo *ConnectedComponent_GetCentroid(const CCObjectInfo *instance)

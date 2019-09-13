@@ -13,7 +13,7 @@
 
 MAGICK_NATIVE_EXPORT void ConnectedComponent_DisposeList(CCObjectInfo *);
 
-MAGICK_NATIVE_EXPORT double ConnectedComponent_GetArea(const CCObjectInfo *);
+MAGICK_NATIVE_EXPORT size_t ConnectedComponent_GetArea(const CCObjectInfo *);
 
 MAGICK_NATIVE_EXPORT const PointInfo *ConnectedComponent_GetCentroid(const CCObjectInfo *);
 
