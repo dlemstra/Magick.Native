@@ -8,3 +8,5 @@
 /src/Magick.Native/*.log
 **/output/*
 **/tools/*
+.vs
+.vscode
