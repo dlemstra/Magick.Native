@@ -47,7 +47,7 @@ MAGICK_NATIVE_EXPORT const Quantum *PixelCollection_GetArea(const CacheView *ins
   return pixels;
 }
 
-MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const size_t x, const  size_t y, const size_t width, const size_t height, const Quantum *values, const size_t length, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, const Quantum *values, const size_t length, ExceptionInfo **exception)
 {
   const Quantum
     *q;

@@ -33,7 +33,7 @@ MAGICK_NATIVE_EXPORT Quantum MagickColor_Black_Get(const PixelInfo *);
 MAGICK_NATIVE_EXPORT void MagickColor_Black_Set(PixelInfo *, const Quantum);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickColor_IsCMYK_Get(const PixelInfo *);
-MAGICK_NATIVE_EXPORT void MagickColor_IsCMYK_Set(PixelInfo *,MagickBooleanType);
+MAGICK_NATIVE_EXPORT void MagickColor_IsCMYK_Set(PixelInfo *, MagickBooleanType);
 
 MAGICK_NATIVE_EXPORT PixelInfo *MagickColor_Clone(const PixelInfo *);
 
