@@ -29,8 +29,17 @@ function signLibrary($folder, $quantumName, $platformName, $pfxPassword) {
 
     $fileName = "$folder\Release$quantumName\$platformName\Magick.Native-$quantumName-$platformName.dll"
 
-    & $signtool sign /f "$pfxFile" /p "$pfxPassword" /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp /td sha256 /fd sha256 $fileName
-    CheckExitCode "Failed to sign files."
+    for ($i=0; $i -le 10; $i++)
+    {
+        Start-Sleep -s $i
+        & $signtool sign /f "$pfxFile" /p "$pfxPassword" /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp /td sha256 /fd sha256 $fileName
+        if ($LastExitCode -eq 0)
+        {
+            break
+        }
+    }
+
+    CheckExitCode "Failed to sign file."
 }
 
 signLibrary $folder $quantumName $platformName $pfxPassword
