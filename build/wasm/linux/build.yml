@@ -16,6 +16,10 @@ steps:
   workingDirectory: $(Build.SourcesDirectory)/src/Magick.Native
   displayName: Build Native
 
+- script: npm install && npm run publish
+  workingDirectory: $(Build.SourcesDirectory)/src/create-type-definition
+  displayName: Create type definition
+
 - script: $(Build.SourcesDirectory)/build/wasm/linux/copy.Native.sh $(Build.StagingDirectory)
   workingDirectory: $(Build.SourcesDirectory)/src/Magick.Native
   displayName: Copy Native
