@@ -3,6 +3,8 @@ src/ImageMagick/output
 src/Magick.Native/.vs
 src/Magick.Native/bin
 src/Magick.Native/lib
+src/create-type-definition/lib
+src/create-type-definition/node_modules
 build/dotnet/linux/output
 build/dotnet/macos/output
 build/dotnet/windows/output

@@ -21,3 +21,7 @@ COPY src/Magick.Native /Magick.Native
 RUN cd /Magick.Native; /build/build.Native.sh
 
 COPY build/wasm/linux/copy.Native.sh /build
+
+COPY src/create-type-definition /create-type-definition
+
+RUN cd /create-type-definition; npm install && npm run publish

@@ -1,0 +1,18 @@
+{
+  "name": "create-type-definition",
+  "version": "1.0.0",
+  "description": "Create type definition",
+  "repository": "https://github.com/dlemstra/Magick.Native",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc -p .",
+    "publish": "npx tsc -p . && node lib/index.js /Magick.Native /Magick.Native/Q8/magick-Q8.d.ts"
+  },
+  "keywords": [],
+  "author": "Dirk Lemstra",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.7.5",
+    "typescript": "^3.6.3"
+  }
+}
