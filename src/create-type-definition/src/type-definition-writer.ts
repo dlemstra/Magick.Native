@@ -14,13 +14,13 @@ type quantum = number;
 
 /** @internal */
 export interface MagickNative {
-    UTF8ToString(ptr: number): string;
-    lengthBytesUTF8(str: string): number;
-    stringToUTF8(str: string, outPtr: number, maxBytesToWrite: number): void;
     _malloc(size: number) : number;
     _free(instance: number): void;
     getValue(instance: number, type: string): number;
     setValue(instance: number, value: number, type: string): void;
+    UTF8ToString(ptr: number): string;
+    lengthBytesUTF8(str: string): number;
+    stringToUTF8(str: string, outPtr: number, maxBytesToWrite: number): void;
 `;
 
     for (const method of this.methods) {
