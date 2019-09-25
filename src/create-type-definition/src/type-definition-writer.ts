@@ -21,6 +21,7 @@ export interface MagickNative {
     UTF8ToString(ptr: number): string;
     lengthBytesUTF8(str: string): number;
     stringToUTF8(str: string, outPtr: number, maxBytesToWrite: number): void;
+    addFunction(func: any, signature: string): number;
 `;
 
     for (const method of this.methods) {
