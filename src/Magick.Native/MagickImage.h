@@ -156,7 +156,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveResize(const Image *, const char
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveSharpen(Image *, const double, const double, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(const Image *, const size_t, const size_t, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(const Image *, const size_t, const size_t, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_AddNoise(Image *, const size_t, const double, const size_t, ExceptionInfo **);
 
@@ -486,7 +486,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Swirl(const Image *, const size_t, const
 
 MAGICK_NATIVE_EXPORT void MagickImage_Texture(Image *, const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_Threshold(Image *, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_Threshold(Image *, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Thumbnail(const Image *, const char *, ExceptionInfo **);
 

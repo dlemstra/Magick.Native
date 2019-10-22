@@ -690,13 +690,15 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveSharpen(Image *instance, const d
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(const Image *instance, const size_t width, const size_t height, const double bias, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(const Image *instance, const size_t width, const size_t height, const double bias, const size_t channels, ExceptionInfo **exception)
 {
   Image
     *image;
 
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   image = AdaptiveThresholdImage(instance, width, height, bias, exceptionInfo);
+  RestoreChannelMasks(instance, image);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
@@ -2388,10 +2390,12 @@ MAGICK_NATIVE_EXPORT void MagickImage_Texture(Image *instance, const Image *imag
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_Threshold(Image *instance, const double threshold, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_Threshold(Image *instance, const double threshold, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   BilevelImage(instance, threshold, exceptionInfo);
+  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
