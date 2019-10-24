@@ -156,7 +156,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveResize(const Image *, const char
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveSharpen(Image *, const double, const double, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(const Image *, const size_t, const size_t, const double, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(Image *, const size_t, const size_t, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_AddNoise(Image *, const size_t, const double, const size_t, ExceptionInfo **);
 

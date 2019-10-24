@@ -691,7 +691,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveSharpen(Image *instance, const d
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(const Image *instance, const size_t width, const size_t height, const double bias, const size_t channels, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(Image *instance, const size_t width, const size_t height, const double bias, const size_t channels, ExceptionInfo **exception)
 {
   Image
     *image;
