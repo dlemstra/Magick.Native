@@ -61,7 +61,7 @@ $MAKE install
 cd ../webp
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --enable-libwebpmux --enable-libwebpdemux --disable-shared CFLAGS="${FLAGS}"
+$CONFIGURE --disable-shared CFLAGS="${FLAGS}"
 $MAKE install
 
 # Build openjpeg

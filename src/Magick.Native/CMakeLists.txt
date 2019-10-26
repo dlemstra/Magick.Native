@@ -17,6 +17,8 @@ else()
     file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
+    set(LIBWEBPMUX ${LIB_DIR}/libwebpmux.a)
+    set(LIBWEBPDEMUX ${LIB_DIR}/libwebpdemux.a)
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
@@ -55,8 +57,8 @@ target_link_libraries(
     ${LIB_DIR}/libturbojpeg.a
     ${LIB_DIR}/libtiff.a
     ${LIB_DIR}/libwebp.a
-    ${LIB_DIR}/libwebpmux.a
-    ${LIB_DIR}/libwebpdemux.a
+    ${LIBWEBPMUX}
+    ${LIBWEBPDEMUX}
     ${LIB_DIR}/libopenjp2.a
     ${LIB_DIR}/liblcms2.a
     ${LIB_DIR}/libheif.a
