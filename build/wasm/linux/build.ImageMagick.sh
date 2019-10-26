@@ -30,6 +30,7 @@ $MAKE install
 
 # Build libpng
 cd ../png
+git apply ../png.patch
 autoreconf -fiv
 $CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
 $MAKE install

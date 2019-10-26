@@ -1,4 +1,4 @@
-FROM trzeci/emscripten:sdk-tag-1.38.31-64bit
+FROM trzeci/emscripten:1.39.0
 
 RUN mkdir /build
 
@@ -9,6 +9,8 @@ RUN cd /build; ./install.dependencies.sh
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh linux
+
+COPY build/wasm/linux/patches/*.patch /ImageMagick/libraries
 
 COPY build/wasm/linux/build.ImageMagick.sh /build
 

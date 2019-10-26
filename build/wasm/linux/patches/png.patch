@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 52dba94..f734915 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -144,7 +144,7 @@ AC_C_RESTRICT
+
+ # Checks for library functions.
+ AC_FUNC_STRTOD
+-AC_CHECK_FUNCS([pow], , AC_CHECK_LIB(m, pow, , AC_MSG_ERROR(cannot find pow)) )
++#AC_CHECK_FUNCS([pow], , AC_CHECK_LIB(m, pow, , AC_MSG_ERROR(cannot find pow)) )
+
+ # Some later POSIX 1003.1 functions are required for test programs, failure here
+ # is soft (the corresponding test program is not built).
