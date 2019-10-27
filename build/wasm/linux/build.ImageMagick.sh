@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+SCRIPT_PATH=`dirname "$0"`
+
 export FLAGS="-O3"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="emconfigure ./configure"
@@ -30,7 +32,7 @@ $MAKE install
 
 # Build libpng
 cd ../png
-git apply ../png.patch
+git apply $SCRIPT_PATH/patches/png.patch
 autoreconf -fiv
 $CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
 $MAKE install
