@@ -84,11 +84,11 @@ jobs:
       run: ./update.resourcefiles.ps1
       working-directory: build/dotnet/windows
 
-    - name: Build ImageMagick
+    - name: Build Native
       run: ./build.Native.cmd
       working-directory: build/dotnet/windows
 
-    - name: Build ImageMagick
+    - name: Copy Native
       run: ./copy.Native.ps1 -destination ../../../artifacts
       working-directory: build/dotnet/windows
 
