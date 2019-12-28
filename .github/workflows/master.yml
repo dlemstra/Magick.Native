@@ -45,3 +45,61 @@ jobs:
       with:
           name: linux
           path: artifacts
+
+  dotnet_windows:
+    name: '.NET (Windows)'
+    runs-on: windows-latest
+
+  strategy:
+    matrix:
+      quantumName: [Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP]
+      platformName: [x86, x64]
+      exclude:
+      - quantumName: Q8-OpenMP
+        platformName: x86
+      - quantumName: Q16-OpenMP
+        platformName: x86
+      - quantumName: Q16-HDRI-OpenMP
+        platformName: x86
+
+    steps:
+
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.ps1
+      working-directory: build/dotnet/windows
+
+    - name: Clone ImageMagick libraries
+      run: ./checkout.cmd
+      working-directory: src/ImageMagick
+
+    - name: Build ImageMagick
+      run: ./build.ImageMagick.ps1
+      working-directory: build/dotnet/windows
+
+    - name: Update resource files
+      run: ./update.resourcefiles.ps1
+      working-directory: build/dotnet/windows
+
+    - name: Build ImageMagick
+      run: ./build.Native.ps1
+      working-directory: build/dotnet/windows
+
+    - name: Build ImageMagick
+      run: ./copy.Native.ps1 -destination ../../../artifacts
+      working-directory: build/dotnet/windows
+
+    - name: Sign libraries
+      uses: dlemstra/code-sign-action@v1
+      with:
+       certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
+       folder: 'artifacts'
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+          name: windows
+          path: artifacts
