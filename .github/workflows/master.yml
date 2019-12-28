@@ -22,7 +22,7 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/linux
+      working-directory: build/dotnet/linux
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux
