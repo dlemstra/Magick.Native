@@ -89,7 +89,7 @@ jobs:
       working-directory: build/dotnet/windows
 
     - name: Copy Native
-      run: ./copy.Native.ps1 -destination ../../../artifacts
+      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../../artifacts
       working-directory: build/dotnet/windows
 
     - name: Sign libraries
