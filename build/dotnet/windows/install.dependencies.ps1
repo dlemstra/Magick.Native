@@ -14,8 +14,6 @@ param (
     [string]$pfxUri = ''
 )
 
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
-
 $sourceNugetExe = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 $targetNugetExe = "$PSScriptRoot\..\..\..\tools\windows\nuget.exe"
 Invoke-WebRequest $sourceNugetExe -OutFile $targetNugetExe
