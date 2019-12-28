@@ -46,6 +46,42 @@ jobs:
           name: linux
           path: artifacts
 
+  dotnet_macos:
+    name: '.NET (MacOS)'
+    runs-on: macos-latest
+
+    steps:
+
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/dotnet/macos
+
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh macos
+      working-directory: src/ImageMagick
+
+    - name: Build ImageMagick
+      run: ../../../build/dotnet/macos/build.ImageMagick.sh
+      working-directory: src/ImageMagick/libraries
+
+    - name: Build Native
+      run: ../../build/dotnet/macos/build.Native.sh
+      working-directory: src/Magick.Native
+
+    - name: Copy Native
+      run: ../../build/dotnet/macos/copy.Native.sh ../../artifacts
+      working-directory: src/Magick.Native
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+          name: macos
+          path: artifacts
+
   dotnet_windows:
     name: '.NET (Windows)'
     runs-on: windows-latest
@@ -95,11 +131,11 @@ jobs:
     - name: Sign libraries
       uses: dlemstra/code-sign-action@v1
       with:
-       certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
-       folder: 'artifacts\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
+        certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
+        folder: 'artifacts\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-          name: windows
-          path: artifacts
+        name: windows
+        path: artifacts

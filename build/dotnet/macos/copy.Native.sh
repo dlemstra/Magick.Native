@@ -10,6 +10,8 @@ copyNative() {
     cp $quantum/libMagick.Native-$quantum-x64.dll.dylib $target/Release$quantum/x64/Magick.Native-$quantum-x64.dll.dylib
 }
 
+[ "$1" != "" ] && [ ! -d "$1" ] && mkdir "$1"
+
 copyNative "Q8" $1
 copyNative "Q16" $1
 copyNative "Q16-HDRI" $1
