@@ -81,6 +81,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "patches", "patches", "{D39F
 		build\wasm\linux\patches\png.patch = build\wasm\linux\patches\png.patch
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA38A23D-B639-4B56-BBCC-43446386FE8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageMagick", "ImageMagick", "{BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0}"
+	ProjectSection(SolutionItems) = preProject
+		src\ImageMagick\checkout.cmd = src\ImageMagick\checkout.cmd
+		src\ImageMagick\checkout.sh = src\ImageMagick\checkout.sh
+		src\ImageMagick\ImageMagick.commit = src\ImageMagick\ImageMagick.commit
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|x64 = DebugQ16|x64
@@ -141,6 +150,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
 		{7D45E99E-D308-453E-A600-42F10FFD1570} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90} = {7D45E99E-D308-453E-A600-42F10FFD1570}
 		{12B5113A-B68A-4DDF-8A74-A5D615AFF49A} = {7D45E99E-D308-453E-A600-42F10FFD1570}
@@ -149,6 +159,7 @@ Global
 		{DF725EB7-16EC-4427-91A8-0F3DF412C294} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC} = {DF725EB7-16EC-4427-91A8-0F3DF412C294}
 		{D39F0D02-5AB1-47E8-A27A-E443697E894C} = {8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}
+		{BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
