@@ -1,36 +1,107 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Magick.Native", "src\Magick.Native\Magick.Native.vcxproj", "{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6C3DBF08-7B17-4B45-BA79-E3DB64032574}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{7D45E99E-D308-453E-A600-42F10FFD1570}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
+	ProjectSection(SolutionItems) = preProject
+		build\dotnet\linux\build.cmd = build\dotnet\linux\build.cmd
+		build\dotnet\linux\build.ImageMagick.sh = build\dotnet\linux\build.ImageMagick.sh
+		build\dotnet\linux\build.Native.sh = build\dotnet\linux\build.Native.sh
+		build\dotnet\linux\build.yml = build\dotnet\linux\build.yml
+		build\dotnet\linux\copy.Native.sh = build\dotnet\linux\copy.Native.sh
+		build\dotnet\linux\Dockerfile = build\dotnet\linux\Dockerfile
+		build\dotnet\linux\install.dependencies.sh = build\dotnet\linux\install.dependencies.sh
+		build\dotnet\linux\install.sudo.sh = build\dotnet\linux\install.sudo.sh
+		build\dotnet\linux\run.cmd = build\dotnet\linux\run.cmd
+		build\dotnet\linux\verify.cmd = build\dotnet\linux\verify.cmd
+		build\dotnet\linux\verify.Native.sh = build\dotnet\linux\verify.Native.sh
+		build\dotnet\linux\verify.yml = build\dotnet\linux\verify.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
+	ProjectSection(SolutionItems) = preProject
+		build\dotnet\macos\build.ImageMagick.sh = build\dotnet\macos\build.ImageMagick.sh
+		build\dotnet\macos\build.Native.sh = build\dotnet\macos\build.Native.sh
+		build\dotnet\macos\build.yml = build\dotnet\macos\build.yml
+		build\dotnet\macos\copy.Native.sh = build\dotnet\macos\copy.Native.sh
+		build\dotnet\macos\install.dependencies.sh = build\dotnet\macos\install.dependencies.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C8420103-07D2-459E-9EFD-8FC57AA569E0}"
+	ProjectSection(SolutionItems) = preProject
+		build\dotnet\metadata\build.yml = build\dotnet\metadata\build.yml
+		build\dotnet\metadata\create.metadata.cmd = build\dotnet\metadata\create.metadata.cmd
+		build\dotnet\metadata\create.metadata.ps1 = build\dotnet\metadata\create.metadata.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED}"
+	ProjectSection(SolutionItems) = preProject
+		build\dotnet\windows\build.ImageMagick.cmd = build\dotnet\windows\build.ImageMagick.cmd
+		build\dotnet\windows\build.ImageMagick.ps1 = build\dotnet\windows\build.ImageMagick.ps1
+		build\dotnet\windows\build.Native.cmd = build\dotnet\windows\build.Native.cmd
+		build\dotnet\windows\build.Native.ps1 = build\dotnet\windows\build.Native.ps1
+		build\dotnet\windows\build.yml = build\dotnet\windows\build.yml
+		build\dotnet\windows\copy.Native.cmd = build\dotnet\windows\copy.Native.cmd
+		build\dotnet\windows\copy.Native.ps1 = build\dotnet\windows\copy.Native.ps1
+		build\dotnet\windows\install.dependencies.cmd = build\dotnet\windows\install.dependencies.cmd
+		build\dotnet\windows\install.dependencies.ps1 = build\dotnet\windows\install.dependencies.ps1
+		build\dotnet\windows\sign.Native.ps1 = build\dotnet\windows\sign.Native.ps1
+		build\dotnet\windows\update.resourcefiles.ps1 = build\dotnet\windows\update.resourcefiles.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{DF725EB7-16EC-4427-91A8-0F3DF412C294}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
+	ProjectSection(SolutionItems) = preProject
+		build\wasm\linux\build.cmd = build\wasm\linux\build.cmd
+		build\wasm\linux\build.ImageMagick.sh = build\wasm\linux\build.ImageMagick.sh
+		build\wasm\linux\build.Native.sh = build\wasm\linux\build.Native.sh
+		build\wasm\linux\build.sh = build\wasm\linux\build.sh
+		build\wasm\linux\build.yml = build\wasm\linux\build.yml
+		build\wasm\linux\copy.Native.sh = build\wasm\linux\copy.Native.sh
+		build\wasm\linux\Dockerfile = build\wasm\linux\Dockerfile
+		build\wasm\linux\install.dependencies.sh = build\wasm\linux\install.dependencies.sh
+		build\wasm\linux\install.sudo.sh = build\wasm\linux\install.sudo.sh
+		build\wasm\linux\run.cmd = build\wasm\linux\run.cmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "patches", "patches", "{D39F0D02-5AB1-47E8-A27A-E443697E894C}"
+	ProjectSection(SolutionItems) = preProject
+		build\wasm\linux\patches\png.patch = build\wasm\linux\patches\png.patch
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		DebugQ8|x64 = DebugQ8|x64
-		DebugQ8|x86 = DebugQ8|x86
 		DebugQ16|x64 = DebugQ16|x64
 		DebugQ16|x86 = DebugQ16|x86
 		DebugQ16-HDRI|x64 = DebugQ16-HDRI|x64
 		DebugQ16-HDRI|x86 = DebugQ16-HDRI|x86
-		ReleaseQ8-OpenMP|x64 = ReleaseQ8-OpenMP|x64
-		ReleaseQ8-OpenMP|x86 = ReleaseQ8-OpenMP|x86
-		ReleaseQ16-OpenMP|x64 = ReleaseQ16-OpenMP|x64
-		ReleaseQ16-OpenMP|x86 = ReleaseQ16-OpenMP|x86
-		ReleaseQ16-HDRI-OpenMP|x64 = ReleaseQ16-HDRI-OpenMP|x64
-		ReleaseQ16-HDRI-OpenMP|x86 = ReleaseQ16-HDRI-OpenMP|x86
-		ReleaseQ8|x64 = ReleaseQ8|x64
-		ReleaseQ8|x86 = ReleaseQ8|x86
+		DebugQ8|x64 = DebugQ8|x64
+		DebugQ8|x86 = DebugQ8|x86
 		ReleaseQ16|x64 = ReleaseQ16|x64
 		ReleaseQ16|x86 = ReleaseQ16|x86
 		ReleaseQ16-HDRI|x64 = ReleaseQ16-HDRI|x64
 		ReleaseQ16-HDRI|x86 = ReleaseQ16-HDRI|x86
+		ReleaseQ16-HDRI-OpenMP|x64 = ReleaseQ16-HDRI-OpenMP|x64
+		ReleaseQ16-HDRI-OpenMP|x86 = ReleaseQ16-HDRI-OpenMP|x86
+		ReleaseQ16-OpenMP|x64 = ReleaseQ16-OpenMP|x64
+		ReleaseQ16-OpenMP|x86 = ReleaseQ16-OpenMP|x86
+		ReleaseQ8|x64 = ReleaseQ8|x64
+		ReleaseQ8|x86 = ReleaseQ8|x86
+		ReleaseQ8-OpenMP|x64 = ReleaseQ8-OpenMP|x64
+		ReleaseQ8-OpenMP|x86 = ReleaseQ8-OpenMP|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x64.ActiveCfg = DebugQ8|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x64.Build.0 = DebugQ8|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x86.ActiveCfg = DebugQ8|Win32
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x86.Build.0 = DebugQ8|Win32
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16|x64.ActiveCfg = DebugQ16|x64
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16|x64.Build.0 = DebugQ16|x64
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16|x86.ActiveCfg = DebugQ16|Win32
@@ -39,19 +110,10 @@ Global
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16-HDRI|x64.Build.0 = DebugQ16-HDRI|x64
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16-HDRI|x86.ActiveCfg = DebugQ16-HDRI|Win32
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ16-HDRI|x86.Build.0 = DebugQ16-HDRI|Win32
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x64.ActiveCfg = ReleaseQ8-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x64.Build.0 = ReleaseQ8-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x86.ActiveCfg = ReleaseQ8-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x64.ActiveCfg = ReleaseQ16-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x64.Build.0 = ReleaseQ16-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x86.ActiveCfg = ReleaseQ16-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x64.ActiveCfg = ReleaseQ16-HDRI-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x64.Build.0 = ReleaseQ16-HDRI-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x86.ActiveCfg = ReleaseQ16-HDRI-OpenMP|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x64.ActiveCfg = ReleaseQ8|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x64.Build.0 = ReleaseQ8|x64
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x86.ActiveCfg = ReleaseQ8|Win32
-		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x86.Build.0 = ReleaseQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x64.ActiveCfg = DebugQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x64.Build.0 = DebugQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x86.ActiveCfg = DebugQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.DebugQ8|x86.Build.0 = DebugQ8|Win32
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16|x64.ActiveCfg = ReleaseQ16|x64
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16|x64.Build.0 = ReleaseQ16|x64
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16|x86.ActiveCfg = ReleaseQ16|Win32
@@ -60,9 +122,32 @@ Global
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI|x64.Build.0 = ReleaseQ16-HDRI|x64
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI|x86.ActiveCfg = ReleaseQ16-HDRI|Win32
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI|x86.Build.0 = ReleaseQ16-HDRI|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x64.ActiveCfg = ReleaseQ16-HDRI-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x64.Build.0 = ReleaseQ16-HDRI-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-HDRI-OpenMP|x86.ActiveCfg = ReleaseQ16-HDRI-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x64.ActiveCfg = ReleaseQ16-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x64.Build.0 = ReleaseQ16-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ16-OpenMP|x86.ActiveCfg = ReleaseQ16-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x64.ActiveCfg = ReleaseQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x64.Build.0 = ReleaseQ8|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x86.ActiveCfg = ReleaseQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8|x86.Build.0 = ReleaseQ8|Win32
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x64.ActiveCfg = ReleaseQ8-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x64.Build.0 = ReleaseQ8-OpenMP|x64
+		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}.ReleaseQ8-OpenMP|x86.ActiveCfg = ReleaseQ8-OpenMP|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7D45E99E-D308-453E-A600-42F10FFD1570} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90} = {7D45E99E-D308-453E-A600-42F10FFD1570}
+		{12B5113A-B68A-4DDF-8A74-A5D615AFF49A} = {7D45E99E-D308-453E-A600-42F10FFD1570}
+		{C8420103-07D2-459E-9EFD-8FC57AA569E0} = {7D45E99E-D308-453E-A600-42F10FFD1570}
+		{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED} = {7D45E99E-D308-453E-A600-42F10FFD1570}
+		{DF725EB7-16EC-4427-91A8-0F3DF412C294} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC} = {DF725EB7-16EC-4427-91A8-0F3DF412C294}
+		{D39F0D02-5AB1-47E8-A27A-E443697E894C} = {8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
