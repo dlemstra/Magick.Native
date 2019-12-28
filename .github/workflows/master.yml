@@ -77,7 +77,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build ImageMagick
-      run: ./build.ImageMagick.cmd
+      run: ./build.ImageMagick.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
       working-directory: build/dotnet/windows
 
     - name: Update resource files
@@ -85,7 +85,7 @@ jobs:
       working-directory: build/dotnet/windows
 
     - name: Build Native
-      run: ./build.Native.cmd
+      run: ./build.Native.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
       working-directory: build/dotnet/windows
 
     - name: Copy Native
