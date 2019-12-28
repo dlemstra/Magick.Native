@@ -50,17 +50,17 @@ jobs:
     name: '.NET (Windows)'
     runs-on: windows-latest
 
-  strategy:
-    matrix:
-      quantumName: [Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP]
-      platformName: [x86, x64]
-      exclude:
-      - quantumName: Q8-OpenMP
-        platformName: x86
-      - quantumName: Q16-OpenMP
-        platformName: x86
-      - quantumName: Q16-HDRI-OpenMP
-        platformName: x86
+    strategy:
+      matrix:
+        quantumName: [Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP]
+        platformName: [x86, x64]
+        exclude:
+        - quantumName: Q8-OpenMP
+          platformName: x86
+        - quantumName: Q16-OpenMP
+          platformName: x86
+        - quantumName: Q16-HDRI-OpenMP
+          platformName: x86
 
     steps:
 
