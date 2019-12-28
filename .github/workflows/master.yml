@@ -1,0 +1,47 @@
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+name: master
+jobs:
+  dotnet_linux:
+    name: '.NET (Linux)'
+    container:
+      image: ubuntu:16.04
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/linux
+
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh linux
+      working-directory: src/ImageMagick
+
+    - name: Build ImageMagick
+      run: ../../../build/dotnet/linux/build.ImageMagick.sh
+      working-directory: src/ImageMagick/libraries
+
+    - name: Build Native
+      run: ../../build/dotnet/linux/build.Native.sh
+      working-directory: src/Magick.Native
+
+    - name: Copy Native
+      run: ../../build/dotnet/linux/copy.Native.sh ../../artifacts
+      working-directory: src/Magick.Native
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+          name: linux
+          path: artifacts
