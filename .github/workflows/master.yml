@@ -96,7 +96,7 @@ jobs:
       uses: dlemstra/code-sign-action@v1
       with:
        certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
-       folder: 'artifacts'
+       folder: 'artifacts\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
