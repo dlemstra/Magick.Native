@@ -90,6 +90,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageMagick", "ImageMagick"
 		src\ImageMagick\ImageMagick.commit = src\ImageMagick\ImageMagick.commit
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{1520A3A2-D586-471F-9C70-80D43532A0C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{8E1216C8-EAE4-4E2D-B717-BAB023683820}"
+	ProjectSection(SolutionItems) = preProject
+		tools\windows\init.visualstudio.cmd = tools\windows\init.visualstudio.cmd
+		tools\windows\utils.ps1 = tools\windows\utils.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|x64 = DebugQ16|x64
@@ -160,6 +168,7 @@ Global
 		{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC} = {DF725EB7-16EC-4427-91A8-0F3DF412C294}
 		{D39F0D02-5AB1-47E8-A27A-E443697E894C} = {8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}
 		{BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
+		{8E1216C8-EAE4-4E2D-B717-BAB023683820} = {1520A3A2-D586-471F-9C70-80D43532A0C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
