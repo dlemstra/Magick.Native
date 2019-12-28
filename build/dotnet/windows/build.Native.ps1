@@ -19,6 +19,10 @@ param (
 . $PSScriptRoot\..\..\..\tools\windows\utils.ps1
 
 function buildNative($config, $quantumName, $platformName) {
+    if ($platformName -eq "x86") {
+        $platformName = "Win32"
+    }
+
     build "src\Magick.Native\Magick.Native.vcxproj" "Configuration=$config$quantumName,Platform=$platformName,PlatformToolset=v142"
 }
 
