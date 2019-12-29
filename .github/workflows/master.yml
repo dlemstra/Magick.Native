@@ -139,3 +139,30 @@ jobs:
       with:
         name: windows
         path: artifacts
+        
+  dotnet_verify_linux:
+    name: '.NET (Verify Linux)'
+    needs:
+      - dotnet_linux
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        image: ['ubuntu:16.04', 'ubuntu:16.10', 'ubuntu:18.04', 'ubuntu:latest', 'centos:7', 'microsoft/dotnet:2.0-runtime', 'microsoft/dotnet:latest']
+
+    container:
+      image: ${{ matrix.image }} 
+
+    steps:
+
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Download linux artifacts
+      uses: actions/download-artifact@v1
+      with:
+          name: linux
+
+    - name: Verify Native
+      run: build/dotnet/linux/verify.Native.sh
