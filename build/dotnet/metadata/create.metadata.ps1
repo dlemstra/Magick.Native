@@ -87,6 +87,8 @@ function writeLibraryVersions($folders) {
 }
 
 function createLibrariesDocument($destination) {
+    Remove-Item $destination -Recurse -ErrorAction Ignore
+    [void](New-Item -ItemType directory -Path $destination)
     $fileName = "$destination\libraries.md"
     [void](New-Item -force $fileName)
 
