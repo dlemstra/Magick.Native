@@ -297,7 +297,7 @@ jobs:
         name: nuget-package
         path: artifacts
 
-  publish_dotnet:
+  publish_wasm:
     name: 'Publish WASM libraries'
     needs:
       - wasm_linux
