@@ -9,3 +9,5 @@ build/dotnet/linux/output
 build/dotnet/macos/output
 build/dotnet/windows/output
 build/wasm/linux/output
+.vs
+.vscode
