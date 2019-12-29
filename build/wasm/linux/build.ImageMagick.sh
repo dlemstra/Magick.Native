@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-SCRIPT_PATH=`dirname "$0"`
+SCRIPT_PATH="$( cd "$(dirname "../actions")" ; pwd -P )"
 
 export FLAGS="-O3"
 export STRICT_FLAGS="${FLAGS} -Wall"
