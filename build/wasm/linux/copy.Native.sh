@@ -9,4 +9,6 @@ copyNative() {
     cp $quantum/magick-$quantum.d.ts $target/magick-$quantum.d.ts
 }
 
+[ "$1" != "" ] && [ ! -d "$1" ] && mkdir "$1"
+
 copyNative "Q8" $1
