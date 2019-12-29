@@ -33,6 +33,8 @@ function createNPMPackage($version, $destination)
   cd $dir
   & npm pack
 
+  Remove-Item $destination -Recurse -ErrorAction Ignore
+  [void](New-Item -ItemType directory -Path $destination)
   Copy-Item "*.tgz" $destination
 }
 

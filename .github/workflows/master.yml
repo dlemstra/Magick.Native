@@ -44,8 +44,8 @@ jobs:
     - name: Upload libraries
       uses: actions/upload-artifact@v1
       with:
-          name: linux
-          path: artifacts
+        name: linux
+        path: artifacts
 
   dotnet_macos:
     name: '.NET (MacOS)'
@@ -81,8 +81,8 @@ jobs:
     - name: Upload libraries
       uses: actions/upload-artifact@v1
       with:
-          name: macos
-          path: artifacts
+        name: macos
+        path: artifacts
 
   dotnet_windows:
     name: '.NET (Windows)'
@@ -195,7 +195,7 @@ jobs:
     - name: Download linux libraries
       uses: actions/download-artifact@v1
       with:
-          name: linux
+        name: linux
 
     - name: Verify Native
       run: build/dotnet/linux/verify.Native.sh
@@ -240,5 +240,92 @@ jobs:
     - name: Upload libraries
       uses: actions/upload-artifact@v1
       with:
-          name: wasm
-          path: artifacts
+        name: wasm
+        path: artifacts
+
+  publish_dotnet:
+    name: 'Publish .NET libraries'
+    needs:
+      - dotnet_verify_linux
+      - dotnet_macos
+      - dotnet_windows
+      - dotnet_metadata
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.ps1
+      working-directory: build/dotnet/windows
+
+    - name: Download linux libraries
+      uses: actions/download-artifact@v1
+      with:
+        name: linux
+        path: publish\dotnet\files
+
+    - name: Download macos libraries
+      uses: actions/download-artifact@v1
+      with:
+        name: macos
+        path: publish\dotnet\files
+
+    - name: Download windows libraries
+      uses: actions/download-artifact@v1
+      with:
+        name: windows
+        path: publish\dotnet\files
+
+    - name: Download metadata
+      uses: actions/download-artifact@v1
+      with:
+        name: metadata
+        path: publish\dotnet\files
+
+    - name: Create NuGet package
+      run: ./publish.ps1 -version $(Build.BuildNumber) -destination ../../artifacts
+      working-directory: publish/dotnet
+
+    - name: Upload NuGet package
+      uses: actions/upload-artifact@v1
+      with:
+        name: nuget-package
+        path: artifacts
+
+  publish_dotnet:
+    name: 'Publish WASM libraries'
+    needs:
+      - wasm_linux
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.ps1
+      working-directory: build/dotnet/windows
+
+    - name: Download wasm libraries
+      uses: actions/download-artifact@v1
+      with:
+        name: wasm
+        path: publish\wasm\files
+
+    - name: Create NPM package
+      run: ./publish.ps1 -version $(Build.BuildNumber) -destination ../../artifacts
+      working-directory: publish/wasm
+
+    - name: Upload NPM package
+      uses: actions/upload-artifact@v1
+      with:
+        name: wasm-package
+        path: artifacts

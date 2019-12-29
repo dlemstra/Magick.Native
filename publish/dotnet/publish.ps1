@@ -29,6 +29,8 @@ function createNuGetPackage($version, $destination)
   $nuget = FullPath "tools\windows\nuget.exe"
   & $nuget pack $nuspecFile -NoPackageAnalysis
 
+  Remove-Item $destination -Recurse -ErrorAction Ignore
+  [void](New-Item -ItemType directory -Path $destination)
   Copy-Item "*.nupkg" $destination
 }
 
