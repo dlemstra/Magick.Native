@@ -288,7 +288,7 @@ jobs:
         path: publish\dotnet\files
 
     - name: Create NuGet package
-      run: ./publish.ps1 -version $(Build.BuildNumber) -destination ../../artifacts
+      run: ./publish.ps1 -version ${{ env.build_number }} -destination ../../artifacts
       working-directory: publish/dotnet
 
     - name: Upload NuGet package
@@ -301,6 +301,7 @@ jobs:
     name: 'Publish WASM libraries'
     needs:
       - wasm_linux
+      - dotnet_metadata
     runs-on: windows-latest
 
     steps:
@@ -321,7 +322,7 @@ jobs:
         path: publish\wasm\files
 
     - name: Create NPM package
-      run: ./publish.ps1 -version $(Build.BuildNumber) -destination ../../artifacts
+      run: ./publish.ps1 -version ${{ env.build_number }} -destination ../../artifacts
       working-directory: publish/wasm
 
     - name: Upload NPM package
