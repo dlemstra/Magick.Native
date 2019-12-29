@@ -98,6 +98,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{8E12
 		tools\windows\utils.ps1 = tools\windows\utils.ps1
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "publish", "publish", "{4D076C4F-5298-40AC-BE34-02EA77AF7F06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{6931BC75-E765-4F1A-A961-6905E8308664}"
+	ProjectSection(SolutionItems) = preProject
+		publish\dotnet\Magick.Native.nuspec = publish\dotnet\Magick.Native.nuspec
+		publish\dotnet\publish.cmd = publish\dotnet\publish.cmd
+		publish\dotnet\publish.ps1 = publish\dotnet\publish.ps1
+		publish\dotnet\publish.yml = publish\dotnet\publish.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{7821CD6E-88F1-42CE-81A0-D67F7767ECC8}"
+	ProjectSection(SolutionItems) = preProject
+		publish\wasm\package.json = publish\wasm\package.json
+		publish\wasm\publish.ps1 = publish\wasm\publish.ps1
+		publish\wasm\publish.yml = publish\wasm\publish.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|x64 = DebugQ16|x64
@@ -169,6 +186,8 @@ Global
 		{D39F0D02-5AB1-47E8-A27A-E443697E894C} = {8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}
 		{BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
 		{8E1216C8-EAE4-4E2D-B717-BAB023683820} = {1520A3A2-D586-471F-9C70-80D43532A0C6}
+		{6931BC75-E765-4F1A-A961-6905E8308664} = {4D076C4F-5298-40AC-BE34-02EA77AF7F06}
+		{7821CD6E-88F1-42CE-81A0-D67F7767ECC8} = {4D076C4F-5298-40AC-BE34-02EA77AF7F06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
