@@ -301,7 +301,6 @@ jobs:
     name: 'Publish WASM libraries'
     needs:
       - wasm_linux
-      - dotnet_metadata
     runs-on: windows-latest
 
     steps:
