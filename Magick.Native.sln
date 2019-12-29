@@ -7,7 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Magick.Native", "src\Magick
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6C3DBF08-7B17-4B45-BA79-E3DB64032574}"
 	ProjectSection(SolutionItems) = preProject
-		azure-pipelines.yml = azure-pipelines.yml
 		.github\workflows\master.yml = .github\workflows\master.yml
 	EndProjectSection
 EndProject
@@ -18,30 +17,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{DBA3E7EC
 		build\dotnet\linux\build.cmd = build\dotnet\linux\build.cmd
 		build\dotnet\linux\build.ImageMagick.sh = build\dotnet\linux\build.ImageMagick.sh
 		build\dotnet\linux\build.Native.sh = build\dotnet\linux\build.Native.sh
-		build\dotnet\linux\build.yml = build\dotnet\linux\build.yml
 		build\dotnet\linux\copy.Native.sh = build\dotnet\linux\copy.Native.sh
 		build\dotnet\linux\Dockerfile = build\dotnet\linux\Dockerfile
 		build\dotnet\linux\install.dependencies.sh = build\dotnet\linux\install.dependencies.sh
-		build\dotnet\linux\install.sudo.sh = build\dotnet\linux\install.sudo.sh
 		build\dotnet\linux\run.cmd = build\dotnet\linux\run.cmd
 		build\dotnet\linux\verify.cmd = build\dotnet\linux\verify.cmd
 		build\dotnet\linux\verify.Native.sh = build\dotnet\linux\verify.Native.sh
-		build\dotnet\linux\verify.yml = build\dotnet\linux\verify.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
 	ProjectSection(SolutionItems) = preProject
 		build\dotnet\macos\build.ImageMagick.sh = build\dotnet\macos\build.ImageMagick.sh
 		build\dotnet\macos\build.Native.sh = build\dotnet\macos\build.Native.sh
-		build\dotnet\macos\build.yml = build\dotnet\macos\build.yml
 		build\dotnet\macos\copy.Native.sh = build\dotnet\macos\copy.Native.sh
 		build\dotnet\macos\install.dependencies.sh = build\dotnet\macos\install.dependencies.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C8420103-07D2-459E-9EFD-8FC57AA569E0}"
 	ProjectSection(SolutionItems) = preProject
-		build\dotnet\metadata\build.yml = build\dotnet\metadata\build.yml
-		build\dotnet\metadata\create.metadata.cmd = build\dotnet\metadata\create.metadata.cmd
 		build\dotnet\metadata\create.metadata.ps1 = build\dotnet\metadata\create.metadata.ps1
 	EndProjectSection
 EndProject
@@ -51,12 +44,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{5B17
 		build\dotnet\windows\build.ImageMagick.ps1 = build\dotnet\windows\build.ImageMagick.ps1
 		build\dotnet\windows\build.Native.cmd = build\dotnet\windows\build.Native.cmd
 		build\dotnet\windows\build.Native.ps1 = build\dotnet\windows\build.Native.ps1
-		build\dotnet\windows\build.yml = build\dotnet\windows\build.yml
-		build\dotnet\windows\copy.Native.cmd = build\dotnet\windows\copy.Native.cmd
 		build\dotnet\windows\copy.Native.ps1 = build\dotnet\windows\copy.Native.ps1
-		build\dotnet\windows\install.dependencies.cmd = build\dotnet\windows\install.dependencies.cmd
 		build\dotnet\windows\install.dependencies.ps1 = build\dotnet\windows\install.dependencies.ps1
-		build\dotnet\windows\sign.Native.ps1 = build\dotnet\windows\sign.Native.ps1
 		build\dotnet\windows\update.resourcefiles.ps1 = build\dotnet\windows\update.resourcefiles.ps1
 	EndProjectSection
 EndProject
@@ -68,11 +57,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{8DAB5BB6
 		build\wasm\linux\build.ImageMagick.sh = build\wasm\linux\build.ImageMagick.sh
 		build\wasm\linux\build.Native.sh = build\wasm\linux\build.Native.sh
 		build\wasm\linux\build.sh = build\wasm\linux\build.sh
-		build\wasm\linux\build.yml = build\wasm\linux\build.yml
 		build\wasm\linux\copy.Native.sh = build\wasm\linux\copy.Native.sh
 		build\wasm\linux\Dockerfile = build\wasm\linux\Dockerfile
 		build\wasm\linux\install.dependencies.sh = build\wasm\linux\install.dependencies.sh
-		build\wasm\linux\install.sudo.sh = build\wasm\linux\install.sudo.sh
 		build\wasm\linux\run.cmd = build\wasm\linux\run.cmd
 	EndProjectSection
 EndProject
@@ -103,16 +90,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{6931BC75-E765-4F1A-A961-6905E8308664}"
 	ProjectSection(SolutionItems) = preProject
 		publish\dotnet\Magick.Native.nuspec = publish\dotnet\Magick.Native.nuspec
-		publish\dotnet\publish.cmd = publish\dotnet\publish.cmd
 		publish\dotnet\publish.ps1 = publish\dotnet\publish.ps1
-		publish\dotnet\publish.yml = publish\dotnet\publish.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{7821CD6E-88F1-42CE-81A0-D67F7767ECC8}"
 	ProjectSection(SolutionItems) = preProject
 		publish\wasm\package.json = publish\wasm\package.json
 		publish\wasm\publish.ps1 = publish\wasm\publish.ps1
-		publish\wasm\publish.yml = publish\wasm\publish.yml
 	EndProjectSection
 EndProject
 Global
