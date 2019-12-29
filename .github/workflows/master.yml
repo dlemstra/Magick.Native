@@ -41,7 +41,7 @@ jobs:
       run: ../../build/dotnet/linux/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
-    - name: Upload artifacts
+    - name: Upload libraries
       uses: actions/upload-artifact@v1
       with:
           name: linux
@@ -78,7 +78,7 @@ jobs:
       run: ../../build/dotnet/macos/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
-    - name: Upload artifacts
+    - name: Upload libraries
       uses: actions/upload-artifact@v1
       with:
           name: macos
@@ -137,7 +137,7 @@ jobs:
         certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
         folder: 'artifacts\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
 
-    - name: Upload artifacts
+    - name: Upload libraries
       uses: actions/upload-artifact@v1
       with:
         name: windows
@@ -163,7 +163,7 @@ jobs:
       with:
         fetch-depth: 1
 
-    - name: Download linux artifacts
+    - name: Download linux libraries
       uses: actions/download-artifact@v1
       with:
           name: linux
@@ -208,7 +208,7 @@ jobs:
       run: ../../build/wasm/linux/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
-    - name: Upload artifacts
+    - name: Upload libraries
       uses: actions/upload-artifact@v1
       with:
           name: wasm
