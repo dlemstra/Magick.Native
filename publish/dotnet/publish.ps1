@@ -25,6 +25,8 @@ function createNuGetPackage($version, $destination)
   $nuspecFile = FullPath "publish\dotnet\files\Magick.Native.nuspec"
   $xml.Save($nuspecFile)
 
+  Get-ChildItem -Recurse -Directory
+
   $nuget = FullPath "tools\windows\nuget.exe"
   & $nuget pack $nuspecFile -NoPackageAnalysis
 
