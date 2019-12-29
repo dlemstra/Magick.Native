@@ -11,7 +11,6 @@
 # and limitations under the License.
 
 param (
-    [parameter(mandatory=$true)][string][string]$version,
     [parameter(mandatory=$true)][string]$destination
 )
 
@@ -38,4 +37,5 @@ function createNPMPackage($version, $destination)
   Copy-Item "*.tgz" $destination
 }
 
+$version = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
 createNPMPackage $version $destination

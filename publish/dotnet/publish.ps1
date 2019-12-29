@@ -11,7 +11,6 @@
 # and limitations under the License.
 
 param (
-    [string]$version,
     [parameter(mandatory=$true)][string]$destination
 )
 
@@ -34,4 +33,5 @@ function createNuGetPackage($version, $destination)
   Copy-Item "*.nupkg" $destination
 }
 
+$version = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
 createNuGetPackage $version $destination

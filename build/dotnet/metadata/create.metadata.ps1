@@ -99,10 +99,4 @@ function createLibrariesDocument($destination) {
     writeLibraryVersions $filename
 }
 
-function setBuildNumber() {
-    $buildNumber = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
-    Write-Host "::set-env name=build_number::$buildNumber"
-}
-
 createLibrariesDocument $destination
-setBuildNumber
