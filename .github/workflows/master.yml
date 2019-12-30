@@ -321,7 +321,7 @@ jobs:
         path: publish\wasm\files
 
     - name: Create NPM package
-      run: ./publish.ps1 -destination ../../artifacts
+      run: ./publish.ps1 -destination artifacts
       working-directory: publish/wasm
 
     - name: Upload NPM package

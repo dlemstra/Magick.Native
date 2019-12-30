@@ -37,7 +37,6 @@ function createNPMPackage($version, $destination)
   & npm pack
 
   Copy-Item "*.tgz" $target
-  dir $target
 }
 
 $version = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
