@@ -267,25 +267,25 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: linux
-        path: publish\dotnet\files
+        path: publish\dotnet\files\linux
 
     - name: Download macos libraries
       uses: actions/download-artifact@v1
       with:
         name: macos
-        path: publish\dotnet\files
+        path: publish\dotnet\files\macos
 
     - name: Download windows libraries
       uses: actions/download-artifact@v1
       with:
         name: windows
-        path: publish\dotnet\files
+        path: publish\dotnet\files\windows
 
     - name: Download metadata
       uses: actions/download-artifact@v1
       with:
         name: metadata
-        path: publish\dotnet\files
+        path: publish\dotnet\files\metadata
 
     - name: Create NuGet package
       run: ./publish.ps1 -destination ../../artifacts
