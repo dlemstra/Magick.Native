@@ -32,7 +32,7 @@ function getVersion($fileName, $start, $padding) {
 function writeVersionFromResource($fileName, $libraryName, $resourceFile) {
     $version = GetVersion $resourceFile "#define THIS_PROJECT_VERSION_STRING		""" 1
     if ($version -ne $null) {
-        Add-Content $fileName "- $library $version"
+        Add-Content $fileName "- $libraryName $version"
     }
 }
 
