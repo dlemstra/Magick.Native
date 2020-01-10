@@ -1576,10 +1576,10 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_Kmeans(Image *instance, const size_t number_colors, const size_t max_iterations, const double tolerance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_Kmeans(Image *instance, const size_t numberColors, const size_t maxIterations, const double tolerance, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
-  (void) KmeansImage(instance, number_colors, max_iterations, tolerance, exceptionInfo);
+  (void) KmeansImage(instance, numberColors, maxIterations, tolerance, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
