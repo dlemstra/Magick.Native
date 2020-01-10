@@ -1302,24 +1302,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Extent(const Image *instance, const char
   return image;
 }
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasChannel(const Image *instance, const size_t channel)
-{
-  PixelChannel
-    pixelChannel;
-
-  pixelChannel = (PixelChannel) channel;
-  if (GetPixelChannelTraits(instance, pixelChannel) == UndefinedPixelTrait)
-    return MagickFalse;
-
-  if (pixelChannel == GreenPixelChannel || pixelChannel == BluePixelChannel)
-  {
-    if (GetPixelChannelOffset(instance, pixelChannel) != (ssize_t) channel)
-      return MagickFalse;
-  }
-
-  return MagickTrue;
-}
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_Flip(const Image *instance, ExceptionInfo **exception)
 {
   Image
@@ -1534,6 +1516,24 @@ MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *instance, const Image *ima
   MAGICK_NATIVE_GET_EXCEPTION;
   HaldClutImage(instance, image, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
+}
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasChannel(const Image *instance, const size_t channel)
+{
+  PixelChannel
+    pixelChannel;
+
+  pixelChannel = (PixelChannel) channel;
+  if (GetPixelChannelTraits(instance, pixelChannel) == UndefinedPixelTrait)
+    return MagickFalse;
+
+  if (pixelChannel == GreenPixelChannel || pixelChannel == BluePixelChannel)
+  {
+    if (GetPixelChannelOffset(instance, pixelChannel) != (ssize_t) channel)
+      return MagickFalse;
+  }
+
+  return MagickTrue;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasProfile(const Image *instance, const char *name)

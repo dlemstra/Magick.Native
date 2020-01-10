@@ -270,8 +270,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_EvaluateOperator(Image *, const size_t, co
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Extent(const Image *, const char *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasChannel(const Image *, const size_t);
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_Flip(const Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_FloodFillAlpha(Image *, const DrawInfo *, const ssize_t, const ssize_t, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
@@ -319,6 +317,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_GetWriteMask(const Image *, ExceptionInf
 MAGICK_NATIVE_EXPORT void MagickImage_Grayscale(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *, const Image *, ExceptionInfo **);
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasChannel(const Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasProfile(const Image *, const char *);
 
