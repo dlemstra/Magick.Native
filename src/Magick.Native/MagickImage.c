@@ -82,12 +82,12 @@ static inline void SetTransformRotation(DrawInfo *instance, const double angle)
   affine.ry = sin(DegreesToRadians(fmod(angle, 360.0)));
   affine.sy = cos(DegreesToRadians(fmod(angle, 360.0)));
 
-  instance->affine.sx = current.sx*affine.sx + current.ry*affine.rx;
-  instance->affine.rx = current.rx*affine.sx + current.sy*affine.rx;
-  instance->affine.ry = current.sx*affine.ry + current.ry*affine.sy;
-  instance->affine.sy = current.rx*affine.ry + current.sy*affine.sy;
-  instance->affine.tx = current.sx*affine.tx + current.ry*affine.ty + current.tx;
-  instance->affine.ty = current.rx*affine.tx + current.sy*affine.ty + current.ty;
+  instance->affine.sx = current.sx * affine.sx + current.ry * affine.rx;
+  instance->affine.rx = current.rx * affine.sx + current.sy * affine.rx;
+  instance->affine.ry = current.sx * affine.ry + current.ry * affine.sy;
+  instance->affine.sy = current.rx * affine.ry + current.sy * affine.sy;
+  instance->affine.tx = current.sx * affine.tx + current.ry * affine.ty + current.tx;
+  instance->affine.ty = current.rx * affine.tx + current.sy * affine.ty + current.ty;
 }
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Create(const ImageInfo *settings, ExceptionInfo **exception)
@@ -395,7 +395,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Endian_Set(Image *instance, const size_t v
 
 MAGICK_NATIVE_EXPORT const char *MagickImage_FileName_Get(const Image *instance)
 {
-  return (const char *)&(instance->filename);
+  return (const char *) &(instance->filename);
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_FileName_Set(Image *instance, const char *value)
@@ -418,7 +418,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_FilterType_Set(Image *instance, const size
 
 MAGICK_NATIVE_EXPORT const char *MagickImage_Format_Get(const Image *instance)
 {
-  return (const char *)&(instance->magick);
+  return (const char *) &(instance->magick);
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_Format_Set(Image *instance, const char *value)
