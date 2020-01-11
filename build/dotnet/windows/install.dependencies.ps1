@@ -10,14 +10,6 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
-param (
-    [string]$pfxUri = ''
-)
-
 $sourceNugetExe = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 $targetNugetExe = "$PSScriptRoot\..\..\..\tools\windows\nuget.exe"
 Invoke-WebRequest $sourceNugetExe -OutFile $targetNugetExe
-
-if ($pfxUri -ne '') {
-    Invoke-WebRequest $pfxUri -OutFile "$PSScriptRoot\ImageMagick.pfx"
-}
