@@ -16,15 +16,15 @@ This document describes the requirements and instructions to build Magick.Native
 ### Building the library
 
 Magick.NET.Native uses the ImageMagick 7 library and that needs to be build first. The library can be build for Windows, Linux,
-macOS and WASM and each of these platforms have their own build steps. This project uses Azure Pipelines to build the library
-and the steps that are down for each platform can be found inside the build directory:
+macOS and WASM and each of these platforms have their own build steps. This project uses GitHub actions to build the library
+and the steps that are done for each platform can be found inside the following workflow:
 
-- Windows: [build.yml](build/dotnet/windows/build.yml)
-- Linux: [build.yml](build/dotnet/linux/build.yml)
-- macOS: [build.yml](build/dotnet/macos/build.yml)
+[master.yml](.github/workflows/master.yml)
 
-For Linux and macOS the scripts that are in the build.yml file can just be executed. For Windows the following environment
+For Linux and macOS the scripts that are in the master.yml file can just be executed. For Windows the following environment
 variables need to be set before executing the scripts:
 
 - `%QuantumName%` (Allowed values Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP)
 - `%PlatformName%` (Allowed values: x64, x86)
+
+There are also some build scripts in folder `src/ImageMagick/build` that can be used to build ImageMagick.
