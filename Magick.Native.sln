@@ -99,6 +99,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{7821CD6E-8
 		publish\wasm\publish.ps1 = publish\wasm\publish.ps1
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{54F6D858-DE3E-4369-A212-3ECC81B854EE}"
+	ProjectSection(SolutionItems) = preProject
+		src\ImageMagick\build\Build.cmd = src\ImageMagick\build\Build.cmd
+		src\ImageMagick\build\Release-Q16-HDRI-x64.cmd = src\ImageMagick\build\Release-Q16-HDRI-x64.cmd
+		src\ImageMagick\build\Release-Q16-HDRI-x86.cmd = src\ImageMagick\build\Release-Q16-HDRI-x86.cmd
+		src\ImageMagick\build\Release-Q16-x64.cmd = src\ImageMagick\build\Release-Q16-x64.cmd
+		src\ImageMagick\build\Release-Q16-x86.cmd = src\ImageMagick\build\Release-Q16-x86.cmd
+		src\ImageMagick\build\Release-Q8-x64.cmd = src\ImageMagick\build\Release-Q8-x64.cmd
+		src\ImageMagick\build\Release-Q8-x86.cmd = src\ImageMagick\build\Release-Q8-x86.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|x64 = DebugQ16|x64
@@ -172,6 +183,7 @@ Global
 		{8E1216C8-EAE4-4E2D-B717-BAB023683820} = {1520A3A2-D586-471F-9C70-80D43532A0C6}
 		{6931BC75-E765-4F1A-A961-6905E8308664} = {4D076C4F-5298-40AC-BE34-02EA77AF7F06}
 		{7821CD6E-88F1-42CE-81A0-D67F7767ECC8} = {4D076C4F-5298-40AC-BE34-02EA77AF7F06}
+		{54F6D858-DE3E-4369-A212-3ECC81B854EE} = {BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
