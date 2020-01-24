@@ -31,7 +31,7 @@ MAGICK_NATIVE_EXPORT PixelInfo *MagickSettings_BackgroundColor_Get(const ImageIn
 
 MAGICK_NATIVE_EXPORT void MagickSettings_BackgroundColor_Set(ImageInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo *)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->background_color = *value;
 }
 
@@ -42,7 +42,7 @@ MAGICK_NATIVE_EXPORT size_t MagickSettings_ColorSpace_Get(const ImageInfo *insta
 
 MAGICK_NATIVE_EXPORT void MagickSettings_ColorSpace_Set(ImageInfo *instance, const size_t value)
 {
-  instance->colorspace = (ColorspaceType)value;
+  instance->colorspace = (ColorspaceType) value;
 }
 
 MAGICK_NATIVE_EXPORT size_t MagickSettings_ColorType_Get(const ImageInfo *instance)
@@ -52,7 +52,7 @@ MAGICK_NATIVE_EXPORT size_t MagickSettings_ColorType_Get(const ImageInfo *instan
 
 MAGICK_NATIVE_EXPORT void MagickSettings_ColorType_Set(ImageInfo *instance, const size_t value)
 {
-  instance->type = (ImageType)value;
+  instance->type = (ImageType) value;
 }
 
 MAGICK_NATIVE_EXPORT size_t MagickSettings_Compression_Get(const ImageInfo *instance)
@@ -65,7 +65,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Compression_Set(ImageInfo *instance, co
   instance->compression = value;
 }
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Debug_Get(const ImageInfo  *instance)
+MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Debug_Get(const ImageInfo *instance)
 {
   return instance->debug;
 }
@@ -108,14 +108,14 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Extract_Set(ImageInfo *instance, const 
 MAGICK_NATIVE_EXPORT const char *MagickSettings_Format_Get(const ImageInfo *instance)
 {
   if (*instance->magick == '\0')
-    return (const char *)NULL;
+    return (const char *) NULL;
 
-  return (const char *)&(instance->magick);
+  return (const char *) &(instance->magick);
 }
 
 MAGICK_NATIVE_EXPORT void MagickSettings_Format_Set(ImageInfo *instance, const char *value)
 {
-  if (value == (const char *)NULL)
+  if (value == (const char *) NULL)
     *instance->magick = '\0';
   else
     CopyMagickString(instance->magick, value, MaxTextExtent);
@@ -128,9 +128,9 @@ MAGICK_NATIVE_EXPORT const char *MagickSettings_Font_Get(const ImageInfo *instan
 
 MAGICK_NATIVE_EXPORT void MagickSettings_Font_Set(ImageInfo *instance, const char *value)
 {
-  if (instance->font != (char *)NULL)
+  if (instance->font != (char *) NULL)
     instance->font = DestroyString(instance->font);
-  if (value != (const char *)NULL)
+  if (value != (const char *) NULL)
     instance->font = ConstantString(value);
 }
 
@@ -146,12 +146,12 @@ MAGICK_NATIVE_EXPORT void MagickSettings_FontPointsize_Set(ImageInfo *instance, 
 
 MAGICK_NATIVE_EXPORT const size_t MagickSettings_Interlace_Get(const ImageInfo *instance)
 {
-  return (size_t)instance->interlace;
+  return (size_t) instance->interlace;
 }
 
 MAGICK_NATIVE_EXPORT void MagickSettings_Interlace_Set(ImageInfo *instance, const size_t value)
 {
-  instance->interlace = (InterlaceType)value;
+  instance->interlace = (InterlaceType) value;
 }
 
 MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Monochrome_Get(ImageInfo *instance)
@@ -181,7 +181,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_SetColorFuzz(ImageInfo *instance, const
 
 MAGICK_NATIVE_EXPORT void MagickSettings_SetFileName(ImageInfo *instance, const char *value)
 {
-  if (value == (const char *)NULL)
+  if (value == (const char *) NULL)
     *instance->filename = '\0';
   else
     CopyMagickString(instance->filename, value, MaxTextExtent);

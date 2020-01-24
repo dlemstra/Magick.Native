@@ -48,8 +48,8 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Font_Set(ImageInfo *, const char *);
 MAGICK_NATIVE_EXPORT const double MagickSettings_FontPointsize_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_FontPointsize_Set(ImageInfo *, const double);
 
-MAGICK_NATIVE_EXPORT const size_t MagickSettings_Interlace_Get(const ImageInfo *instance);
-MAGICK_NATIVE_EXPORT void MagickSettings_Interlace_Set(ImageInfo *instance, const size_t value);
+MAGICK_NATIVE_EXPORT const size_t MagickSettings_Interlace_Get(const ImageInfo *);
+MAGICK_NATIVE_EXPORT void MagickSettings_Interlace_Set(ImageInfo *, const size_t);
 
 MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Monochrome_Get(ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Monochrome_Set(ImageInfo *, const MagickBooleanType);
