@@ -24,6 +24,16 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Dispose(ImageInfo *instance)
   DestroyImageInfo(instance);
 }
 
+MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_AntiAlias_Get(const ImageInfo *instance)
+{
+  return instance->antialias;
+}
+
+MAGICK_NATIVE_EXPORT void MagickSettings_AntiAlias_Set(ImageInfo *instance, const MagickBooleanType value)
+{
+  instance->antialias = value;
+}
+
 MAGICK_NATIVE_EXPORT PixelInfo *MagickSettings_BackgroundColor_Get(const ImageInfo *instance)
 {
   return MagickColor_Clone(&instance->background_color);
