@@ -9,7 +9,7 @@
   "author": "Dirk Lemstra",
   "license": "Apache-2.0",
   "files": [
-    "wasm/magick-Q8.js",
-    "wasm/magick-Q8.d.ts"
+    "magick-Q8.js",
+    "magick-Q8.d.ts"
   ]
 }
