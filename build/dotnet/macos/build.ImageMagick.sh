@@ -41,7 +41,9 @@ cd ../freetype
 $CONFIGURE --disable-shared --without-bzip2 CFLAGS="$FLAGS"
 $MAKE install
 make clean
-# mkdir build
+if [ -d "build" ];
+    then rm -rf build
+mkdir build
 cd build
 $CMAKE_COMMAND .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
@@ -136,4 +138,4 @@ cd ../ImageMagick
 autoreconf -fiv
 buildImageMagick "Q8"
 buildImageMagick "Q16"
-buildImageMagick "Q16-HDRI"
+buildImageMagick "Q16-HDRI";

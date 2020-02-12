@@ -1,0 +1,124 @@
+#!/bin/bash
+set -e
+
+export FLAGS="-O3 -fPIC"
+export STRICT_FLAGS="${FLAGS} -Wall"
+export CONFIGURE="./configure"
+export CMAKE_COMMAND="cmake"
+export MAKE="make"
+export CPPFLAGS="-I/usr/local/include"
+export LDFLAGS="-L/usr/local/lib"
+export CONDITIONAL_DISABLE_SHARED=""
+export PKG_PATH="/usr/local/lib/pkgconfig"
+export HEIF_HACK=false
+export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
+export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
+export SIMD_OPTIONS="-DWITH_SIMD=1"
+export SSE_OPTIONS=""
+export IMAGEMAGICK_OPTIONS=""
+
+: '
+# Build zlib
+cd zlib
+chmod +x ./configure
+$CONFIGURE --static
+$MAKE install CFLAGS="$FLAGS"
+
+# Build libxml
+cd ../libxml
+autoreconf -fiv
+$CONFIGURE --with-python=no --enable-static --disable-shared $LIBXML_OPTIONS CFLAGS="$FLAGS"
+$MAKE install
+
+# Build libpng
+cd ../png
+autoreconf -fiv
+$CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
+$MAKE install
+
+# Build freetype
+cd ../freetype
+./autogen.sh
+$CONFIGURE --disable-shared --without-bzip2 CFLAGS="$FLAGS"
+$MAKE install
+make clean
+if [ -d "build" ];
+    then rm -rf build
+mkdir build
+cd build
+$CMAKE_COMMAND .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
+$MAKE install
+cd ..
+
+# Build fontconfig
+cd ../ImageMagick/fontconfig
+autoreconf -fiv
+pip install lxml
+pip install six
+$CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared $FONTCONFIG_OPTIONS CFLAGS="$FLAGS"
+$MAKE install
+cd ..
+
+# Build libjpeg-turbo
+cd ../jpeg
+$CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
+$MAKE install
+
+# Build libtiff
+cd ../tiff
+autoreconf -fiv
+$CONFIGURE ${CONDITIONAL_DISABLE_SHARED} CFLAGS="$FLAGS"
+$MAKE install
+
+# Build libwebp
+cd ../webp
+autoreconf -fiv
+chmod +x ./configure
+$CONFIGURE --enable-libwebpmux --enable-libwebpdemux --disable-shared CFLAGS="${FLAGS}"
+$MAKE install
+
+# Build openjpeg
+cd ../openjpeg
+$CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS" || true
+$CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
+$MAKE install
+cp bin/libopenjp2.a /usr/local/lib
+
+# Build lcms
+cd ../lcms
+autoreconf -fiv
+$CONFIGURE --disable-shared --prefix=/usr/local CFLAGS="$FLAGS"
+$MAKE install
+
+# Build libde265
+cd ../libde265
+autoreconf -fiv
+chmod +x ./configure
+$CONFIGURE --disable-shared $SSE_OPTIONS --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
+$MAKE install
+
+# Build libheif
+cd ../libheif
+autoreconf -fiv
+chmod +x ./configure
+$CONFIGURE --disable-shared --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+if [ "$HEIF_HACK" = true ]; then
+    for f in examples/*.cc; do echo "" > $f; done
+fi
+$MAKE install
+
+# Build libraw
+cd ../libraw
+chmod +x ./version.sh
+chmod +x ./shlib-version.sh
+autoreconf -fiv
+chmod +x ./configure
+$CONFIGURE --disable-shared --disable-examples --disable-openmp --disable-jpeg --disable-jasper --prefix=/usr/local  CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
+$MAKE install
+'
+
+# Build libtiff
+cd tiff
+autoreconf -fiv
+$CONFIGURE ${CONDITIONAL_DISABLE_SHARED} CFLAGS="$FLAGS"
+$MAKE install

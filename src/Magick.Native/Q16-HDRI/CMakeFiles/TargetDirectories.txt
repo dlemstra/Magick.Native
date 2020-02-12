@@ -1,0 +1,3 @@
+/Users/jediah/Documents/Magick.Native.Mythical/src/Magick.Native/Q16-HDRI/CMakeFiles/rebuild_cache.dir
+/Users/jediah/Documents/Magick.Native.Mythical/src/Magick.Native/Q16-HDRI/CMakeFiles/edit_cache.dir
+/Users/jediah/Documents/Magick.Native.Mythical/src/Magick.Native/Q16-HDRI/CMakeFiles/Magick.Native-Q16-HDRI-x64.dll.dir
