@@ -18,6 +18,23 @@ clone() {
   cd ..
 }
 
+cloneMike(){
+  local repo=$1
+  local dir=$2
+  local root="https://github.com/tkgmnimmo"
+
+  echo ''
+  echo "Cloning $1"
+
+  if [ ! -d "$dir" ]; then
+    git clone $root/$repo.git $dir
+    if [ $? != 0 ]; then echo "Error during checkout"; exit; fi
+  fi
+  cd $dir
+  git pull origin master
+  cd ..
+}
+
 #clone and check out a specific commit
 clone_commit()
 {
@@ -26,10 +43,10 @@ clone_commit()
   local dir=$3
   if [ -z $dir ]; then dir=$repo; fi
 
-  clone $repo $dir
+  cloneMike $repo $dir
 
   cd $dir
-  git checkout $commit
+  # git checkout $commit
   cd ..
 }
 
@@ -64,6 +81,7 @@ declare -r commitDate=`git log -1 --format=%ci`
 echo "Set latest commit date as $commitDate" 
 cd ..
 
+
 clone_date 'freetype' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
 clone_date 'lcms' "$commitDate"
@@ -76,6 +94,7 @@ clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
 clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
+
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
   # Clone fontconfig
