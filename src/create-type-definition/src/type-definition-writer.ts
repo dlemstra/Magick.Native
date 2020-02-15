@@ -9,8 +9,8 @@ export class TypeDefinitionWriter {
     constructor(private methods: Method[]) { }
 
     async write(fileName: string) {
-        let data = `type quantum = number;
-type quantumArray = Uint8Array;
+        let data = `export type quantum = number;
+export type quantumArray = Uint8Array;
 
 /** @internal */
 export interface MagickNative {
