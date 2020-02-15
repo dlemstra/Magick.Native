@@ -9,13 +9,14 @@ export class TypeDefinitionWriter {
     constructor(private methods: Method[]) { }
 
     async write(fileName: string) {
-        let data = `/** @internal */
-type quantum = number;
+        let data = `type quantum = number;
+type quantumArray = Uint8Array;
 
 /** @internal */
 export interface MagickNative {
     _malloc(size: number) : number;
     _free(instance: number): void;
+    HEAPU8: quantumArray;
     getValue(instance: number, type: string): number;
     setValue(instance: number, value: number, type: string): void;
     UTF8ToString(ptr: number): string;
