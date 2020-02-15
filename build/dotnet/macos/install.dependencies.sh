@@ -11,5 +11,6 @@ brew install autoconf automake libiconv libtool nasm ossp-uuid pkg-config
 brew uninstall --force php
 brew uninstall --force freetype
 brew uninstall --force webp
+brew uninstall --force jpeg
 brew uninstall --force libpng
 brew uninstall --ignore-dependencies xz
