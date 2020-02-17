@@ -13,7 +13,7 @@ export class TypeDefinitionWriter {
 export type quantumArray = Uint8Array;
 
 /** @internal */
-export interface MagickNative {
+export interface ImageMagickApi {
     _malloc(size: number) : number;
     _free(instance: number): void;
     HEAPU8: quantumArray;
@@ -37,7 +37,7 @@ export interface MagickNative {
     }
 data += `}
 
-declare const MagickNative : () => Promise<MagickNative>;
+declare const MagickNative: () => Promise<ImageMagickApi>;
 export default MagickNative;`
 
         await writeFile(fileName, data);
