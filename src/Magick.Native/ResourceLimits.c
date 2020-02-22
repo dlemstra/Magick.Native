@@ -92,3 +92,21 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType limit)
 {
   SetMagickResourceLimit(WidthResource, limit);
 }
+
+MAGICK_NATIVE_EXPORT void ResourceLimits_MemoryLimit(const double percentage)
+{
+  double
+    pages;
+
+  MagickSizeType
+    memory;
+
+  ssize_t
+    pagesize;
+
+  pagesize = GetMagickPageSize();
+  pages = (double) sysconf(_SC_PHYS_PAGES) * percentage;
+  memory = (MagickSizeType) pages * pagesize;
+  ResourceLimits_Area_Set(memory * 2);
+  ResourceLimits_Memory_Set(memory);
+}
