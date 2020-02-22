@@ -11,6 +11,9 @@
 // and limitations under the License.
 #pragma once
 
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Area_Get(void);
+MAGICK_NATIVE_EXPORT void ResourceLimits_Area_Set(const MagickSizeType);
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Disk_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Disk_Set(const MagickSizeType);
 

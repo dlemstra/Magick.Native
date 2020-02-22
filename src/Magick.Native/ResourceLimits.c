@@ -13,6 +13,16 @@
 #include "Stdafx.h"
 #include "ResourceLimits.h"
 
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Area_Get(void)
+{
+  return GetMagickResourceLimit(AreaResource);
+}
+
+MAGICK_NATIVE_EXPORT void ResourceLimits_Area_Set(const MagickSizeType limit)
+{
+  SetMagickResourceLimit(AreaResource, limit);
+}
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Disk_Get(void)
 {
   return GetMagickResourceLimit(DiskResource);
@@ -50,7 +60,6 @@ MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Memory_Get(void)
 
 MAGICK_NATIVE_EXPORT void ResourceLimits_Memory_Set(const MagickSizeType limit)
 {
-  SetMagickResourceLimit(AreaResource, limit);
   SetMagickResourceLimit(MemoryResource, limit);
 }
 
@@ -81,5 +90,5 @@ MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Width_Get(void)
 
 MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType limit)
 {
-  SetMagickResourceLimit(WidthResource, limit);;
+  SetMagickResourceLimit(WidthResource, limit);
 }
