@@ -95,6 +95,16 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Density_Set(ImageInfo *instance, const 
   CloneString(&instance->density, value);
 }
 
+MAGICK_NATIVE_EXPORT const size_t MagickSettings_Depth_Get(const ImageInfo *instance)
+{
+  return instance->depth;
+}
+
+MAGICK_NATIVE_EXPORT void MagickSettings_Depth_Set(ImageInfo *instance, const size_t value)
+{
+  instance->depth = value;
+}
+
 MAGICK_NATIVE_EXPORT size_t MagickSettings_Endian_Get(const ImageInfo *instance)
 {
   return instance->endian;

@@ -36,6 +36,9 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Debug_Set(ImageInfo *, const MagickBool
 MAGICK_NATIVE_EXPORT const char *MagickSettings_Density_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Density_Set(ImageInfo *, const char *);
 
+MAGICK_NATIVE_EXPORT const size_t MagickSettings_Depth_Get(const ImageInfo *);
+MAGICK_NATIVE_EXPORT void MagickSettings_Depth_Set(ImageInfo *, const size_t);
+
 MAGICK_NATIVE_EXPORT size_t MagickSettings_Endian_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Endian_Set(ImageInfo *, const size_t);
 
