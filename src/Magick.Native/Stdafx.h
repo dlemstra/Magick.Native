@@ -19,6 +19,10 @@
 
 #include <MagickCore/MagickCore.h>
 #include <MagickWand/MagickWand.h>
+#include <unistd.h>
+
+extern MagickPrivate ssize_t
+  GetMagickPageSize(void);
 
 #if defined(MAGICK_NATIVE_WASM)
   #include <emscripten.h>
