@@ -16,7 +16,7 @@ export interface Method {
 
 export class CodeParser {
 
-    constructor(private files: string[]) {}
+    constructor(private files: string[]) { }
 
     async getMethods() {
         let result = new Array<Method>();
@@ -45,7 +45,7 @@ export class CodeParser {
         return methods;
     }
 
-    private getMethod(line: string) : Method {
+    private getMethod(line: string): Method {
         line = this.removeStartKeywords(line);
 
         const info = line.split(' ');
@@ -104,7 +104,7 @@ export class CodeParser {
         if (typeName.endsWith('*'))
             return 'number';
 
-        switch(typeName) {
+        switch (typeName) {
             case 'void':
                 return 'void';
             case 'char':
@@ -115,6 +115,7 @@ export class CodeParser {
             case 'CustomStreamSeeker':
             case 'CustomStreamTeller':
             case 'ExceptionType':
+            case 'MagickBooleanType':
             case 'MagickCLDevice':
             case 'MagickCLDeviceType':
             case 'KernelProfileRecord':
@@ -126,8 +127,6 @@ export class CodeParser {
             case 'ssize_t':
             case 'long':
                 return 'number';
-            case 'MagickBooleanType':
-                return 'boolean';
             case 'Quantum':
                 return 'quantum';
             default:
