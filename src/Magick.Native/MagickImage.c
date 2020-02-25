@@ -2548,6 +2548,17 @@ MAGICK_NATIVE_EXPORT void MagickImage_WhiteThreshold(Image *instance, const char
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
+MAGICK_NATIVE_EXPORT unsigned char *MagickImage_WriteBlob(Image *instance, const ImageInfo *settings, size_t *length, ExceptionInfo **exception)
+{
+  unsigned char
+    *data;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  data = (unsigned char *) ImagesToBlob(settings, instance, length, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return data;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_WriteFile(Image *instance, const ImageInfo *settings, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;

@@ -516,6 +516,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_WaveletDenoise(const Image *, const doub
 
 MAGICK_NATIVE_EXPORT void MagickImage_WhiteThreshold(Image *, const char *, const size_t, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT unsigned char *MagickImage_WriteBlob(Image *, const ImageInfo *, size_t *, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT void MagickImage_WriteFile(Image *, const ImageInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *, ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, const CustomStreamHandler, ExceptionInfo **);
