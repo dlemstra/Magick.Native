@@ -57,9 +57,9 @@ target_link_libraries(
     ${LIB_DIR}/libpng.a
     ${LIB_DIR}/libturbojpeg.a
     ${LIB_DIR}/libtiff.a
-    ${LIB_DIR}/libwebp.a
     ${LIBWEBPMUX}
     ${LIBWEBPDEMUX}
+    ${LIB_DIR}/libwebp.a
     ${LIB_DIR}/libopenjp2.a
     ${LIB_DIR}/liblcms2.a
     ${LIB_DIR}/libheif.a
