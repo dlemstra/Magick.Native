@@ -212,6 +212,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_Clut(Image *, Image *, const size_t, const
 
 MAGICK_NATIVE_EXPORT void MagickImage_ColorDecisionList(Image *, const char *, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT void MagickImage_ColorThreshold(Image *, const PixelInfo *, const PixelInfo *, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT Image *MagickImage_Colorize(const Image *, const PixelInfo *, const char *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_ColorMatrix(const Image *, const KernelInfo *, ExceptionInfo **);
