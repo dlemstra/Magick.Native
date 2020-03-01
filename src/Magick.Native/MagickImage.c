@@ -1020,7 +1020,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ColorMatrix(const Image *instance, const
 MAGICK_NATIVE_EXPORT void MagickImage_ColorThreshold(Image *instance, const PixelInfo *startColor, const PixelInfo *stopColor, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
-  ColorThresholdImage(instance, startColor, stopColor, exception);
+  ColorThresholdImage(instance, startColor, stopColor, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
