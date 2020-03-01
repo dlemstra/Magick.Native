@@ -995,13 +995,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_ColorDecisionList(Image *instance, const c
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_ColorThreshold(Image *instance, const PixelInfo *startColor, const PixelInfo *stopColor, ExceptionInfo **exception)
-{
-  MAGICK_NATIVE_GET_EXCEPTION;
-  ColorThresholdImage(instance, startColor, stopColor, exception);
-  MAGICK_NATIVE_SET_EXCEPTION;
-}
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_Colorize(const Image *instance, const PixelInfo *color, const char *blend, ExceptionInfo **exception)
 {
   Image
@@ -1022,6 +1015,13 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ColorMatrix(const Image *instance, const
   image = ColorMatrixImage(instance, kernel, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
+}
+
+MAGICK_NATIVE_EXPORT void MagickImage_ColorThreshold(Image *instance, const PixelInfo *startColor, const PixelInfo *stopColor, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  ColorThresholdImage(instance, startColor, stopColor, exception);
+  MAGICK_NATIVE_SET_EXCEPTION;
 }
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Compare(Image *instance, Image *reference, const size_t metric, const size_t channels, double *distortion, ExceptionInfo **exception)
