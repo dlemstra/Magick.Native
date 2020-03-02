@@ -111,6 +111,7 @@ export class CodeParser {
             case 'double':
             case 'AutoThresholdMethod':
             case 'ColorspaceType':
+            case 'ComplexOperator':
             case 'CustomStreamHandler':
             case 'CustomStreamSeeker':
             case 'CustomStreamTeller':
