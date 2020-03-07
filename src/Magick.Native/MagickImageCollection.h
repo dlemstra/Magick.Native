@@ -17,7 +17,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Coalesce(const Image *, Except
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Combine(Image *, const ColorspaceType, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ComplexImages(Image *, const ComplexOperator, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Complex(Image *, const ComplexOperator, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImageCollection_Dispose(Image *);
 

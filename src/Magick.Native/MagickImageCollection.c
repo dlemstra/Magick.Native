@@ -77,7 +77,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Combine(Image *images, const C
   return result;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ComplexImages(Image *images, const ComplexOperator complexOperator, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Complex(Image *images, const ComplexOperator complexOperator, ExceptionInfo **exception)
 {
   Image
     *result;
