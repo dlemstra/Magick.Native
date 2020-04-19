@@ -356,6 +356,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_MeanShift(const Image *, const size_t, c
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Minify(const Image *, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT PointInfo *MagickImage_MinimumBoundingBox(const Image *, size_t *, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT void MagickImage_Modulate(Image *, const char *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT ChannelMoments *MagickImage_Moments(const Image *, ExceptionInfo **);

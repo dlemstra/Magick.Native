@@ -1720,6 +1720,17 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Minify(const Image *instance, ExceptionI
   return image;
 }
 
+MAGICK_NATIVE_EXPORT PointInfo *MagickImage_MinimumBoundingBox(const Image *instance, size_t *length, ExceptionInfo **exception)
+{
+  PointInfo
+    *coordinates;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  coordinates = GetImageMinimumBoundingBox(instance, length, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return coordinates;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_Modulate(Image *instance, const char *modulate, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
