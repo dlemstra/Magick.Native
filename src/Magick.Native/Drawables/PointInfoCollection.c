@@ -23,12 +23,12 @@ MAGICK_NATIVE_EXPORT void PointInfoCollection_Dispose(PointInfo *instance)
   RelinquishMagickMemory(instance);
 }
 
-MAGICK_NATIVE_EXPORT void PointInfoCollection_GetX(PointInfo *instance, const size_t index)
+MAGICK_NATIVE_EXPORT double PointInfoCollection_GetX(PointInfo *instance, const size_t index)
 {
   return instance[index].x;
 }
 
-MAGICK_NATIVE_EXPORT void PointInfoCollection_GetY(PointInfo *instance, const size_t index)
+MAGICK_NATIVE_EXPORT double PointInfoCollection_GetY(PointInfo *instance, const size_t index)
 {
   return instance[index].y;
 }
