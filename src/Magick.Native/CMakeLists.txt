@@ -24,16 +24,14 @@ endif()
 
 if (PLATFORM STREQUAL "MACOS")
     set(LIBICONV /usr/local/opt/libiconv/lib/libiconv.a)
-
+    set(CMAKE_MACOSX_RPATH 1)
     set(STDCPLUSPLUS stdc++)
 elseif (PLATFORM STREQUAL "WASM")
     list(APPEND ALL_FILES foo.cxx)
 else()
     find_package(Threads REQUIRED)
-    set(THREADLIB Threads::Threads)
-
     list(APPEND ALL_FILES foo.cxx)
-
+    set(THREADLIB Threads::Threads)
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
 endif()
 
