@@ -185,8 +185,8 @@ MAGICK_NATIVE_EXPORT RectangleInfo *MagickImage_BoundingBox_Get(const Image *ins
 
   MAGICK_NATIVE_GET_EXCEPTION;
   result = MagickRectangle_Create();
-  if (result == (RectangleInfo*) NULL)
-    return (RectangleInfo*) NULL;
+  if (result == (RectangleInfo *) NULL)
+    return (RectangleInfo *) NULL;
   *result = GetImageBoundingBox(instance, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return result;
@@ -717,7 +717,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AddNoise(Image *instance, const size_t n
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_AddProfile(Image *instance, const char *name, const unsigned char * datum, const size_t length, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_AddProfile(Image *instance, const char *name, const unsigned char *datum, const size_t length, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
   ProfileImage(instance, name, datum, length, exceptionInfo);
@@ -1556,7 +1556,7 @@ MAGICK_NATIVE_EXPORT PixelInfo *MagickImage_Histogram(const Image *instance, siz
   MAGICK_NATIVE_GET_EXCEPTION;
   result = GetImageHistogram(instance, length, exceptionInfo);
   if (*length == 0)
-    result = (PixelInfo*) RelinquishMagickMemory(result);
+    result = (PixelInfo *) RelinquishMagickMemory(result);
   MAGICK_NATIVE_SET_EXCEPTION;
   return result;
 }
