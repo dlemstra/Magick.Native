@@ -15,4 +15,8 @@ MAGICK_NATIVE_EXPORT PointInfo *PointInfoCollection_Create(const size_t);
 
 MAGICK_NATIVE_EXPORT void PointInfoCollection_Dispose(PointInfo *);
 
+MAGICK_NATIVE_EXPORT void PointInfoCollection_GetX(PointInfo *, const size_t);
+
+MAGICK_NATIVE_EXPORT void PointInfoCollection_GetY(PointInfo *, const size_t);
+
 MAGICK_NATIVE_EXPORT void PointInfoCollection_Set(PointInfo *, const size_t, const double, const double);
