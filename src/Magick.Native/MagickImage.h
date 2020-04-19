@@ -228,6 +228,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_CompositeGraviy(Image *, const Image *, co
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_ConnectedComponents(const Image *, const size_t, CCObjectInfo **, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT PointInfo *MagickImage_ConvexHull(const Image *, size_t *, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT void MagickImage_Contrast(Image *, const MagickBooleanType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_ContrastStretch(Image *, const double, const double, const size_t, ExceptionInfo **);
