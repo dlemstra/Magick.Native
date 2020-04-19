@@ -1071,17 +1071,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_CompositeGravity(Image *instance, const Im
   MagickImage_Composite(instance, reference, geometry.x, geometry.y, compose, channels, exception);
 }
 
-MAGICK_NATIVE_EXPORT PointInfo *MagickImage_ConvexHull(const Image *instance, size_t *length, ExceptionInfo **exception)
-{
-  PointInfo
-    *coordinates;
-
-  MAGICK_NATIVE_GET_EXCEPTION;
-  coordinates = GetImageConvexHull(instance, length, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-  return coordinates;
-}
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_ConnectedComponents(const Image *instance, const size_t connectivity, CCObjectInfo **objects, ExceptionInfo **exception)
 {
   Image
@@ -1107,6 +1096,17 @@ MAGICK_NATIVE_EXPORT void MagickImage_ContrastStretch(Image *instance, const dou
   ContrastStretchImage(instance, blackPoint, whitePoint, exceptionInfo);
   RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
+}
+
+MAGICK_NATIVE_EXPORT PointInfo *MagickImage_ConvexHull(const Image *instance, size_t *length, ExceptionInfo **exception)
+{
+  PointInfo
+    *coordinates;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  coordinates = GetImageConvexHull(instance, length, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return coordinates;
 }
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Convolve(const Image *instance, const KernelInfo *kernel, ExceptionInfo **exception)
