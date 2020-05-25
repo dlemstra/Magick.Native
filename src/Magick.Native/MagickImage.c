@@ -1594,6 +1594,17 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
   return image;
 }
 
+MAGICK_NATIVE_EXPORT Image *MagickImage_InterpolativeResize(const Image *instance, const size_t columns, const size_t rows, const size_t method, ExceptionInfo **exception)
+{
+  Image
+    *image;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  image = InterpolativeResizeImage(instance, columns, rows, (const PixelInterpolateMethod) method, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return image;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_Kmeans(Image *instance, const size_t numberColors, const size_t maxIterations, const double tolerance, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
