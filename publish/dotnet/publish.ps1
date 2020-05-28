@@ -33,5 +33,5 @@ function createNuGetPackage($version, $destination)
   Copy-Item "*.nupkg" $destination
 }
 
-$version = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
+$version = (Get-Date).ToUniversalTime().ToString("0.yyyy.MMdd.HHmm")
 createNuGetPackage $version $destination
