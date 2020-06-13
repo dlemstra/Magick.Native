@@ -92,8 +92,11 @@ function createLibrariesDocument($destination) {
     $fileName = "$destination\libraries.md"
     [void](New-Item -force $fileName)
 
+    & cmd /c 'git rev-parse HEAD > commit.txt 2> nul'
+    $commit = [IO.File]::ReadAllText("commit.txt").Trim()
+
     Add-Content $fileName "# Libraries"
-    Add-Content $fileName "Magick.Native is build with the following libraries:"
+    Add-Content $fileName "Magick.Native [$commit](https://github.com/dlemstra/Magick.Native/commit/$commit) is build with the following libraries:"
     Add-Content $fileName ""
 
     writeLibraryVersions $filename
