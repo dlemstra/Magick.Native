@@ -17,7 +17,7 @@ export SSE_OPTIONS=""
 export FONTCONFIG_BUILD=true
 export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
 export HEIF_HACK=false
-export LIBXML_OPTIONS=""
+export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
 export PNG_PATCH=false
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export IMAGEMAGICK_OPTIONS=""
