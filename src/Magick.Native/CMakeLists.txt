@@ -20,6 +20,7 @@ else()
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
     set(LIBWEBPMUX ${LIB_DIR}/libwebpmux.a)
     set(LIBWEBPDEMUX ${LIB_DIR}/libwebpdemux.a)
+    set(LIBOPENEXR ${LIB_DIR}/libIlmImf-2_5.a ${LIB_DIR}/libIlmThread-2_5.a ${LIB_DIR}/libIex-2_5.a ${LIB_DIR}/libHalf-2_5.a ${LIB_DIR}/libImath-2_5.a)
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
@@ -47,6 +48,7 @@ target_link_libraries(
     ${LIB_DIR}/libMagickWand-7.${QUANTUM_NAME}.a
     ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
+    ${LIBOPENEXR}
     ${LIB_DIR}/libz.a
     ${LIBICONV}
     ${LIB_DIR}/libxml2.a

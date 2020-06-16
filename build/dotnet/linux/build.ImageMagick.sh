@@ -18,6 +18,7 @@ export FONTCONFIG_BUILD=true
 export FONTCONFIG_OPTIONS=""
 export HEIF_HACK=false
 export LIBXML_OPTIONS=""
+export OPENEXR_BUILD=true
 export PNG_PATCH=false
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export IMAGEMAGICK_OPTIONS=""
@@ -121,6 +122,17 @@ autoreconf -fiv
 chmod +x ./configure
 $CONFIGURE --disable-shared --disable-examples --disable-openmp --disable-jpeg --disable-jasper --prefix=/usr/local  CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
+
+# Build openexr
+if [ "$OPENEXR_BUILD" = true ]; then
+    cd ../exr/ilmbase
+    $CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off -DCMAKE_CXX_FLAGS="$FLAGS"
+    $MAKE install
+    cd ../openexr
+    $CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DINSTALL_OPENEXR_EXAMPLES=off -DBUILD_TESTING=off -DOPENEXR_BUILD_UTILS=off -DCMAKE_CXX_FLAGS="$FLAGS"
+    $MAKE install
+    cd ..
+fi
 
 buildImageMagick() {
     local quantum=$1
