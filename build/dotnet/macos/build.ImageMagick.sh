@@ -15,6 +15,7 @@ export PKG_PATH="/usr/local/lib/pkgconfig"
 export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
 export FONTCONFIG_BUILD=true
+export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
 export HEIF_HACK=false
 export LIBXML_OPTIONS=""
 export PNG_PATCH=false
@@ -60,7 +61,7 @@ if [ "$FONTCONFIG_BUILD" = true ]; then
     autoreconf -fiv
     pip install lxml
     pip install six
-    $CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared CFLAGS="$FLAGS"
+    $CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared $FONTCONFIG_OPTIONS CFLAGS="$FLAGS"
     $MAKE install
 fi
 
