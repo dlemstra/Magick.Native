@@ -14,7 +14,7 @@ export CONDITIONAL_DISABLE_SHARED="--disable-shared"
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export SIMD_OPTIONS="-DWITH_SIMD=0"
 export SSE_OPTIONS="--disable-sse"
-export FONTCONFIG_BUILD=true
+export FONTCONFIG_BUILD=false
 export HEIF_HACK=true
 export LIBXML_OPTIONS=""
 export PNG_PATCH=true
