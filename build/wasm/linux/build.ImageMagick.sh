@@ -12,10 +12,13 @@ export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED="--disable-shared"
 export PKG_PATH="/usr/local/lib/pkgconfig"
-export HEIF_HACK=true
-export LIBXML_OPTIONS=""
 export SIMD_OPTIONS="-DWITH_SIMD=0"
 export SSE_OPTIONS="--disable-sse"
+export FONTCONFIG_BUILD=true
+export HEIF_HACK=true
+export LIBXML_OPTIONS=""
+export PNG_PATCH=true
+export WEBP_OPTIONS=""
 export IMAGEMAGICK_OPTIONS="--without-threads"
 
 # Build zlib
@@ -32,7 +35,9 @@ $MAKE install
 
 # Build libpng
 cd ../png
-git apply $SCRIPT_PATH/patches/png.patch
+if [ "$PNG_PATCH" = true ]; then
+    git apply $SCRIPT_PATH/patches/png.patch
+fi
 autoreconf -fiv
 $CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
 $MAKE install
@@ -47,8 +52,18 @@ mkdir build
 cd build
 $CMAKE_COMMAND .. -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE -DCMAKE_C_FLAGS="$FLAGS"
 $MAKE install
-
 cd ..
+
+# Build fontconfig
+if [ "$FONTCONFIG_BUILD" = true ]; then
+    cd ../fontconfig
+    autoreconf -fiv
+    pip install lxml
+    pip install six
+    $CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared CFLAGS="$FLAGS"
+    $MAKE install
+fi
+
 # Build libjpeg-turbo
 cd ../jpeg
 $CMAKE_COMMAND . -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SHARED=off ${SIMD_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="$FLAGS"
@@ -64,7 +79,7 @@ $MAKE install
 cd ../webp
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared CFLAGS="${FLAGS}"
+$CONFIGURE ${WEBP_OPTIONS} --disable-shared CFLAGS="${FLAGS}"
 $MAKE install
 
 # Build openjpeg

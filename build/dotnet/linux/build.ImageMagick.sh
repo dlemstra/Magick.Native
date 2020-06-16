@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
 export FLAGS="-O3 -fPIC"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="./configure"
@@ -10,11 +12,13 @@ export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED=""
 export PKG_PATH="/usr/local/lib/pkgconfig"
-export HEIF_HACK=false
-export LIBXML_OPTIONS=""
-export FONTCONFIG_OPTIONS=""
 export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
+export FONTCONFIG_BUILD=true
+export HEIF_HACK=false
+export LIBXML_OPTIONS=""
+export PNG_PATCH=false
+export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export IMAGEMAGICK_OPTIONS=""
 
 # Build zlib
@@ -31,6 +35,9 @@ $MAKE install
 
 # Build libpng
 cd ../png
+if [ "$PNG_PATCH" = true ]; then
+    git apply $SCRIPT_PATH/patches/png.patch
+fi
 autoreconf -fiv
 $CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
 $MAKE install
@@ -48,12 +55,14 @@ $MAKE install
 cd ..
 
 # Build fontconfig
-cd ../fontconfig
-autoreconf -fiv
-pip install lxml
-pip install six
-$CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared $FONTCONFIG_OPTIONS CFLAGS="$FLAGS"
-$MAKE install
+if [ "$FONTCONFIG_BUILD" = true ]; then
+    cd ../fontconfig
+    autoreconf -fiv
+    pip install lxml
+    pip install six
+    $CONFIGURE --enable-libxml2 --enable-static=yes --disable-shared CFLAGS="$FLAGS"
+    $MAKE install
+fi
 
 # Build libjpeg-turbo
 cd ../jpeg
@@ -70,7 +79,7 @@ $MAKE install
 cd ../webp
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --enable-libwebpmux --enable-libwebpdemux --disable-shared CFLAGS="${FLAGS}"
+$CONFIGURE ${WEBP_OPTIONS} --disable-shared CFLAGS="${FLAGS}"
 $MAKE install
 
 # Build openjpeg
