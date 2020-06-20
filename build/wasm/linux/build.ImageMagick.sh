@@ -12,6 +12,7 @@ export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export CONDITIONAL_DISABLE_SHARED="--disable-shared"
 export PKG_PATH="/usr/local/lib/pkgconfig"
+export AOM_BUILD=false
 export SIMD_OPTIONS="-DWITH_SIMD=0"
 export SSE_OPTIONS="--disable-sse"
 export FONTCONFIG_BUILD=false
@@ -103,6 +104,16 @@ autoreconf -fiv
 chmod +x ./configure
 $CONFIGURE --disable-shared $SSE_OPTIONS --disable-dec265 --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
 $MAKE install
+
+# Build aom
+if [ "$AOM_BUILD" = true ]; then
+    cd ../aom
+    mkdir aom_build
+    cd aom_build
+    $CMAKE_COMMAND .. -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=off -DCMAKE_BUILD_TYPE=Release -DAOM_TARGET_CPU=generic -DENABLE_DOCS=0 -DENABLE_EXAMPLES=0 -DENABLE_TESTS=0 -DENABLE_TOOLS=0 -DCONFIG_WEBM_IO=0 -DCMAKE_C_FLAGS="$FLAGS"
+    $MAKE install
+    cd ..
+fi
 
 # Build libheif
 cd ../libheif

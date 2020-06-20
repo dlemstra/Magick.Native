@@ -21,6 +21,7 @@ else()
     set(LIBWEBPMUX ${LIB_DIR}/libwebpmux.a)
     set(LIBWEBPDEMUX ${LIB_DIR}/libwebpdemux.a)
     set(LIBOPENEXR ${LIB_DIR}/libIlmImf-2_5.a ${LIB_DIR}/libIlmThread-2_5.a ${LIB_DIR}/libIex-2_5.a ${LIB_DIR}/libHalf-2_5.a ${LIB_DIR}/libImath-2_5.a)
+    set(LIBAOM ${LIB_DIR}/libaom.a)
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
@@ -63,6 +64,7 @@ target_link_libraries(
     ${LIB_DIR}/libopenjp2.a
     ${LIB_DIR}/liblcms2.a
     ${LIB_DIR}/libheif.a
+    ${LIBAOM}
     ${LIB_DIR}/libde265.a
     ${LIB_DIR}/libraw_r.a
 
