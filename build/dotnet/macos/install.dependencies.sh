@@ -13,6 +13,7 @@ brew uninstall --force freetype
 brew uninstall --force webp
 brew uninstall --force libtiff
 brew uninstall --force jpeg
+brew uninstall --force sox
 brew uninstall --force libpng
 brew uninstall --force zstd
 brew uninstall --ignore-dependencies xz
