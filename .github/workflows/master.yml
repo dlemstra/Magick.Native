@@ -203,7 +203,7 @@ jobs:
   wasm_linux:
     name: 'WASM (Linux)'
     container:
-      image: trzeci/emscripten:sdk-tag-1.38.31-64bit
+      image: trzeci/emscripten:1.39.18-upstream
     runs-on: ubuntu-latest
 
     steps:
