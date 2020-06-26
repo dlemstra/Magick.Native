@@ -1,12 +1,10 @@
 #!/bin/bash
 set -e
 
-SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-
 export FLAGS="-O3"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="emconfigure ./configure"
-export CMAKE_COMMAND="emconfigure cmake"
+export CMAKE_COMMAND="emcmake cmake"
 export MAKE="emcmake make"
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
@@ -17,10 +15,8 @@ export SIMD_OPTIONS="-DWITH_SIMD=0"
 export SSE_OPTIONS="--disable-sse"
 export FONTCONFIG_BUILD=false
 export FONTCONFIG_OPTIONS=""
-export HEIF_HACK=true
 export LIBXML_OPTIONS=""
 export OPENEXR_BUILD=false
-export PNG_PATCH=true
 export WEBP_OPTIONS=""
 export IMAGEMAGICK_OPTIONS="--without-threads"
 
@@ -38,9 +34,6 @@ $MAKE install
 
 # Build libpng
 cd ../png
-if [ "$PNG_PATCH" = true ]; then
-    git apply $SCRIPT_PATH/patches/png.patch
-fi
 autoreconf -fiv
 $CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
 $MAKE install
@@ -120,9 +113,6 @@ cd ../libheif
 autoreconf -fiv
 chmod +x ./configure
 $CONFIGURE --disable-shared --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
-if [ "$HEIF_HACK" = true ]; then
-    for f in examples/*.cc; do echo "" > $f; done
-fi
 $MAKE install
 
 # Build libraw

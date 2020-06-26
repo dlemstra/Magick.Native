@@ -1,4 +1,4 @@
-FROM trzeci/emscripten:1.39.0
+FROM trzeci/emscripten:1.39.18-upstream
 
 RUN mkdir /build
 
@@ -12,7 +12,9 @@ RUN cd /ImageMagick; ./checkout.sh linux
 
 RUN mkdir /build/patches
 
-COPY build/wasm/linux/patches/*.patch /build/patches
+COPY build/wasm/linux/patches/* /build/patches/
+
+RUN cd /build/patches; ./install.patches.sh
 
 COPY build/wasm/linux/build.ImageMagick.sh /build
 

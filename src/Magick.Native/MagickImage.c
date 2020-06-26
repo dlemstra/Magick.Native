@@ -456,7 +456,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Interpolate_Set(Image *instance, const siz
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *instance, ExceptionInfo **exception)
 {
-  (exception);
+  (void) (exception);
   return instance->alpha_trait == BlendPixelTrait ? MagickTrue : MagickFalse;
 }
 

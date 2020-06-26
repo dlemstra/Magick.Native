@@ -17,10 +17,8 @@ export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
 export FONTCONFIG_BUILD=true
 export FONTCONFIG_OPTIONS=""
-export HEIF_HACK=false
 export LIBXML_OPTIONS=""
 export OPENEXR_BUILD=true
-export PNG_PATCH=false
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export IMAGEMAGICK_OPTIONS=""
 
@@ -38,9 +36,6 @@ $MAKE install
 
 # Build libpng
 cd ../png
-if [ "$PNG_PATCH" = true ]; then
-    git apply $SCRIPT_PATH/patches/png.patch
-fi
 autoreconf -fiv
 $CONFIGURE --disable-mips-msa --disable-arm-neon --disable-powerpc-vsx --disable-shared CFLAGS="$FLAGS"
 $MAKE install
@@ -120,9 +115,6 @@ cd ../libheif
 autoreconf -fiv
 chmod +x ./configure
 $CONFIGURE --disable-shared --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
-if [ "$HEIF_HACK" = true ]; then
-    for f in examples/*.cc; do echo "" > $f; done
-fi
 $MAKE install
 
 # Build libraw

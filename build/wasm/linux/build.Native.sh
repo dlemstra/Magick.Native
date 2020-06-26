@@ -2,7 +2,7 @@
 set -e
 
 export PLATFORM="WASM"
-export CMAKE_COMMAND="emconfigure cmake"
+export CMAKE_COMMAND="emcmake cmake"
 export CMAKE_OPTIONS="-D CMAKE_CXX_COMPILER=em++ -D CMAKE_C_COMPILER=emcc"
 getLibraryName() {
     local quantum=$1

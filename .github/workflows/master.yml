@@ -221,6 +221,10 @@ jobs:
       run: ./checkout.sh linux
       working-directory: src/ImageMagick
 
+    - name: Apply patches
+      run: ./install.patches.sh
+      working-directory: build/wasm/linux/patches
+
     - name: Build ImageMagick
       run: ../../../build/wasm/linux/build.ImageMagick.sh
       working-directory: src/ImageMagick/libraries
