@@ -3,7 +3,7 @@ set -e
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-cd /ImageMagick/libraries/png
+cd png
 git apply $SCRIPT_PATH/png.patch
 
 cd ../libde265
