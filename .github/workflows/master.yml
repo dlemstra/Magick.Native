@@ -222,7 +222,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Apply patches
-      run: ../../../build/wasm/linux/build/patches/install.patches.sh
+      run: ../../../build/wasm/linux/patches/install.patches.sh
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
