@@ -16,6 +16,14 @@ COPY build/wasm/linux/patches/* /build/patches/
 
 RUN cd /ImageMagick/libraries; /build/patches/install.patches.sh
 
+COPY build/libraries/*.sh /build/
+
+COPY build/wasm/linux/settings.sh /build
+
+COPY build/wasm/linux/build.libraries.sh /build
+
+RUN cd /ImageMagick/libraries; /build/build.libraries.sh /build
+
 COPY build/wasm/linux/build.ImageMagick.sh /build
 
 RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh

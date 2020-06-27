@@ -10,6 +10,14 @@ COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh linux
 
+COPY build/libraries/*.sh /build/
+
+COPY build/dotnet/linux/settings.sh /build
+
+COPY build/dotnet/linux/build.libraries.sh /build
+
+RUN cd /ImageMagick/libraries; /build/build.libraries.sh /build
+
 COPY build/dotnet/linux/build.ImageMagick.sh /build
 
 RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh

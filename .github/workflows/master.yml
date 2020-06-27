@@ -29,6 +29,10 @@ jobs:
       run: ./checkout.sh linux
       working-directory: src/ImageMagick
 
+    - name: Build libraries
+      run: ../../../build/dotnet/linux/build.libraries.sh ../../../build/libraries
+      working-directory: src/ImageMagick/libraries
+
     - name: Build ImageMagick
       run: ../../../build/dotnet/linux/build.ImageMagick.sh
       working-directory: src/ImageMagick/libraries
@@ -65,6 +69,10 @@ jobs:
     - name: Clone ImageMagick libraries
       run: ./checkout.sh macos
       working-directory: src/ImageMagick
+
+    - name: Build libraries
+      run: ../../../build/dotnet/macos/build.libraries.sh ../../../build/libraries
+      working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
       run: ../../../build/dotnet/macos/build.ImageMagick.sh
@@ -223,6 +231,10 @@ jobs:
 
     - name: Apply patches
       run: ../../../build/wasm/linux/patches/install.patches.sh
+      working-directory: src/ImageMagick/libraries
+
+    - name: Build libraries
+      run: ../../../build/wasm/linux/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
