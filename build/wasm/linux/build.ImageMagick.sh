@@ -23,6 +23,6 @@ buildImageMagick() {
 }
 
 # Build ImageMagick
-cd ../ImageMagick
+cd ImageMagick
 autoreconf -fiv
 buildImageMagick "Q8"
