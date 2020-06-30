@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 cd glib
 git reset 586514423cb4dc09876dad095641f5b44fb2683d --hard
 mkdir build

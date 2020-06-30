@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 cd libheif
 autoreconf -fiv
 chmod +x ./configure

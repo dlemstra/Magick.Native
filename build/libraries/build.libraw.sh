@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 cd libraw
 chmod +x ./version.sh
 chmod +x ./shlib-version.sh

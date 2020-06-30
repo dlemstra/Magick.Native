@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 cd libde265
 autoreconf -fiv
 chmod +x ./configure

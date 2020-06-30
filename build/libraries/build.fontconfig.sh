@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 cd fontconfig
 autoreconf -fiv
 pip install lxml

@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 cd aom
 mkdir aom_build
 cd aom_build
