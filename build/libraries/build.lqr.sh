@@ -2,7 +2,7 @@
 set -e
 
 cd lqr
-git reset 00eef3a3ebde9eb7fcfa481648d8c6c1d24b49a4 --hard
+git reset b047fbfba816c9511824782dae3841cf622dbca3 --hard
 autoreconf -fiv
 mkdir /usr/local/include/lqr-1
 mkdir /usr/local/include/lqr-1/lqr
