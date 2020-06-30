@@ -18,5 +18,5 @@ brew uninstall --force libpng
 brew uninstall --force zstd
 brew uninstall --ignore-dependencies xz
 
-pip install meson
-pip install ninja
+pip3 install meson
+pip3 install ninja
