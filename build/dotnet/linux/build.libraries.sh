@@ -19,3 +19,6 @@ $1/build.aom.sh
 $1/build.libheif.sh
 $1/build.libraw.sh
 $1/build.openexr.sh
+$1/build.ffi.sh
+$1/build.glib.sh
+$1/build.lqr.sh

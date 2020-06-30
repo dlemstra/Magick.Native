@@ -35,6 +35,8 @@ else()
     list(APPEND ALL_FILES foo.cxx)
     set(THREADLIB Threads::Threads)
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
+    set(LIBGLIB ${LIB_DIR}/libglib-2.0.a)
+    set(LIBLQR ${LIB_DIR}/liblqr-1.a)
 endif()
 
 if (PLATFORM STREQUAL "WASM")
@@ -67,6 +69,8 @@ target_link_libraries(
     ${LIBAOM}
     ${LIB_DIR}/libde265.a
     ${LIB_DIR}/libraw_r.a
+    ${LIBLQR}
+    ${LIBGLIB}
 
     ${LIBSOCKFS}
 
