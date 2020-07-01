@@ -18,8 +18,7 @@ else()
     file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
-    set(LIBWEBPMUX ${LIB_DIR}/libwebpmux.a)
-    set(LIBWEBPDEMUX ${LIB_DIR}/libwebpdemux.a)
+    set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a)
     set(LIBOPENEXR ${LIB_DIR}/libIlmImf-2_5.a ${LIB_DIR}/libIlmThread-2_5.a ${LIB_DIR}/libIex-2_5.a ${LIB_DIR}/libHalf-2_5.a ${LIB_DIR}/libImath-2_5.a)
     set(LIBAOM ${LIB_DIR}/libaom.a)
     set(LIBGLIB ${LIB_DIR}/libglib-2.0.a)
@@ -62,8 +61,7 @@ target_link_libraries(
     ${LIB_DIR}/libpng.a
     ${LIB_DIR}/libturbojpeg.a
     ${LIB_DIR}/libtiff.a
-    ${LIBWEBPMUX}
-    ${LIBWEBPDEMUX}
+    ${LIBWEBP}
     ${LIB_DIR}/libwebp.a
     ${LIB_DIR}/libopenjp2.a
     ${LIB_DIR}/liblcms2.a
