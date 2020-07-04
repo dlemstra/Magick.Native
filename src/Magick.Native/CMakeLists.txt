@@ -26,7 +26,8 @@ else()
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
-    set(LIBICONV /usr/local/opt/libiconv/lib/libiconv.a)
+    set(LIBICONV iconv)
+    set(LIBINTL ${LIB_DIR}/libintl.a)
     set(CMAKE_MACOSX_RPATH 1)
     set(STDCPLUSPLUS stdc++)
 elseif (PLATFORM STREQUAL "WASM")
@@ -67,8 +68,9 @@ target_link_libraries(
     ${LIBAOM}
     ${LIB_DIR}/libde265.a
     ${LIB_DIR}/libraw_r.a
-    ${LIBLQR}
+    ${LIBINTL}
     ${LIBGLIB}
+    ${LIBLQR}
 
     ${LIBSOCKFS}
 
