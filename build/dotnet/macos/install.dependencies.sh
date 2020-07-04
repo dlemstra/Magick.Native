@@ -5,7 +5,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 brew list
 
-brew install autoconf automake libiconv libtool nasm ossp-uuid pkg-config
+brew install autoconf automake libtool nasm ossp-uuid pkg-config
 
 # Uninstall already installed development libraries
 brew uninstall --force php
