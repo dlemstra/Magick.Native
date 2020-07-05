@@ -2,7 +2,6 @@
 set -e
 
 cd glib
-git reset 6caafa6ce0f85fc95a5238b564170e28be8d5223 --hard
 
 rm gio/gioenumtypes.c
 rm gio/gioenumtypes.h
