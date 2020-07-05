@@ -206,8 +206,7 @@ jobs:
         name: linux
 
     - name: Verify Native
-      run: ../build/dotnet/linux/verify.Native.sh
-      working-directory: linux
+      run: build/dotnet/linux/verify.Native.sh linux
 
   wasm_linux:
     name: 'WASM (Linux)'
