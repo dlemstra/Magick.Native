@@ -7,14 +7,17 @@ verifyNative() {
 
     local file=$folder/Magick.Native-$quantum-x64.dll.so
 
-    if ldd $file 2>&1 | grep "not found"
-    then
+    if [ ! -f $file ]; then
+        echo "Unable to find $file"
         exit 1
+    fi
+
+    if ldd $file 2>&1 | grep "not found"; then
+      exit 1
     else
         echo "Verified ldd status for $file"
     fi
-    if ld $file 2>&1 | grep "undefined reference"
-    then
+    if ld $file 2>&1 | grep "undefined reference"; then
         exit 1
     else
         echo "Verified ld status for $file"
