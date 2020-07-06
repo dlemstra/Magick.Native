@@ -69,8 +69,8 @@ target_link_libraries(
     ${LIB_DIR}/libde265.a
     ${LIB_DIR}/libraw_r.a
     ${LIBINTL}
-    ${LIBGLIB}
     ${LIBLQR}
+    ${LIBGLIB}
 
     ${LIBSOCKFS}
 
