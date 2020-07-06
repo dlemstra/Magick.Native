@@ -5,7 +5,7 @@ verifyNative() {
     local quantum=$1
     local folder=$2
 
-    local file=$folder/Magick.Native-$quantum-x64.dll.so
+    local file=${folder}/Release${quantum}/x64/Magick.Native-${quantum}-x64.dll.so
 
     if [ ! -f $file ]; then
         echo "Unable to find $file"

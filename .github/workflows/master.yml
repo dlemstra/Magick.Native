@@ -201,12 +201,12 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux libraries
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v2
       with:
         name: linux
 
     - name: Verify Native
-      run: build/dotnet/linux/verify.Native.sh linux
+      run: build/dotnet/linux/verify.Native.sh .
 
   wasm_linux:
     name: 'WASM (Linux)'
