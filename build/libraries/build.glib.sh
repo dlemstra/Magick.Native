@@ -18,6 +18,7 @@ export CFLAGS="$FLAGS"
 meson --prefix=/usr/local --default-library=static -Dselinux=disabled -Dxattr=false -Dlibmount=disabled -Dnls=disabled -Dinternal_pcre=true -Dgtk_doc=false -Dman=false ..
 ninja install
 
-if [ -f /usr/local/lib/x86_64-linux-gnu/libglib-2.0.a ]; then
-  cp /usr/local/lib/x86_64-linux-gnu/libglib-2.0.a /usr/local/lib/libglib-2.0.a
+if [ -d /usr/local/lib/x86_64-linux-gnu ]; then
+  cp /usr/local/lib/x86_64-linux-gnu/*.a /usr/local/lib/
 fi
+chmod 755 /usr/local/bin/glib-mkenums
