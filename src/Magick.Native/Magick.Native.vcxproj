@@ -239,4 +239,7 @@
     <ClInclude Include="Types\MagickGeometry.h" />
     <ClInclude Include="Types\MagickRectangle.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>
