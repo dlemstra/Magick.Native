@@ -33,6 +33,17 @@ function writeVersionFromResource($fileName, $libraryName, $resourceFile) {
     $version = GetVersion $resourceFile "#define THIS_PROJECT_VERSION_STRING		""" 1
     if ($version -ne $null) {
         Add-Content $fileName "- $libraryName $version"
+    } else {
+        Write-Error "Unable to get version for: $libraryName"
+    }
+}
+
+function writeVersionFromLibraryVersion($fileName, $libraryName, $versionFile) {
+    $version = [System.IO.File]::ReadAllLines($versionFile).Trim()
+    if ($version -ne $null) {
+        Add-Content $fileName "- $libraryName $version"
+    } else {
+        Write-Error "Unable to get version for: $libraryName"
     }
 }
 
@@ -73,14 +84,18 @@ function writeLibraryVersions($folders) {
         if ($resourceFile -ne $null) {
             writeVersionFromResource $fileName $libraryName $resourceFile.FullName
         } else {
-            switch($libraryName)
-            {
-                "croco" { writeCrocoVersion $fileName $folder }
-                "ffi" { writeFfiVersion $fileName $folder }
-                "ImageMagick" { writeImageMagickVersion $fileName $folder }
-                "pixman" { writePixmanVersion $fileName $folder }
-                "VisualMagick" { }
-                default { Write-Error "Unable to get version for: $library" }
+            $versionFile = Get-ChildItem -Path $folder -Filter "LibraryVersion.txt" -Recurse
+            if ($versionFile -ne $null) {
+                writeVersionFromLibraryVersion $fileName $libraryName $versionFile.FullName
+            } else {
+                switch($libraryName) {
+                    "croco" { writeCrocoVersion $fileName $folder }
+                    "ffi" { writeFfiVersion $fileName $folder }
+                    "ImageMagick" { writeImageMagickVersion $fileName $folder }
+                    "pixman" { writePixmanVersion $fileName $folder }
+                    "VisualMagick" { }
+                    default { Write-Error "Unable to get version for: $library" }
+                }
             }
         }
     }
