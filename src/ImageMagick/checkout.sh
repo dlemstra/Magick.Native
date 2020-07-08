@@ -65,7 +65,7 @@ echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'aom' "$commitDate"
-clone_commit 'cairo' '0529bf2e2add580933237fb11345f681f79f07f4'
+clone_commit 'cairo' '050da32ad4c228e58d9348dd7ab128a232105ecc'
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_commit 'fribidi' 'f2d312d1292f356f8ce819ebe6c41b1e2081466b'
@@ -115,7 +115,7 @@ clone_date 'ffi' "$commitDate"
 clone_date 'flif' "$commitDate"
 clone_date 'jp2' "$commitDate"
 clone_date 'librsvg' "$commitDate"
-clone_date 'VisualMagick' "$commitDate"
+clone_commit 'VisualMagick' '8d75fe8d9e82fe0024c30c3e533598ee277f4a73'
 
 rm -rf VisualMagick/bzlib
 rm -rf VisualMagick/dcraw
