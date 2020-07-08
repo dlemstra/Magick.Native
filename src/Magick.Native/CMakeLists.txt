@@ -21,7 +21,7 @@ else()
     set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a)
     set(LIBOPENEXR ${LIB_DIR}/libIlmImf-2_5.a ${LIB_DIR}/libIlmThread-2_5.a ${LIB_DIR}/libIex-2_5.a ${LIB_DIR}/libHalf-2_5.a ${LIB_DIR}/libImath-2_5.a)
     set(LIBAOM ${LIB_DIR}/libaom.a)
-    set(LIBGLIB ${LIB_DIR}/libglib-2.0.a)
+    set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a)
     set(LIBLQR ${LIB_DIR}/liblqr-1.a)
 endif()
 
@@ -37,6 +37,8 @@ else()
     list(APPEND ALL_FILES foo.cxx)
     set(THREADLIB Threads::Threads)
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
+    set(LIBCAIRO ${LIB_DIR}/libcairo.a ${LIB_DIR}/libpixman-1.a)
+    set(LIBPANGO ${LIB_DIR}/libpangocairo-1.0.a ${LIB_DIR}/libpango-1.0.a ${LIB_DIR}/libpangoft2-1.0.a ${LIB_DIR}/libfribidi.a ${LIB_DIR}/libharfbuzz.a)
 endif()
 
 if (PLATFORM STREQUAL "WASM")
@@ -55,8 +57,6 @@ target_link_libraries(
     ${LIB_DIR}/libz.a
     ${LIBICONV}
     ${LIB_DIR}/libxml2.a
-    ${LIBFONTCONFIG}
-    ${LIB_DIR}/libfreetype.a
     ${LIB_DIR}/libpng.a
     ${LIB_DIR}/libturbojpeg.a
     ${LIB_DIR}/libtiff.a
@@ -70,7 +70,11 @@ target_link_libraries(
     ${LIB_DIR}/libraw_r.a
     ${LIBINTL}
     ${LIBLQR}
+    ${LIBPANGO}
+    ${LIBCAIRO}
     ${LIBGLIB}
+    ${LIBFONTCONFIG}
+    ${LIB_DIR}/libfreetype.a
 
     ${LIBSOCKFS}
 

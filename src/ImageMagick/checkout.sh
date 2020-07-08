@@ -65,8 +65,11 @@ echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'aom' "$commitDate"
+clone_date 'cairo' "$commitDate"
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
+clone_date 'fribidi' "$commitDate"
+clone_date 'harfbuzz' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
 clone_date 'glib' "$commitDate"
 clone_date 'lcms' "$commitDate"
@@ -76,6 +79,8 @@ clone_date 'libraw' "$commitDate"
 clone_date 'libxml' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
+clone_date 'pixman' "$commitDate"
+clone_date 'pango' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
 clone_date 'webp' "$commitDate"
@@ -105,14 +110,11 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
   exit
 fi
 
-clone_date 'cairo' "$commitDate"
 clone_date 'croco' "$commitDate"
 clone_date 'ffi' "$commitDate"
 clone_date 'flif' "$commitDate"
 clone_date 'jp2' "$commitDate"
 clone_date 'librsvg' "$commitDate"
-clone_date 'pango' "$commitDate"
-clone_date 'pixman' "$commitDate"
 clone_date 'VisualMagick' "$commitDate"
 
 rm -rf VisualMagick/bzlib
