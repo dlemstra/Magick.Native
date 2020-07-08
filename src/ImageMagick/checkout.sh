@@ -68,7 +68,7 @@ clone_date 'aom' "$commitDate"
 clone_commit 'cairo' '050da32ad4c228e58d9348dd7ab128a232105ecc'
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
-clone_commit 'fribidi' 'f2d312d1292f356f8ce819ebe6c41b1e2081466b'
+clone_commit 'fribidi' 'd0068fc92760b4feaf4211c381fcbb39bb54aa7e'
 clone_commit 'harfbuzz' '1bbf25a80e8a3a51c5ebb700b07d5ef0216bd148'
 clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
 clone_date 'glib' "$commitDate"
