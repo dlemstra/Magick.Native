@@ -65,11 +65,11 @@ echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'aom' "$commitDate"
-clone_date 'cairo' "$commitDate"
+clone_commit 'cairo' '0529bf2e2add580933237fb11345f681f79f07f4'
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
-clone_date 'fribidi' "$commitDate"
-clone_date 'harfbuzz' "$commitDate"
+clone_commit 'fribidi' 'f2d312d1292f356f8ce819ebe6c41b1e2081466b'
+clone_commit 'harfbuzz' '1bbf25a80e8a3a51c5ebb700b07d5ef0216bd148'
 clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
 clone_date 'glib' "$commitDate"
 clone_date 'lcms' "$commitDate"
@@ -80,7 +80,7 @@ clone_date 'libxml' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'pixman' "$commitDate"
-clone_date 'pango' "$commitDate"
+clone_commit 'pango' '0a3232a0fc63e1418d24d370e7eac89564ed46d3'
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
 clone_date 'webp' "$commitDate"

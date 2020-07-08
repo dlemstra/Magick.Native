@@ -2,8 +2,6 @@
 set -e
 
 cd pango
-git reset 0a3232a0fc63e1418d24d370e7eac89564ed46d3 --hard
-
 rm pango/config.h
 rm pango/pango-features.h
 rm pango/pango-enum-types.c
