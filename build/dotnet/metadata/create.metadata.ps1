@@ -89,10 +89,7 @@ function writeLibraryVersions($folders) {
                 writeVersionFromLibraryVersion $fileName $libraryName $versionFile.FullName
             } else {
                 switch($libraryName) {
-                    "croco" { writeCrocoVersion $fileName $folder }
-                    "ffi" { writeFfiVersion $fileName $folder }
                     "ImageMagick" { writeImageMagickVersion $fileName $folder }
-                    "pixman" { writePixmanVersion $fileName $folder }
                     "VisualMagick" { }
                     default { Write-Error "Unable to get version for: $library" }
                 }
