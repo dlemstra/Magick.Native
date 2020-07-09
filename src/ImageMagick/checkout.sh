@@ -65,11 +65,11 @@ echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'aom' "$commitDate"
-clone_commit 'cairo' '050da32ad4c228e58d9348dd7ab128a232105ecc'
+clone_date 'cairo' "$commitDate"
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
-clone_commit 'fribidi' 'd0068fc92760b4feaf4211c381fcbb39bb54aa7e'
-clone_commit 'harfbuzz' '1bbf25a80e8a3a51c5ebb700b07d5ef0216bd148'
+clone_date 'fribidi' "$commitDate"
+clone_date 'harfbuzz' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
 clone_date 'glib' "$commitDate"
 clone_date 'lcms' "$commitDate"
@@ -80,7 +80,7 @@ clone_date 'libxml' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'pixman' "$commitDate"
-clone_commit 'pango' '0a3232a0fc63e1418d24d370e7eac89564ed46d3'
+clone_date 'pango' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
 clone_date 'webp' "$commitDate"
@@ -115,7 +115,7 @@ clone_date 'ffi' "$commitDate"
 clone_date 'flif' "$commitDate"
 clone_date 'jp2' "$commitDate"
 clone_date 'librsvg' "$commitDate"
-clone_commit 'VisualMagick' '8d75fe8d9e82fe0024c30c3e533598ee277f4a73'
+clone_date 'VisualMagick' "$commitDate"
 
 rm -rf VisualMagick/bzlib
 rm -rf VisualMagick/dcraw
