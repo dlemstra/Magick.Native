@@ -65,21 +65,23 @@ echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'aom' "$commitDate"
+clone_commit 'croco' '883f6757406e480302484a4edccb1b0232216f48'
 clone_date 'cairo' "$commitDate"
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_date 'fribidi' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
-clone_date 'glib' "$commitDate"
+clone_commit 'glib' 'ae68ba39d57922c3e43ec34a3a896587b976400b'
 clone_date 'lcms' "$commitDate"
 clone_date 'libde265' "$commitDate"
 clone_date 'libheif' "$commitDate"
 clone_date 'libraw' "$commitDate"
+clone_commit 'librsvg' '10d10cbc7994afc8bce618b64dda0d1b64de7308'
 clone_date 'libxml' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
-clone_date 'pixman' "$commitDate"
+clone_commit 'pixman' '30506a90b56527e0d28ae39cafb7237d7f2ab240'
 clone_date 'pango' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
@@ -110,11 +112,9 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
   exit
 fi
 
-clone_date 'croco' "$commitDate"
 clone_date 'ffi' "$commitDate"
 clone_date 'flif' "$commitDate"
 clone_date 'jp2' "$commitDate"
-clone_date 'librsvg' "$commitDate"
 clone_date 'VisualMagick' "$commitDate"
 
 rm -rf VisualMagick/bzlib

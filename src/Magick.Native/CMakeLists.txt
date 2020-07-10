@@ -21,7 +21,7 @@ else()
     set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a)
     set(LIBOPENEXR ${LIB_DIR}/libIlmImf-2_5.a ${LIB_DIR}/libIlmThread-2_5.a ${LIB_DIR}/libIex-2_5.a ${LIB_DIR}/libHalf-2_5.a ${LIB_DIR}/libImath-2_5.a)
     set(LIBAOM ${LIB_DIR}/libaom.a)
-    set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a)
+    set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a -lresolv)
     set(LIBLQR ${LIB_DIR}/liblqr-1.a)
 endif()
 
@@ -39,6 +39,7 @@ else()
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
     set(LIBCAIRO ${LIB_DIR}/libcairo.a ${LIB_DIR}/libpixman-1.a)
     set(LIBPANGO ${LIB_DIR}/libpangocairo-1.0.a ${LIB_DIR}/libpango-1.0.a ${LIB_DIR}/libpangoft2-1.0.a ${LIB_DIR}/libfribidi.a ${LIB_DIR}/libharfbuzz.a)
+    set(LIBRSVG ${LIB_DIR}/librsvg-2.a ${LIB_DIR}/libgdk_pixbuf-2.0.a ${LIB_DIR}/libcroco-0.6.a)
 endif()
 
 if (PLATFORM STREQUAL "WASM")
@@ -56,6 +57,14 @@ target_link_libraries(
     ${LIBOPENEXR}
     ${LIB_DIR}/libz.a
     ${LIBICONV}
+    ${LIBINTL}
+    ${LIBLQR}
+    ${LIBRSVG}
+    ${LIBPANGO}
+    ${LIBCAIRO}
+    ${LIBGLIB}
+    ${LIBFONTCONFIG}
+    ${LIB_DIR}/libfreetype.a
     ${LIB_DIR}/libxml2.a
     ${LIB_DIR}/libpng.a
     ${LIB_DIR}/libturbojpeg.a
@@ -68,13 +77,6 @@ target_link_libraries(
     ${LIBAOM}
     ${LIB_DIR}/libde265.a
     ${LIB_DIR}/libraw_r.a
-    ${LIBINTL}
-    ${LIBLQR}
-    ${LIBPANGO}
-    ${LIBCAIRO}
-    ${LIBGLIB}
-    ${LIBFONTCONFIG}
-    ${LIB_DIR}/libfreetype.a
 
     ${LIBSOCKFS}
 
