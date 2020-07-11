@@ -25,3 +25,4 @@ $1/build.lqr.sh
 $1/build.pixman.sh
 $1/build.cairo.sh
 $1/build.fribidi.sh
+$1/build.harfbuzz.sh
