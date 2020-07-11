@@ -66,7 +66,7 @@ cd ..
 
 clone_date 'aom' "$commitDate"
 clone_commit 'croco' '883f6757406e480302484a4edccb1b0232216f48'
-clone_date 'cairo' "$commitDate"
+clone_commit 'cairo' 'ba0c87a64d0d3fecf74eec02e410e62bb2666c0a'
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_date 'fribidi' "$commitDate"
