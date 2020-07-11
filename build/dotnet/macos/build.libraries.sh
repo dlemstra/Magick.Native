@@ -24,3 +24,4 @@ $1/build.glib.sh
 $1/build.lqr.sh
 $1/build.pixman.sh
 $1/build.cairo.sh
+$1/build.fribidi.sh
