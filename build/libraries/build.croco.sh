@@ -3,5 +3,5 @@ set -e
 
 cd croco
 autoreconf -fiv
-$CONFIGURE --disable-shared --prefix=/usr/local CFLAGS="$FLAGS"
+$CONFIGURE --disable-shared --disable-Bsymbolic --prefix=/usr/local CFLAGS="$FLAGS"
 $MAKE install
