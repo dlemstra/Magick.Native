@@ -522,6 +522,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Wave(const Image *, const size_t, const 
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_WaveletDenoise(const Image *, const double, const double, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT void MagickImage_WhiteBalance(Image *, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT void MagickImage_WhiteThreshold(Image *, const char *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT unsigned char *MagickImage_WriteBlob(Image *, const ImageInfo *, size_t *, ExceptionInfo **);

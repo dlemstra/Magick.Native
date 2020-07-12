@@ -2579,6 +2579,13 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_WaveletDenoise(const Image *instance, co
   return image;
 }
 
+MAGICK_NATIVE_EXPORT void MagickImage_WhiteBalance(Image *instance, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  WhiteBalanceImage(instance, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_WhiteThreshold(Image *instance, const char *threshold, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
