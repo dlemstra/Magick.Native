@@ -368,6 +368,11 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_Compression_Get(const Image *instance)
   return (size_t) instance->compression;
 }
 
+MAGICK_NATIVE_EXPORT void MagickImage_Compression_Set(Image *instance, const size_t value)
+{
+  instance->compression = (CompressionType) value;
+}
+
 MAGICK_NATIVE_EXPORT size_t MagickImage_Depth_Get(const Image *instance)
 {
   return instance->depth;
