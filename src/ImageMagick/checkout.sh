@@ -82,7 +82,7 @@ clone_date 'libxml' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'pixman' "$commitDate"
-clone_date 'pango' "$commitDate"
+clone_commit 'pango' '388455a5711cd6ea1d943133a716ca7fdd9220a3'
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
 clone_date 'webp' "$commitDate"
