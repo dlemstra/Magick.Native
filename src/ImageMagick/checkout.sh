@@ -112,8 +112,11 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
   exit
 fi
 
+clone_date 'bzlib' "$commitDate"
 clone_date 'ffi' "$commitDate"
 clone_date 'flif' "$commitDate"
+clone_date 'liblzma' "$commitDate"
+clone_date 'libzip' "$commitDate"
 clone_date 'jp2' "$commitDate"
 clone_date 'VisualMagick' "$commitDate"
 

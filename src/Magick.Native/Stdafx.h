@@ -88,6 +88,10 @@ MAGICK_NATIVE_LINK_LIB("glib")
 #pragma comment(lib, "winmm.lib")
 #endif
 
+#if defined(MAGICKCORE_LZMA_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("liblzma")
+#endif
+
 #if defined(MAGICKCORE_JBIG_DELEGATE)
 MAGICK_NATIVE_LINK_LIB("jbig")
 #endif
@@ -106,6 +110,10 @@ MAGICK_NATIVE_LINK_LIB("lcms")
 
 #if defined(MAGICKCORE_LIBOPENJP2_DELEGATE)
 MAGICK_NATIVE_LINK_LIB("openjpeg")
+#endif
+
+#if defined(MAGICKCORE_LIBZIP_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("libzip")
 #endif
 
 #if defined(MAGICKCORE_HEIC_DELEGATE)
