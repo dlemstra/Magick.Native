@@ -17,6 +17,7 @@ brew uninstall --force libtiff
 brew uninstall --force jpeg
 brew uninstall --force sox
 brew uninstall --force libpng
+brew uninstall --force curl-openssl
 brew uninstall --force zstd
 brew uninstall --ignore-dependencies xz
 
