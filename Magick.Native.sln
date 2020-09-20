@@ -10,8 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6C3DBF08
 		.github\workflows\master.yml = .github\workflows\master.yml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{7D45E99E-D308-453E-A600-42F10FFD1570}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
 	ProjectSection(SolutionItems) = preProject
 		build\dotnet\linux\build.cmd = build\dotnet\linux\build.cmd
@@ -54,9 +52,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{5B17
 		build\dotnet\windows\update.resourcefiles.ps1 = build\dotnet\windows\update.resourcefiles.ps1
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{DF725EB7-16EC-4427-91A8-0F3DF412C294}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
 	ProjectSection(SolutionItems) = preProject
 		build\wasm\linux\build.cmd = build\wasm\linux\build.cmd
 		build\wasm\linux\build.ImageMagick.sh = build\wasm\linux\build.ImageMagick.sh
@@ -147,6 +143,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 		build\libraries\build.zlib.sh = build\libraries\build.zlib.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl", "linux-musl", "{F9F51AB1-7683-4E2D-B746-4360926ABDE9}"
+	ProjectSection(SolutionItems) = preProject
+		build\linux-musl\build.cmd = build\linux-musl\build.cmd
+		build\linux-musl\build.ImageMagick.sh = build\linux-musl\build.ImageMagick.sh
+		build\linux-musl\build.libraries.sh = build\linux-musl\build.libraries.sh
+		build\linux-musl\build.Native.sh = build\linux-musl\build.Native.sh
+		build\linux-musl\copy.Native.sh = build\linux-musl\copy.Native.sh
+		build\linux-musl\Dockerfile = build\linux-musl\Dockerfile
+		build\linux-musl\install.dependencies.sh = build\linux-musl\install.dependencies.sh
+		build\linux-musl\run.cmd = build\linux-musl\run.cmd
+		build\linux-musl\settings.sh = build\linux-musl\settings.sh
+		build\linux-musl\verify.cmd = build\linux-musl\verify.cmd
+		build\linux-musl\verify.Native.sh = build\linux-musl\verify.Native.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|x64 = DebugQ16|x64
@@ -208,13 +219,11 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
-		{7D45E99E-D308-453E-A600-42F10FFD1570} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
-		{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90} = {7D45E99E-D308-453E-A600-42F10FFD1570}
-		{12B5113A-B68A-4DDF-8A74-A5D615AFF49A} = {7D45E99E-D308-453E-A600-42F10FFD1570}
-		{C8420103-07D2-459E-9EFD-8FC57AA569E0} = {7D45E99E-D308-453E-A600-42F10FFD1570}
-		{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED} = {7D45E99E-D308-453E-A600-42F10FFD1570}
-		{DF725EB7-16EC-4427-91A8-0F3DF412C294} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
-		{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC} = {DF725EB7-16EC-4427-91A8-0F3DF412C294}
+		{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{12B5113A-B68A-4DDF-8A74-A5D615AFF49A} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{C8420103-07D2-459E-9EFD-8FC57AA569E0} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{D39F0D02-5AB1-47E8-A27A-E443697E894C} = {8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}
 		{BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
 		{8E1216C8-EAE4-4E2D-B717-BAB023683820} = {1520A3A2-D586-471F-9C70-80D43532A0C6}
@@ -222,6 +231,7 @@ Global
 		{7821CD6E-88F1-42CE-81A0-D67F7767ECC8} = {4D076C4F-5298-40AC-BE34-02EA77AF7F06}
 		{54F6D858-DE3E-4369-A212-3ECC81B854EE} = {BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0}
 		{18A7C91D-6DB9-4CCE-8276-4E7BA9F05EAC} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{F9F51AB1-7683-4E2D-B746-4360926ABDE9} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
