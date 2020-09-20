@@ -12,64 +12,63 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6C3DBF08
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
 	ProjectSection(SolutionItems) = preProject
-		build\dotnet\linux\build.cmd = build\dotnet\linux\build.cmd
-		build\dotnet\linux\build.ImageMagick.sh = build\dotnet\linux\build.ImageMagick.sh
-		build\dotnet\linux\build.libraries.sh = build\dotnet\linux\build.libraries.sh
-		build\dotnet\linux\build.Native.sh = build\dotnet\linux\build.Native.sh
-		build\dotnet\linux\copy.Native.sh = build\dotnet\linux\copy.Native.sh
-		build\dotnet\linux\Dockerfile = build\dotnet\linux\Dockerfile
-		build\dotnet\linux\install.dependencies.sh = build\dotnet\linux\install.dependencies.sh
-		build\dotnet\linux\run-with-magick-net.cmd = build\dotnet\linux\run-with-magick-net.cmd
-		build\dotnet\linux\run.cmd = build\dotnet\linux\run.cmd
-		build\dotnet\linux\settings.sh = build\dotnet\linux\settings.sh
-		build\dotnet\linux\verify.cmd = build\dotnet\linux\verify.cmd
-		build\dotnet\linux\verify.Native.sh = build\dotnet\linux\verify.Native.sh
+		build\linux\build.cmd = build\linux\build.cmd
+		build\linux\build.ImageMagick.sh = build\linux\build.ImageMagick.sh
+		build\linux\build.libraries.sh = build\linux\build.libraries.sh
+		build\linux\build.Native.sh = build\linux\build.Native.sh
+		build\linux\copy.Native.sh = build\linux\copy.Native.sh
+		build\linux\Dockerfile = build\linux\Dockerfile
+		build\linux\install.dependencies.sh = build\linux\install.dependencies.sh
+		build\linux\run.cmd = build\linux\run.cmd
+		build\linux\settings.sh = build\linux\settings.sh
+		build\linux\verify.cmd = build\linux\verify.cmd
+		build\linux\verify.Native.sh = build\linux\verify.Native.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
 	ProjectSection(SolutionItems) = preProject
-		build\dotnet\macos\build.ImageMagick.sh = build\dotnet\macos\build.ImageMagick.sh
-		build\dotnet\macos\build.libraries.sh = build\dotnet\macos\build.libraries.sh
-		build\dotnet\macos\build.Native.sh = build\dotnet\macos\build.Native.sh
-		build\dotnet\macos\copy.Native.sh = build\dotnet\macos\copy.Native.sh
-		build\dotnet\macos\install.dependencies.sh = build\dotnet\macos\install.dependencies.sh
-		build\dotnet\macos\settings.sh = build\dotnet\macos\settings.sh
+		build\macos\build.ImageMagick.sh = build\macos\build.ImageMagick.sh
+		build\macos\build.libraries.sh = build\macos\build.libraries.sh
+		build\macos\build.Native.sh = build\macos\build.Native.sh
+		build\macos\copy.Native.sh = build\macos\copy.Native.sh
+		build\macos\install.dependencies.sh = build\macos\install.dependencies.sh
+		build\macos\settings.sh = build\macos\settings.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C8420103-07D2-459E-9EFD-8FC57AA569E0}"
 	ProjectSection(SolutionItems) = preProject
-		build\dotnet\metadata\create.metadata.ps1 = build\dotnet\metadata\create.metadata.ps1
+		build\metadata\create.metadata.ps1 = build\metadata\create.metadata.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED}"
 	ProjectSection(SolutionItems) = preProject
-		build\dotnet\windows\build.ImageMagick.cmd = build\dotnet\windows\build.ImageMagick.cmd
-		build\dotnet\windows\build.ImageMagick.ps1 = build\dotnet\windows\build.ImageMagick.ps1
-		build\dotnet\windows\build.Native.cmd = build\dotnet\windows\build.Native.cmd
-		build\dotnet\windows\build.Native.ps1 = build\dotnet\windows\build.Native.ps1
-		build\dotnet\windows\copy.Native.ps1 = build\dotnet\windows\copy.Native.ps1
-		build\dotnet\windows\install.dependencies.ps1 = build\dotnet\windows\install.dependencies.ps1
-		build\dotnet\windows\update.resourcefiles.ps1 = build\dotnet\windows\update.resourcefiles.ps1
+		build\windows\build.ImageMagick.cmd = build\windows\build.ImageMagick.cmd
+		build\windows\build.ImageMagick.ps1 = build\windows\build.ImageMagick.ps1
+		build\windows\build.Native.cmd = build\windows\build.Native.cmd
+		build\windows\build.Native.ps1 = build\windows\build.Native.ps1
+		build\windows\copy.Native.ps1 = build\windows\copy.Native.ps1
+		build\windows\install.dependencies.ps1 = build\windows\install.dependencies.ps1
+		build\windows\update.resourcefiles.ps1 = build\windows\update.resourcefiles.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
 	ProjectSection(SolutionItems) = preProject
-		build\wasm\linux\build.cmd = build\wasm\linux\build.cmd
-		build\wasm\linux\build.ImageMagick.sh = build\wasm\linux\build.ImageMagick.sh
-		build\wasm\linux\build.libraries.sh = build\wasm\linux\build.libraries.sh
-		build\wasm\linux\build.Native.sh = build\wasm\linux\build.Native.sh
-		build\wasm\linux\build.sh = build\wasm\linux\build.sh
-		build\wasm\linux\copy.Native.sh = build\wasm\linux\copy.Native.sh
-		build\wasm\linux\Dockerfile = build\wasm\linux\Dockerfile
-		build\wasm\linux\install.dependencies.sh = build\wasm\linux\install.dependencies.sh
-		build\wasm\linux\run.cmd = build\wasm\linux\run.cmd
-		build\wasm\linux\settings.sh = build\wasm\linux\settings.sh
+		build\wasm\build.cmd = build\wasm\build.cmd
+		build\wasm\build.ImageMagick.sh = build\wasm\build.ImageMagick.sh
+		build\wasm\build.libraries.sh = build\wasm\build.libraries.sh
+		build\wasm\build.Native.sh = build\wasm\build.Native.sh
+		build\wasm\build.sh = build\wasm\build.sh
+		build\wasm\copy.Native.sh = build\wasm\copy.Native.sh
+		build\wasm\Dockerfile = build\wasm\Dockerfile
+		build\wasm\install.dependencies.sh = build\wasm\install.dependencies.sh
+		build\wasm\run.cmd = build\wasm\run.cmd
+		build\wasm\settings.sh = build\wasm\settings.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "patches", "patches", "{D39F0D02-5AB1-47E8-A27A-E443697E894C}"
 	ProjectSection(SolutionItems) = preProject
-		build\wasm\linux\patches\install.patches.sh = build\wasm\linux\patches\install.patches.sh
-		build\wasm\linux\patches\png.patch = build\wasm\linux\patches\png.patch
+		build\wasm\patches\install.patches.sh = build\wasm\patches\install.patches.sh
+		build\wasm\patches\png.patch = build\wasm\patches\png.patch
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA38A23D-B639-4B56-BBCC-43446386FE8B}"
