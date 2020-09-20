@@ -223,26 +223,26 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/wasm/linux
+      working-directory: build/wasm
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux
       working-directory: src/ImageMagick
 
     - name: Apply patches
-      run: ../../../build/wasm/linux/patches/install.patches.sh
+      run: ../../../build/wasm/patches/install.patches.sh
       working-directory: src/ImageMagick/libraries
 
     - name: Build libraries
-      run: ../../../build/wasm/linux/build.libraries.sh ../../../build/libraries
+      run: ../../../build/wasm/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/wasm/linux/build.ImageMagick.sh
+      run: ../../../build/wasm/build.ImageMagick.sh
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/wasm/linux/build.Native.sh
+      run: ../../build/wasm/build.Native.sh
       working-directory: src/Magick.Native
 
     - name: Create type definition
@@ -250,7 +250,7 @@ jobs:
       working-directory: src/create-type-definition
 
     - name: Copy Native
-      run: ../../build/wasm/linux/copy.Native.sh ../../artifacts
+      run: ../../build/wasm/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload libraries
