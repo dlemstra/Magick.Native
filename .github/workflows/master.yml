@@ -171,8 +171,8 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Create metadata
-      run: ./create.metadata.ps1 -destination ../../../artifacts 
-      working-directory: build/dotnet/metadata
+      run: ./create.metadata.ps1 -destination ../../../artifacts
+      working-directory: build/metadata
 
     - name: Upload metadata
       uses: actions/upload-artifact@v1
