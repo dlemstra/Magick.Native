@@ -345,6 +345,7 @@ jobs:
     name: 'Publish .NET libraries'
     needs:
       - verify_linux
+      - verify_linux_musl
       - macos
       - windows
       - metadata
