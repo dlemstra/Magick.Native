@@ -16,7 +16,7 @@ param (
     [string]$platformName = $env:PlatformName
 )
 
-. $PSScriptRoot\..\..\..\tools\windows\utils.ps1
+. $PSScriptRoot\..\..\tools\windows\utils.ps1
 
 function buildNative($config, $quantumName, $platformName) {
     if ($platformName -eq "x86") {

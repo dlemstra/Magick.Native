@@ -17,7 +17,7 @@ param (
     [parameter(mandatory=$true)][string]$destination
 )
 
-. $PSScriptRoot\..\..\..\tools\windows\utils.ps1
+. $PSScriptRoot\..\..\tools\windows\utils.ps1
 
 function copyNative($config, $quantumName, $platformName, $destination) {
     $target = "$destination\$config$quantumName\$platformName"

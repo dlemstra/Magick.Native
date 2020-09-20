@@ -14,7 +14,7 @@ param (
     [parameter(mandatory=$true)][string]$destination = $null
 )
 
-. $PSScriptRoot\..\..\..\tools\windows\utils.ps1
+. $PSScriptRoot\..\..\tools\windows\utils.ps1
 
 function getVersion($fileName, $start, $padding) {
     $lines = [System.IO.File]::ReadAllLines($fileName)

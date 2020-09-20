@@ -23,26 +23,26 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/dotnet/linux
+      working-directory: build/linux
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/dotnet/linux/build.libraries.sh ../../../build/libraries
+      run: ../../../build/linux/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/dotnet/linux/build.ImageMagick.sh
+      run: ../../../build/linux/build.ImageMagick.sh
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/dotnet/linux/build.Native.sh
+      run: ../../build/linux/build.Native.sh
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/dotnet/linux/copy.Native.sh ../../artifacts
+      run: ../../build/linux/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload libraries
@@ -136,7 +136,7 @@ jobs:
       working-directory: build/windows
 
     - name: Copy Native
-      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../../artifacts
+      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
       working-directory: build/windows
 
     - name: Sign libraries
@@ -171,7 +171,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Create metadata
-      run: ./create.metadata.ps1 -destination ../../../artifacts
+      run: ./create.metadata.ps1 -destination ../../artifacts
       working-directory: build/metadata
 
     - name: Upload metadata

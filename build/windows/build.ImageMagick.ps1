@@ -16,7 +16,7 @@ param (
     [string]$platformName = $env:PlatformName
 )
 
-. $PSScriptRoot\..\..\..\tools\windows\utils.ps1
+. $PSScriptRoot\..\..\tools\windows\utils.ps1
 
 function patchMagickBaseConfig($name, $platformName) {
     $configFile = fullPath "src\ImageMagick\libraries\ImageMagick\MagickCore\magick-baseconfig.h"
