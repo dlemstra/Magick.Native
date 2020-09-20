@@ -179,7 +179,7 @@ jobs:
       working-directory: build/windows
 
     - name: Copy Native
-      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts/windows
+      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
       working-directory: build/windows
 
     - name: Sign libraries
