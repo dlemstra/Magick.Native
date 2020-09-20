@@ -9,5 +9,8 @@ build/dotnet/linux/output
 build/macos/output
 build/wasm/output
 build/windows/output
+publish
+tools
+.git
 .vs
 .vscode
