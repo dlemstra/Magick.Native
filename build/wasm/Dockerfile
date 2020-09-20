@@ -1,4 +1,4 @@
-FROM trzeci/emscripten:1.39.18-upstream
+FROM emscripten/emsdk:2.0.4
 
 RUN mkdir /build
 

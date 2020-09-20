@@ -208,10 +208,10 @@ jobs:
     - name: Verify Native
       run: build/linux/verify.Native.sh .
 
-  wasm_linux:
-    name: 'WASM (Linux)'
+  wasm:
+    name: 'WASM'
     container:
-      image: trzeci/emscripten:1.39.18-upstream
+      image: emscripten/emsdk:2.0.4
     runs-on: ubuntu-latest
 
     steps:
@@ -316,7 +316,7 @@ jobs:
   publish_wasm:
     name: 'Publish WASM libraries'
     needs:
-      - wasm_linux
+      - wasm
     runs-on: windows-latest
 
     steps:
