@@ -13,6 +13,7 @@
   </metadata>
   <files>
     <file src="linux\**\*.*" target="content" />
+    <file src="linux-musl\**\*.*" target="content" />
     <file src="macos\**\*.*" target="content" />
     <file src="windows\**\*.*" target="content" />
     <file src="metadata\*.*" target="content" />
