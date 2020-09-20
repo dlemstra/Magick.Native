@@ -179,7 +179,7 @@ jobs:
       working-directory: build/windows
 
     - name: Copy Native
-      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
+      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts/windows
       working-directory: build/windows
 
     - name: Sign libraries
@@ -192,7 +192,13 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: windows
-        path: artifacts
+        path: artifacts/windows
+
+    - name: Upload resources
+      uses: actions/upload-artifact@v1
+      with:
+        name: resources
+        path: artifacts/resources
 
   metadata:
     name: 'Metadata'
@@ -385,6 +391,12 @@ jobs:
       with:
         name: windows
         path: publish\dotnet\files\windows
+
+    - name: Download resources
+      uses: actions/download-artifact@v1
+      with:
+        name: resources
+        path: publish\dotnet\files\resources
 
     - name: Download metadata
       uses: actions/download-artifact@v1
