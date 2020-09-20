@@ -117,7 +117,7 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Clone ImageMagick libraries
       run: ./checkout.cmd
@@ -125,19 +125,19 @@ jobs:
 
     - name: Build ImageMagick
       run: ./build.ImageMagick.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Update resource files
       run: ./update.resourcefiles.ps1
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Build Native
       run: ./build.Native.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Copy Native
       run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../../artifacts
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Sign libraries
       uses: dlemstra/code-sign-action@v1
@@ -164,7 +164,7 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Clone ImageMagick libraries
       run: ./checkout.cmd
@@ -277,7 +277,7 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Download linux libraries
       uses: actions/download-artifact@v1
@@ -328,7 +328,7 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
-      working-directory: build/dotnet/windows
+      working-directory: build/windows
 
     - name: Download wasm libraries
       uses: actions/download-artifact@v1
