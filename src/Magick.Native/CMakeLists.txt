@@ -55,7 +55,6 @@ target_link_libraries(
     ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
     ${LIBOPENEXR}
-    ${LIB_DIR}/libz.a
     ${LIBICONV}
     ${LIBINTL}
     ${LIBLQR}
@@ -77,6 +76,7 @@ target_link_libraries(
     ${LIBAOM}
     ${LIB_DIR}/libde265.a
     ${LIB_DIR}/libraw_r.a
+    ${LIB_DIR}/libz.a
 
     ${LIBSOCKFS}
 
