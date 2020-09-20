@@ -186,7 +186,7 @@ jobs:
       uses: dlemstra/code-sign-action@v1
       with:
         certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
-        folder: 'artifacts\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
+        folder: 'artifacts\windows\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
 
     - name: Upload libraries
       uses: actions/upload-artifact@v1
