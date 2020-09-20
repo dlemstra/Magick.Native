@@ -1,1 +1,1 @@
-docker run -it magick-dotnet-linux /bin/bash
+docker run -it magick-linux /bin/bash

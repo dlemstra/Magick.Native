@@ -9,7 +9,7 @@ if "%config%"=="" goto invalid
 if "%quantumName%"=="" goto invalid
 if "%platformName%"=="" goto invalid
 
-cd ..\..\build\dotnet\windows\
+cd ..\..\build\windows\
 
 powershell .\build.ImageMagick.ps1 -config %config% -quantumName %quantumName% -platformName %platformName%
 

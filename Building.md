@@ -15,7 +15,7 @@ This document describes the requirements and instructions to build Magick.Native
 
 ### Building the library
 
-Magick.NET.Native uses the ImageMagick 7 library and that needs to be build first. The library can be build for Windows, Linux,
+Magick.Native uses the ImageMagick 7 library and that needs to be build first. The library can be build for Windows, Linux,
 macOS and WASM and each of these platforms have their own build steps. This project uses GitHub actions to build the library
 and the steps that are done for each platform can be found inside the following workflow:
 

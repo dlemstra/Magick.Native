@@ -8,8 +8,8 @@ on:
 
 name: master
 jobs:
-  dotnet_linux:
-    name: '.NET (Linux)'
+  linux:
+    name: 'Linux'
     container:
       image: ubuntu:16.04
     runs-on: ubuntu-latest
@@ -51,8 +51,8 @@ jobs:
         name: linux
         path: artifacts
 
-  dotnet_macos:
-    name: '.NET (MacOS)'
+  macos:
+    name: 'MacOS'
     runs-on: macos-latest
 
     steps:
@@ -92,8 +92,8 @@ jobs:
         name: macos
         path: artifacts
 
-  dotnet_windows:
-    name: '.NET (Windows)'
+  windows:
+    name: 'Windows'
     runs-on: windows-latest
 
     strategy:
@@ -151,8 +151,8 @@ jobs:
         name: windows
         path: artifacts
 
-  dotnet_metadata:
-    name: '.NET (Metadata)'
+  metadata:
+    name: 'Metadata'
     runs-on: windows-latest
 
     steps:
@@ -180,10 +180,10 @@ jobs:
         name: metadata
         path: artifacts
 
-  dotnet_verify_linux:
-    name: '.NET (Verify Linux)'
+  verify_linux:
+    name: 'Verify Linux'
     needs:
-      - dotnet_linux
+      - linux
     runs-on: ubuntu-latest
 
     strategy:
@@ -206,7 +206,7 @@ jobs:
         name: linux
 
     - name: Verify Native
-      run: build/dotnet/linux/verify.Native.sh .
+      run: build/linux/verify.Native.sh .
 
   wasm_linux:
     name: 'WASM (Linux)'
@@ -262,10 +262,10 @@ jobs:
   publish_dotnet:
     name: 'Publish .NET libraries'
     needs:
-      - dotnet_verify_linux
-      - dotnet_macos
-      - dotnet_windows
-      - dotnet_metadata
+      - verify_linux
+      - macos
+      - windows
+      - metadata
     runs-on: windows-latest
 
     steps:
