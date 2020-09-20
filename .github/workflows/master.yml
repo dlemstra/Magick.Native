@@ -64,26 +64,26 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/dotnet/macos
+      working-directory: build/macos
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh macos
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/dotnet/macos/build.libraries.sh ../../../build/libraries
+      run: ../../../build/macos/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/dotnet/macos/build.ImageMagick.sh
+      run: ../../../build/macos/build.ImageMagick.sh
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/dotnet/macos/build.Native.sh
+      run: ../../build/macos/build.Native.sh
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/dotnet/macos/copy.Native.sh ../../artifacts
+      run: ../../build/macos/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload libraries

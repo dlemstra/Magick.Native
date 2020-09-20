@@ -6,7 +6,7 @@ src/Magick.Native/lib
 src/create-type-definition/lib
 src/create-type-definition/node_modules
 build/dotnet/linux/output
-build/dotnet/macos/output
+build/macos/output
 build/dotnet/windows/output
 build/wasm/linux/output
 .vs
