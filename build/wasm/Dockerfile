@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:2.0.4
+FROM emscripten/emsdk:2.0.0
 
 RUN mkdir /build
 
