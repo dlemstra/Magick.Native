@@ -1,1 +1,1 @@
-docker run -it magick-dotnet-linux-musl /bin/sh
+docker run -it magick-linux-musl /bin/sh
