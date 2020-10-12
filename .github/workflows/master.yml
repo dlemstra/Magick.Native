@@ -409,10 +409,12 @@ jobs:
       working-directory: publish/dotnet
 
     - name: Upload NuGet package
-      uses: actions/upload-artifact@v1
+      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
       with:
-        name: nuget-package
-        path: artifacts
+        nupkg-path: artifacts/*.nupkg
+        repo-owner: dlemstra
+        gh-user: dlemstra
+        token: ${{ secrets.GITHUB_TOKEN }}
 
   publish_wasm:
     name: 'Publish WASM libraries'
