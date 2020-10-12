@@ -45,7 +45,7 @@ jobs:
       run: ../../build/linux/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
-    - name: Upload libraries
+    - name: Upload library
       uses: actions/upload-artifact@v1
       with:
         name: linux
@@ -88,7 +88,7 @@ jobs:
       run: ../../build/linux-musl/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
-    - name: Upload libraries
+    - name: Upload library
       uses: actions/upload-artifact@v1
       with:
         name: linux-musl
@@ -129,7 +129,7 @@ jobs:
       run: ../../build/macos/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
-    - name: Upload libraries
+    - name: Upload library
       uses: actions/upload-artifact@v1
       with:
         name: macos
@@ -182,13 +182,13 @@ jobs:
       run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
       working-directory: build/windows
 
-    - name: Sign libraries
+    - name: Sign library
       uses: dlemstra/code-sign-action@v1
       with:
         certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
         folder: 'artifacts\windows\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
 
-    - name: Upload libraries
+    - name: Upload library
       uses: actions/upload-artifact@v1
       with:
         name: windows
@@ -274,7 +274,7 @@ jobs:
       run: ../../build/wasm/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
-    - name: Upload libraries
+    - name: Upload library
       uses: actions/upload-artifact@v1
       with:
         name: wasm
@@ -308,7 +308,7 @@ jobs:
       with:
         fetch-depth: 1
 
-    - name: Download linux libraries
+    - name: Download linux library
       uses: actions/download-artifact@v2
       with:
         name: linux
@@ -339,7 +339,7 @@ jobs:
       with:
         fetch-depth: 1
 
-    - name: Download linux-musl libraries
+    - name: Download linux-musl library
       uses: actions/download-artifact@v2
       with:
         name: linux-musl
@@ -348,7 +348,7 @@ jobs:
       run: build/linux-musl/verify.Native.sh .
 
   publish_dotnet:
-    name: 'Publish .NET libraries'
+    name: 'Publish .NET library'
     needs:
       - verify_linux
       - verify_linux_musl
@@ -368,25 +368,25 @@ jobs:
       run: ./install.dependencies.ps1
       working-directory: build/windows
 
-    - name: Download linux libraries
+    - name: Download linux library
       uses: actions/download-artifact@v1
       with:
         name: linux
         path: publish\dotnet\files\linux
 
-    - name: Download linux musl libraries
+    - name: Download linux musl library
       uses: actions/download-artifact@v1
       with:
         name: linux-musl
         path: publish\dotnet\files\linux-musl
 
-    - name: Download macos libraries
+    - name: Download macos library
       uses: actions/download-artifact@v1
       with:
         name: macos
         path: publish\dotnet\files\macos
 
-    - name: Download windows libraries
+    - name: Download windows library
       uses: actions/download-artifact@v1
       with:
         name: windows
@@ -411,13 +411,13 @@ jobs:
     - name: Upload NuGet package
       uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
       with:
-        nupkg-path: artifacts/dotnet/*.nupkg
+        nupkg-path: ./artifacts/dotnet/*.nupkg
         repo-owner: dlemstra
         gh-user: dlemstra
         token: ${{ secrets.GITHUB_TOKEN }}
 
   publish_wasm:
-    name: 'Publish WASM libraries'
+    name: 'Publish WASM library'
     needs:
       - wasm
     runs-on: windows-latest
@@ -433,7 +433,7 @@ jobs:
       run: ./install.dependencies.ps1
       working-directory: build/windows
 
-    - name: Download wasm libraries
+    - name: Download wasm library
       uses: actions/download-artifact@v1
       with:
         name: wasm
