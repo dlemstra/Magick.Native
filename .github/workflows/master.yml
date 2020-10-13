@@ -411,7 +411,7 @@ jobs:
     - name: Upload NuGet package
       uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
       with:
-        nupkg-path: artifacts\dotnet\*.nupkg
+        nupkg-path: publish\dotnet\*.nupkg
         repo-owner: dlemstra
         gh-user: dlemstra
         token: ${{ secrets.GITHUB_TOKEN }}
