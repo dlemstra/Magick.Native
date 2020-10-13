@@ -416,6 +416,13 @@ jobs:
         gh-user: dlemstra
         token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Upload NuGet package
+      working-directory: publish/dotnet
+      run: |
+        dotnet tool install gpr -g
+        $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
+        gpr push $file.FullName -k ${{ secrets.GITHUB_TOKEN }}
+
   publish_wasm:
     name: 'Publish WASM library'
     needs:
