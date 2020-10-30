@@ -13,7 +13,6 @@ brew uninstall --force gd
 brew uninstall --force fontconfig
 brew uninstall --force freetype
 brew uninstall --force webp
-brew uninstall --force libffi
 brew uninstall --force libtiff
 brew uninstall --force jpeg
 brew uninstall --force sox
@@ -21,6 +20,7 @@ brew uninstall --force libpng
 brew uninstall --force curl-openssl
 brew uninstall --force zstd
 brew uninstall --ignore-dependencies xz
+brew uninstall --ignore-dependencies libffi
 
 pip3 install meson
 pip3 install ninja
