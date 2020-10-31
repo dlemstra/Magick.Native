@@ -19,8 +19,9 @@ brew uninstall --force sox
 brew uninstall --force libpng
 brew uninstall --force curl-openssl
 brew uninstall --force zstd
-brew uninstall --ignore-dependencies xz
 brew uninstall --ignore-dependencies libffi
+brew uninstall --ignore-dependencies glib
+brew uninstall --ignore-dependencies xz
 
 pip3 install meson
 pip3 install ninja
