@@ -6,7 +6,6 @@ moveFromLib64() {
     mv /usr/local/lib64/*.a /usr/local/lib
 }
 
-
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/settings.sh
 
