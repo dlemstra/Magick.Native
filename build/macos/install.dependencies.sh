@@ -22,4 +22,4 @@ brew uninstall --force zstd
 brew uninstall --ignore-dependencies xz
 
 pip3 install meson==0.55.3
-pip3 install ninja
+pip3 install ninja==1.10.0.post2
