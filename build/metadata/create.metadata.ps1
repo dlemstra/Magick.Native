@@ -64,9 +64,9 @@ function writeImageMagickVersion($fileName, $folder) {
 
     $current = Get-Location
     Set-Location $folder
-    $tag = Invoke-Command { git describe --exact-match --tags HEAD 2>&1 "&" exit 0 } -ErrorAction SilentlyContinue | Out-String
-    $global:LASTEXITCODE = 0
-    if ($tag.Length -gt 15) {
+    & cmd /c 'git describe --exact-match --tags HEAD > tag.txt 2> nul & exit 0'
+    $tag = [IO.File]::ReadAllText("tag.txt").Trim()
+    if ($tag.Length -eq 0) {
         $version = "$version beta"
     }
     Set-Location $current
