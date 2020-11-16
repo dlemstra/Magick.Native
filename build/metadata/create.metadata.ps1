@@ -60,7 +60,17 @@ function writeFfiVersion($fileName, $folder) {
 function writeImageMagickVersion($fileName, $folder) {
     $packageVersion = GetVersion "$folder\version.sh" "PACKAGE_VERSION='" 1
     $packageRelease = GetVersion "$folder\version.sh" "PACKAGE_RELEASE=""" 1
-    Add-Content $fileName "- ImageMagick $packageVersion-$packageRelease"
+    $version = "$packageVersion-$packageRelease"
+
+    $current = Get-Location
+    Set-Location $folder
+    $tag = (git describe --exact-match --tags HEAD 2>&1) | Out-String
+    if ($tag.Length -gt 15) {
+        $version = "$version beta"
+    }
+    Set-Location $current
+
+    Add-Content $fileName "- ImageMagick $version"
 }
 
 function writePixmanVersion($fileName, $folder) {
