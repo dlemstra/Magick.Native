@@ -826,6 +826,17 @@ MAGICK_NATIVE_EXPORT void MagickImage_AutoThreshold(Image *instance, const AutoT
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
+MAGICK_NATIVE_EXPORT Image *MagickImage_BilateralBlur(const Image *instance, const size_t width, const size_t height, const double intensitySigma, const double spatialSigma, ExceptionInfo **exception)
+{
+  Image
+    *image;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  image = BilateralBlurImage(instance, width, height, intensitySigma, spatialSigma, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return image;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_BlackThreshold(Image *instance, const char *threshold, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
