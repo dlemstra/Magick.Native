@@ -63,6 +63,8 @@ target_link_libraries(
     ${LIBCAIRO}
     ${LIBGLIB}
     ${LIBFONTCONFIG}
+    ${LIB_DIR}/libjxl.a
+    ${LIB_DIR}/libhwy.a
     ${LIB_DIR}/libfreetype.a
     ${LIB_DIR}/libxml2.a
     ${LIB_DIR}/libpng.a
