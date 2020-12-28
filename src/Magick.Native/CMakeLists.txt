@@ -36,6 +36,7 @@ if (PLATFORM STREQUAL "MACOS")
 elseif (PLATFORM STREQUAL "WASM")
     list(APPEND ALL_FILES foo.cxx)
 else()
+    set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libhwy.a)
     find_package(Threads REQUIRED)
     list(APPEND ALL_FILES foo.cxx)
     set(THREADLIB Threads::Threads)
@@ -63,8 +64,7 @@ target_link_libraries(
     ${LIBCAIRO}
     ${LIBGLIB}
     ${LIBFONTCONFIG}
-    ${LIB_DIR}/libjxl.a
-    ${LIB_DIR}/libhwy.a
+    ${LIBJPEGXL}
     ${LIB_DIR}/libfreetype.a
     ${LIB_DIR}/libxml2.a
     ${LIB_DIR}/libpng.a
