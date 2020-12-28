@@ -65,13 +65,16 @@ echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'aom' "$commitDate"
+clone_date 'brotli' "$commitDate"
 clone_date 'croco' "$commitDate"
 clone_date 'cairo' "$commitDate"
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_date 'fribidi' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
+clone_date 'highway' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
+clone_date 'jpeg-xl' "$commitDate"
 clone_date 'glib' "$commitDate"
 clone_date 'lcms' "$commitDate"
 clone_date 'libde265' "$commitDate"
