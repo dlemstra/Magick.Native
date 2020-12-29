@@ -2,7 +2,6 @@
 set -e
 
 cd jpeg-xl
-git pull origin master
 rm lib/include/jxl/jxl_export.h
 mkdir __build
 cd __build
