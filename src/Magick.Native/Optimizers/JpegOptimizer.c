@@ -147,7 +147,7 @@ static void InitializeSource(j_decompress_ptr decompress_info)
   if (client_data->inputFileName != (const char *) NULL)
   {
     source->inputFile = fopen_utf8(client_data->inputFileName, "rb");
-    if (source->inputFile == (FILE*) NULL)
+    if (source->inputFile == (FILE *) NULL)
       ERREXIT(decompress_info, JERR_FILE_READ);
   }
   else
@@ -164,7 +164,7 @@ static inline boolean FillInputBuffer(j_decompress_ptr decompress_info)
   if (source->inputFile != (FILE *) NULL)
     source->manager.bytes_in_buffer = (size_t) fread(source->buffer, 1, MaxBufferExtent, source->inputFile);
   else
-    source->manager.bytes_in_buffer = (size_t) source->reader(source->buffer, MaxBufferExtent, (void*) NULL);
+    source->manager.bytes_in_buffer = (size_t) source->reader(source->buffer, MaxBufferExtent, (void *) NULL);
   if (source->manager.bytes_in_buffer == 0)
   {
     if (source->startOfBlob != FALSE)
@@ -210,14 +210,14 @@ static void TerminateSource(j_decompress_ptr decompress_info)
   }
 }
 
-static SourceManager* CreateSourceManager(j_decompress_ptr decompress_info)
+static SourceManager *CreateSourceManager(j_decompress_ptr decompress_info)
 {
   SourceManager
     *source;
 
   source = (SourceManager *) (*decompress_info->mem->alloc_small)
     ((j_common_ptr) decompress_info, JPOOL_IMAGE, sizeof(SourceManager));
-  if (source != (SourceManager*) NULL)
+  if (source != (SourceManager *) NULL)
   {
     source->buffer = (JOCTET *) (*decompress_info->mem->alloc_small)
       ((j_common_ptr) decompress_info, JPOOL_IMAGE, MaxBufferExtent * sizeof(JOCTET));
@@ -392,7 +392,7 @@ static inline int GetCharacter(j_decompress_ptr jpeg_info)
   return (int) GETJOCTET(*jpeg_info->src->next_input_byte++);
 }
 
-static inline Marker* FindMarker(ClientData *client_data, int code)
+static inline Marker *FindMarker(ClientData *client_data, int code)
 {
   register ssize_t
     i;
@@ -403,20 +403,20 @@ static inline Marker* FindMarker(ClientData *client_data, int code)
       return client_data->markers[i];
   }
 
-  return (Marker*) NULL;
+  return (Marker *) NULL;
 }
 
-static inline Marker* CreateMarker(ClientData *client_data, int code)
+static inline Marker *CreateMarker(ClientData *client_data, int code)
 {
   Marker
     *marker;
 
   if (client_data->markers_count == MaxMarkers)
-    return (Marker*) NULL;
+    return (Marker *) NULL;
 
   marker = malloc(sizeof(*marker));
   if (marker == (Marker *) NULL)
-    return (Marker*) NULL;
+    return (Marker *) NULL;
 
   (void) memset(marker, 0, sizeof(*marker));
   marker->code = code;
@@ -560,7 +560,7 @@ static void InitializeDestination(j_compress_ptr compress_info)
   if (client_data->outputFileName != (const char *) NULL)
   {
     destination->outputFile = fopen_utf8(client_data->outputFileName, "wb");
-    if (destination->outputFile == (FILE*) NULL)
+    if (destination->outputFile == (FILE *) NULL)
       ERREXIT(compress_info, JERR_FILE_WRITE);
   }
   else
@@ -576,7 +576,7 @@ static boolean EmptyOutputBuffer(j_compress_ptr compress_info)
   if (destination->outputFile != (FILE *) NULL)
     destination->manager.free_in_buffer = fwrite((const char *) destination->buffer, 1, MaxBufferExtent, destination->outputFile);
   else
-    destination->manager.free_in_buffer = (size_t) destination->writer((unsigned char *) destination->buffer, MaxBufferExtent, (void*) NULL);
+    destination->manager.free_in_buffer = (size_t) destination->writer((unsigned char *) destination->buffer, MaxBufferExtent, (void *) NULL);
   if (destination->manager.free_in_buffer != MaxBufferExtent)
     ERREXIT(compress_info, JERR_FILE_WRITE);
   destination->manager.next_output_byte = destination->buffer;
@@ -601,7 +601,7 @@ static void TerminateDestination(j_compress_ptr compress_info)
         ERREXIT(compress_info, JERR_FILE_WRITE);
     }
     else
-      destination->writer((unsigned char *) destination->buffer, count, (void*) NULL);
+      destination->writer((unsigned char *) destination->buffer, count, (void *) NULL);
   }
   if (destination->outputFile != (FILE *) NULL)
   {
@@ -610,7 +610,7 @@ static void TerminateDestination(j_compress_ptr compress_info)
   }
 }
 
-static inline DestinationManager* CreateDestinationManager(j_compress_ptr compress_info)
+static inline DestinationManager *CreateDestinationManager(j_compress_ptr compress_info)
 {
   DestinationManager
     *destination;
@@ -618,7 +618,7 @@ static inline DestinationManager* CreateDestinationManager(j_compress_ptr compre
   destination = (DestinationManager *) NULL;
   compress_info->dest = (struct jpeg_destination_mgr *) (*compress_info->mem->alloc_small)
     ((j_common_ptr) compress_info, JPOOL_IMAGE, sizeof(DestinationManager));
-  if (compress_info->dest != (struct jpeg_destination_mgr *)NULL)
+  if (compress_info->dest != (struct jpeg_destination_mgr *) NULL)
   {
     destination = (DestinationManager *) compress_info->dest;
     destination->manager.init_destination = InitializeDestination;
