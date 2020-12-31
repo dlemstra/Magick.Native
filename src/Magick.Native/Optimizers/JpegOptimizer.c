@@ -197,17 +197,22 @@ static void SkipInputData(j_decompress_ptr decompress_info, long number_bytes)
   source->manager.bytes_in_buffer -= number_bytes;
 }
 
+static inline void CloseSourceFile(SourceManager *source)
+{
+  if (source->inputFile != (FILE *) NULL)
+  {
+    fclose(source->inputFile);
+    source->inputFile = (FILE *) NULL;
+  }
+}
+
 static void TerminateSource(j_decompress_ptr decompress_info)
 {
   SourceManager
     *source;
 
   source = (SourceManager *) decompress_info->src;
-  if (source->inputFile != (FILE *) NULL)
-  {
-    fclose(source->inputFile);
-    source->inputFile = (FILE *) NULL;
-  }
+  CloseSourceFile(source);
 }
 
 static SourceManager *CreateSourceManager(j_decompress_ptr decompress_info)
@@ -488,6 +493,9 @@ static boolean ReadMarker(j_decompress_ptr jpeg_info)
 
 static boolean ReadJpeg(j_decompress_ptr decompress_info, ClientData *client_data)
 {
+  boolean
+    status;
+
   SourceManager
     *source;
 
@@ -495,8 +503,8 @@ static boolean ReadJpeg(j_decompress_ptr decompress_info, ClientData *client_dat
 
   if (setjmp(client_data->error_recovery) != 0)
   {
-    if (source != (SourceManager *) NULL && source->inputFile != (FILE *) NULL)
-      fclose(source->inputFile);
+    if (source != (SourceManager *) NULL)
+      CloseSourceFile(source);
     return FALSE;
   }
 
@@ -532,14 +540,17 @@ static boolean ReadJpeg(j_decompress_ptr decompress_info, ClientData *client_dat
     (decompress_info->comp_info[2].h_samp_factor == 1) &&
     (decompress_info->comp_info[2].v_samp_factor == 1))
   {
-    return DecompressJpeg(decompress_info, client_data);
+    status = DecompressJpeg(decompress_info, client_data);
   }
   else
   {
     client_data->coefficients = jpeg_read_coefficients(decompress_info);
 
-    return client_data->coefficients == (jvirt_barray_ptr *) NULL ? FALSE : TRUE;
+    status = client_data->coefficients == (jvirt_barray_ptr *) NULL ? FALSE : TRUE;
   }
+
+  CloseSourceFile(source);
+  return(status);
 }
 
 static void InitializeDestination(j_compress_ptr compress_info)
@@ -583,6 +594,15 @@ static boolean EmptyOutputBuffer(j_compress_ptr compress_info)
   return TRUE;
 }
 
+static inline void CloseDestinationFile(DestinationManager *destination)
+{
+  if (destination->outputFile != (FILE *) NULL)
+  {
+    fclose(destination->outputFile);
+    destination->outputFile = (FILE *) NULL;
+  }
+}
+
 static void TerminateDestination(j_compress_ptr compress_info)
 {
   DestinationManager
@@ -603,11 +623,7 @@ static void TerminateDestination(j_compress_ptr compress_info)
     else
       destination->writer((unsigned char *) destination->buffer, count, (void *) NULL);
   }
-  if (destination->outputFile != (FILE *) NULL)
-  {
-    fclose(destination->outputFile);
-    destination->outputFile = (FILE *) NULL;
-  }
+  CloseDestinationFile(destination);
 }
 
 static inline DestinationManager *CreateDestinationManager(j_compress_ptr compress_info)
@@ -715,8 +731,8 @@ static boolean WriteJpeg(j_decompress_ptr decompress_info, ClientData *client_da
   destination = (DestinationManager *) NULL;
   if (setjmp(client_data->error_recovery) != 0)
   {
-    if (destination != (DestinationManager *) NULL && destination->outputFile != (FILE *) NULL)
-      fclose(destination->outputFile);
+    if (destination != (DestinationManager *) NULL)
+      CloseDestinationFile(destination);
     jpeg_destroy_compress(&compress_info);
     return FALSE;
   }
