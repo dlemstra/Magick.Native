@@ -399,7 +399,7 @@ static inline int GetCharacter(j_decompress_ptr jpeg_info)
 
 static inline Marker *FindMarker(ClientData *client_data, int code)
 {
-  register ssize_t
+  ssize_t
     i;
 
   for (i = 0; i < (ssize_t) client_data->markers_count; i++)
@@ -442,10 +442,10 @@ static boolean ReadMarker(j_decompress_ptr jpeg_info)
   Marker
     *marker;
 
-  register ssize_t
+  ssize_t
     i;
 
-  register JOCTET
+  JOCTET
     *p;
 
   size_t
@@ -648,7 +648,7 @@ static inline DestinationManager *CreateDestinationManager(j_compress_ptr compre
 
 static void WriteMarkers(j_compress_ptr compress_info, ClientData *client_data)
 {
-  register ssize_t
+  ssize_t
     i;
 
   for (i = 0; i < (ssize_t) client_data->markers_count; i++)
@@ -764,7 +764,7 @@ static boolean WriteJpeg(j_decompress_ptr decompress_info, ClientData *client_da
 
 static void TerminateClientData(ClientData *client_data)
 {
-  register ssize_t
+  ssize_t
     i;
 
   for (i = 0; i < (ssize_t) client_data->markers_count; i++)
