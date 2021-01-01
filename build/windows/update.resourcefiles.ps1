@@ -1,4 +1,4 @@
-# Copyright 2013-2020 Dirk Lemstra <https://github.com/dlemstra/Magick.Native/>
+# Copyright 2013-2021 Dirk Lemstra <https://github.com/dlemstra/Magick.Native/>
 #
 # Licensed under the ImageMagick License (the "License"); you may not use this file except in
 # compliance with the License. You may obtain a copy of the License at

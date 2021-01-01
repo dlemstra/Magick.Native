@@ -8,7 +8,7 @@
     <license type="expression">Apache-2.0</license>
     <projectUrl>https://github.com/dlemstra/Magick.Native</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright 2013-2020 Dirk Lemstra</copyright>
+    <copyright>Copyright 2013-2021 Dirk Lemstra</copyright>
     <description>Magick.Native</description>
   </metadata>
   <files>
