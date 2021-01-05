@@ -12,6 +12,8 @@
 
 #include "Stdafx.h"
 #include "PdfInfo.h"
+#include <MagickCore/string-private.h>
+#include <coders/ghostscript-private.h>
 #include <stdlib.h>
 
 MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *fileName, ExceptionInfo **exception)
