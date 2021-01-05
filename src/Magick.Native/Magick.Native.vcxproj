@@ -161,6 +161,7 @@
     <ClCompile Include="Colors\MagickColorCollection.c" />
     <ClCompile Include="Drawables\DrawingWand.c" />
     <ClCompile Include="Drawables\PointInfoCollection.c" />
+    <ClCompile Include="Formats\Pdf\PdfInfo.c" />
     <ClCompile Include="Helpers\Environment.c" />
     <ClCompile Include="Matricis\DoubleMatrix.c" />
     <ClCompile Include="OpenCL\OpenCL.c" />
@@ -204,6 +205,7 @@
     <ClInclude Include="Colors\MagickColorCollection.h" />
     <ClInclude Include="Drawables\DrawingWand.h" />
     <ClInclude Include="Drawables\PointInfoCollection.h" />
+    <ClInclude Include="Formats\Pdf\PdfInfo.h" />
     <ClInclude Include="Helpers\Environment.h" />
     <ClInclude Include="MagickFormatInfo.h" />
     <ClInclude Include="Matricis\DoubleMatrix.h" />

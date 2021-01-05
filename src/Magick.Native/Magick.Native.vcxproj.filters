@@ -101,6 +101,9 @@
     <ClCompile Include="Types\TypeMetric.c">
       <Filter>Types</Filter>
     </ClCompile>
+    <ClCompile Include="Formats\Pdf\PdfInfo.c">
+      <Filter>Formats\Pdf</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MagickFormatInfo.h" />
@@ -203,6 +206,9 @@
     <ClInclude Include="Types\TypeMetric.h">
       <Filter>Types</Filter>
     </ClInclude>
+    <ClInclude Include="Formats\Pdf\PdfInfo.h">
+      <Filter>Formats\Pdf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources\$(Configuration)\$(PlatformName)\Magick.Native.rc" />
@@ -240,6 +246,12 @@
     </Filter>
     <Filter Include="Types">
       <UniqueIdentifier>{a1d62cd1-5787-401c-a7a3-73c476037f99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Formats">
+      <UniqueIdentifier>{493b7000-57f1-468e-9c1f-f6ae444aae61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Formats\Pdf">
+      <UniqueIdentifier>{4da85b2f-21fa-4514-9598-5767c3ad00ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

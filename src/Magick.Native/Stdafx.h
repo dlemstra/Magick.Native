@@ -47,6 +47,8 @@ extern MagickPrivate ssize_t
 #include <MagickCore/MagickCore.h>
 #include <MagickWand/MagickWand.h>
 #include <MagickCore/utility-private.h>
+#include <MagickCore/string-private.h>
+#include <coders/ghostscript-private.h>
 
 #pragma warning(pop)
 
