@@ -55,6 +55,8 @@ function copyIncludes($folder) {
     Copy-Item "$source\ImageMagick\MagickWand\*.h" "$destination\MagickWand"
     [void](New-Item -ItemType directory -Path "$destination\jpeg")
     Copy-Item "$source\jpeg\*.h" "$destination\jpeg"
+    [void](New-Item -ItemType directory -Path "$destination\coders")
+    Copy-Item "$source\ImageMagick\coders\*-private.h" "$destination\coders"
 }
 
 function copyResources($folder) {
