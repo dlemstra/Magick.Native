@@ -22,7 +22,16 @@ buildImageMagick() {
     $MAKE install
 }
 
+copyPrivateIncludes() {
+    local imageMagickInclude=`pkg-config --cflags-only-I ImageMagick`
+    imageMagickInclude=${imageMagickInclude:2}
+    cp MagickCore/*-private.h $imageMagickInclude/MagickCore/
+    mkdir $imageMagickInclude/coders
+    cp coders/*-private.h $imageMagickInclude/coders/
+}
+
 # Build ImageMagick
 cd ImageMagick
 autoreconf -fiv
 buildImageMagick "Q8"
+copyPrivateIncludes
