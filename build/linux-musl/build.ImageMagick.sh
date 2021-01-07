@@ -23,8 +23,7 @@ buildImageMagick() {
 }
 
 copyPrivateIncludes() {
-    local imageMagickInclude=`pkg-config --cflags-only-I ImageMagick`
-    imageMagickInclude=${imageMagickInclude:2}
+    local imageMagickInclude=`pkg-config --variable includedir ImageMagick`
     cp MagickCore/*-private.h $imageMagickInclude/MagickCore/
     mkdir $imageMagickInclude/coders
     cp coders/*-private.h $imageMagickInclude/coders/
