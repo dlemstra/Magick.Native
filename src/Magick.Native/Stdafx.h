@@ -15,14 +15,16 @@
   #define MAGICK_NATIVE_LINUX
 #endif
 
-#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_MACOS)
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <MagickCore/MagickCore.h>
+#include <MagickCore/studio.h>
+#include <MagickCore/utility-private.h>
+#include <MagickCore/string-private.h>
 #include <MagickWand/MagickWand.h>
-#include <unistd.h>
+#include <coders/ghostscript-private.h>
 
-extern MagickPrivate ssize_t
-  GetMagickPageSize(void);
+#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_MACOS)
 
 #if defined(MAGICK_NATIVE_WASM)
   #include <emscripten.h>
@@ -32,23 +34,10 @@ extern MagickPrivate ssize_t
 #endif
 
 #else
-
 #define _LIB
 
 #pragma warning(disable : 4710)
 #pragma warning(disable : 4711)
-#pragma warning(disable : 4820)
-
-#pragma warning(push)
-#pragma warning(disable : 4255)
-#pragma warning(disable : 4668)
-#pragma warning(disable : 4996)
-
-#include <MagickCore/MagickCore.h>
-#include <MagickWand/MagickWand.h>
-#include <MagickCore/utility-private.h>
-
-#pragma warning(pop)
 
 #define MAGICK_NATIVE_STRINGIFY(s) #s
 #if defined(_DEBUG)
@@ -177,5 +166,4 @@ MAGICK_NATIVE_LINK_LIB("zlib")
 #pragma comment(lib, "urlmon.lib")
 #endif
 
-#include <string.h>
 #include "Exceptions/MagickExceptionHelper.h"
