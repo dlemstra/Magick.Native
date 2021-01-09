@@ -5,8 +5,8 @@ copyNative() {
     local quantum=$1
     local target=$2
 
-    mkdir $target/Release$quantum
-    mkdir $target/Release$quantum/x64
+    mkdir -p $target/Release$quantum
+    mkdir -p $target/Release$quantum/x64
     cp $quantum/libMagick.Native-$quantum-x64.dll.so $target/Release$quantum/x64/Magick.Native-$quantum-x64.dll.so
 }
 
