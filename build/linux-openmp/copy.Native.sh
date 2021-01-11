@@ -7,7 +7,7 @@ copyNative() {
 
     mkdir -p $target/Release$quantum-OpenMP
     mkdir -p $target/Release$quantum-OpenMP/x64
-    cp $quantum/libMagick.Native-$quantum-x64.dll.so $target/Release$quantum-OpenMP/x64/Magick.Native-$quantum-x64.dll.so
+    cp $quantum/libMagick.Native-$quantum-OpenMP-x64.dll.so $target/Release$quantum-OpenMP/x64/Magick.Native-$quantum-OpenMP-x64.dll.so
 }
 
 [ "$1" != "" ] && [ ! -d "$1" ] && mkdir "$1"

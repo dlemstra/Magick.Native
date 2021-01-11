@@ -7,7 +7,7 @@ export CMAKE_OPTIONS=""
 export NATIVE_OPTIONS="-D OPENMP=1"
 getLibraryName() {
     local quantum=$1
-    echo Magick.Native-$quantum-x64.dll
+    echo Magick.Native-$quantum-OpenMP-x64.dll
 }
 
 echo "" > foo.cxx
