@@ -364,7 +364,7 @@ jobs:
   verify_linux_openmp:
     name: 'Verify Linux OpenMP'
     needs:
-      - linux-openmp
+      - linux_openmp
     runs-on: ubuntu-latest
 
     strategy:
