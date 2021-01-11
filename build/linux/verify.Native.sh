@@ -12,11 +12,17 @@ verifyNative() {
         exit 1
     fi
 
+    if [ ! -f "/usr/bin/ld" ]; then
+        apt-get update -y
+        apt-get install -y binutils
+    fi
+
     if ldd $file 2>&1 | grep "not found"; then
       exit 1
     else
         echo "Verified ldd status for $file"
     fi
+
     if ld $file 2>&1 | grep "undefined reference"; then
         exit 1
     else
