@@ -157,6 +157,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl", "linux-musl", 
 		build\linux-musl\verify.Native.sh = build\linux-musl\verify.Native.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-openmp", "linux-openmp", "{68BCFA01-B94B-43F3-B337-A9B28758185F}"
+	ProjectSection(SolutionItems) = preProject
+		build\linux-openmp\build.cmd = build\linux-openmp\build.cmd
+		build\linux-openmp\build.ImageMagick.sh = build\linux-openmp\build.ImageMagick.sh
+		build\linux-openmp\build.libraries.sh = build\linux-openmp\build.libraries.sh
+		build\linux-openmp\build.Native.sh = build\linux-openmp\build.Native.sh
+		build\linux-openmp\copy.Native.sh = build\linux-openmp\copy.Native.sh
+		build\linux-openmp\Dockerfile = build\linux-openmp\Dockerfile
+		build\linux-openmp\install.dependencies.sh = build\linux-openmp\install.dependencies.sh
+		build\linux-openmp\run.cmd = build\linux-openmp\run.cmd
+		build\linux-openmp\settings.sh = build\linux-openmp\settings.sh
+		build\linux-openmp\verify.cmd = build\linux-openmp\verify.cmd
+		build\linux-openmp\verify.Native.sh = build\linux-openmp\verify.Native.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|x64 = DebugQ16|x64
@@ -231,6 +246,7 @@ Global
 		{54F6D858-DE3E-4369-A212-3ECC81B854EE} = {BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0}
 		{18A7C91D-6DB9-4CCE-8276-4E7BA9F05EAC} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{F9F51AB1-7683-4E2D-B746-4360926ABDE9} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{68BCFA01-B94B-43F3-B337-A9B28758185F} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
