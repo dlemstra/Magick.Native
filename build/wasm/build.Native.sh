@@ -4,6 +4,7 @@ set -e
 export PLATFORM="WASM"
 export CMAKE_COMMAND="emcmake cmake"
 export CMAKE_OPTIONS="-D CMAKE_CXX_COMPILER=em++ -D CMAKE_C_COMPILER=emcc"
+export NATIVE_OPTIONS=""
 getLibraryName() {
     local quantum=$1
     echo magick-$quantum
@@ -29,7 +30,7 @@ buildNative() {
     mkdir $quantum
     cd $quantum
 
-    $CMAKE_COMMAND -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $CMAKE_OPTIONS ..
+    $CMAKE_COMMAND -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $NATIVE_OPTIONS $CMAKE_OPTIONS ..
     make
 
     cd ..

@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 verifyNative() {
     local quantum=$1
     local folder=$2
 
-    local file=${folder}/Release${quantum}/x64/Magick.Native-${quantum}-x64.dll.so
+    local file=${folder}/Release${quantum}-OpenMP/x64/Magick.Native-${quantum}-x64.dll.so
 
     if [ ! -f $file ]; then
         echo "Unable to find $file"
@@ -25,9 +25,15 @@ verifyNative() {
     fi
 }
 
-if [ ! -f "/usr/bin/ld" ]; then
-    apk update
-    apk add autoconf
+if [ -f "/bin/yum" ]; then
+    yum install -y libgomp
+else
+    apt-get update -y
+    apt-get install -y libgomp1
+
+    if [ ! -f "/usr/bin/ld" ]; then
+        apt-get install -y binutils
+    fi
 fi
 
 verifyNative "Q8" $1

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
@@ -18,6 +18,7 @@ buildImageMagick() {
         hdri=yes
     fi
 
+    echo $CONFIGURE --disable-shared --disable-opencl --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
     $CONFIGURE --disable-shared --disable-opencl --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-bzlib --without-lzma --without-x --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
     $MAKE install
 }

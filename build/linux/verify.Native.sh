@@ -12,11 +12,6 @@ verifyNative() {
         exit 1
     fi
 
-    if [ ! -f "/usr/bin/ld" ]; then
-        apt-get update -y
-        apt-get install -y binutils
-    fi
-
     if ldd $file 2>&1 | grep "not found"; then
       exit 1
     else
@@ -29,6 +24,11 @@ verifyNative() {
         echo "Verified ld status for $file"
     fi
 }
+
+if [ ! -f "/usr/bin/ld" ]; then
+    apt-get update -y
+    apt-get install -y binutils
+fi
 
 verifyNative "Q8" $1
 verifyNative "Q16" $1

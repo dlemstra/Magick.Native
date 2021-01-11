@@ -51,6 +51,49 @@ jobs:
         name: linux
         path: artifacts
 
+  linux_openmp:
+    name: 'Linux OpenMP'
+    container:
+      image: ubuntu:16.04
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/linux-openmp
+
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh linux
+      working-directory: src/ImageMagick
+
+    - name: Build libraries
+      run: ../../../build/linux-openmp/build.libraries.sh ../../../build/libraries
+      working-directory: src/ImageMagick/libraries
+
+    - name: Build ImageMagick
+      run: ../../../build/linux-openmp/build.ImageMagick.sh
+      working-directory: src/ImageMagick/libraries
+
+    - name: Build Native
+      run: ../../build/linux-openmp/build.Native.sh
+      working-directory: src/Magick.Native
+
+    - name: Copy Native
+      run: ../../build/linux-openmp/copy.Native.sh ../../artifacts
+      working-directory: src/Magick.Native
+
+    - name: Upload library
+      uses: actions/upload-artifact@v1
+      with:
+        name: linux-openmp
+        path: artifacts
+
   linux_musl:
     name: 'Linux musl'
     container:
@@ -318,6 +361,44 @@ jobs:
     - name: Verify Native
       run: build/linux/verify.Native.sh .
 
+  verify_linux_openmp:
+    name: 'Verify Linux OpenMP'
+    needs:
+      - linux-openmp
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        image:
+          - 'ubuntu:16.04'
+          - 'ubuntu:18.04'
+          - 'ubuntu:20.04'
+          - 'ubuntu:latest'
+          - 'centos:7'
+          - 'centos:8'
+          - 'centos:latest'
+          - 'microsoft/dotnet:2.0-runtime'
+          - 'mcr.microsoft.com/dotnet/core/runtime:3.1'
+          - 'mcr.microsoft.com/dotnet/runtime:latest'
+
+    container:
+      image: ${{ matrix.image }}
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - name: Download linux library
+      uses: actions/download-artifact@v2
+      with:
+        name: linux
+
+    - name: Verify Native
+      run: build/linux/verify.Native.sh .
+
   verify_linux_musl:
     name: 'Verify Linux musl'
     needs:
@@ -353,6 +434,7 @@ jobs:
     name: 'Publish .NET library'
     needs:
       - verify_linux
+      - verify_linux_openmp
       - verify_linux_musl
       - macos
       - windows
@@ -374,6 +456,12 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: linux
+        path: publish\dotnet\files\linux
+
+    - name: Download linux OpenMP library
+      uses: actions/download-artifact@v1
+      with:
+        name: linux-openmp
         path: publish\dotnet\files\linux
 
     - name: Download linux musl library
