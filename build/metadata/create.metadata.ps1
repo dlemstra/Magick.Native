@@ -58,10 +58,10 @@ function writeFfiVersion($fileName, $folder) {
 }
 
 function writeImageMagickVersion($fileName, $folder) {
-    $major = GetVersion "$folder\configure.ac" "m4_define([magick_major_version], [" 2
-    $minor = GetVersion "$folder\configure.ac" "m4_define([magick_minor_version], [" 2
-    $micro = GetVersion "$folder\configure.ac" "m4_define([magick_micro_version], [" 2
-    $patchlevel = GetVersion "$folder\configure.ac" "m4_define([magick_patchlevel_version], [" 2
+    $major = GetVersion "$folder\m4\version.m4" "m4_define([magick_major_version], [" 2
+    $minor = GetVersion "$folder\m4\version.m4" "m4_define([magick_minor_version], [" 2
+    $micro = GetVersion "$folder\m4\version.m4" "m4_define([magick_micro_version], [" 2
+    $patchlevel = GetVersion "$folder\m4\version.m4" "m4_define([magick_patchlevel_version], [" 2
     $version = "$major.$minor.$micro-$patchlevel"
 
     $current = Get-Location
