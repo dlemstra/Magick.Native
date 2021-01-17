@@ -67,16 +67,16 @@ function getVersion($fileName, $start, $padding) {
 
     return $null
 }
-function getVersion() {
+function getImageMagickVersion() {
     $versionFile = fullPath "src\ImageMagick\libraries\ImageMagick\m4\version.m4"
-    $major = GetVersion $versionFile "m4_define([magick_major_version], [" 2
-    $minor = GetVersion $versionFile "m4_define([magick_minor_version], [" 2
-    $micro = GetVersion $versionFile "m4_define([magick_micro_version], [" 2
-    $patchlevel = GetVersion $versionFile "m4_define([magick_patchlevel_version], [" 2
+    $major = getVersion $versionFile "m4_define([magick_major_version], [" 2
+    $minor = getVersion $versionFile "m4_define([magick_minor_version], [" 2
+    $micro = getVersion $versionFile "m4_define([magick_micro_version], [" 2
+    $patchlevel = getVersion $versionFile "m4_define([magick_patchlevel_version], [" 2
     return "$major.$minor.$micro-$patchlevel"
 }
 
-$version = getVersion
+$version = getImageMagickVersion
 
 if ($version -ne $null) {
     updateResourceFiles $version
