@@ -73,7 +73,7 @@ function getImageMagickVersion() {
     $minor = getVersion $versionFile "m4_define([magick_minor_version], [" 2
     $micro = getVersion $versionFile "m4_define([magick_micro_version], [" 2
     $patchlevel = getVersion $versionFile "m4_define([magick_patchlevel_version], [" 2
-    return "$major.$minor.$micro-$patchlevel"
+    return "$major.$minor.$micro.$patchlevel"
 }
 
 $version = getImageMagickVersion
