@@ -55,23 +55,25 @@ function updateResourceFiles($version) {
     }
 }
 
-function getVersion() {
-    $path = fullPath "src\ImageMagick\libraries\ImageMagick\MagickCore\version.h"
-    $match = "#define MagickLibVersionNumber  "
-    $lines = [System.IO.File]::ReadAllLines($path)
-    foreach ($line in $lines)
-    {
-        if (!$line.StartsWith($match))
-        {
-            continue
+function getVersion($fileName, $start, $padding) {
+    $lines = [System.IO.File]::ReadAllLines($fileName)
+    foreach ($line in $lines) {
+        if ($line.StartsWith($start)) {
+            return $line.SubString($start.Length, $line.Length - $start.Length - $padding).Replace(",", ".")
         }
-
-        return $line.SubString($match.Length, $line.Length - $match.Length).Replace(",", ".")
     }
 
-    Write-Error "Unable to get version."
+    Write-Error "Unable to get version from: $fileName"
 
     return $null
+}
+function getVersion() {
+    $versionFile = fullPath "src\ImageMagick\libraries\ImageMagick\m4\version.m4"
+    $major = GetVersion $versionFile "m4_define([magick_major_version], [" 2
+    $minor = GetVersion $versionFile "m4_define([magick_minor_version], [" 2
+    $micro = GetVersion $versionFile "m4_define([magick_micro_version], [" 2
+    $patchlevel = GetVersion $versionFile "m4_define([magick_patchlevel_version], [" 2
+    return "$major.$minor.$micro-$patchlevel"
 }
 
 $version = getVersion
