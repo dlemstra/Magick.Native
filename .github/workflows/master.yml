@@ -394,7 +394,7 @@ jobs:
     - name: Download linux library
       uses: actions/download-artifact@v2
       with:
-        name: linux
+        name: linux-openmp
 
     - name: Verify Native
       run: build/linux/verify.Native.sh .
