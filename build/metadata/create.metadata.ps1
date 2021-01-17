@@ -30,7 +30,7 @@ function getVersion($fileName, $start, $padding) {
 }
 
 function writeVersionFromResource($fileName, $libraryName, $resourceFile) {
-    $version = GetVersion $resourceFile "#define THIS_PROJECT_VERSION_STRING		""" 1
+    $version = getVersion $resourceFile "#define THIS_PROJECT_VERSION_STRING		""" 1
     if ($version -ne $null) {
         Add-Content $fileName "- $libraryName $version"
     } else {
@@ -48,20 +48,20 @@ function writeVersionFromLibraryVersion($fileName, $libraryName, $versionFile) {
 }
 
 function writeCrocoVersion($fileName, $folder) {
-    $version = GetVersion "$folder\src\libcroco-config.h" "#define LIBCROCO_VERSION """ 1
+    $version = getVersion "$folder\src\libcroco-config.h" "#define LIBCROCO_VERSION """ 1
     Add-Content $fileName "- croco $version"
 }
 
 function writeFfiVersion($fileName, $folder) {
-    $version = GetVersion "$folder\configure.ac" "AC_INIT([libffi], [" 45
+    $version = getVersion "$folder\configure.ac" "AC_INIT([libffi], [" 45
     Add-Content $fileName "- ffi $version"
 }
 
 function writeImageMagickVersion($fileName, $folder) {
-    $major = GetVersion "$folder\m4\version.m4" "m4_define([magick_major_version], [" 2
-    $minor = GetVersion "$folder\m4\version.m4" "m4_define([magick_minor_version], [" 2
-    $micro = GetVersion "$folder\m4\version.m4" "m4_define([magick_micro_version], [" 2
-    $patchlevel = GetVersion "$folder\m4\version.m4" "m4_define([magick_patchlevel_version], [" 2
+    $major = getVersion "$folder\m4\version.m4" "m4_define([magick_major_version], [" 2
+    $minor = getVersion "$folder\m4\version.m4" "m4_define([magick_minor_version], [" 2
+    $micro = getVersion "$folder\m4\version.m4" "m4_define([magick_micro_version], [" 2
+    $patchlevel = getVersion "$folder\m4\version.m4" "m4_define([magick_patchlevel_version], [" 2
     $version = "$major.$minor.$micro-$patchlevel"
 
     $current = Get-Location
@@ -77,7 +77,7 @@ function writeImageMagickVersion($fileName, $folder) {
 }
 
 function writePixmanVersion($fileName, $folder) {
-    $version = GetVersion "$folder\pixman\pixman-version.h" "#define PIXMAN_VERSION_STRING """ 1
+    $version = getVersion "$folder\pixman\pixman-version.h" "#define PIXMAN_VERSION_STRING """ 1
     Add-Content $fileName "- pixman $version"
 }
 
