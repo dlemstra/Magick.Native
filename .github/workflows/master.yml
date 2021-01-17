@@ -397,7 +397,7 @@ jobs:
         name: linux-openmp
 
     - name: Verify Native
-      run: build/linux/verify.Native.sh .
+      run: build/linux-openmp/verify.Native.sh .
 
   verify_linux_musl:
     name: 'Verify Linux musl'
