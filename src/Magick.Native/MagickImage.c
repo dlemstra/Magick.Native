@@ -2363,6 +2363,13 @@ MAGICK_NATIVE_EXPORT void MagickImage_Solarize(Image *instance, const double fac
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
+MAGICK_NATIVE_EXPORT void MagickImage_SortPixels(Image *instance, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  SortImagePixels(instance, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
+
 MAGICK_NATIVE_EXPORT Image *MagickImage_Splice(const Image *instance, const RectangleInfo *geometry, ExceptionInfo **exception)
 {
   Image
