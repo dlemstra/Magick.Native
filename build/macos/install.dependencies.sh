@@ -3,7 +3,7 @@ set -e
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-brew list
+brew list --formula
 
 brew install autoconf automake libtool nasm ossp-uuid pkg-config
 
