@@ -11,4 +11,4 @@
 // and limitations under the License.
 #pragma once
 
-MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *, const char *password, ExceptionInfo **);

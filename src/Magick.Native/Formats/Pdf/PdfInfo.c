@@ -14,25 +14,29 @@
 #include "PdfInfo.h"
 #include <stdlib.h>
 
-MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *fileName, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *fileName, const char *password, ExceptionInfo **exception)
 {
   char
     command[MagickPathExtent],
     message[MagickPathExtent],
-    path[MagickPathExtent];
+    path[MagickPathExtent],
+    *sanitize_passphrase;
 
   MagickBooleanType
     status;
 
+  sanitize_passphrase = SanitizeDelegateString(password);
 #if defined(MAGICKCORE_WINDOWS_SUPPORT)
   NTGhostscriptEXE(path, MagickPathExtent);
+  (void) FormatLocaleString(command, MagickPathExtent,
+    "\"%s\" -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT --permit-file-read=\"%s\" -sPDFPassword=\"%s\" -c \"(%s) (r) file runpdfbegin pdfpagecount = quit\"",
 #else
   CopyMagickString(path, "gs", MagickPathExtent);
-#endif
-
   (void) FormatLocaleString(command, MagickPathExtent,
-    "\"%s\" -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT --permit-file-read=\"%s\" -c \"(%s) (r) file runpdfbegin pdfpagecount = quit\"",
-    path, fileName, fileName);
+    "'%s' -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT --permit-file-read='%s' -sPDFPassword='%s' -c '(%s) (r) file runpdfbegin pdfpagecount = quit'",
+#endif
+    path, fileName, sanitize_passphrase, fileName);
+  sanitize_passphrase=DestroyString(sanitize_passphrase);
 
   MAGICK_NATIVE_GET_EXCEPTION;
   status = ExecuteGhostscriptCommand(MagickFalse, command, message, exceptionInfo);

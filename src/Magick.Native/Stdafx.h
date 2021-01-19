@@ -21,6 +21,7 @@
 #include <MagickCore/studio.h>
 #include <MagickCore/utility-private.h>
 #include <MagickCore/string-private.h>
+#include <MagickCore/delegate-private.h>
 #include <MagickWand/MagickWand.h>
 #include <coders/ghostscript-private.h>
 
