@@ -19,9 +19,9 @@ Magick.Native uses the ImageMagick 7 library and that needs to be build first. T
 macOS and WASM and each of these platforms have their own build steps. This project uses GitHub actions to build the library
 and the steps that are done for each platform can be found inside the following workflow:
 
-[master.yml](.github/workflows/master.yml)
+[main.yml](.github/workflows/main.yml)
 
-For Linux and macOS the scripts that are in the master.yml file can just be executed. For Windows the following environment
+For Linux and macOS the scripts that are in the main.yml file can just be executed. For Windows the following environment
 variables need to be set before executing the scripts:
 
 - `%QuantumName%` (Allowed values Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP)
