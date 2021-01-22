@@ -91,7 +91,7 @@ MAGICK_NATIVE_LINK_LIB("jp2")
 #endif
 
 #if defined(MAGICKCORE_JPEG_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("jpeg")
+MAGICK_NATIVE_LINK_LIB("jpeg-turbo")
 #endif
 
 #if defined(MAGICKCORE_JXL_DELEGATE)

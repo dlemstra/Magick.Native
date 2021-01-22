@@ -14,7 +14,7 @@ clone() {
     if [ $? != 0 ]; then echo "Error during checkout"; exit; fi
   fi
   cd $dir
-  git pull origin master
+  git pull origin main
   cd ..
 }
 
@@ -23,8 +23,7 @@ clone_commit()
 {
   local repo=$1
   local commit=$2
-  local dir=$3
-  if [ -z $dir ]; then dir=$repo; fi
+  local dir=$repo
 
   clone $repo $dir
 
@@ -38,13 +37,12 @@ clone_date()
 {
   local repo=$1
   local date=$2
-  local dir=$3
-  if [ -z $dir ]; then dir=$repo; fi
+  local dir=$repo
 
   clone $repo $dir
 
   cd $dir
-  git checkout `git rev-list -n 1 --before="$date" origin/master`
+  git checkout `git rev-list -n 1 --before="$date" origin/main`
   cd ..
 }
 
@@ -73,7 +71,7 @@ clone_date 'freetype' "$commitDate"
 clone_date 'fribidi' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
 clone_date 'highway' "$commitDate"
-clone_date 'jpeg-turbo' "$commitDate" 'jpeg'
+clone_date 'jpeg-turbo' "$commitDate"
 clone_date 'jpeg-xl' "$commitDate"
 clone_date 'glib' "$commitDate"
 clone_date 'lcms' "$commitDate"
