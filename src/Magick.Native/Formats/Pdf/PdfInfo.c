@@ -36,10 +36,14 @@ MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *fileName, const char *
     "'%s' -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT --permit-file-read='%s' -sPDFPassword='%s' -c '(%s) (r) file runpdfbegin pdfpagecount = quit'",
 #endif
     path, fileName, sanitize_passphrase, fileName);
-  sanitize_passphrase=DestroyString(sanitize_passphrase);
+  sanitize_passphrase = DestroyString(sanitize_passphrase);
 
   MAGICK_NATIVE_GET_EXCEPTION;
+  *message = '\0';
   status = ExecuteGhostscriptCommand(MagickFalse, command, message, exceptionInfo);
+  if ((status == MagickFalse) && (*message != '\0'))
+    (void) ThrowMagickException(exceptionInfo, GetMagickModule(), DelegateError,
+      "PDFDelegateFailed", "`%s'", message);
   MAGICK_NATIVE_SET_EXCEPTION;
   if (status == MagickFalse)
     return 0;
