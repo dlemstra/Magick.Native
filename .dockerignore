@@ -7,6 +7,7 @@ src/create-type-definition/lib
 src/create-type-definition/node_modules
 build/linux/output
 build/linux-musl/output
+build/linux-openmp/output
 build/macos/output
 build/metadata
 build/wasm/output
