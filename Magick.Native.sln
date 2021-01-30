@@ -116,6 +116,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{18A7C91D-6DB9-4CCE-8276-4E7BA9F05EAC}"
 	ProjectSection(SolutionItems) = preProject
 		build\libraries\build.aom.sh = build\libraries\build.aom.sh
+		build\libraries\build.brotli.sh = build\libraries\build.brotli.sh
 		build\libraries\build.cairo.sh = build\libraries\build.cairo.sh
 		build\libraries\build.croco.sh = build\libraries\build.croco.sh
 		build\libraries\build.ffi.sh = build\libraries\build.ffi.sh
@@ -124,6 +125,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 		build\libraries\build.fribidi.sh = build\libraries\build.fribidi.sh
 		build\libraries\build.glib.sh = build\libraries\build.glib.sh
 		build\libraries\build.harfbuzz.sh = build\libraries\build.harfbuzz.sh
+		build\libraries\build.highway.sh = build\libraries\build.highway.sh
+		build\libraries\build.jpeg-xl.sh = build\libraries\build.jpeg-xl.sh
 		build\libraries\build.lcms.sh = build\libraries\build.lcms.sh
 		build\libraries\build.libde265.sh = build\libraries\build.libde265.sh
 		build\libraries\build.libheif.sh = build\libraries\build.libheif.sh
