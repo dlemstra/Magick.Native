@@ -290,7 +290,7 @@ jobs:
       working-directory: build/wasm
 
     - name: Clone ImageMagick libraries
-      run: ./checkout.sh linux
+      run: ./checkout.sh wasm
       working-directory: src/ImageMagick
 
     - name: Apply patches

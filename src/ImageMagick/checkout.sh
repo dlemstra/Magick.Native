@@ -18,7 +18,6 @@ clone() {
   cd ..
 }
 
-#clone and check out a specific commit
 clone_commit()
 {
   local repo=$1
@@ -32,7 +31,6 @@ clone_commit()
   cd ..
 }
 
-#clone and check out a specific date
 clone_date()
 {
   local repo=$1
@@ -44,6 +42,32 @@ clone_date()
   cd $dir
   git checkout `git rev-list -n 1 --before="$date" origin/main`
   cd ..
+}
+
+create_notice()
+{
+  mkdir -p ../output
+  local notice=../output/Notice.txt
+  echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
+  echo -e "[ Magick.Native ] copyright:\n" >> $notice
+  iconv -f utf-8 -t utf-16 ../Copyright.txt | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
+
+  for dir in *; do
+    if [ -d "$dir" ]; then
+      local config=VisualMagick/$dir/Config.txt
+      if [ -f "$config" ]; then
+        echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
+        echo -e "[ $dir ] copyright:\n" >> $notice
+        local copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | sed -e 's/\r//g' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
+        if [ -f "$copyright" ]; then
+          local charset="$(file -bi "$copyright" | awk -F "=" '{print $2}')"
+          iconv -f $charset -t utf-16 "$copyright" | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
+        fi
+      fi
+    fi
+  done
+
+  echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
 }
 
 commit=$(<ImageMagick.commit)
@@ -62,35 +86,39 @@ declare -r commitDate=`git log -1 --format=%ci`
 echo "Set latest commit date as $commitDate" 
 cd ..
 
-clone_date 'aom' "$commitDate"
-clone_date 'brotli' "$commitDate"
-clone_date 'croco' "$commitDate"
-clone_date 'cairo' "$commitDate"
-clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
-clone_date 'fribidi' "$commitDate"
-clone_date 'harfbuzz' "$commitDate"
-clone_date 'highway' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate"
-clone_date 'jpeg-xl' "$commitDate"
-clone_date 'glib' "$commitDate"
 clone_date 'lcms' "$commitDate"
 clone_date 'libde265' "$commitDate"
 clone_date 'libheif' "$commitDate"
 clone_date 'libraw' "$commitDate"
-clone_date 'librsvg' "$commitDate"
 clone_date 'libxml' "$commitDate"
-clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
-clone_date 'pixman' "$commitDate"
-clone_date 'pango' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
+clone_date 'VisualMagick' "$commitDate"
 clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
+if [ "$1" == "wasm" ]; then
+  create_notice
+  exit
+fi
+
+clone_date 'aom' "$commitDate"
+clone_date 'cairo' "$commitDate"
+clone_date 'croco' "$commitDate"
+clone_date 'exr' "$commitDate"
+clone_date 'ffi' "$commitDate"
+clone_date 'fribidi' "$commitDate"
+clone_date 'glib' "$commitDate"
+clone_date 'harfbuzz' "$commitDate"
+clone_date 'lqr' "$commitDate"
+clone_date 'pango' "$commitDate"
+clone_date 'pixman' "$commitDate"
+clone_date 'librsvg' "$commitDate"
+
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
-  # Clone fontconfig
   if [ ! -d fontconfig ]; then
     git clone https://gitlab.freedesktop.org/fontconfig/fontconfig fontconfig
   fi
@@ -100,35 +128,39 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
   git checkout 2.12.6
   cd ..
 
-  # Clone ffi
-  if [ ! -d ffi ]; then
-    git clone https://github.com/libffi/libffi.git ffi
-  fi
-  cd ffi
-  git reset --hard
-  git fetch
-  git checkout v3.3
-  cd ..
+  mkdir -p VisualMagick/fontconfig
+  echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
+fi
 
+if [ "$1" == "macos" ]; then
+  create_notice
+  exit
+fi
+
+clone_date 'brotli' "$commitDate"
+clone_date 'highway' "$commitDate"
+clone_date 'jpeg-xl' "$commitDate"
+
+if [ "$1" == "linux" ]; then
+  create_notice
   exit
 fi
 
 clone_date 'bzlib' "$commitDate"
-clone_date 'ffi' "$commitDate"
 clone_date 'flif' "$commitDate"
 clone_date 'liblzma' "$commitDate"
 clone_date 'libzip' "$commitDate"
 clone_date 'jp2' "$commitDate"
-clone_date 'VisualMagick' "$commitDate"
 
-rm -rf VisualMagick/bzlib
+create_notice
+
 rm -rf VisualMagick/dcraw
 rm -rf VisualMagick/demos
 rm -rf VisualMagick/fuzz
 rm -rf VisualMagick/ImageMagickObject
 rm -rf VisualMagick/IMDisplay
 rm -rf VisualMagick/iptcutil
-rm -rf VisualMagick/liblzma
+rm -rf VisualMagick/jbig
 rm -rf VisualMagick/Magick++
 rm -rf VisualMagick/NtMagick
 rm -rf VisualMagick/tests
