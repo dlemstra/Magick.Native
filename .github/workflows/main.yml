@@ -499,6 +499,7 @@ jobs:
       working-directory: publish/dotnet
 
     - name: Upload NuGet package
+      if: ${{ github.event_name != 'pull_request' }}
       working-directory: publish/dotnet
       run: |
         dotnet tool install gpr -g
