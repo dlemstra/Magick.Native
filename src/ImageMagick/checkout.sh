@@ -132,18 +132,17 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
   echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
 fi
 
-clone_date 'bzlib' "$commitDate"
-clone_date 'liblzma' "$commitDate"
-clone_date 'libzip' "$commitDate"
-
 if [ "$1" == "macos" ]; then
   create_notice
   exit
 fi
 
 clone_date 'brotli' "$commitDate"
+clone_date 'bzlib' "$commitDate"
 clone_date 'highway' "$commitDate"
 clone_date 'jpeg-xl' "$commitDate"
+clone_date 'liblzma' "$commitDate"
+clone_date 'libzip' "$commitDate"
 
 if [ "$1" == "linux" ]; then
   create_notice
