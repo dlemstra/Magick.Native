@@ -5,6 +5,9 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/settings.sh
 
 $1/build.zlib.sh
+$1/build.liblzma.sh
+$1/build.bzlib.sh
+$1/build.libzip.sh
 $1/build.libxml.sh
 $1/build.libpng.sh
 $1/build.freetype.sh
