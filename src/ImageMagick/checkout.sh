@@ -46,8 +46,14 @@ clone_date()
 
 create_notice()
 {
-  mkdir -p ../output
-  local notice=../output/Notice.txt
+  local output=$1
+
+  if [ -z "$output" ]; then
+    output=../output
+  fi
+
+  mkdir -p $output
+  local notice=$output/Notice.txt
   echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
   echo -e "[ Magick.Native ] copyright:\n" >> $notice
   iconv -f utf-8 -t utf-16 ../Copyright.txt | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
@@ -101,7 +107,7 @@ clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
 if [ "$1" == "wasm" ]; then
-  create_notice
+  create_notice $2
   exit
 fi
 
@@ -133,7 +139,7 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
 fi
 
 if [ "$1" == "macos" ]; then
-  create_notice
+  create_notice $2
   exit
 fi
 
@@ -145,14 +151,14 @@ clone_date 'liblzma' "$commitDate"
 clone_date 'libzip' "$commitDate"
 
 if [ "$1" == "linux" ]; then
-  create_notice
+  create_notice $2
   exit
 fi
 
 clone_date 'flif' "$commitDate"
 clone_date 'jp2' "$commitDate"
 
-create_notice
+create_notice $2
 
 rm -rf VisualMagick/dcraw
 rm -rf VisualMagick/demos
