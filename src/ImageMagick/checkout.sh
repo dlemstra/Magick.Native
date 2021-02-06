@@ -56,7 +56,7 @@ create_notice()
   local notice=$output/Notice.txt
   echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
   echo -e "[ Magick.Native ] copyright:\n" >> $notice
-  iconv -f utf-8 -t utf-16 ../Copyright.txt | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
+  iconv -f utf-8 -t utf-16 ../../Magick.Native/Copyright.txt | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
 
   for dir in *; do
     if [ -d "$dir" ]; then

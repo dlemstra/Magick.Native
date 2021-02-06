@@ -243,5 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
+    <Text Include="Copyright.txt" />
   </ItemGroup>
 </Project>
