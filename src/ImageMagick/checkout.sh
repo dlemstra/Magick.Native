@@ -56,7 +56,8 @@ create_notice()
   local notice=$output/Notice.txt
   echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
   echo -e "[ Magick.Native ] copyright:\n" >> $notice
-  iconv -f utf-8 -t utf-16 ../../Magick.Native/Copyright.txt | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
+  local charset="$(file -bi "../../Magick.Native/Copyright.txt" | awk -F "=" '{print $2}')"
+  iconv -f $charset -t utf-16 ../../Magick.Native/Copyright.txt | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
 
   for dir in *; do
     if [ -d "$dir" ]; then
@@ -64,7 +65,7 @@ create_notice()
       if [ -f "$config" ]; then
         echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
         echo -e "[ $dir ] copyright:\n" >> $notice
-        local copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | sed -e 's/\r//g' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
+        copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | sed -e 's/\r//g' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
         if [ -f "$copyright" ]; then
           local charset="$(file -bi "$copyright" | awk -F "=" '{print $2}')"
           iconv -f $charset -t utf-16 "$copyright" | iconv -f utf-16 -t utf-8 | sed -e 's/\r//g' >> $notice
