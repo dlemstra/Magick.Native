@@ -60,6 +60,13 @@ MAGICK_NATIVE_EXPORT void Magick_DisposeFonts(TypeInfo **list)
   RelinquishMagickMemory((void *) list);
 }
 
+MAGICK_NATIVE_EXPORT void Magick_SetDefaultFontFile(const char *fileName, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  SetMagickSecurityPolicyValue(SystemPolicyDomain, "font", fileName, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
+
 MAGICK_NATIVE_EXPORT void Magick_SetRandomSeed(const unsigned long seed)
 {
   SetRandomSecretKey(seed);
