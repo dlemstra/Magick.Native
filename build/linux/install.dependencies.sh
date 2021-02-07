@@ -3,7 +3,7 @@ set -e
 
 apt-get update -y
 
-apt-get install -y autoconf autopoint git gperf libtool nasm pkg-config python python-pip python3-pip ragel software-properties-common texinfo
+apt-get install -y autoconf autopoint gettext git gperf libtool nasm pkg-config python python-pip python3-pip ragel software-properties-common texinfo
 
 add-apt-repository ppa:ubuntu-toolchain-r/test -y
 apt-get update -y
