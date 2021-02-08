@@ -57,6 +57,9 @@ create_notice()
   echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
   echo -e "[ Magick.Native ] copyright:\n" >> $notice
   local charset="$(file -bi ../../Magick.Native/Copyright.txt | awk -F "=" '{print $2}')"
+  if [ "$charset" = "regular file" ]; then
+    charset="$(file -I ../../Magick.Native/Copyright.txt | awk -F "=" '{print $2}')"
+  fi
   iconv -f $charset -t utf-8 ../../Magick.Native/Copyright.txt | sed -e 's/\xef\xbb\xbf//' | sed -e 's/\r//g' >> $notice
 
   for dir in *; do
@@ -65,10 +68,12 @@ create_notice()
       if [ -f "$config" ]; then
         echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
         echo -e "[ $dir ] copyright:\n" >> $notice
-        copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | sed -e 's/\r//g' | sed -e 's/\n//g' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
+        copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | tr -d '[:space:]' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
         if [ -f "$copyright" ]; then
-          file -bi $copyright
           local charset="$(file -bi $copyright | awk -F "=" '{print $2}')"
+          if [ "$charset" = "regular file" ]; then
+            charset="$(file -I $copyright | awk -F "=" '{print $2}')"
+          fi
           echo -e "Adding notice from '$copyright' ($charset)"
           iconv -f $charset -t utf-8 $copyright | sed -e 's/\xef\xbb\xbf//' | sed -e 's/\r//g' >> $notice
         else
