@@ -65,14 +65,14 @@ create_notice()
       if [ -f "$config" ]; then
         echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
         echo -e "[ $dir ] copyright:\n" >> $notice
-        copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | sed -e 's/\r//g' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
-        echo -e "Adding notice from $copyright\c"
+        copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | sed -e 's/\r//g' | sed -e 's/\n//g' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
         if [ -f "$copyright" ]; then
+          file -bi $copyright
           local charset="$(file -bi $copyright | awk -F "=" '{print $2}')"
-          echo -e " ($charset)"
+          echo -e "Adding notice from '$copyright' ($charset)"
           iconv -f $charset -t utf-8 $copyright | sed -e 's/\xef\xbb\xbf//' | sed -e 's/\r//g' >> $notice
         else
-          echo -e " (missing)"
+          echo -e "Unable to find '$copyright'"
         fi
       fi
     fi
