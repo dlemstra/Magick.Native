@@ -58,6 +58,7 @@ create_notice()
   echo -e "[ Magick.Native ] copyright:\n" >> $notice
   local charset="$(file -bi ../../Magick.Native/Copyright.txt | awk -F "=" '{print $2}')"
   if [ "$charset" = "regular file" ]; then
+    file -I ../../Magick.Native/Copyright.txt
     charset="$(file -I ../../Magick.Native/Copyright.txt | awk -F "=" '{print $2}')"
   fi
   iconv -f $charset -t utf-8 ../../Magick.Native/Copyright.txt | sed -e 's/\xef\xbb\xbf//' | sed -e 's/\r//g' >> $notice
