@@ -60,7 +60,7 @@ create_notice()
   if [ -z "$charset" ]; then
     charset="$(file -I ../../Magick.Native/Copyright.txt | awk -F "=" '{print $2}')"
   fi
-  iconv -f $charset -t utf-8 ../../Magick.Native/Copyright.txt | sed -e 's/\xef\xbb\xbf//' | sed -e 's/\r//g' >> $notice
+  iconv -f $charset -t utf-8 ../../Magick.Native/Copyright.txt | sed -e "s/\xef\xbb\xbf/" | sed -e "s/\r//g" >> $notice
 
   for dir in *; do
     if [ -d "$dir" ]; then
@@ -75,7 +75,7 @@ create_notice()
             charset="$(file -I $copyright | awk -F "=" '{print $2}')"
           fi
           echo -e "Adding notice from '$copyright' ($charset)"
-          iconv -f $charset -t utf-8 $copyright | sed -e 's/\xef\xbb\xbf//' | sed -e 's/\r//g' >> $notice
+          iconv -f $charset -t utf-8 $copyright | sed -e "s/\xef\xbb\xbf//" | sed -e "s/\r//g" >> $notice
         else
           echo -e "Unable to find '$copyright'"
         fi
