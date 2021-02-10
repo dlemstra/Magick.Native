@@ -530,11 +530,13 @@ jobs:
         path: publish\wasm\files
 
     - name: Create NPM package
-      run: ./publish.ps1 -destination artifacts
+      run: ./publish.ps1 -destination ../../artifacts
       working-directory: publish/wasm
 
     - name: Upload NPM package
-      uses: actions/upload-artifact@v1
-      with:
-        name: wasm-package
-        path: artifacts
+      if: github.event_name != 'pull_request'
+      working-directory: publish/wasm
+      run: |
+        dotnet tool install gpr -g
+        $file = Get-ChildItem -Path . -Recurse -Filter *.tgz | Select -First 1
+        gpr push $file.FullName -r dlemstra/Magick.Native -k ${{ secrets.GITHUB_TOKEN }}
