@@ -531,7 +531,7 @@ jobs:
 
     - uses: actions/setup-node@v1
       with:
-        registry-url: 'https://npm.pkg.github.com'
+        registry-url: https://npm.pkg.github.com/dlemstra/Magick.Native
 
     - name: Create NPM package
       run: ./publish.ps1 -destination artifacts
