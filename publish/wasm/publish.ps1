@@ -16,12 +16,8 @@ param (
 
 . $PSScriptRoot\..\..\tools\windows\utils.ps1
 
-function createNPMPackage($version, $destination)
+function createNpmPackage($version)
 {
-  $target = FullPath $destination
-  Remove-Item $target -Recurse -ErrorAction Ignore
-  [void](New-Item -ItemType directory -Path $target)
-
   $info = $version.split('.')
   $version = "0.$($info[0])$($info[1]).$($info[2])$($info[3])"
 
@@ -35,9 +31,7 @@ function createNPMPackage($version, $destination)
   $dir = FullPath "publish\wasm\files"
   cd $dir
   & npm pack
-
-  Copy-Item "*.tgz" $target
 }
 
 $version = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
-createNPMPackage $version $destination
+createNpmPackage $version

@@ -529,12 +529,17 @@ jobs:
         name: wasm
         path: publish\wasm\files
 
+    - uses: actions/setup-node@v1
+      with:
+        registry-url: 'https://npm.pkg.github.com'
+
     - name: Create NPM package
       run: ./publish.ps1 -destination artifacts
       working-directory: publish/wasm
 
-    - name: Upload NPM package
-      uses: actions/upload-artifact@v1
-      with:
-        name: wasm-package
-        path: artifacts
+    - name: Publish NPM package
+      if: github.event_name != 'pull_request'
+      run: npm publish
+      working-directory: publish/wasm/files
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
