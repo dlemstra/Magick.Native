@@ -529,17 +529,28 @@ jobs:
         name: wasm
         path: publish\wasm\files
 
-    - uses: actions/setup-node@v1
-      with:
-        registry-url: https://npm.pkg.github.com
-
     - name: Create NPM package
+      id: create_package
       run: ./publish.ps1 -destination artifacts
       working-directory: publish/wasm
 
-    - name: Publish NPM package
-      if: github.event_name != 'pull_request'
-      run: npm publish
-      working-directory: publish/wasm/files
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.create_package.outputs.version }}
+        release_name: magick-native-${{ steps.create_package.outputs.version }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: /publish/wasm/files/magick-native-${{ steps.create_package.outputs.version }}.tgz
+        asset_name: magick-native-${{ steps.create_package.outputs.version }}.tgz
+        asset_content_type: application/gzip

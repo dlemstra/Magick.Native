@@ -16,10 +16,11 @@ param (
 
 . $PSScriptRoot\..\..\tools\windows\utils.ps1
 
-function createNpmPackage($version)
+function createNpmPackage($now)
 {
-  $info = $version.split('.')
+  $info = $now.split('.')
   $version = "0.$($info[0])$($info[1]).$($info[2])$($info[3])"
+  echo "::set-output name=version::$version"
 
   $path = FullPath "publish\wasm\package.json"
   $content = [IO.File]::ReadAllText($path)
@@ -33,5 +34,5 @@ function createNpmPackage($version)
   & npm pack
 }
 
-$version = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
-createNpmPackage $version
+$now = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
+createNpmPackage $now
