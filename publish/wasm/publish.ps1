@@ -20,7 +20,6 @@ function createNpmPackage($now)
 {
   $info = $now.split('.')
   $version = "0.$($info[0])$($info[1]).$($info[2])$($info[3])"
-  echo "::set-output name=version::$version"
 
   $path = FullPath "publish\wasm\package.json"
   $content = [IO.File]::ReadAllText($path)

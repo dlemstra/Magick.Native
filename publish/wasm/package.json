@@ -1,13 +1,10 @@
 {
-  "name": "magick-native",
+  "name": "@dlemstra/magick-native",
   "version": "",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dlemstra/Magick.Native.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/dlemstra/Magick.Native"
   },
   "author": "Dirk Lemstra",
   "license": "Apache-2.0",
