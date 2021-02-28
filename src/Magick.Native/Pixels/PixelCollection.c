@@ -87,6 +87,8 @@ MAGICK_NATIVE_EXPORT unsigned char *PixelCollection_ToByteArray(const CacheView 
 {
   ExportStart(unsigned char);
   result = AcquireMagickMemory(length);
+  if (result == (unsigned char *) NULL)
+    return result;
   MAGICK_NATIVE_GET_EXCEPTION;
   ExportImagePixels(GetCacheViewImage(instance), x, y, width, height, mapping, CharPixel, result, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
@@ -97,6 +99,8 @@ MAGICK_NATIVE_EXPORT unsigned short *PixelCollection_ToShortArray(const CacheVie
 {
   ExportStart(unsigned short);
   result = AcquireMagickMemory(length);
+  if (result == (unsigned short *) NULL)
+    return result;
   MAGICK_NATIVE_GET_EXCEPTION;
   ExportImagePixels(GetCacheViewImage(instance), x, y, width, height, mapping, ShortPixel, result, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
