@@ -1,4 +1,4 @@
-export FLAGS="-O3 -fPIC"
+export FLAGS="-O3 -fPIC -mmacosx-version-min=10.3"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="./configure"
 export CMAKE_COMMAND="cmake"
