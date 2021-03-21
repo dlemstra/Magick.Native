@@ -38,16 +38,6 @@ function writeVersionFromLibraryVersion($fileName, $libraryName, $versionFile) {
     }
 }
 
-function writeCrocoVersion($fileName, $folder) {
-    $version = getVersion "$folder\src\libcroco-config.h" "#define LIBCROCO_VERSION """ 1
-    Add-Content $fileName "- croco $version"
-}
-
-function writeFfiVersion($fileName, $folder) {
-    $version = getVersion "$folder\configure.ac" "AC_INIT([libffi], [" 45
-    Add-Content $fileName "- ffi $version"
-}
-
 function writeImageMagickVersion($fileName, $folder) {
     $major = getVersion "$folder\m4\version.m4" "m4_define([magick_major_version], [" 2
     $minor = getVersion "$folder\m4\version.m4" "m4_define([magick_minor_version], [" 2
