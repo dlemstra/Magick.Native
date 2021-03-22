@@ -73,7 +73,7 @@ create_notice()
   echo -e "[ Magick.Native ] copyright:\n" >> $notice
   add_copyright '../../Magick.Native/Copyright.txt' $notice
 
-  echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
+  echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
   echo -e "[ ImageMagick ] copyright:\n" >> $notice
   add_copyright 'ImageMagick/LICENSE' $notice
 
@@ -82,7 +82,8 @@ create_notice()
       local config=VisualMagick/$dir/Config.txt
       if [ -f "$config" ]; then
         echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
-        echo -e "[ $dir ] copyright:\n" >> $notice
+        version="$(head -n 1 $dir/ImageMagick/ImageMagick.version.h | awk -F " " '{print $3}' | sed -e 's/,/\./g')"
+        echo -e "[ $dir $version ] copyright:\n" >> $notice
         copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | tr -d '[:space:]' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
         if [ -f "$copyright" ]; then
           add_copyright $copyright $notice
