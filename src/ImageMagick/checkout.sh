@@ -44,6 +44,20 @@ clone_date()
   cd ..
 }
 
+add_copyright()
+{
+  local copyrightFile=$1
+  local notice=$2
+
+  local charset="$(file -bi $copyrightFile | awk -F "=" '{print $2}')"
+  if [ -z "$charset" ]; then
+    charset="$(file -I $copyrightFile | awk -F "=" '{print $2}')"
+  fi
+
+  echo -e "Adding notice from '$copyrightFile' ($charset)"
+  iconv -f $charset -t utf-8 $copyrightFile | sed -e 's/\xef\xbb\xbf//' | tr -d '\r' >> $notice
+}
+
 create_notice()
 {
   local output=$1
@@ -54,13 +68,14 @@ create_notice()
 
   mkdir -p $output
   local notice=$output/Notice.txt
+
   echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
   echo -e "[ Magick.Native ] copyright:\n" >> $notice
-  local charset="$(file -bi ../../Magick.Native/Copyright.txt | awk -F "=" '{print $2}')"
-  if [ -z "$charset" ]; then
-    charset="$(file -I ../../Magick.Native/Copyright.txt | awk -F "=" '{print $2}')"
-  fi
-  iconv -f $charset -t utf-8 ../../Magick.Native/Copyright.txt | sed -e 's/\xef\xbb\xbf//' | tr -d '\r' >> $notice
+  add_copyright '../../Magick.Native/Copyright.txt' $notice
+
+  echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
+  echo -e "[ ImageMagick ] copyright:\n" >> $notice
+  add_copyright 'ImageMagick/LICENSE' $notice
 
   for dir in *; do
     if [ -d "$dir" ]; then
@@ -70,12 +85,7 @@ create_notice()
         echo -e "[ $dir ] copyright:\n" >> $notice
         copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | tr -d '[:space:]' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
         if [ -f "$copyright" ]; then
-          local charset="$(file -bi $copyright | awk -F "=" '{print $2}')"
-          if [ -z "$charset" ]; then
-            charset="$(file -I $copyright | awk -F "=" '{print $2}')"
-          fi
-          echo -e "Adding notice from '$copyright' ($charset)"
-          iconv -f $charset -t utf-8 $copyright | sed -e 's/\xef\xbb\xbf//' | tr -d '\r' >> $notice
+          add_copyright $copyright $notice
         else
           echo -e "Unable to find '$copyright'"
         fi
