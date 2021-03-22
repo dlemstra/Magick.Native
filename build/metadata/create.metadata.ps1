@@ -21,16 +21,7 @@ function getVersion($fileName, $start, $padding) {
 }
 
 function writeVersionFromResource($fileName, $libraryName, $resourceFile) {
-    $version = getVersion $resourceFile "#define THIS_PROJECT_VERSION_STRING		""" 1
-    if ($version -ne $null) {
-        Add-Content $fileName "- $libraryName $version"
-    } else {
-        Write-Error "Unable to get version for: $libraryName"
-    }
-}
-
-function writeVersionFromLibraryVersion($fileName, $libraryName, $versionFile) {
-    $version = [System.IO.File]::ReadAllLines($versionFile).Trim()
+    $version = getVersion $resourceFile "#define DELEGATE_VERSION_STRING """ 1
     if ($version -ne $null) {
         Add-Content $fileName "- $libraryName $version"
     } else {
@@ -57,11 +48,6 @@ function writeImageMagickVersion($fileName, $folder) {
     Add-Content $fileName "- ImageMagick $version"
 }
 
-function writePixmanVersion($fileName, $folder) {
-    $version = getVersion "$folder\pixman\pixman-version.h" "#define PIXMAN_VERSION_STRING """ 1
-    Add-Content $fileName "- pixman $version"
-}
-
 function writeLibraryVersions($folders) {
     $sourceDir = fullPath "src/ImageMagick/libraries"
     $libraries = Get-ChildItem $sourceDir
@@ -74,19 +60,14 @@ function writeLibraryVersions($folders) {
 
         $folder = "$sourceDir/$libraryName"
 
-        $resourceFile = Get-ChildItem -Path $folder -Filter "Resource.rc" -Recurse
+        $resourceFile = Get-ChildItem -Path $folder -Filter "ImageMagick.version.h" -Recurse
         if ($resourceFile -ne $null) {
             writeVersionFromResource $fileName $libraryName $resourceFile.FullName
         } else {
-            $versionFile = Get-ChildItem -Path $folder -Filter "LibraryVersion.txt" -Recurse
-            if ($versionFile -ne $null) {
-                writeVersionFromLibraryVersion $fileName $libraryName $versionFile.FullName
-            } else {
-                switch($libraryName) {
-                    "ImageMagick" { writeImageMagickVersion $fileName $folder }
-                    "VisualMagick" { }
-                    default { Write-Error "Unable to get version for: $library" }
-                }
+            switch($libraryName) {
+                "ImageMagick" { writeImageMagickVersion $fileName $folder }
+                "VisualMagick" { }
+                default { Write-Error "Unable to get version for: $library" }
             }
         }
     }
