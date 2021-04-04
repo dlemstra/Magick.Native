@@ -339,8 +339,14 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_ColorType_Get(const Image *instance, Exc
 
 MAGICK_NATIVE_EXPORT void MagickImage_ColorType_Set(Image *instance, const size_t value, ExceptionInfo **exception)
 {
+  const ImageType
+    type = (const ImageType) value;
+
+  if (instance->type == type)
+    return;
+
   MAGICK_NATIVE_GET_EXCEPTION;
-  SetImageType(instance, (const ImageType) value, exceptionInfo);
+  SetImageType(instance, type, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
