@@ -1199,13 +1199,19 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Despeckle(const Image *instance, Excepti
   return image;
 }
 
-MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineColorType(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineColorType(Image *instance, ExceptionInfo **exception)
 {
   ImageType
     imageType;
 
   MAGICK_NATIVE_GET_EXCEPTION;
   imageType = IdentifyImageType(instance, exceptionInfo);
+  if (imageType == BilevelType || imageType == GrayscaleType)
+  {
+    SetImageColorspace(instance, GRAYColorspace, exceptionInfo);
+    instance->alpha_trait = UndefinedPixelTrait;
+    instance->type = imageType;
+  }
   MAGICK_NATIVE_SET_EXCEPTION;
   return imageType;
 }

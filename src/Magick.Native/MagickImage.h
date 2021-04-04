@@ -244,7 +244,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Deskew(const Image *, const double, Exce
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Despeckle(const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineColorType(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineColorType(Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Distort(const Image *, const size_t, const MagickBooleanType, const double *, const size_t, ExceptionInfo **);
 
