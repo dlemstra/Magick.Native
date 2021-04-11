@@ -20,6 +20,11 @@ MAGICK_NATIVE_EXPORT MagickCLDevice OpenCL_GetDevice(const MagickCLDevice *devic
   return devices[index];
 }
 
+MAGICK_NATIVE_EXPORT MagickBooleanType OpenCL_GetEnabled(void)
+{
+  return GetOpenCLEnabled();
+}
+
 MAGICK_NATIVE_EXPORT MagickBooleanType OpenCL_SetEnabled(const MagickBooleanType value)
 {
   return SetOpenCLEnabled(value);
