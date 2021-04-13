@@ -10,6 +10,7 @@ brew install autoconf automake libtool nasm ossp-uuid pkg-config
 # Uninstall already installed development libraries
 brew uninstall --force php
 brew uninstall --force gd
+brew uninstall --force glib
 brew uninstall --force fontconfig
 brew uninstall --force freetype
 brew uninstall --force libffi
