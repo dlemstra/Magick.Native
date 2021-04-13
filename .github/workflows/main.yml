@@ -341,6 +341,7 @@ jobs:
           - 'centos:latest'
           - 'microsoft/dotnet:2.0-runtime'
           - 'mcr.microsoft.com/dotnet/core/runtime:3.1'
+          - 'mcr.microsoft.com/dotnet/aspnet:latest'
           - 'mcr.microsoft.com/dotnet/runtime:latest'
 
     container:
@@ -379,6 +380,7 @@ jobs:
           - 'centos:latest'
           - 'microsoft/dotnet:2.0-runtime'
           - 'mcr.microsoft.com/dotnet/core/runtime:3.1'
+          - 'mcr.microsoft.com/dotnet/aspnet:latest'
           - 'mcr.microsoft.com/dotnet/runtime:latest'
 
     container:
@@ -410,6 +412,7 @@ jobs:
         image:
           - 'alpine:latest'
           - 'mcr.microsoft.com/dotnet/core/runtime:3.1-alpine'
+          - 'mcr.microsoft.com/dotnet/aspnet:5.0-alpine'
           - 'mcr.microsoft.com/dotnet/runtime:5.0-alpine'
 
     container:
