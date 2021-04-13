@@ -26,9 +26,9 @@ brew uninstall --force jpeg
 brew uninstall --force sox
 brew uninstall --force libpng
 brew uninstall --force curl-openssl
-brew uninstall --force libidn2
 brew uninstall --force zstd
 brew uninstall --force libzip
+brew uninstall --ignore-dependencies libidn2
 brew uninstall --ignore-dependencies xz
 
 pip3 install meson==0.55.3
