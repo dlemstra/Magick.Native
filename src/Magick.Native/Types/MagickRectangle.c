@@ -9,9 +9,9 @@ MAGICK_NATIVE_EXPORT RectangleInfo *MagickRectangle_Create(void)
   RectangleInfo
     *rectangle_info;
 
-  rectangle_info = (RectangleInfo *)AcquireMagickMemory(sizeof(*rectangle_info));
-  if (rectangle_info == (RectangleInfo *)NULL)
-    return (RectangleInfo *)NULL;
+  rectangle_info = (RectangleInfo *) AcquireMagickMemory(sizeof(*rectangle_info));
+  if (rectangle_info == (RectangleInfo *) NULL)
+    return (RectangleInfo *) NULL;
   ResetMagickMemory(rectangle_info, 0, sizeof(*rectangle_info));
   return rectangle_info;
 }
@@ -61,7 +61,27 @@ MAGICK_NATIVE_EXPORT void MagickRectangle_Height_Set(RectangleInfo *instance, co
   instance->height = value;
 }
 
-MAGICK_NATIVE_EXPORT void MagickRectangle_Initialize(RectangleInfo *instance, const char *value)
+MAGICK_NATIVE_EXPORT RectangleInfo *MagickRectangle_FromPageSize(const char *page_size)
 {
-  GetGeometry(value, &instance->x, &instance->y, &instance->width, &instance->height);
+  char
+    *geometry;
+
+  MagickStatusType
+    flags;
+
+  RectangleInfo
+    *rectangle_info;
+
+  rectangle_info = MagickRectangle_Create();
+  if (rectangle_info == (RectangleInfo *) NULL)
+    return (RectangleInfo *) NULL;
+  geometry = GetPageGeometry(page_size);
+  flags = ParseAbsoluteGeometry(geometry, rectangle_info);
+  geometry = DestroyString(geometry);
+  if (((flags & WidthValue) == 0) || ((flags & HeightValue) == 0))
+  {
+    MagickRectangle_Dispose(rectangle_info);
+    return (RectangleInfo *) NULL;
+  }
+  return rectangle_info;
 }

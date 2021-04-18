@@ -18,4 +18,4 @@ MAGICK_NATIVE_EXPORT void MagickRectangle_Width_Set(RectangleInfo *, const size_
 MAGICK_NATIVE_EXPORT size_t MagickRectangle_Height_Get(const RectangleInfo *);
 MAGICK_NATIVE_EXPORT void MagickRectangle_Height_Set(RectangleInfo *, const size_t);
 
-MAGICK_NATIVE_EXPORT void MagickRectangle_Initialize(RectangleInfo *, const char *);
+MAGICK_NATIVE_EXPORT RectangleInfo *MagickRectangle_FromPageSize(const char *page_size);
