@@ -610,9 +610,7 @@ MAGICK_NATIVE_EXPORT const char *MagickImage_Signature_Get(Image *instance, Exce
     *property;
 
   MAGICK_NATIVE_GET_EXCEPTION;
-  property = (const char *) NULL;
-  if (instance->taint == MagickFalse)
-    property = GetImageProperty(instance, "Signature", exceptionInfo);
+  property = GetImageProperty(instance, "Signature", exceptionInfo);
   if (property == (const char *) NULL)
   {
     SignatureImage(instance, exceptionInfo);
