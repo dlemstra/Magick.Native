@@ -8,7 +8,7 @@ RUN cd /build; ./install.dependencies.sh
 
 COPY src/ImageMagick /ImageMagick
 
-RUN cd /ImageMagick; ./checkout.sh linux
+RUN cd /ImageMagick; ./checkout.sh wasm
 
 RUN mkdir /build/patches
 
