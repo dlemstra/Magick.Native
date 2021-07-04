@@ -478,7 +478,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Splice(const Image *, const RectangleInf
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Statistic(const Image *, const size_t, const size_t, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT ChannelStatistics *MagickImage_Statistics(Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT ChannelStatistics *MagickImage_Statistics(Image *, const size_t channels, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Stegano(const Image *, const Image *, ExceptionInfo **);
 
