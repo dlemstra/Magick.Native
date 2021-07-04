@@ -2393,13 +2393,15 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Statistic(const Image *instance, const s
   return image;
 }
 
-MAGICK_NATIVE_EXPORT ChannelStatistics *MagickImage_Statistics(Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT ChannelStatistics *MagickImage_Statistics(Image *instance, const size_t channels, ExceptionInfo **exception)
 {
   ChannelStatistics
     *result;
 
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   result = GetImageStatistics(instance, exceptionInfo);
+  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
   return result;
 }
