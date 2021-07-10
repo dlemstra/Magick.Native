@@ -142,6 +142,7 @@ clone_date 'glib' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'pango' "$commitDate"
+clone_date 'raqm' "$commitDate"
 clone_date 'pixman' "$commitDate"
 clone_date 'librsvg' "$commitDate"
 
