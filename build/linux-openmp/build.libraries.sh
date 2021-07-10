@@ -32,6 +32,7 @@ $1/build.harfbuzz.sh
 $1/build.pango.sh
 $1/build.croco.sh
 $1/build.librsvg.sh
+$1/build.raqm.sh
 $1/build.highway.sh
 $1/build.brotli.sh
 $1/build.jpeg-xl.sh

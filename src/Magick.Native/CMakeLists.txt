@@ -30,6 +30,7 @@ else()
     set(LIBHARFBUZZ ${LIB_DIR}/libharfbuzz.a)
     set(LIBPANGO ${LIB_DIR}/libpangocairo-1.0.a ${LIB_DIR}/libpango-1.0.a ${LIB_DIR}/libpangoft2-1.0.a)
     set(LIBRSVG ${LIB_DIR}/librsvg-2.a ${LIB_DIR}/libgdk_pixbuf-2.0.a ${LIB_DIR}/libcroco-0.6.a)
+    SET(LIBRAQM ${LIB_DIR}/libraqm.a)
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
@@ -75,6 +76,7 @@ target_link_libraries(
     ${LIBGLIB}
     ${LIBFONTCONFIG}
     ${LIBJPEGXL}
+    ${LIBRAQM}
     ${LIB_DIR}/libfreetype.a
     ${LIBFRIBIDI}
     ${LIBHARFBUZZ}

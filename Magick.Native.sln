@@ -147,6 +147,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 		build\libraries\build.openjpeg.sh = build\libraries\build.openjpeg.sh
 		build\libraries\build.pango.sh = build\libraries\build.pango.sh
 		build\libraries\build.pixman.sh = build\libraries\build.pixman.sh
+		build\libraries\build.raqm.sh = build\libraries\build.raqm.sh
 		build\libraries\build.zlib.sh = build\libraries\build.zlib.sh
 	EndProjectSection
 EndProject
