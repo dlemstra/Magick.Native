@@ -26,7 +26,9 @@ else()
     set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a -lresolv)
     set(LIBLQR ${LIB_DIR}/liblqr-1.a)
     set(LIBCAIRO ${LIB_DIR}/libcairo.a ${LIB_DIR}/libpixman-1.a)
-    set(LIBPANGO ${LIB_DIR}/libpangocairo-1.0.a ${LIB_DIR}/libpango-1.0.a ${LIB_DIR}/libpangoft2-1.0.a ${LIB_DIR}/libfribidi.a ${LIB_DIR}/libharfbuzz.a)
+    set(LIBFRIBIDI ${LIB_DIR}/libfribidi.a)
+    set(LIBHARFBUZZ ${LIB_DIR}/libharfbuzz.a)
+    set(LIBPANGO ${LIB_DIR}/libpangocairo-1.0.a ${LIB_DIR}/libpango-1.0.a ${LIB_DIR}/libpangoft2-1.0.a)
     set(LIBRSVG ${LIB_DIR}/librsvg-2.a ${LIB_DIR}/libgdk_pixbuf-2.0.a ${LIB_DIR}/libcroco-0.6.a)
 endif()
 
@@ -74,6 +76,8 @@ target_link_libraries(
     ${LIBFONTCONFIG}
     ${LIBJPEGXL}
     ${LIB_DIR}/libfreetype.a
+    ${LIBFRIBIDI}
+    ${LIBHARFBUZZ}
     ${LIB_DIR}/libxml2.a
     ${LIB_DIR}/libpng.a
     ${LIB_DIR}/libturbojpeg.a
