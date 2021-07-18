@@ -1611,13 +1611,19 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_InterpolativeResize(const Image *instance, const size_t columns, const size_t rows, const size_t method, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_InterpolativeResize(const Image *instance, const char *geometry, const size_t method, ExceptionInfo **exception)
 {
   Image
     *image;
 
+  RectangleInfo
+    rectangle;
+
+  SetGeometry(instance, &rectangle);
+  ParseMetaGeometry(geometry, &rectangle.x, &rectangle.y, &rectangle.width, &rectangle.height);
+
   MAGICK_NATIVE_GET_EXCEPTION;
-  image = InterpolativeResizeImage(instance, columns, rows, (const PixelInterpolateMethod) method, exceptionInfo);
+  image = InterpolativeResizeImage(instance, rectangle.width, rectangle.height, (const PixelInterpolateMethod) method, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
