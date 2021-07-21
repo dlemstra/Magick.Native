@@ -44,18 +44,38 @@ clone_date()
   cd ..
 }
 
+get_charset()
+{
+  local file=$1
+
+  local charset="$(file -bi $file | awk -F "=" '{print $2}')"
+  if [ -z "$charset" ]; then
+    charset="$(file -I $file | awk -F "=" '{print $2}')"
+  fi
+  echo $charset
+}
+
 add_copyright()
 {
   local copyrightFile=$1
   local notice=$2
 
-  local charset="$(file -bi $copyrightFile | awk -F "=" '{print $2}')"
-  if [ -z "$charset" ]; then
-    charset="$(file -I $copyrightFile | awk -F "=" '{print $2}')"
-  fi
+  local charset="$(get_charset $copyrightFile)"
 
   echo -e "Adding notice from '$copyrightFile' ($charset)"
   iconv -f $charset -t utf-8 $copyrightFile | sed -e 's/\xef\xbb\xbf//' | tr -d '\r' >> $notice
+}
+
+get_imagemagick_version()
+{
+  local charset="$(get_charset "ImageMagick/m4/version.m4")"
+  local version="$(iconv -f $charset -t utf-8 ImageMagick/m4/version.m4 | sed -e 's/\xef\xbb\xbf//' | sed -e '/[rol]_version/! s/.*//' | sed -e 's/m4//' | sed -e 's/patchlevel_version/-/' | sed -e 's/minor_version/./' | sed -e 's/micro_version/./' | sed -e 's/[^0-9\.-]*//g' | tr -d '\r' | tr -d '\n')"
+
+  local tag="$(cd ImageMagick && git describe --exact-match --tags HEAD && cd ..)"
+  if [ -z "$tag" ]; then
+    version="$version beta"
+  fi
+  echo $version
 }
 
 create_notice()
@@ -74,7 +94,8 @@ create_notice()
   add_copyright '../../Magick.Native/Copyright.txt' $notice
 
   echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
-  echo -e "[ ImageMagick ] copyright:\n" >> $notice
+  version=$(get_imagemagick_version)
+  echo -e "[ ImageMagick $version ] copyright:\n" >> $notice
   add_copyright 'ImageMagick/LICENSE' $notice
 
   for dir in *; do
