@@ -80,7 +80,8 @@ get_imagemagick_version()
 
 create_notice()
 {
-  local output=$1
+  local date=$1
+  local output=$2
 
   if [ -z "$output" ]; then
     output=../output
@@ -95,7 +96,8 @@ create_notice()
 
   echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
   version=$(get_imagemagick_version)
-  echo -e "[ ImageMagick $version ] copyright:\n" >> $notice
+  date="$(echo $date | sed 's/ .*//')"
+  echo -e "[ ImageMagick $version ($date) ] copyright:\n" >> $notice
   add_copyright 'ImageMagick/LICENSE' $notice
 
   for dir in *; do
@@ -149,7 +151,7 @@ clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
 if [ "$1" == "wasm" ]; then
-  create_notice $2
+  create_notice "$commitDate" $2
   exit
 fi
 
@@ -182,7 +184,7 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
 fi
 
 if [ "$1" == "macos" ]; then
-  create_notice $2
+  create_notice "$commitDate" $2
   exit
 fi
 
@@ -194,14 +196,14 @@ clone_date 'liblzma' "$commitDate"
 clone_date 'libzip' "$commitDate"
 
 if [ "$1" == "linux" ]; then
-  create_notice $2
+  create_notice "$commitDate" $2
   exit
 fi
 
 clone_date 'flif' "$commitDate"
 clone_date 'jp2' "$commitDate"
 
-create_notice $2
+create_notice "$commitDate" $2
 
 rm -rf VisualMagick/dcraw
 rm -rf VisualMagick/demos
