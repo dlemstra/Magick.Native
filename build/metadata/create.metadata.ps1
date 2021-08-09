@@ -43,9 +43,13 @@ function writeImageMagickVersion($fileName, $folder) {
     if ($tag.Length -eq 0) {
         $version = "$version beta"
     }
+    & cmd /c 'git log -1 --format=%ci > date.txt 2> nul & exit 0'
+    $date = [IO.File]::ReadAllText("$folder\date.txt").Trim()
+    $date = $date.Split(" ")[0]
+
     Set-Location $current
 
-    Add-Content $fileName "- ImageMagick $version"
+    Add-Content $fileName "- ImageMagick $version ($date)"
 }
 
 function writeLibraryVersions($folders) {
