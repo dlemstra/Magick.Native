@@ -13,10 +13,28 @@ export class TypeDefinitionWriter {
 export type quantumArray = Uint8Array;
 
 /** @internal */
+export type stream = {};
+
+/** @internal */
+export interface PathInfo {
+    exists: boolean;
+}
+
+/** @internal */
+export interface VirtualFileSystem {
+    analyzePath(path: string): PathInfo;
+    close(stream: stream): void;
+    mkdir(path: string): void;
+    open(path: string, mode: string): stream;
+    write(stream: stream, buffer: Uint8Array, offset: number, length: number): void;
+}
+
+/** @internal */
 export interface ImageMagickApi {
     _malloc(size: number) : number;
     _free(instance: number): void;
     HEAPU8: quantumArray;
+    FS: VirtualFileSystem;
     getValue(instance: number, type: string): number;
     setValue(instance: number, value: number, type: string): void;
     UTF8ToString(ptr: number): string;
