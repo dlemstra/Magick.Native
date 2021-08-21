@@ -67,8 +67,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{8DAB5BB6-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "patches", "patches", "{D39F0D02-5AB1-47E8-A27A-E443697E894C}"
 	ProjectSection(SolutionItems) = preProject
-		build\wasm\patches\freetype-freetype.mk.patch = build\wasm\patches\freetype-freetype.mk.patch
-		build\wasm\patches\freetype-unix-cc.in.patch = build\wasm\patches\freetype-unix-cc.in.patch
 		build\wasm\patches\install.patches.sh = build\wasm\patches\install.patches.sh
 		build\wasm\patches\png.patch = build\wasm\patches\png.patch
 	EndProjectSection
