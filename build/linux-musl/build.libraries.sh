@@ -16,6 +16,7 @@ $1/build.libzip.sh
 $1/build.libxml.sh
 $1/build.libpng.sh
 $1/build.freetype.sh
+moveFromLib64
 $1/build.fontconfig.sh
 $1/build.libjpeg-turbo.sh
 moveFromLib64
