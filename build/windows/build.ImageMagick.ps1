@@ -121,7 +121,7 @@ function buildImageMagick($config, $name, $platformName) {
 }
 
 function buildConfigure() {
-    build "src\ImageMagick\libraries\VisualMagick\configure\configure.sln" "Configuration=Release,Platform=Win32,PlatformToolset=v142"
+    build "src\ImageMagick\libraries\VisualMagick\configure\configure.2019.sln" "Configuration=Release,Platform=Win32"
 }
 
 buildConfigure
