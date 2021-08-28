@@ -14,6 +14,7 @@ clone() {
     if [ $? != 0 ]; then echo "Error during checkout"; exit; fi
   fi
   cd $dir
+  git reset --hard
   git pull origin main
   cd ..
 }
