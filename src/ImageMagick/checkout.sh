@@ -189,7 +189,7 @@ clone_date 'brotli' "$commitDate"
 clone_date 'bzlib' "$commitDate"
 clone_date 'highway' "$commitDate"
 clone_date 'jpeg-xl' "$commitDate"
-clone_date 'liblzma' "$commitDate"
+clone_commit 'liblzma' "b0d98ab1c1d76212053c610c73fb1c5df14e1b72"
 clone_date 'libzip' "$commitDate"
 
 if [ "$1" == "linux" ]; then
