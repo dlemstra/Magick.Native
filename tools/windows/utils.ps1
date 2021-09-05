@@ -1,4 +1,4 @@
-# Copyright 2013-2019 Dirk Lemstra <https://github.com/dlemstra/Magick.Native/>
+# Copyright 2013-2021 Dirk Lemstra <https://github.com/dlemstra/Magick.Native/>
 #
 # Licensed under the ImageMagick License (the "License"); you may not use this file except in
 # compliance with the License. You may obtain a copy of the License at
@@ -12,16 +12,16 @@
 
 function checkExitCode($msg)
 {
-  if ($LastExitCode -ne 0)
-  {
-    Write-Error $msg
-    Exit 1
-  }
+    if ($LastExitCode -ne 0)
+    {
+        Write-Error $msg
+        Exit 1
+    }
 }
 
 function fullPath($path)
 {
-  return "$PSScriptRoot\..\..\$path"
+    return "$PSScriptRoot\..\..\$path"
 }
 
 function build($fileName, $properties)
