@@ -3,17 +3,20 @@ set -e
 
 clone() {
     local repo=$1
-    local dir=$2
-    local root="https://github.com/ImageMagick"
+    local root=$2
 
     echo ''
-    echo "Cloning $1"
+    echo "Cloning $repo"
 
-    if [ ! -d "$dir" ]; then
-        git clone $root/$repo.git $dir
+    if [ -z "$root" ]; then
+        root="https://github.com/ImageMagick"
+    fi
+
+    if [ ! -d "$repo" ]; then
+        git clone $root/$repo.git $repo
         if [ $? != 0 ]; then echo "Error during checkout"; exit; fi
     fi
-    cd $dir
+    cd $repo
     git reset --hard
     git pull origin main
     cd ..
@@ -23,11 +26,11 @@ clone_commit()
 {
     local repo=$1
     local commit=$2
-    local dir=$repo
+    local root=$3
 
-    clone $repo $dir
+    clone $repo $root
 
-    cd $dir
+    cd $repo
     git checkout $commit
     cd ..
 }
@@ -36,11 +39,11 @@ clone_date()
 {
     local repo=$1
     local date=$2
-    local dir=$repo
+    local root=$3
 
-    clone $repo $dir
+    clone $repo $root
 
-    cd $dir
+    cd $repo
     git checkout `git rev-list -n 1 --before="$date" origin/main`
     cd ..
 }
@@ -171,14 +174,7 @@ clone_date 'pixman' "$commitDate"
 clone_date 'librsvg' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
-    if [ ! -d fontconfig ]; then
-        git clone https://gitlab.freedesktop.org/fontconfig/fontconfig fontconfig
-    fi
-    cd fontconfig
-    git reset --hard
-    git fetch
-    git checkout 2.12.6
-    cd ..
+    clone_commit 'fontconfig' "7e8ce7137880a0b256aeb6e015dbecef12e0ea0f" "https://github.com/dlemstra"
 
     mkdir -p VisualMagick/fontconfig
     echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
