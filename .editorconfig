@@ -1,9 +1,8 @@
 root = true
 
-[*.{c,h,md,ps1,sh,txt,yml}]
+[*.{c,cmd,h,md,ps1,sh,txt,yml}]
 
 indent_style = space
-
 insert_final_newline = true
 trim_trailing_whitespace = true
 
