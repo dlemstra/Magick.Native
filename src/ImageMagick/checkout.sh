@@ -174,7 +174,7 @@ clone_date 'pixman' "$commitDate"
 clone_date 'librsvg' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
-    clone_commit 'fontconfig' "14795eea1f7e0f18d03e328573284f7885b30dad" "https://github.com/dlemstra"
+    clone_commit 'fontconfig' "06688f06399dafdcd9305d00dd434c1972059d65" "https://github.com/dlemstra"
 
     mkdir -p VisualMagick/fontconfig
     echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
@@ -189,7 +189,7 @@ clone_date 'brotli' "$commitDate"
 clone_date 'bzlib' "$commitDate"
 clone_date 'highway' "$commitDate"
 clone_date 'jpeg-xl' "$commitDate"
-clone_commit 'liblzma' "b0d98ab1c1d76212053c610c73fb1c5df14e1b72"
+clone_commit 'liblzma' "e54c3a9d34b50b4bfd8c9b221567a77f078f5a64"
 clone_date 'libzip' "$commitDate"
 
 if [ "$1" == "linux" ]; then
