@@ -1,12 +1,12 @@
 root = true
 
-[*.{c,cmd,h,md,ps1,sh,txt,yml}]
+[*.{c,cmd,h,md,nuspec,ps1,sh,txt,yml}]
 
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{c,h,yml}]
+[*.{c,h,nuspec,yml}]
 
 indent_size = 2
 tab_width = 2
