@@ -1,6 +1,6 @@
 root = true
 
-[*.{c,h,md,ps1,sh,yml}]
+[*.{c,h,md,ps1,sh,txt,yml}]
 
 indent_style = space
 
@@ -12,7 +12,7 @@ trim_trailing_whitespace = true
 indent_size = 2
 tab_width = 2
 
-[*.{ps1,sh}]
+[*.{ps1,sh,txt}]
 
 indent_size = 4
 tab_width = 4
