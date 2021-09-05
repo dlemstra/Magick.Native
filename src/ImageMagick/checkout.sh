@@ -174,7 +174,7 @@ clone_date 'pixman' "$commitDate"
 clone_date 'librsvg' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
-    clone_commit 'fontconfig' "7e8ce7137880a0b256aeb6e015dbecef12e0ea0f" "https://github.com/dlemstra"
+    clone_commit 'fontconfig' "2d9ed37852675cba341f79f1232cf7d27c44368a" "https://github.com/dlemstra"
 
     mkdir -p VisualMagick/fontconfig
     echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
