@@ -92,7 +92,7 @@ create_notice()
     fi
 
     mkdir -p $output
-    local notice=$output/Notice.txt
+    local notice=$output/NOTICE
 
     echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
     echo -e "[ Magick.Native ] copyright:\n" >> $notice
