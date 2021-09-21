@@ -12,11 +12,11 @@
     <description>Magick.Native</description>
   </metadata>
   <files>
-    <file src="linux\**\*.*" target="content\linux" />
-    <file src="linux-musl\**\*.*" target="content\linux-musl" />
-    <file src="macos\**\*.*" target="content\macos" />
-    <file src="metadata\*.*" target="content" />
-    <file src="resources\**\*.*" target="content\resources" />
-    <file src="windows\**\*.*" target="content\windows" />
+    <file src="linux\**\*" target="content\linux" />
+    <file src="linux-musl\**\*" target="content\linux-musl" />
+    <file src="macos\**\*" target="content\macos" />
+    <file src="metadata\*" target="content" />
+    <file src="resources\**\*" target="content\resources" />
+    <file src="windows\**\*" target="content\windows" />
   </files>
 </package>
