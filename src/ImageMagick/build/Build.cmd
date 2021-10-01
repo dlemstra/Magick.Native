@@ -1,5 +1,5 @@
 @echo off
-call "..\..\tools\windows\init.visualstudio.cmd"
+call "..\..\..\tools\windows\init.visualstudio.cmd"
 
 set config=%1
 set quantumName=%2
@@ -9,7 +9,7 @@ if "%config%"=="" goto invalid
 if "%quantumName%"=="" goto invalid
 if "%platformName%"=="" goto invalid
 
-cd ..\..\build\windows\
+cd ..\..\..\build\windows\
 
 powershell .\build.ImageMagick.ps1 -config %config% -quantumName %quantumName% -platformName %platformName%
 
