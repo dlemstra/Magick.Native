@@ -112,6 +112,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\ImageMagick\output\libraries\$(Configuration)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
