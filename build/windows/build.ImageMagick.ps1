@@ -73,8 +73,10 @@ function copyLibraries($config, $folder) {
     [void](New-Item -ItemType directory -Path $destination)
     if ($config -eq "Debug") {
         Copy-Item "$source\*DB*.lib" $destination
+        Copy-Item "$source\*DB*.pdb" $destination
     } else {
         Copy-Item "$source\*RL*.lib" $destination
+        Copy-Item "$source\*RL*.pdb" $destination
     }
 }
 
