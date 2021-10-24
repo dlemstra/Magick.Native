@@ -275,7 +275,7 @@ jobs:
   wasm:
     name: 'WASM'
     container:
-      image: emscripten/emsdk:2.0.31
+      image: emscripten/emsdk:2.0.32
     runs-on: ubuntu-latest
 
     steps:
