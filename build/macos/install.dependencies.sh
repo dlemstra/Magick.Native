@@ -8,6 +8,7 @@ brew list --formula
 brew install autoconf automake libtool nasm ossp-uuid pkg-config ragel
 
 # Uninstall already installed development libraries
+brew uninstall --force composer
 brew uninstall --force php
 brew uninstall --force gd
 brew uninstall --force glib
