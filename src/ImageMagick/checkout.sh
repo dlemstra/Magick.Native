@@ -171,7 +171,7 @@ clone_date 'lqr' "$commitDate"
 clone_date 'pango' "$commitDate"
 clone_date 'raqm' "$commitDate"
 clone_date 'pixman' "$commitDate"
-clone_commit 'librsvg' "dbea2156a5a533e772b7d4b6de044bf2bd1f549e"
+clone_date 'librsvg' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
     clone_commit 'fontconfig' "06688f06399dafdcd9305d00dd434c1972059d65" "https://github.com/dlemstra"
