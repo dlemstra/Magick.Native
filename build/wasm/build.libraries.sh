@@ -16,3 +16,4 @@ $1/build.lcms.sh
 $1/build.libde265.sh
 $1/build.libheif.sh
 $1/build.libraw.sh
+$1/build.openexr.sh
