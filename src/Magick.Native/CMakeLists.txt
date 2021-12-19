@@ -23,7 +23,6 @@ else()
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
     set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a)
-    set(LIBOPENEXR ${LIB_DIR}/libOpenEXR-3_1.a ${LIB_DIR}/libOpenEXRUtil-3_1.a ${LIB_DIR}/libOpenEXRCore-3_1.a ${LIB_DIR}/libImath-3_1.a ${LIB_DIR}/libIex-3_1.a  ${LIB_DIR}/libIlmThread-3_1.a )
     set(LIBAOM ${LIB_DIR}/libaom.a)
     set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a -lresolv)
     set(LIBLQR ${LIB_DIR}/liblqr-1.a)
@@ -68,7 +67,12 @@ target_link_libraries(
     ${LIB_DIR}/libMagickWand-7.${QUANTUM_NAME}.a
     ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
-    ${LIBOPENEXR}
+    ${LIB_DIR}/libOpenEXR-3_1.a
+    ${LIB_DIR}/libOpenEXRUtil-3_1.a
+    ${LIB_DIR}/libOpenEXRCore-3_1.a
+    ${LIB_DIR}/libImath-3_1.a
+    ${LIB_DIR}/libIex-3_1.a
+    ${LIB_DIR}/libIlmThread-3_1.a
     ${LIBICONV}
     ${LIBINTL}
     ${LIBLQR}
