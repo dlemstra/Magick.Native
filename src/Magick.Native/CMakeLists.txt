@@ -51,8 +51,8 @@ else()
     set(LIBLZMA ${LIB_DIR}/liblzma.a)
     set(LIBZIP ${LIB_DIR}/libzip.a)
 
-    set(THREADLIB Threads::Threads)
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
+    set(LIBTHREAD Threads::Threads)
     if (OPENMP)
         set(LIBOPENMP -fopenmp)
     endif()
@@ -108,6 +108,6 @@ target_link_libraries(
 
     ${LIBSOCKFS}
     ${LIBOPENMP}
-    ${THREADLIB}
+    ${LIBTHREAD}
     ${STDCPLUSPLUS}
 )
