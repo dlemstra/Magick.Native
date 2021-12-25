@@ -8,7 +8,7 @@ add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} 
 
 include_directories(. /usr/local/include /usr/local/include/ImageMagick-7)
 
-set(LIB_DIR /usr/local/lib/)
+set(LIB_DIR /usr/local/lib)
 set(CMAKE_CXX_FLAGS "-Wall -O3")
 
 file(GLOB_RECURSE ALL_FILES . *.c)
@@ -86,7 +86,7 @@ target_link_libraries(
     ${LIB_DIR}/libgobject-2.0.a
     ${LIB_DIR}/libgmodule-2.0.a
     ${LIB_DIR}/libffi.a
-    ${LIB_DIR}/libglib-2.0.a)
+    ${LIB_DIR}/libglib-2.0.a
     ${LIBFONTCONFIG}
     ${LIBJPEGXL}
     ${LIBRAQM}
