@@ -24,15 +24,15 @@ else()
 
     set(LIBAOM ${LIB_DIR}/libaom.a)
     set(LIBCAIRO ${LIB_DIR}/libcairo.a ${LIB_DIR}/libpixman-1.a)
-    set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a -lresolv)
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
     set(LIBFRIBIDI ${LIB_DIR}/libfribidi.a)
     set(LIBHARFBUZZ ${LIB_DIR}/libharfbuzz.a)
     set(LIBPANGO ${LIB_DIR}/libpangocairo-1.0.a ${LIB_DIR}/libpango-1.0.a ${LIB_DIR}/libpangoft2-1.0.a)
-    set(LIBLQR ${LIB_DIR}/liblqr-1.a)
     set(LIBRAQM ${LIB_DIR}/libraqm.a)
     set(LIBRSVG ${LIB_DIR}/librsvg-2.a ${LIB_DIR}/libgdk_pixbuf-2.0.a ${LIB_DIR}/libcroco-0.6.a)
     set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a)
+
+    set(LIBRESOLV -lresolv)
 endif()
 
 if (PLATFORM STREQUAL "MACOS")
@@ -78,11 +78,15 @@ target_link_libraries(
     ${LIB_DIR}/libIlmThread-3_1.a
     ${LIBICONV}
     ${LIBINTL}
-    ${LIBLQR}
+    ${LIB_DIR}/liblqr-1.a
     ${LIBRSVG}
     ${LIBPANGO}
     ${LIBCAIRO}
-    ${LIBGLIB}
+    ${LIB_DIR}/libgio-2.0.a
+    ${LIB_DIR}/libgobject-2.0.a
+    ${LIB_DIR}/libgmodule-2.0.a
+    ${LIB_DIR}/libffi.a
+    ${LIB_DIR}/libglib-2.0.a)
     ${LIBFONTCONFIG}
     ${LIBJPEGXL}
     ${LIBRAQM}
@@ -107,6 +111,7 @@ target_link_libraries(
     ${LIB_DIR}/libz.a
 
     ${LIBSOCKFS}
+    ${LIBRESOLV}
     ${LIBOPENMP}
     ${LIBTHREAD}
     ${STDCPLUSPLUS}
