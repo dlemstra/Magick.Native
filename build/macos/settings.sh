@@ -12,6 +12,7 @@ export SSE_OPTIONS=""
 
 export FFI_OPTIONS=""
 export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
+export GLIB_OPTIONS=""
 export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
 export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"

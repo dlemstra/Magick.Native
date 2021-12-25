@@ -12,6 +12,7 @@ export SSE_OPTIONS=""
 
 export FFI_OPTIONS=""
 export FONTCONFIG_OPTIONS=""
+export GLIB_OPTIONS=""
 export LIBXML_OPTIONS=""
 export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"

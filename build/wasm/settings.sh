@@ -12,8 +12,11 @@ export SSE_OPTIONS="--disable-sse"
 
 export FFI_OPTIONS="--disable-exec-static-tramp"
 export FONTCONFIG_OPTIONS=""
+export GLIB_OPTIONS="--cross-file=../emscripten-crossfile.meson"
 export LIBXML_OPTIONS=""
 export OPENEXR_OPTIONS="-DZLIB_LIBRARY=/usr/local/lib/libz.a -DZLIB_INCLUDE_DIR=/usr/local/include -DImath_DIR=/usr/local/lib/cmake/Imath"
 export WEBP_OPTIONS=""
 
 export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-bzlib --without-lzma"
+
+export EM_PKG_CONFIG_PATH=$PKG_PATH
