@@ -1611,6 +1611,17 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
   return image;
 }
 
+MAGICK_NATIVE_EXPORT Image *MagickImage_Integral(const Image *instance,ExceptionInfo **exception)
+{
+  Image
+    *image;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  image = IntegralImage(instance, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return image;
+}
+
 MAGICK_NATIVE_EXPORT Image *MagickImage_InterpolativeResize(const Image *instance, const char *geometry, const size_t method, ExceptionInfo **exception)
 {
   Image
