@@ -17,6 +17,7 @@ brew uninstall --force gnutls
 brew uninstall --force guile
 brew uninstall --force llvm
 brew uninstall --force p11-kit
+brew uninstall --force libxft
 brew uninstall --force fontconfig
 brew uninstall --force freetype
 brew uninstall --force libffi
