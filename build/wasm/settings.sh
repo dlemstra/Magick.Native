@@ -9,8 +9,11 @@ export CONDITIONAL_DISABLE_SHARED="--disable-shared"
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export SIMD_OPTIONS="-DWITH_SIMD=0"
 export SSE_OPTIONS="--disable-sse"
+
+export FFI_OPTIONS="--disable-exec-static-tramp"
 export FONTCONFIG_OPTIONS=""
 export LIBXML_OPTIONS=""
-export WEBP_OPTIONS=""
 export OPENEXR_OPTIONS="-DZLIB_LIBRARY=/usr/local/lib/libz.a -DZLIB_INCLUDE_DIR=/usr/local/include -DImath_DIR=/usr/local/lib/cmake/Imath"
+export WEBP_OPTIONS=""
+
 export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-bzlib --without-lzma"

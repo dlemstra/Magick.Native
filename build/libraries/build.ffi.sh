@@ -8,5 +8,5 @@ rm include/fficonfig.h
 
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared --disable-docs CFLAGS="$FLAGS"
+$CONFIGURE --disable-shared --disable-docs $FFI_OPTIONS CFLAGS="$FLAGS"
 $MAKE install

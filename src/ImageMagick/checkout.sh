@@ -142,6 +142,7 @@ cd ..
 
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
+clone_date 'ffi' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate"
 clone_date 'lcms' "$commitDate"
 clone_date 'libde265' "$commitDate"

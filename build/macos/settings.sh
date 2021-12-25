@@ -9,8 +9,11 @@ export CONDITIONAL_DISABLE_SHARED=""
 export PKG_PATH="/usr/local/lib/pkgconfig"
 export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
+
+export FFI_OPTIONS=""
 export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
 export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
-export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export OPENEXR_OPTIONS=""
+export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
+
 export IMAGEMAGICK_OPTIONS="--disable-openmp --without-bzlib --without-lzma"
