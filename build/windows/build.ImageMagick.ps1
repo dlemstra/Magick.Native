@@ -112,18 +112,13 @@ function buildImageMagick($config, $name, $platformName) {
     createSolution $configureOptions
     patchMagickBaseConfig $name $platformName
 
-    $platform = "Win32"
-    if ($platformName -eq "x64") {
-        $platform = "x64";
-    }
-
-    $options = "Configuration=$config,Platform=$($platform),PlatformToolset=v143,VCBuildAdditionalOptions=/#arch:SSE"
+    $options = "Configuration=$config,Platform=$($platformName),PlatformToolset=v143,VCBuildAdditionalOptions=/#arch:SSE"
     build "src\ImageMagick\libraries\VisualMagick\VisualStaticMT.sln" $options
     copyOutput $config $name $platformName
 }
 
 function buildConfigure() {
-    build "src\ImageMagick\libraries\VisualMagick\configure\configure.2022.sln" "Configuration=Release,Platform=Win32"
+    build "src\ImageMagick\libraries\VisualMagick\configure\configure.2022.sln" "Configuration=Release,Platform=x86"
 }
 
 buildConfigure
