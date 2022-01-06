@@ -137,7 +137,7 @@ clone_commit 'ImageMagick' $commit
 # get a commit date from the current ImageMagick checkout
 cd ImageMagick
 declare -r commitDate=`git log -1 --format=%ci`
-echo "Set latest commit date as $commitDate" 
+echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'exr' "$commitDate"
@@ -154,7 +154,7 @@ clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
-clone_date 'VisualMagick' "$commitDate"
+clone_commit 'VisualMagick' "094af895db9d02252e11d5f3e8d7082f23aeae57"
 clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
