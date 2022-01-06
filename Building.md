@@ -5,7 +5,7 @@ This document describes the requirements and instructions to build Magick.Native
 ### Requirements
 
 - Windows:
-  - Visual Studio 2019
+  - Visual Studio 2022
   - Powershell (>= 3.0)
   - Git for Windows (>= 2.7.2)
   - Windows SDK (>= 10.0.10586)
