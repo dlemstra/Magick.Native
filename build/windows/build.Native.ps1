@@ -10,7 +10,7 @@ param (
 . $PSScriptRoot\..\..\tools\windows\utils.ps1
 
 function buildNative($config, $quantumName, $platformName) {
-    build "src\Magick.Native\Magick.Native.vcxproj" "Configuration=$config$quantumName,Platform=$platformName"
+    build "Magick.Native.sln" "Configuration=$config$quantumName,Platform=$platformName"
 }
 
 buildNative $config $quantumName $platformName
