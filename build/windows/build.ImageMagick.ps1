@@ -98,6 +98,9 @@ function getConfigureOptions($name, $platformName, $quantum) {
     if ($platformName -eq "x64") {
         $options = "$options /x64"
     }
+    if ($platformName -eq "arm64") {
+        $options = "$options /arm64"
+    }
 
     return $options;
 }
@@ -118,7 +121,7 @@ function buildImageMagick($config, $name, $platformName) {
 }
 
 function buildConfigure() {
-    build "src\ImageMagick\libraries\VisualMagick\configure\configure.2022.sln" "Configuration=Release,Platform=x86"
+    build "src\ImageMagick\libraries\VisualMagick\configure\configure.2022.sln" "Configuration=Release,Platform=x64"
 }
 
 buildConfigure

@@ -185,7 +185,7 @@ jobs:
     strategy:
       matrix:
         quantumName: [Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP]
-        platformName: [x86, x64]
+        platformName: [x86, x64, arm64]
         exclude:
         - quantumName: Q8-OpenMP
           platformName: x86
@@ -193,6 +193,12 @@ jobs:
           platformName: x86
         - quantumName: Q16-HDRI-OpenMP
           platformName: x86
+        - quantumName: Q8-OpenMP
+          platformName: arm64
+        - quantumName: Q16-OpenMP
+          platformName: arm64
+        - quantumName: Q16-HDRI-OpenMP
+          platformName: arm64
 
     steps:
 
