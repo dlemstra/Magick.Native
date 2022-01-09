@@ -95,12 +95,7 @@ function getConfigureOptions($name, $platformName, $quantum) {
     if ($name -inotmatch "-OpenMP") {
         $options = "$options /noOpenMP"
     }
-    if ($platformName -eq "x64") {
-        $options = "$options /x64"
-    }
-    if ($platformName -eq "arm64") {
-        $options = "$options /arm64"
-    }
+    $options = "$options /$platformName"
 
     return $options;
 }
