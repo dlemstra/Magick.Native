@@ -77,13 +77,25 @@
       <Configuration>ReleaseQ8-OpenMP</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseQ16-HDRI-OpenMP|x64">
-      <Configuration>ReleaseQ16-HDRI-OpenMP</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseQ16-OpenMP|x64">
       <Configuration>ReleaseQ16-OpenMP</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16-HDRI-OpenMP|x64">
+      <Configuration>ReleaseQ16-HDRI-OpenMP</Configuration>
+      <Platform>arm64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ8-OpenMP|arm64">
+      <Configuration>ReleaseQ8-OpenMP</Configuration>
+      <Platform>arm64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16-OpenMP|arm64">
+      <Configuration>ReleaseQ16-OpenMP</Configuration>
+      <Platform>arm64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseQ16-HDRI-OpenMP|arm64">
+      <Configuration>ReleaseQ16-HDRI-OpenMP</Configuration>
+      <Platform>arm64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Condition="$(Configuration.EndsWith('Q8'))">
