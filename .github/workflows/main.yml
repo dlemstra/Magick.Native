@@ -193,12 +193,6 @@ jobs:
           platformName: x86
         - quantumName: Q16-HDRI-OpenMP
           platformName: x86
-        - quantumName: Q8-OpenMP
-          platformName: arm64
-        - quantumName: Q16-OpenMP
-          platformName: arm64
-        - quantumName: Q16-HDRI-OpenMP
-          platformName: arm64
 
     steps:
 
