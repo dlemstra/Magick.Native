@@ -154,7 +154,7 @@ clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'tiff' "$commitDate"
-clone_commit 'VisualMagick' "e73c8ff36fd32fb0f2970bcae96a000b60b81651"
+clone_date 'VisualMagick' "$commitDate"
 clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
