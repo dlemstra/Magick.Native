@@ -12,7 +12,7 @@ $1/build.libpng.sh
 $1/build.freetype.sh
 $1/build.fontconfig.sh
 $1/build.libjpeg-turbo.sh
-$1/build.libtiff.sh
+#$1/build.libtiff.sh
 $1/build.libwebp.sh
 $1/build.openjpeg.sh
 $1/build.lcms.sh

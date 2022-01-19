@@ -42,10 +42,12 @@ if (PLATFORM STREQUAL "MACOS")
     set(STDCPLUSPLUS stdc++)
 elseif (PLATFORM STREQUAL "WASM")
     list(APPEND ALL_FILES foo.cxx)
+    set(LIBTIFF ${LIB_DIR}/libtiff.a)
 else()
     list(APPEND ALL_FILES foo.cxx)
     find_package(Threads REQUIRED)
 
+    set(LIBTIFF ${LIB_DIR}/libtiff.a)
     set(LIBBZIP2 ${LIB_DIR}/libbz2.a)
     set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libjxl_threads.a ${LIB_DIR}/libbrotlienc-static.a ${LIB_DIR}/libbrotlidec-static.a ${LIB_DIR}/libbrotlicommon-static.a ${LIB_DIR}/libhwy.a)
     set(LIBLZMA ${LIB_DIR}/liblzma.a)
@@ -96,7 +98,7 @@ target_link_libraries(
     ${LIB_DIR}/libxml2.a
     ${LIB_DIR}/libpng.a
     ${LIB_DIR}/libturbojpeg.a
-    ${LIB_DIR}/libtiff.a
+    ${LIBTIFF}
     ${LIBWEBP}
     ${LIB_DIR}/libwebp.a
     ${LIB_DIR}/libopenjp2.a
