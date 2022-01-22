@@ -198,7 +198,6 @@ if [ "$1" == "linux" ]; then
     exit
 fi
 
-clone_date 'flif' "$commitDate"
 clone_date 'jp2' "$commitDate"
 
 create_notice "$commitDate" $2
