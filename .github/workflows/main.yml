@@ -374,8 +374,6 @@ jobs:
           - 'ubuntu:18.04'
           - 'ubuntu:20.04'
           - 'ubuntu:latest'
-          - 'centos:7'
-          - 'centos:8'
           - 'centos:latest'
           - 'mcr.microsoft.com/dotnet/aspnet:latest'
           - 'mcr.microsoft.com/dotnet/runtime:3.1'
