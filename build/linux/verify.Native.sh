@@ -26,8 +26,12 @@ verifyNative() {
 }
 
 if [ ! -f "/usr/bin/ld" ]; then
-    apt-get update -y
-    apt-get install -y binutils
+    if type -P "apt-get"; then
+        apt-get update -y
+        apt-get install -y binutils
+    else
+        yum install -y binutils
+    fi
 fi
 
 verifyNative "Q8" $1
