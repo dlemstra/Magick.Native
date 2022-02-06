@@ -13,7 +13,7 @@ verifyNative() {
     fi
 
     if ldd $file 2>&1 | grep "not found"; then
-      exit 1
+        exit 1
     else
         echo "Verified ldd status for $file"
     fi
