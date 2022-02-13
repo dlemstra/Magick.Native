@@ -11,6 +11,8 @@ brew install autoconf automake libtool nasm ossp-uuid pkg-config ragel
 brew uninstall --force composer
 brew uninstall --force php
 brew uninstall --force gd
+brew uninstall --force cairo
+brew uninstall --force r
 brew uninstall --force glib
 brew uninstall --force gnupg
 brew uninstall --force gnutls
