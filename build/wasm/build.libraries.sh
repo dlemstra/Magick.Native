@@ -14,6 +14,7 @@ $1/build.libwebp.sh
 $1/build.openjpeg.sh
 $1/build.lcms.sh
 $1/build.libde265.sh
+$1/build.aom.sh
 $1/build.libheif.sh
 $1/build.libraw.sh
 $1/build.openexr.sh

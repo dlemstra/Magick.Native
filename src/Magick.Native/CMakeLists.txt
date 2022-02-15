@@ -22,7 +22,6 @@ else()
     file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
 
-    set(LIBAOM ${LIB_DIR}/libaom.a)
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
     set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a)
 
@@ -59,6 +58,7 @@ else()
     endif()
 endif()
 
+set(LIBAOM ${LIB_DIR}/libaom.a)
 set(LIBEXR ${LIB_DIR}/libOpenEXR-3_1.a ${LIB_DIR}/libOpenEXRUtil-3_1.a ${LIB_DIR}/libOpenEXRCore-3_1.a ${LIB_DIR}/libImath-3_1.a ${LIB_DIR}/libIex-3_1.a ${LIB_DIR}/libIlmThread-3_1.a)
 set(LIBFREETYPE ${LIB_DIR}/libfreetype.a)
 set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a)

@@ -140,6 +140,7 @@ declare -r commitDate=`git log -1 --format=%ci`
 echo "Set latest commit date as $commitDate"
 cd ..
 
+clone_date 'aom' "$commitDate"
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_date 'ffi' "$commitDate"
@@ -163,7 +164,6 @@ if [ "$1" == "wasm" ]; then
     exit
 fi
 
-clone_date 'aom' "$commitDate"
 clone_date 'cairo' "$commitDate"
 clone_date 'croco' "$commitDate"
 clone_date 'ffi' "$commitDate"
