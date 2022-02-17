@@ -31,9 +31,9 @@ MAGICK_NATIVE_EXPORT void MagickFormatInfo_DisposeList(char **list, const size_t
   ssize_t
     i;
 
-  for (i = 0; i < (ssize_t)length; i++)
+  for (i = 0; i < (ssize_t) length; i++)
   {
-    list[i] = (char *)RelinquishMagickMemory(list[i]);
+    list[i] = (char *) RelinquishMagickMemory(list[i]);
   }
 
   RelinquishMagickMemory(list);
@@ -66,12 +66,12 @@ MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsMultiFrame_Get(const M
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsReadable_Get(const MagickInfo *instance)
 {
-  return GetImageDecoder(instance) != (DecodeImageHandler *)NULL;
+  return GetImageDecoder(instance) != (DecodeImageHandler *) NULL;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsWritable_Get(const MagickInfo *instance)
 {
-  return GetImageEncoder(instance) != (EncodeImageHandler *)NULL;
+  return GetImageEncoder(instance) != (EncodeImageHandler *) NULL;
 }
 
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_MimeType_Get(const MagickInfo *instance)
@@ -92,6 +92,19 @@ MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **list, con
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoByName(const char *name, ExceptionInfo **exception)
 {
   return GetInfoByName(name, exception);
+}
+
+MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoWithBlob(const unsigned char *data, const size_t length, ExceptionInfo **exception)
+{
+  const MagicInfo
+    *magic_info;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  magic_info = GetMagicInfo(data, length, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  if (magic_info == (const MagicInfo *) NULL)
+    return (const MagickInfo *) NULL;
+  return GetInfoByName(GetMagicName(magic_info), exception);
 }
 
 MAGICK_NATIVE_EXPORT void MagickFormatInfo_Unregister(const char *format)

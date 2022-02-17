@@ -28,4 +28,6 @@ MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **, const s
 
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoByName(const char *, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoWithBlob(const unsigned char *, const size_t, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT void MagickFormatInfo_Unregister(const char *format);
