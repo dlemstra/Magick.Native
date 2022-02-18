@@ -970,7 +970,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Clone(const Image *instance, ExceptionIn
 
   MAGICK_NATIVE_GET_EXCEPTION;
   image = CloneImage(instance, 0, 0, MagickTrue, exceptionInfo);
-  SyncImage(image, exceptionInfo);
+  if (image != (Image *) NULL)
+    SyncImage(image, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
