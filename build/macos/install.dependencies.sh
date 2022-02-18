@@ -23,8 +23,8 @@ brew uninstall --force libxft
 brew uninstall --force fontconfig
 brew uninstall --force freetype
 brew uninstall --force libffi
-brew uninstall --force aom
 brew uninstall --force libavif
+brew uninstall --force aom
 brew uninstall --force jpeg-xl
 brew uninstall --force webp
 brew uninstall --force libtiff
