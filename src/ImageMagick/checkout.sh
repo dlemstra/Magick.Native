@@ -159,6 +159,12 @@ clone_date 'VisualMagick' "$commitDate"
 clone_date 'webp' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
+if [ "$1" != "macos" ]; then
+    clone_date 'brotli' "$commitDate"
+    clone_date 'highway' "$commitDate"
+    clone_date 'jpeg-xl' "$commitDate"
+fi
+
 if [ "$1" == "wasm" ]; then
     create_notice "$commitDate" $2
     exit
@@ -186,10 +192,7 @@ if [ "$1" == "macos" ]; then
     exit
 fi
 
-clone_date 'brotli' "$commitDate"
 clone_date 'bzlib' "$commitDate"
-clone_date 'highway' "$commitDate"
-clone_date 'jpeg-xl' "$commitDate"
 clone_date 'liblzma' "$commitDate"
 clone_date 'libzip' "$commitDate"
 
