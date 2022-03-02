@@ -1612,7 +1612,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Integral(const Image *instance,ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_Integral(const Image *instance, ExceptionInfo **exception)
 {
   Image
     *image;
@@ -2333,10 +2333,12 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Shear(const Image *instance, const doubl
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_SigmoidalContrast(Image *instance, const MagickBooleanType sharpen, const double contrast, const double midpoint, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_SigmoidalContrast(Image *instance, const MagickBooleanType sharpen, const double contrast, const double midpoint, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   SigmoidalContrastImage(instance, sharpen, contrast, midpoint, exceptionInfo);
+  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 

@@ -464,7 +464,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Shave(const Image *, const size_t, const
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Shear(const Image *, const double, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_SigmoidalContrast(Image *, const MagickBooleanType, const double, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_SigmoidalContrast(Image *, const MagickBooleanType, const double, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_SparseColor(Image *, const size_t, const size_t, const double *, const size_t, ExceptionInfo **);
 
