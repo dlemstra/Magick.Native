@@ -22,6 +22,8 @@ COPY build/wasm/settings.sh /build
 
 COPY build/wasm/build.libraries.sh /build
 
+COPY build/wasm/cross-compilation.* /build
+
 RUN cd /ImageMagick/libraries; /build/build.libraries.sh /build
 
 COPY build/wasm/build.ImageMagick.sh /build

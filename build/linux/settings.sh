@@ -1,3 +1,5 @@
+SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
 # Shared options
 export FLAGS="-O3 -fPIC"
 export STRICT_FLAGS="${FLAGS} -Wall"

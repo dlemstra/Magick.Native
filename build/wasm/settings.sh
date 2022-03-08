@@ -1,3 +1,5 @@
+SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
 # Shared options
 export FLAGS="-O3"
 export STRICT_FLAGS="${FLAGS} -Wall"
@@ -14,7 +16,7 @@ export SSE_OPTIONS="--disable-sse"
 # Library specific options
 export FFI_OPTIONS="--disable-exec-static-tramp"
 export FONTCONFIG_OPTIONS=""
-export GLIB_OPTIONS="--cross-file=../emscripten-crossfile.meson"
+export GLIB_OPTIONS="--cross-file=$SCRIPT_PATH/cross-compilation.meson"
 export LIBXML_OPTIONS=""
 export OPENEXR_OPTIONS="-DZLIB_LIBRARY=/usr/local/lib/libz.a -DZLIB_INCLUDE_DIR=/usr/local/include -DImath_DIR=/usr/local/lib/cmake/Imath"
 export WEBP_OPTIONS=""

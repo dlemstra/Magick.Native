@@ -59,6 +59,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{8DAB5BB6-E
 		build\wasm\build.Native.sh = build\wasm\build.Native.sh
 		build\wasm\build.sh = build\wasm\build.sh
 		build\wasm\copy.Native.sh = build\wasm\copy.Native.sh
+		build\wasm\cross-compilation.meson = build\wasm\cross-compilation.meson
 		build\wasm\Dockerfile = build\wasm\Dockerfile
 		build\wasm\install.dependencies.sh = build\wasm\install.dependencies.sh
 		build\wasm\run.cmd = build\wasm\run.cmd
