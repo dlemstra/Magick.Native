@@ -3,8 +3,7 @@ set -e
 
 export PLATFORM="LINUX"
 export CMAKE_COMMAND="cmake"
-export CMAKE_OPTIONS=""
-export NATIVE_OPTIONS="-D OPENMP=1"
+export CMAKE_OPTIONS="-D OPENMP=1"
 getLibraryName() {
     local quantum=$1
     echo Magick.Native-$quantum-OpenMP-x64.dll
@@ -30,7 +29,7 @@ buildNative() {
     mkdir $quantum
     cd $quantum
 
-    $CMAKE_COMMAND -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $NATIVE_OPTIONS $CMAKE_OPTIONS ..
+    $CMAKE_COMMAND -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $CMAKE_OPTIONS ..
     make
 
     cd ..
