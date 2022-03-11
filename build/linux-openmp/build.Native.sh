@@ -29,7 +29,7 @@ buildNative() {
     mkdir $quantum
     cd $quantum
 
-    $CMAKE_COMMAND -D DEPTH=$depth -D HDRI_ENABLE=$hdri_enable -D QUANTUM_NAME=$quantum_name -D LIBRARY_NAME=$library_name -D PLATFORM=$PLATFORM $CMAKE_OPTIONS ..
+    $CMAKE_COMMAND $CMAKE_OPTIONS -DDEPTH=$depth -DHDRI_ENABLE=$hdri_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM ..
     make
 
     cd ..
