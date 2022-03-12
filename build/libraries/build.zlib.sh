@@ -3,5 +3,5 @@ set -e
 
 cd zlib
 chmod +x ./configure
-$CONFIGURE $CONFIGURE_OPTIONS --static
+$CONFIGURE --static
 $MAKE install CFLAGS="$FLAGS"
