@@ -13,11 +13,11 @@ cd gdk-pixbuf
 
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared --with-included-loaders=yes --enable-modules=no --prefix=/usr/local CFLAGS="$FLAGS"
+$CONFIGURE $CONFIGURE_OPTIONS --disable-shared --with-included-loaders=yes --enable-modules=no --prefix=/usr/local CFLAGS="$FLAGS"
 $MAKE install
 cd ..
 
 autoreconf -fiv
 chmod +x ./configure
-$CONFIGURE --disable-shared --disable-Bsymbolic --disable-introspection --prefix=/usr/local CFLAGS="$FLAGS -I/usr/local/include/libcroco-0.6/libcroco"
+$CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-Bsymbolic --disable-introspection --prefix=/usr/local CFLAGS="$FLAGS -I/usr/local/include/libcroco-0.6/libcroco"
 $MAKE install
