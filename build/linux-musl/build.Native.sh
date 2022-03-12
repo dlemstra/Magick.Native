@@ -2,8 +2,10 @@
 set -e
 
 export PLATFORM="LINUX"
-export CMAKE_COMMAND="cmake"
-export CMAKE_OPTIONS=""
+export NATIVE_OPTIONS=""
+
+SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+. $SCRIPT_PATH/settings.sh
 getLibraryName() {
     local quantum=$1
     echo Magick.Native-$quantum-x64.dll
@@ -29,7 +31,7 @@ buildNative() {
     mkdir $quantum
     cd $quantum
 
-    $CMAKE_COMMAND $CMAKE_OPTIONS -DDEPTH=$depth -DHDRI_ENABLE=$hdri_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM ..
+    $CMAKE_COMMAND $CMAKE_OPTIONS $NATIVE_OPTIONS -DDEPTH=$depth -DHDRI_ENABLE=$hdri_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM ..
     make
 
     cd ..
