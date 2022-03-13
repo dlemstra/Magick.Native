@@ -472,12 +472,41 @@ jobs:
     - name: Verify Native
       run: build/linux-musl/verify.Native.sh .
 
+  verify_linux_arm64:
+    name: 'Verify Linux arm64'
+    needs:
+      - linux_arm64
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        image:
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - name: Download linux library
+      uses: actions/download-artifact@v2
+      with:
+        name: linux-arm64
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: arm64
+
   publish_dotnet:
     name: 'Publish .NET library'
     needs:
       - verify_linux
       - verify_linux_openmp
       - verify_linux_musl
+      - verify_linux_arm64
       - macos
       - windows
       - metadata
@@ -511,6 +540,12 @@ jobs:
       with:
         name: linux-musl
         path: publish\dotnet\files\linux-musl
+
+    - name: Download linux arm64 library
+      uses: actions/download-artifact@v1
+      with:
+        name: linux-arm64
+        path: publish\dotnet\files\linux
 
     - name: Download macos library
       uses: actions/download-artifact@v1
