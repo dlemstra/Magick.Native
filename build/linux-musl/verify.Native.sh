@@ -12,13 +12,26 @@ verifyNative() {
         exit 1
     fi
 
-    if ldd $file 2>&1 | grep "not found"; then
-      exit 1
+    exit_code=0
+    output=$(ldd $file 2>&1) || exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        echo "Failed to execute ldd: $output"
+        exit 1
+    fi
+
+    if echo "$output" | grep "not found"; then
+        exit 1
     else
         echo "Verified ldd status for $file"
     fi
 
-    if ld $file 2>&1 | grep "undefined reference"; then
+    output=$(ld $file 2>&1) || exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        echo "Failed to execute ld: $output"
+        exit 1
+    fi
+
+    if echo "$output" | grep "undefined reference"; then
         exit 1
     else
         echo "Verified ld status for $file"
