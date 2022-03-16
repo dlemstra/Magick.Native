@@ -40,6 +40,10 @@ verifyNative() {
 
 if [ -f "/bin/yum" ]; then
     yum install -y libgomp
+
+    if [ ! -f "/usr/bin/ld" ]; then
+        yum install -y binutils
+    fi
 else
     apt-get update -y
     apt-get install -y libgomp1

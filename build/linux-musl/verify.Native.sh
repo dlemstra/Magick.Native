@@ -40,7 +40,7 @@ verifyNative() {
 
 if [ ! -f "/usr/bin/ld" ]; then
     apk update
-    apk add autoconf
+    apk add binutils
 fi
 
 verifyNative "Q8" $1
