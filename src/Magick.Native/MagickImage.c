@@ -1999,6 +1999,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const Cu
   image = CustomStreamToImage(settings, exceptionInfo);
   SetImageInfoCustomStream(settings, (CustomStreamInfo *) NULL);
   info = DestroyCustomStreamInfo(info);
+  RemoveFrames(image);
   MAGICK_NATIVE_SET_EXCEPTION;
   return(image);
 }
