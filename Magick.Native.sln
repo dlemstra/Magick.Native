@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Magick.Native", "src\Magick.Native\Magick.Native.vcxproj", "{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6C3DBF08-7B17-4B45-BA79-E3DB64032574}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\main.yml = .github\workflows\main.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
 	ProjectSection(SolutionItems) = preProject
@@ -196,6 +193,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64"
 		build\linux-arm64\verify.Native.sh = build\linux-arm64\verify.Native.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4B73C473-ECF3-4683-A81A-47E85061A7C6}"
+	ProjectSection(SolutionItems) = preProject
+		.github\FUNDING.yml = .github\FUNDING.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{3DF7FEA1-1839-4123-9B58-E8D86CC981C7}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|arm64 = DebugQ16|arm64
@@ -299,6 +306,7 @@ Global
 		{F9F51AB1-7683-4E2D-B746-4360926ABDE9} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{68BCFA01-B94B-43F3-B337-A9B28758185F} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{950C68AA-029F-4213-BCC8-20CB145E15CA} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{3DF7FEA1-1839-4123-9B58-E8D86CC981C7} = {4B73C473-ECF3-4683-A81A-47E85061A7C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
