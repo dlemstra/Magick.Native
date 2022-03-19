@@ -1970,13 +1970,13 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadFile(const ImageInfo *settings, Exce
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_ReadPixels(const size_t width, const size_t height, const char *map, const size_t storageType, const unsigned char *data, const size_t offset, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_ReadPixels(const size_t width, const size_t height, const char *map, const size_t storageType, const void *data, const size_t offsetInBytes, ExceptionInfo **exception)
 {
   Image
     *image;
 
   MAGICK_NATIVE_GET_EXCEPTION;
-  image = ConstituteImage(width, height, map, (const StorageType) storageType, (const void *) (data + offset), exceptionInfo);
+  image = ConstituteImage(width, height, map, (const StorageType) storageType, ((const unsigned char *) data) + offsetInBytes, exceptionInfo);
   RemoveFrames(image);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
