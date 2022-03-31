@@ -140,7 +140,7 @@ jobs:
   linux_arm64:
     name: 'Linux arm64'
     container:
-      image: ubuntu:16.04
+      image: ubuntu:18.04
     runs-on: ubuntu-latest
 
     steps:
