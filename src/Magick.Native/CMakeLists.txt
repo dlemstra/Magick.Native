@@ -43,9 +43,7 @@ if (PLATFORM STREQUAL "MACOS")
 else()
     list(APPEND ALL_FILES foo.cxx)
     
-    if (NOT LINUX_ARM64)
-        set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libjxl_threads.a ${LIB_DIR}/libbrotlienc-static.a ${LIB_DIR}/libbrotlidec-static.a ${LIB_DIR}/libbrotlicommon-static.a ${LIB_DIR}/libhwy.a)
-    endif()
+    set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libjxl_threads.a ${LIB_DIR}/libbrotlienc-static.a ${LIB_DIR}/libbrotlidec-static.a ${LIB_DIR}/libbrotlicommon-static.a ${LIB_DIR}/libhwy.a)
 
     if (NOT PLATFORM STREQUAL "WASM")
         list(APPEND ALL_FILES foo.cxx)

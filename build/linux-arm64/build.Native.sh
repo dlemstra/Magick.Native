@@ -2,7 +2,7 @@
 set -e
 
 export PLATFORM="LINUX"
-export NATIVE_OPTIONS="-DLINUX_ARM64=1"
+export NATIVE_OPTIONS=""
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/settings.sh
