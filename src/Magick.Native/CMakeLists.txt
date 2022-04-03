@@ -23,7 +23,6 @@ else()
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
 
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
-    set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a)
 
     set(LIBCAIRO ${LIB_DIR}/libcairo.a ${LIB_DIR}/libpixman-1.a)
     set(LIBFRIBIDI ${LIB_DIR}/libfribidi.a)
@@ -73,7 +72,7 @@ set(LIBOPENJPEG ${LIB_DIR}/libopenjp2.a)
 set(LIBPNG ${LIB_DIR}/libpng.a)
 set(LIBRAW ${LIB_DIR}/libraw_r.a)
 set(LIBTIFF ${LIB_DIR}/libtiff.a)
-set(LIBWEBP ${LIBWEBP} ${LIB_DIR}/libwebp.a)
+set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a ${LIB_DIR}/libwebp.a)
 set(LIBXML ${LIB_DIR}/libxml2.a)
 set(LIBZ ${LIB_DIR}/libz.a)
 
