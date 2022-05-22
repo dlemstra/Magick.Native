@@ -9,9 +9,9 @@
       <Configuration>DebugQ8</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="DebugQ8|ARM64">
+    <ProjectConfiguration Include="DebugQ8|arm64">
       <Configuration>DebugQ8</Configuration>
-      <Platform>ARM64</Platform>
+      <Platform>arm64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="DebugQ16|Win32">
       <Configuration>DebugQ16</Configuration>
@@ -21,9 +21,9 @@
       <Configuration>DebugQ16</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="DebugQ16|ARM64">
+    <ProjectConfiguration Include="DebugQ16|arm64">
       <Configuration>DebugQ16</Configuration>
-      <Platform>ARM64</Platform>
+      <Platform>arm64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="DebugQ16-HDRI|Win32">
       <Configuration>DebugQ16-HDRI</Configuration>
@@ -33,9 +33,9 @@
       <Configuration>DebugQ16-HDRI</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="DebugQ16-HDRI|ARM64">
+    <ProjectConfiguration Include="DebugQ16-HDRI|arm64">
       <Configuration>DebugQ16-HDRI</Configuration>
-      <Platform>ARM64</Platform>
+      <Platform>arm64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseQ8|Win32">
       <Configuration>ReleaseQ8</Configuration>
@@ -45,9 +45,9 @@
       <Configuration>ReleaseQ8</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseQ8|ARM64">
+    <ProjectConfiguration Include="ReleaseQ8|arm64">
       <Configuration>ReleaseQ8</Configuration>
-      <Platform>ARM64</Platform>
+      <Platform>arm64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseQ16|Win32">
       <Configuration>ReleaseQ16</Configuration>
@@ -57,9 +57,9 @@
       <Configuration>ReleaseQ16</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseQ16|ARM64">
+    <ProjectConfiguration Include="ReleaseQ16|arm64">
       <Configuration>ReleaseQ16</Configuration>
-      <Platform>ARM64</Platform>
+      <Platform>arm64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseQ16-HDRI|Win32">
       <Configuration>ReleaseQ16-HDRI</Configuration>
@@ -69,9 +69,9 @@
       <Configuration>ReleaseQ16-HDRI</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseQ16-HDRI|ARM64">
+    <ProjectConfiguration Include="ReleaseQ16-HDRI|arm64">
       <Configuration>ReleaseQ16-HDRI</Configuration>
-      <Platform>ARM64</Platform>
+      <Platform>arm64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseQ8-OpenMP|x64">
       <Configuration>ReleaseQ8-OpenMP</Configuration>
@@ -83,7 +83,7 @@
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseQ16-HDRI-OpenMP|x64">
       <Configuration>ReleaseQ16-HDRI-OpenMP</Configuration>
-      <Platform>arm64</Platform>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseQ8-OpenMP|arm64">
       <Configuration>ReleaseQ8-OpenMP</Configuration>
