@@ -12,7 +12,11 @@ brew uninstall --force composer
 brew uninstall --force php
 brew uninstall --force gd
 brew uninstall --force r
+brew uninstall --force imagemagick
 brew uninstall --force cairo
+brew uninstall --force shared-mime-info
+brew uninstall --force libheif
+brew uninstall --force liblqr
 brew uninstall --force glib
 brew uninstall --force gnupg
 brew uninstall --force gnutls
