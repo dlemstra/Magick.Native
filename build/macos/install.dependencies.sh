@@ -32,6 +32,9 @@ brew uninstall --force libavif
 brew uninstall --force aom
 brew uninstall --force jpeg-xl
 brew uninstall --force webp
+brew uninstall --force libraw
+brew uninstall --force little-cms2
+brew uninstall --force openjpeg
 brew uninstall --force libtiff
 brew uninstall --force libjpeg
 brew uninstall --force jpeg
