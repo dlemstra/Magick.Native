@@ -15,6 +15,7 @@ brew uninstall --force r
 brew uninstall --force imagemagick
 brew uninstall --force cairo
 brew uninstall --force libheif
+brew uninstall --force x265
 brew uninstall --force liblqr
 brew uninstall --force shared-mime-info
 brew uninstall --force glib
