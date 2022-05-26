@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd libraw
+cd raw
 chmod +x ./version.sh
 chmod +x ./shlib-version.sh
 autoreconf -fiv

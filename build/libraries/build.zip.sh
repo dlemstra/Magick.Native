@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd libzip
+cd zip
 rm lib/config.h
 rm lib/zip_err_str.c
 rm lib/zipconf.h

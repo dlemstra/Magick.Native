@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd libheif
+cd heif
 autoreconf -fiv
 chmod +x ./configure
 $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-go --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS" PKG_CONFIG_PATH="$PKG_PATH"

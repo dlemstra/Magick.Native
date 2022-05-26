@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd librsvg
+cd rsvg
 
 export GLIB_MKENUMS="/usr/local/bin/glib-mkenums"
 export GLIB_GENMARSHAL="/usr/local/bin/glib-genmarshal"
