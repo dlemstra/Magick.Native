@@ -9,12 +9,12 @@ $1/build.lzma.sh
 $1/build.bzlib.sh
 $1/build.zip.sh
 $1/build.xml.sh
-$1/build.libpng.sh
+$1/build.png.sh
 $1/build.freetype.sh
 $1/build.fontconfig.sh
-$1/build.libjpeg-turbo.sh
-$1/build.libtiff.sh
-$1/build.libwebp.sh
+$1/build.jpeg-turbo.sh
+$1/build.tiff.sh
+$1/build.webp.sh
 $1/build.openjpeg.sh
 $1/build.lcms.sh
 $1/build.aom.sh

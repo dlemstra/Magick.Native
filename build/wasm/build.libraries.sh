@@ -5,12 +5,12 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/settings.sh
 
 $1/build.zlib.sh
-$1/build.libxml.sh
-$1/build.libpng.sh
+$1/build.xml.sh
+$1/build.png.sh
 $1/build.freetype.sh
-$1/build.libjpeg-turbo.sh
-$1/build.libtiff.sh
-$1/build.libwebp.sh
+$1/build.jpeg-turbo.sh
+$1/build.tiff.sh
+$1/build.webp.sh
 $1/build.openjpeg.sh
 $1/build.lcms.sh
 $1/build.aom.sh
