@@ -18,9 +18,9 @@ export SSE_OPTIONS=""
 # Library specific options
 export FFI_OPTIONS="--disable-exec-static-tramp"
 export FONTCONFIG_OPTIONS=""
-export LIBXML_OPTIONS=""
 export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
+export XML_OPTIONS=""
 
 # ImageMagick options
 export IMAGEMAGICK_OPTIONS="--disable-openmp"

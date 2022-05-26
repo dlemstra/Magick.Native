@@ -18,9 +18,9 @@ export SSE_OPTIONS=""
 # Library specific options
 export FFI_OPTIONS=""
 export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
-export LIBXML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
 export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
+export XML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
 
 # ImageMagick options
 export IMAGEMAGICK_OPTIONS="--disable-openmp --without-bzlib --without-lzma"
