@@ -141,22 +141,22 @@ echo "Set latest commit date as $commitDate"
 cd ..
 
 clone_date 'aom' "$commitDate"
+clone_date 'de265' "$commitDate"
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_date 'ffi' "$commitDate"
 clone_date 'glib' "$commitDate"
+clone_date 'heif' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate"
 clone_date 'lcms' "$commitDate"
-clone_date 'libde265' "$commitDate"
-clone_date 'libheif' "$commitDate"
-clone_date 'libraw' "$commitDate"
-clone_date 'libxml' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'png' "$commitDate"
+clone_date 'raw' "$commitDate"
 clone_date 'tiff' "$commitDate"
 clone_date 'VisualMagick' "$commitDate"
 clone_date 'webp' "$commitDate"
+clone_date 'xml' "$commitDate"
 clone_date 'zlib' "$commitDate"
 
 if [ "$1" != "macos" ]; then
@@ -178,7 +178,7 @@ clone_date 'harfbuzz' "$commitDate"
 clone_date 'pango' "$commitDate"
 clone_date 'raqm' "$commitDate"
 clone_date 'pixman' "$commitDate"
-clone_date 'librsvg' "$commitDate"
+clone_date 'rsvg' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
     clone_commit 'fontconfig' "06688f06399dafdcd9305d00dd434c1972059d65" "https://github.com/dlemstra"
@@ -193,8 +193,8 @@ if [ "$1" == "macos" ]; then
 fi
 
 clone_date 'bzlib' "$commitDate"
-clone_date 'liblzma' "$commitDate"
-clone_date 'libzip' "$commitDate"
+clone_date 'lzma' "$commitDate"
+clone_date 'zip' "$commitDate"
 
 if [ "$1" == "linux" ]; then
     create_notice "$commitDate" $2
