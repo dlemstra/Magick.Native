@@ -6,7 +6,7 @@ arch=$2
 openmp=$3
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config/settings.sh
+. $SCRIPT_PATH/../$config-$arch/settings.sh
 
 getLibraryName() {
     local quantum=$1

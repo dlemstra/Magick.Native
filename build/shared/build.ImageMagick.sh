@@ -2,10 +2,11 @@
 set -e
 
 config=$1
+arch=$2
 openmp=$2
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config/settings.sh
+. $SCRIPT_PATH/../$config-$arch/settings.sh
 
 buildImageMagick() {
     local quantum=$1

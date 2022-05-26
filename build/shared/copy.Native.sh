@@ -7,7 +7,7 @@ folder=$3
 openmp=$4
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config/settings.sh
+. $SCRIPT_PATH/../$config-$arch/settings.sh
 
 copyNative() {
     local quantum=$1

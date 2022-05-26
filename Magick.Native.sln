@@ -7,18 +7,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Magick.Native", "src\Magick
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6C3DBF08-7B17-4B45-BA79-E3DB64032574}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
 	ProjectSection(SolutionItems) = preProject
-		build\linux\build.cmd = build\linux\build.cmd
-		build\linux\build.libraries.sh = build\linux\build.libraries.sh
-		build\linux\build.openmp.cmd = build\linux\build.openmp.cmd
-		build\linux\Dockerfile = build\linux\Dockerfile
-		build\linux\install.dependencies.sh = build\linux\install.dependencies.sh
-		build\linux\run.cmd = build\linux\run.cmd
-		build\linux\run.openmp.cmd = build\linux\run.openmp.cmd
-		build\linux\settings.sh = build\linux\settings.sh
-		build\linux\verify.cmd = build\linux\verify.cmd
-		build\linux\verify.openmp.cmd = build\linux\verify.openmp.cmd
+		build\linux-x64\build.cmd = build\linux-x64\build.cmd
+		build\linux-x64\build.libraries.sh = build\linux-x64\build.libraries.sh
+		build\linux-x64\build.openmp.cmd = build\linux-x64\build.openmp.cmd
+		build\linux-x64\Dockerfile = build\linux-x64\Dockerfile
+		build\linux-x64\install.dependencies.sh = build\linux-x64\install.dependencies.sh
+		build\linux-x64\run.cmd = build\linux-x64\run.cmd
+		build\linux-x64\run.openmp.cmd = build\linux-x64\run.openmp.cmd
+		build\linux-x64\settings.sh = build\linux-x64\settings.sh
+		build\linux-x64\verify.cmd = build\linux-x64\verify.cmd
+		build\linux-x64\verify.openmp.cmd = build\linux-x64\verify.openmp.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
