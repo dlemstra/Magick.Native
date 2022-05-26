@@ -503,12 +503,6 @@ jobs:
         name: linux
         path: publish\dotnet\files\linux
 
-    - name: Download linux OpenMP library
-      uses: actions/download-artifact@v1
-      with:
-        name: linux-openmp
-        path: publish\dotnet\files\linux
-
     - name: Download linux musl library
       uses: actions/download-artifact@v1
       with:
