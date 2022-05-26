@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
 
-openmp=$1
+config=$1
+openmp=$2
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/settings.sh
+. $SCRIPT_PATH/../$config/settings.sh
 
 getLibraryName() {
     local quantum=$1

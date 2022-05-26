@@ -34,15 +34,15 @@ jobs:
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/linux/build.ImageMagick.sh
+      run: ../../../build/shared/build.ImageMagick.sh linux
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/linux/build.Native.sh
+      run: ../../build/shared/build.Native.sh linux
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/linux/copy.Native.sh ../../artifacts
+      run: ../../build/shared/copy.Native.sh linux ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -77,15 +77,15 @@ jobs:
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/linux/build.ImageMagick.sh OpenMP
+      run: ../../../build/shared/build.ImageMagick.sh linux OpenMP
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/linux/build.Native.sh OpenMP
+      run: ../../build/shared/build.Native.sh linux OpenMP
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/linux/copy.Native.sh ../../artifacts
+      run: ../../build/shared/copy.Native.sh linux ../../artifacts OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library

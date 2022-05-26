@@ -1,11 +1,13 @@
 #!/bin/bash
 set -e
 
-folder=$1
-openmp=$2
+config=$1
+folder=$2
+openmp=$3
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/settings.sh
+. $SCRIPT_PATH/../$config/settings.sh
+
 
 verifyNative() {
     local name=$1
@@ -47,14 +49,18 @@ verifyNative() {
 }
 
 if [ -f "/bin/yum" ]; then
-    yum install -y libgomp
+    if [ "$openmp" == "OpenMP" ]; then
+        yum install -y libgomp
+    fi
 
     if [ ! -f "/usr/bin/ld" ]; then
         yum install -y binutils
     fi
 else
     apt-get update -y
-    apt-get install -y libgomp1
+    if [ "$openmp" == "OpenMP" ]; then
+        apt-get install -y libgomp1
+    fi
 
     if [ ! -f "/usr/bin/ld" ]; then
         apt-get install -y binutils

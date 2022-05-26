@@ -1,33 +1,33 @@
 FROM ubuntu:16.04
 
-RUN mkdir /build
+RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/linux
 
-COPY build/linux/install.dependencies.sh /build
+COPY build/linux/install.dependencies.sh /build/linux
 
-RUN cd /build; ./install.dependencies.sh
+RUN cd /build/linux; ./install.dependencies.sh
 
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh linux
 
-COPY build/libraries/*.sh /build/
+COPY build/libraries/*.sh /build/libraries
 
-COPY build/linux/settings.sh /build
+COPY build/linux/settings.sh /build/linux
 
-COPY build/linux/build.libraries.sh /build
+COPY build/linux/build.libraries.sh /build/linux
 
-RUN cd /ImageMagick/libraries; /build/build.libraries.sh /build
+RUN cd /ImageMagick/libraries; /build/linux/build.libraries.sh /build/libraries
 
-COPY build/linux/build.ImageMagick.sh /build
+COPY build/shared/build.ImageMagick.sh /build/shared
 
 ARG OpenMP
 
-RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh ${OpenMP}
+RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh linux ${OpenMP}
 
 COPY src/Magick.Native /Magick.Native
 
-COPY build/linux/build.Native.sh /build
+COPY build/shared/build.Native.sh /build/shared
 
-RUN cd /Magick.Native; /build/build.Native.sh $OpenMP
+RUN cd /Magick.Native; /build/shared/build.Native.sh linux $OpenMP
 
-COPY build/linux/copy.Native.sh /build
+COPY build/shared/copy.Native.sh /build/shared
