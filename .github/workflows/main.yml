@@ -34,7 +34,7 @@ jobs:
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux x64
+      run: ../../../build/shared/build.ImageMagick.sh linux
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
@@ -77,7 +77,7 @@ jobs:
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux x64 OpenMP
+      run: ../../../build/shared/build.ImageMagick.sh linux OpenMP
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
