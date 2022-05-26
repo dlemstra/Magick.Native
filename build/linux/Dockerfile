@@ -20,12 +20,14 @@ RUN cd /ImageMagick/libraries; /build/build.libraries.sh /build
 
 COPY build/linux/build.ImageMagick.sh /build
 
-RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh
+ARG OpenMP
 
-COPY build/linux/build.Native.sh /build
+RUN cd /ImageMagick/libraries; /build/build.ImageMagick.sh ${OpenMP}
 
 COPY src/Magick.Native /Magick.Native
 
-RUN cd /Magick.Native; /build/build.Native.sh
+COPY build/linux/build.Native.sh /build
+
+RUN cd /Magick.Native; /build/build.Native.sh $OpenMP
 
 COPY build/linux/copy.Native.sh /build

@@ -1,17 +1,26 @@
 #!/bin/bash
 set -e
 
+target=$1
+openmp=$2
+
+SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+. $SCRIPT_PATH/settings.sh
+
 copyNative() {
     local quantum=$1
-    local target=$2
+    local name=$quantum
+    if [ "$openmp" == "OpenMP" ]; then
+        name=${name}-OpenMP
+    fi
 
-    mkdir -p $target/Release$quantum
-    mkdir -p $target/Release$quantum/x64
-    cp $quantum/libMagick.Native-$quantum-x64.dll.so $target/Release$quantum/x64/Magick.Native-$quantum-x64.dll.so
+    mkdir -p $target/Release$name
+    mkdir -p $target/Release$name/x64
+    cp $quantum/libMagick.Native-$name-x64.dll.so $target/Release$name/x64/Magick.Native-$name-x64.dll.so
 }
 
-[ "$1" != "" ] && [ ! -d "$1" ] && mkdir "$1"
+[ "$target" != "" ] && [ ! -d "$target" ] && mkdir "$target"
 
-copyNative "Q8" $1
-copyNative "Q16" $1
-copyNative "Q16-HDRI" $1
+for quantum in ${QUANTUMS[@]}; do
+    copyNative $quantum
+done

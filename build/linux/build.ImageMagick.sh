@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+openmp=$1
+
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/settings.sh
 
@@ -10,6 +12,7 @@ buildImageMagick() {
     # Set ImageMagick variables
     local hdri=no
     local depth=8
+    local disable_openmp=--disable-openmp
     if [ "$quantum" == "Q16" ]; then
         depth=16
     elif [ "$quantum" == "Q16-HDRI" ]; then
@@ -17,8 +20,11 @@ buildImageMagick() {
         depth=16
         hdri=yes
     fi
+    if [ "$openmp" == "OpenMP" ]; then
+        unset disable_openmp
+    fi
 
-    $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-assert --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+    $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-assert --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $disable_openmp CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
     $MAKE install
 }
 
@@ -32,7 +38,7 @@ copyPrivateIncludes() {
 # Build ImageMagick
 cd ImageMagick
 autoreconf -fiv
-buildImageMagick "Q8"
-buildImageMagick "Q16"
-buildImageMagick "Q16-HDRI"
+for quantum in ${QUANTUMS[@]}; do
+    buildImageMagick $quantum
+done
 copyPrivateIncludes

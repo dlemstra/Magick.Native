@@ -1,14 +1,18 @@
 #!/bin/bash
 set -e
 
-export PLATFORM="LINUX"
-export NATIVE_OPTIONS=""
+openmp=$1
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/settings.sh
+
 getLibraryName() {
     local quantum=$1
-    echo Magick.Native-$quantum-x64.dll
+    if [ "$openmp" == "OpenMP" ]; then
+        echo Magick.Native-$quantum-OpenMP-x64.dll
+    else
+        echo Magick.Native-$quantum-x64.dll
+    fi
 }
 
 echo "" > foo.cxx
@@ -37,6 +41,6 @@ buildNative() {
     cd ..
 }
 
-buildNative "Q8"
-buildNative "Q16"
-buildNative "Q16-HDRI"
+for quantum in ${QUANTUMS[@]}; do
+    buildNative $quantum
+done

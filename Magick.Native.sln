@@ -13,13 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{DBA3E7EC
 		build\linux\build.ImageMagick.sh = build\linux\build.ImageMagick.sh
 		build\linux\build.libraries.sh = build\linux\build.libraries.sh
 		build\linux\build.Native.sh = build\linux\build.Native.sh
+		build\linux\build.openmp.cmd = build\linux\build.openmp.cmd
 		build\linux\copy.Native.sh = build\linux\copy.Native.sh
 		build\linux\Dockerfile = build\linux\Dockerfile
 		build\linux\install.dependencies.sh = build\linux\install.dependencies.sh
 		build\linux\run.cmd = build\linux\run.cmd
+		build\linux\run.openmp.cmd = build\linux\run.openmp.cmd
 		build\linux\settings.sh = build\linux\settings.sh
 		build\linux\verify.cmd = build\linux\verify.cmd
 		build\linux\verify.Native.sh = build\linux\verify.Native.sh
+		build\linux\verify.openmp.cmd = build\linux\verify.openmp.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
@@ -127,21 +130,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 		build\libraries\build.harfbuzz.sh = build\libraries\build.harfbuzz.sh
 		build\libraries\build.heif.sh = build\libraries\build.heif.sh
 		build\libraries\build.highway.sh = build\libraries\build.highway.sh
+		build\libraries\build.jpeg-turbo.sh = build\libraries\build.jpeg-turbo.sh
 		build\libraries\build.jpeg-xl.sh = build\libraries\build.jpeg-xl.sh
 		build\libraries\build.lcms.sh = build\libraries\build.lcms.sh
-		build\libraries\build.jpeg-turbo.sh = build\libraries\build.jpeg-turbo.sh
-		build\libraries\build.png.sh = build\libraries\build.png.sh
-		build\libraries\build.tiff.sh = build\libraries\build.tiff.sh
-		build\libraries\build.webp.sh = build\libraries\build.webp.sh
 		build\libraries\build.lqr.sh = build\libraries\build.lqr.sh
 		build\libraries\build.lzma.sh = build\libraries\build.lzma.sh
 		build\libraries\build.openexr.sh = build\libraries\build.openexr.sh
 		build\libraries\build.openjpeg.sh = build\libraries\build.openjpeg.sh
 		build\libraries\build.pango.sh = build\libraries\build.pango.sh
 		build\libraries\build.pixman.sh = build\libraries\build.pixman.sh
+		build\libraries\build.png.sh = build\libraries\build.png.sh
 		build\libraries\build.raqm.sh = build\libraries\build.raqm.sh
 		build\libraries\build.raw.sh = build\libraries\build.raw.sh
 		build\libraries\build.rsvg.sh = build\libraries\build.rsvg.sh
+		build\libraries\build.tiff.sh = build\libraries\build.tiff.sh
+		build\libraries\build.webp.sh = build\libraries\build.webp.sh
 		build\libraries\build.xml.sh = build\libraries\build.xml.sh
 		build\libraries\build.zip.sh = build\libraries\build.zip.sh
 		build\libraries\build.zlib.sh = build\libraries\build.zlib.sh
@@ -160,21 +163,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl", "linux-musl", 
 		build\linux-musl\settings.sh = build\linux-musl\settings.sh
 		build\linux-musl\verify.cmd = build\linux-musl\verify.cmd
 		build\linux-musl\verify.Native.sh = build\linux-musl\verify.Native.sh
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-openmp", "linux-openmp", "{68BCFA01-B94B-43F3-B337-A9B28758185F}"
-	ProjectSection(SolutionItems) = preProject
-		build\linux-openmp\build.cmd = build\linux-openmp\build.cmd
-		build\linux-openmp\build.ImageMagick.sh = build\linux-openmp\build.ImageMagick.sh
-		build\linux-openmp\build.libraries.sh = build\linux-openmp\build.libraries.sh
-		build\linux-openmp\build.Native.sh = build\linux-openmp\build.Native.sh
-		build\linux-openmp\copy.Native.sh = build\linux-openmp\copy.Native.sh
-		build\linux-openmp\Dockerfile = build\linux-openmp\Dockerfile
-		build\linux-openmp\install.dependencies.sh = build\linux-openmp\install.dependencies.sh
-		build\linux-openmp\run.cmd = build\linux-openmp\run.cmd
-		build\linux-openmp\settings.sh = build\linux-openmp\settings.sh
-		build\linux-openmp\verify.cmd = build\linux-openmp\verify.cmd
-		build\linux-openmp\verify.Native.sh = build\linux-openmp\verify.Native.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64", "{950C68AA-029F-4213-BCC8-20CB145E15CA}"
@@ -304,7 +292,6 @@ Global
 		{54F6D858-DE3E-4369-A212-3ECC81B854EE} = {BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0}
 		{18A7C91D-6DB9-4CCE-8276-4E7BA9F05EAC} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{F9F51AB1-7683-4E2D-B746-4360926ABDE9} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
-		{68BCFA01-B94B-43F3-B337-A9B28758185F} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{950C68AA-029F-4213-BCC8-20CB145E15CA} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{3DF7FEA1-1839-4123-9B58-E8D86CC981C7} = {4B73C473-ECF3-4683-A81A-47E85061A7C6}
 	EndGlobalSection
