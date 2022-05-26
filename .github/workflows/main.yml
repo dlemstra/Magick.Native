@@ -23,14 +23,14 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/linux
+      working-directory: build/linux-x64
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/linux/build.libraries.sh ../../../build/libraries
+      run: ../../../build/linux-x64/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
@@ -66,14 +66,14 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/linux
+      working-directory: build/linux-x64
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/linux/build.libraries.sh ../../../build/libraries
+      run: ../../../build/linux-x64/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick

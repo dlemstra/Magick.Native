@@ -1,10 +1,10 @@
 FROM ubuntu:16.04
 
-RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/linux
+RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/linux-x64
 
-COPY build/linux/install.dependencies.sh /build/linux
+COPY build/linux/install.dependencies.sh /build/linux-x64
 
-RUN cd /build/linux; ./install.dependencies.sh
+RUN cd /build/linux-x64; ./install.dependencies.sh
 
 COPY src/ImageMagick /ImageMagick
 
@@ -12,11 +12,11 @@ RUN cd /ImageMagick; ./checkout.sh linux
 
 COPY build/libraries/*.sh /build/libraries
 
-COPY build/linux/settings.sh /build/linux
+COPY build/linux/settings.sh /build/linux-x64
 
-COPY build/linux/build.libraries.sh /build/linux
+COPY build/linux/build.libraries.sh /build/linux-x64
 
-RUN cd /ImageMagick/libraries; /build/linux/build.libraries.sh /build/libraries
+RUN cd /ImageMagick/libraries; /build/linux-x64/build.libraries.sh /build/libraries
 
 COPY build/shared/build.ImageMagick.sh /build/shared
 
