@@ -66,26 +66,26 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/linux-openmp
+      working-directory: build/linux
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/linux-openmp/build.libraries.sh ../../../build/libraries
+      run: ../../../build/linux/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/linux-openmp/build.ImageMagick.sh
+      run: ../../../build/linux/build.ImageMagick.sh OpenMP
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/linux-openmp/build.Native.sh
+      run: ../../build/linux/build.Native.sh OpenMP
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/linux-openmp/copy.Native.sh ../../artifacts
+      run: ../../build/linux/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload library
