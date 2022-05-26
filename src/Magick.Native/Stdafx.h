@@ -42,18 +42,18 @@
 
 #define MAGICK_NATIVE_EXPORT __declspec(dllexport)
 
+MAGICK_NATIVE_LINK_LIB("coders")
+MAGICK_NATIVE_LINK_LIB("MagickCore")
+MAGICK_NATIVE_LINK_LIB("MagickWand")
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "urlmon.lib")
+
 #if defined(MAGICKCORE_BZLIB_DELEGATE)
 MAGICK_NATIVE_LINK_LIB("bzlib")
 #endif
 
-MAGICK_NATIVE_LINK_LIB("coders")
-
-#if defined(MAGICKCORE_OPENEXR_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("exr")
-#endif
-
-#if defined(MAGICKCORE_LQR_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("ffi")
+#if defined(MAGICKCORE_CAIRO_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("cairo")
 #endif
 
 #if defined(MAGICKCORE_FLIF_DELEGATE)
@@ -64,13 +64,10 @@ MAGICK_NATIVE_LINK_LIB("flif")
 MAGICK_NATIVE_LINK_LIB("freetype")
 #endif
 
-#if defined(MAGICKCORE_LQR_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("glib")
-#pragma comment(lib, "winmm.lib")
-#endif
-
-#if defined(MAGICKCORE_LZMA_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("lzma")
+#if defined(MAGICKCORE_HEIC_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("aom")
+MAGICK_NATIVE_LINK_LIB("de265")
+MAGICK_NATIVE_LINK_LIB("heif")
 #endif
 
 #if defined(MAGICKCORE_JBIG_DELEGATE)
@@ -99,27 +96,19 @@ MAGICK_NATIVE_LINK_LIB("lcms")
 MAGICK_NATIVE_LINK_LIB("openjpeg")
 #endif
 
-#if defined(MAGICKCORE_HEIC_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("aom")
-MAGICK_NATIVE_LINK_LIB("de265")
-MAGICK_NATIVE_LINK_LIB("heif")
-#endif
-
-#if defined(MAGICKCORE_RAW_R_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("raw")
-#endif
-
-MAGICK_NATIVE_LINK_LIB("xml")
-
 #if defined(MAGICKCORE_LQR_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("ffi")
+MAGICK_NATIVE_LINK_LIB("glib")
 MAGICK_NATIVE_LINK_LIB("lqr")
+#pragma comment(lib, "winmm.lib")
 #endif
 
-MAGICK_NATIVE_LINK_LIB("MagickCore")
-MAGICK_NATIVE_LINK_LIB("MagickWand")
+#if defined(MAGICKCORE_LZMA_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("lzma")
+#endif
 
-#if defined(MAGICKCORE_CAIRO_DELEGATE)
-MAGICK_NATIVE_LINK_LIB("cairo")
+#if defined(MAGICKCORE_OPENEXR_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("exr")
 #endif
 
 #if defined(MAGICKCORE_PANGOCAIRO_DELEGATE)
@@ -137,6 +126,10 @@ MAGICK_NATIVE_LINK_LIB("png")
 MAGICK_NATIVE_LINK_LIB("raqm")
 #endif
 
+#if defined(MAGICKCORE_RAW_R_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("raw")
+#endif
+
 #if defined(MAGICKCORE_RSVG_DELEGATE)
 MAGICK_NATIVE_LINK_LIB("croco")
 MAGICK_NATIVE_LINK_LIB("rsvg")
@@ -150,6 +143,10 @@ MAGICK_NATIVE_LINK_LIB("tiff")
 MAGICK_NATIVE_LINK_LIB("webp")
 #endif
 
+#if defined(MAGICKCORE_XML_DELEGATE)
+MAGICK_NATIVE_LINK_LIB("xml")
+#endif
+
 #if defined(MAGICKCORE_ZIP_DELEGATE)
 MAGICK_NATIVE_LINK_LIB("zip")
 #endif
@@ -158,8 +155,6 @@ MAGICK_NATIVE_LINK_LIB("zip")
 MAGICK_NATIVE_LINK_LIB("zlib")
 #endif
 
-#pragma comment(lib, "ws2_32.lib")
-#pragma comment(lib, "urlmon.lib")
 #endif
 
 #include "Exceptions/MagickExceptionHelper.h"
