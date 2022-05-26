@@ -165,12 +165,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64"
 	ProjectSection(SolutionItems) = preProject
 		build\linux-arm64\build.cmd = build\linux-arm64\build.cmd
 		build\linux-arm64\build.libraries.sh = build\linux-arm64\build.libraries.sh
+		build\linux-arm64\build.openmp.cmd = build\linux-arm64\build.openmp.cmd
 		build\linux-arm64\cross-compilation.meson = build\linux-arm64\cross-compilation.meson
 		build\linux-arm64\Dockerfile = build\linux-arm64\Dockerfile
 		build\linux-arm64\install.dependencies.sh = build\linux-arm64\install.dependencies.sh
 		build\linux-arm64\run.cmd = build\linux-arm64\run.cmd
+		build\linux-arm64\run.openmp.cmd = build\linux-arm64\run.openmp.cmd
 		build\linux-arm64\settings.sh = build\linux-arm64\settings.sh
 		build\linux-arm64\verify.cmd = build\linux-arm64\verify.cmd
+		build\linux-arm64\verify.openmp.cmd = build\linux-arm64\verify.openmp.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4B73C473-ECF3-4683-A81A-47E85061A7C6}"
