@@ -2,8 +2,9 @@
 set -e
 
 config=$1
-folder=$2
-openmp=$3
+arch=$2
+folder=$3
+openmp=$4
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/../$config/settings.sh
@@ -16,8 +17,8 @@ copyNative() {
     fi
 
     mkdir -p $folder/Release$name
-    mkdir -p $folder/Release$name/x64
-    cp $quantum/libMagick.Native-$name-x64.dll.so $folder/Release$name/x64/Magick.Native-$name-x64.dll.so
+    mkdir -p $folder/Release$name/$arch
+    cp $quantum/libMagick.Native-$name-$arch.dll.so $folder/Release$name/$arch/Magick.Native-$name-$arch.dll.so
 }
 
 [ "$folder" != "" ] && [ ! -d "$folder" ] && mkdir "$folder"

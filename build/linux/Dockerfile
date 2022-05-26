@@ -22,12 +22,12 @@ COPY build/shared/build.ImageMagick.sh /build/shared
 
 ARG OpenMP
 
-RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh linux ${OpenMP}
+RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh linux x64 ${OpenMP}
 
 COPY src/Magick.Native /Magick.Native
 
 COPY build/shared/build.Native.sh /build/shared
 
-RUN cd /Magick.Native; /build/shared/build.Native.sh linux $OpenMP
+RUN cd /Magick.Native; /build/shared/build.Native.sh linux x64 $OpenMP
 
 COPY build/shared/copy.Native.sh /build/shared

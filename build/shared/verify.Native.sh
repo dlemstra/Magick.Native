@@ -2,8 +2,9 @@
 set -e
 
 config=$1
-folder=$2
-openmp=$3
+arch=$2
+folder=$3
+openmp=$4
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/../$config/settings.sh
@@ -15,7 +16,7 @@ verifyNative() {
         name=${name}-OpenMP
     fi
 
-    local file=${folder}/Release${name}/x64/Magick.Native-${name}-x64.dll.so
+    local file=${folder}/Release${name}/$arch/Magick.Native-${name}-$arch.dll.so
 
     if [ ! -f $file ]; then
         echo "Unable to find $file"
