@@ -534,7 +534,7 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 build/shared/verify.Native.sh linux arm64 .
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 .
 
   verify_linux_arm64_openmp:
     name: 'Verify Linux (arm64) OpenMP'
@@ -567,7 +567,7 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 build/shared/verify.Native.sh linux arm64 . OpenMP
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 . OpenMP
 
   publish_dotnet:
     name: 'Publish .NET library'
