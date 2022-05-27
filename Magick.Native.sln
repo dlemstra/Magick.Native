@@ -146,19 +146,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 		build\libraries\build.zlib.sh = build\libraries\build.zlib.sh
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl", "linux-musl", "{F9F51AB1-7683-4E2D-B746-4360926ABDE9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-musl-x64", "{F9F51AB1-7683-4E2D-B746-4360926ABDE9}"
 	ProjectSection(SolutionItems) = preProject
-		build\linux-musl\build.cmd = build\linux-musl\build.cmd
-		build\linux-musl\build.ImageMagick.sh = build\linux-musl\build.ImageMagick.sh
-		build\linux-musl\build.libraries.sh = build\linux-musl\build.libraries.sh
-		build\linux-musl\build.Native.sh = build\linux-musl\build.Native.sh
-		build\linux-musl\copy.Native.sh = build\linux-musl\copy.Native.sh
-		build\linux-musl\Dockerfile = build\linux-musl\Dockerfile
-		build\linux-musl\install.dependencies.sh = build\linux-musl\install.dependencies.sh
-		build\linux-musl\run.cmd = build\linux-musl\run.cmd
-		build\linux-musl\settings.sh = build\linux-musl\settings.sh
-		build\linux-musl\verify.cmd = build\linux-musl\verify.cmd
-		build\linux-musl\verify.Native.sh = build\linux-musl\verify.Native.sh
+		build\linux-musl-x64\build.cmd = build\linux-musl-x64\build.cmd
+		build\linux-musl-x64\build.libraries.sh = build\linux-musl-x64\build.libraries.sh
+		build\linux-musl-x64\Dockerfile = build\linux-musl-x64\Dockerfile
+		build\linux-musl-x64\install.dependencies.sh = build\linux-musl-x64\install.dependencies.sh
+		build\linux-musl-x64\run.cmd = build\linux-musl-x64\run.cmd
+		build\linux-musl-x64\settings.sh = build\linux-musl-x64\settings.sh
+		build\linux-musl-x64\verify.cmd = build\linux-musl-x64\verify.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64", "{950C68AA-029F-4213-BCC8-20CB145E15CA}"

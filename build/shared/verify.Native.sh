@@ -57,6 +57,15 @@ if [ -f "/bin/yum" ]; then
     if [ ! -f "/usr/bin/ld" ]; then
         yum install -y binutils
     fi
+elif [ -f "/sbin/apk" ]; then
+    apk update
+    if [ "$openmp" == "OpenMP" ]; then
+        apk add libgomp
+    fi
+
+    if [ ! -f "/usr/bin/ld" ]; then
+        apk add binutils
+    fi
 else
     apt-get update -y
     if [ "$openmp" == "OpenMP" ]; then
