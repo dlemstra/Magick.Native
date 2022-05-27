@@ -348,7 +348,7 @@ jobs:
         path: artifacts
 
   verify_linux:
-    name: 'Verify Linux'
+    name: 'Verify Linux (x64)'
     needs:
       - linux
     runs-on: ubuntu-latest
@@ -385,7 +385,7 @@ jobs:
       run: build/shared/verify.Native.sh linux x64 .
 
   verify_linux_openmp:
-    name: 'Verify Linux OpenMP'
+    name: 'Verify Linux (x64) OpenMP'
     needs:
       - linux
     runs-on: ubuntu-latest
@@ -422,7 +422,7 @@ jobs:
       run: build/shared/verify.Native.sh linux x64 . OpenMP
 
   verify_linux_musl:
-    name: 'Verify Linux musl'
+    name: 'Verify Linux musl (x64)'
     needs:
       - linux_musl
     runs-on: ubuntu-latest
@@ -457,7 +457,7 @@ jobs:
         build/shared/verify.Native.sh linux-musl x64 .
 
   verify_linux_arm64:
-    name: 'Verify Linux arm64'
+    name: 'Verify Linux (arm64)'
     needs:
       - linux_arm64
     runs-on: ubuntu-latest
@@ -487,7 +487,40 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/linux-arm64/verify.Native.sh /Magick.Native
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 build/shared/verify.Native.sh linux arm64 .
+
+  verify_linux_arm64_openmp:
+    name: 'Verify Linux (arm64) OpenMP'
+    needs:
+      - linux_arm64
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        image:
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - name: Download linux library
+      uses: actions/download-artifact@v2
+      with:
+        name: linux-arm64
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: arm64
+
+    - name: Verify Native
+      run: |
+        export path=$(pwd)
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 build/shared/verify.Native.sh linux arm64 . OpenMP
 
   publish_dotnet:
     name: 'Publish .NET library'
@@ -496,6 +529,7 @@ jobs:
       - verify_linux_openmp
       - verify_linux_musl
       - verify_linux_arm64
+      - verify_linux_arm64_openmp
       - macos
       - windows
       - metadata
