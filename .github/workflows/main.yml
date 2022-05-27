@@ -107,7 +107,7 @@ jobs:
         path: artifacts
 
   linux_arm64:
-    name: 'Linux arm64'
+    name: 'Linux (arm64)'
     container:
       image: ubuntu:18.04
     runs-on: ubuntu-latest
@@ -128,19 +128,31 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/linux-arm64/build.libraries.sh ../../../build/libraries
+      run: ../../../build/shared/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/linux-arm64/build.ImageMagick.sh
+      run: ../../../build/shared/build.ImageMagick.sh linux arm64
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/linux-arm64/build.Native.sh
+      run: ../../build/shared/build.Native.sh linux arm64
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/linux-arm64/copy.Native.sh ../../artifacts
+      run: ../../build/shared/copy.Native.sh linux arm64 ../../artifacts
+      working-directory: src/Magick.Native
+
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh linux arm64 OpenMP
+      working-directory: src/ImageMagick/libraries
+
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh linux arm64 OpenMP
+      working-directory: src/Magick.Native
+
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh linux arm64 ../../artifacts OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library
