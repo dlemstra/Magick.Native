@@ -150,11 +150,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-mus
 	ProjectSection(SolutionItems) = preProject
 		build\linux-musl-x64\build.cmd = build\linux-musl-x64\build.cmd
 		build\linux-musl-x64\build.libraries.sh = build\linux-musl-x64\build.libraries.sh
+		build\linux-musl-x64\build.openmp.cmd = build\linux-musl-x64\build.openmp.cmd
 		build\linux-musl-x64\Dockerfile = build\linux-musl-x64\Dockerfile
 		build\linux-musl-x64\install.dependencies.sh = build\linux-musl-x64\install.dependencies.sh
 		build\linux-musl-x64\run.cmd = build\linux-musl-x64\run.cmd
+		build\linux-musl-x64\run.openmp.cmd = build\linux-musl-x64\run.openmp.cmd
 		build\linux-musl-x64\settings.sh = build\linux-musl-x64\settings.sh
 		build\linux-musl-x64\verify.cmd = build\linux-musl-x64\verify.cmd
+		build\linux-musl-x64\verify.openmp.cmd = build\linux-musl-x64\verify.openmp.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64", "{950C68AA-029F-4213-BCC8-20CB145E15CA}"
