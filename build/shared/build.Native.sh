@@ -34,6 +34,9 @@ buildNative() {
         hdri_enable=1
     fi
 
+    if [ -d $quantum ]; then
+        rm -Rf $quantum
+    fi
     mkdir $quantum
     cd $quantum
 
