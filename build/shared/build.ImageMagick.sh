@@ -33,7 +33,9 @@ buildImageMagick() {
 copyPrivateIncludes() {
     local imageMagickInclude=`pkg-config --variable includedir ImageMagick`
     cp MagickCore/*-private.h $imageMagickInclude/MagickCore/
-    mkdir $imageMagickInclude/coders
+    if [ ! -d $imageMagickInclude/coders ]; then
+        mkdir $imageMagickInclude/coders
+    fi
     cp coders/*-private.h $imageMagickInclude/coders/
 }
 
