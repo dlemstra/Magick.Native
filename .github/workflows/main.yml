@@ -321,7 +321,7 @@ jobs:
       working-directory: src/create-type-definition
 
     - name: Copy Native
-      run: ../../build/wasm/copy.Native.sh ../../artifacts
+      run: ../../build/wasm-x86/copy.Native.sh ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload library
