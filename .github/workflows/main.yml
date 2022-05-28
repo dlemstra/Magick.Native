@@ -186,26 +186,26 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/macos
+      working-directory: build/macos-x64
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh macos ../../../artifacts
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/macos/build.libraries.sh ../../../build/libraries
+      run: ../../../build/macos-x64/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/macos/build.ImageMagick.sh
+      run: ../../../build/shared/build.ImageMagick.sh macos x64
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/macos/build.Native.sh
+      run: ../../build/shared/build.Native.sh macos x64
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/macos/copy.Native.sh ../../artifacts
+      run: ../../build/shared/copy.Native.sh macos x64 ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload library

@@ -23,10 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-x64", "macos-x64", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
 	ProjectSection(SolutionItems) = preProject
-		build\macos-x64\build.ImageMagick.sh = build\macos-x64\build.ImageMagick.sh
 		build\macos-x64\build.libraries.sh = build\macos-x64\build.libraries.sh
-		build\macos-x64\build.Native.sh = build\macos-x64\build.Native.sh
-		build\macos-x64\copy.Native.sh = build\macos-x64\copy.Native.sh
 		build\macos-x64\install.dependencies.sh = build\macos-x64\install.dependencies.sh
 		build\macos-x64\settings.sh = build\macos-x64\settings.sh
 	EndProjectSection

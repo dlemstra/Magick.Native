@@ -1,6 +1,9 @@
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Shared options
+export PLATFORM="MACOS"
+export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
+export EXTENSION=".dylib"
 export FLAGS="-O3 -fPIC"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="./configure"
@@ -21,6 +24,4 @@ export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts
 export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export XML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
-
-# ImageMagick options
-export IMAGEMAGICK_OPTIONS="--disable-openmp --without-bzlib --without-lzma"
+export IMAGEMAGICK_OPTIONS="--without-bzlib --without-lzma"
