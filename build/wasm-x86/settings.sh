@@ -4,6 +4,7 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 export PLATFORM=WASM
 export QUANTUMS=("Q8")
 export FLAGS="-O3"
+export EXTENSION="dll.js"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="emconfigure ./configure"
 export CONFIGURE_OPTIONS=""
