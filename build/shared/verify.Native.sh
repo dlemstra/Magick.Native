@@ -16,7 +16,7 @@ verifyNative() {
         name=${name}-OpenMP
     fi
 
-    local file=${folder}/Release${name}/$arch/Magick.Native-${name}-$arch.$EXTENSION
+    local file=${folder}/Release${name}/$arch/Magick.Native-${name}-$arch.dll.$EXTENSION
 
     if [ ! -f $file ]; then
         echo "Unable to find $file"

@@ -18,7 +18,7 @@ copyNative() {
 
     mkdir -p $folder/Release$name
     mkdir -p $folder/Release$name/$arch
-    cp $quantum/libMagick.Native-$name-$arch.$EXTENSION $folder/Release$name/$arch/Magick.Native-$name-$arch.$EXTENSION
+    cp $quantum/libMagick.Native-$name-$arch.dll.$EXTENSION $folder/Release$name/$arch/Magick.Native-$name-$arch.dll.$EXTENSION
 }
 
 [ "$folder" != "" ] && [ ! -d "$folder" ] && mkdir "$folder"
