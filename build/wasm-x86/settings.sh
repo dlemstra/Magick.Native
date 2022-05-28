@@ -1,6 +1,8 @@
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Shared options
+export PLATFORM=WASM
+export QUANTUMS=("Q8")
 export FLAGS="-O3"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="emconfigure ./configure"
@@ -21,9 +23,9 @@ export FONTCONFIG_OPTIONS=""
 export OPENEXR_OPTIONS="-DZLIB_LIBRARY=/usr/local/lib/libz.a -DZLIB_INCLUDE_DIR=/usr/local/include -DImath_DIR=/usr/local/lib/cmake/Imath"
 export WEBP_OPTIONS=""
 export XML_OPTIONS=""
-
-# ImageMagick options
 export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-bzlib --without-lzma"
 
 # WASM options
+export CC=emcc
+export CXX=em++
 export EM_PKG_CONFIG_PATH=$PKG_PATH

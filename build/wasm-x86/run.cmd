@@ -1,1 +1,1 @@
-docker run -it -v %~dp0output:/output -w /src magick-wasm-linux /bin/bash
+docker run -it -v %~dp0output:/output -w /src magick-wasm /bin/bash

@@ -280,7 +280,7 @@ jobs:
         path: artifacts/resources
 
   wasm:
-    name: 'WASM'
+    name: 'WASM (x86)'
     container:
       image: emscripten/emsdk:3.1.5
     runs-on: ubuntu-latest
@@ -294,26 +294,26 @@ jobs:
 
     - name: Install dependencies
       run: ./install.dependencies.sh
-      working-directory: build/wasm
+      working-directory: build/wasm-x86
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh wasm ../../../artifacts
       working-directory: src/ImageMagick
 
     - name: Apply patches
-      run: ../../../build/wasm/patches/install.patches.sh
+      run: ../../../build/wasm-x86/patches/install.patches.sh
       working-directory: src/ImageMagick/libraries
 
     - name: Build libraries
-      run: ../../../build/wasm/build.libraries.sh ../../../build/libraries
+      run: ../../../build/wasm-x86/build.libraries.sh ../../../build/libraries
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
-      run: ../../../build/wasm/build.ImageMagick.sh
+      run: ../../../build/shared/build.ImageMagick.sh wasm x86
       working-directory: src/ImageMagick/libraries
 
     - name: Build Native
-      run: ../../build/wasm/build.Native.sh
+      run: ../../build/shared/build.Native.sh wasm x86
       working-directory: src/Magick.Native
 
     - name: Create type definition
@@ -673,7 +673,7 @@ jobs:
 
     - uses: actions/setup-node@v1
       with:
-        node-version: 12
+        node-version: 16
         registry-url: https://npm.pkg.github.com
         scope: '@dlemstra'
 

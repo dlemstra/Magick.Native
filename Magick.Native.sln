@@ -47,25 +47,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{5B17
 		build\windows\update.resourcefiles.ps1 = build\windows\update.resourcefiles.ps1
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm", "wasm", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x86", "wasm-x86", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
 	ProjectSection(SolutionItems) = preProject
-		build\wasm\build.cmd = build\wasm\build.cmd
-		build\wasm\build.ImageMagick.sh = build\wasm\build.ImageMagick.sh
-		build\wasm\build.libraries.sh = build\wasm\build.libraries.sh
-		build\wasm\build.Native.sh = build\wasm\build.Native.sh
-		build\wasm\build.sh = build\wasm\build.sh
-		build\wasm\copy.Native.sh = build\wasm\copy.Native.sh
-		build\wasm\cross-compilation.meson = build\wasm\cross-compilation.meson
-		build\wasm\Dockerfile = build\wasm\Dockerfile
-		build\wasm\install.dependencies.sh = build\wasm\install.dependencies.sh
-		build\wasm\run.cmd = build\wasm\run.cmd
-		build\wasm\settings.sh = build\wasm\settings.sh
+		build\wasm-x86\build.cmd = build\wasm-x86\build.cmd
+		build\wasm-x86\build.libraries.sh = build\wasm-x86\build.libraries.sh
+		build\wasm-x86\copy.Native.sh = build\wasm-x86\copy.Native.sh
+		build\wasm-x86\cross-compilation.meson = build\wasm-x86\cross-compilation.meson
+		build\wasm-x86\Dockerfile = build\wasm-x86\Dockerfile
+		build\wasm-x86\install.dependencies.sh = build\wasm-x86\install.dependencies.sh
+		build\wasm-x86\run.cmd = build\wasm-x86\run.cmd
+		build\wasm-x86\settings.sh = build\wasm-x86\settings.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "patches", "patches", "{D39F0D02-5AB1-47E8-A27A-E443697E894C}"
 	ProjectSection(SolutionItems) = preProject
-		build\wasm\patches\install.patches.sh = build\wasm\patches\install.patches.sh
-		build\wasm\patches\png.patch = build\wasm\patches\png.patch
+		build\wasm-x86\patches\install.patches.sh = build\wasm-x86\patches\install.patches.sh
+		build\wasm-x86\patches\png.patch = build\wasm-x86\patches\png.patch
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA38A23D-B639-4B56-BBCC-43446386FE8B}"
