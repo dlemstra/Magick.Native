@@ -25,7 +25,6 @@ export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export XML_OPTIONS=""
 export IMAGEMAGICK_OPTIONS=""
-export NATIVE_OPTIONS=""
 
 # Linux ARM64 options
 export CC=aarch64-linux-gnu-gcc
