@@ -58,7 +58,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: linux
         path: artifacts
@@ -113,7 +113,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: linux-musl
         path: artifacts
@@ -168,7 +168,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: linux-arm64
         path: artifacts
@@ -209,7 +209,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: macos
         path: artifacts
@@ -268,13 +268,13 @@ jobs:
         folder: 'artifacts\windows\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
 
     - name: Upload library
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: windows
         path: artifacts/windows
 
     - name: Upload resources
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: resources
         path: artifacts/resources
@@ -325,7 +325,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: wasm
         path: artifacts
@@ -354,7 +354,7 @@ jobs:
       working-directory: build/metadata
 
     - name: Upload metadata
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: metadata
         path: artifacts
