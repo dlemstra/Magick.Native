@@ -2203,7 +2203,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetAttribute(Image *instance, const char *
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_SetBitDepth(Image *instance, const size_t channels, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_SetBitDepth(Image *instance, const size_t value, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
   SetChannelMask(instance, channels);
