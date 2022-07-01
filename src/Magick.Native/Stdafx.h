@@ -2,10 +2,6 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
-#if defined(MAGICK_NATIVE_WASM)
-  #define MAGICK_NATIVE_LINUX
-#endif
-
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <MagickCore/MagickCore.h>
@@ -16,7 +12,7 @@
 #include <MagickWand/MagickWand.h>
 #include <coders/ghostscript-private.h>
 
-#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_MACOS)
+#if !defined(MAGICK_NATIVE_WINDOWS)
 
 #if defined(MAGICK_NATIVE_WASM)
   #include <emscripten.h>

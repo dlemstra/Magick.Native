@@ -4,13 +4,13 @@
 #include "Stdafx.h"
 #include "JpegOptimizer.h"
 
-#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_MACOS)
+#if defined(MAGICK_NATIVE_WINDOWS)
+#include <jpeg/jpeglib.h>
+#include <jpeg/jerror.h>
+#else
 #include <jpeglib.h>
 #include <jerror.h>
 #define fopen_utf8 fopen
-#else
-#include <jpeg/jpeglib.h>
-#include <jpeg/jerror.h>
 #endif
 #include <setjmp.h>
 
