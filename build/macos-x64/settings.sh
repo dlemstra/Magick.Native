@@ -1,7 +1,7 @@
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Shared options
-export PLATFORM="MACOS"
+export PLATFORM=MACOS
 export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
 export EXTENSION="dylib"
 export FLAGS="-O3 -fPIC"
