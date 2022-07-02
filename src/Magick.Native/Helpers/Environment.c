@@ -12,9 +12,9 @@ MAGICK_NATIVE_EXPORT void Environment_Initialize(void)
 
 MAGICK_NATIVE_EXPORT void Environment_SetEnv(const char *name, const char *value)
 {
-#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_MACOS)
-  (void) setenv(name, value, 1);
-#else
+#if defined(MAGICK_NATIVE_WINDOWS)
   _putenv_s(name, value);
+#else
+  (void) setenv(name, value, 1);
 #endif
 }
