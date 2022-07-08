@@ -101,3 +101,10 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
   ResourceLimits_Area_Set(memory * 2);
   ResourceLimits_Memory_Set(memory);
 }
+
+MAGICK_NATIVE_EXPORT void ResourceLimits_SetMaxMemoryRequest(const char *limit, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  (void) SetMagickSecurityPolicyValue(SystemPolicyDomain, "max-memory-request", limit, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
