@@ -44,6 +44,23 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_ListLength_Set(const MagickSizeType lim
   SetMagickResourceLimit(ListLengthResource, limit);
 }
 
+MAGICK_NATIVE_EXPORT const MagickSizeType ResourceLimits_MaxMemoryRequest_Get(void)
+{
+  return (MagickSizeType)GetMaxMemoryRequest();
+}
+
+MAGICK_NATIVE_EXPORT void ResourceLimits_MaxMemoryRequest_Set(const MagickSizeType limit, ExceptionInfo **exception)
+{
+  char
+    buffer[21];
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  snprintf(buffer,sizeof(buffer),"%zi",limit);
+  (void) SetMagickSecurityPolicyValue(SystemPolicyDomain, "max-memory-request", buffer, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
+
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Memory_Get(void)
 {
   return GetMagickResourceLimit(MemoryResource);
@@ -100,11 +117,4 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
   memory = (MagickSizeType) pages * pagesize;
   ResourceLimits_Area_Set(memory * 2);
   ResourceLimits_Memory_Set(memory);
-}
-
-MAGICK_NATIVE_EXPORT void ResourceLimits_SetMaxMemoryRequest(const char *limit, ExceptionInfo **exception)
-{
-  MAGICK_NATIVE_GET_EXCEPTION;
-  (void) SetMagickSecurityPolicyValue(SystemPolicyDomain, "max-memory-request", limit, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
 }
