@@ -1308,11 +1308,14 @@ MAGICK_NATIVE_EXPORT void MagickImage_EvaluateGeometry(Image *instance, const si
 
   MAGICK_NATIVE_GET_EXCEPTION;
   cropImage = CropImage(instance, geometry, exceptionInfo);
-  SetChannelMask(cropImage, channels);
-  EvaluateImage(cropImage, evaluateOperator, value, exceptionInfo);
-  RestoreChannelMask(cropImage);
-  CompositeImage(instance, cropImage, instance->alpha_trait == BlendPixelTrait ? OverCompositeOp : CopyCompositeOp, MagickFalse, geometry->x, geometry->y, exceptionInfo);
-  DestroyImage(cropImage);
+  if (cropImage != (Image *) NULL)
+  {
+    SetChannelMask(cropImage, channels);
+    EvaluateImage(cropImage, evaluateOperator, value, exceptionInfo);
+    RestoreChannelMask(cropImage);
+    CompositeImage(instance, cropImage, instance->alpha_trait == BlendPixelTrait ? OverCompositeOp : CopyCompositeOp, MagickFalse, geometry->x, geometry->y, exceptionInfo);
+    DestroyImage(cropImage);
+  }
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
