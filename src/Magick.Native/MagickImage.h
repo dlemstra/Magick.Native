@@ -244,6 +244,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Deskew(const Image *, const double, Exce
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Despeckle(const Image *, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineBitDepth(Image *, const size_t, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineColorType(Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Distort(const Image *, const size_t, const MagickBooleanType, const double *, const size_t, ExceptionInfo **);
@@ -293,8 +295,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_GaussianBlur(Image *, const double, cons
 MAGICK_NATIVE_EXPORT const char *MagickImage_GetArtifact(const Image *, const char *);
 
 MAGICK_NATIVE_EXPORT const char *MagickImage_GetAttribute(const Image *, const char *, ExceptionInfo **);
-
-MAGICK_NATIVE_EXPORT size_t MagickImage_GetBitDepth(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT PixelInfo *MagickImage_GetColormapColor(const Image *, const size_t);
 

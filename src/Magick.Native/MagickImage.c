@@ -1206,6 +1206,19 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Despeckle(const Image *instance, Excepti
   return image;
 }
 
+MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineBitDepth(Image *instance, const size_t channels, ExceptionInfo **exception)
+{
+  size_t
+    result;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
+  result = GetImageDepth(instance, exceptionInfo);
+  RestoreChannelMask(instance);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return result;
+}
+
 MAGICK_NATIVE_EXPORT const size_t MagickImage_DetermineColorType(Image *instance, ExceptionInfo **exception)
 {
   ImageType
@@ -1466,19 +1479,6 @@ MAGICK_NATIVE_EXPORT const char *MagickImage_GetAttribute(const Image *instance,
 
   MAGICK_NATIVE_GET_EXCEPTION;
   result = GetImageProperty(instance, name, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-  return result;
-}
-
-MAGICK_NATIVE_EXPORT size_t MagickImage_GetBitDepth(Image *instance, const size_t channels, ExceptionInfo **exception)
-{
-  size_t
-    result;
-
-  MAGICK_NATIVE_GET_EXCEPTION;
-  SetChannelMask(instance, channels);
-  result = GetImageDepth(instance, exceptionInfo);
-  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
   return result;
 }
