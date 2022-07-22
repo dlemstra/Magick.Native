@@ -326,7 +326,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_HoughLine(const Image *, const size_t, c
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *, const double, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Integral(const Image *image,ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_Integral(const Image *image, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_InterpolativeResize(const Image *, const char *, const size_t, ExceptionInfo **);
 
@@ -386,7 +386,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Posterize(Image *, const size_t, const siz
 
 MAGICK_NATIVE_EXPORT void MagickImage_RaiseOrLower(Image *, const size_t, const MagickBooleanType, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_RandomThreshold(Image *, const double, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_RandomThreshold(Image *, const double, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_RangeThreshold(Image *, const double, const double, const double, const double, ExceptionInfo **);
 

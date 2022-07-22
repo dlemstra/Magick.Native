@@ -1935,10 +1935,12 @@ MAGICK_NATIVE_EXPORT void MagickImage_RaiseOrLower(Image *image, const size_t si
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_RandomThreshold(Image *instance, const double low, const double high, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_RandomThreshold(Image *instance, const double low, const double high, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   RandomThresholdImage(instance, low, high, exceptionInfo);
+  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
