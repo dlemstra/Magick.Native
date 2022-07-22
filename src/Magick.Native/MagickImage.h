@@ -296,7 +296,7 @@ MAGICK_NATIVE_EXPORT const char *MagickImage_GetAttribute(const Image *, const c
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_GetBitDepth(Image *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT PixelInfo *MagickImage_GetColormap(const Image *, const size_t);
+MAGICK_NATIVE_EXPORT PixelInfo *MagickImage_GetColormapColor(const Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_GetNext(const Image *);
 
@@ -442,7 +442,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetAttribute(Image *, const char *, const 
 
 MAGICK_NATIVE_EXPORT void MagickImage_SetBitDepth(Image *, const size_t, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_SetColormap(Image *, const size_t, const PixelInfo *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_SetColormapColor(Image *, const size_t, const PixelInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_SetColorMetric(Image *, const Image *, ExceptionInfo **);
 

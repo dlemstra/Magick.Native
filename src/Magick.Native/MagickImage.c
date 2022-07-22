@@ -1483,7 +1483,7 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_GetBitDepth(Image *instance, const size_
   return result;
 }
 
-MAGICK_NATIVE_EXPORT PixelInfo *MagickImage_GetColormap(const Image *instance, const size_t index)
+MAGICK_NATIVE_EXPORT PixelInfo *MagickImage_GetColormapColor(const Image *instance, const size_t index)
 {
   if (instance->colormap == (PixelInfo *) NULL)
     return (PixelInfo *) NULL;
@@ -2217,7 +2217,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetBitDepth(Image *instance, const size_t 
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_SetColormap(Image *instance, const size_t index, const PixelInfo *color, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_SetColormapColor(Image *instance, const size_t index, const PixelInfo *color, ExceptionInfo **exception)
 {
   if (instance->colormap == (PixelInfo *) NULL || color == (const PixelInfo *) NULL)
     return;
