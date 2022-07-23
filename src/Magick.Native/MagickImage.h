@@ -194,8 +194,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_Clamp(Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_ClampChannel(Image *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_Clip(Image *, ExceptionInfo **);
-
 MAGICK_NATIVE_EXPORT void MagickImage_ClipPath(Image *, const char *, const MagickBooleanType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Clone(const Image *, ExceptionInfo **);

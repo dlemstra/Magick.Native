@@ -946,13 +946,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_ClampChannel(Image *instance, const size_t
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_Clip(Image *instance, ExceptionInfo **exception)
-{
-  MAGICK_NATIVE_GET_EXCEPTION;
-  ClipImage(instance, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-}
-
 MAGICK_NATIVE_EXPORT void MagickImage_ClipPath(Image *instance, const char *pathName, const MagickBooleanType inside, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
