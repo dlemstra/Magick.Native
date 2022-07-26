@@ -23,4 +23,4 @@ $1/build.glib.sh
 $1/build.lqr.sh
 $1/build.highway.sh
 $1/build.brotli.sh
-$1/build.jpeg-xl.sh
+PKG_CONFIG_PATH=$PKG_PATH $1/build.jpeg-xl.sh
