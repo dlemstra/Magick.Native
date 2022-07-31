@@ -61,7 +61,7 @@ MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const siz
   for (r = 0; r < height; r++)
   {
     pixels = QueueCacheViewAuthenticPixels(instance, x, y + r, width, 1, exceptionInfo);
-    if (pixels == (Quantum *)NULL)
+    if (pixels == (Quantum *) NULL)
       break;
     remaining = length - (row_size * r);
     memcpy(pixels, q, (row_size < remaining ? row_size : remaining) * sizeof(*pixels));

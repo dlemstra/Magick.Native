@@ -15,10 +15,10 @@
 #if !defined(MAGICK_NATIVE_WINDOWS)
 
 #if defined(MAGICK_NATIVE_WASM)
-  #include <emscripten.h>
-  #define MAGICK_NATIVE_EXPORT EMSCRIPTEN_KEEPALIVE
+#include <emscripten.h>
+#define MAGICK_NATIVE_EXPORT EMSCRIPTEN_KEEPALIVE
 #else
-  #define MAGICK_NATIVE_EXPORT __attribute__((visibility("default")))
+#define MAGICK_NATIVE_EXPORT __attribute__((visibility("default")))
 #endif
 
 #else

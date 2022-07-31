@@ -11,5 +11,5 @@ MAGICK_NATIVE_EXPORT void Statistics_DisposeList(ChannelStatistics *list)
 
 MAGICK_NATIVE_EXPORT const ChannelStatistics *Statistics_GetInstance(const ChannelStatistics *list, const size_t channel)
 {
-  return &list[(ChannelType)channel];
+  return &list[(ChannelType) channel];
 }

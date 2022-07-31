@@ -9,9 +9,9 @@ MAGICK_NATIVE_EXPORT GeometryInfo *MagickGeometry_Create(void)
   GeometryInfo
     *geometry_info;
 
-  geometry_info = (GeometryInfo *)AcquireMagickMemory(sizeof(*geometry_info));
-  if (geometry_info == (GeometryInfo *)NULL)
-    return (GeometryInfo *)NULL;
+  geometry_info = (GeometryInfo *) AcquireMagickMemory(sizeof(*geometry_info));
+  if (geometry_info == (GeometryInfo *) NULL)
+    return (GeometryInfo *) NULL;
   ResetMagickMemory(geometry_info, 0, sizeof(*geometry_info));
   return geometry_info;
 }

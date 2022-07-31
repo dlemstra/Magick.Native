@@ -11,8 +11,8 @@ MAGICK_NATIVE_EXPORT void PerceptualHash_DisposeList(ChannelPerceptualHash *list
 
 MAGICK_NATIVE_EXPORT const ChannelPerceptualHash *PerceptualHash_GetInstance(const Image *instance, const ChannelPerceptualHash *list, const size_t channel)
 {
-  if ((GetPixelChannelTraits(instance, (PixelChannel)channel) & UpdatePixelTrait) == 0)
-    return (ChannelPerceptualHash *)NULL;
+  if ((GetPixelChannelTraits(instance, (PixelChannel) channel) & UpdatePixelTrait) == 0)
+    return (ChannelPerceptualHash *) NULL;
 
-  return &list[(PixelChannel)channel];
+  return &list[(PixelChannel) channel];
 }

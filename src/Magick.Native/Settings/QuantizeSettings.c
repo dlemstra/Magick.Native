@@ -6,7 +6,7 @@
 
 MAGICK_NATIVE_EXPORT QuantizeInfo *QuantizeSettings_Create(void)
 {
-  return AcquireQuantizeInfo((const ImageInfo *)NULL);
+  return AcquireQuantizeInfo((const ImageInfo *) NULL);
 }
 
 MAGICK_NATIVE_EXPORT void QuantizeSettings_Dispose(QuantizeInfo *instance)
@@ -21,12 +21,12 @@ MAGICK_NATIVE_EXPORT void QuantizeSettings_SetColors(QuantizeInfo *instance, con
 
 MAGICK_NATIVE_EXPORT void QuantizeSettings_SetColorSpace(QuantizeInfo *instance, const size_t value)
 {
-  instance->colorspace = (ColorspaceType)value;
+  instance->colorspace = (ColorspaceType) value;
 }
 
 MAGICK_NATIVE_EXPORT void QuantizeSettings_SetDitherMethod(QuantizeInfo *instance, const size_t value)
 {
-  instance->dither_method = (DitherMethod)value;
+  instance->dither_method = (DitherMethod) value;
 }
 
 MAGICK_NATIVE_EXPORT void QuantizeSettings_SetMeasureErrors(QuantizeInfo *instance, const MagickBooleanType value)

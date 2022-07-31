@@ -4,7 +4,7 @@
 #include "Stdafx.h"
 #include "MagickMemory.h"
 
-MAGICK_NATIVE_EXPORT void* MagickMemory_Relinquish(void *value)
+MAGICK_NATIVE_EXPORT void *MagickMemory_Relinquish(void *value)
 {
   return RelinquishMagickMemory(value);
 }

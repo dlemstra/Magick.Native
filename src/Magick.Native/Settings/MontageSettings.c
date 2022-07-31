@@ -12,7 +12,7 @@ MAGICK_NATIVE_EXPORT MontageInfo *MontageSettings_Create(void)
   ImageInfo
     *image_info;
 
-  image_info=AcquireImageInfo();
+  image_info = AcquireImageInfo();
   montage_info = AcquireMagickMemory(sizeof(*montage_info));
   GetMontageInfo(image_info, montage_info);
   DestroyImageInfo(image_info);
@@ -26,13 +26,13 @@ MAGICK_NATIVE_EXPORT void MontageSettings_Dispose(MontageInfo *instance)
 
 MAGICK_NATIVE_EXPORT void MontageSettings_SetBackgroundColor(MontageInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo*)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->background_color = *value;
 }
 
 MAGICK_NATIVE_EXPORT void MontageSettings_SetBorderColor(MontageInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo*)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->border_color = *value;
 }
 
@@ -43,7 +43,7 @@ MAGICK_NATIVE_EXPORT void MontageSettings_SetBorderWidth(MontageInfo *instance, 
 
 MAGICK_NATIVE_EXPORT void MontageSettings_SetFillColor(MontageInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo*)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->fill = *value;
 }
 
@@ -69,7 +69,7 @@ MAGICK_NATIVE_EXPORT void MontageSettings_SetGeometry(MontageInfo *instance, con
 
 MAGICK_NATIVE_EXPORT void MontageSettings_SetGravity(MontageInfo *instance, const size_t value)
 {
-  instance->gravity = (GravityType)value;
+  instance->gravity = (GravityType) value;
 }
 
 MAGICK_NATIVE_EXPORT void MontageSettings_SetShadow(MontageInfo *instance, const MagickBooleanType value)
@@ -79,7 +79,7 @@ MAGICK_NATIVE_EXPORT void MontageSettings_SetShadow(MontageInfo *instance, const
 
 MAGICK_NATIVE_EXPORT void MontageSettings_SetStrokeColor(MontageInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo*)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->stroke = *value;
 }
 

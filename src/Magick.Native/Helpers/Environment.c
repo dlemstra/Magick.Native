@@ -7,7 +7,7 @@
 
 MAGICK_NATIVE_EXPORT void Environment_Initialize(void)
 {
-  MagickCoreGenesis((const char *)NULL, MagickFalse);
+  MagickCoreGenesis((const char *) NULL, MagickFalse);
 }
 
 MAGICK_NATIVE_EXPORT void Environment_SetEnv(const char *name, const char *value)

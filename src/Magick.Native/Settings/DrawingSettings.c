@@ -23,7 +23,7 @@ MAGICK_NATIVE_EXPORT PixelInfo *DrawingSettings_BorderColor_Get(const DrawInfo *
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_BorderColor_Set(DrawInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo *)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->border_color = *value;
 }
 
@@ -34,7 +34,7 @@ MAGICK_NATIVE_EXPORT PixelInfo *DrawingSettings_FillColor_Get(const DrawInfo *in
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_FillColor_Set(DrawInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo *)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->fill = *value;
 }
 
@@ -85,7 +85,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_FontStyle_Get(const DrawInfo *instan
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_FontStyle_Set(DrawInfo *instance, const size_t value)
 {
-  instance->style = (StyleType)value;
+  instance->style = (StyleType) value;
 }
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_FontWeight_Get(const DrawInfo *instance)
@@ -115,7 +115,7 @@ MAGICK_NATIVE_EXPORT PixelInfo *DrawingSettings_StrokeColor_Get(const DrawInfo *
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeColor_Set(DrawInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo *)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->stroke = *value;
 }
 
@@ -134,7 +134,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineCap_Get(const DrawInfo *in
   return instance->linecap;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineCap_Set(DrawInfo  *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineCap_Set(DrawInfo *instance, const size_t value)
 {
   instance->linecap = value;
 }
@@ -144,7 +144,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineJoin_Get(const DrawInfo *i
   return instance->linejoin;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineJoin_Set(DrawInfo  *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineJoin_Set(DrawInfo *instance, const size_t value)
 {
   instance->linejoin = value;
 }
@@ -154,7 +154,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeMiterLimit_Get(const DrawInfo 
   return instance->miterlimit;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeMiterLimit_Set(DrawInfo  *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeMiterLimit_Set(DrawInfo *instance, const size_t value)
 {
   instance->miterlimit = value;
 }
@@ -201,12 +201,12 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_TextEncoding_Set(DrawInfo *instance, c
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_TextGravity_Get(const DrawInfo *instance)
 {
-  return (size_t)instance->gravity;
+  return (size_t) instance->gravity;
 }
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_TextGravity_Set(DrawInfo *instance, const size_t value)
 {
-  instance->gravity = (GravityType)value;
+  instance->gravity = (GravityType) value;
 }
 
 MAGICK_NATIVE_EXPORT double DrawingSettings_TextInterlineSpacing_Get(const DrawInfo *instance)
@@ -224,7 +224,7 @@ MAGICK_NATIVE_EXPORT double DrawingSettings_TextInterwordSpacing_Get(const DrawI
   return instance->interword_spacing;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_TextInterwordSpacing_Set(DrawInfo  *instance, const double value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_TextInterwordSpacing_Set(DrawInfo *instance, const double value)
 {
   instance->interword_spacing = value;
 }
@@ -234,7 +234,7 @@ MAGICK_NATIVE_EXPORT double DrawingSettings_TextKerning_Get(const DrawInfo *inst
   return instance->kerning;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_TextKerning_Set(DrawInfo  *instance, const double value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_TextKerning_Set(DrawInfo *instance, const double value)
 {
   instance->kerning = value;
 }
@@ -246,7 +246,7 @@ MAGICK_NATIVE_EXPORT PixelInfo *DrawingSettings_TextUnderColor_Get(const DrawInf
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_TextUnderColor_Set(DrawInfo *instance, const PixelInfo *value)
 {
-  if (value != (PixelInfo *)NULL)
+  if (value != (PixelInfo *) NULL)
     instance->undercolor = *value;
 }
 
@@ -262,10 +262,10 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_SetAffine(DrawInfo *instance, const do
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_SetFillPattern(DrawInfo *instance, const Image *value, ExceptionInfo **exception)
 {
-  if (instance->fill_pattern != (Image *)NULL)
+  if (instance->fill_pattern != (Image *) NULL)
     instance->fill_pattern = DestroyImage(instance->fill_pattern);
 
-  if (value != (const Image *)NULL)
+  if (value != (const Image *) NULL)
     instance->fill_pattern = MagickImage_Clone(value, exception);
 }
 
@@ -274,7 +274,7 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokeDashArray(DrawInfo *instance,
   MagickBooleanType
     isTerminated;
 
-  instance->dash_pattern = (double *)RelinquishMagickMemory(instance->dash_pattern);
+  instance->dash_pattern = (double *) RelinquishMagickMemory(instance->dash_pattern);
   isTerminated = (length > 0 && value[length - 1] == 0.0) ? MagickTrue : MagickFalse;
   instance->dash_pattern = AcquireMagickMemory((length + (isTerminated == MagickFalse ? 1 : 0)) * sizeof(double));
   if (length > 0)
@@ -285,10 +285,10 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokeDashArray(DrawInfo *instance,
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokePattern(DrawInfo *instance, const Image *value, ExceptionInfo **exception)
 {
-  if (instance->stroke_pattern != (Image *)NULL)
+  if (instance->stroke_pattern != (Image *) NULL)
     instance->stroke_pattern = DestroyImage(instance->stroke_pattern);
 
-  if (value != (const Image *)NULL)
+  if (value != (const Image *) NULL)
     instance->stroke_pattern = MagickImage_Clone(value, exception);
 }
 

@@ -9,10 +9,10 @@ MAGICK_NATIVE_EXPORT PixelInfo *MagickColor_Create(void)
   PixelInfo
     *pixel_info;
 
-  pixel_info = (PixelInfo *)AcquireMagickMemory(sizeof(*pixel_info));
-  if (pixel_info == (PixelInfo *)NULL)
-    return (PixelInfo *)NULL;
-  GetPixelInfo((Image *)NULL, pixel_info);
+  pixel_info = (PixelInfo *) AcquireMagickMemory(sizeof(*pixel_info));
+  if (pixel_info == (PixelInfo *) NULL)
+    return (PixelInfo *) NULL;
+  GetPixelInfo((Image *) NULL, pixel_info);
   return pixel_info;
 }
 
@@ -28,7 +28,7 @@ MAGICK_NATIVE_EXPORT MagickSizeType MagickColor_Count_Get(const PixelInfo *insta
 
 MAGICK_NATIVE_EXPORT Quantum MagickColor_Red_Get(const PixelInfo *instance)
 {
-  return (Quantum)instance->red;
+  return (Quantum) instance->red;
 }
 
 MAGICK_NATIVE_EXPORT void MagickColor_Red_Set(PixelInfo *instance, const Quantum value)
@@ -38,7 +38,7 @@ MAGICK_NATIVE_EXPORT void MagickColor_Red_Set(PixelInfo *instance, const Quantum
 
 MAGICK_NATIVE_EXPORT Quantum MagickColor_Green_Get(const PixelInfo *instance)
 {
-  return (Quantum)instance->green;
+  return (Quantum) instance->green;
 }
 
 MAGICK_NATIVE_EXPORT void MagickColor_Green_Set(PixelInfo *instance, const Quantum value)
@@ -48,7 +48,7 @@ MAGICK_NATIVE_EXPORT void MagickColor_Green_Set(PixelInfo *instance, const Quant
 
 MAGICK_NATIVE_EXPORT Quantum MagickColor_Blue_Get(const PixelInfo *instance)
 {
-  return (Quantum)instance->blue;
+  return (Quantum) instance->blue;
 }
 
 MAGICK_NATIVE_EXPORT void MagickColor_Blue_Set(PixelInfo *instance, const Quantum value)
@@ -58,7 +58,7 @@ MAGICK_NATIVE_EXPORT void MagickColor_Blue_Set(PixelInfo *instance, const Quantu
 
 MAGICK_NATIVE_EXPORT Quantum MagickColor_Alpha_Get(const PixelInfo *instance)
 {
-  return (Quantum)instance->alpha;
+  return (Quantum) instance->alpha;
 }
 
 MAGICK_NATIVE_EXPORT void MagickColor_Alpha_Set(PixelInfo *instance, const Quantum value)
@@ -69,7 +69,7 @@ MAGICK_NATIVE_EXPORT void MagickColor_Alpha_Set(PixelInfo *instance, const Quant
 
 MAGICK_NATIVE_EXPORT Quantum MagickColor_Black_Get(const PixelInfo *instance)
 {
-  return (Quantum)instance->black;
+  return (Quantum) instance->black;
 }
 
 MAGICK_NATIVE_EXPORT void MagickColor_Black_Set(PixelInfo *instance, const Quantum value)
@@ -93,12 +93,12 @@ MAGICK_NATIVE_EXPORT PixelInfo *MagickColor_Clone(const PixelInfo *color)
   PixelInfo
     *pixel_info;
 
-  if (color == (PixelInfo *)NULL)
-    return (PixelInfo *)NULL;
+  if (color == (PixelInfo *) NULL)
+    return (PixelInfo *) NULL;
 
-  pixel_info = (PixelInfo *)AcquireMagickMemory(sizeof(*pixel_info));
-  if (pixel_info == (PixelInfo *)NULL)
-    return (PixelInfo *)NULL;
+  pixel_info = (PixelInfo *) AcquireMagickMemory(sizeof(*pixel_info));
+  if (pixel_info == (PixelInfo *) NULL)
+    return (PixelInfo *) NULL;
 
   *pixel_info = *color;
   return pixel_info;

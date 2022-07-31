@@ -13,21 +13,21 @@ MAGICK_NATIVE_EXPORT KernelInfo *DoubleMatrix_Create(const double *values, const
     i;
 
   MAGICK_NATIVE_GET_EXCEPTION;
-  kernel = AcquireKernelInfo((const char *)NULL, exceptionInfo);
+  kernel = AcquireKernelInfo((const char *) NULL, exceptionInfo);
   MAGICK_NATIVE_DESTROY_EXCEPTION;
 
-  if (kernel == (KernelInfo *)NULL)
-    return (KernelInfo *)NULL;
+  if (kernel == (KernelInfo *) NULL)
+    return (KernelInfo *) NULL;
 
   kernel->width = order;
   kernel->height = order;
-  kernel->x = (ssize_t)(order - 1) / 2;
-  kernel->y = (ssize_t)(order - 1) / 2;
-  kernel->values = (MagickRealType *)AcquireAlignedMemory(order, order*sizeof(*kernel->values));
-  if (kernel->values != (MagickRealType *)NULL)
+  kernel->x = (ssize_t) (order - 1) / 2;
+  kernel->y = (ssize_t) (order - 1) / 2;
+  kernel->values = (MagickRealType *) AcquireAlignedMemory(order, order * sizeof(*kernel->values));
+  if (kernel->values != (MagickRealType *) NULL)
   {
-    for (i = 0; i < (ssize_t)(order*order); i++)
-      kernel->values[i] = (MagickRealType)values[i];
+    for (i = 0; i < (ssize_t) (order * order); i++)
+      kernel->values[i] = (MagickRealType) values[i];
   }
 
   return kernel;

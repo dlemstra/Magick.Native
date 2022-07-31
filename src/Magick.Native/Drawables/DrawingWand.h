@@ -12,7 +12,7 @@ MAGICK_NATIVE_EXPORT void DrawingWand_Alpha(DrawingWand *, const double, const d
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Arc(DrawingWand *, const double, const double, const double, const double, const double, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Bezier(DrawingWand *, const PointInfo*, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_Bezier(DrawingWand *, const PointInfo *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_BorderColor(DrawingWand *, const PixelInfo *, ExceptionInfo **);
 
@@ -96,9 +96,9 @@ MAGICK_NATIVE_EXPORT void DrawingWand_PathStart(DrawingWand *, ExceptionInfo **)
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Point(DrawingWand *, const double, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Polygon(DrawingWand *, const PointInfo*, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_Polygon(DrawingWand *, const PointInfo *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Polyline(DrawingWand *, const PointInfo*, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_Polyline(DrawingWand *, const PointInfo *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_PopClipPath(DrawingWand *, ExceptionInfo **);
 
