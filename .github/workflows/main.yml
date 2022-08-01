@@ -11,7 +11,7 @@ jobs:
   linux:
     name: 'Linux (x64)'
     container:
-      image: ubuntu:16.04
+      image: ubuntu:18.04
     runs-on: ubuntu-latest
 
     steps:
@@ -368,7 +368,6 @@ jobs:
     strategy:
       matrix:
         image:
-          - 'ubuntu:16.04'
           - 'ubuntu:18.04'
           - 'ubuntu:20.04'
           - 'ubuntu:latest'

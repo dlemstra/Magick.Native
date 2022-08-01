@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/linux-x64
 
