@@ -5,6 +5,7 @@
 #include "Environment.h"
 #include <stdlib.h>
 
+#if defined(MAGICK_NATIVE_WINDOWS)
 static inline wchar_t *create_wchar_string(const char *utf8)
 {
   int
@@ -21,6 +22,7 @@ static inline wchar_t *create_wchar_string(const char *utf8)
     wide = (wchar_t *) RelinquishMagickMemory(wide);
   return wide;
 }
+#endif
 
 MAGICK_NATIVE_EXPORT void Environment_Initialize(void)
 {
