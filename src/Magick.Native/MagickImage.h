@@ -256,7 +256,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Encipher(Image *, const char *, ExceptionI
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Enhance(const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_Equalize(Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_Equalize(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_Equals(const Image *, const Image *, ExceptionInfo **);
 

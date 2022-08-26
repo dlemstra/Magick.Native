@@ -1280,10 +1280,12 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Enhance(const Image *instance, Exception
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_Equalize(Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_Equalize(Image *instance, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   EqualizeImage(instance, exceptionInfo);
+  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
