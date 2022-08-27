@@ -43,7 +43,6 @@ else()
     set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libjxl_threads.a ${LIB_DIR}/libbrotlienc-static.a ${LIB_DIR}/libbrotlidec-static.a ${LIB_DIR}/libbrotlicommon-static.a ${LIB_DIR}/libhwy.a)
 
     if (NOT PLATFORM STREQUAL "WASM")
-        list(APPEND ALL_FILES foo.cxx)
         find_package(Threads REQUIRED)
 
         set(LIBBZIP2 ${LIB_DIR}/libbz2.a)
