@@ -40,8 +40,6 @@ if (PLATFORM STREQUAL "MACOS")
     set(CMAKE_MACOSX_RPATH 1)
     set(STDCPLUSPLUS stdc++)
 else()
-    list(APPEND ALL_FILES foo.cxx)
-    
     set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libjxl_threads.a ${LIB_DIR}/libbrotlienc-static.a ${LIB_DIR}/libbrotlidec-static.a ${LIB_DIR}/libbrotlicommon-static.a ${LIB_DIR}/libhwy.a)
 
     if (NOT PLATFORM STREQUAL "WASM")
@@ -80,6 +78,7 @@ if (PLATFORM STREQUAL "WASM")
     add_executable(${LIBRARY_NAME} ${ALL_FILES})
 else()
     add_library(${LIBRARY_NAME} SHARED ${ALL_FILES})
+    set_target_properties(${LIBRARY_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 endif()
 
 target_link_libraries(

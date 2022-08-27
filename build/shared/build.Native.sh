@@ -17,8 +17,6 @@ getLibraryName() {
     fi
 }
 
-echo "" > foo.cxx
-
 buildNative() {
     local quantum=$1
 
