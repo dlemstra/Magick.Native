@@ -16,7 +16,6 @@ $1/build.zip.sh
 $1/build.xml.sh
 $1/build.png.sh
 $1/build.freetype.sh
-moveFromLib64
 $1/build.fontconfig.sh
 $1/build.jpeg-turbo.sh
 moveFromLib64
@@ -25,12 +24,10 @@ $1/build.webp.sh
 $1/build.openjpeg.sh
 $1/build.lcms.sh
 $1/build.aom.sh
-moveFromLib64
 $1/build.de265.sh
 $1/build.heif.sh
 $1/build.raw.sh
 $1/build.openexr.sh
-moveFromLib64
 $1/build.ffi.sh
 $1/build.glib.sh
 $1/build.lqr.sh
@@ -44,6 +41,4 @@ $1/build.rsvg.sh
 $1/build.raqm.sh
 $1/build.highway.sh
 $1/build.brotli.sh
-moveFromLib64
 $1/build.jpeg-xl.sh
-moveFromLib64
