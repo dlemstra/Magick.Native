@@ -2,8 +2,7 @@
 set -e
 
 cd harfbuzz
-autoreconf -fiv
-chmod +x ./configure
-chmod +x ./src/gen-hb-version.py
-$CONFIGURE $CONFIGURE_OPTIONS --disable-shared --prefix=/usr/local CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"
-$MAKE install
+mkdir __build
+cd __build
+CFLAGS=$FLAGS meson .. $MESON_OPTIONS --prefix=/usr/local --default-library=static -Ddocs=disabled -Dtests=disabled -Dcairo=disabled
+ninja install
