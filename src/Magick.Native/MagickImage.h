@@ -190,9 +190,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Chop(const Image *, const RectangleInfo 
 
 MAGICK_NATIVE_EXPORT void MagickImage_Clahe(Image *, const size_t, const size_t, const size_t, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_Clamp(Image *, ExceptionInfo **);
-
-MAGICK_NATIVE_EXPORT void MagickImage_ClampChannel(Image *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_Clamp(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_ClipPath(Image *, const char *, const MagickBooleanType, ExceptionInfo **);
 

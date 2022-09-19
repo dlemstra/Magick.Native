@@ -930,14 +930,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Clahe(Image *instance, const size_t xTiles
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_Clamp(Image *instance, ExceptionInfo **exception)
-{
-  MAGICK_NATIVE_GET_EXCEPTION;
-  ClampImage(instance, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-}
-
-MAGICK_NATIVE_EXPORT void MagickImage_ClampChannel(Image *instance, const size_t channels, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_Clamp(Image *instance, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
   SetChannelMask(instance, channels);
