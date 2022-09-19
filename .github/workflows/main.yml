@@ -330,35 +330,6 @@ jobs:
         name: wasm
         path: artifacts
 
-  metadata:
-    name: 'Metadata'
-    runs-on: windows-latest
-
-    steps:
-
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 1
-
-    - name: Install dependencies
-      run: ./install.dependencies.ps1
-      working-directory: build/windows
-
-    - name: Clone ImageMagick libraries
-      run: ./checkout.cmd
-      working-directory: src/ImageMagick
-
-    - name: Create metadata
-      run: ./create.metadata.ps1 -destination ../../artifacts
-      working-directory: build/metadata
-
-    - name: Upload metadata
-      uses: actions/upload-artifact@v3
-      with:
-        name: metadata
-        path: artifacts
-
   verify_linux:
     name: 'Verify Linux (x64)'
     needs:
@@ -567,8 +538,8 @@ jobs:
         export path=$(pwd)
         docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native OpenMP
 
-  publish_dotnet:
-    name: 'Publish .NET library'
+  metadata:
+    name: 'Metadata'
     needs:
       - verify_linux
       - verify_linux_openmp
@@ -578,6 +549,37 @@ jobs:
       - verify_linux_arm64_openmp
       - macos
       - windows
+      - wasm
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+
+    - name: Install dependencies
+      run: ./install.dependencies.ps1
+      working-directory: build/windows
+
+    - name: Clone ImageMagick libraries
+      run: ./checkout.cmd
+      working-directory: src/ImageMagick
+
+    - name: Create metadata
+      run: ./create.metadata.ps1 -destination ../../artifacts
+      working-directory: build/metadata
+
+    - name: Upload metadata
+      uses: actions/upload-artifact@v3
+      with:
+        name: metadata
+        path: artifacts
+
+  publish_dotnet:
+    name: 'Publish .NET library'
+    needs:
       - metadata
     runs-on: windows-latest
 
@@ -649,7 +651,7 @@ jobs:
   publish_wasm:
     name: 'Publish WASM library'
     needs:
-      - wasm
+      - metadata
     runs-on: windows-latest
 
     steps:
