@@ -16,17 +16,23 @@
 #define SetChannelMask(image, channels) \
   { \
     ChannelType \
-      channel_mask; \
-    channel_mask=SetPixelChannelMask(image, (ChannelType)channels)
+      new_mask = (ChannelType) channels, \
+      old_mask = UndefinedChannel; \
+    if (new_mask != UndefinedChannel) \
+      old_mask = SetPixelChannelMask(image, new_mask)
 
 #define RestoreChannelMask(image) \
-    SetPixelChannelMask(image, channel_mask); \
+    if (new_mask != UndefinedChannel) \
+      SetPixelChannelMask(image, old_mask); \
   }
 
 #define RestoreChannelMasks(image, result) \
-    SetPixelChannelMask(image, channel_mask); \
-    if (result != (Image *)NULL) \
-      SetPixelChannelMask(result, channel_mask); \
+    if (new_mask != UndefinedChannel) \
+    { \
+      SetPixelChannelMask(image, old_mask); \
+      if (result != (Image *)NULL) \
+        SetPixelChannelMask(result, old_mask); \
+    } \
   }
 
 static inline void SetRectangleInfo(const Image *image, const char *geometry, const size_t gravity, RectangleInfo *rectangle, ExceptionInfo *exception)
