@@ -59,7 +59,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "patches", "patches", "{D39F0D02-5AB1-47E8-A27A-E443697E894C}"
 	ProjectSection(SolutionItems) = preProject
 		build\wasm-x86\patches\install.patches.sh = build\wasm-x86\patches\install.patches.sh
-		build\wasm-x86\patches\png.patch = build\wasm-x86\patches\png.patch
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA38A23D-B639-4B56-BBCC-43446386FE8B}"
