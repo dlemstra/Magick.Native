@@ -52,10 +52,10 @@ brew uninstall --force libpng
 brew uninstall --force curl-openssl
 brew uninstall --force libzip
 brew uninstall --force httpd
-brew uninstall --ignore-dependencies brotli
-brew uninstall --ignore-dependencies libidn2
-brew uninstall --ignore-dependencies xz
-brew uninstall --ignore-dependencies zstd
+brew uninstall --force --ignore-dependencies brotli
+brew uninstall --force --ignore-dependencies libidn2
+brew uninstall --force --ignore-dependencies xz
+brew uninstall --force --ignore-dependencies zstd
 
 pip3 install meson==0.55.3
 pip3 install ninja==1.10.0.post2
