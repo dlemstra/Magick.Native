@@ -5,7 +5,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 brew list --formula
 
-brew install autoconf automake libtool nasm ossp-uuid pkg-config ragel
+brew install autoconf automake cmake libtool nasm ossp-uuid pkg-config ragel
 
 # Uninstall already installed development libraries
 brew uninstall --force ant
