@@ -8,5 +8,3 @@ find ./ -type f -exec sed -i 's/\-lstdc++//g' {} \;
 
 cd ../heif
 for f in examples/*.cc; do echo "" > $f; done
-
-#exit 1
