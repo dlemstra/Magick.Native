@@ -10,16 +10,16 @@ brew install autoconf automake libtool nasm ossp-uuid pkg-config ragel
 # Uninstall already installed development libraries
 brew uninstall --force ant
 brew uninstall --force composer
-brew uninstall --force harfbuzz
 brew uninstall --force kotlin
-brew uninstall --force maven
 brew uninstall --force openjdk
+brew uninstall --force maven
 brew uninstall --force sbt
 brew uninstall --force selenium-server
 brew uninstall --force php
 brew uninstall --force gd
 brew uninstall --force r
 brew uninstall --force imagemagick
+brew uninstall --force harfbuzz
 brew uninstall --force cairo
 brew uninstall --force libheif
 brew uninstall --force x265
