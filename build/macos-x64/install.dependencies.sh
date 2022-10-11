@@ -25,6 +25,10 @@ brew uninstall --force libheif
 brew uninstall --force x265
 brew uninstall --force liblqr
 brew uninstall --force shared-mime-info
+brew uninstall --force colima
+brew uninstall --force lima
+brew uninstall --force qemu
+brew uninstall --force libslirp
 brew uninstall --force glib
 brew uninstall --force gnupg
 brew uninstall --force gnutls
