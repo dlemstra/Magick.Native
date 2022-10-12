@@ -50,7 +50,7 @@ brew uninstall --force little-cms2
 brew uninstall --force libtiff
 brew uninstall --force jasper
 brew uninstall --force libjpeg
-brew uninstall --force jpeg
+brew uninstall --force jpeg-turbo
 brew uninstall --force sox
 brew uninstall --force libpng
 brew uninstall --force curl-openssl
