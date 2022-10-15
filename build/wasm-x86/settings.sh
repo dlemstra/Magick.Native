@@ -29,6 +29,7 @@ export SSE_OPTIONS="--disable-sse"
 # Library specific options
 export FFI_OPTIONS="--disable-exec-static-tramp"
 export FONTCONFIG_OPTIONS=""
+export HEIF_OPTIONS="--disable-multithreading"
 export OPENEXR_OPTIONS="-DZLIB_LIBRARY=/usr/local/lib/libz.a -DZLIB_INCLUDE_DIR=/usr/local/include -DImath_DIR=/usr/local/lib/cmake/Imath"
 export WEBP_OPTIONS=""
 export XML_OPTIONS=""
