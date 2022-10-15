@@ -24,13 +24,13 @@ COPY build/wasm-x86/cross-compilation.* /build/wasm-x86
 
 #ENV DEBUG_BUILD=1
 
-COPY build/shared/build.Libraries.sh /build/wasm-x86
+COPY build/shared/build.Libraries.sh /build/shared
 
-RUN cd /ImageMagick/libraries; /build/wasm-x86/build.Libraries.sh /build/libraries wasm x86
+RUN cd /ImageMagick/libraries; /build/shared/build.Libraries.sh /build/libraries wasm x86
 
-COPY build/shared/build.ImageMagick.sh /build/wasm-x86
+COPY build/shared/build.ImageMagick.sh /build/shared
 
-RUN cd /ImageMagick/libraries; /build/wasm-x86/build.ImageMagick.sh wasm x86
+RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh wasm x86
 
 COPY src/Magick.Native /Magick.Native
 
