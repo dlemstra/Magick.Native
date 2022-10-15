@@ -20,7 +20,7 @@ COPY build/linux-arm64/libraries.sh /build/linux-arm64
 
 #ENV DEBUG_BUILD=1
 
-COPY build/shared/build.Libraries.sh /build/wasm-x86
+COPY build/shared/build.Libraries.sh /build/shared
 
 RUN cd /ImageMagick/libraries; /build/shared/build.Libraries.sh /build/libraries linux arm64
 
