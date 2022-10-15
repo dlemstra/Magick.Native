@@ -1,15 +1,22 @@
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
+# Compiler settings
+if [[ "${DEBUG_BUILD}" ]]; then
+    export FLAGS="-g3 -O0 -fPIC -DDEBUG"
+    export CMAKE_BUILD_TYPE="Debug"
+else
+    export FLAGS="-O3 -fPIC -DNDEBUG"
+    export CMAKE_BUILD_TYPE="Release"
+fi
+
 # Shared options
 export PLATFORM=LINUX
 export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
 export EXTENSION="so"
-export FLAGS="-O3 -fPIC"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="./configure"
 export CONFIGURE_OPTIONS="--host aarch64-linux-gnu"
 export CMAKE_COMMAND="cmake"
-export CMAKE_BUILD_TYPE="Release"
 export MAKE="make"
 export MAKEFLAGS="-j$(nproc)"
 export MESON_OPTIONS="--cross-file=$SCRIPT_PATH/cross-compilation.meson"
