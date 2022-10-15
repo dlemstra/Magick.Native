@@ -47,11 +47,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x86", "wasm-x86", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
 	ProjectSection(SolutionItems) = preProject
 		build\wasm-x86\build.cmd = build\wasm-x86\build.cmd
-		build\wasm-x86\build.libraries.sh = build\wasm-x86\build.libraries.sh
 		build\wasm-x86\copy.Native.sh = build\wasm-x86\copy.Native.sh
 		build\wasm-x86\cross-compilation.meson = build\wasm-x86\cross-compilation.meson
 		build\wasm-x86\Dockerfile = build\wasm-x86\Dockerfile
 		build\wasm-x86\install.dependencies.sh = build\wasm-x86\install.dependencies.sh
+		build\wasm-x86\libraries.sh = build\wasm-x86\libraries.sh
 		build\wasm-x86\run.cmd = build\wasm-x86\run.cmd
 		build\wasm-x86\settings.sh = build\wasm-x86\settings.sh
 	EndProjectSection
@@ -182,6 +182,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{C9FDCB6E-2B4E-4E3B-A0B3-336D575E0E87}"
 	ProjectSection(SolutionItems) = preProject
 		build\shared\build.ImageMagick.sh = build\shared\build.ImageMagick.sh
+		build\shared\build.Libraries.sh = build\shared\build.Libraries.sh
 		build\shared\build.Native.sh = build\shared\build.Native.sh
 		build\shared\copy.Native.sh = build\shared\copy.Native.sh
 		build\shared\verify.Native.sh = build\shared\verify.Native.sh

@@ -1,15 +1,22 @@
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
+# Compiler settings
+if [[ "${DEBUG_BUILD}" ]]; then
+    export FLAGS="-g3 -O0 -DDEBUG"
+    export CMAKE_BUILD_TYPE="Debug"
+else
+    export FLAGS="-O3 -DNDEBUG"
+    export CMAKE_BUILD_TYPE="Release"
+fi
+
 # Shared options
 export PLATFORM=WASM
 export QUANTUMS=("Q8")
-export FLAGS="-O3"
 export EXTENSION="js"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="emconfigure ./configure"
 export CONFIGURE_OPTIONS=""
 export CMAKE_COMMAND="emcmake cmake"
-export CMAKE_BUILD_TYPE="Release"
 export MAKE="emmake make"
 export MAKEFLAGS="-j$(nproc)"
 export MESON_OPTIONS="--cross-file=$SCRIPT_PATH/cross-compilation.meson"
