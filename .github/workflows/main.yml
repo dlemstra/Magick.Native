@@ -140,7 +140,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.libraries.sh ../../../build/libraries linux arm64
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux arm64
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
@@ -305,7 +305,7 @@ jobs:
       working-directory: src/ImageMagick/libraries
 
     - name: Build libraries
-      run: ../../../build/shared/build.libraries.sh ../../../build/libraries wasm x86
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries wasm x86
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
