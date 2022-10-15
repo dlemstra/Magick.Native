@@ -1,14 +1,6 @@
 #!/bin/bash
 set -e
 
-moveFromLib64() {
-    mv /usr/local/lib64/pkgconfig/*.pc /usr/local/lib/pkgconfig
-    mv /usr/local/lib64/*.a /usr/local/lib
-}
-
-SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/settings.sh
-
 $1/build.zlib.sh
 $1/build.lzma.sh
 $1/build.bzlib.sh
