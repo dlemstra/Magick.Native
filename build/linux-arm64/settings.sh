@@ -1,4 +1,4 @@
-SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+SCRIPT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
 
 # Compiler settings
 if [[ "${DEBUG_BUILD}" ]]; then
