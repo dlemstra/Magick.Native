@@ -30,7 +30,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.libraries.sh ../../../build/libraries linux x64
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux x64
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
