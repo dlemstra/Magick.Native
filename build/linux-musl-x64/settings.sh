@@ -9,7 +9,6 @@ else
     export CMAKE_BUILD_TYPE="Release"
 fi
 
-
 # Shared options
 export PLATFORM=LINUX
 export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
