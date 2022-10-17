@@ -5,7 +5,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 brew list --formula
 
-brew install autoconf automake cmake libtool nasm ossp-uuid pkg-config ragel
+brew install automake nasm ossp-uuid ragel
 
 # Uninstall already installed development libraries
 brew uninstall --force ant
@@ -56,10 +56,10 @@ brew uninstall --force libpng
 brew uninstall --force curl-openssl
 brew uninstall --force libzip
 brew uninstall --force httpd
-brew uninstall --force --ignore-dependencies brotli
-brew uninstall --force --ignore-dependencies libidn2
-brew uninstall --force --ignore-dependencies xz
-brew uninstall --force --ignore-dependencies zstd
+brew uninstall --ignore-dependencies brotli
+brew uninstall --ignore-dependencies libidn2
+brew uninstall --ignore-dependencies xz
+brew uninstall --ignore-dependencies zstd
 
 pip3 install meson==0.55.3
 pip3 install ninja==1.10.0.post2
