@@ -16,9 +16,13 @@ COPY build/linux-arm64/settings.sh /build/linux-arm64
 
 COPY build/linux-arm64/cross-compilation.* /build/linux-arm64
 
-COPY build/linux-arm64/build.libraries.sh /build/linux-arm64
+COPY build/linux-arm64/libraries.sh /build/linux-arm64
 
-RUN cd /ImageMagick/libraries; /build/linux-arm64/build.libraries.sh /build/libraries
+#ENV DEBUG_BUILD=1
+
+COPY build/shared/build.Libraries.sh /build/shared
+
+RUN cd /ImageMagick/libraries; /build/shared/build.Libraries.sh /build/libraries linux arm64
 
 COPY build/shared/build.ImageMagick.sh /build/shared
 

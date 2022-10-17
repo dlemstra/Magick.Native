@@ -10,10 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
 	ProjectSection(SolutionItems) = preProject
 		build\linux-x64\build.cmd = build\linux-x64\build.cmd
-		build\linux-x64\build.libraries.sh = build\linux-x64\build.libraries.sh
 		build\linux-x64\build.openmp.cmd = build\linux-x64\build.openmp.cmd
 		build\linux-x64\Dockerfile = build\linux-x64\Dockerfile
 		build\linux-x64\install.dependencies.sh = build\linux-x64\install.dependencies.sh
+		build\linux-x64\libraries.sh = build\linux-x64\libraries.sh
 		build\linux-x64\run.cmd = build\linux-x64\run.cmd
 		build\linux-x64\run.openmp.cmd = build\linux-x64\run.openmp.cmd
 		build\linux-x64\settings.sh = build\linux-x64\settings.sh
@@ -47,18 +47,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x86", "wasm-x86", "{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}"
 	ProjectSection(SolutionItems) = preProject
 		build\wasm-x86\build.cmd = build\wasm-x86\build.cmd
-		build\wasm-x86\build.libraries.sh = build\wasm-x86\build.libraries.sh
 		build\wasm-x86\copy.Native.sh = build\wasm-x86\copy.Native.sh
 		build\wasm-x86\cross-compilation.meson = build\wasm-x86\cross-compilation.meson
 		build\wasm-x86\Dockerfile = build\wasm-x86\Dockerfile
 		build\wasm-x86\install.dependencies.sh = build\wasm-x86\install.dependencies.sh
+		build\wasm-x86\libraries.sh = build\wasm-x86\libraries.sh
 		build\wasm-x86\run.cmd = build\wasm-x86\run.cmd
 		build\wasm-x86\settings.sh = build\wasm-x86\settings.sh
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "patches", "patches", "{D39F0D02-5AB1-47E8-A27A-E443697E894C}"
-	ProjectSection(SolutionItems) = preProject
-		build\wasm-x86\patches\install.patches.sh = build\wasm-x86\patches\install.patches.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA38A23D-B639-4B56-BBCC-43446386FE8B}"
@@ -142,10 +137,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-musl-x64", "{F9F51AB1-7683-4E2D-B746-4360926ABDE9}"
 	ProjectSection(SolutionItems) = preProject
 		build\linux-musl-x64\build.cmd = build\linux-musl-x64\build.cmd
-		build\linux-musl-x64\build.libraries.sh = build\linux-musl-x64\build.libraries.sh
 		build\linux-musl-x64\build.openmp.cmd = build\linux-musl-x64\build.openmp.cmd
 		build\linux-musl-x64\Dockerfile = build\linux-musl-x64\Dockerfile
 		build\linux-musl-x64\install.dependencies.sh = build\linux-musl-x64\install.dependencies.sh
+		build\linux-musl-x64\libraries.sh = build\linux-musl-x64\libraries.sh
 		build\linux-musl-x64\run.cmd = build\linux-musl-x64\run.cmd
 		build\linux-musl-x64\run.openmp.cmd = build\linux-musl-x64\run.openmp.cmd
 		build\linux-musl-x64\settings.sh = build\linux-musl-x64\settings.sh
@@ -156,11 +151,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64", "{950C68AA-029F-4213-BCC8-20CB145E15CA}"
 	ProjectSection(SolutionItems) = preProject
 		build\linux-arm64\build.cmd = build\linux-arm64\build.cmd
-		build\linux-arm64\build.libraries.sh = build\linux-arm64\build.libraries.sh
 		build\linux-arm64\build.openmp.cmd = build\linux-arm64\build.openmp.cmd
 		build\linux-arm64\cross-compilation.meson = build\linux-arm64\cross-compilation.meson
 		build\linux-arm64\Dockerfile = build\linux-arm64\Dockerfile
 		build\linux-arm64\install.dependencies.sh = build\linux-arm64\install.dependencies.sh
+		build\linux-arm64\libraries.sh = build\linux-arm64\libraries.sh
 		build\linux-arm64\run.cmd = build\linux-arm64\run.cmd
 		build\linux-arm64\run.openmp.cmd = build\linux-arm64\run.openmp.cmd
 		build\linux-arm64\settings.sh = build\linux-arm64\settings.sh
@@ -182,6 +177,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{C9FDCB6E-2B4E-4E3B-A0B3-336D575E0E87}"
 	ProjectSection(SolutionItems) = preProject
 		build\shared\build.ImageMagick.sh = build\shared\build.ImageMagick.sh
+		build\shared\build.Libraries.sh = build\shared\build.Libraries.sh
 		build\shared\build.Native.sh = build\shared\build.Native.sh
 		build\shared\copy.Native.sh = build\shared\copy.Native.sh
 		build\shared\verify.Native.sh = build\shared\verify.Native.sh
@@ -280,7 +276,6 @@ Global
 		{C8420103-07D2-459E-9EFD-8FC57AA569E0} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
-		{D39F0D02-5AB1-47E8-A27A-E443697E894C} = {8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC}
 		{BDFD18E8-BA42-420C-907E-9EC0C9E0A6B0} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
 		{8E1216C8-EAE4-4E2D-B717-BAB023683820} = {1520A3A2-D586-471F-9C70-80D43532A0C6}
 		{6931BC75-E765-4F1A-A961-6905E8308664} = {4D076C4F-5298-40AC-BE34-02EA77AF7F06}

@@ -30,7 +30,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/linux-x64/build.libraries.sh ../../../build/libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux x64
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
@@ -85,7 +85,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/linux-musl-x64/build.libraries.sh ../../../build/libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux-musl x64
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
@@ -140,7 +140,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/linux-arm64/build.libraries.sh ../../../build/libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux arm64
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick
@@ -341,12 +341,8 @@ jobs:
       run: ./checkout.sh wasm ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Apply patches
-      run: ../../../build/wasm-x86/patches/install.patches.sh
-      working-directory: src/ImageMagick/libraries
-
     - name: Build libraries
-      run: ../../../build/wasm-x86/build.libraries.sh ../../../build/libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries wasm x86
       working-directory: src/ImageMagick/libraries
 
     - name: Build ImageMagick

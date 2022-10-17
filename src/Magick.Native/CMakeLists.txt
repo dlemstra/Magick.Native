@@ -9,14 +9,17 @@ add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} 
 include_directories(. /usr/local/include /usr/local/include/ImageMagick-7)
 
 set(LIB_DIR /usr/local/lib)
-set(CMAKE_CXX_FLAGS "-Wall -O3")
 
 file(GLOB_RECURSE ALL_FILES . *.c)
 
 if (PLATFORM STREQUAL "WASM")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --no-entry -fexceptions -s STRICT=1")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --bind --embed-file ${PROJECT_SOURCE_DIR}/Resources/xml@/xml -s ALLOW_MEMORY_GROWTH=1 -s SINGLE_FILE=1 -s MODULARIZE=1 -s EXPORT_NAME=\"'MagickNative'\" -s ALLOW_UNIMPLEMENTED_SYSCALLS=1 -s EXPORTED_RUNTIME_METHODS='[\"FS\", \"getValue\", \"setValue\", \"UTF8ToString\", \"lengthBytesUTF8\", \"stringToUTF8\"]'")
-    #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -g3 -s ASSERTIONS=2 -s SAFE_HEAP=1")
+
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s ASSERTIONS=2")
+    endif()
+
     set(LIBSOCKFS sockfs.js)
 else()
     file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
@@ -58,8 +61,6 @@ else()
 endif()
 
 set(LIBAOM ${LIB_DIR}/libaom.a)
-set(LIBEXR ${LIB_DIR}/libOpenEXR-3_1.a ${LIB_DIR}/libOpenEXRUtil-3_1.a ${LIB_DIR}/libOpenEXRCore-3_1.a ${LIB_DIR}/libImath-3_1.a ${LIB_DIR}/libIex-3_1.a ${LIB_DIR}/libIlmThread-3_1.a)
-set(LIBFREETYPE ${LIB_DIR}/libfreetype.a)
 set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a)
 set(LIBHEIF ${LIB_DIR}/libheif.a ${LIBAOM} ${LIB_DIR}/libde265.a)
 set(LIBJPEG ${LIB_DIR}/libturbojpeg.a)
@@ -72,6 +73,14 @@ set(LIBTIFF ${LIB_DIR}/libtiff.a)
 set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a ${LIB_DIR}/libwebp.a)
 set(LIBXML ${LIB_DIR}/libxml2.a)
 set(LIBZ ${LIB_DIR}/libz.a)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(LIBEXR ${LIB_DIR}/libOpenEXR-3_1_d.a ${LIB_DIR}/libOpenEXRUtil-3_1_d.a ${LIB_DIR}/libOpenEXRCore-3_1_d.a ${LIB_DIR}/libImath-3_1_d.a ${LIB_DIR}/libIex-3_1_d.a ${LIB_DIR}/libIlmThread-3_1_d.a)
+    set(LIBFREETYPE ${LIB_DIR}/libfreetyped.a)
+else()
+    set(LIBEXR ${LIB_DIR}/libOpenEXR-3_1.a ${LIB_DIR}/libOpenEXRUtil-3_1.a ${LIB_DIR}/libOpenEXRCore-3_1.a ${LIB_DIR}/libImath-3_1.a ${LIB_DIR}/libIex-3_1.a ${LIB_DIR}/libIlmThread-3_1.a)
+    set(LIBFREETYPE ${LIB_DIR}/libfreetype.a)
+endif()
 
 if (PLATFORM STREQUAL "WASM")
     add_executable(${LIBRARY_NAME} ${ALL_FILES})

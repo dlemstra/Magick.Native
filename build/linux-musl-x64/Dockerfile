@@ -14,9 +14,13 @@ COPY build/libraries/*.sh /build/libraries
 
 COPY build/linux-musl-x64/settings.sh /build/linux-musl-x64
 
-COPY build/linux-musl-x64/build.libraries.sh /build/linux-musl-x64
+COPY build/linux-musl-x64/libraries.sh /build/linux-musl-x64
 
-RUN cd /ImageMagick/libraries; /build/linux-musl-x64/build.libraries.sh /build/libraries
+#ENV DEBUG_BUILD=1
+
+COPY build/shared/build.Libraries.sh /build/shared
+
+RUN cd /ImageMagick/libraries; /build/shared/build.Libraries.sh /build/libraries linux-musl x64
 
 COPY build/shared/build.ImageMagick.sh /build/shared
 

@@ -1,9 +1,17 @@
-SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+SCRIPT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
+
+# Compiler settings
+if [[ "${DEBUG_BUILD}" ]]; then
+    export FLAGS="-g3 -O0 -DDEBUG"
+    export CMAKE_BUILD_TYPE="Debug"
+else
+    export FLAGS="-O3 -DNDEBUG"
+    export CMAKE_BUILD_TYPE="Release"
+fi
 
 # Shared options
 export PLATFORM=WASM
 export QUANTUMS=("Q8")
-export FLAGS="-O3"
 export EXTENSION="js"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="emconfigure ./configure"
@@ -22,6 +30,7 @@ export SSE_OPTIONS="--disable-sse"
 # Library specific options
 export FFI_OPTIONS="--disable-exec-static-tramp"
 export FONTCONFIG_OPTIONS=""
+export HEIF_OPTIONS="--disable-multithreading"
 export OPENEXR_OPTIONS="-DZLIB_LIBRARY=/usr/local/lib/libz.a -DZLIB_INCLUDE_DIR=/usr/local/include -DImath_DIR=/usr/local/lib/cmake/Imath"
 export WEBP_OPTIONS=""
 export XML_OPTIONS=""

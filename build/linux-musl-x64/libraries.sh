@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/settings.sh
-
 $1/build.zlib.sh
 $1/build.lzma.sh
 $1/build.bzlib.sh
@@ -13,6 +10,7 @@ $1/build.png.sh
 $1/build.freetype.sh
 $1/build.fontconfig.sh
 $1/build.jpeg-turbo.sh
+moveFromLib64
 $1/build.tiff.sh
 $1/build.webp.sh
 $1/build.openjpeg.sh
