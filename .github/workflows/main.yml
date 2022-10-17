@@ -300,10 +300,6 @@ jobs:
       run: ./checkout.sh wasm ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Apply patches
-      run: ../../../build/wasm-x86/patches/install.patches.sh
-      working-directory: src/ImageMagick/libraries
-
     - name: Build libraries
       run: ../../../build/shared/build.Libraries.sh ../../../build/libraries wasm x86
       working-directory: src/ImageMagick/libraries

@@ -1,6 +1,6 @@
 FROM emscripten/emsdk:3.1.20
 
-RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/wasm-x86 && mkdir /build/wasm-x86/patches
+RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/wasm-x86
 
 COPY build/wasm-x86/install.dependencies.sh /build/wasm-x86
 
@@ -9,10 +9,6 @@ RUN cd /build/wasm-x86; ./install.dependencies.sh
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh wasm
-
-COPY build/wasm-x86/patches/* /build/wasm-x86/patches/
-
-RUN cd /ImageMagick/libraries; /build/wasm-x86/patches/install.patches.sh
 
 COPY build/libraries/*.sh /build/libraries
 
