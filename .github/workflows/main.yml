@@ -585,6 +585,7 @@ jobs:
       - verify_linux_arm64
       - verify_linux_arm64_openmp
       - macos
+      - macos_arm64
       - windows
       - wasm
     runs-on: windows-latest
