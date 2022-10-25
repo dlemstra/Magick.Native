@@ -4,9 +4,11 @@ SCRIPT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
 if [[ "${DEBUG_BUILD}" ]]; then
     export FLAGS="-g3 -O0 -fPIC -DDEBUG"
     export CMAKE_BUILD_TYPE="Debug"
+    export MESON_BUILD_TYPE="debug"
 else
     export FLAGS="-O3 -fPIC -DNDEBUG"
     export CMAKE_BUILD_TYPE="Release"
+    export MESON_BUILD_TYPE="release"
 fi
 
 # Shared options
