@@ -211,7 +211,7 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v3
       with:
-        name: macos
+        name: macos-x64
         path: artifacts
 
   macos_arm64:
@@ -575,6 +575,32 @@ jobs:
         export path=$(pwd)
         docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native OpenMP
 
+  verify_macos:
+    name: 'Verify MacOS'
+    needs:
+      - macos
+      - macos_arm64
+    strategy:
+      matrix:
+        os: [macos-11, macos-12]
+        arch: [x64, arm64]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+
+    - name: Download macos library
+      uses: actions/download-artifact@v3
+      with:
+        name: macos-${{ matrix.arch }}
+
+    - name: Verify MacOS
+      run: build/shared/verify.Native.MacOS.sh macos ${{ matrix.arch }} . 
+
   metadata:
     name: 'Metadata'
     needs:
@@ -584,8 +610,7 @@ jobs:
       - verify_linux_musl_openmp
       - verify_linux_arm64
       - verify_linux_arm64_openmp
-      - macos
-      - macos_arm64
+      - verify_macos
       - windows
       - wasm
     runs-on: windows-latest
@@ -653,7 +678,7 @@ jobs:
     - name: Download macos library
       uses: actions/download-artifact@v3
       with:
-        name: macos
+        name: macos-x64
         path: publish\dotnet\files\macos
 
     - name: Download macos arm64 library
