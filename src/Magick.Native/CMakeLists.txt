@@ -9,6 +9,8 @@ add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} 
 include_directories(. /usr/local/include /usr/local/include/ImageMagick-7)
 
 set(LIB_DIR /usr/local/lib)
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 
 file(GLOB_RECURSE ALL_FILES . *.c)
 
