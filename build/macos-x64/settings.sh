@@ -32,3 +32,4 @@ export IMAGEMAGICK_OPTIONS="--without-bzlib --without-lzma"
 
 # MacOS options
 export GTKDOCIZE=true
+export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin
