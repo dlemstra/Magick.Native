@@ -305,7 +305,8 @@ jobs:
     - name: Sign library
       uses: dlemstra/code-sign-action@v1
       with:
-        certificate: '${{ secrets.IMAGEMAGICK_CERTIFICATE }}'
+        certificate: '${{ secrets.CERTIFICATE }}'
+        password: '${{ secrets.CERTIFICATE_PASSWORD }}'
         folder: 'artifacts\windows\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
 
     - name: Upload library
