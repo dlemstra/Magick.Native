@@ -7,5 +7,5 @@ apt-get install -y autoconf autopoint binutils-aarch64-linux-gnu gcc-aarch64-lin
 
 pip3 install --upgrade pip
 pip3 install cmake==3.24.1.1
-pip3 install meson==0.61.5
+pip3 install meson==0.64.0
 pip3 install ninja==1.10.2.3

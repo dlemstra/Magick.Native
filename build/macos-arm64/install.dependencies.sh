@@ -61,5 +61,5 @@ brew uninstall --ignore-dependencies libidn2
 brew uninstall --ignore-dependencies xz
 brew uninstall --ignore-dependencies zstd
 
-pip3 install meson==0.55.3
+pip3 install meson==0.64.0
 pip3 install ninja==1.10.0.post2
