@@ -1,20 +1,28 @@
 SCRIPT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
 
+# Compiler settings
+if [[ "${DEBUG_BUILD}" ]]; then
+    export FLAGS="-g3 -O0 -fPIC -DDEBUG"
+    export CMAKE_BUILD_TYPE="Debug"
+    export MESON_BUILD_TYPE="debug"
+else
+    export FLAGS="-O3 -fPIC -DNDEBUG"
+    export CMAKE_BUILD_TYPE="Release"
+    export MESON_BUILD_TYPE="release"
+fi
+
 # Shared options
 export PLATFORM=MACOS
 export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
 export EXTENSION="dylib"
-export FLAGS="-O3 -fPIC"
 export STRICT_FLAGS="${FLAGS} -Wall"
 export CONFIGURE="./configure"
 export CONFIGURE_OPTIONS=""
 export CMAKE_COMMAND="cmake"
-export CMAKE_BUILD_TYPE="Release"
 export CMAKE_OPTIONS=""
 export MAKE="make"
 export MAKEFLAGS="-j$(sysctl -n hw.logicalcpu)"
 export MESON_OPTIONS=""
-export MESON_BUILD_TYPE="release"
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export PKG_PATH="/usr/local/lib/pkgconfig"
