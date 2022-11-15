@@ -106,6 +106,19 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Evaluate(const Image *images, 
   return result;
 }
 
+MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Fx(Image *images, const char *expression, const size_t channels, ExceptionInfo **exception)
+{
+  Image
+    *image;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(channels);
+  image = FxImage(images, expression, exceptionInfo);
+  RestoreChannelMask;
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return image;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImageCollection_Map(Image *images, const QuantizeInfo *settings, const Image *remapImage, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
