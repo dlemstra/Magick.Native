@@ -16,8 +16,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Deconstruct(const Image *, Exc
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Evaluate(const Image *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Flatten(Image *, ExceptionInfo **);
-
 MAGICK_NATIVE_EXPORT void MagickImageCollection_Map(Image *, const QuantizeInfo *, const Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Merge(Image *, const size_t, ExceptionInfo **);
