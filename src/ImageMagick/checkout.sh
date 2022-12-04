@@ -201,7 +201,7 @@ if [ "$1" == "linux" ]; then
     exit
 fi
 
-clone_date 'jp2' "$commitDate"
+clone_date 'jasper' "$commitDate"
 
 create_notice "$commitDate" $2
 
