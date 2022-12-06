@@ -716,7 +716,8 @@ jobs:
       run: |
         dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
         $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
-        dotnet nuget push $file.FullName --api-key ${{ secrets.PUBLISH_PACKAGE_PAT }} --source "github"
+        dotnet nuget push
+        $file.FullName --api-key ${{ secrets.PUBLISH_PACKAGE_PAT }} --source "github"
 
   publish_wasm:
     name: 'Publish WASM library'
@@ -756,4 +757,4 @@ jobs:
       run: npm publish
       working-directory: publish/wasm/files
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_PACKAGE_PAT }}
