@@ -395,8 +395,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        if [ -f "/bin/yum" ] && [ ! -f "/usr/bin/tar" ]; then
-          yum install -y tar
+        if [ -f "/bin/yum" ] then
+          yum install -y gzip tar
         fi
 
     - name: Checkout
@@ -439,8 +439,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        if [ -f "/bin/yum" ] && [ ! -f "/usr/bin/tar" ]; then
-          yum install -y tar
+        if [ -f "/bin/yum" ] then
+          yum install -y gzip tar
         fi
 
     - name: Checkout

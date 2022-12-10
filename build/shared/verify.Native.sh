@@ -64,9 +64,7 @@ if [ -f "/bin/yum" ]; then
         yum install -y binutils
     fi
 
-    if [ ! -f "/usr/bin/tar" ]; then
-        yum install -y tar
-    fi
+    yum install -y gzip tar
 elif [ -f "/sbin/apk" ]; then
     apk update
     if [ "$openmp" == "OpenMP" ]; then
