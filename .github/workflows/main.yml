@@ -393,6 +393,9 @@ jobs:
 
     steps:
 
+    - name: Install verify dependencies
+      run: build/shared/install.verify.dependencies.sh
+
     - name: Checkout
       uses: actions/checkout@v3
       with:
@@ -431,6 +434,9 @@ jobs:
 
     steps:
 
+    - name: Install verify dependencies
+      run: build/shared/install.verify.dependencies.sh
+
     - name: Checkout
       uses: actions/checkout@v3
       with:
@@ -463,6 +469,12 @@ jobs:
 
     steps:
 
+    - name: Install verify dependencies
+      run: |
+        apk update
+        apk add bash
+        build/shared/install.verify.dependencies.sh
+
     - name: Checkout
       uses: actions/checkout@v3
       with:
@@ -474,10 +486,7 @@ jobs:
         name: linux-musl
 
     - name: Verify Native
-      run: |
-        apk update
-        apk add bash
-        build/shared/verify.Native.sh linux-musl x64 .
+      run: build/shared/verify.Native.sh linux-musl x64 .
 
   verify_linux_musl_openmp:
     name: 'Verify Linux musl (x64) OpenMP'
@@ -498,6 +507,12 @@ jobs:
 
     steps:
 
+    - name: Install verify dependencies
+      run: |
+        apk update
+        apk add bash
+        build/shared/install.verify.dependencies.sh
+
     - name: Checkout
       uses: actions/checkout@v3
       with:
@@ -509,10 +524,7 @@ jobs:
         name: linux-musl
 
     - name: Verify Native
-      run: |
-        apk update
-        apk add bash
-        build/shared/verify.Native.sh linux-musl x64 . OpenMP
+      run: build/shared/verify.Native.sh linux-musl x64 . OpenMP
 
   verify_linux_arm64:
     name: 'Verify Linux (arm64)'
@@ -545,7 +557,7 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/install.verify.dependencies.sh && Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native
 
   verify_linux_arm64_openmp:
     name: 'Verify Linux (arm64) OpenMP'
@@ -578,7 +590,7 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native OpenMP
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/install.verify.dependencies.sh && Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native OpenMP
 
   verify_macos:
     name: 'Verify MacOS'
@@ -604,7 +616,7 @@ jobs:
         name: macos-${{ matrix.arch }}
 
     - name: Verify MacOS
-      run: build/shared/verify.Native.MacOS.sh macos ${{ matrix.arch }} . 
+      run: build/shared/verify.Native.MacOS.sh macos ${{ matrix.arch }} .
 
   metadata:
     name: 'Metadata'
