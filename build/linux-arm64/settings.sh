@@ -12,7 +12,7 @@ else
 fi
 
 # Shared options
-export PLATFORM=LINUX
+export PLATFORM=LINUX_ARM64
 export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
 export EXTENSION="so"
 export STRICT_FLAGS="${FLAGS} -Wall"
