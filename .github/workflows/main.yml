@@ -377,14 +377,17 @@ jobs:
     strategy:
       matrix:
         image:
+          - 'ubuntu:16.04'
           - 'ubuntu:18.04'
           - 'ubuntu:20.04'
           - 'ubuntu:latest'
           - 'tgagor/centos:stream8'
           - 'tgagor/centos:stream9'
+          - 'centos:latest'
           - 'mcr.microsoft.com/dotnet/aspnet:latest'
           - 'mcr.microsoft.com/dotnet/runtime:3.1'
           - 'mcr.microsoft.com/dotnet/runtime:latest'
+          - 'amazon/aws-lambda-dotnet:6'
 
     container:
       image: ${{ matrix.image }}
@@ -413,14 +416,17 @@ jobs:
     strategy:
       matrix:
         image:
+          - 'ubuntu:16.04'
           - 'ubuntu:18.04'
           - 'ubuntu:20.04'
           - 'ubuntu:latest'
           - 'tgagor/centos:stream8'
           - 'tgagor/centos:stream9'
+          - 'centos:latest'
           - 'mcr.microsoft.com/dotnet/aspnet:latest'
           - 'mcr.microsoft.com/dotnet/runtime:3.1'
           - 'mcr.microsoft.com/dotnet/runtime:latest'
+          - 'amazon/aws-lambda-dotnet:6'
 
     container:
       image: ${{ matrix.image }}
