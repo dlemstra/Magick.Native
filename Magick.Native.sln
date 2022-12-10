@@ -180,7 +180,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{C9FDCB
 		build\shared\build.Libraries.sh = build\shared\build.Libraries.sh
 		build\shared\build.Native.sh = build\shared\build.Native.sh
 		build\shared\copy.Native.sh = build\shared\copy.Native.sh
-		build\shared\install.verify.dependencies.sh = build\shared\install.verify.dependencies.sh
 		build\shared\verify.Native.sh = build\shared\verify.Native.sh
 	EndProjectSection
 EndProject
