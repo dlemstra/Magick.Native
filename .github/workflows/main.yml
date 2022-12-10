@@ -393,6 +393,12 @@ jobs:
 
     steps:
 
+    - name: Install dependencies
+      run: |
+        if [ -f "/bin/yum" ] && [ ! -f "/usr/bin/tar" ]; then
+          yum install -y tar
+        fi
+
     - name: Checkout
       uses: actions/checkout@v3
       with:
@@ -430,6 +436,12 @@ jobs:
       image: ${{ matrix.image }}
 
     steps:
+
+    - name: Install dependencies
+      run: |
+        if [ -f "/bin/yum" ] && [ ! -f "/usr/bin/tar" ]; then
+          yum install -y tar
+        fi
 
     - name: Checkout
       uses: actions/checkout@v3
