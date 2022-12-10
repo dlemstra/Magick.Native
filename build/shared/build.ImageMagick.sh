@@ -39,8 +39,11 @@ copyPrivateIncludes() {
     cp coders/*-private.h $imageMagickInclude/coders/
 }
 
-# Build ImageMagick
 cd ImageMagick
+
+# Disable getentropy because this requires GLIBC_2.25.
+sed -i 's/MAGICKCORE_HAVE_GETENTROPY/DISABLED_MAGICKCORE_HAVE_GETENTROPY/g' MagickCore/random.c
+
 autoreconf -fiv
 for quantum in ${QUANTUMS[@]}; do
     buildImageMagick $quantum
