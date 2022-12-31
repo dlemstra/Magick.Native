@@ -19,6 +19,8 @@ brew uninstall --force php
 brew uninstall --force gd
 brew uninstall --force r
 brew uninstall --force imagemagick
+brew uninstall --force gradle
+brew uninstall --force openjdk
 brew uninstall --force harfbuzz
 brew uninstall --force cairo
 brew uninstall --force libheif
