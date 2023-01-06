@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:3.1.28
+FROM emscripten/emsdk:3.1.26
 
 RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/wasm-x86
 
