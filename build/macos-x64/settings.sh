@@ -30,6 +30,7 @@ export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
 
 # Library specific options
+export CMS_OPTIONS=""
 export FFI_OPTIONS=""
 export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
 export HEIF_OPTIONS=""

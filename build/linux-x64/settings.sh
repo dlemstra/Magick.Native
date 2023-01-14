@@ -30,6 +30,7 @@ export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
 
 # Library specific options
+export LCMS_OPTIONS=""
 export FFI_OPTIONS=""
 export FONTCONFIG_OPTIONS=""
 export HEIF_OPTIONS=""
