@@ -6,6 +6,8 @@ COPY build/linux-musl-x64/install.dependencies.sh /build/linux-musl-x64
 
 RUN cd /build/linux-musl-x64; ./install.dependencies.sh
 
+RUN apk add vim
+
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh linux

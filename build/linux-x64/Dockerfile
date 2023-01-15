@@ -6,6 +6,8 @@ COPY build/linux-x64/install.dependencies.sh /build/linux-x64
 
 RUN cd /build/linux-x64; ./install.dependencies.sh
 
+RUN apt-get install -y vim
+
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh linux

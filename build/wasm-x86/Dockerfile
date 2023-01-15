@@ -6,6 +6,8 @@ COPY build/wasm-x86/install.dependencies.sh /build/wasm-x86
 
 RUN cd /build/wasm-x86; ./install.dependencies.sh
 
+RUN apt-get install -y vim
+
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh wasm
