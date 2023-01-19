@@ -72,7 +72,7 @@ set(LIBOPENJPEG ${LIB_DIR}/libopenjp2.a)
 set(LIBPNG ${LIB_DIR}/libpng.a)
 set(LIBRAW ${LIB_DIR}/libraw_r.a)
 set(LIBTIFF ${LIB_DIR}/libtiff.a)
-set(LIBWEBP ${LIB_DIR}/libsharpyuv.a ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a ${LIB_DIR}/libwebp.a)
+set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a ${LIB_DIR}/libwebp.a ${LIB_DIR}/libsharpyuv.a)
 set(LIBXML ${LIB_DIR}/libxml2.a)
 set(LIBZ ${LIB_DIR}/libz.a)
 
