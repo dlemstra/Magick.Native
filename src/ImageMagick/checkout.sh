@@ -148,7 +148,7 @@ clone_date 'ffi' "$commitDate"
 clone_date 'glib' "$commitDate"
 clone_date 'heif' "$commitDate"
 clone_date 'jpeg-turbo' "$commitDate"
-clone_commit 'lcms' "dba34553e777ab1abe80671489d85d23fa49ab85"
+clone_date 'lcms' "$commitDate"
 clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'png' "$commitDate"
@@ -162,7 +162,7 @@ clone_date 'zlib' "$commitDate"
 if [ "$1" != "macos" ]; then
     clone_date 'brotli' "$commitDate"
     clone_date 'highway' "$commitDate"
-    clone_commit 'jpeg-xl' "6c5173691a38e0032d8d6695dee40d037d0e34f7"
+    clone_date 'jpeg-xl' "$commitDate"
 fi
 
 if [ "$1" == "wasm" ]; then
