@@ -115,6 +115,6 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
   pagesize = GetMagickPageSize();
   pages = (double) sysconf(_SC_PHYS_PAGES) * percentage;
   memory = (MagickSizeType) pages * pagesize;
-  ResourceLimits_Area_Set(memory * 2);
+  ResourceLimits_Area_Set(memory * 4);
   ResourceLimits_Memory_Set(memory);
 }
