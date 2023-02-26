@@ -34,7 +34,6 @@ else()
     set(LIBHARFBUZZ ${LIB_DIR}/libharfbuzz.a)
     set(LIBPANGO ${LIB_DIR}/libpangocairo-1.0.a ${LIB_DIR}/libpango-1.0.a ${LIB_DIR}/libpangoft2-1.0.a)
     set(LIBRAQM ${LIB_DIR}/libraqm.a)
-    set(LIBRSVG ${LIB_DIR}/librsvg-2.a ${LIB_DIR}/libgdk_pixbuf-2.0.a ${LIB_DIR}/libcroco-0.6.a)
 
     set(LIBRESOLV -lresolv)
 endif()
@@ -52,6 +51,7 @@ else()
 
         set(LIBBZIP2 ${LIB_DIR}/libbz2.a)
         set(LIBLZMA ${LIB_DIR}/liblzma.a)
+        set(LIBRSVG ${LIB_DIR}/librsvg-2.a ${LIB_DIR}/libgdk_pixbuf-2.0.a ${LIB_DIR}/libcroco-0.6.a)
         set(LIBZIP ${LIB_DIR}/libzip.a)
 
         set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
