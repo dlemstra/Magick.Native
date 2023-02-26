@@ -3,8 +3,8 @@ set -e
 
 cd ffi
 
-sed -i's/AC_PREREQ(\[2.71\])//' configure.ac
-sed -i's/AC_CHECK_INCLUDES_DEFAULT//' configure.ac
+sed -i 's/AC_PREREQ(\[2.71\])//' configure.ac
+sed -i 's/AC_CHECK_INCLUDES_DEFAULT//' configure.ac
 rm include/ffi.h
 rm include/fficonfig.h
 

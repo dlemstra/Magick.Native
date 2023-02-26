@@ -43,7 +43,7 @@ cd ImageMagick
 
 if [ "$config-$arch" == "linux-x64" ]; then
     # Disable getentropy because this requires GLIBC_2.25.
-    sed -i's/MAGICKCORE_HAVE_GETENTROPY/DISABLED_MAGICKCORE_HAVE_GETENTROPY/g' MagickCore/random.c
+    sed -i 's/MAGICKCORE_HAVE_GETENTROPY/DISABLED_MAGICKCORE_HAVE_GETENTROPY/g' MagickCore/random.c
 fi
 
 autoreconf -fiv

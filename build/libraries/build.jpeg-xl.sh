@@ -4,7 +4,7 @@ set -e
 cd jpeg-xl
 
 rm lib/include/jxl/jxl_export.h
-sed -i's/JPEGXL_EMSCRIPTEN/& AND JPEGXL_BUNDLE_LIBPNG/' third_party/CMakeLists.txt
+sed -i 's/JPEGXL_EMSCRIPTEN/& AND JPEGXL_BUNDLE_LIBPNG/' third_party/CMakeLists.txt
 
 mkdir __build
 cd __build
