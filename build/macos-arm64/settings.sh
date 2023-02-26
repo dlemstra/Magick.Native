@@ -40,5 +40,4 @@ export IMAGEMAGICK_OPTIONS="--without-bzlib --without-lzma"
 
 # MacOS options
 export GTKDOCIZE=true
-export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin
-alias sed=gsed
+export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin
