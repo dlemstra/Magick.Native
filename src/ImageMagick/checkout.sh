@@ -206,6 +206,8 @@ create_notice "$commitDate" $2
 
 rm -rf VisualMagick/dcraw
 rm -rf VisualMagick/demos
+rm -rf VisualMagick/fftw
+rm -rf VisualMagick/flif
 rm -rf VisualMagick/fuzz
 rm -rf VisualMagick/ImageMagickObject
 rm -rf VisualMagick/IMDisplay
