@@ -23,8 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-x64", "macos-x64", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
 	ProjectSection(SolutionItems) = preProject
-		build\macos-x64\build.libraries.sh = build\macos-x64\build.libraries.sh
 		build\macos-x64\install.dependencies.sh = build\macos-x64\install.dependencies.sh
+		build\macos-x64\libraries.sh = build\macos-x64\libraries.sh
 		build\macos-x64\settings.sh = build\macos-x64\settings.sh
 	EndProjectSection
 EndProject
@@ -185,9 +185,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{C9FDCB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-arm64", "macos-arm64", "{BFCD9FE6-479F-4D5E-B4BA-046317AD8334}"
 	ProjectSection(SolutionItems) = preProject
-		build\macos-arm64\build.libraries.sh = build\macos-arm64\build.libraries.sh
 		build\macos-arm64\cross-compilation.meson = build\macos-arm64\cross-compilation.meson
 		build\macos-arm64\install.dependencies.sh = build\macos-arm64\install.dependencies.sh
+		build\macos-arm64\libraries.sh = build\macos-arm64\libraries.sh
 		build\macos-arm64\settings.sh = build\macos-arm64\settings.sh
 	EndProjectSection
 EndProject
