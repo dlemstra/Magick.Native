@@ -170,7 +170,7 @@ if [ "$1" == "wasm" ]; then
     exit
 fi
 
-clone_date 'cairo' "$commitDate"
+clone_commit 'cairo' "97c4790de431c6e181b82f950e7704940334b1b3"
 clone_date 'croco' "$commitDate"
 clone_date 'fribidi' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
