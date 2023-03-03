@@ -14,15 +14,15 @@ MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Description_Get(const MagickIn
 
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Format_Get(const MagickInfo *);
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsMultiFrame_Get(const MagickInfo *);
-
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsReadable_Get(const MagickInfo *);
-
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsWritable_Get(const MagickInfo *);
-
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_MimeType_Get(const MagickInfo *);
 
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Module_Get(const MagickInfo *);
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsMultipleFrames_Get(const MagickInfo *);
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsReading_Get(const MagickInfo *);
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsWriting_Get(const MagickInfo *);
 
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **, const size_t, ExceptionInfo **);
 

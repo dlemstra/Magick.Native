@@ -59,21 +59,6 @@ MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Format_Get(const MagickInfo *i
   return instance->name;
 }
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsMultiFrame_Get(const MagickInfo *instance)
-{
-  return GetMagickAdjoin(instance);
-}
-
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsReadable_Get(const MagickInfo *instance)
-{
-  return GetImageDecoder(instance) != (DecodeImageHandler *) NULL;
-}
-
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_IsWritable_Get(const MagickInfo *instance)
-{
-  return GetImageEncoder(instance) != (EncodeImageHandler *) NULL;
-}
-
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_MimeType_Get(const MagickInfo *instance)
 {
   return GetMagickMimeType(instance);
@@ -82,6 +67,21 @@ MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_MimeType_Get(const MagickInfo 
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Module_Get(const MagickInfo *instance)
 {
   return instance->module;
+}
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsMultipleFrames_Get(const MagickInfo *instance)
+{
+  return GetMagickAdjoin(instance);
+}
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsReading_Get(const MagickInfo *instance)
+{
+  return GetImageDecoder(instance) != (DecodeImageHandler *) NULL;
+}
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsWriting_Get(const MagickInfo *instance)
+{
+  return GetImageEncoder(instance) != (EncodeImageHandler *) NULL;
 }
 
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **list, const size_t index, ExceptionInfo **exception)
