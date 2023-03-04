@@ -177,7 +177,7 @@ clone_date 'harfbuzz' "$commitDate"
 clone_date 'pango' "$commitDate"
 clone_date 'raqm' "$commitDate"
 clone_date 'pixman' "$commitDate"
-clone_commit 'rsvg' "24d9f9066d6f855ba3a068204e3301a6bb26ae64"
+clone_commit 'rsvg' "b05871d8265ffc05e21df5423138c54feb3b40bd"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
     clone_commit 'fontconfig' "06688f06399dafdcd9305d00dd434c1972059d65" "https://github.com/dlemstra"
