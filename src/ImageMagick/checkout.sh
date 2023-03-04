@@ -167,8 +167,8 @@ if [ "$1" == "wasm" ]; then
     exit
 fi
 
-clone_commit 'bzlib' "4886811476acfc92c8d3b8548ec0ff34d0fa15d9"
-clone_commit 'cairo' "97c4790de431c6e181b82f950e7704940334b1b3"
+clone_date 'bzlib' "$commitDate"
+clone_date 'cairo' "$commitDate"
 clone_date 'croco' "$commitDate"
 clone_date 'fribidi' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
@@ -176,7 +176,7 @@ clone_date 'lzma' "$commitDate"
 clone_date 'pango' "$commitDate"
 clone_date 'raqm' "$commitDate"
 clone_date 'pixman' "$commitDate"
-clone_commit 'rsvg' "ecd4dbd083cbb35b4af5b4b9295424ad6ed1f56a"
+clone_date 'rsvg' "$commitDate"
 clone_date 'zip' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
@@ -184,14 +184,7 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
 
     mkdir -p VisualMagick/fontconfig
     echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
-fi
 
-if [ "$1" == "macos" ]; then
-    create_notice "$commitDate" $2
-    exit
-fi
-
-if [ "$1" == "linux" ]; then
     create_notice "$commitDate" $2
     exit
 fi
