@@ -167,7 +167,7 @@ if [ "$1" == "wasm" ]; then
     exit
 fi
 
-clone_commit 'bzlib' "03f98b63a4397021f811eb3b2efe15b293cd635b"
+clone_commit 'bzlib' "4886811476acfc92c8d3b8548ec0ff34d0fa15d9"
 clone_commit 'cairo' "97c4790de431c6e181b82f950e7704940334b1b3"
 clone_date 'croco' "$commitDate"
 clone_date 'fribidi' "$commitDate"
