@@ -20,10 +20,10 @@ $1/build.ffi.sh
 $1/build.glib.sh
 $1/build.lqr.sh
 $1/build.pixman.sh
-#$1/build.cairo.sh
+$1/build.cairo.sh
 $1/build.fribidi.sh
 $1/build.harfbuzz.sh
-#$1/build.pango.sh
+$1/build.pango.sh
 $1/build.croco.sh
-#$1/build.rsvg.sh
+$1/build.rsvg.sh
 $1/build.raqm.sh
