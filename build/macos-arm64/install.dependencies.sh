@@ -58,6 +58,11 @@ brew uninstall --force libpng
 brew uninstall --force curl-openssl
 brew uninstall --force libzip
 brew uninstall --force httpd
+brew uninstall --force lzo
+brew uninstall --force libxrender
+brew uninstall --force libxext
+brew uninstall --force libx11
+brew uninstall --force libxcb
 brew uninstall --ignore-dependencies brotli
 brew uninstall --ignore-dependencies libidn2
 brew uninstall --ignore-dependencies xz
