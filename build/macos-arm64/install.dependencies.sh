@@ -63,6 +63,7 @@ brew uninstall --force libxrender
 brew uninstall --force libxext
 brew uninstall --force libx11
 brew uninstall --force libxcb
+brew uninstall --force highway
 brew uninstall --ignore-dependencies brotli
 brew uninstall --ignore-dependencies libidn2
 brew uninstall --ignore-dependencies xz
