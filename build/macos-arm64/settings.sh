@@ -37,7 +37,7 @@ export OPENEXR_OPTIONS=""
 export LCMS_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export XML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
-export IMAGEMAGICK_OPTIONS="--without-bzlib --without-lzma"
+export IMAGEMAGICK_OPTIONS=""
 
 # MacOS options
 export GTKDOCIZE=true
