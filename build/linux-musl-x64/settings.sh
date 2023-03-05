@@ -30,10 +30,10 @@ export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
 
 # Library specific options
-export LCMS_OPTIONS=""
 export FFI_OPTIONS="--disable-exec-static-tramp"
 export FONTCONFIG_OPTIONS=""
 export HEIF_OPTIONS=""
+export LCMS_OPTIONS=""
 export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export XML_OPTIONS=""
