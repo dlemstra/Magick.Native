@@ -156,7 +156,7 @@ clone_date 'lqr' "$commitDate"
 clone_date 'openjpeg' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'raw' "$commitDate"
-clone_commit 'tiff' "10b9f3f7fa43586ebc3f8579e10e73854fc72bcc"
+clone_date 'tiff' "$commitDate"
 clone_date 'VisualMagick' "$commitDate"
 clone_date 'webp' "$commitDate"
 clone_date 'xml' "$commitDate"
@@ -168,7 +168,7 @@ if [ "$1" == "wasm" ]; then
 fi
 
 clone_date 'bzlib' "$commitDate"
-clone_commit 'cairo' "63470f4bc32b59e0454ab99794b1b50f5b7e7d63"
+clone_date 'cairo' "$commitDate"
 clone_date 'croco' "$commitDate"
 clone_date 'fribidi' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
