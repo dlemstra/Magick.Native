@@ -143,7 +143,7 @@ cd ..
 clone_date 'aom' "$commitDate"
 clone_date 'brotli' "$commitDate"
 clone_date 'de265' "$commitDate"
-clone_date 'exr' "$commitDate"
+clone_commit 'exr' "01dd2329ea5ce6f96382c44884b758b50c27a8bd"
 clone_date 'freetype' "$commitDate"
 clone_date 'ffi' "$commitDate"
 clone_date 'glib' "$commitDate"
