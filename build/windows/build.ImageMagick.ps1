@@ -88,7 +88,7 @@ function copyOutput($config, $name, $platformName) {
 }
 
 function getConfigureOptions($name, $platformName, $quantum) {
-    $options = "/$quantum /opencl"
+    $options = "/$quantum /opencl /noDpc"
     if ($name -inotmatch "-HDRI") {
         $options = "$options /noHdri"
     }
