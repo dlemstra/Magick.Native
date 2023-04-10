@@ -152,6 +152,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64"
 	ProjectSection(SolutionItems) = preProject
 		build\linux-arm64\build.cmd = build\linux-arm64\build.cmd
 		build\linux-arm64\build.openmp.cmd = build\linux-arm64\build.openmp.cmd
+		build\linux-arm64\cross-compilation.cmake = build\linux-arm64\cross-compilation.cmake
 		build\linux-arm64\cross-compilation.meson = build\linux-arm64\cross-compilation.meson
 		build\linux-arm64\Dockerfile = build\linux-arm64\Dockerfile
 		build\linux-arm64\install.dependencies.sh = build\linux-arm64\install.dependencies.sh
