@@ -193,6 +193,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-arm64", "macos-arm64"
 		build\macos-arm64\settings.sh = build\macos-arm64\settings.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "create-type-definition", "create-type-definition", "{BE2DF871-363E-46ED-A999-81C5D6A232D7}"
+	ProjectSection(SolutionItems) = preProject
+		src\create-type-definition\package.json = src\create-type-definition\package.json
+		src\create-type-definition\tsconfig.json = src\create-type-definition\tsconfig.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{16F5433C-4F98-4CE9-A40E-C768FF818761}"
+	ProjectSection(SolutionItems) = preProject
+		src\create-type-definition\src\code-parser.ts = src\create-type-definition\src\code-parser.ts
+		src\create-type-definition\src\index.ts = src\create-type-definition\src\index.ts
+		src\create-type-definition\src\type-definition-writer.ts = src\create-type-definition\src\type-definition-writer.ts
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|arm64 = DebugQ16|arm64
@@ -297,6 +310,8 @@ Global
 		{3DF7FEA1-1839-4123-9B58-E8D86CC981C7} = {4B73C473-ECF3-4683-A81A-47E85061A7C6}
 		{C9FDCB6E-2B4E-4E3B-A0B3-336D575E0E87} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{BFCD9FE6-479F-4D5E-B4BA-046317AD8334} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{BE2DF871-363E-46ED-A999-81C5D6A232D7} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
+		{16F5433C-4F98-4CE9-A40E-C768FF818761} = {BE2DF871-363E-46ED-A999-81C5D6A232D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
