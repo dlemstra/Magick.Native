@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc -p .",
-    "publish": "npx tsc -p . && node lib/index.js ../Magick.Native ../Magick.Native/Q8/magick-Q8.d.ts"
+    "publish": "npx tsc -p . && node lib/index.js ../Magick.Native ../Magick.Native/Q8/Magick.Native-Q8-x86.dll.d.ts"
   },
   "keywords": [],
   "author": "Dirk Lemstra",
