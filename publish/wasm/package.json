@@ -9,8 +9,9 @@
   "author": "Dirk Lemstra",
   "license": "Apache-2.0",
   "files": [
-    "magick.js",
     "magick.d.ts",
+    "magick.js",
+    "magick.wasm",
     "NOTICE"
   ]
 }
