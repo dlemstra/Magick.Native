@@ -38,7 +38,7 @@ export class CodeParser {
             if (!line.startsWith('MAGICK_NATIVE_EXPORT'))
                 continue;
 
-            const method = this.getMethod(line.substr(21));
+            const method = this.getMethod(line.substring(21));
             methods.push(method);
         }
 
@@ -61,7 +61,7 @@ export class CodeParser {
         const startIndex = methodName[0] === '*' ? methodName[1] === '*' ? 2 : 1 : 0;
         const length = methodName.indexOf('(') - startIndex;
 
-        return methodName.substr(startIndex, length);
+        return methodName.substring(startIndex, startIndex + length);
     }
 
     private getReturnType(returnType: string, methodName: string) {
@@ -77,17 +77,17 @@ export class CodeParser {
         const startIndex = line.indexOf('(') + 1;
         const length = line.indexOf(')') - startIndex;
 
-        for (const type of line.substr(startIndex, length).split(', ')) {
+        for (const type of line.substring(startIndex, startIndex + length).split(', ')) {
             if (type === 'void')
                 continue;
 
             const info = type.split(' ');
             let name = info[info.length - 1];
-            const typeName = type.substr(0, type.length - name.length - 1);
+            const typeName = type.substring(0, type.length - name.length - 1);
 
             if (name.startsWith('*')) {
                 while (name.startsWith('*'))
-                    name = name.substr(1);
+                    name = name.substring(1);
 
                 parameters.push({ name, type: 'number' });
             } else {
