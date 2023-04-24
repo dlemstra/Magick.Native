@@ -26,7 +26,7 @@ export MESON_OPTIONS="--cross-file=$SCRIPT_PATH/cross-compilation.meson"
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 export PKG_PATH="/usr/local/lib/pkgconfig"
-export SIMD_OPTIONS="-DWITH_SIMD=0"
+export SIMD_OPTIONS="-DWITH_SIMD=1"
 export SSE_OPTIONS=""
 
 # Library specific options
