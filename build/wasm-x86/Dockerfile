@@ -1,16 +1,14 @@
 FROM emscripten/emsdk:3.1.36
 
-RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/wasm-x86
+COPY build/wasm-x86/install.dependencies.sh /install.dependencies.sh
 
-COPY build/wasm-x86/install.dependencies.sh /build/wasm-x86
-
-RUN cd /build/wasm-x86; ./install.dependencies.sh
-
-RUN apt-get install -y vim
+RUN /install.dependencies.sh
 
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh wasm
+
+RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/wasm-x86
 
 COPY build/libraries/*.sh /build/libraries
 
@@ -29,15 +27,3 @@ RUN cd /ImageMagick/libraries; /build/shared/build.Libraries.sh /build/libraries
 COPY build/shared/build.ImageMagick.sh /build/shared
 
 RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh wasm x86
-
-COPY src/Magick.Native /Magick.Native
-
-COPY build/shared/build.Native.sh /build/shared
-
-RUN cd /Magick.Native; /build/shared/build.Native.sh wasm x86
-
-COPY src/create-type-definition /create-type-definition
-
-RUN cd /create-type-definition; npm install && npm run publish
-
-COPY build/wasm-x86/copy.Native.sh /build
