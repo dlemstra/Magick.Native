@@ -43,3 +43,4 @@ export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-bzlib -
 export CC=emcc
 export CXX=em++
 export EM_PKG_CONFIG_PATH=$PKG_PATH
+export LIBRARY_NAME="magick"

@@ -9,11 +9,15 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/../$config-$arch/settings.sh
 
 getLibraryName() {
-    local quantum=$1
-    if [ "$openmp" == "OpenMP" ]; then
-        echo Magick.Native-$quantum-OpenMP-$arch.dll
+    if [[ -n "${LIBRARY_NAME}" ]]; then
+        echo $LIBRARY_NAME
     else
-        echo Magick.Native-$quantum-$arch.dll
+        local quantum=$1
+        if [ "$openmp" == "OpenMP" ]; then
+            echo Magick.Native-$quantum-OpenMP-$arch.dll
+        else
+            echo Magick.Native-$quantum-$arch.dll
+        fi
     fi
 }
 
