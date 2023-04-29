@@ -180,7 +180,7 @@ clone_date 'rsvg' "$commitDate"
 clone_date 'zip' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
-    clone_commit 'fontconfig' "06688f06399dafdcd9305d00dd434c1972059d65" "https://github.com/dlemstra"
+    clone_commit 'fontconfig' "8e9e147ecee23347dc73be4a3e5abc131864c3ec" "https://github.com/dlemstra"
 
     mkdir -p VisualMagick/fontconfig
     echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
