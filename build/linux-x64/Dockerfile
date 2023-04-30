@@ -1,16 +1,14 @@
 FROM ubuntu:18.04
 
-RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/linux-x64
+COPY build/linux-x64/install.dependencies.sh /install.dependencies.sh
 
-COPY build/linux-x64/install.dependencies.sh /build/linux-x64
-
-RUN cd /build/linux-x64; ./install.dependencies.sh
-
-RUN apt-get install -y vim
+RUN /install.dependencies.sh
 
 COPY src/ImageMagick /ImageMagick
 
 RUN cd /ImageMagick; ./checkout.sh linux
+
+RUN mkdir /build && mkdir /build/libraries && mkdir /build/shared && mkdir /build/linux-x64
 
 COPY build/libraries/*.sh /build/libraries
 
@@ -26,14 +24,4 @@ RUN cd /ImageMagick/libraries; /build/shared/build.Libraries.sh /build/libraries
 
 COPY build/shared/build.ImageMagick.sh /build/shared
 
-ARG OpenMP
-
-RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh linux x64 ${OpenMP}
-
-COPY src/Magick.Native /Magick.Native
-
-COPY build/shared/build.Native.sh /build/shared
-
-RUN cd /Magick.Native; /build/shared/build.Native.sh linux x64 $OpenMP
-
-COPY build/shared/copy.Native.sh /build/shared
+RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh linux x64

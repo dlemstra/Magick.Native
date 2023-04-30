@@ -7,6 +7,8 @@ src/ImageMagick/output/*
 src/Magick.Native/lib
 src/Magick.Native/bin
 src/Magick.Native/Q8
+src/Magick.Native/Q16
+src/Magick.Native/Q16-HDRI
 src/create-type-definition/lib
 src/create-type-definition/node_modules
 **/output/*
