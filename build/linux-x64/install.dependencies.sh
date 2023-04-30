@@ -3,7 +3,9 @@ set -e
 
 apt-get update -y
 
-apt-get install -y autoconf autopoint binutils gcc g++ gettext git gperf libtool nasm pkg-config python python-pip python3-pip ragel texinfo
+apt-get install -y autoconf autopoint binutils gcc g++ gettext git gperf libtool locales nasm pkg-config python python-pip python3-pip ragel texinfo
+
+locale-gen en_US.UTF-8
 
 pip3 install --upgrade pip
 pip3 install cmake==3.24.1.1
