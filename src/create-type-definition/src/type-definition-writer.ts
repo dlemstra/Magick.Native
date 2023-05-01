@@ -57,6 +57,7 @@ data += `}
 /** @internal */
 export interface IWasmLocator {
     locateFile(path: string, scriptDirectory: string): string;
+    wasmBinary?: Uint8Array | Buffer;
 }
 
 declare const MagickNative: (wasmLocator: IWasmLocator) => Promise<ImageMagickApi>;
