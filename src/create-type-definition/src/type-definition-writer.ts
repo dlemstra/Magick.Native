@@ -33,7 +33,7 @@ export interface VirtualFileSystem {
 export interface ImageMagickApi {
     _malloc(size: number): number;
     _free(instance: number): void;
-    HEAPU8: Int8Array;
+    HEAPU8: Uint8Array;
     FS: VirtualFileSystem;
     getValue(instance: number, type: string): number;
     setValue(instance: number, value: number, type: string): void;
