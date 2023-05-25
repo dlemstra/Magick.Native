@@ -723,13 +723,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AddNoise(Image *instance, const size_t n
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_AddProfile(Image *instance, const char *name, const unsigned char *datum, const size_t length, ExceptionInfo **exception)
-{
-  MAGICK_NATIVE_GET_EXCEPTION;
-  ProfileImage(instance, name, datum, length, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-}
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_AffineTransform(Image *instance, const double scaleX, const double scaleY, const double shearX, const double shearY, const double translateX, const double translateY, ExceptionInfo **exception)
 {
   AffineMatrix
@@ -2257,6 +2250,13 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetNext(Image *image, Image *next)
     image->next = next;
     next->previous = image;
   }
+}
+
+MAGICK_NATIVE_EXPORT void MagickImage_SetProfile(Image *instance, const char *name, const unsigned char *datum, const size_t length, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  ProfileImage(instance, name, datum, length, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_SetProgressDelegate(Image *instance, const MagickProgressMonitor method)

@@ -152,8 +152,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AdaptiveThreshold(Image *, const size_t,
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_AddNoise(Image *, const size_t, const double, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_AddProfile(Image *, const char *, const unsigned char *, const size_t, ExceptionInfo **);
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_AffineTransform(Image *, const double, const double, const double, const double, const double, const double, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *, const DrawInfo *, char *, char *, const size_t, const double, ExceptionInfo **);
@@ -445,6 +443,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetColormapColor(Image *, const size_t, co
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_SetColorMetric(Image *, const Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_SetNext(Image *, Image *);
+
+MAGICK_NATIVE_EXPORT void MagickImage_SetProfile(Image *, const char *, const unsigned char *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_SetProgressDelegate(Image *, const MagickProgressMonitor);
 
