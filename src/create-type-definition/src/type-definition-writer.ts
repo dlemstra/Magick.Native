@@ -33,7 +33,7 @@ export interface VirtualFileSystem {
 export interface ImageMagickApi {
     _malloc(size: number): number;
     _free(instance: number): void;
-    HEAPU8: quantumArray;
+    HEAPU8: Int8Array;
     FS: VirtualFileSystem;
     getValue(instance: number, type: string): number;
     setValue(instance: number, value: number, type: string): void;
@@ -57,7 +57,7 @@ data += `}
 /** @internal */
 export interface IWasmLocator {
     locateFile(path: string, scriptDirectory: string): string;
-    wasmBinary?: Uint8Array | Buffer;
+    wasmBinary?: Int8Array | Uint8Array | Uint8ClampedArray;
 }
 
 declare const MagickNative: (wasmLocator: IWasmLocator) => Promise<ImageMagickApi>;
