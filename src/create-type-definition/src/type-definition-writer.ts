@@ -35,11 +35,12 @@ export interface ImageMagickApi {
     _free(instance: number): void;
     HEAPU8: Uint8Array;
     FS: VirtualFileSystem;
+    addFunction(method: (...args: any[]) => void, singature: string): number;
     getValue(instance: number, type: string): number;
-    setValue(instance: number, value: number, type: string): void;
-    UTF8ToString(ptr: number): string;
     lengthBytesUTF8(str: string): number;
+    setValue(instance: number, value: number, type: string): void;
     stringToUTF8(str: string, outPtr: number, maxBytesToWrite: number): void;
+    UTF8ToString(ptr: number): string;
 `;
 
     for (const method of this.methods) {
