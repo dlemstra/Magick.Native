@@ -68,6 +68,7 @@ add_copyright()
 
     echo -e "Adding notice from '$copyrightFile' ($charset)"
     iconv -f $charset -t utf-8 $copyrightFile | sed -e 's/\xef\xbb\xbf//' | tr -d '\r' >> $notice
+    echo -e "" >> $notice 
 }
 
 get_imagemagick_version()
@@ -98,30 +99,46 @@ create_notice()
     echo -e "[ Magick.Native ] copyright:\n" >> $notice
     add_copyright '../../Magick.Native/Copyright.txt' $notice
 
-    echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
-    version=$(get_imagemagick_version)
+    echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
+    local version=$(get_imagemagick_version)
     date="$(echo $date | sed 's/ .*//')"
     echo -e "[ ImageMagick $version ($date) ] copyright:\n" >> $notice
     add_copyright 'ImageMagick/LICENSE' $notice
 
     for dir in *; do
-        if [ -d "$dir" ]; then
-            local config=VisualMagick/$dir/Config.txt
-            if [ -f "$config" ]; then
-            echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
-            version="$(tail -n +2 $dir/ImageMagick/ImageMagick.version.h | awk -F " " '{print $3 " " $4}' | sed -e 's/"//g')"
-            echo -e "[ $dir $version ] copyright:\n" >> $notice
-            copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | tr -d '[:space:]' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
-            if [ -f "$copyright" ]; then
-                add_copyright $copyright $notice
-            else
-                echo -e "Unable to find '$copyright'"
-            fi
-            fi
+        local config=VisualMagick/$dir/Config.txt
+        if [ -f "$config" ]; then
+            local copyright="$(sed -n '/\[LICENSE\]/{n;p;}' $config | tr -d '[:space:]' | sed -e 's/\.\.\\//g' | sed -e 's/\\/\//g')"
+            local fileNames=$(echo $copyright | tr ";" "\n")
+
+            echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
+
+            for fileName in $fileNames
+            do
+                if [ ! -f "$fileName" ]; then
+                    echo -e "Unable to find '$fileName'"
+                else
+                    local folder=$(dirname $fileName)
+                    local versionFile="$folder/ImageMagick/ImageMagick.version.h"
+                    if [ ! -f "$versionFile" ]; then
+                        folder=$(dirname $folder)
+                        versionFile="$folder/ImageMagick/ImageMagick.version.h"
+                        if [ ! -f "$versionFile" ]; then
+                            echo -e "Unable to find '$versionFile'"
+                            continue
+                        fi
+                    fi
+
+                    version="$(tail -n +2 $versionFile | awk -F " " '{print $3 " " $4}' | sed -e 's/"//g')"
+                    echo -e "[ $(basename $folder) $version ] copyright:\n" >> $notice
+
+                    add_copyright $fileName $notice
+                fi
+            done
         fi
     done
 
-    echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
+    echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" >> $notice
 }
 
 commit=$(<ImageMagick.commit)
@@ -157,7 +174,7 @@ clone_date 'openjpeg' "$commitDate"
 clone_date 'png' "$commitDate"
 clone_date 'raw' "$commitDate"
 clone_date 'tiff' "$commitDate"
-clone_date 'VisualMagick' "$commitDate"
+clone_commit 'VisualMagick' "c6c3b11d1c956799008a0c7bdd5e26125b465364"
 clone_date 'webp' "$commitDate"
 clone_date 'xml' "$commitDate"
 clone_date 'zlib' "$commitDate"
