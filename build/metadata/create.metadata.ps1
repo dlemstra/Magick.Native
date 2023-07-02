@@ -64,13 +64,17 @@ function writeLibraryVersions($folders) {
 
         $folder = "$sourceDir/$libraryName"
 
-        $resourceFile = Get-ChildItem -Path $folder -Filter "ImageMagick.version.h" -Recurse
-        if ($resourceFile -ne $null) {
-            writeVersionFromResource $fileName $libraryName $resourceFile.FullName
+        $resourceFiles = Get-ChildItem -Path $folder -Filter "ImageMagick.version.h" -Recurse
+        if ($resourceFiles.Count -ne 0) {
+            foreach ($resourceFile in $resourceFiles) {
+                $parentFolder = Split-Path -Path $resourceFile.FullName -Parent
+                $parentFolder = Split-Path -Path $parentFolder -Parent
+                $parentFolder = Split-Path -Path $parentFolder -Leaf
+                writeVersionFromResource $fileName $parentFolder $resourceFile.FullName
+            }
         } else {
             switch($libraryName) {
                 "ImageMagick" { writeImageMagickVersion $fileName $folder }
-                "VisualMagick" { }
                 default { Write-Error "Unable to get version for: $library" }
             }
         }
