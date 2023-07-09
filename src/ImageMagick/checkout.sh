@@ -160,7 +160,7 @@ cd ..
 clone_date 'aom' "$commitDate"
 clone_date 'brotli' "$commitDate"
 clone_date 'de265' "$commitDate"
-clone_commit 'exr' "79b0cc58a36b38301c3bcac90fa0626b310bdbfd"
+clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_date 'ffi' "$commitDate"
 clone_date 'glib' "$commitDate"
@@ -194,7 +194,7 @@ clone_date 'pango' "$commitDate"
 clone_date 'raqm' "$commitDate"
 clone_date 'pixman' "$commitDate"
 clone_date 'rsvg' "$commitDate"
-clone_commit 'zip' "ec1f748e199a5f6cb5615405518841b5dfb00424"
+clone_date 'zip' "$commitDate"
 
 if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
     clone_commit 'fontconfig' "ca7dc14b14016d103ce595152b7c009c3d9c7d06" "https://github.com/dlemstra"
