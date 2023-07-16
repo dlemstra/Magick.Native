@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:3.1.36
+FROM emscripten/emsdk:3.1.42
 
 COPY build/wasm-x86/install.dependencies.sh /install.dependencies.sh
 
