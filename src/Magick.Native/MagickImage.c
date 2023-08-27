@@ -306,7 +306,7 @@ MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *instance,
   if (instance->colormap == (PixelInfo *) NULL)
     return -1;
 
-  return instance->colors;
+  return (ssize_t) instance->colors;
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_ColormapSize_Set(Image *instance, const ssize_t value, ExceptionInfo **exception)
