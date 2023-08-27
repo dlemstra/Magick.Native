@@ -234,11 +234,13 @@ static SourceManager *CreateSourceManager(j_decompress_ptr decompress_info)
 
 static size_t DetermineQuality(j_decompress_ptr decompress_info)
 {
+  size_t
+    quality;
+
   ssize_t
     i,
     j,
     qvalue,
-    quality,
     sum;
 
   /*
@@ -344,7 +346,7 @@ static size_t DetermineQuality(j_decompress_ptr decompress_info)
     }
   }
 
-  return (size_t) quality < 85 ? quality : 85;
+  return quality;
 }
 
 static boolean DecompressJpeg(j_decompress_ptr decompress_info, ClientData *client_data)
@@ -795,8 +797,8 @@ static void JpegOptimizer_Compress(ClientData *client_data, const MagickBooleanT
   struct jpeg_error_mgr
     jpeg_error;
 
-  client_data->progressive = progressive != MagickFalse ? TRUE : FALSE;
-  client_data->lossless = lossless != MagickFalse ? TRUE : FALSE;
+  client_data->progressive = (boolean) progressive != MagickFalse ? TRUE : FALSE;
+  client_data->lossless = (boolean) lossless != MagickFalse ? TRUE : FALSE;
   client_data->quality = quality;
 
   (void) memset(&decompress_info, 0, sizeof(decompress_info));
