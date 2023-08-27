@@ -1066,7 +1066,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_CompositeGravity(Image *instance, const Im
   SetGeometry(reference, &geometry);
   geometry.x = x;
   geometry.y = y;
-  GravityAdjustGeometry(instance->columns, instance->rows, gravity, &geometry);
+  GravityAdjustGeometry(instance->columns, instance->rows, (GravityType) gravity, &geometry);
   MagickImage_Composite(instance, reference, geometry.x, geometry.y, compose, channels, exception);
 }
 
@@ -1311,7 +1311,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_EvaluateGeometry(Image *instance, const si
   if (cropImage != (Image *) NULL)
   {
     SetChannelMask(cropImage, channels);
-    EvaluateImage(cropImage, evaluateOperator, value, exceptionInfo);
+    EvaluateImage(cropImage, (const MagickEvaluateOperator) evaluateOperator, value, exceptionInfo);
     RestoreChannelMask(cropImage);
     CompositeImage(instance, cropImage, instance->alpha_trait == BlendPixelTrait ? OverCompositeOp : CopyCompositeOp, MagickFalse, geometry->x, geometry->y, exceptionInfo);
     DestroyImage(cropImage);
@@ -1607,7 +1607,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
 MAGICK_NATIVE_EXPORT void MagickImage_ImportPixels(Image *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *map, const size_t storageType, const void *data, const size_t offsetInBytes, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
-  (void) ImportImagePixels(instance, x, y, width, height, map, storageType, ((const unsigned char *) data) + offsetInBytes, exceptionInfo);
+  (void) ImportImagePixels(instance, x, y, width, height, map, (StorageType) storageType, ((const unsigned char *) data) + offsetInBytes, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
