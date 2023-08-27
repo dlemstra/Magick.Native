@@ -66,7 +66,7 @@ MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_MimeType_Get(const MagickInfo 
 
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Module_Get(const MagickInfo *instance)
 {
-  return instance->module;
+  return instance->magick_module;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsMultipleFrames_Get(const MagickInfo *instance)
