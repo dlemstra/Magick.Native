@@ -10,7 +10,7 @@ MAGICK_NATIVE_EXPORT ImageInfo *MagickSettings_Create(void);
 
 MAGICK_NATIVE_EXPORT void MagickSettings_Dispose(ImageInfo *);
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_AntiAlias_Get(const ImageInfo *);
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_AntiAlias_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_AntiAlias_Set(ImageInfo *, const MagickBooleanType);
 
 MAGICK_NATIVE_EXPORT PixelInfo *MagickSettings_BackgroundColor_Get(const ImageInfo *);
@@ -25,13 +25,13 @@ MAGICK_NATIVE_EXPORT void MagickSettings_ColorType_Set(ImageInfo *, const size_t
 MAGICK_NATIVE_EXPORT size_t MagickSettings_Compression_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Compression_Set(ImageInfo *, const size_t);
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Debug_Get(const ImageInfo *);
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_Debug_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Debug_Set(ImageInfo *, const MagickBooleanType);
 
 MAGICK_NATIVE_EXPORT const char *MagickSettings_Density_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Density_Set(ImageInfo *, const char *);
 
-MAGICK_NATIVE_EXPORT const size_t MagickSettings_Depth_Get(const ImageInfo *);
+MAGICK_NATIVE_EXPORT size_t MagickSettings_Depth_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Depth_Set(ImageInfo *, const size_t);
 
 MAGICK_NATIVE_EXPORT size_t MagickSettings_Endian_Get(const ImageInfo *);
@@ -46,13 +46,13 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Format_Set(ImageInfo *, const char *);
 MAGICK_NATIVE_EXPORT const char *MagickSettings_Font_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Font_Set(ImageInfo *, const char *);
 
-MAGICK_NATIVE_EXPORT const double MagickSettings_FontPointsize_Get(const ImageInfo *);
+MAGICK_NATIVE_EXPORT double MagickSettings_FontPointsize_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_FontPointsize_Set(ImageInfo *, const double);
 
-MAGICK_NATIVE_EXPORT const size_t MagickSettings_Interlace_Get(const ImageInfo *);
+MAGICK_NATIVE_EXPORT size_t MagickSettings_Interlace_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Interlace_Set(ImageInfo *, const size_t);
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Monochrome_Get(ImageInfo *);
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_Monochrome_Get(ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_Monochrome_Set(ImageInfo *, const MagickBooleanType);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_Verbose_Get(const ImageInfo *);

@@ -15,7 +15,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Dispose(ImageInfo *instance)
   DestroyImageInfo(instance);
 }
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_AntiAlias_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_AntiAlias_Get(const ImageInfo *instance)
 {
   return instance->antialias;
 }
@@ -66,7 +66,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Compression_Set(ImageInfo *instance, co
   instance->compression = (CompressionType) value;
 }
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Debug_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_Debug_Get(const ImageInfo *instance)
 {
   return instance->debug;
 }
@@ -86,7 +86,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Density_Set(ImageInfo *instance, const 
   CloneString(&instance->density, value);
 }
 
-MAGICK_NATIVE_EXPORT const size_t MagickSettings_Depth_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT size_t MagickSettings_Depth_Get(const ImageInfo *instance)
 {
   return instance->depth;
 }
@@ -145,7 +145,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Font_Set(ImageInfo *instance, const cha
     instance->font = ConstantString(value);
 }
 
-MAGICK_NATIVE_EXPORT const double MagickSettings_FontPointsize_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT double MagickSettings_FontPointsize_Get(const ImageInfo *instance)
 {
   return instance->pointsize;
 }
@@ -155,7 +155,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_FontPointsize_Set(ImageInfo *instance, 
   instance->pointsize = value;
 }
 
-MAGICK_NATIVE_EXPORT const size_t MagickSettings_Interlace_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT size_t MagickSettings_Interlace_Get(const ImageInfo *instance)
 {
   return (size_t) instance->interlace;
 }
@@ -165,7 +165,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Interlace_Set(ImageInfo *instance, cons
   instance->interlace = (InterlaceType) value;
 }
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Monochrome_Get(ImageInfo *instance)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_Monochrome_Get(ImageInfo *instance)
 {
   return instance->monochrome;
 }
