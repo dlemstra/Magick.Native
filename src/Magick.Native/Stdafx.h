@@ -6,7 +6,7 @@
 
 #if defined(MAGICK_NATIVE_WINDOWS)
 #pragma warning(disable : 4061) // switch of enum is not explicitly handled by a case label
-#pragma warning(disable : 4820) // bytes padding added after data member 
+#pragma warning(disable : 4820) // bytes padding added after data member
 #pragma warning(disable : 5045) // compiler will insert Spectre mitigation
 #endif
 
