@@ -6,7 +6,7 @@
 
 MAGICK_NATIVE_EXPORT OffsetInfo *OffsetInfo_Create(void)
 {
-  return AcquireMagickMemory(sizeof(OffsetInfo));
+  return (OffsetInfo *) AcquireMagickMemory(sizeof(OffsetInfo));
 }
 
 MAGICK_NATIVE_EXPORT void OffsetInfo_Dispose(OffsetInfo *instance)
