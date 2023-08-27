@@ -106,7 +106,7 @@ static void JpegErrorHandler(j_common_ptr jpeg_info)
 
   if (client_data->error_message == (char *) NULL)
   {
-    client_data->error_message = malloc(JMSG_LENGTH_MAX * sizeof(*client_data->error_message));
+    client_data->error_message = (char *) malloc(JMSG_LENGTH_MAX * sizeof(*client_data->error_message));
     if (client_data->error_message != (char *) NULL)
       (jpeg_info->err->format_message)(jpeg_info, client_data->error_message);
   }
@@ -357,7 +357,7 @@ static boolean DecompressJpeg(j_decompress_ptr decompress_info, ClientData *clie
   jpeg_start_decompress(decompress_info);
 
   size = sizeof(JSAMPROW) * decompress_info->output_height;
-  client_data->buffer = malloc(size);
+  client_data->buffer = (JSAMPARRAY) malloc(size);
   if (client_data->buffer == (JSAMPARRAY) NULL)
     return FALSE;
   (void) memset(client_data->buffer, 0, size);
@@ -366,7 +366,7 @@ static boolean DecompressJpeg(j_decompress_ptr decompress_info, ClientData *clie
   width = sizeof(JSAMPLE) * decompress_info->output_width * decompress_info->out_color_components;
   for (i = 0; i < decompress_info->output_height; i++)
   {
-    client_data->buffer[i] = malloc(width);
+    client_data->buffer[i] = (JSAMPROW) malloc(width);
     if (client_data->buffer[i] == (JSAMPROW) NULL)
       return FALSE;
   }
@@ -410,7 +410,7 @@ static inline Marker *CreateMarker(ClientData *client_data, int code)
   if (client_data->markers_count == MaxMarkers)
     return (Marker *) NULL;
 
-  marker = malloc(sizeof(*marker));
+  marker = (Marker *) malloc(sizeof(*marker));
   if (marker == (Marker *) NULL)
     return (Marker *) NULL;
 
@@ -453,7 +453,7 @@ static boolean ReadMarker(j_decompress_ptr jpeg_info)
   marker = FindMarker(client_data, jpeg_info->unread_marker);
   if (marker != (Marker *) NULL)
   {
-    new_buffer = realloc(marker->buffer, marker->length + length);
+    new_buffer = (JOCTET *) realloc(marker->buffer, marker->length + length);
     if (new_buffer == (JOCTET *) NULL)
       return FALSE;
 
@@ -469,7 +469,7 @@ static boolean ReadMarker(j_decompress_ptr jpeg_info)
       return FALSE;
 
     marker->length = length;
-    marker->buffer = malloc(length * sizeof(*marker->buffer));
+    marker->buffer =(JOCTET *) malloc(length * sizeof(*marker->buffer));
     if (marker->buffer == (JOCTET *) NULL)
       return FALSE;
 
