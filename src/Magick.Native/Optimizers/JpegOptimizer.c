@@ -346,7 +346,7 @@ static size_t DetermineQuality(j_decompress_ptr decompress_info)
     }
   }
 
-  return quality;
+  return (size_t) quality < 85 ? quality : 85;
 }
 
 static boolean DecompressJpeg(j_decompress_ptr decompress_info, ClientData *client_data)
