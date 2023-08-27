@@ -4,7 +4,7 @@
 #include "Stdafx.h"
 #include "OpenCLDevice.h"
 
-MAGICK_NATIVE_EXPORT const MagickCLDeviceType OpenCLDevice_DeviceType_Get(const MagickCLDevice device)
+MAGICK_NATIVE_EXPORT MagickCLDeviceType OpenCLDevice_DeviceType_Get(const MagickCLDevice device)
 {
   return GetOpenCLDeviceType(device);
 }

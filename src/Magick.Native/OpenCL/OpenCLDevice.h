@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-MAGICK_NATIVE_EXPORT const MagickCLDeviceType OpenCLDevice_DeviceType_Get(const MagickCLDevice);
+MAGICK_NATIVE_EXPORT MagickCLDeviceType OpenCLDevice_DeviceType_Get(const MagickCLDevice);
 
 MAGICK_NATIVE_EXPORT double OpenCLDevice_BenchmarkScore_Get(const MagickCLDevice);
 
