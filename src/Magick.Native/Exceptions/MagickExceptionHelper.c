@@ -34,9 +34,7 @@ MAGICK_NATIVE_EXPORT const ExceptionInfo *MagickExceptionHelper_Related(const Ex
     *exceptions;
 
   size_t
-    count;
-
-  ssize_t
+    count,
     i,
     j,
     length;
@@ -46,7 +44,7 @@ MAGICK_NATIVE_EXPORT const ExceptionInfo *MagickExceptionHelper_Related(const Ex
   if (exceptions == (LinkedListInfo *) NULL)
     return (ExceptionInfo *) NULL;
 
-  length = (ssize_t) GetNumberOfElementsInLinkedList(exceptions);
+  length = GetNumberOfElementsInLinkedList(exceptions);
   for (i = 0; i < length; i++)
   {
     MagickBooleanType
