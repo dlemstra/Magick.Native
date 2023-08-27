@@ -1732,7 +1732,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Magnify(const Image *instance, Exception
   return image;
 }
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickImage_Map(Image *instance, const Image *image, const QuantizeInfo *settings, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_Map(Image *instance, const Image *image, const QuantizeInfo *settings, ExceptionInfo **exception)
 {
   MagickBooleanType
     result;

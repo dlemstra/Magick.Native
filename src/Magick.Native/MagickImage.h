@@ -348,7 +348,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_LocalContrast(Image *, const double, con
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Magnify(const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT const MagickBooleanType MagickImage_Map(Image *, const Image *, const QuantizeInfo *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_Map(Image *, const Image *, const QuantizeInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_MeanShift(const Image *, const size_t, const size_t, const double, ExceptionInfo **);
 
