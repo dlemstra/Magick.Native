@@ -1604,7 +1604,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_ImportPixels(Image *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *map, const size_t storageType, const void *data, const size_t offsetInBytes, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_ImportPixels(Image *instance, const ssize_t x, const ssize_t y, const size_t width, const size_t height, const char *map, const size_t storageType, const void *data, const size_t offsetInBytes, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
   (void) ImportImagePixels(instance, x, y, width, height, map, (StorageType) storageType, ((const unsigned char *) data) + offsetInBytes, exceptionInfo);
