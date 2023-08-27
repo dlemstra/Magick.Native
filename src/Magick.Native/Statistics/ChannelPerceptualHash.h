@@ -6,9 +6,9 @@
 extern "C" {
 #endif
 
-MAGICK_NATIVE_EXPORT const double ChannelPerceptualHash_GetHclpHuPhash(const ChannelPerceptualHash *, const size_t);
+MAGICK_NATIVE_EXPORT double ChannelPerceptualHash_GetHclpHuPhash(const ChannelPerceptualHash *, const size_t);
 
-MAGICK_NATIVE_EXPORT const double ChannelPerceptualHash_GetSrgbHuPhash(const ChannelPerceptualHash *, const size_t);
+MAGICK_NATIVE_EXPORT double ChannelPerceptualHash_GetSrgbHuPhash(const ChannelPerceptualHash *, const size_t);
 
 #if defined(__cplusplus) || defined(c_plusplus)
 }
