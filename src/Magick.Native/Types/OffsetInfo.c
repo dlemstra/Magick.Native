@@ -14,12 +14,12 @@ MAGICK_NATIVE_EXPORT void OffsetInfo_Dispose(OffsetInfo *instance)
   RelinquishMagickMemory(instance);
 }
 
-MAGICK_NATIVE_EXPORT void OffsetInfo_SetX(OffsetInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void OffsetInfo_SetX(OffsetInfo *instance, const ssize_t value)
 {
   instance->x = value;
 }
 
-MAGICK_NATIVE_EXPORT void OffsetInfo_SetY(OffsetInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void OffsetInfo_SetY(OffsetInfo *instance, const ssize_t value)
 {
   instance->y = value;
 }
