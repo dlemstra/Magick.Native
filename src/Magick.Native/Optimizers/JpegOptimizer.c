@@ -605,7 +605,7 @@ static void TerminateDestination(j_compress_ptr compress_info)
     count;
 
   destination = (DestinationManager *) compress_info->dest;
-  count = (MaxBufferExtent - (int) destination->manager.free_in_buffer);
+  count = (MaxBufferExtent - destination->manager.free_in_buffer);
   if (count > 0)
   {
     if (destination->outputFile != (FILE *) NULL)
