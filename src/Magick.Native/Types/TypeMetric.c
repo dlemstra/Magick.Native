@@ -6,7 +6,7 @@
 
 MAGICK_NATIVE_EXPORT TypeMetric *TypeMetric_Create(void)
 {
-  return AcquireMagickMemory(sizeof(TypeMetric));
+  return (TypeMetric *) AcquireMagickMemory(sizeof(TypeMetric));
 }
 
 MAGICK_NATIVE_EXPORT void TypeMetric_Dispose(TypeMetric *instance)
