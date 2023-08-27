@@ -123,12 +123,12 @@ MAGICK_NATIVE_EXPORT void MagickImage_AnimationIterations_Set(Image *instance, c
   instance->iterations = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_AnimationTicksPerSecond_Get(const Image *instance)
+MAGICK_NATIVE_EXPORT ssize_t MagickImage_AnimationTicksPerSecond_Get(const Image *instance)
 {
   return instance->ticks_per_second;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_AnimationTicksPerSecond_Set(Image *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickImage_AnimationTicksPerSecond_Set(Image *instance, const ssize_t value)
 {
   instance->ticks_per_second = value;
 }
