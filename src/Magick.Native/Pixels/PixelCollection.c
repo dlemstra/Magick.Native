@@ -77,7 +77,7 @@ MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const siz
 MAGICK_NATIVE_EXPORT unsigned char *PixelCollection_ToByteArray(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *mapping, ExceptionInfo **exception)
 {
   ExportStart(unsigned char);
-  result = AcquireMagickMemory(length);
+  result = (unsigned char *) AcquireMagickMemory(length);
   if (result == (unsigned char *) NULL)
     return result;
   MAGICK_NATIVE_GET_EXCEPTION;
@@ -89,7 +89,7 @@ MAGICK_NATIVE_EXPORT unsigned char *PixelCollection_ToByteArray(const CacheView 
 MAGICK_NATIVE_EXPORT unsigned short *PixelCollection_ToShortArray(const CacheView *instance, const size_t x, const size_t y, const size_t width, const size_t height, const char *mapping, ExceptionInfo **exception)
 {
   ExportStart(unsigned short);
-  result = AcquireMagickMemory(length);
+  result = (unsigned short *) AcquireMagickMemory(length);
   if (result == (unsigned short *) NULL)
     return result;
   MAGICK_NATIVE_GET_EXCEPTION;
