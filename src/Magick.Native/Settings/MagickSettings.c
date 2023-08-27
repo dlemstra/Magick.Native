@@ -63,7 +63,7 @@ MAGICK_NATIVE_EXPORT size_t MagickSettings_Compression_Get(const ImageInfo *inst
 
 MAGICK_NATIVE_EXPORT void MagickSettings_Compression_Set(ImageInfo *instance, const size_t value)
 {
-  instance->compression = value;
+  instance->compression = (CompressionType) value;
 }
 
 MAGICK_NATIVE_EXPORT const MagickBooleanType MagickSettings_Debug_Get(const ImageInfo *instance)
@@ -103,7 +103,7 @@ MAGICK_NATIVE_EXPORT size_t MagickSettings_Endian_Get(const ImageInfo *instance)
 
 MAGICK_NATIVE_EXPORT void MagickSettings_Endian_Set(ImageInfo *instance, const size_t value)
 {
-  instance->endian = value;
+  instance->endian = (EndianType) value;
 }
 
 MAGICK_NATIVE_EXPORT const char *MagickSettings_Extract_Get(ImageInfo *instance)
