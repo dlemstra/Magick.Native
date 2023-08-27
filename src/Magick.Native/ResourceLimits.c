@@ -44,7 +44,7 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_ListLength_Set(const MagickSizeType lim
   SetMagickResourceLimit(ListLengthResource, limit);
 }
 
-MAGICK_NATIVE_EXPORT const MagickSizeType ResourceLimits_MaxMemoryRequest_Get(void)
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_MaxMemoryRequest_Get(void)
 {
   return (MagickSizeType) GetMaxMemoryRequest();
 }
