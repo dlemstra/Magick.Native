@@ -19,7 +19,9 @@ MAGICK_NATIVE_EXPORT const char *OpenCLDevice_Version_Get(const MagickCLDevice);
 
 MAGICK_NATIVE_EXPORT const KernelProfileRecord *OpenCLDevice_GetKernelProfileRecords(const MagickCLDevice, size_t *);
 
+#pragma warning(disable : 5266)
 MAGICK_NATIVE_EXPORT const KernelProfileRecord OpenCLDevice_GetKernelProfileRecord(const KernelProfileRecord *, const size_t);
+#pragma warning(default : 5266)
 
 MAGICK_NATIVE_EXPORT void OpenCLDevice_SetProfileKernels(const MagickCLDevice, const MagickBooleanType);
 
