@@ -539,7 +539,7 @@ static boolean ReadJpeg(j_decompress_ptr decompress_info, ClientData *client_dat
   {
     client_data->coefficients = jpeg_read_coefficients(decompress_info);
 
-    status = client_data->coefficients == (jvirt_barray_ptr *) NULL ? FALSE : TRUE;
+    status = (boolean) (client_data->coefficients == (jvirt_barray_ptr *) NULL ? FALSE : TRUE);
   }
 
   CloseSourceFile(source);
@@ -797,8 +797,8 @@ static void JpegOptimizer_Compress(ClientData *client_data, const MagickBooleanT
   struct jpeg_error_mgr
     jpeg_error;
 
-  client_data->progressive = (boolean) progressive != MagickFalse ? TRUE : FALSE;
-  client_data->lossless = (boolean) lossless != MagickFalse ? TRUE : FALSE;
+  client_data->progressive = (boolean) (progressive != MagickFalse ? TRUE : FALSE);
+  client_data->lossless = (boolean) (lossless != MagickFalse ? TRUE : FALSE);
   client_data->quality = quality;
 
   (void) memset(&decompress_info, 0, sizeof(decompress_info));
