@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT DrawingWand *DrawingWand_Create(Image *, const DrawInfo *);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Dispose(DrawingWand *);
@@ -169,3 +173,7 @@ MAGICK_NATIVE_EXPORT void DrawingWand_TextUnderColor(DrawingWand *, const PixelI
 MAGICK_NATIVE_EXPORT void DrawingWand_Translation(DrawingWand *, const double, const double, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Viewbox(DrawingWand *, const double, const double, const double, const double, ExceptionInfo **);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

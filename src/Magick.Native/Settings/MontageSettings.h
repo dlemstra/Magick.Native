@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT MontageInfo *MontageSettings_Create(void);
 
 MAGICK_NATIVE_EXPORT void MontageSettings_Dispose(MontageInfo *);
@@ -33,3 +37,7 @@ MAGICK_NATIVE_EXPORT void MontageSettings_SetTextureFileName(MontageInfo *, cons
 MAGICK_NATIVE_EXPORT void MontageSettings_SetTileGeometry(MontageInfo *, const char *);
 
 MAGICK_NATIVE_EXPORT void MontageSettings_SetTitle(MontageInfo *, const char *);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

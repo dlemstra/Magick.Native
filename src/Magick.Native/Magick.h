@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT const char *Magick_Delegates_Get(void);
 
 MAGICK_NATIVE_EXPORT const char *Magick_Features_Get(void);
@@ -25,3 +29,7 @@ MAGICK_NATIVE_EXPORT void Magick_SetLogEvents(const char *);
 MAGICK_NATIVE_EXPORT void Magick_SetRandomSeed(const unsigned long);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType Magick_SetOpenCLEnabled(const MagickBooleanType);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

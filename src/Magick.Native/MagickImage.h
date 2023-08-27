@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT Image *MagickImage_Create(const ImageInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_Dispose(Image *);
@@ -527,3 +531,7 @@ MAGICK_NATIVE_EXPORT unsigned char *MagickImage_WriteBlob(Image *, const ImageIn
 MAGICK_NATIVE_EXPORT void MagickImage_WriteFile(Image *, const ImageInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *, ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, const CustomStreamHandler, ExceptionInfo **);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

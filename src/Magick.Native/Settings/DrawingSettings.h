@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT DrawInfo *DrawingSettings_Create(void);
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_Dispose(DrawInfo *);
@@ -81,3 +85,7 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokeDashArray(DrawInfo *, const d
 MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokePattern(DrawInfo *, const Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_SetText(DrawInfo *, const char *);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

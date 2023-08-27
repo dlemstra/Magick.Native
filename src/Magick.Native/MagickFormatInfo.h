@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT char **MagickFormatInfo_CreateList(size_t *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickFormatInfo_DisposeList(char **, const size_t);
@@ -31,3 +35,7 @@ MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoByName(const char
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoWithBlob(const unsigned char *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickFormatInfo_Unregister(const char *format);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

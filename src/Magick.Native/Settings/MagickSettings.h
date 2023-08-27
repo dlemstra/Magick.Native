@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT ImageInfo *MagickSettings_Create(void);
 
 MAGICK_NATIVE_EXPORT void MagickSettings_Dispose(ImageInfo *);
@@ -75,3 +79,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_SetScenes(ImageInfo *, const char *);
 MAGICK_NATIVE_EXPORT void MagickSettings_SetScene(ImageInfo *, const size_t);
 
 MAGICK_NATIVE_EXPORT void MagickSettings_SetSize(ImageInfo *, const char *);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

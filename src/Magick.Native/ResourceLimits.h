@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Area_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Area_Set(const MagickSizeType);
 
@@ -26,3 +30,7 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType);
 MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double);
 
 MAGICK_NATIVE_EXPORT void ResourceLimits_SetMaxMemoryRequest(const char *, ExceptionInfo **);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

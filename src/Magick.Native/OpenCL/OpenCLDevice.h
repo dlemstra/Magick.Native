@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 MAGICK_NATIVE_EXPORT const MagickCLDeviceType OpenCLDevice_DeviceType_Get(const MagickCLDevice);
 
 MAGICK_NATIVE_EXPORT double OpenCLDevice_BenchmarkScore_Get(const MagickCLDevice);
@@ -18,3 +22,7 @@ MAGICK_NATIVE_EXPORT const KernelProfileRecord *OpenCLDevice_GetKernelProfileRec
 MAGICK_NATIVE_EXPORT const KernelProfileRecord OpenCLDevice_GetKernelProfileRecord(const KernelProfileRecord *, const size_t);
 
 MAGICK_NATIVE_EXPORT void OpenCLDevice_SetProfileKernels(const MagickCLDevice, const MagickBooleanType);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif

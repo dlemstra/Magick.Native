@@ -2,6 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 #pragma once
 
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+
 #define MAGICK_NATIVE_GET_EXCEPTION \
   { \
     ExceptionInfo \
@@ -34,3 +38,7 @@ MAGICK_NATIVE_EXPORT const ExceptionInfo *MagickExceptionHelper_Related(const Ex
 MAGICK_NATIVE_EXPORT size_t MagickExceptionHelper_RelatedCount(const ExceptionInfo *);
 
 MAGICK_NATIVE_EXPORT ExceptionType MagickExceptionHelper_Severity(const ExceptionInfo *);
+
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif
