@@ -184,7 +184,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_BrightnessContrast(Image *, const double, 
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_CannyEdge(const Image *, const double, const double, const double, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ChannelOffset(const Image *, const size_t);
+MAGICK_NATIVE_EXPORT ssize_t MagickImage_ChannelOffset(const Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Charcoal(const Image *, const double, const double, ExceptionInfo **);
 

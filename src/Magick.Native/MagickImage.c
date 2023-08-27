@@ -895,7 +895,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_CannyEdge(const Image *instance, const d
   return image;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ChannelOffset(const Image *instance, const size_t channel)
+MAGICK_NATIVE_EXPORT ssize_t MagickImage_ChannelOffset(const Image *instance, const size_t channel)
 {
   return instance->channel_map[channel].offset;
 }
