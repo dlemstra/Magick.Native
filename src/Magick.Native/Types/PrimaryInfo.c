@@ -6,7 +6,7 @@
 
 MAGICK_NATIVE_EXPORT PrimaryInfo *PrimaryInfo_Create(void)
 {
-  return AcquireMagickMemory(sizeof(PrimaryInfo));
+  return (PrimaryInfo *) AcquireMagickMemory(sizeof(PrimaryInfo));
 }
 
 MAGICK_NATIVE_EXPORT void PrimaryInfo_Dispose(PrimaryInfo *instance)
