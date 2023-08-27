@@ -13,7 +13,7 @@ MAGICK_NATIVE_EXPORT MontageInfo *MontageSettings_Create(void)
     *image_info;
 
   image_info = AcquireImageInfo();
-  montage_info = AcquireMagickMemory(sizeof(*montage_info));
+  montage_info = (MontageInfo *) AcquireMagickMemory(sizeof(*montage_info));
   GetMontageInfo(image_info, montage_info);
   DestroyImageInfo(image_info);
   return montage_info;
