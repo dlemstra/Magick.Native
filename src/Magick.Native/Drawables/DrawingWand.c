@@ -167,7 +167,7 @@ MAGICK_NATIVE_EXPORT void DrawingWand_FontFamily(DrawingWand *instance, const ch
   DrawSetFontFamily(instance, family);
   DrawSetFontStyle(instance, (const StyleType) style);
   DrawSetFontWeight(instance, weight);
-  DrawSetFontStretch(instance, stretch);
+  DrawSetFontStretch(instance, (const StretchType) stretch);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
