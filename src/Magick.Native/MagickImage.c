@@ -1058,7 +1058,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Composite(Image *instance, const Image *re
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_CompositeGravity(Image *instance, const Image *reference, const size_t gravity, const size_t x, const size_t y, const size_t compose, const size_t channels, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_CompositeGravity(Image *instance, const Image *reference, const size_t gravity, const ssize_t x, const ssize_t y, const size_t compose, const size_t channels, ExceptionInfo **exception)
 {
   RectangleInfo
     geometry;
