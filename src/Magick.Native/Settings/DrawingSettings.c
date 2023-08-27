@@ -45,7 +45,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_FillRule_Get(const DrawInfo *instanc
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_FillRule_Set(DrawInfo *instance, const size_t value)
 {
-  instance->fill_rule = value;
+  instance->fill_rule = (FillRule) value;
 }
 
 MAGICK_NATIVE_EXPORT const char *DrawingSettings_Font_Get(const DrawInfo *instance)
@@ -136,7 +136,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineCap_Get(const DrawInfo *in
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineCap_Set(DrawInfo *instance, const size_t value)
 {
-  instance->linecap = value;
+  instance->linecap = (LineCap) value;
 }
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineJoin_Get(const DrawInfo *instance)
@@ -146,7 +146,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineJoin_Get(const DrawInfo *i
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineJoin_Set(DrawInfo *instance, const size_t value)
 {
-  instance->linejoin = value;
+  instance->linejoin = (LineJoin) value;
 }
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeMiterLimit_Get(const DrawInfo *instance)
@@ -186,7 +186,7 @@ MAGICK_NATIVE_EXPORT size_t DrawingSettings_TextDirection_Get(const DrawInfo *in
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_TextDirection_Set(DrawInfo *instance, const size_t value)
 {
-  instance->direction = value;
+  instance->direction = (DirectionType) value;
 }
 
 MAGICK_NATIVE_EXPORT const char *DrawingSettings_TextEncoding_Get(const DrawInfo *instance)
@@ -276,7 +276,7 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokeDashArray(DrawInfo *instance,
 
   instance->dash_pattern = (double *) RelinquishMagickMemory(instance->dash_pattern);
   isTerminated = (length > 0 && value[length - 1] == 0.0) ? MagickTrue : MagickFalse;
-  instance->dash_pattern = AcquireMagickMemory((length + (isTerminated == MagickFalse ? 1 : 0)) * sizeof(double));
+  instance->dash_pattern = (double *) AcquireMagickMemory((length + (isTerminated == MagickFalse ? 1 : 0)) * sizeof(double));
   if (length > 0)
     memcpy(instance->dash_pattern, value, length * sizeof(double));
   if (isTerminated == MagickFalse)
