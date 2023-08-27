@@ -68,7 +68,7 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_FontFamily_Set(DrawInfo *instance, con
   CloneString(&instance->family, value);
 }
 
-MAGICK_NATIVE_EXPORT const double DrawingSettings_FontPointsize_Get(const DrawInfo *instance)
+MAGICK_NATIVE_EXPORT double DrawingSettings_FontPointsize_Get(const DrawInfo *instance)
 {
   return instance->pointsize;
 }

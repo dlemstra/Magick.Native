@@ -25,6 +25,9 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_Font_Set(DrawInfo *, const char *);
 MAGICK_NATIVE_EXPORT const char *DrawingSettings_FontFamily_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_FontFamily_Set(DrawInfo *, const char *);
 
+MAGICK_NATIVE_EXPORT double DrawingSettings_FontPointsize_Get(const DrawInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_FontPointsize_Set(DrawInfo *, const double);
+
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_FontStyle_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_FontStyle_Set(DrawInfo *, const size_t);
 
