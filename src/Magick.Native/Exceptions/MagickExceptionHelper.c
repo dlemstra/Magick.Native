@@ -4,7 +4,7 @@
 #include "Stdafx.h"
 #include "MagickExceptionHelper.h"
 
-static inline size_t AreExceptionsEqual(const ExceptionInfo *a, const ExceptionInfo *b)
+static inline MagickBooleanType AreExceptionsEqual(const ExceptionInfo *a, const ExceptionInfo *b)
 {
   if ((a->severity != b->severity) ||
     (LocaleCompare(a->reason, b->reason) != 0) ||
