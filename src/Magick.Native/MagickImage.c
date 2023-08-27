@@ -1406,8 +1406,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Frame(const Image *instance, const Recta
   Image
     *image;
 
-  info.x = geometry->width;
-  info.y = geometry->height;
+  info.x = (ssize_t) geometry->width;
+  info.y = (ssize_t) geometry->height;
   info.width = instance->columns + (((size_t) info.x) << 1);
   info.height = instance->rows + (((size_t) info.y) << 1);
   info.outer_bevel = geometry->x;
