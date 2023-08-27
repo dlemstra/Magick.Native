@@ -360,7 +360,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Modulate(Image *, const char *, ExceptionI
 
 MAGICK_NATIVE_EXPORT ChannelMoments *MagickImage_Moments(const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Morphology(Image *, const size_t, const char *, const size_t, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_Morphology(Image *, const size_t, const char *, const size_t, const ssize_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_MotionBlur(const Image *, const double, const double, const double, ExceptionInfo **);
 
