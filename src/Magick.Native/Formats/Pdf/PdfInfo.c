@@ -39,5 +39,5 @@ MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *fileName, const char *
   if (status == MagickFalse)
     return 0;
 
-  return StringToInteger(message);
+  return (size_t) StringToInteger(message);
 }

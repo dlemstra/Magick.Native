@@ -17,7 +17,7 @@ static inline wchar_t *create_wchar_string(const char *utf8)
   count = MultiByteToWideChar(CP_UTF8, 0, utf8, -1, NULL, 0);
   if (count == 0)
     return (wchar_t *) NULL;
-  wide = (wchar_t *) NTAcquireQuantumMemory(count, sizeof(*wide));
+  wide = (wchar_t *) NTAcquireQuantumMemory((size_t) count, sizeof(*wide));
   if (wide != (wchar_t *) NULL && MultiByteToWideChar(CP_UTF8, 0, utf8, -1, wide, count) == 0)
     wide = (wchar_t *) RelinquishMagickMemory(wide);
   return wide;
