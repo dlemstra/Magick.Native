@@ -216,7 +216,7 @@ MAGICK_NATIVE_EXPORT double MagickImage_CompareDistortion(Image *, Image *, cons
 
 MAGICK_NATIVE_EXPORT void MagickImage_Composite(Image *, const Image *, const ssize_t, const ssize_t, const size_t, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_CompositeGraviy(Image *, const Image *, const size_t, const ssize_t, const ssize_t, const size_t, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_CompositeGravity(Image *, const Image *, const size_t, const ssize_t, const ssize_t, const size_t, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_ConnectedComponents(const Image *, const size_t, CCObjectInfo **, ExceptionInfo **);
 
@@ -270,11 +270,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Extent(const Image *, const char *, cons
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Flip(const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_FloodFillAlpha(Image *, const DrawInfo *, const ssize_t, const ssize_t, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
-
-MAGICK_NATIVE_EXPORT void MagickImage_FloodFillColor(Image *, const DrawInfo *, const PixelInfo *, const ssize_t, const ssize_t, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
-
-MAGICK_NATIVE_EXPORT void MagickImage_FloodFillImage(Image *, const DrawInfo *, const Image *, const ssize_t, const ssize_t, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_FloodFill(Image *, const DrawInfo *, const ssize_t, const ssize_t, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Flop(const Image *, ExceptionInfo **);
 
@@ -504,7 +500,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Tint(const Image *, const char *, const 
 
 MAGICK_NATIVE_EXPORT void MagickImage_Transparent(Image *, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_TransparentChrome(Image *, const PixelInfo *, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_TransparentChroma(Image *, const PixelInfo *, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Transpose(Image *, ExceptionInfo **);
 

@@ -15,6 +15,12 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_Disk_Set(const MagickSizeType);
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Height_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Height_Set(const MagickSizeType);
 
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_ListLength_Get(void);
+MAGICK_NATIVE_EXPORT void ResourceLimits_ListLength_Set(const MagickSizeType);
+
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_MaxMemoryRequest_Get(void);
+MAGICK_NATIVE_EXPORT void ResourceLimits_MaxMemoryRequest_Set(const MagickSizeType, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Memory_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Memory_Set(const MagickSizeType);
 
@@ -28,8 +34,6 @@ MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Width_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType);
 
 MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double);
-
-MAGICK_NATIVE_EXPORT void ResourceLimits_SetMaxMemoryRequest(const char *, ExceptionInfo **);
 
 #if defined(__cplusplus) || defined(c_plusplus)
 }
