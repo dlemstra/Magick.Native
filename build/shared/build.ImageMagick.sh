@@ -26,7 +26,7 @@ buildImageMagick() {
         unset disable_openmp
     fi
 
-    $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $disable_openmp $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+    $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --with-rsvg --with-jxl --enable-64bit-channel-masks --with-quantum-depth=$depth --enable-hdri=$hdri $disable_openmp $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
     $MAKE install
 }
 
@@ -44,6 +44,12 @@ cd ImageMagick
 if [ "$config-$arch" == "linux-x64" ]; then
     # Disable getentropy because this requires GLIBC_2.25.
     sed -i 's/MAGICKCORE_HAVE_GETENTROPY/DISABLED_MAGICKCORE_HAVE_GETENTROPY/g' MagickCore/random.c
+fi
+
+if ! [ -z "$CXX" ]; then
+    export CC=$CXX
+else
+    export CC=g++
 fi
 
 autoreconf -fiv
