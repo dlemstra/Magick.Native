@@ -115,6 +115,7 @@ create_notice()
 
             for fileName in $fileNames
             do
+                fileName="$dir/$fileName"
                 if [ ! -f "$fileName" ]; then
                     echo -e "Unable to find '$fileName'"
                 else
