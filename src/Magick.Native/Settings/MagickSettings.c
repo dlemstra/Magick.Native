@@ -129,7 +129,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Format_Set(ImageInfo *instance, const c
   if (value == (const char *) NULL)
     *instance->magick = '\0';
   else
-    CopyMagickString(instance->magick, value, MaxTextExtent);
+    CopyMagickString(instance->magick, value, MagickPathExtent);
 }
 
 MAGICK_NATIVE_EXPORT const char *MagickSettings_Font_Get(const ImageInfo *instance)
