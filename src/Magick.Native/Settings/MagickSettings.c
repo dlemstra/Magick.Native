@@ -195,7 +195,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_SetFileName(ImageInfo *instance, const 
   if (value == (const char *) NULL)
     *instance->filename = '\0';
   else
-    CopyMagickString(instance->filename, value, MaxTextExtent);
+    CopyMagickString(instance->filename, value, MagickPathExtent);
   SetImageOption(instance, "filename", value);
 }
 
