@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.8...3.22)
 
-project(${LIBRARY_NAME} LANGUAGES CXX)
+if (PLATFORM STREQUAL "WASM")
+    project(${LIBRARY_NAME})
+else()
+    project(${LIBRARY_NAME} LANGUAGES CXX)
+endif()
 
 set(OPENMP false BOOL)
 

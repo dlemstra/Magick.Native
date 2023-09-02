@@ -15,6 +15,7 @@ buildImageMagick() {
     local hdri=no
     local depth=8
     local disable_openmp=--disable-openmp
+    local enable_64bit_channel_masks=--enable-64bit-channel-masks
     if [ "$quantum" == "Q16" ]; then
         depth=16
     elif [ "$quantum" == "Q16-HDRI" ]; then
@@ -25,8 +26,11 @@ buildImageMagick() {
     if [ "$openmp" == "OpenMP" ]; then
         unset disable_openmp
     fi
+    if [ "$config" == "wasm" ]; then
+        unset enable_64bit_channel_masks
+    fi
 
-    $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --with-rsvg --with-jxl --enable-64bit-channel-masks --with-quantum-depth=$depth --enable-hdri=$hdri $disable_openmp $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
+    $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $enable_64bit_channel_masks $disable_openmp $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
     $MAKE install
 }
 
