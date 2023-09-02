@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8...3.22)
 
-project(${LIBRARY_NAME})
+project(${LIBRARY_NAME} LANGUAGES CXX)
 
 set(OPENMP false BOOL)
 
