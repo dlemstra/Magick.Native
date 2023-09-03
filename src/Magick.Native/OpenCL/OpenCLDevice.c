@@ -39,9 +39,13 @@ MAGICK_NATIVE_EXPORT const KernelProfileRecord *OpenCLDevice_GetKernelProfileRec
   return GetOpenCLKernelProfileRecords(device, length);
 }
 
-#pragma warning(disable : 5266)
+#if defined(MAGICK_NATIVE_WINDOWS)
+#  pragma warning(disable : 5266)
+#endif
 MAGICK_NATIVE_EXPORT const KernelProfileRecord OpenCLDevice_GetKernelProfileRecord(const KernelProfileRecord *records, const size_t index)
-#pragma warning(default : 5266)
+#if defined(MAGICK_NATIVE_WINDOWS)
+#  pragma warning(default : 5266)
+#endif
 {
   return records[index];
 }
