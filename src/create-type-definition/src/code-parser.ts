@@ -116,7 +116,6 @@ export class CodeParser {
             case 'CustomStreamSeeker':
             case 'CustomStreamTeller':
             case 'ExceptionType':
-            case 'float':
             case 'MagickBooleanType':
             case 'MagickCLDevice':
             case 'MagickCLDeviceType':
