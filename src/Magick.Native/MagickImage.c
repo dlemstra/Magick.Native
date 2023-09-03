@@ -311,7 +311,7 @@ MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *instance,
 
 MAGICK_NATIVE_EXPORT void MagickImage_ColormapSize_Set(Image *instance, const ssize_t value, ExceptionInfo **exception)
 {
-  if (value < 0 || value > MaxColormapSize)
+  if (value < 0 || value > (const ssize_t) MaxColormapSize)
     return;
 
   MAGICK_NATIVE_GET_EXCEPTION;
