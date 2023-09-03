@@ -10,24 +10,30 @@
 #endif
 
 #if defined GLIBC_SYMVER_VERSION
-asm(".symver old_powf, powf@GLIBC_" GLIBC_SYMVER_VERSION);
+#if defined(__cplusplus) || defined(c_plusplus)
+extern "C" {
+#endif
+__asm__(".symver old_powf, powf@GLIBC_" GLIBC_SYMVER_VERSION);
 float old_powf(float base, float exponent);
-MAGICK_NATIVE_EXPORT float powf(float base, float exponent)
+float powf(float base, float exponent)
 {
   return old_powf(base, exponent);
 }
 
-asm(".symver old_logf, logf@GLIBC_" GLIBC_SYMVER_VERSION);
+__asm__(".symver old_logf, logf@GLIBC_" GLIBC_SYMVER_VERSION);
 float old_logf(float arg);
-MAGICK_NATIVE_EXPORT float logf(float arg)
+float logf(float arg)
 {
   return old_logf(arg);
 }
 
-asm(".symver old_log2f, log2f@GLIBC_" GLIBC_SYMVER_VERSION);
+__asm__(".symver old_log2f, log2f@GLIBC_" GLIBC_SYMVER_VERSION);
 float old_log2f(float arg);
-MAGICK_NATIVE_EXPORT float log2f(float arg)
+float log2f(float arg)
 {
   return old_log2f(arg);
 }
+#if defined(__cplusplus) || defined(c_plusplus)
+}
+#endif
 #endif
