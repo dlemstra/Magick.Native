@@ -48,12 +48,6 @@ buildNative() {
     cd ..
 }
 
-if ! [ -z "$CXX" ]; then
-    export CC=$CXX
-else
-    export CC=g++
-fi
-
 for quantum in ${QUANTUMS[@]}; do
     buildNative $quantum
 done

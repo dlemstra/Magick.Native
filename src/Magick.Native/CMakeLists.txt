@@ -30,6 +30,9 @@ else()
     file(GLOB_RECURSE CMAKE_FILES **/CMakeFiles/*.c)
     list(REMOVE_ITEM ALL_FILES ${CMAKE_FILES})
 
+    file(GLOB_RECURSE CFILES "${CMAKE_SOURCE_DIR}/*.c")
+    SET_SOURCE_FILES_PROPERTIES(${CFILES} PROPERTIES LANGUAGE CXX)
+
     set(LIBBZIP2 ${LIB_DIR}/libbz2.a)
     set(LIBCAIRO ${LIB_DIR}/libcairo.a ${LIB_DIR}/libpixman-1.a)
     set(LIBFONTCONFIG ${LIB_DIR}/libfontconfig.a)
