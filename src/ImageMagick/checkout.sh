@@ -158,7 +158,7 @@ declare -r commitDate=`git log -1 --format=%ci`
 echo "Set latest commit date as $commitDate"
 cd ..
 
-clone_date 'aom' "ae80c573b5f13b2cdd3f64dd64c405d809417d85"
+clone_commit 'aom' "ae80c573b5f13b2cdd3f64dd64c405d809417d85"
 clone_date 'brotli' "$commitDate"
 clone_date 'de265' "$commitDate"
 clone_date 'exr' "$commitDate"
