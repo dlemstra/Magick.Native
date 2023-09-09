@@ -68,7 +68,7 @@ add_copyright()
 
     echo -e "Adding notice from '$copyrightFile' ($charset)"
     iconv -f $charset -t utf-8 $copyrightFile | sed -e 's/\xef\xbb\xbf//' | tr -d '\r' >> $notice
-    echo -e "" >> $notice 
+    echo -e "" >> $notice
 }
 
 get_imagemagick_version()
@@ -197,7 +197,7 @@ clone_date 'pixman' "$commitDate"
 clone_date 'rsvg' "$commitDate"
 clone_date 'zip' "$commitDate"
 
-if [ "$1" == "macos" ] || [ "$1" == "linux" ]; then
+if [ "$1" == "macos" ] || [ "$1" == "linux" ] || [ "$1" == "linux-musl" ]; then
     clone_commit 'fontconfig' "ca7dc14b14016d103ce595152b7c009c3d9c7d06" "https://github.com/dlemstra"
 
     mkdir -p VisualMagick/fontconfig

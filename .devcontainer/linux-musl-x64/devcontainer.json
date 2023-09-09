@@ -1,0 +1,25 @@
+{
+  "name": "linux-musl-x64",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": "../..",
+    "args": {
+      "image": "alpine:3.12",
+      "config": "linux-musl",
+      "arch": "x64",
+      "debugBuild": "", // Set to yes to build with debug symbols
+      "openMP": "" // Set to OpenMP to build with OpenMP support
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create-command.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig"
+      ],
+      "settings": {
+        "extensions.ignoreRecommendations": true
+      }
+    }
+  }
+}
