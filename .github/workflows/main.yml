@@ -109,7 +109,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts OpenMP linux-musl x64
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -164,7 +164,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts OpenMP linux arm64
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library
