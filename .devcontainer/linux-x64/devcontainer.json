@@ -1,10 +1,17 @@
 {
   "name": "linux-x64",
   "build": {
-    "dockerfile": "../../build/linux-x64/Dockerfile",
-    "context": "../.."
+    "dockerfile": "../Dockerfile",
+    "context": "../..",
+    "args": {
+      "image": "ubuntu:18.04",
+      "config": "linux",
+      "arch": "x64",
+      "debugBuild": "", // Set to yes to build with debug symbols
+      "openMP": "" // Set to OpenMP to build with OpenMP support
+    }
   },
-  "postCreateCommand": "bash .devcontainer/linux-x64/post-create-command.sh",
+  "postCreateCommand": "bash .devcontainer/post-create-command.sh",
   "customizations": {
     "vscode": {
       "extensions": [

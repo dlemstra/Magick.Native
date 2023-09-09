@@ -5,4 +5,4 @@ rm -f libraries
 ln -s /ImageMagick/libraries libraries
 
 cd src/Magick.Native
-../../build/shared/build.Native.sh linux x64
+../../build/shared/build.Native.sh $DC_CONFIG $DC_ARCH $DC_OPEN_MP
