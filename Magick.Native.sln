@@ -9,12 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{6C3DBF08
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90}"
 	ProjectSection(SolutionItems) = preProject
-		build\linux-x64\Dockerfile = build\linux-x64\Dockerfile
 		build\linux-x64\install.dependencies.sh = build\linux-x64\install.dependencies.sh
 		build\linux-x64\libraries.sh = build\linux-x64\libraries.sh
 		build\linux-x64\settings.sh = build\linux-x64\settings.sh
 		build\linux-x64\verify.cmd = build\linux-x64\verify.cmd
-		build\linux-x64\verify.openmp.cmd = build\linux-x64\verify.openmp.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-x64", "macos-x64", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
@@ -44,7 +42,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x86", "wasm-x86", "{8D
 	ProjectSection(SolutionItems) = preProject
 		build\wasm-x86\copy.Native.sh = build\wasm-x86\copy.Native.sh
 		build\wasm-x86\cross-compilation.meson = build\wasm-x86\cross-compilation.meson
-		build\wasm-x86\Dockerfile = build\wasm-x86\Dockerfile
 		build\wasm-x86\install.dependencies.sh = build\wasm-x86\install.dependencies.sh
 		build\wasm-x86\libraries.sh = build\wasm-x86\libraries.sh
 		build\wasm-x86\settings.sh = build\wasm-x86\settings.sh
@@ -130,32 +127,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-musl-x64", "{F9F51AB1-7683-4E2D-B746-4360926ABDE9}"
 	ProjectSection(SolutionItems) = preProject
-		build\linux-musl-x64\build.cmd = build\linux-musl-x64\build.cmd
-		build\linux-musl-x64\build.openmp.cmd = build\linux-musl-x64\build.openmp.cmd
-		build\linux-musl-x64\Dockerfile = build\linux-musl-x64\Dockerfile
 		build\linux-musl-x64\install.dependencies.sh = build\linux-musl-x64\install.dependencies.sh
 		build\linux-musl-x64\libraries.sh = build\linux-musl-x64\libraries.sh
-		build\linux-musl-x64\run.cmd = build\linux-musl-x64\run.cmd
-		build\linux-musl-x64\run.openmp.cmd = build\linux-musl-x64\run.openmp.cmd
 		build\linux-musl-x64\settings.sh = build\linux-musl-x64\settings.sh
 		build\linux-musl-x64\verify.cmd = build\linux-musl-x64\verify.cmd
-		build\linux-musl-x64\verify.openmp.cmd = build\linux-musl-x64\verify.openmp.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64", "{950C68AA-029F-4213-BCC8-20CB145E15CA}"
 	ProjectSection(SolutionItems) = preProject
-		build\linux-arm64\build.cmd = build\linux-arm64\build.cmd
-		build\linux-arm64\build.openmp.cmd = build\linux-arm64\build.openmp.cmd
 		build\linux-arm64\cross-compilation.cmake = build\linux-arm64\cross-compilation.cmake
 		build\linux-arm64\cross-compilation.meson = build\linux-arm64\cross-compilation.meson
-		build\linux-arm64\Dockerfile = build\linux-arm64\Dockerfile
 		build\linux-arm64\install.dependencies.sh = build\linux-arm64\install.dependencies.sh
 		build\linux-arm64\libraries.sh = build\linux-arm64\libraries.sh
-		build\linux-arm64\run.cmd = build\linux-arm64\run.cmd
-		build\linux-arm64\run.openmp.cmd = build\linux-arm64\run.openmp.cmd
 		build\linux-arm64\settings.sh = build\linux-arm64\settings.sh
 		build\linux-arm64\verify.cmd = build\linux-arm64\verify.cmd
-		build\linux-arm64\verify.openmp.cmd = build\linux-arm64\verify.openmp.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4B73C473-ECF3-4683-A81A-47E85061A7C6}"
