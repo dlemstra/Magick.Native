@@ -42,7 +42,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh linux x64 ../../artifacts
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux x64
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
@@ -54,7 +54,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh linux x64 ../../artifacts OpenMP
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux x64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -97,7 +97,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh linux-musl x64 ../../artifacts
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
@@ -109,7 +109,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh linux-musl x64 ../../artifacts OpenMP
+      run: ../../build/shared/copy.Native.sh ../../artifacts OpenMP linux-musl x64
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -152,7 +152,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh linux arm64 ../../artifacts
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
@@ -164,7 +164,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh linux arm64 ../../artifacts OpenMP
+      run: ../../build/shared/copy.Native.sh ../../artifacts OpenMP linux arm64
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -205,7 +205,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh macos x64 ../../artifacts
+      run: ../../build/shared/copy.Native.sh ../../artifacts macos x64
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -246,7 +246,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh macos arm64 ../../artifacts
+      run: ../../build/shared/copy.Native.sh ../../artifacts macos arm64
       working-directory: src/Magick.Native
 
     - name: Upload library
