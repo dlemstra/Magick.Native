@@ -411,7 +411,7 @@ jobs:
         name: linux
 
     - name: Verify Native
-      run: build/shared/verify.Native.sh linux x64 .
+      run: build/shared/verify.Native.sh . linux x64
 
   verify_linux_openmp:
     name: 'Verify Linux (x64) OpenMP'
@@ -456,7 +456,7 @@ jobs:
         name: linux
 
     - name: Verify Native
-      run: build/shared/verify.Native.sh linux x64 . OpenMP
+      run: build/shared/verify.Native.sh . linux x64 OpenMP
 
   verify_linux_musl:
     name: 'Verify Linux musl (x64)'
@@ -491,7 +491,7 @@ jobs:
       run: |
         apk update
         apk add bash
-        build/shared/verify.Native.sh linux-musl x64 .
+        build/shared/verify.Native.sh . linux-musl x64
 
   verify_linux_musl_openmp:
     name: 'Verify Linux musl (x64) OpenMP'
@@ -526,7 +526,7 @@ jobs:
       run: |
         apk update
         apk add bash
-        build/shared/verify.Native.sh linux-musl x64 . OpenMP
+        build/shared/verify.Native.sh . linux-musl x64 OpenMP
 
   verify_linux_arm64:
     name: 'Verify Linux (arm64)'
@@ -560,7 +560,7 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64
 
   verify_linux_arm64_openmp:
     name: 'Verify Linux (arm64) OpenMP'
@@ -594,7 +594,7 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh linux arm64 /Magick.Native OpenMP
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64 OpenMP
 
   verify_macos:
     name: 'Verify MacOS'
@@ -620,7 +620,7 @@ jobs:
         name: macos-${{ matrix.arch }}
 
     - name: Verify MacOS
-      run: build/shared/verify.Native.MacOS.sh macos ${{ matrix.arch }} . 
+      run: build/shared/verify.Native.MacOS.sh . macos ${{ matrix.arch }}
 
   metadata:
     name: 'Metadata'

@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-config=$1
-arch=$2
-folder=$3
+folder=$1
+config=$2
+arch=$3
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/../$config-$arch/settings.sh
