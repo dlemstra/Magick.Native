@@ -38,3 +38,5 @@ RUN cd /ImageMagick/libraries; /build/shared/build.Libraries.sh /build/libraries
 COPY build/shared/build.ImageMagick.sh /build/shared/
 
 RUN cd /ImageMagick/libraries; /build/shared/build.ImageMagick.sh ${config} ${arch} ${openMP}
+
+RUN  echo 'alias settings="source /build/${config}-${arch}/settings.sh"' ~/.bashrc
