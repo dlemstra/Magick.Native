@@ -186,17 +186,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{16F5433C-4F9
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".devcontainer", ".devcontainer", "{A1FC197D-F3DB-4735-BAFF-52D176C097E8}"
+	ProjectSection(SolutionItems) = preProject
+		.devcontainer\Dockerfile = .devcontainer\Dockerfile
+		.devcontainer\post-create-command.sh = .devcontainer\post-create-command.sh
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{F6BD95D6-AD2E-492F-99C6-95D17D966290}"
 	ProjectSection(SolutionItems) = preProject
 		.devcontainer\linux-x64\devcontainer.json = .devcontainer\linux-x64\devcontainer.json
-		.devcontainer\linux-x64\post-create-command.sh = .devcontainer\linux-x64\post-create-command.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x64", "wasm-x64", "{5F1BF474-B859-455E-8922-356BEDD90521}"
 	ProjectSection(SolutionItems) = preProject
 		.devcontainer\wasm-x86\devcontainer.json = .devcontainer\wasm-x86\devcontainer.json
 		.devcontainer\wasm-x86\post-create-command.sh = .devcontainer\wasm-x86\post-create-command.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64", "{9990A9C0-C8EA-444B-8594-EF7888779B1D}"
+	ProjectSection(SolutionItems) = preProject
+		.devcontainer\linux-arm64\devcontainer.json = .devcontainer\linux-arm64\devcontainer.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-musl-x64", "{C354B5EC-5E74-4929-8520-4205E296918B}"
+	ProjectSection(SolutionItems) = preProject
+		.devcontainer\linux-musl-x64\devcontainer.json = .devcontainer\linux-musl-x64\devcontainer.json
 	EndProjectSection
 EndProject
 Global
@@ -307,6 +320,8 @@ Global
 		{16F5433C-4F98-4CE9-A40E-C768FF818761} = {BE2DF871-363E-46ED-A999-81C5D6A232D7}
 		{F6BD95D6-AD2E-492F-99C6-95D17D966290} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 		{5F1BF474-B859-455E-8922-356BEDD90521} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
+		{9990A9C0-C8EA-444B-8594-EF7888779B1D} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
+		{C354B5EC-5E74-4929-8520-4205E296918B} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
