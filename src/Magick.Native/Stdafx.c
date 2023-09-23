@@ -13,13 +13,6 @@
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {
 #endif
-__asm__(".symver old_powf, powf@GLIBC_" GLIBC_SYMVER_VERSION);
-float old_powf(float base, float exponent);
-float powf(float base, float exponent)
-{
-  return old_powf(base, exponent);
-}
-
 __asm__(".symver old_logf, logf@GLIBC_" GLIBC_SYMVER_VERSION);
 float old_logf(float arg);
 float logf(float arg)
@@ -32,6 +25,13 @@ float old_log2f(float arg);
 float log2f(float arg)
 {
   return old_log2f(arg);
+}
+
+__asm__(".symver old_powf, powf@GLIBC_" GLIBC_SYMVER_VERSION);
+float old_powf(float base, float exponent);
+float powf(float base, float exponent)
+{
+  return old_powf(base, exponent);
 }
 #if defined(__cplusplus) || defined(c_plusplus)
 }
