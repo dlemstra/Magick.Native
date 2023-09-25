@@ -5,7 +5,6 @@ set arch=x64
 rem set openmp=OpenMP
 
 set image=ubuntu:16.04
-rem set image=ubuntu:16.04
 rem set image=ubuntu:18.04
 rem set image=ubuntu:20.04
 rem set image=ubuntu:latest
