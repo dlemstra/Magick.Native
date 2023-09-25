@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get update -y
 
-apt-get install -y autoconf autopoint binutils gcc g++ gettext git gperf libtool locales nasm pkg-config python python-pip python3-pip ragel texinfo
+apt-get install -y autoconf autopoint binutils gcc g++ gettext git gperf libtool locales nasm pkg-config python python3-pip ragel texinfo
 
 locale-gen en_US.UTF-8
 

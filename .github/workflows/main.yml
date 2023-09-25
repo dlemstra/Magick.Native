@@ -11,7 +11,7 @@ jobs:
   linux:
     name: 'Linux (x64)'
     container:
-      image: ubuntu:18.04
+      image: ubuntu:20.04
     runs-on: ubuntu-latest
 
     steps:
