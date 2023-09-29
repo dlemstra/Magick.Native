@@ -303,6 +303,7 @@ jobs:
       working-directory: build/windows
 
     - name: Sign library
+      if: ${{ github.event_name != 'pull_request' }}
       uses: dlemstra/code-sign-action@v1
       with:
         certificate: '${{ secrets.CERTIFICATE }}'
