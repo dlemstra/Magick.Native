@@ -63,6 +63,7 @@ elseif (NOT PLATFORM STREQUAL "WASM")
 endif()
 
 set(LIBAOM ${LIB_DIR}/libaom.a)
+set(LIBDEFLATE ${LIB_DIR}/libdeflate.a)
 set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a)
 set(LIBHEIF ${LIB_DIR}/libheif.a ${LIBAOM} ${LIB_DIR}/libde265.a)
 set(LIBJPEG ${LIB_DIR}/libturbojpeg.a)
@@ -100,6 +101,7 @@ target_link_libraries(
     ${LIB_DIR}/libMagickWand-7.${QUANTUM_NAME}.a
     ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
+    ${LIBDEFLATE}
     ${LIBEXR}
     ${LIBICONV}
     ${LIBINTL}
