@@ -78,10 +78,10 @@ set(LIBXML ${LIB_DIR}/libxml2.a)
 set(LIBZ ${LIB_DIR}/libz.a)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(LIBEXR ${LIB_DIR}/libOpenEXR-3_1_d.a ${LIB_DIR}/libOpenEXRUtil-3_1_d.a ${LIB_DIR}/libOpenEXRCore-3_1_d.a ${LIB_DIR}/libImath-3_1_d.a ${LIB_DIR}/libIex-3_1_d.a ${LIB_DIR}/libIlmThread-3_1_d.a)
+    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-3_1_d.a ${LIB_DIR}/libOpenEXRUtil-3_1_d.a ${LIB_DIR}/libOpenEXRCore-3_1_d.a ${LIB_DIR}/libImath-3_1_d.a ${LIB_DIR}/libIex-3_1_d.a ${LIB_DIR}/libIlmThread-3_1_d.a)
     set(LIBFREETYPE ${LIB_DIR}/libfreetyped.a)
 else()
-    set(LIBEXR ${LIB_DIR}/libOpenEXR-3_1.a ${LIB_DIR}/libOpenEXRUtil-3_1.a ${LIB_DIR}/libOpenEXRCore-3_1.a ${LIB_DIR}/libImath-3_1.a ${LIB_DIR}/libIex-3_1.a ${LIB_DIR}/libIlmThread-3_1.a)
+    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-3_1.a ${LIB_DIR}/libOpenEXRUtil-3_1.a ${LIB_DIR}/libOpenEXRCore-3_1.a ${LIB_DIR}/libImath-3_1.a ${LIB_DIR}/libIex-3_1.a ${LIB_DIR}/libIlmThread-3_1.a)
     set(LIBFREETYPE ${LIB_DIR}/libfreetype.a)
 endif()
 

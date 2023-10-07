@@ -161,6 +161,7 @@ cd ..
 clone_date 'aom' "$commitDates"
 clone_date 'brotli' "$commitDate"
 clone_date 'de265' "$commitDate"
+clone_date 'deflate' "$commitDate"
 clone_date 'exr' "$commitDate"
 clone_date 'freetype' "$commitDate"
 clone_date 'ffi' "$commitDate"
