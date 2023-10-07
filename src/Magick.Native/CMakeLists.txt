@@ -77,11 +77,13 @@ set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a ${LIB_DIR}/libwebp
 set(LIBXML ${LIB_DIR}/libxml2.a)
 set(LIBZ ${LIB_DIR}/libz.a)
 
+set(LIBEXR_VERSION 3_2)
+set(LIBMATH_VERSION 3_1)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-3_1_d.a ${LIB_DIR}/libOpenEXRUtil-3_1_d.a ${LIB_DIR}/libOpenEXRCore-3_1_d.a ${LIB_DIR}/libImath-3_1_d.a ${LIB_DIR}/libIex-3_1_d.a ${LIB_DIR}/libIlmThread-3_1_d.a)
+    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRUtil-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRCore-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libImath-${LIBMATH_VERSION}_d.a ${LIB_DIR}/libIex-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libIlmThread-${LIBEXR_VERSION}_d.a)
     set(LIBFREETYPE ${LIB_DIR}/libfreetyped.a)
 else()
-    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-3_1.a ${LIB_DIR}/libOpenEXRUtil-3_1.a ${LIB_DIR}/libOpenEXRCore-3_1.a ${LIB_DIR}/libImath-3_1.a ${LIB_DIR}/libIex-3_1.a ${LIB_DIR}/libIlmThread-3_1.a)
+    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-${LIBEXR_VERSION}.a ${LIB_DIR}/libOpenEXRUtil-${LIBEXR_VERSION}.a ${LIB_DIR}/libOpenEXRCore-${LIBEXR_VERSION}.a ${LIB_DIR}/libImath-${LIBMATH_VERSION}.a ${LIB_DIR}/libIex-${LIBEXR_VERSION}.a ${LIB_DIR}/libIlmThread-${LIBEXR_VERSION}.a)
     set(LIBFREETYPE ${LIB_DIR}/libfreetype.a)
 endif()
 
