@@ -14,6 +14,7 @@ $1/build.aom.sh
 $1/build.de265.sh
 $1/build.heif.sh
 $1/build.raw.sh
+$1/build.deflate.sh
 $1/build.exr.sh
 $1/build.ffi.sh
 $1/build.glib.sh
