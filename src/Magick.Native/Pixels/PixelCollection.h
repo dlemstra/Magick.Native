@@ -12,6 +12,8 @@ MAGICK_NATIVE_EXPORT void PixelCollection_Dispose(CacheView *);
 
 MAGICK_NATIVE_EXPORT const Quantum *PixelCollection_GetArea(const CacheView *, const ssize_t, const ssize_t, const size_t, const size_t, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT const Quantum *PixelCollection_GetReadOnlyArea(Image *, const ssize_t, const ssize_t, const size_t, const size_t, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *, const ssize_t, const ssize_t, const size_t, const size_t, const Quantum *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT unsigned char *PixelCollection_ToByteArray(const CacheView *, const ssize_t, const ssize_t, const size_t, const size_t, const char *, ExceptionInfo **);
