@@ -302,14 +302,6 @@ jobs:
       run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
       working-directory: build/windows
 
-    - name: Sign library
-      if: ${{ github.event_name != 'pull_request' }}
-      uses: dlemstra/code-sign-action@v1
-      with:
-        certificate: '${{ secrets.CERTIFICATE }}'
-        password: '${{ secrets.CERTIFICATE_PASSWORD }}'
-        folder: 'artifacts\windows\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
-
     - name: Upload library
       uses: actions/upload-artifact@v3
       with:
