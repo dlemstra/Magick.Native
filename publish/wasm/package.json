@@ -5,10 +5,10 @@
   "exports": {
     ".": {
       "types": "./magick.d.ts",
-      "default": "./magick.mjs"
+      "default": "./magick.js"
     }
   },
-  "module": "./magick.mjs",
+  "module": "./magick.js",
   "types": "./magick.d.ts",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   "license": "Apache-2.0",
   "files": [
     "./magick.d.ts",
-    "./magick.mjs",
+    "./magick.js",
     "magick.wasm",
     "NOTICE"
   ]
