@@ -1,12 +1,15 @@
 {
   "name": "@dlemstra/magick-native",
   "version": "",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./magick.d.ts",
       "default": "./magick.js"
     }
   },
+  "module": "./magick.mjs",
+  "types": "./magick.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dlemstra/Magick.Native.git"
