@@ -302,6 +302,21 @@ jobs:
       run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
       working-directory: build/windows
 
+    - name: Sign binaries
+      uses: azure/azure-code-signing-action@v0.2.22
+      with:
+        azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        azure-client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+        endpoint: https://eus.codesigning.azure.net/
+        code-signing-account-name: ImageMagick
+        certificate-profile-name: ImageMagick
+        files-folder: 'artifacts\windows\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
+        files-folder-filter: dll
+        file-digest: SHA256
+        timestamp-rfc3161: http://timestamp.acs.microsoft.com
+        timestamp-digest: SHA256
+
     - name: Upload library
       uses: actions/upload-artifact@v3
       with:
