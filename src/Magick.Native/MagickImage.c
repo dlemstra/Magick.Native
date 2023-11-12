@@ -194,7 +194,7 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_ChannelCount_Get(const Image *instance)
   return instance->number_channels;
 }
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaBluePrimary_Get(const Image *instance)
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaBlue_Get(const Image *instance)
 {
   PrimaryInfo
     *result;
@@ -204,13 +204,13 @@ MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaBluePrimary_Get(const Image 
   return result;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaBluePrimary_Set(Image *instance, const PrimaryInfo *value)
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaBlue_Set(Image *instance, const PrimaryInfo *value)
 {
   if (value != (PrimaryInfo *) NULL)
     instance->chromaticity.blue_primary = *value;
 }
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaGreenPrimary_Get(const Image *instance)
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaGreen_Get(const Image *instance)
 {
   PrimaryInfo
     *result;
@@ -220,13 +220,13 @@ MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaGreenPrimary_Get(const Image
   return result;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaGreenPrimary_Set(Image *instance, const PrimaryInfo *value)
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaGreen_Set(Image *instance, const PrimaryInfo *value)
 {
   if (value != (PrimaryInfo *) NULL)
     instance->chromaticity.green_primary = *value;
 }
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaRedPrimary_Get(const Image *instance)
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaRed_Get(const Image *instance)
 {
   PrimaryInfo
     *result;
@@ -236,13 +236,13 @@ MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaRedPrimary_Get(const Image *
   return result;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaRedPrimary_Set(Image *instance, const PrimaryInfo *value)
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaRed_Set(Image *instance, const PrimaryInfo *value)
 {
   if (value != (PrimaryInfo *) NULL)
     instance->chromaticity.red_primary = *value;
 }
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaWhitePoint_Get(const Image *instance)
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaWhite_Get(const Image *instance)
 {
   PrimaryInfo
     *result;
@@ -252,7 +252,7 @@ MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaWhitePoint_Get(const Image *
   return result;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhitePoint_Set(Image *instance, const PrimaryInfo *value)
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhite_Set(Image *instance, const PrimaryInfo *value)
 {
   if (value != (PrimaryInfo *) NULL)
     instance->chromaticity.white_point = *value;

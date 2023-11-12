@@ -36,17 +36,17 @@ MAGICK_NATIVE_EXPORT RectangleInfo *MagickImage_BoundingBox_Get(const Image *, E
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ChannelCount_Get(const Image *);
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaBluePrimary_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaBluePrimary_Set(Image *, const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaBluey_Get(const Image *);
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaBlue_Set(Image *, const PrimaryInfo *);
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaGreenPrimary_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaGreenPrimary_Set(Image *, const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaGreen_Get(const Image *);
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaGreen_Set(Image *, const PrimaryInfo *);
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaRedPrimary_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaRedPrimary_Set(Image *, const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaRed_Get(const Image *);
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaRed_Set(Image *, const PrimaryInfo *);
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaWhitePoint_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhitePoint_Set(Image *, const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaWhite_Get(const Image *);
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhitet_Set(Image *, const PrimaryInfo *);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ClassType_Get(const Image *, ExceptionInfo **);
 MAGICK_NATIVE_EXPORT void MagickImage_ClassType_Set(Image *, const size_t, ExceptionInfo **);
