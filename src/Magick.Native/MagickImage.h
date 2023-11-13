@@ -46,7 +46,7 @@ MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaRed_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ChromaRed_Set(Image *, const PrimaryInfo *);
 
 MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaWhite_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhitet_Set(Image *, const PrimaryInfo *);
+MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhite_Set(Image *, const PrimaryInfo *);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ClassType_Get(const Image *, ExceptionInfo **);
 MAGICK_NATIVE_EXPORT void MagickImage_ClassType_Set(Image *, const size_t, ExceptionInfo **);
