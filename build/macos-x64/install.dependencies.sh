@@ -44,6 +44,8 @@ brew uninstall --force fontconfig
 brew uninstall --force freetype
 brew uninstall --force libffi
 brew uninstall --force libavif
+brew uninstall --force libde265
+brew uninstall --force libheif
 brew uninstall --force aom
 brew uninstall --force jpeg-xl
 brew uninstall --force webp
@@ -65,6 +67,7 @@ brew uninstall --force libxext
 brew uninstall --force libx11
 brew uninstall --force libxcb
 brew uninstall --force highway
+brew uninstall --force harfbuzz
 brew uninstall --ignore-dependencies brotli
 brew uninstall --ignore-dependencies libidn2
 brew uninstall --ignore-dependencies xz
