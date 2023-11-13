@@ -36,7 +36,7 @@ MAGICK_NATIVE_EXPORT RectangleInfo *MagickImage_BoundingBox_Get(const Image *, E
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ChannelCount_Get(const Image *);
 
-MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaBluey_Get(const Image *);
+MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaBlue_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ChromaBlue_Set(Image *, const PrimaryInfo *);
 
 MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaGreen_Get(const Image *);
