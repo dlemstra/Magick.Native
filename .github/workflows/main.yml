@@ -392,7 +392,7 @@ jobs:
           - 'tgagor/centos:stream8'
           - 'tgagor/centos:stream9'
           - 'mcr.microsoft.com/dotnet/aspnet:latest'
-          - 'mcr.microsoft.com/dotnet/runtime:3.1'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0'
           - 'mcr.microsoft.com/dotnet/runtime:latest'
           - 'amazon/aws-lambda-dotnet:6'
           - 'public.ecr.aws/lambda/dotnet:6-x86_64'
@@ -436,7 +436,7 @@ jobs:
           - 'tgagor/centos:stream8'
           - 'tgagor/centos:stream9'
           - 'mcr.microsoft.com/dotnet/aspnet:latest'
-          - 'mcr.microsoft.com/dotnet/runtime:3.1'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0'
           - 'mcr.microsoft.com/dotnet/runtime:latest'
           - 'amazon/aws-lambda-dotnet:6'
           - 'public.ecr.aws/lambda/dotnet:6-x86_64'
@@ -475,9 +475,9 @@ jobs:
       matrix:
         image:
           - 'alpine:latest'
-          - 'mcr.microsoft.com/dotnet/aspnet:5.0-alpine'
-          - 'mcr.microsoft.com/dotnet/runtime:3.1-alpine'
-          - 'mcr.microsoft.com/dotnet/runtime:5.0-alpine'
+          - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
 
     container:
       image: ${{ matrix.image }}
@@ -510,9 +510,9 @@ jobs:
       matrix:
         image:
           - 'alpine:latest'
-          - 'mcr.microsoft.com/dotnet/aspnet:5.0-alpine'
-          - 'mcr.microsoft.com/dotnet/runtime:3.1-alpine'
-          - 'mcr.microsoft.com/dotnet/runtime:5.0-alpine'
+          - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
 
     container:
       image: ${{ matrix.image }}
