@@ -1639,6 +1639,15 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_InterpolativeResize(const Image *instanc
   return image;
 }
 
+MAGICK_NATIVE_EXPORT void MagickImage_InverseLevel(Image *instance, const double blackPoint, const double whitePoint, const double gamma, const size_t channels, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
+  LevelizeImage(instance, blackPoint, whitePoint, gamma, exceptionInfo);
+  RestoreChannelMask(instance);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_Kmeans(Image *instance, const size_t numberColors, const size_t maxIterations, const double tolerance, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
@@ -1671,15 +1680,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_LevelColors(Image *instance, const PixelIn
   MAGICK_NATIVE_GET_EXCEPTION;
   SetChannelMask(instance, channels);
   LevelImageColors(instance, blackColor, whiteColor, invert, exceptionInfo);
-  RestoreChannelMask(instance);
-  MAGICK_NATIVE_SET_EXCEPTION;
-}
-
-MAGICK_NATIVE_EXPORT void MagickImage_Levelize(Image *instance, const double blackPoint, const double whitePoint, const double gamma, const size_t channels, ExceptionInfo **exception)
-{
-  MAGICK_NATIVE_GET_EXCEPTION;
-  SetChannelMask(instance, channels);
-  LevelizeImage(instance, blackPoint, whitePoint, gamma, exceptionInfo);
   RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
 }

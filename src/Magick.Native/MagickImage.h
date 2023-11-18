@@ -326,6 +326,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Integral(const Image *image, ExceptionIn
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_InterpolativeResize(const Image *, const char *, const size_t, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT void MagickImage_InverseLevel(Image *, const double, const double, const double, const size_t, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT void MagickImage_Kmeans(Image *, const size_t, const size_t, const double, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Kuwahara(const Image *, const double, const double, ExceptionInfo **);
@@ -333,8 +335,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Kuwahara(const Image *, const double, co
 MAGICK_NATIVE_EXPORT void MagickImage_Level(Image *, const double, const double, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_LevelColors(Image *, const PixelInfo *, const PixelInfo *, const size_t, const MagickBooleanType, ExceptionInfo **);
-
-MAGICK_NATIVE_EXPORT void MagickImage_Levelize(Image *, const double, const double, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_LinearStretch(Image *, const double, const double, ExceptionInfo **);
 
