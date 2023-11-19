@@ -2211,6 +2211,11 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetBitDepth(Image *instance, const size_t 
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
+MAGICK_NATIVE_EXPORT void MagickImage_SetClientData(Image *instance, const size_t value)
+{
+  instance->client_data = (void *) value;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_SetColormapColor(Image *instance, const size_t index, const PixelInfo *color, ExceptionInfo **exception)
 {
   if (instance->colormap == (PixelInfo *) NULL || color == (const PixelInfo *) NULL)
