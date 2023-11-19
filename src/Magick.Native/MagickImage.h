@@ -440,7 +440,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetBitDepth(Image *, const size_t, const s
 
 MAGICK_NATIVE_EXPORT void MagickImage_SetColormapColor(Image *, const size_t, const PixelInfo *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_SetClientData(Image *instance, const size_t value);
+MAGICK_NATIVE_EXPORT void MagickImage_SetClientData(Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_SetColorMetric(Image *, const Image *, ExceptionInfo **);
 
