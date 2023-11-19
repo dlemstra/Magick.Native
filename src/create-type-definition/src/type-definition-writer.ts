@@ -36,7 +36,6 @@ export interface ImageMagickApi {
     HEAPU8: Uint8Array;
     FS: VirtualFileSystem;
     addFunction(method: (...args: any[]) => void, signature: string): number;
-    removeFunction(methodPtr: number): void;
     getValue(instance: number, type: string): number;
     lengthBytesUTF8(str: string): number;
     setValue(instance: number, value: number, type: string): void;
