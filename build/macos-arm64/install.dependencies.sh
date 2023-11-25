@@ -24,6 +24,7 @@ brew uninstall --force imagemagick
 brew uninstall --force harfbuzz
 brew uninstall --force gobject-introspection
 brew uninstall --force cairo
+brew uninstall --force libraw
 brew uninstall --force jasper
 brew uninstall --force libheif
 brew uninstall --force x265
@@ -50,7 +51,6 @@ brew uninstall --force libheif
 brew uninstall --force aom
 brew uninstall --force jpeg-xl
 brew uninstall --force webp
-brew uninstall --force libraw
 brew uninstall --force openjpeg
 brew uninstall --force little-cms2
 brew uninstall --force libtiff
