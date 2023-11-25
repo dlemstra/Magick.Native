@@ -187,7 +187,7 @@ if [ "$1" == "wasm" ]; then
 fi
 
 clone_date 'bzlib' "$commitDate"
-clone_date 'cairo' "$commitDate"
+clone_commit 'cairo' "dfa57b1ec4da76d56d37a99105f801f7cae6622c"
 clone_date 'croco' "$commitDate"
 clone_date 'fribidi' "$commitDate"
 clone_date 'harfbuzz' "$commitDate"
