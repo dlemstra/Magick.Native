@@ -54,7 +54,6 @@ brew uninstall --force webp
 brew uninstall --force openjpeg
 brew uninstall --force little-cms2
 brew uninstall --force libtiff
-brew uninstall --force jasper
 brew uninstall --force libjpeg
 brew uninstall --force jpeg-turbo
 brew uninstall --force sox
