@@ -24,6 +24,7 @@ brew uninstall --force imagemagick
 brew uninstall --force harfbuzz
 brew uninstall --force gobject-introspection
 brew uninstall --force cairo
+brew uninstall --force jasper
 brew uninstall --force libheif
 brew uninstall --force x265
 brew uninstall --force liblqr
