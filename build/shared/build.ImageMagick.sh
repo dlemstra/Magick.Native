@@ -15,7 +15,7 @@ buildImageMagick() {
     local hdri=no
     local depth=8
     local disable_openmp=--disable-openmp
-    local enable_64bit_channel_masks=--enable-64bit-channel-masks
+    local enable_64bit_channel_masks="--enable-64bit-channel-masks --enable-force-cpp"
     if [ "$quantum" == "Q16" ]; then
         depth=16
     elif [ "$quantum" == "Q16-HDRI" ]; then
