@@ -5,6 +5,9 @@ on:
   pull_request:
     branches:
     - main
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
 
 name: main
 jobs:
@@ -24,6 +27,11 @@ jobs:
     - name: Install dependencies
       run: ./install.dependencies.sh
       working-directory: build/linux-x64
+
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux ../../../artifacts
@@ -80,6 +88,11 @@ jobs:
       run: ./install.dependencies.sh
       working-directory: build/linux-musl-x64
 
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
+
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
@@ -135,6 +148,11 @@ jobs:
       run: ./install.dependencies.sh
       working-directory: build/linux-arm64
 
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
+
     - name: Clone ImageMagick libraries
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
@@ -187,6 +205,11 @@ jobs:
     - name: Install dependencies
       run: ./install.dependencies.sh
       working-directory: build/macos-x64
+
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh macos ../../../artifacts
@@ -281,6 +304,11 @@ jobs:
     - name: Install dependencies
       run: ./install.dependencies.ps1
       working-directory: build/windows
+
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.cmd
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
       run: ./checkout.cmd ../../../artifacts/windows
