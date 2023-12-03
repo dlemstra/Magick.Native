@@ -252,6 +252,11 @@ jobs:
       run: ./install.dependencies.sh
       working-directory: build/macos-arm64
 
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
+
     - name: Clone ImageMagick libraries
       run: ./checkout.sh macos ../../../artifacts
       working-directory: src/ImageMagick
@@ -373,6 +378,11 @@ jobs:
     - name: Install dependencies
       run: ./install.dependencies.sh
       working-directory: build/wasm-x86
+
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
       run: ./checkout.sh wasm ../../../artifacts
@@ -681,6 +691,11 @@ jobs:
     - name: Install dependencies
       run: ./install.dependencies.ps1
       working-directory: build/windows
+
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.cmd
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
       run: ./checkout.cmd
