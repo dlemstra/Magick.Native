@@ -32,6 +32,7 @@ brew uninstall cairo
 brew uninstall libraw
 brew uninstall jasper
 brew uninstall libheif
+brew uninstall libde265
 brew uninstall x265
 brew uninstall liblqr
 brew uninstall libavif
