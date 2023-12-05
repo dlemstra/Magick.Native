@@ -202,7 +202,7 @@ if [ "$1" == "macos" ] || [ "$1" == "linux" ] || [ "$1" == "linux-musl" ]; then
     clone_commit 'fontconfig' "ca7dc14b14016d103ce595152b7c009c3d9c7d06" "https://github.com/dlemstra"
 
     mkdir -p VisualMagick/fontconfig
-    echo -e "[LICENSE]\nfontconfig/COPYING" > VisualMagick/fontconfig/Config.txt
+    echo -e "[LICENSE]\nCOPYING" > VisualMagick/fontconfig/Config.txt
 
     create_notice "$commitDate" $2
     exit
