@@ -30,6 +30,9 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_Thread_Set(const MagickSizeType);
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Throttle_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Throttle_Set(const MagickSizeType);
 
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Time_Get(void);
+MAGICK_NATIVE_EXPORT void ResourceLimits_Time_Set(const MagickSizeType);
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Width_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType);
 
