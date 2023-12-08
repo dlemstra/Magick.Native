@@ -1,7 +1,15 @@
 {
   "name": "@dlemstra/magick-native",
   "version": "",
-  "main": "magick.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./magick.d.ts",
+      "default": "./magick.mjs"
+    }
+  },
+  "module": "./magick.mjs",
+  "types": "./magick.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dlemstra/Magick.Native.git"
@@ -10,7 +18,7 @@
   "license": "Apache-2.0",
   "files": [
     "magick.d.ts",
-    "magick.js",
+    "magick.mjs",
     "magick.wasm",
     "NOTICE"
   ]
