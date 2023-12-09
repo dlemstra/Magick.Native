@@ -28,7 +28,7 @@ COPY build/${config}-${arch}/cross-compilatio[n].* /build/${config}-${arch}/
 COPY build/shared/build.Libraries.sh /build/shared/
 
 ARG debugBuild
-ENV DC_DEBUG_BUILD=${debugBuild}
+ENV DEBUG_BUILD=${debugBuild}
 
 ARG openMP
 ENV DC_OPEN_MP=${openMP}
