@@ -44,6 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x86", "wasm-x86", "{8D
 		build\wasm-x86\cross-compilation.meson = build\wasm-x86\cross-compilation.meson
 		build\wasm-x86\install.dependencies.sh = build\wasm-x86\install.dependencies.sh
 		build\wasm-x86\libraries.sh = build\wasm-x86\libraries.sh
+		build\wasm-x86\pre.js = build\wasm-x86\pre.js
 		build\wasm-x86\settings.sh = build\wasm-x86\settings.sh
 	EndProjectSection
 EndProject
