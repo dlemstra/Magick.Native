@@ -336,6 +336,7 @@ jobs:
       working-directory: build/windows
 
     - name: Sign binaries
+      if: github.event_name != 'pull_request'
       uses: azure/azure-code-signing-action@v0.2.22
       with:
         azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
