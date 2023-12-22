@@ -36,7 +36,6 @@ export HEIF_OPTIONS="--disable-multithreading"
 export LCMS_OPTIONS="--without-threads"
 export OPENEXR_OPTIONS="-DZLIB_LIBRARY=/usr/local/lib/libz.a -DZLIB_INCLUDE_DIR=/usr/local/include -DImath_DIR=/usr/local/lib/cmake/Imath"
 export WEBP_OPTIONS=""
-export XML_OPTIONS=""
 export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-bzlib --without-lzma"
 
 # WASM options

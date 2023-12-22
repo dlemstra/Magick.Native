@@ -36,7 +36,6 @@ export HEIF_OPTIONS=""
 export LCMS_OPTIONS=""
 export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
-export XML_OPTIONS=""
 export IMAGEMAGICK_OPTIONS=""
 
 # Linux ARM64 options

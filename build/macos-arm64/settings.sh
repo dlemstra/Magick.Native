@@ -36,7 +36,6 @@ export HEIF_OPTIONS=""
 export OPENEXR_OPTIONS=""
 export LCMS_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
-export XML_OPTIONS="--with-iconv=/usr/local/opt/libiconv"
 export IMAGEMAGICK_OPTIONS=""
 
 # MacOS options
