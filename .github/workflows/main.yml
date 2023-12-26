@@ -11,7 +11,7 @@ on:
 
 name: main
 jobs:
-  linux:
+  linux_x64:
     name: 'Linux (x64)'
     container:
       image: ubuntu:20.04
@@ -68,10 +68,10 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v3
       with:
-        name: linux
+        name: linux-x64
         path: artifacts
 
-  linux_musl:
+  linux_musl-x64:
     name: 'Linux musl (x64)'
     container:
       image: alpine:3.12
@@ -128,7 +128,7 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v3
       with:
-        name: linux-musl
+        name: linux-musl-x64
         path: artifacts
 
   linux_arm64:
@@ -191,7 +191,7 @@ jobs:
         name: linux-arm64
         path: artifacts
 
-  macos:
+  macos_x64:
     name: 'MacOS (x64)'
     runs-on: macos-11
 
@@ -363,7 +363,7 @@ jobs:
         name: resources-${{ matrix.platformName }}-${{ matrix.quantumName }}
         path: artifacts/resources
 
-  wasm:
+  wasm_x86:
     name: 'WASM (x86)'
     container:
       image: emscripten/emsdk:3.1.42
@@ -412,13 +412,13 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v3
       with:
-        name: wasm
+        name: wasm-x86
         path: artifacts
 
   verify_linux:
     name: 'Verify Linux (x64)'
     needs:
-      - linux
+      - linux_x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -455,7 +455,7 @@ jobs:
     - name: Download linux library
       uses: actions/download-artifact@v3
       with:
-        name: linux
+        name: linux-x64
 
     - name: Verify Native
       run: build/shared/verify.Native.sh . linux x64
@@ -463,7 +463,7 @@ jobs:
   verify_linux_openmp:
     name: 'Verify Linux (x64) OpenMP'
     needs:
-      - linux
+      - linux_x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -499,7 +499,7 @@ jobs:
     - name: Download linux library
       uses: actions/download-artifact@v3
       with:
-        name: linux
+        name: linux-x64
 
     - name: Verify Native
       run: build/shared/verify.Native.sh . linux x64 OpenMP
@@ -507,7 +507,7 @@ jobs:
   verify_linux_musl:
     name: 'Verify Linux musl (x64)'
     needs:
-      - linux_musl
+      - linux_musl_x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -531,7 +531,7 @@ jobs:
     - name: Download linux-musl library
       uses: actions/download-artifact@v3
       with:
-        name: linux-musl
+        name: linux-musl-x64
 
     - name: Verify Native
       run: |
@@ -542,7 +542,7 @@ jobs:
   verify_linux_musl_openmp:
     name: 'Verify Linux musl (x64) OpenMP'
     needs:
-      - linux_musl
+      - linux_musl_x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -566,7 +566,7 @@ jobs:
     - name: Download linux-musl library
       uses: actions/download-artifact@v3
       with:
-        name: linux-musl
+        name: linux-musl-x64
 
     - name: Verify Native
       run: |
@@ -645,7 +645,7 @@ jobs:
   verify_macos:
     name: 'Verify MacOS'
     needs:
-      - macos
+      - macos_x64
       - macos_arm64
     strategy:
       matrix:
@@ -733,13 +733,13 @@ jobs:
     - name: Download linux library
       uses: actions/download-artifact@v3
       with:
-        name: linux
+        name: linux-x64
         path: publish\dotnet\files\linux
 
     - name: Download linux musl library
       uses: actions/download-artifact@v3
       with:
-        name: linux-musl
+        name: linux-musl-x64
         path: publish\dotnet\files\linux-musl
 
     - name: Download linux arm64 library
@@ -813,7 +813,7 @@ jobs:
     - name: Download wasm library
       uses: actions/download-artifact@v3
       with:
-        name: wasm
+        name: wasm-x86
         path: publish\wasm\files
 
     - uses: actions/setup-node@v4
