@@ -66,7 +66,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: linux-x64
         path: artifacts
@@ -126,7 +126,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: linux-musl-x64
         path: artifacts
@@ -186,7 +186,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: linux-arm64
         path: artifacts
@@ -452,7 +452,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-x64
 
@@ -486,7 +486,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux-musl library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-musl-x64
 
@@ -517,7 +517,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux-arm64 library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-arm64
 
@@ -618,21 +618,10 @@ jobs:
       working-directory: build/windows
 
     - name: Download linux library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
-        name: linux-x64
-        path: publish\dotnet\files\linux
-
-    - name: Download linux musl library
-      uses: actions/download-artifact@v3
-      with:
-        name: linux-musl-x64
-        path: publish\dotnet\files\linux-musl
-
-    - name: Download linux arm64 library
-      uses: actions/download-artifact@v3
-      with:
-        name: linux-arm64
+        name: linux-*
+        merge-multiple: true
         path: publish\dotnet\files\linux
 
     - name: Download macos library
