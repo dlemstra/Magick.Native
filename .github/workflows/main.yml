@@ -352,15 +352,15 @@ jobs:
         timestamp-digest: SHA256
 
     - name: Upload library
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: windows
+        name: windows-${{ matrix.platformName }}-${{ matrix.quantumName }}
         path: artifacts/windows
 
     - name: Upload resources
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: resources
+        name: resources-${{ matrix.platformName }}-${{ matrix.quantumName }}
         path: artifacts/resources
 
   wasm:
@@ -761,15 +761,17 @@ jobs:
         path: publish\dotnet\files\macos
 
     - name: Download windows library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
-        name: windows
+        pattern: windows-*
+        merge-multiple: true
         path: publish\dotnet\files\windows
 
     - name: Download resources
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
-        name: resources
+        pattern: resources-*
+        merge-multiple: true
         path: publish\dotnet\files\resources
 
     - name: Download metadata
