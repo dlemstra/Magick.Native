@@ -11,7 +11,7 @@ on:
 
 name: main
 jobs:
-  linux_x64:
+  linux-x64:
     name: 'Linux (x64)'
     container:
       image: ubuntu:20.04
@@ -71,7 +71,7 @@ jobs:
         name: linux-x64
         path: artifacts
 
-  linux_musl-x64:
+  linux-musl-x64:
     name: 'Linux musl (x64)'
     container:
       image: alpine:3.12
@@ -131,7 +131,7 @@ jobs:
         name: linux-musl-x64
         path: artifacts
 
-  linux_arm64:
+  linux-arm64:
     name: 'Linux (arm64)'
     container:
       image: ubuntu:20.04
@@ -191,7 +191,7 @@ jobs:
         name: linux-arm64
         path: artifacts
 
-  macos_x64:
+  macos-x64:
     name: 'MacOS (x64)'
     runs-on: macos-11
 
@@ -237,7 +237,7 @@ jobs:
         name: macos-x64
         path: artifacts
 
-  macos_arm64:
+  macos-arm64:
     name: 'MacOS (arm64)'
     runs-on: macos-11
 
@@ -363,7 +363,7 @@ jobs:
         name: resources-${{ matrix.platformName }}-${{ matrix.quantumName }}
         path: artifacts/resources
 
-  wasm_x86:
+  wasm-x86:
     name: 'WASM (x86)'
     container:
       image: emscripten/emsdk:3.1.42
@@ -415,10 +415,10 @@ jobs:
         name: wasm-x86
         path: artifacts
 
-  verify_linux:
+  verify-linux-x64:
     name: 'Verify Linux (x64)'
     needs:
-      - linux_x64
+      - linux-x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -460,10 +460,10 @@ jobs:
     - name: Verify Native
       run: build/shared/verify.Native.sh . linux x64
 
-  verify_linux_openmp:
+  verify-linux-x64-openmp:
     name: 'Verify Linux (x64) OpenMP'
     needs:
-      - linux_x64
+      - linux-x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -504,10 +504,10 @@ jobs:
     - name: Verify Native
       run: build/shared/verify.Native.sh . linux x64 OpenMP
 
-  verify_linux_musl:
+  verify-linux-musl-x64:
     name: 'Verify Linux musl (x64)'
     needs:
-      - linux_musl_x64
+      - linux-musl-x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -539,10 +539,10 @@ jobs:
         apk add bash
         build/shared/verify.Native.sh . linux-musl x64
 
-  verify_linux_musl_openmp:
+  verify-linux-musl-x64-openmp:
     name: 'Verify Linux musl (x64) OpenMP'
     needs:
-      - linux_musl_x64
+      - linux-musl-x64
     runs-on: ubuntu-latest
 
     strategy:
@@ -574,10 +574,10 @@ jobs:
         apk add bash
         build/shared/verify.Native.sh . linux-musl x64 OpenMP
 
-  verify_linux_arm64:
+  verify-linux-arm64:
     name: 'Verify Linux (arm64)'
     needs:
-      - linux_arm64
+      - linux-arm64
     runs-on: ubuntu-latest
 
     strategy:
@@ -608,10 +608,10 @@ jobs:
         export path=$(pwd)
         docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64
 
-  verify_linux_arm64_openmp:
+  verify-linux-arm64-openmp:
     name: 'Verify Linux (arm64) OpenMP'
     needs:
-      - linux_arm64
+      - linux-arm64
     runs-on: ubuntu-latest
 
     strategy:
@@ -642,11 +642,11 @@ jobs:
         export path=$(pwd)
         docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64 OpenMP
 
-  verify_macos:
+  verify-macos:
     name: 'Verify MacOS'
     needs:
-      - macos_x64
-      - macos_arm64
+      - macos-x64
+      - macos-arm64
     strategy:
       matrix:
         os: [macos-11, macos-12]
@@ -671,19 +671,19 @@ jobs:
   metadata:
     name: 'Metadata'
     needs:
-      - verify_linux
-      - verify_linux_openmp
-      - verify_linux_musl
-      - verify_linux_musl_openmp
-      - verify_linux_arm64
-      - verify_linux_arm64_openmp
-      - verify_macos
+      - verify-linux-x64
+      - verify-linux-x64-openmp
+      - verify-linux-x64-musl
+      - verify-linux-x64-musl-openmp
+      - verify-linux-arm64
+      - verify-linux-arm64-openmp
+      - verify-macos
+      - wasm-x86
       - windows
-      - wasm
     runs-on: windows-latest
 
     steps:
-
+  
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -712,7 +712,7 @@ jobs:
         name: metadata
         path: artifacts
 
-  publish_dotnet:
+  publish-dotnet:
     name: 'Publish .NET library'
     if: github.event_name != 'schedule'
     needs:
@@ -792,7 +792,7 @@ jobs:
         $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
         dotnet nuget push $file.FullName --api-key ${{ secrets.PUBLISH_PACKAGE_PAT }} --source "github"
 
-  publish_wasm:
+  publish-wasm-x86:
     name: 'Publish WASM library'
     if: github.event_name != 'schedule'
     needs:
