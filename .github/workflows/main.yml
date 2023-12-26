@@ -66,6 +66,12 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
+      uses: actions/upload-artifact@v3
+      with:
+        name: linux-x64
+        path: artifacts
+
+    - name: Upload library
       uses: actions/upload-artifact@v4
       with:
         name: linux-x64
