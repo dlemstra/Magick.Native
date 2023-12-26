@@ -424,7 +424,6 @@ jobs:
     strategy:
       matrix:
         image:
-          - 'ubuntu:16.04'
           - 'ubuntu:18.04'
           - 'ubuntu:20.04'
           - 'ubuntu:latest'
@@ -458,51 +457,9 @@ jobs:
         name: linux-x64
 
     - name: Verify Native
-      run: build/shared/verify.Native.sh . linux x64
-
-  verify-linux-x64-openmp:
-    name: 'Verify Linux (x64) OpenMP'
-    needs:
-      - linux-x64
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        image:
-          - 'ubuntu:18.04'
-          - 'ubuntu:20.04'
-          - 'ubuntu:latest'
-          - 'tgagor/centos:stream8'
-          - 'tgagor/centos:stream9'
-          - 'mcr.microsoft.com/dotnet/aspnet:latest'
-          - 'mcr.microsoft.com/dotnet/runtime:6.0'
-          - 'mcr.microsoft.com/dotnet/runtime:latest'
-          - 'amazon/aws-lambda-dotnet:6'
-          - 'public.ecr.aws/lambda/dotnet:6-x86_64'
-
-    container:
-      image: ${{ matrix.image }}
-
-    steps:
-
-    - name: Install dependencies
       run: |
-        if [ -f "/bin/yum" ]; then
-          yum install -y gzip tar
-        fi
-
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 1
-
-    - name: Download linux library
-      uses: actions/download-artifact@v3
-      with:
-        name: linux-x64
-
-    - name: Verify Native
-      run: build/shared/verify.Native.sh . linux x64 OpenMP
+        build/shared/verify.Native.sh . linux x64
+        build/shared/verify.Native.sh . linux x64 OpenMP
 
   verify-linux-x64-musl:
     name: 'Verify Linux musl (x64)'
@@ -538,40 +495,6 @@ jobs:
         apk update
         apk add bash
         build/shared/verify.Native.sh . linux-musl x64
-
-  verify-linux-x64-musl-openmp:
-    name: 'Verify Linux musl (x64) OpenMP'
-    needs:
-      - linux-musl-x64
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        image:
-          - 'alpine:latest'
-          - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
-          - 'mcr.microsoft.com/dotnet/runtime:6.0-alpine'
-          - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
-
-    container:
-      image: ${{ matrix.image }}
-
-    steps:
-
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-
-    - name: Download linux-musl library
-      uses: actions/download-artifact@v3
-      with:
-        name: linux-musl-x64
-
-    - name: Verify Native
-      run: |
-        apk update
-        apk add bash
         build/shared/verify.Native.sh . linux-musl x64 OpenMP
 
   verify-linux-arm64:
@@ -607,39 +530,6 @@ jobs:
       run: |
         export path=$(pwd)
         docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64
-
-  verify-linux-arm64-openmp:
-    name: 'Verify Linux (arm64) OpenMP'
-    needs:
-      - linux-arm64
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        image:
-          - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
-          - 'public.ecr.aws/lambda/dotnet:6-arm64'
-
-    steps:
-
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-
-    - name: Download linux-arm64 library
-      uses: actions/download-artifact@v3
-      with:
-        name: linux-arm64
-
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@master
-      with:
-        platforms: arm64
-
-    - name: Verify Native
-      run: |
-        export path=$(pwd)
         docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64 OpenMP
 
   verify-macos:
@@ -672,11 +562,8 @@ jobs:
     name: 'Metadata'
     needs:
       - verify-linux-x64
-      - verify-linux-x64-openmp
       - verify-linux-x64-musl
-      - verify-linux-x64-musl-openmp
       - verify-linux-arm64
-      - verify-linux-arm64-openmp
       - verify-macos
       - wasm-x86
       - windows
