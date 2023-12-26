@@ -504,7 +504,7 @@ jobs:
     - name: Verify Native
       run: build/shared/verify.Native.sh . linux x64 OpenMP
 
-  verify-linux-musl-x64:
+  verify-linux-x64-musl:
     name: 'Verify Linux musl (x64)'
     needs:
       - linux-musl-x64
@@ -539,7 +539,7 @@ jobs:
         apk add bash
         build/shared/verify.Native.sh . linux-musl x64
 
-  verify-linux-musl-x64-openmp:
+  verify-linux-x64-musl-openmp:
     name: 'Verify Linux musl (x64) OpenMP'
     needs:
       - linux-musl-x64
