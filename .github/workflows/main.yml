@@ -714,6 +714,7 @@ jobs:
 
   publish_dotnet:
     name: 'Publish .NET library'
+    if: github.event_name != 'schedule'
     needs:
       - metadata
     runs-on: windows-latest
@@ -791,6 +792,7 @@ jobs:
 
   publish_wasm:
     name: 'Publish WASM library'
+    if: github.event_name != 'schedule'
     needs:
       - metadata
     runs-on: windows-latest
