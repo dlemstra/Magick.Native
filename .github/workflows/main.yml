@@ -452,7 +452,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-x64
 
@@ -486,7 +486,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux-musl library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-musl-x64
 
@@ -517,7 +517,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux-arm64 library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-arm64
 
@@ -551,7 +551,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download macos library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: macos-${{ matrix.arch }}
 
@@ -618,50 +618,50 @@ jobs:
       working-directory: build/windows
 
     - name: Download linux-x64 library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-x64
         path: publish\dotnet\files\linux
 
     - name: Download linux-arm64 library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-arm64
         path: publish\dotnet\files\linux
 
     - name: Download linux-x64-musl library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux-x64-musl
         path: publish\dotnet\files\linux
 
     - name: Download macos-x64 library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: macos-x64
         path: publish\dotnet\files\macos
 
     - name: Download macos-arm64 library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: macos-arm64
         path: publish\dotnet\files\macos
 
     - name: Download windows libraries
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         pattern: windows
         path: publish\dotnet\files\windows
 
     - name: Download resources
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         pattern: resources
         merge-multiple: true
         path: publish\dotnet\files\resources
 
     - name: Download metadata
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: metadata
         path: publish\dotnet\files\metadata
@@ -697,7 +697,7 @@ jobs:
       working-directory: build/windows
 
     - name: Download wasm library
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: wasm-x86
         path: publish\wasm\files
