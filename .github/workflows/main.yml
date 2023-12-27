@@ -66,15 +66,9 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v4
-      with:
-        name: linux-x64
-        path: artifacts
-
-    - name: Upload library
       uses: actions/upload-artifact@v3
       with:
-        name: v3
+        name: linux-x64
         path: artifacts
 
   linux-musl-x64:
@@ -460,7 +454,7 @@ jobs:
     - name: Download linux library
       uses: actions/download-artifact@v3
       with:
-        name: v3
+        name: linux-x64
 
     - name: Verify Native
       run: |
@@ -622,6 +616,12 @@ jobs:
     - name: Install dependencies
       run: ./install.dependencies.ps1
       working-directory: build/windows
+
+    - name: Download linux library
+      uses: actions/download-artifact@v3
+      with:
+        name: linux-x64
+        path: publish\dotnet\files\linux
 
     - name: Download linux library
       uses: actions/download-artifact@v4
