@@ -126,7 +126,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: linux-musl-x64
         path: artifacts
@@ -186,7 +186,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: linux-arm64
         path: artifacts
@@ -232,7 +232,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: macos-x64
         path: artifacts
@@ -278,7 +278,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Upload library
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: macos-arm64
         path: artifacts
@@ -352,15 +352,15 @@ jobs:
         timestamp-digest: SHA256
 
     - name: Upload library
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
-        name: windows-${{ matrix.platformName }}-${{ matrix.quantumName }}
+        name: windows
         path: artifacts/windows
 
     - name: Upload resources
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
-        name: resources-${{ matrix.platformName }}-${{ matrix.quantumName }}
+        name: resources
         path: artifacts/resources
 
   wasm-x86:
@@ -486,7 +486,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux-musl library
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v3
       with:
         name: linux-musl-x64
 
@@ -517,7 +517,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download linux-arm64 library
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v3
       with:
         name: linux-arm64
 
@@ -551,7 +551,7 @@ jobs:
         fetch-depth: 1
 
     - name: Download macos library
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v3
       with:
         name: macos-${{ matrix.arch }}
 
@@ -617,37 +617,46 @@ jobs:
       run: ./install.dependencies.ps1
       working-directory: build/windows
 
-    - name: Download linux library
+    - name: Download linux-x64 library
       uses: actions/download-artifact@v3
       with:
         name: linux-x64
         path: publish\dotnet\files\linux
 
-    - name: Download linux library
-      uses: actions/download-artifact@v4
+    - name: Download linux-arm64 library
+      uses: actions/download-artifact@v3
       with:
-        name: linux-*
-        merge-multiple: true
+        name: linux-arm64
         path: publish\dotnet\files\linux
 
-    - name: Download macos library
-      uses: actions/download-artifact@v4
+    - name: Download linux-x64-musl library
+      uses: actions/download-artifact@v3
       with:
-        name: macos-*
-        merge-multiple: true
+        name: linux-x64-musl
+        path: publish\dotnet\files\linux
+
+    - name: Download macos-x64 library
+      uses: actions/download-artifact@v3
+      with:
+        name: macos-x64
         path: publish\dotnet\files\macos
 
-    - name: Download windows library
-      uses: actions/download-artifact@v4
+    - name: Download macos-arm64 library
+      uses: actions/download-artifact@v3
       with:
-        pattern: windows-*
-        merge-multiple: true
+        name: macos-arm64
+        path: publish\dotnet\files\macos
+
+    - name: Download windows libraries
+      uses: actions/download-artifact@v3
+      with:
+        pattern: windows
         path: publish\dotnet\files\windows
 
     - name: Download resources
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v3
       with:
-        pattern: resources-*
+        pattern: resources
         merge-multiple: true
         path: publish\dotnet\files\resources
 
