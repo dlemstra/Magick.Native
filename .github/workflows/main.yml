@@ -633,7 +633,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: linux-musl-x64
-        path: publish\dotnet\files\linux
+        path: publish\dotnet\files\linux-musl
 
     - name: Download macos-x64 library
       uses: actions/download-artifact@v3
