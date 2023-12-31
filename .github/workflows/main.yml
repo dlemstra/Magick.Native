@@ -570,7 +570,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-  
+
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -650,14 +650,13 @@ jobs:
     - name: Download windows libraries
       uses: actions/download-artifact@v3
       with:
-        pattern: windows
+        name: windows
         path: publish\dotnet\files\windows
 
     - name: Download resources
       uses: actions/download-artifact@v3
       with:
-        pattern: resources
-        merge-multiple: true
+        name: resources
         path: publish\dotnet\files\resources
 
     - name: Download metadata
