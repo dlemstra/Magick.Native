@@ -10,6 +10,8 @@ MAGICK_NATIVE_EXPORT double ChannelPerceptualHash_GetHclpHuPhash(const ChannelPe
 
 MAGICK_NATIVE_EXPORT double ChannelPerceptualHash_GetSrgbHuPhash(const ChannelPerceptualHash *, const size_t);
 
+MAGICK_NATIVE_EXPORT double ChannelPerceptualHash_GetHuPhash(const ChannelPerceptualHash *, const size_t, const size_t);
+
 #if defined(__cplusplus) || defined(c_plusplus)
 }
 #endif
