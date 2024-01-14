@@ -1,7 +1,9 @@
 import fs from 'fs';
 import util from 'util';
 import { CodeParser } from './code-parser';
+import { ConstantsWriter } from './constants-writer';
 import { TypeDefinitionWriter } from './type-definition-writer';
+import { XmlResourceFile } from './xml-resource-file';
 
 const readdir = util.promisify(fs.readdir);
 const stat = util.promisify(fs.stat);
@@ -28,8 +30,13 @@ async function main(dir: string, outputDir: string) {
     const codeParser = new CodeParser(codeFiles);
     const methods = await codeParser.getMethods();
 
-    const writer = new TypeDefinitionWriter(methods);
-    await writer.write(`${outputDir}/magick.d.ts`);
+    const typeDefinitionWriter = new TypeDefinitionWriter(methods);
+    await typeDefinitionWriter.write(`${outputDir}/magick.d.ts`);
+
+    const xmlResourceFiles = [new XmlResourceFile(dir, 'log'), new XmlResourceFile(dir, 'policy')];
+
+    const constantsWriter = new ConstantsWriter(xmlResourceFiles);
+    constantsWriter.write(`${outputDir}/magick.constants.ts`);
 }
 
 const dir = process.argv[2];

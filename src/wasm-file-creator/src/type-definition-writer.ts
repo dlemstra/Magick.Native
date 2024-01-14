@@ -13,14 +13,7 @@ export class TypeDefinitionWriter {
 export type quantumArray = Uint8Array;
 
 /** @internal */
-export interface FileSystemNode {
-    contents: Int8Array;
-}
-
-/** @internal */
-export interface FileStream {
-    node: FileSystemNode;
-}
+export interface FileStream {}
 
 /** @internal */
 export interface PathInfo {

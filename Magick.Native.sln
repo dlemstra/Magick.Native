@@ -183,8 +183,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{16F5433C-4F98-4CE9-A40E-C768FF818761}"
 	ProjectSection(SolutionItems) = preProject
 		src\wasm-file-creator\src\code-parser.ts = src\wasm-file-creator\src\code-parser.ts
+		src\wasm-file-creator\src\constants-writer.ts = src\wasm-file-creator\src\constants-writer.ts
 		src\wasm-file-creator\src\index.ts = src\wasm-file-creator\src\index.ts
 		src\wasm-file-creator\src\type-definition-writer.ts = src\wasm-file-creator\src\type-definition-writer.ts
+		src\wasm-file-creator\src\xml-resource-file.ts = src\wasm-file-creator\src\xml-resource-file.ts
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".devcontainer", ".devcontainer", "{A1FC197D-F3DB-4735-BAFF-52D176C097E8}"

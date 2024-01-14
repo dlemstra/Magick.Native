@@ -6,7 +6,8 @@
     ".": {
       "types": "./magick.d.ts",
       "default": "./magick.js"
-    }
+    },
+    "./magick.constants": "./magick.constants.ts"
   },
   "module": "./magick.js",
   "types": "./magick.d.ts",
@@ -17,6 +18,7 @@
   "author": "Dirk Lemstra",
   "license": "Apache-2.0",
   "files": [
+    "magick.constants.ts",
     "magick.d.ts",
     "magick.js",
     "magick.wasm",
