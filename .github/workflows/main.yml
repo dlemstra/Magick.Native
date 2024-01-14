@@ -401,9 +401,9 @@ jobs:
       run: ../../build/shared/build.Native.sh wasm x86
       working-directory: src/Magick.Native
 
-    - name: Create type definition
+    - name: Create wasm files
       run: npm install && npm run publish
-      working-directory: src/create-type-definition
+      working-directory: src/wasm-file-creator
 
     - name: Copy Native
       run: ../../build/wasm-x86/copy.Native.sh ../../artifacts

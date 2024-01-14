@@ -9,8 +9,8 @@ src/Magick.Native/bin
 src/Magick.Native/Q8
 src/Magick.Native/Q16
 src/Magick.Native/Q16-HDRI
-src/create-type-definition/lib
-src/create-type-definition/node_modules
+src/wasm-file-creator/lib
+src/wasm-file-creator/node_modules
 **/output/*
 **/tools/*
 *.aps

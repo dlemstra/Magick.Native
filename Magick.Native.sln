@@ -174,17 +174,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-arm64", "macos-arm64"
 		build\macos-arm64\settings.sh = build\macos-arm64\settings.sh
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "create-type-definition", "create-type-definition", "{BE2DF871-363E-46ED-A999-81C5D6A232D7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-file-creator", "wasm-file-creator", "{BE2DF871-363E-46ED-A999-81C5D6A232D7}"
 	ProjectSection(SolutionItems) = preProject
-		src\create-type-definition\package.json = src\create-type-definition\package.json
-		src\create-type-definition\tsconfig.json = src\create-type-definition\tsconfig.json
+		src\wasm-file-creator\package.json = src\wasm-file-creator\package.json
+		src\wasm-file-creator\tsconfig.json = src\wasm-file-creator\tsconfig.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{16F5433C-4F98-4CE9-A40E-C768FF818761}"
 	ProjectSection(SolutionItems) = preProject
-		src\create-type-definition\src\code-parser.ts = src\create-type-definition\src\code-parser.ts
-		src\create-type-definition\src\index.ts = src\create-type-definition\src\index.ts
-		src\create-type-definition\src\type-definition-writer.ts = src\create-type-definition\src\type-definition-writer.ts
+		src\wasm-file-creator\src\code-parser.ts = src\wasm-file-creator\src\code-parser.ts
+		src\wasm-file-creator\src\index.ts = src\wasm-file-creator\src\index.ts
+		src\wasm-file-creator\src\type-definition-writer.ts = src\wasm-file-creator\src\type-definition-writer.ts
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".devcontainer", ".devcontainer", "{A1FC197D-F3DB-4735-BAFF-52D176C097E8}"

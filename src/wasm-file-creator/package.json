@@ -1,7 +1,7 @@
 {
-  "name": "create-type-definition",
+  "name": "wasm-file-creator",
   "version": "1.0.0",
-  "description": "Create type definition",
+  "description": "Create wasm files",
   "repository": "https://github.com/dlemstra/Magick.Native",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "Dirk Lemstra",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^20.5.9",
     "typescript": "^5.2.2"
