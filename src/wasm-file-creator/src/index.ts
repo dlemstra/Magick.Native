@@ -22,19 +22,19 @@ async function getCodeFiles(dir: string) {
     return result;
 }
 
-async function main(dir: string, outputFileName: string) {
+async function main(dir: string, outputDir: string) {
     const codeFiles = await getCodeFiles(dir);
 
     const codeParser = new CodeParser(codeFiles);
     const methods = await codeParser.getMethods();
 
     const writer = new TypeDefinitionWriter(methods);
-    await writer.write(outputFileName);
+    await writer.write(`${outputDir}/magick.d.ts`);
 }
 
 const dir = process.argv[2];
-const outputFileName = process.argv[3];
-main(dir, outputFileName).catch(err => {
+const outputDir = process.argv[3];
+main(dir, outputDir).catch(err => {
     console.error(err);
     process.exit(1);
 });

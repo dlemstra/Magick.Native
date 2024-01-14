@@ -5,8 +5,8 @@
   "repository": "https://github.com/dlemstra/Magick.Native",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc -p .",
-    "publish": "npx tsc -p . && node lib/index.js ../Magick.Native ../Magick.Native/Q8/magick.d.ts"
+    "build": "tsc -p .",
+    "publish": "tsc -p . && node lib/index.js ../Magick.Native ../Magick.Native/Q8"
   },
   "keywords": [],
   "author": "Dirk Lemstra",
