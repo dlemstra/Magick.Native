@@ -132,19 +132,6 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Format_Set(ImageInfo *instance, const c
     CopyMagickString(instance->magick, value, MagickPathExtent);
 }
 
-MAGICK_NATIVE_EXPORT const char *MagickSettings_Font_Get(const ImageInfo *instance)
-{
-  return instance->font;
-}
-
-MAGICK_NATIVE_EXPORT void MagickSettings_Font_Set(ImageInfo *instance, const char *value)
-{
-  if (instance->font != (char *) NULL)
-    instance->font = DestroyString(instance->font);
-  if (value != (const char *) NULL)
-    instance->font = ConstantString(value);
-}
-
 MAGICK_NATIVE_EXPORT double MagickSettings_FontPointsize_Get(const ImageInfo *instance)
 {
   return instance->pointsize;
@@ -197,6 +184,14 @@ MAGICK_NATIVE_EXPORT void MagickSettings_SetFileName(ImageInfo *instance, const 
   else
     CopyMagickString(instance->filename, value, MagickPathExtent);
   SetImageOption(instance, "filename", value);
+}
+
+MAGICK_NATIVE_EXPORT void MagickSettings_SetFont(ImageInfo *instance, const char *value)
+{
+  if (instance->font != (char *) NULL)
+    instance->font = DestroyString(instance->font);
+  if (value != (const char *) NULL)
+    instance->font = ConstantString(value);
 }
 
 MAGICK_NATIVE_EXPORT void MagickSettings_SetNumberScenes(ImageInfo *instance, const size_t value)
