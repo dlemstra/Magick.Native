@@ -21,8 +21,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.sh
@@ -81,8 +79,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.sh
@@ -141,8 +137,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.sh
@@ -199,8 +193,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.sh
@@ -245,8 +237,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.sh
@@ -303,8 +293,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
@@ -373,8 +361,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.sh
@@ -482,8 +468,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Download linux-musl library
       uses: actions/download-artifact@v3
@@ -513,8 +497,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Download linux-arm64 library
       uses: actions/download-artifact@v3
@@ -547,8 +529,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Download macos library
       uses: actions/download-artifact@v3
@@ -573,8 +553,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
@@ -610,8 +588,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
@@ -688,8 +664,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
 
     - name: Install dependencies
       run: ./install.dependencies.ps1
