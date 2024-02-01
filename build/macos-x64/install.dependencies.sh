@@ -21,7 +21,6 @@ brew uninstall kotlin
 brew uninstall selenium-server
 brew uninstall sbt
 brew uninstall openjdk
-brew uninstall gobject-introspection
 brew uninstall r
 brew uninstall colima
 brew uninstall lima
