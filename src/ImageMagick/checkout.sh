@@ -194,7 +194,7 @@ clone_date 'harfbuzz' "$commitDate"
 clone_date 'lzma' "$commitDate"
 clone_date 'pango' "$commitDate"
 clone_date 'raqm' "$commitDate"
-clone_commit 'pixman' "546bf229ac6b09cae8efdbe712ec8c43624dc4b7"
+clone_date 'pixman' "$commitDate"
 clone_date 'rsvg' "$commitDate"
 clone_date 'zip' "$commitDate"
 
