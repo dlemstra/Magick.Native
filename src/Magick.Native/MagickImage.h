@@ -158,9 +158,9 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AddNoise(Image *, const size_t, const do
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_AffineTransform(Image *, const double, const double, const double, const double, const double, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *, const DrawInfo *, char *, char *, const size_t, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *, const DrawInfo *, const char *, const char *, const size_t, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *, const DrawInfo *, char *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *, const DrawInfo *, const char *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_AutoGamma(Image *, const size_t, ExceptionInfo **);
 

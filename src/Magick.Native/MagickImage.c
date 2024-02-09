@@ -744,16 +744,16 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AffineTransform(Image *instance, const d
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *instance, const DrawInfo *settings, char *text, char *boundingArea, const size_t gravity, const double angle, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *instance, const DrawInfo *settings, const char *text, const char *boundingArea, const size_t gravity, const double angle, ExceptionInfo **exception)
 {
   DrawInfo
     *drawInfo;
 
   drawInfo = CloneDrawInfo((const ImageInfo *) NULL, settings);
   drawInfo->text = DestroyString(drawInfo->text);
-  drawInfo->text = text;
+  drawInfo->text = (char *) text;
   drawInfo->geometry = DestroyString(drawInfo->geometry);
-  drawInfo->geometry = boundingArea;
+  drawInfo->geometry = (char *) boundingArea;
   drawInfo->gravity = (GravityType) gravity;
 
   if (angle != 0.0)
@@ -767,14 +767,14 @@ MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *instance, const DrawInfo *
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *instance, const DrawInfo *settings, char *text, const size_t gravity, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *instance, const DrawInfo *settings, const char *text, const size_t gravity, ExceptionInfo **exception)
 {
   DrawInfo
     *drawInfo;
 
   drawInfo = CloneDrawInfo((const ImageInfo *) NULL, settings);
   drawInfo->text = DestroyString(drawInfo->text);
-  drawInfo->text = text;
+  drawInfo->text = (char *) text;
   drawInfo->gravity = (GravityType) gravity;
 
   MAGICK_NATIVE_GET_EXCEPTION;
