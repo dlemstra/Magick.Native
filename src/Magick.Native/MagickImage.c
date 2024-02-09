@@ -813,10 +813,10 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AutoOrient(const Image *instance, Except
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_AutoThreshold(Image *instance, const AutoThresholdMethod method, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_AutoThreshold(Image *instance, const size_t method, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
-  AutoThresholdImage(instance, method, exceptionInfo);
+  AutoThresholdImage(instance, (AutoThresholdMethod) method, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
