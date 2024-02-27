@@ -7,15 +7,34 @@
 
 #define MAGICK_NATIVE_GET_PIXEL_WAND(color) \
   PixelWand \
-    *pixel_wand; \
-  pixel_wand=NewPixelWand(); \
-  PixelSetPixelColor(pixel_wand,color)
+    *pixel_wand = PixelWand_Create(color);
 
 #define MAGICK_NATIVE_REMOVE_PIXEL_WAND \
   pixel_wand=DestroyPixelWand(pixel_wand)
 
 #define MAGICK_NATIVE_SET_DRAW_EXCEPTION \
   *exception=DrawingWand_DestroyException(instance)
+
+
+static inline PixelWand *PixelWand_Create(const PixelInfo *input)
+{
+  PixelWand
+    *pixel_wand;
+
+  PixelInfo
+    color = *input;
+
+  pixel_wand = NewPixelWand();
+  if (pixel_wand != (PixelWand *) NULL && color.colorspace == CMYKColorspace)
+  {
+    color.red = ((MagickRealType) QuantumRange - color.red - color.black) / ((MagickRealType) QuantumRange - color.black);
+    color.green = ((MagickRealType) QuantumRange - color.green - color.black) / ((MagickRealType) QuantumRange - color.black);
+    color.blue = ((MagickRealType) QuantumRange - color.blue - color.black) / ((MagickRealType) QuantumRange - color.black);
+  }
+
+  PixelSetPixelColor(pixel_wand, &color);
+  return pixel_wand;
+}
 
 static inline ExceptionInfo *DrawingWand_DestroyException(DrawingWand *instance)
 {
