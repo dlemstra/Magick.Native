@@ -126,10 +126,10 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_Quality_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_Quality_Set(Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ResolutionUnits_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ResolutionUnits_Set(Image *, const  size_t);
+MAGICK_NATIVE_EXPORT void MagickImage_ResolutionUnits_Set(Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT double MagickImage_ResolutionX_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ResolutionX_Set(Image *, const  double);
+MAGICK_NATIVE_EXPORT void MagickImage_ResolutionX_Set(Image *, const double);
 
 MAGICK_NATIVE_EXPORT double MagickImage_ResolutionY_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ResolutionY_Set(Image *, const double);

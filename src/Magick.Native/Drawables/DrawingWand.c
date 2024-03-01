@@ -10,11 +10,10 @@
     *pixel_wand = PixelWand_Create(color);
 
 #define MAGICK_NATIVE_REMOVE_PIXEL_WAND \
-  pixel_wand=DestroyPixelWand(pixel_wand)
+  pixel_wand = DestroyPixelWand(pixel_wand)
 
 #define MAGICK_NATIVE_SET_DRAW_EXCEPTION \
-  *exception=DrawingWand_DestroyException(instance)
-
+  *exception = DrawingWand_DestroyException(instance)
 
 static inline PixelWand *PixelWand_Create(const PixelInfo *input)
 {

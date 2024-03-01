@@ -13,18 +13,18 @@ extern "C" {
     exceptionInfo = AcquireExceptionInfo()
 
 #define MAGICK_NATIVE_DESTROY_EXCEPTION \
-    exceptionInfo = DestroyExceptionInfo(exceptionInfo); \
+  exceptionInfo = DestroyExceptionInfo(exceptionInfo); \
   }
 
 #define MAGICK_NATIVE_RAISE_EXCEPTION(type, message) \
-    ThrowException(exceptionInfo, type, message, (const char *)NULL); \
-    *exception = exceptionInfo
+  ThrowException(exceptionInfo, type, message, (const char *) NULL); \
+  *exception = exceptionInfo
 
 #define MAGICK_NATIVE_SET_EXCEPTION \
-    if (exceptionInfo->severity != UndefinedException) \
-      *exception = exceptionInfo; \
-    else \
-      exceptionInfo = DestroyExceptionInfo(exceptionInfo); \
+  if (exceptionInfo->severity != UndefinedException) \
+    *exception = exceptionInfo; \
+  else \
+    exceptionInfo = DestroyExceptionInfo(exceptionInfo); \
   }
 
 MAGICK_NATIVE_EXPORT const char *MagickExceptionHelper_Description(const ExceptionInfo *);

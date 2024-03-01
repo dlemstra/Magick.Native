@@ -1,0 +1,17 @@
+AlignAfterOpenBracket: DontAlign
+AlignEscapedNewlines: DontAlign
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterControlStatement: Always
+  AfterExternBlock: false
+  AfterFunction: true
+  AfterStruct: true
+  BeforeElse: true
+ColumnLimit: 0
+ContinuationIndentWidth: 2
+IndentWidth: 2
+IndentExternBlock: NoIndent
+IndentPPDirectives: BeforeHash
+SortIncludes: Never
+SpaceAfterCStyleCast: true
+WhitespaceSensitiveMacros: ['MAGICK_NATIVE_LINK_LIB']

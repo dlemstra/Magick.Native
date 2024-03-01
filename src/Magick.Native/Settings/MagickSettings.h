@@ -14,7 +14,7 @@ MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_AntiAlias_Get(const ImageI
 MAGICK_NATIVE_EXPORT void MagickSettings_AntiAlias_Set(ImageInfo *, const MagickBooleanType);
 
 MAGICK_NATIVE_EXPORT PixelInfo *MagickSettings_BackgroundColor_Get(const ImageInfo *);
-MAGICK_NATIVE_EXPORT void MagickSettings_BackgroundColor_Set(ImageInfo *, const  PixelInfo *);
+MAGICK_NATIVE_EXPORT void MagickSettings_BackgroundColor_Set(ImageInfo *, const PixelInfo *);
 
 MAGICK_NATIVE_EXPORT size_t MagickSettings_ColorSpace_Get(const ImageInfo *);
 MAGICK_NATIVE_EXPORT void MagickSettings_ColorSpace_Set(ImageInfo *, const size_t value);

@@ -7,8 +7,8 @@
 static inline MagickBooleanType AreExceptionsEqual(const ExceptionInfo *a, const ExceptionInfo *b)
 {
   if ((a->severity != b->severity) ||
-    (LocaleCompare(a->reason, b->reason) != 0) ||
-    (LocaleCompare(a->description, b->description) != 0))
+      (LocaleCompare(a->reason, b->reason) != 0) ||
+      (LocaleCompare(a->description, b->description) != 0))
     return MagickFalse;
 
   return MagickTrue;

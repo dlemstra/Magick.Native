@@ -11,7 +11,7 @@
 #include "Types/TypeMetric.h"
 
 #define MagickPI 3.14159265358979323846264338327950288419716939937510
-#define DegreesToRadians(x) (MagickPI*(x)/180.0)
+#define DegreesToRadians(x) (MagickPI * (x) / 180.0)
 
 #define SetChannelMask(image, channels) \
   { \
@@ -19,20 +19,20 @@
       new_mask = (ChannelType) channels, \
       old_mask = UndefinedChannel; \
     if (new_mask != UndefinedChannel) \
-      old_mask = SetPixelChannelMask(image, new_mask)
+    old_mask = SetPixelChannelMask(image, new_mask)
 
 #define RestoreChannelMask(image) \
-    if (new_mask != UndefinedChannel) \
-      SetPixelChannelMask(image, old_mask); \
+  if (new_mask != UndefinedChannel) \
+    SetPixelChannelMask(image, old_mask); \
   }
 
 #define RestoreChannelMasks(image, result) \
-    if (new_mask != UndefinedChannel) \
-    { \
-      SetPixelChannelMask(image, old_mask); \
-      if (result != (Image *)NULL) \
-        SetPixelChannelMask(result, old_mask); \
-    } \
+  if (new_mask != UndefinedChannel) \
+  { \
+    SetPixelChannelMask(image, old_mask); \
+    if (result != (Image *) NULL) \
+      SetPixelChannelMask(result, old_mask); \
+  } \
   }
 
 static inline void SetRectangleInfo(const Image *image, const char *geometry, const size_t gravity, RectangleInfo *rectangle, ExceptionInfo *exception)
@@ -1136,7 +1136,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Crop(const Image *instance, const char *
   RectangleInfo
     rectangle;
 
-
   MAGICK_NATIVE_GET_EXCEPTION;
   SetRectangleInfo(instance, geometry, gravity, &rectangle, exceptionInfo);
   image = CropImage(instance, &rectangle, exceptionInfo);
@@ -2000,7 +1999,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const Cu
   info = DestroyCustomStreamInfo(info);
   RemoveFrames(image);
   MAGICK_NATIVE_SET_EXCEPTION;
-  return(image);
+  return (image);
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_RegionMask(Image *instance, const RectangleInfo *region, ExceptionInfo **exception)
@@ -2119,7 +2118,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Sample(const Image *instance, const char
   image = SampleImage(instance, rectangle.width, rectangle.height, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
-
 }
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Scale(const Image *instance, const char *geometry, ExceptionInfo **exception)

@@ -9,7 +9,7 @@
     *result; \
   size_t \
     length; \
-  length = width*height*strlen(mapping)*sizeof(type);
+  length = width * height * strlen(mapping) * sizeof(type);
 
 MAGICK_NATIVE_EXPORT CacheView *PixelCollection_Create(const Image *image, ExceptionInfo **exception)
 {

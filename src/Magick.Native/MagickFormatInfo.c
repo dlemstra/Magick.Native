@@ -76,12 +76,12 @@ MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsMultipleFrames_G
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsReading_Get(const MagickInfo *instance)
 {
-  return GetImageDecoder(instance) != (DecodeImageHandler *) NULL ? MagickTrue: MagickFalse;
+  return GetImageDecoder(instance) != (DecodeImageHandler *) NULL ? MagickTrue : MagickFalse;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsWriting_Get(const MagickInfo *instance)
 {
-  return GetImageEncoder(instance) != (EncodeImageHandler *) NULL ? MagickTrue: MagickFalse;
+  return GetImageEncoder(instance) != (EncodeImageHandler *) NULL ? MagickTrue : MagickFalse;
 }
 
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **list, const size_t index, ExceptionInfo **exception)

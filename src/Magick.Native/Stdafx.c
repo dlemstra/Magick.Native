@@ -4,15 +4,15 @@
 #include "Stdafx.h"
 
 #if defined(MAGICK_NATIVE_LINUX)
-#define GLIBC_SYMVER_VERSION "2.2.5"
+  #define GLIBC_SYMVER_VERSION "2.2.5"
 #elif defined(MAGICK_NATIVE_LINUX_ARM64)
-#define GLIBC_SYMVER_VERSION "2.17"
+  #define GLIBC_SYMVER_VERSION "2.17"
 #endif
 
 #if defined GLIBC_SYMVER_VERSION
-#if defined(__cplusplus) || defined(c_plusplus)
+  #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {
-#endif
+  #endif
 
 __asm__(".symver old_fcntl64, fcntl@GLIBC_" GLIBC_SYMVER_VERSION);
 int old_fcntl64(int fd, int cmd, ...);
@@ -80,7 +80,7 @@ float powf(float base, float exponent)
 {
   return old_powf(base, exponent);
 }
-#if defined(__cplusplus) || defined(c_plusplus)
+  #if defined(__cplusplus) || defined(c_plusplus)
 }
-#endif
+  #endif
 #endif

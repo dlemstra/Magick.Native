@@ -60,7 +60,6 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_MaxMemoryRequest_Set(const MagickSizeTy
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Memory_Get(void)
 {
   return GetMagickResourceLimit(MemoryResource);

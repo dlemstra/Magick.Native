@@ -14,24 +14,24 @@
       channel_index, \
       channel_length; \
     channel_length = GetImageListLength(images); \
-    channel_masks = (ChannelType *)AcquireMagickMemory(channel_length*sizeof(*channel_masks)); \
+    channel_masks = (ChannelType *) AcquireMagickMemory(channel_length * sizeof(*channel_masks)); \
     channel_index = 0; \
     channel_image = images; \
     while (channel_image != (Image *) NULL) \
     { \
-      channel_masks[channel_index++] = SetImageChannelMask(channel_image, (ChannelType)channels); \
+      channel_masks[channel_index++] = SetImageChannelMask(channel_image, (ChannelType) channels); \
       channel_image = channel_image->next; \
     }
 
 #define RestoreChannelMask \
-    channel_index = 0; \
-    channel_image = images; \
-    while (channel_image != (Image *)NULL) \
-    { \
-      SetPixelChannelMask(channel_image, channel_masks[channel_index++]); \
-      channel_image = channel_image->next; \
-    } \
-    RelinquishMagickMemory(channel_masks); \
+  channel_index = 0; \
+  channel_image = images; \
+  while (channel_image != (Image *) NULL) \
+  { \
+    SetPixelChannelMask(channel_image, channel_masks[channel_index++]); \
+    channel_image = channel_image->next; \
+  } \
+  RelinquishMagickMemory(channel_masks); \
   }
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Append(const Image *images, const MagickBooleanType stack, ExceptionInfo **exception)
@@ -198,7 +198,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Polynomial(Image *instance, co
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
-
 
 MAGICK_NATIVE_EXPORT void MagickImageCollection_Quantize(Image *images, const QuantizeInfo *settings, ExceptionInfo **exception)
 {

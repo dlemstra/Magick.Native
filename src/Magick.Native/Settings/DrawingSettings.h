@@ -77,7 +77,7 @@ MAGICK_NATIVE_EXPORT double DrawingSettings_TextKerning_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_TextKerning_Set(DrawInfo *, const double);
 
 MAGICK_NATIVE_EXPORT PixelInfo *DrawingSettings_TextUnderColor_Get(const DrawInfo *);
-MAGICK_NATIVE_EXPORT void DrawingSettings_TextUnderColor_Set(DrawInfo *, const  PixelInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_TextUnderColor_Set(DrawInfo *, const PixelInfo *);
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_SetAffine(DrawInfo *, const double, const double, const double, const double, const double, const double);
 
