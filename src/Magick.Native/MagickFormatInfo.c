@@ -41,12 +41,12 @@ MAGICK_NATIVE_EXPORT void MagickFormatInfo_DisposeList(char **list, const size_t
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_CanReadMultithreaded_Get(const MagickInfo *instance)
 {
-  return GetMagickDecoderThreadSupport(instance);
+  return GetImageDecoder(instance) == (DecodeImageHandler *) NULL ? MagickFalse : GetMagickDecoderThreadSupport(instance);
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_CanWriteMultithreaded_Get(const MagickInfo *instance)
 {
-  return GetMagickEncoderThreadSupport(instance);
+  return GetImageEncoder(instance) == (EncodeImageHandler *) NULL ? MagickFalse : GetMagickEncoderThreadSupport(instance);
 }
 
 MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Description_Get(const MagickInfo *instance)
