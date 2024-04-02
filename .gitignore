@@ -1,8 +1,7 @@
 .vs
 .vscode
-libraries
 publish/**/files/*
-src/ImageMagick/libraries/*
+src/ImageMagick/imagemagick-windows
 src/ImageMagick/output/*
 src/Magick.Native/lib
 src/Magick.Native/bin

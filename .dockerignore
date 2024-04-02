@@ -1,4 +1,4 @@
-src/ImageMagick/libraries
+src/ImageMagick/imagemagick-windows
 src/ImageMagick/output
 src/Magick.Native/.vs
 src/Magick.Native/bin
