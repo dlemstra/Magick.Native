@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 
 set TOOLSDIR=C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools
 
