@@ -60,7 +60,7 @@ function getVersion($fileName, $start, $padding) {
 }
 
 function getImageMagickVersion() {
-    $versionFile = fullPath "src\ImageMagick\libraries\ImageMagick\m4\version.m4"
+    $versionFile = fullPath "src\ImageMagick\imagemagick-windows\ImageMagick\m4\version.m4"
     $major = getVersion $versionFile "m4_define([magick_major_version], [" 2
     $minor = getVersion $versionFile "m4_define([magick_minor_version], [" 2
     $micro = getVersion $versionFile "m4_define([magick_micro_version], [" 2
