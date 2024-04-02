@@ -29,7 +29,8 @@ function writeVersionFromResource($fileName, $libraryName, $resourceFile) {
     }
 }
 
-function writeImageMagickVersion($fileName, $folder) {
+function writeImageMagickVersion($fileName) {
+    $folder = fullPath "src/ImageMagick/imagemagick-windows/ImageMagick"
     $major = getVersion "$folder\m4\version.m4" "m4_define([magick_major_version], [" 2
     $minor = getVersion "$folder\m4\version.m4" "m4_define([magick_minor_version], [" 2
     $micro = getVersion "$folder\m4\version.m4" "m4_define([magick_micro_version], [" 2
@@ -52,30 +53,23 @@ function writeImageMagickVersion($fileName, $folder) {
     Add-Content $fileName "- ImageMagick $version ($date)"
 }
 
-function writeLibraryVersions($folders) {
-    $sourceDir = fullPath "src/ImageMagick/libraries"
+function writeLibraryVersions($fileName) {
+    $sourceDir = fullPath "src/ImageMagick/imagemagick-windows/Dependencies"
     $libraries = Get-ChildItem $sourceDir
 
     foreach ($library in $libraries) {
         $libraryName = $library.Name
-        if ($libraryName -eq "VisualMagick") {
-            continue;
-        }
-
         $folder = "$sourceDir/$libraryName"
 
         $resourceFiles = Get-ChildItem -Path $folder -Filter "ImageMagick.version.h" -Recurse
-        if ($resourceFiles.Count -ne 0) {
+        if ($resourceFiles.Count -eq 0) {
+            Write-Error "Unable to get version for: $libraryName"
+        } else {
             foreach ($resourceFile in $resourceFiles) {
                 $parentFolder = Split-Path -Path $resourceFile.FullName -Parent
                 $parentFolder = Split-Path -Path $parentFolder -Parent
                 $parentFolder = Split-Path -Path $parentFolder -Leaf
                 writeVersionFromResource $fileName $parentFolder $resourceFile.FullName
-            }
-        } else {
-            switch($libraryName) {
-                "ImageMagick" { writeImageMagickVersion $fileName $folder }
-                default { Write-Error "Unable to get version for: $library" }
             }
         }
     }
@@ -94,6 +88,7 @@ function createLibrariesDocument($destination) {
     Add-Content $fileName "Magick.Native [$commit](https://github.com/dlemstra/Magick.Native/commit/$commit) is build with the following libraries:"
     Add-Content $fileName ""
 
+    writeImageMagickVersion $fileName
     writeLibraryVersions $filename
 }
 
