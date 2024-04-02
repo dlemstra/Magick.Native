@@ -10,7 +10,7 @@ param (
 . $PSScriptRoot\..\..\tools\windows\utils.ps1
 
 function patchMagickBaseConfig($name, $platformName) {
-    $configFile = fullPath "src\ImageMagick\libraries\ImageMagick\MagickCore\magick-baseconfig.h"
+    $configFile = fullPath "src\ImageMagick\imagemagick-windows\ImageMagick\MagickCore\magick-baseconfig.h"
     $config = [IO.File]::ReadAllText($configFile, [System.Text.Encoding]::Default)
 
     $config = $config.Replace("//#define MAGICKCORE_LIBRARY_NAME `"MyImageMagick.dll`"", "#define MAGICKCORE_LIBRARY_NAME `"Magick.Native-" + $name + "-" + $platformName + ".dll`"")
@@ -18,7 +18,7 @@ function patchMagickBaseConfig($name, $platformName) {
 }
 
 function createSolution($configureOptions) {
-    $solutionFile = fullPath "src\ImageMagick\libraries\VisualMagick\VisualStaticMT.sln"
+    $solutionFile = fullPath "src\ImageMagick\imagemagick-windows\IM7.Static.sln"
 
     if (Test-Path $solutionFile)
     {
@@ -26,7 +26,7 @@ function createSolution($configureOptions) {
     }
 
     $location = $(Get-Location)
-    $path = fullPath "src\ImageMagick\libraries\VisualMagick\configure"
+    $path = fullPath "src\ImageMagick\imagemagick-windows\Configure"
     Set-Location $path
 
     $options = "/smt /noWizard /VS2022 $configureOptions"
@@ -37,7 +37,7 @@ function createSolution($configureOptions) {
 }
 
 function copyIncludes($folder) {
-    $source = fullPath "src\ImageMagick\libraries"
+    $source = fullPath "src\ImageMagick\imagemagick-windows"
     $destination = fullPath "src\ImageMagick\output\includes\$folder"
     Remove-Item $destination -Recurse -ErrorAction Ignore
     [void](New-Item -ItemType directory -Path "$destination\MagickCore")
@@ -45,15 +45,15 @@ function copyIncludes($folder) {
     [void](New-Item -ItemType directory -Path "$destination\MagickWand")
     Copy-Item "$source\ImageMagick\MagickWand\*.h" "$destination\MagickWand"
     [void](New-Item -ItemType directory -Path "$destination\jpeg")
-    Copy-Item "$source\jpeg-turbo\*.h" "$destination\jpeg"
+    Copy-Item "$source\Dependencies\jpeg-turbo\*.h" "$destination\jpeg"
     [void](New-Item -ItemType directory -Path "$destination\coders")
     Copy-Item "$source\ImageMagick\coders\*-private.h" "$destination\coders"
     [void](New-Item -ItemType directory -Path "$destination\CL")
-    Copy-Item "$source\VisualMagick\OpenCL\CL\*.h" "$destination\CL"
+    Copy-Item "$source\Build\OpenCL\CL\*.h" "$destination\CL"
 }
 
 function copyResources($folder) {
-    $source = fullPath "src\ImageMagick\libraries\VisualMagick\bin"
+    $source = fullPath "src\ImageMagick\imagemagick-windows\Output\bin"
     $destination = fullPath "src\ImageMagick\output\resources\$folder"
     Remove-Item $destination -Recurse -ErrorAction Ignore
     [void](New-Item -ItemType directory -Path "$destination")
@@ -67,7 +67,7 @@ function copyResources($folder) {
 }
 
 function copyLibraries($config, $folder) {
-    $source = fullPath "src\ImageMagick\libraries\VisualMagick\lib"
+    $source = fullPath "src\ImageMagick\imagemagick-windows\Output\lib"
     $destination = fullPath "src\ImageMagick\output\libraries\$folder"
     Remove-Item $destination -Recurse -ErrorAction Ignore
     [void](New-Item -ItemType directory -Path $destination)
@@ -111,12 +111,12 @@ function buildImageMagick($config, $name, $platformName) {
     patchMagickBaseConfig $name $platformName
 
     $options = "Configuration=$config,Platform=$($platformName),VCBuildAdditionalOptions=/#arch:SSE"
-    build "src\ImageMagick\libraries\VisualMagick\VisualStaticMT.sln" $options
+    build "src\ImageMagick\imagemagick-windows\IM7.Static.sln" $options
     copyOutput $config $name $platformName
 }
 
 function buildConfigure() {
-    build "src\ImageMagick\libraries\VisualMagick\configure\configure.2022.sln" "Configuration=Release,Platform=x64"
+    build "src\ImageMagick\imagemagick-windows\Configure\Configure.sln" "Configuration=Release,Platform=x64"
 }
 
 buildConfigure
