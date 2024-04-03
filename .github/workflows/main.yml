@@ -554,8 +554,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.ps1
+    - name: Install build tools
+      run: ./install.build-tools.ps1
       working-directory: build/windows
 
     - name: Update ImageMagick.commit to latest commit
@@ -589,8 +589,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.ps1
+    - name: Install build tools
+      run: ./install.build-tools.ps1
       working-directory: build/windows
 
     - name: Download linux-x64 library
@@ -665,8 +665,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.ps1
+    - name: Install build tools
+      run: ./install.build-tools.ps1
       working-directory: build/windows
 
     - name: Download wasm library
