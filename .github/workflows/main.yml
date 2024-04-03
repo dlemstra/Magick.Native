@@ -36,7 +36,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies linux x64
+      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies linux x64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
@@ -94,7 +94,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies linux-musl x64
+      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies linux-musl x64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
@@ -152,7 +152,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies linux arm64
+      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies linux arm64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
@@ -208,7 +208,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies macos x64
+      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies macos x64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
@@ -252,7 +252,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies macos arm64
+      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies macos arm64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
@@ -376,7 +376,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies wasm x86
+      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies wasm x86
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
