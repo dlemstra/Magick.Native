@@ -35,12 +35,12 @@ jobs:
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Build libraries
-      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies linux x64
+    - name: Build dependencies
+      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies linux x64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux x64
+      run: ../../../../build/shared/build.imagemagick.sh linux x64
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -52,7 +52,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux x64 OpenMP
+      run: ../../../../build/shared/build.imagemagick.sh linux x64 OpenMP
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -93,12 +93,12 @@ jobs:
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Build libraries
-      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies linux-musl x64
+    - name: Build dependencies
+      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies linux-musl x64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux-musl x64
+      run: ../../../../build/shared/build.imagemagick.sh linux-musl x64
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -110,7 +110,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux-musl x64 OpenMP
+      run: ../../../../build/shared/build.imagemagick.sh linux-musl x64 OpenMP
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -151,12 +151,12 @@ jobs:
       run: ./checkout.sh linux ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Build libraries
-      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies linux arm64
+    - name: Build dependencies
+      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies linux arm64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux arm64
+      run: ../../../../build/shared/build.imagemagick.sh linux arm64
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -168,7 +168,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux arm64 OpenMP
+      run: ../../../../build/shared/build.imagemagick.sh linux arm64 OpenMP
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -207,12 +207,12 @@ jobs:
       run: ./checkout.sh macos ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Build libraries
-      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies macos x64
+    - name: Build dependencies
+      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies macos x64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh macos x64
+      run: ../../../../build/shared/build.imagemagick.sh macos x64
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -251,12 +251,12 @@ jobs:
       run: ./checkout.sh macos ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Build libraries
-      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies macos arm64
+    - name: Build dependencies
+      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies macos arm64
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh macos arm64
+      run: ../../../../build/shared/build.imagemagick.sh macos arm64
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
@@ -375,12 +375,12 @@ jobs:
       run: ./checkout.sh wasm ../../../artifacts
       working-directory: src/ImageMagick
 
-    - name: Build libraries
-      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies wasm x86
+    - name: Build dependencies
+      run: ../../../../build/shared/build.dependencies.sh ../../../build/dependencies wasm x86
       working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh wasm x86
+      run: ../../../../build/shared/build.imagemagick.sh wasm x86
       working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
