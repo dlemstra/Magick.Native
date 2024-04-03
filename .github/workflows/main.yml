@@ -22,8 +22,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.sh
+    - name: Install build tools
+      run: ./install.build-tools.sh
       working-directory: build/linux-x64
 
     - name: Update ImageMagick.commit to latest commit
@@ -36,31 +36,31 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux x64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies linux x64
+      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux x64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh linux x64
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh linux x64
+      run: ../../build/shared/build.native.sh linux x64
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts linux x64
+      run: ../../build/shared/copy.native.sh ../../artifacts linux x64
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux x64 OpenMP
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh linux x64 OpenMP
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh linux x64 OpenMP
+      run: ../../build/shared/build.native.sh linux x64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts linux x64 OpenMP
+      run: ../../build/shared/copy.native.sh ../../artifacts linux x64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -80,8 +80,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.sh
+    - name: Install build tools
+      run: ./install.build-tools.sh
       working-directory: build/linux-musl-x64
 
     - name: Update ImageMagick.commit to latest commit
@@ -94,31 +94,31 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux-musl x64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies linux-musl x64
+      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux-musl x64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh linux-musl x64
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh linux-musl x64
+      run: ../../build/shared/build.native.sh linux-musl x64
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64
+      run: ../../build/shared/copy.native.sh ../../artifacts linux-musl x64
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux-musl x64 OpenMP
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh linux-musl x64 OpenMP
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh linux-musl x64 OpenMP
+      run: ../../build/shared/build.native.sh linux-musl x64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64 OpenMP
+      run: ../../build/shared/copy.native.sh ../../artifacts linux-musl x64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -138,8 +138,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.sh
+    - name: Install build tools
+      run: ./install.build-tools.sh
       working-directory: build/linux-arm64
 
     - name: Update ImageMagick.commit to latest commit
@@ -152,31 +152,31 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux arm64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies linux arm64
+      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux arm64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh linux arm64
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh linux arm64
+      run: ../../build/shared/build.native.sh linux arm64
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64
+      run: ../../build/shared/copy.native.sh ../../artifacts linux arm64
       working-directory: src/Magick.Native
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh linux arm64 OpenMP
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh linux arm64 OpenMP
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh linux arm64 OpenMP
+      run: ../../build/shared/build.native.sh linux arm64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64 OpenMP
+      run: ../../build/shared/copy.native.sh ../../artifacts linux arm64 OpenMP
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -194,8 +194,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.sh
+    - name: Install build tools
+      run: ./install.build-tools.sh
       working-directory: build/macos-x64
 
     - name: Update ImageMagick.commit to latest commit
@@ -208,19 +208,19 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries macos x64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies macos x64
+      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh macos x64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh macos x64
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh macos x64
+      run: ../../build/shared/build.native.sh macos x64
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts macos x64
+      run: ../../build/shared/copy.native.sh ../../artifacts macos x64
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -238,8 +238,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.sh
+    - name: Install build tools
+      run: ./install.build-tools.sh
       working-directory: build/macos-arm64
 
     - name: Update ImageMagick.commit to latest commit
@@ -252,19 +252,19 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries macos arm64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies macos arm64
+      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh macos arm64
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh macos arm64
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh macos arm64
+      run: ../../build/shared/build.native.sh macos arm64
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.Native.sh ../../artifacts macos arm64
+      run: ../../build/shared/copy.native.sh ../../artifacts macos arm64
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -362,8 +362,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.sh
+    - name: Install build tools
+      run: ./install.build-tools.sh
       working-directory: build/wasm-x86
 
     - name: Update ImageMagick.commit to latest commit
@@ -376,15 +376,15 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build libraries
-      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries wasm x86
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.dependencies.sh ../../../build/dependencies wasm x86
+      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.ImageMagick.sh wasm x86
-      working-directory: src/ImageMagick/libraries
+      run: ../../../build/shared/build.imagemagick.sh wasm x86
+      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.Native.sh wasm x86
+      run: ../../build/shared/build.native.sh wasm x86
       working-directory: src/Magick.Native
 
     - name: Create wasm files
@@ -392,7 +392,7 @@ jobs:
       working-directory: src/wasm-file-creator
 
     - name: Copy Native
-      run: ../../build/wasm-x86/copy.Native.sh ../../artifacts
+      run: ../../build/wasm-x86/copy.native.sh ../../artifacts
       working-directory: src/Magick.Native
 
     - name: Upload library
@@ -444,8 +444,8 @@ jobs:
 
     - name: Verify Native
       run: |
-        build/shared/verify.Native.sh . linux x64
-        build/shared/verify.Native.sh . linux x64 OpenMP
+        build/shared/verify.native.sh . linux x64
+        build/shared/verify.native.sh . linux x64 OpenMP
 
   verify-linux-musl-x64:
     name: 'Verify Linux musl (x64)'
@@ -478,8 +478,8 @@ jobs:
       run: |
         apk update
         apk add bash
-        build/shared/verify.Native.sh . linux-musl x64
-        build/shared/verify.Native.sh . linux-musl x64 OpenMP
+        build/shared/verify.native.sh . linux-musl x64
+        build/shared/verify.native.sh . linux-musl x64 OpenMP
 
   verify-linux-arm64:
     name: 'Verify Linux (arm64)'
@@ -511,8 +511,8 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64 OpenMP
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64 OpenMP
 
   verify-macos:
     name: 'Verify MacOS'
@@ -536,7 +536,7 @@ jobs:
         name: macos-${{ matrix.arch }}
 
     - name: Verify MacOS
-      run: build/shared/verify.Native.MacOS.sh . macos ${{ matrix.arch }}
+      run: build/shared/verify.native.macos.sh . macos ${{ matrix.arch }}
 
   metadata:
     name: 'Metadata'
