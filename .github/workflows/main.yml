@@ -294,8 +294,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: ./install.dependencies.ps1
+    - name: Install build tools
+      run: ./install.build-tools.ps1
       working-directory: build/windows
 
     - name: Update ImageMagick.commit to latest commit
@@ -308,7 +308,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build ImageMagick
-      run: ./build.ImageMagick.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
+      run: ./build.imagemagick.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
       working-directory: build/windows
 
     - name: Update resource files
@@ -316,11 +316,11 @@ jobs:
       working-directory: build/windows
 
     - name: Build Native
-      run: ./build.Native.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
+      run: ./build.native.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
       working-directory: build/windows
 
     - name: Copy Native
-      run: ./copy.Native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
+      run: ./copy.native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
       working-directory: build/windows
 
     - name: Sign binaries
