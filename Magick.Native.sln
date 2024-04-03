@@ -161,7 +161,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{C9FDCB6E-2B4E-4E3B-A0B3-336D575E0E87}"
 	ProjectSection(SolutionItems) = preProject
 		build\shared\build.dependencies.sh = build\shared\build.dependencies.sh
-		build\shared\build.imagmagick.sh = build\shared\build.imagmagick.sh
+		build\shared\build.imagemagick.sh = build\shared\build.imagemagick.sh
 		build\shared\build.native.sh = build\shared\build.native.sh
 		build\shared\verify.native.macos.sh = build\shared\verify.native.macos.sh
 		build\shared\copy.native.sh = build\shared\copy.native.sh
