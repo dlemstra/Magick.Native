@@ -27,10 +27,6 @@ function cloneImageMagickWindows()
          rm -f imagemagick-windows/Dependencies/zip/.ImageMagick/Config.txt
     fi
 
-    if [ "$platform" != "windows" ]; then
-         rm -f imagemagick-windows/Dependencies/jasper/.ImageMagick/Config.txt
-    fi
-
     rm -f imagemagick-windows/Projects/demos/.ImageMagick/Config.txt
     rm -f imagemagick-windows/Projects/filters/.ImageMagick/Config.txt
     rm -f imagemagick-windows/Projects/Magick++/.ImageMagick/Config.txt
