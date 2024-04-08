@@ -15,23 +15,23 @@ function cloneImageMagickWindows()
     fi
 
     if [ "$platform" == "wasm" ]; then
-         rm -f imagemagick-windows/Dependencies/bzlib/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/cairo/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/croco/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/fribidi/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/harfbuzz/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/lzma/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/pango/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/pixman/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/rsvg/.ImageMagick/Config.txt
-         rm -f imagemagick-windows/Dependencies/zip/.ImageMagick/Config.txt
+         rm -rf imagemagick-windows/Dependencies/bzlib/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/cairo/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/croco/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/fribidi/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/harfbuzz/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/lzma/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/pango/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/pixman/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/rsvg/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/zip/.ImageMagick
     fi
 
-    rm -f imagemagick-windows/Projects/demos/.ImageMagick/Config.txt
-    rm -f imagemagick-windows/Projects/filters/.ImageMagick/Config.txt
-    rm -f imagemagick-windows/Projects/Magick++/.ImageMagick/Config.txt
-    rm -f imagemagick-windows/Projects/oss-fuzz/.ImageMagick/Config.txt
-    rm -f imagemagick-windows/Projects/utilities/.ImageMagick/Config.txt
+    rm -rf imagemagick-windows/Projects/demos/.ImageMagick
+    rm -rf imagemagick-windows/Projects/filters/.ImageMagick
+    rm -rf imagemagick-windows/Projects/Magick++/.ImageMagick
+    rm -rf imagemagick-windows/Projects/oss-fuzz/.ImageMagick
+    rm -rf imagemagick-windows/Projects/utilities/.ImageMagick
 }
 
 function cloneRepositories()
