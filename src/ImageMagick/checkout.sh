@@ -3,8 +3,6 @@ set -e
 
 function cloneImageMagickWindows()
 {
-    local platform=$1
-
     if [ ! -d "imagemagick-windows" ]; then
         git clone https://github.com/ImageMagick/ImageMagick-Windows imagemagick-windows
     else
@@ -13,6 +11,23 @@ function cloneImageMagickWindows()
         git pull origin main
         cd ..
     fi
+
+    rm -rf imagemagick-windows/Projects/demos/.ImageMagick
+    rm -rf imagemagick-windows/Projects/filters/.ImageMagick
+    rm -rf imagemagick-windows/Projects/Magick++/.ImageMagick
+    rm -rf imagemagick-windows/Projects/oss-fuzz/.ImageMagick
+    rm -rf imagemagick-windows/Projects/utilities/.ImageMagick
+}
+
+function cloneRepositories()
+{
+    local platform=$1
+
+    commit=$(<ImageMagick.commit)
+
+    cd imagemagick-windows
+    bash CloneRepositories.sh ImageMagick $commit
+    cd ..
 
     if [ "$platform" == "wasm" ]; then
          rm -rf imagemagick-windows/Dependencies/bzlib/.ImageMagick
@@ -26,21 +41,6 @@ function cloneImageMagickWindows()
          rm -rf imagemagick-windows/Dependencies/rsvg/.ImageMagick
          rm -rf imagemagick-windows/Dependencies/zip/.ImageMagick
     fi
-
-    rm -rf imagemagick-windows/Projects/demos/.ImageMagick
-    rm -rf imagemagick-windows/Projects/filters/.ImageMagick
-    rm -rf imagemagick-windows/Projects/Magick++/.ImageMagick
-    rm -rf imagemagick-windows/Projects/oss-fuzz/.ImageMagick
-    rm -rf imagemagick-windows/Projects/utilities/.ImageMagick
-}
-
-function cloneRepositories()
-{
-    commit=$(<ImageMagick.commit)
-
-    cd imagemagick-windows
-    bash CloneRepositories.sh ImageMagick $commit
-    cd ..
 }
 
 function cloneFontconfig()
@@ -155,7 +155,7 @@ function createNotice()
             fi
 
             version="$(tail -n +2 $versionFile | awk -F " " '{print $3 " " $4}' | sed -e 's/"//g')"
-            echo -e "[ $(basename $folder) $version ] copyright:\n" >> $notice
+            echo -e "[ $(basename $versionFolder) $version ] copyright:\n" >> $notice
 
             addCopyright $fileName $notice
         done
@@ -165,7 +165,7 @@ function createNotice()
 platform=$1
 noticeFolder=$2
 
-cloneImageMagickWindows $platform
-cloneRepositories
+cloneImageMagickWindows
+cloneRepositories $platform
 cloneFontconfig $platform
 createNotice $noticeFolder
