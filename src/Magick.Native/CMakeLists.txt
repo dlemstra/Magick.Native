@@ -10,7 +10,7 @@ include_directories(. /usr/local/include /usr/local/include/ImageMagick-7)
 
 set(LIB_DIR /usr/local/lib)
 
-if (NOT (PLATFORM STREQUAL "MACOS"))
+if (NOT (PLATFORM STREQUAL "MACOS") AND NOT (PLATFORM STREQUAL "WASM"))
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 endif()
