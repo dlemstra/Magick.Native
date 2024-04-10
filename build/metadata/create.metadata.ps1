@@ -55,15 +55,15 @@ function writeImageMagickVersion($fileName) {
 
 function writeLibraryVersions($fileName) {
     $sourceDir = fullPath "src/ImageMagick/imagemagick-windows/Dependencies"
-    $libraries = Get-ChildItem $sourceDir
+    $dependencies = Get-ChildItem $sourceDir
 
-    foreach ($library in $libraries) {
-        $libraryName = $library.Name
-        $folder = "$sourceDir/$libraryName"
+    foreach ($dependency in $dependencies) {
+        $dependencyName = $dependency.Name
+        $folder = "$sourceDir/$dependencyName"
 
         $resourceFiles = Get-ChildItem -Path $folder -Filter "ImageMagick.version.h" -Recurse
         if ($resourceFiles.Count -eq 0) {
-            Write-Error "Unable to get version for: $libraryName"
+            Write-Error "Unable to get version for: $dependencyName"
         } else {
             foreach ($resourceFile in $resourceFiles) {
                 $parentFolder = Split-Path -Path $resourceFile.FullName -Parent
