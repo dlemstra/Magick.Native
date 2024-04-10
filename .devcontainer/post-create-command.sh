@@ -5,5 +5,5 @@ rm -f dependencies
 ln -s /ImageMagick/imagemagick-windows dependencies
 
 cd src/Magick.Native
-../../build/shared/build.Native.sh $DC_CONFIG $DC_ARCH $DC_OPEN_MP
-../../build/shared/copy.Native.sh ../../build/$DC_CONFIG-$DC_ARCH/output $DC_CONFIG $DC_ARCH $DC_OPEN_MP
+../../build/shared/build.native.sh $DC_CONFIG $DC_ARCH $DC_OPEN_MP
+../../build/shared/copy.native.sh ../../build/$DC_CONFIG-$DC_ARCH/output $DC_CONFIG $DC_ARCH $DC_OPEN_MP
