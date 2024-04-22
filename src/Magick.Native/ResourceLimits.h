@@ -21,6 +21,9 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_ListLength_Set(const MagickSizeType);
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_MaxMemoryRequest_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_MaxMemoryRequest_Set(const MagickSizeType, ExceptionInfo **);
 
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_MaxProfileSize_Get(void);
+MAGICK_NATIVE_EXPORT void ResourceLimits_MaxProfileSize_Set(const MagickSizeType, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Memory_Get(void);
 MAGICK_NATIVE_EXPORT void ResourceLimits_Memory_Set(const MagickSizeType);
 

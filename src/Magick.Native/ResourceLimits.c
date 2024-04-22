@@ -60,6 +60,22 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_MaxMemoryRequest_Set(const MagickSizeTy
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
+MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_MaxProfileSize_Get(void)
+{
+  return (MagickSizeType) GetMaxProfileSize();
+}
+
+MAGICK_NATIVE_EXPORT void ResourceLimits_MaxProfileSize_Set(const MagickSizeType limit, ExceptionInfo **exception)
+{
+  char
+    buffer[21];
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  snprintf(buffer, sizeof(buffer), "%llu", limit);
+  (void) SetMagickSecurityPolicyValue(SystemPolicyDomain, "max-profile-size", buffer, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Memory_Get(void)
 {
   return GetMagickResourceLimit(MemoryResource);
