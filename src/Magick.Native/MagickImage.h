@@ -392,7 +392,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadFile(const ImageInfo *, ExceptionInf
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_ReadPixels(const size_t, const size_t, const char *, const size_t, const void *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, void *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_RegionMask(Image *, const RectangleInfo *, ExceptionInfo **);
 

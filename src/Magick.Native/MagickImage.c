@@ -1980,7 +1980,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadPixels(const size_t width, const siz
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const CustomStreamHandler reader, const CustomStreamSeeker seeker, const CustomStreamTeller teller, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const CustomStreamHandler reader, const CustomStreamSeeker seeker, const CustomStreamTeller teller, void *data, ExceptionInfo **exception)
 {
   Image
     *image;
@@ -1993,6 +1993,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const Cu
   SetCustomStreamReader(info, reader);
   SetCustomStreamSeeker(info, seeker);
   SetCustomStreamTeller(info, teller);
+  SetCustomStreamData(info, data);
   SetImageInfoCustomStream(settings, info);
   image = CustomStreamToImage(settings, exceptionInfo);
   SetImageInfoCustomStream(settings, (CustomStreamInfo *) NULL);
