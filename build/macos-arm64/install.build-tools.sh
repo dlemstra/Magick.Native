@@ -5,8 +5,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 brew list --formula
 
-brew install automake gnu-sed nasm ossp-uuid ragel
-
 # Uninstall already installed development libraries
 
 brew uninstall imagemagick
@@ -30,6 +28,9 @@ brew uninstall --ignore-dependencies brotli
 brew uninstall --ignore-dependencies xz
 brew uninstall --ignore-dependencies zlib
 brew uninstall --ignore-dependencies zstd
+
+# Install build tools
+brew install automake libtool gnu-sed nasm ossp-uuid ragel
 
 pip3 install setuptools
 pip3 install meson==0.61.5
