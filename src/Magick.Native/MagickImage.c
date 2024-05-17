@@ -1980,7 +1980,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadPixels(const size_t width, const siz
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const CustomStreamHandler reader, const CustomStreamSeeker seeker, const CustomStreamTeller teller, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const CustomStreamHandler reader, const CustomStreamSeeker seeker, const CustomStreamTeller teller, void *data, ExceptionInfo **exception)
 {
   Image
     *image;
@@ -1993,6 +1993,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *settings, const Cu
   SetCustomStreamReader(info, reader);
   SetCustomStreamSeeker(info, seeker);
   SetCustomStreamTeller(info, teller);
+  SetCustomStreamData(info, data);
   SetImageInfoCustomStream(settings, info);
   image = CustomStreamToImage(settings, exceptionInfo);
   SetImageInfoCustomStream(settings, (CustomStreamInfo *) NULL);
@@ -2671,7 +2672,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_WriteFile(Image *instance, const ImageInfo
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *instance, ImageInfo *settings, const CustomStreamHandler writer, const CustomStreamSeeker seeker, const CustomStreamTeller teller, const CustomStreamHandler reader, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *instance, ImageInfo *settings, const CustomStreamHandler writer, const CustomStreamSeeker seeker, const CustomStreamTeller teller, const CustomStreamHandler reader, void *data, ExceptionInfo **exception)
 {
   CustomStreamInfo
     *info;
@@ -2682,6 +2683,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *instance, ImageInfo *se
   SetCustomStreamSeeker(info, seeker);
   SetCustomStreamTeller(info, teller);
   SetCustomStreamReader(info, reader);
+  SetCustomStreamData(info, data);
   SetImageInfoCustomStream(settings, info);
   ImageToCustomStream(settings, instance, exceptionInfo);
   SetImageInfoCustomStream(settings, (CustomStreamInfo *) NULL);
