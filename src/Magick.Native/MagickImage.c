@@ -1543,7 +1543,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *instance, const Image *ima
   MAGICK_NATIVE_GET_EXCEPTION;
   SetChannelMask(instance, channels);
   HaldClutImage(instance, image, exceptionInfo);
-  RestoreChannelMask(instance, channels)
+  RestoreChannelMask(instance)
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
