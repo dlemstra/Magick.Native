@@ -228,7 +228,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadFile(ImageInfo *settings, 
   return images;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadStream(ImageInfo *settings, const CustomStreamHandler reader, const CustomStreamSeeker seeker, const CustomStreamTeller teller, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadStream(ImageInfo *settings, const CustomStreamHandler reader, const CustomStreamSeeker seeker, const CustomStreamTeller teller, void *data, ExceptionInfo **exception)
 {
   Image
     *images;
@@ -241,6 +241,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadStream(ImageInfo *settings
   SetCustomStreamReader(info, reader);
   SetCustomStreamSeeker(info, seeker);
   SetCustomStreamTeller(info, teller);
+  SetCustomStreamData(info, data);
   SetImageInfoCustomStream(settings, info);
   images = CustomStreamToImage(settings, exceptionInfo);
   SetImageInfoCustomStream(settings, (CustomStreamInfo *) NULL);
@@ -267,7 +268,7 @@ MAGICK_NATIVE_EXPORT void MagickImageCollection_WriteFile(Image *image, const Im
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImageCollection_WriteStream(Image *image, ImageInfo *settings, const CustomStreamHandler writer, const CustomStreamSeeker seeker, const CustomStreamTeller teller, const CustomStreamHandler reader, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImageCollection_WriteStream(Image *image, ImageInfo *settings, const CustomStreamHandler writer, const CustomStreamSeeker seeker, const CustomStreamTeller teller, const CustomStreamHandler reader, void *data, ExceptionInfo **exception)
 {
   CustomStreamInfo
     *info;
@@ -278,6 +279,7 @@ MAGICK_NATIVE_EXPORT void MagickImageCollection_WriteStream(Image *image, ImageI
   SetCustomStreamSeeker(info, seeker);
   SetCustomStreamTeller(info, teller);
   SetCustomStreamReader(info, reader);
+  SetCustomStreamData(info, data);
   SetImageInfoCustomStream(settings, info);
   ImagesToCustomStream(settings, image, exceptionInfo);
   SetImageInfoCustomStream(settings, (CustomStreamInfo *) NULL);

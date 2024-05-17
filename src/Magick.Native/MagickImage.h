@@ -528,7 +528,7 @@ MAGICK_NATIVE_EXPORT unsigned char *MagickImage_WriteBlob(Image *, const ImageIn
 
 MAGICK_NATIVE_EXPORT void MagickImage_WriteFile(Image *, const ImageInfo *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *, ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, const CustomStreamHandler, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *, ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, const CustomStreamHandler, void *, ExceptionInfo **);
 
 #if defined(__cplusplus) || defined(c_plusplus)
 }
