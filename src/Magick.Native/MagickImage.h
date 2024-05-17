@@ -308,7 +308,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_GetWriteMask(const Image *, ExceptionInf
 
 MAGICK_NATIVE_EXPORT void MagickImage_Grayscale(Image *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *, const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *, const Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasChannel(const Image *, const size_t);
 

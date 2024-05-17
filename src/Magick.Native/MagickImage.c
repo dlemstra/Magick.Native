@@ -19,7 +19,7 @@
       new_mask = (ChannelType) channels, \
       old_mask = UndefinedChannel; \
     if (new_mask != UndefinedChannel) \
-    old_mask = SetPixelChannelMask(image, new_mask)
+      old_mask = SetPixelChannelMask(image, new_mask)
 
 #define RestoreChannelMask(image) \
   if (new_mask != UndefinedChannel) \
@@ -1538,10 +1538,12 @@ MAGICK_NATIVE_EXPORT void MagickImage_Grayscale(Image *instance, const size_t me
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *instance, const Image *image, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *instance, const Image *image, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   HaldClutImage(instance, image, exceptionInfo);
+  RestoreChannelMask(instance, channels)
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
