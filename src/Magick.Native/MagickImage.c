@@ -979,9 +979,9 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_CloneArea(const Image *instance, const s
 MAGICK_NATIVE_EXPORT void MagickImage_Clut(Image *instance, Image *clutImage, const size_t method, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
-  SetChannelMask(clutImage, channels);
+  SetChannelMask(instance, channels);
   ClutImage(instance, clutImage, (const PixelInterpolateMethod) method, exceptionInfo);
-  RestoreChannelMask(clutImage);
+  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
