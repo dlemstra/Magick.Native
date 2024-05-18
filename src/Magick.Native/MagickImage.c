@@ -2674,7 +2674,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_WriteFile(Image *instance, const ImageInfo
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *instance, ImageInfo *settings, const CustomStreamHandler writer, const CustomStreamSeeker seeker, const CustomStreamTeller teller, const CustomStreamHandler reader, void *data, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *instance, ImageInfo *settings, const CustomStreamHandler writer, const CustomStreamSeeker seeker, const CustomStreamTeller teller, void *data, ExceptionInfo **exception)
 {
   CustomStreamInfo
     *info;
@@ -2684,7 +2684,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_WriteStream(Image *instance, ImageInfo *se
   SetCustomStreamWriter(info, writer);
   SetCustomStreamSeeker(info, seeker);
   SetCustomStreamTeller(info, teller);
-  SetCustomStreamReader(info, reader);
   SetCustomStreamData(info, data);
   SetImageInfoCustomStream(settings, info);
   ImageToCustomStream(settings, instance, exceptionInfo);
