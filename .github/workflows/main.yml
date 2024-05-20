@@ -343,9 +343,6 @@ jobs:
         certificate-profile-name: ImageMagick
         files-folder: 'artifacts\windows\Release${{ matrix.quantumName }}\${{ matrix.platformName }}'
         files-folder-filter: dll
-        file-digest: SHA256
-        timestamp-rfc3161: http://timestamp.acs.microsoft.com
-        timestamp-digest: SHA256
 
     - name: Upload library
       uses: actions/upload-artifact@v3
