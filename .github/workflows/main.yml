@@ -328,6 +328,7 @@ jobs:
       working-directory: build/windows
 
     - name: 'Azure CLI login with federated credential'
+      if: github.event_name != 'pull_request'
       uses: azure/login@v2
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
