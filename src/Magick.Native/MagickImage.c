@@ -19,7 +19,7 @@
       new_mask = (ChannelType) channels, \
       old_mask = UndefinedChannel; \
     if (new_mask != UndefinedChannel) \
-      old_mask = SetPixelChannelMask(image, new_mask)
+    old_mask = SetPixelChannelMask(image, new_mask)
 
 #define RestoreChannelMask(image) \
   if (new_mask != UndefinedChannel) \
@@ -521,6 +521,19 @@ MAGICK_NATIVE_EXPORT void MagickImage_MatteColor_Set(Image *instance, const Pixe
 MAGICK_NATIVE_EXPORT double MagickImage_MeanErrorPerPixel_Get(const Image *instance)
 {
   return instance->error.mean_error_per_pixel;
+}
+
+MAGICK_NATIVE_EXPORT size_t MagickImage_MetaChannelCount_Get(const Image *instance, ExceptionInfo **exception)
+{
+  (void) (exception);
+  return GetPixelMetaChannels(instance);
+}
+
+MAGICK_NATIVE_EXPORT void MagickImage_MetaChannelCount_Set(Image *instance, const size_t value, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  SetPixelMetaChannels(instance, value, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
 }
 
 MAGICK_NATIVE_EXPORT double MagickImage_NormalizedMaximumError_Get(const Image *instance)
@@ -1544,7 +1557,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_HaldClut(Image *instance, const Image *ima
   SetChannelMask(instance, channels);
   HaldClutImage(instance, image, exceptionInfo);
   RestoreChannelMask(instance)
-  MAGICK_NATIVE_SET_EXCEPTION;
+    MAGICK_NATIVE_SET_EXCEPTION;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasChannel(const Image *instance, const size_t channel)

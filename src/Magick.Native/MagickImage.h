@@ -109,6 +109,9 @@ MAGICK_NATIVE_EXPORT void MagickImage_MatteColor_Set(Image *, const PixelInfo *)
 
 MAGICK_NATIVE_EXPORT double MagickImage_MeanErrorPerPixel_Get(const Image *);
 
+MAGICK_NATIVE_EXPORT size_t MagickImage_MetaChannelCount_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_MetaChannelCount_Set(Image *, const size_t, ExceptionInfo **);
+
 MAGICK_NATIVE_EXPORT double MagickImage_NormalizedMaximumError_Get(const Image *);
 
 MAGICK_NATIVE_EXPORT double MagickImage_NormalizedMeanError_Get(const Image *);
