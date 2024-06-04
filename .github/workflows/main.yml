@@ -427,6 +427,7 @@ jobs:
           - 'amazon/aws-lambda-dotnet:6'
           - 'amazon/aws-lambda-dotnet:8'
           - 'public.ecr.aws/lambda/dotnet:6-x86_64'
+          - 'public.ecr.aws/lambda/dotnet:8-x86_64'
 
     container:
       image: ${{ matrix.image }}
@@ -437,6 +438,9 @@ jobs:
       run: |
         if [ -f "/bin/yum" ]; then
           yum install -y gzip tar
+        fi
+        if [ -f "/bin/dnf" ]; then
+          dnf install -y gzip tar
         fi
 
     - name: Checkout

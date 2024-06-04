@@ -63,6 +63,14 @@ if [ -f "/bin/yum" ]; then
     if [ ! -f "/usr/bin/ld" ]; then
         yum install -y binutils
     fi
+elif [ -f "/bin/dnf" ]; then
+    if [ "$openmp" == "OpenMP" ]; then
+        dnf install -y libgomp
+    fi
+
+    if [ ! -f "/usr/bin/ld" ]; then
+        dnf install -y binutils
+    fi
 elif [ -f "/sbin/apk" ]; then
     apk update
     if [ "$openmp" == "OpenMP" ]; then
