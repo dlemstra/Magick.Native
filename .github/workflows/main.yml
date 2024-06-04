@@ -414,6 +414,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         image:
           - 'ubuntu:18.04'
@@ -460,6 +461,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         image:
           - 'alpine:latest'
@@ -494,6 +496,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         image:
           - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
@@ -526,6 +529,7 @@ jobs:
       - macos-x64
       - macos-arm64
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-11, macos-12]
         arch: [x64, arm64]
