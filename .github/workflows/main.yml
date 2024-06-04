@@ -419,7 +419,6 @@ jobs:
           - 'ubuntu:18.04'
           - 'ubuntu:20.04'
           - 'ubuntu:latest'
-          - 'tgagor/centos:stream8'
           - 'tgagor/centos:stream9'
           - 'mcr.microsoft.com/dotnet/aspnet:latest'
           - 'mcr.microsoft.com/dotnet/runtime:6.0'
