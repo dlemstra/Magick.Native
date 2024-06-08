@@ -18,13 +18,6 @@ function patchMagickBaseConfig($name, $platformName) {
 }
 
 function createSolution($configureOptions) {
-    $solutionFile = fullPath "src\ImageMagick\imagemagick-windows\IM7.Static.sln"
-
-    if (Test-Path $solutionFile)
-    {
-        Remove-Item $solutionFile
-    }
-
     $location = $(Get-Location)
     $path = fullPath "src\ImageMagick\imagemagick-windows\Configure"
     Set-Location $path
@@ -111,7 +104,7 @@ function buildImageMagick($config, $name, $platformName) {
     patchMagickBaseConfig $name $platformName
 
     $options = "Configuration=$config,Platform=$($platformName),VCBuildAdditionalOptions=/#arch:SSE"
-    build "src\ImageMagick\imagemagick-windows\IM7.Static.sln" $options
+    build "src\ImageMagick\imagemagick-windows\IM7.Static.$($platformName).sln" $options
     copyOutput $config $name $platformName
 }
 
