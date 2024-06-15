@@ -12,7 +12,7 @@ MAGICK_NATIVE_EXPORT void DrawingWand_Dispose(DrawingWand *);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Affine(DrawingWand *, const double, const double, const double, const double, const double, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Alpha(DrawingWand *, const double, const double, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_Alpha(DrawingWand *, const double, const double, const PaintMethod, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Arc(DrawingWand *, const double, const double, const double, const double, const double, const double, ExceptionInfo **);
 
@@ -24,13 +24,13 @@ MAGICK_NATIVE_EXPORT void DrawingWand_Circle(DrawingWand *, const double, const 
 
 MAGICK_NATIVE_EXPORT void DrawingWand_ClipPath(DrawingWand *, const char *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_ClipRule(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_ClipRule(DrawingWand *, const FillRule, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_ClipUnits(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_ClipUnits(DrawingWand *, const ClipPathUnits, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Color(DrawingWand *, const double, const double, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_Color(DrawingWand *, const double, const double, const PaintMethod, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Composite(DrawingWand *, const double, const double, const double, const double, const size_t, const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_Composite(DrawingWand *, const double, const double, const double, const double, const CompositeOperator, const Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Density(DrawingWand *, const char *, ExceptionInfo **);
 
@@ -42,17 +42,17 @@ MAGICK_NATIVE_EXPORT void DrawingWand_FillOpacity(DrawingWand *, const double, E
 
 MAGICK_NATIVE_EXPORT void DrawingWand_FillPatternUrl(DrawingWand *, const char *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_FillRule(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_FillRule(DrawingWand *, const FillRule, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Font(DrawingWand *, const char *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_FontFamily(DrawingWand *, const char *, const size_t, const size_t, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_FontFamily(DrawingWand *, const char *, const StyleType, const size_t, const StretchType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_FontPointSize(DrawingWand *, const double, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT TypeMetric *DrawingWand_FontTypeMetrics(DrawingWand *, const char *, const MagickBooleanType, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Gravity(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_Gravity(DrawingWand *, const GravityType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Line(DrawingWand *, const double, const double, const double, const double, ExceptionInfo **);
 
@@ -138,9 +138,9 @@ MAGICK_NATIVE_EXPORT void DrawingWand_StrokeDashArray(DrawingWand *, double *, c
 
 MAGICK_NATIVE_EXPORT void DrawingWand_StrokeDashOffset(DrawingWand *, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineCap(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineCap(DrawingWand *, const LineCap, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineJoin(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineJoin(DrawingWand *, const LineJoin, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_StrokeMiterLimit(DrawingWand *, const size_t, ExceptionInfo **);
 
@@ -152,7 +152,7 @@ MAGICK_NATIVE_EXPORT void DrawingWand_StrokeWidth(DrawingWand *, const double, E
 
 MAGICK_NATIVE_EXPORT void DrawingWand_Text(DrawingWand *, const double, const double, const unsigned char *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_TextAlignment(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_TextAlignment(DrawingWand *, const AlignType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_TextAntialias(DrawingWand *, MagickBooleanType, ExceptionInfo **);
 

@@ -69,9 +69,9 @@ MAGICK_NATIVE_EXPORT void DrawingWand_Affine(DrawingWand *instance, const double
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Alpha(DrawingWand *instance, const double x, const double y, const size_t paintMethod, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_Alpha(DrawingWand *instance, const double x, const double y, const PaintMethod paintMethod, ExceptionInfo **exception)
 {
-  DrawAlpha(instance, x, y, (const PaintMethod) paintMethod);
+  DrawAlpha(instance, x, y, paintMethod);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
@@ -107,31 +107,31 @@ MAGICK_NATIVE_EXPORT void DrawingWand_ClipPath(DrawingWand *instance, const char
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_ClipRule(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_ClipRule(DrawingWand *instance, const FillRule value, ExceptionInfo **exception)
 {
-  DrawSetClipRule(instance, (const FillRule) value);
+  DrawSetClipRule(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_ClipUnits(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_ClipUnits(DrawingWand *instance, const ClipPathUnits value, ExceptionInfo **exception)
 {
-  DrawSetClipUnits(instance, (const ClipPathUnits) value);
+  DrawSetClipUnits(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Color(DrawingWand *instance, const double x, const double y, const size_t paintMethod, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_Color(DrawingWand *instance, const double x, const double y, const PaintMethod paintMethod, ExceptionInfo **exception)
 {
-  DrawColor(instance, x, y, (const PaintMethod) paintMethod);
+  DrawColor(instance, x, y, paintMethod);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Composite(DrawingWand *instance, const double x, const double y, const double width, const double height, const size_t compositeOperator, const Image *image, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_Composite(DrawingWand *instance, const double x, const double y, const double width, const double height, const CompositeOperator compositeOperator, const Image *image, ExceptionInfo **exception)
 {
   MagickWand
     *magick_wand;
 
   magick_wand = NewMagickWandFromImage(image);
-  DrawComposite(instance, (const CompositeOperator) compositeOperator, x, y, width, height, magick_wand);
+  DrawComposite(instance, compositeOperator, x, y, width, height, magick_wand);
   DestroyMagickWand(magick_wand);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
@@ -168,9 +168,9 @@ MAGICK_NATIVE_EXPORT void DrawingWand_FillPatternUrl(DrawingWand *instance, cons
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_FillRule(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_FillRule(DrawingWand *instance, const FillRule value, ExceptionInfo **exception)
 {
-  DrawSetFillRule(instance, (const FillRule) value);
+  DrawSetFillRule(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
@@ -180,12 +180,12 @@ MAGICK_NATIVE_EXPORT void DrawingWand_Font(DrawingWand *instance, const char *fo
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_FontFamily(DrawingWand *instance, const char *family, const size_t style, const size_t weight, const size_t stretch, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_FontFamily(DrawingWand *instance, const char *family, const StyleType style, const size_t weight, const StretchType stretch, ExceptionInfo **exception)
 {
   DrawSetFontFamily(instance, family);
-  DrawSetFontStyle(instance, (const StyleType) style);
+  DrawSetFontStyle(instance, style);
   DrawSetFontWeight(instance, weight);
-  DrawSetFontStretch(instance, (const StretchType) stretch);
+  DrawSetFontStretch(instance, stretch);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
@@ -206,9 +206,9 @@ MAGICK_NATIVE_EXPORT TypeMetric *DrawingWand_FontTypeMetrics(DrawingWand *instan
   return result;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_Gravity(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_Gravity(DrawingWand *instance, const GravityType value, ExceptionInfo **exception)
 {
-  DrawSetGravity(instance, (const GravityType) value);
+  DrawSetGravity(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
@@ -468,15 +468,15 @@ MAGICK_NATIVE_EXPORT void DrawingWand_StrokeDashOffset(DrawingWand *instance, co
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineCap(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineCap(DrawingWand *instance, const LineCap value, ExceptionInfo **exception)
 {
-  DrawSetStrokeLineCap(instance, (const LineCap) value);
+  DrawSetStrokeLineCap(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineJoin(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_StrokeLineJoin(DrawingWand *instance, const LineJoin value, ExceptionInfo **exception)
 {
-  DrawSetStrokeLineJoin(instance, (const LineJoin) value);
+  DrawSetStrokeLineJoin(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
@@ -510,9 +510,9 @@ MAGICK_NATIVE_EXPORT void DrawingWand_Text(DrawingWand *instance, const double x
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_TextAlignment(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_TextAlignment(DrawingWand *instance, const AlignType value, ExceptionInfo **exception)
 {
-  DrawSetTextAlignment(instance, (const AlignType) value);
+  DrawSetTextAlignment(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
@@ -522,15 +522,15 @@ MAGICK_NATIVE_EXPORT void DrawingWand_TextAntialias(DrawingWand *instance, Magic
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_TextDecoration(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_TextDecoration(DrawingWand *instance, const DecorationType value, ExceptionInfo **exception)
 {
-  DrawSetTextDecoration(instance, (const DecorationType) value);
+  DrawSetTextDecoration(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingWand_TextDirection(DrawingWand *instance, const size_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void DrawingWand_TextDirection(DrawingWand *instance, const DirectionType value, ExceptionInfo **exception)
 {
-  DrawSetTextDirection(instance, (const DirectionType) value);
+  DrawSetTextDirection(instance, value);
   MAGICK_NATIVE_SET_DRAW_EXCEPTION;
 }
 
