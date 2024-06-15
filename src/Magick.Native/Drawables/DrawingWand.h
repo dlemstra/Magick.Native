@@ -156,9 +156,9 @@ MAGICK_NATIVE_EXPORT void DrawingWand_TextAlignment(DrawingWand *, const AlignTy
 
 MAGICK_NATIVE_EXPORT void DrawingWand_TextAntialias(DrawingWand *, MagickBooleanType, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_TextDirection(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_TextDecoration(DrawingWand *, const DecorationType, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void DrawingWand_TextDecoration(DrawingWand *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void DrawingWand_TextDirection(DrawingWand *, const DirectionType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void DrawingWand_TextEncoding(DrawingWand *, const char *, ExceptionInfo **);
 
