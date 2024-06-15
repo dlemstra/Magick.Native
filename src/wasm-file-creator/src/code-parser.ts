@@ -109,13 +109,23 @@ export class CodeParser {
                 return 'void';
             case 'char':
             case 'double':
+            case 'AlignType':
             case 'AutoThresholdMethod':
+            case 'ClipPathUnits':
             case 'ColorspaceType':
             case 'ComplexOperator':
+            case 'CompositeOperator':
             case 'CustomStreamHandler':
             case 'CustomStreamSeeker':
             case 'CustomStreamTeller':
+            case 'DecorationType':
+            case 'DirectionType':
             case 'ExceptionType':
+            case 'FillRule':
+            case 'GravityType':
+            case 'LineCap':
+            case 'LineJoin':
+            case 'long':
             case 'MagickBooleanType':
             case 'MagickCLDevice':
             case 'MagickCLDeviceType':
@@ -124,9 +134,11 @@ export class CodeParser {
             case 'MagickProgressMonitor':
             case 'MagickSizeType':
             case 'MagickStatusType':
+            case 'PaintMethod':
             case 'size_t':
             case 'ssize_t':
-            case 'long':
+            case 'StretchType':
+            case 'StyleType':
                 return 'number';
             case 'Quantum':
                 return 'quantum';
