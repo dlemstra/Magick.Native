@@ -452,16 +452,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_GifDisposeMethod_Set(Image *instance, cons
   instance->dispose = (DisposeType) value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_Interpolate_Get(const Image *instance)
-{
-  return (size_t) instance->interpolate;
-}
-
-MAGICK_NATIVE_EXPORT void MagickImage_Interpolate_Set(Image *instance, const size_t value)
-{
-  instance->interpolate = (PixelInterpolateMethod) value;
-}
-
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *instance, ExceptionInfo **exception)
 {
   (void) (exception);
@@ -494,6 +484,16 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_Interlace_Get(const Image *instance)
 MAGICK_NATIVE_EXPORT void MagickImage_Interlace_Set(Image *instance, const size_t value)
 {
   instance->interlace = (InterlaceType) value;
+}
+
+MAGICK_NATIVE_EXPORT size_t MagickImage_Interpolate_Get(const Image *instance)
+{
+  return (size_t) instance->interpolate;
+}
+
+MAGICK_NATIVE_EXPORT void MagickImage_Interpolate_Set(Image *instance, const size_t value)
+{
+  instance->interpolate = (PixelInterpolateMethod) value;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_IsOpaque_Get(const Image *instance, ExceptionInfo **exception)

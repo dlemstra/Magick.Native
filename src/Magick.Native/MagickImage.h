@@ -91,9 +91,6 @@ MAGICK_NATIVE_EXPORT double MagickImage_Gamma_Get(const Image *);
 MAGICK_NATIVE_EXPORT size_t MagickImage_GifDisposeMethod_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_GifDisposeMethod_Set(Image *, const size_t);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_Interpolate_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_Interpolate_Set(Image *, const size_t);
-
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *, ExceptionInfo **);
 MAGICK_NATIVE_EXPORT void MagickImage_HasAlpha_Set(Image *, const MagickBooleanType, ExceptionInfo **);
 
@@ -101,6 +98,9 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_Height_Get(const Image *);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_Interlace_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_Interlace_Set(Image *, const size_t);
+
+MAGICK_NATIVE_EXPORT size_t MagickImage_Interpolate_Get(const Image *);
+MAGICK_NATIVE_EXPORT void MagickImage_Interpolate_Set(Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_IsOpaque_Get(const Image *, ExceptionInfo **);
 
