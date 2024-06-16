@@ -61,8 +61,6 @@ MAGICK_NATIVE_EXPORT void MagickSettings_SetFileName(ImageInfo *, const char *);
 
 MAGICK_NATIVE_EXPORT void MagickSettings_SetFont(ImageInfo *instance, const char *value);
 
-MAGICK_NATIVE_EXPORT void MagickSettings_SetInterlace(ImageInfo *, const size_t);
-
 MAGICK_NATIVE_EXPORT void MagickSettings_SetNumberScenes(ImageInfo *, const size_t);
 
 MAGICK_NATIVE_EXPORT void MagickSettings_SetOption(ImageInfo *, const char *, const char *);
