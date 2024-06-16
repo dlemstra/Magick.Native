@@ -115,14 +115,19 @@ export class CodeParser {
             case 'ColorspaceType':
             case 'ComplexOperator':
             case 'CompositeOperator':
+            case 'CompressionType':
             case 'CustomStreamHandler':
             case 'CustomStreamSeeker':
             case 'CustomStreamTeller':
             case 'DecorationType':
             case 'DirectionType':
+            case 'DitherMethod':
             case 'ExceptionType':
+            case 'EndianType':
             case 'FillRule':
             case 'GravityType':
+            case 'ImageType':
+            case 'InterlaceType':
             case 'LineCap':
             case 'LineJoin':
             case 'long':

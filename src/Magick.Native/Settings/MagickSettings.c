@@ -36,34 +36,34 @@ MAGICK_NATIVE_EXPORT void MagickSettings_BackgroundColor_Set(ImageInfo *instance
     instance->background_color = *value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickSettings_ColorSpace_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT ColorspaceType MagickSettings_ColorSpace_Get(const ImageInfo *instance)
 {
   return instance->colorspace;
 }
 
-MAGICK_NATIVE_EXPORT void MagickSettings_ColorSpace_Set(ImageInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickSettings_ColorSpace_Set(ImageInfo *instance, const ColorspaceType value)
 {
-  instance->colorspace = (ColorspaceType) value;
+  instance->colorspace = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickSettings_ColorType_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT ImageType MagickSettings_ColorType_Get(const ImageInfo *instance)
 {
   return instance->type;
 }
 
-MAGICK_NATIVE_EXPORT void MagickSettings_ColorType_Set(ImageInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickSettings_ColorType_Set(ImageInfo *instance, const ImageType value)
 {
-  instance->type = (ImageType) value;
+  instance->type = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickSettings_Compression_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT CompressionType MagickSettings_Compression_Get(const ImageInfo *instance)
 {
   return instance->compression;
 }
 
-MAGICK_NATIVE_EXPORT void MagickSettings_Compression_Set(ImageInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickSettings_Compression_Set(ImageInfo *instance, const CompressionType value)
 {
-  instance->compression = (CompressionType) value;
+  instance->compression = value;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_Debug_Get(const ImageInfo *instance)
@@ -96,14 +96,14 @@ MAGICK_NATIVE_EXPORT void MagickSettings_Depth_Set(ImageInfo *instance, const si
   instance->depth = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickSettings_Endian_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT EndianType MagickSettings_Endian_Get(const ImageInfo *instance)
 {
   return instance->endian;
 }
 
-MAGICK_NATIVE_EXPORT void MagickSettings_Endian_Set(ImageInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickSettings_Endian_Set(ImageInfo *instance, const EndianType value)
 {
-  instance->endian = (EndianType) value;
+  instance->endian = value;
 }
 
 MAGICK_NATIVE_EXPORT const char *MagickSettings_Extract_Get(ImageInfo *instance)
@@ -144,12 +144,12 @@ MAGICK_NATIVE_EXPORT void MagickSettings_FontPointsize_Set(ImageInfo *instance, 
 
 MAGICK_NATIVE_EXPORT size_t MagickSettings_Interlace_Get(const ImageInfo *instance)
 {
-  return (size_t) instance->interlace;
+  return instance->interlace;
 }
 
-MAGICK_NATIVE_EXPORT void MagickSettings_Interlace_Set(ImageInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void MagickSettings_Interlace_Set(ImageInfo *instance, const InterlaceType value)
 {
-  instance->interlace = (InterlaceType) value;
+  instance->interlace = value;
 }
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickSettings_Monochrome_Get(ImageInfo *instance)
