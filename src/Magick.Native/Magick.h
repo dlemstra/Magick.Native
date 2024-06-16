@@ -28,8 +28,6 @@ MAGICK_NATIVE_EXPORT void Magick_SetLogEvents(const char *);
 
 MAGICK_NATIVE_EXPORT void Magick_SetRandomSeed(const unsigned long);
 
-MAGICK_NATIVE_EXPORT MagickBooleanType Magick_SetOpenCLEnabled(const MagickBooleanType);
-
 #if defined(__cplusplus) || defined(c_plusplus)
 }
 #endif

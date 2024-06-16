@@ -72,8 +72,3 @@ MAGICK_NATIVE_EXPORT void Magick_SetLogEvents(const char *events)
 {
   SetLogEventMask(events);
 }
-
-MAGICK_NATIVE_EXPORT MagickBooleanType Magick_SetOpenCLEnabled(const MagickBooleanType value)
-{
-  return SetOpenCLEnabled(value);
-}
