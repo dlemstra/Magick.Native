@@ -16,8 +16,8 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_BorderColor_Set(DrawInfo *, const Pixe
 MAGICK_NATIVE_EXPORT PixelInfo *DrawingSettings_FillColor_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_FillColor_Set(DrawInfo *, const PixelInfo *);
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_FillRule_Get(const DrawInfo *);
-MAGICK_NATIVE_EXPORT void DrawingSettings_FillRule_Set(DrawInfo *, const size_t);
+MAGICK_NATIVE_EXPORT FillRule DrawingSettings_FillRule_Get(const DrawInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_FillRule_Set(DrawInfo *, const FillRule);
 
 MAGICK_NATIVE_EXPORT const char *DrawingSettings_Font_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_Font_Set(DrawInfo *, const char *);
@@ -28,8 +28,8 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_FontFamily_Set(DrawInfo *, const char 
 MAGICK_NATIVE_EXPORT double DrawingSettings_FontPointsize_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_FontPointsize_Set(DrawInfo *, const double);
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_FontStyle_Get(const DrawInfo *);
-MAGICK_NATIVE_EXPORT void DrawingSettings_FontStyle_Set(DrawInfo *, const size_t);
+MAGICK_NATIVE_EXPORT StyleType DrawingSettings_FontStyle_Get(const DrawInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_FontStyle_Set(DrawInfo *, const StyleType);
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_FontWeight_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_FontWeight_Set(DrawInfo *, const size_t);
@@ -43,11 +43,11 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeColor_Set(DrawInfo *, const Pixe
 MAGICK_NATIVE_EXPORT double DrawingSettings_StrokeDashOffset_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeDashOffset_Set(DrawInfo *, const double);
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineCap_Get(const DrawInfo *);
-MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineCap_Set(DrawInfo *, const size_t);
+MAGICK_NATIVE_EXPORT LineCap DrawingSettings_StrokeLineCap_Get(const DrawInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineCap_Set(DrawInfo *, const LineCap);
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineJoin_Get(const DrawInfo *);
-MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineJoin_Set(DrawInfo *, const size_t);
+MAGICK_NATIVE_EXPORT LineJoin DrawingSettings_StrokeLineJoin_Get(const DrawInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineJoin_Set(DrawInfo *, const LineJoin);
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeMiterLimit_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeMiterLimit_Set(DrawInfo *, const size_t);
@@ -58,14 +58,14 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeWidth_Set(DrawInfo *, const doub
 MAGICK_NATIVE_EXPORT MagickBooleanType DrawingSettings_TextAntiAlias_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_TextAntiAlias_Set(DrawInfo *, const MagickBooleanType);
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_TextDirection_Get(const DrawInfo *);
-MAGICK_NATIVE_EXPORT void DrawingSettings_TextDirection_Set(DrawInfo *, const size_t);
+MAGICK_NATIVE_EXPORT DirectionType DrawingSettings_TextDirection_Get(const DrawInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_TextDirection_Set(DrawInfo *, const DirectionType);
 
 MAGICK_NATIVE_EXPORT const char *DrawingSettings_TextEncoding_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_TextEncoding_Set(DrawInfo *, const char *);
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_TextGravity_Get(const DrawInfo *);
-MAGICK_NATIVE_EXPORT void DrawingSettings_TextGravity_Set(DrawInfo *, const size_t);
+MAGICK_NATIVE_EXPORT GravityType DrawingSettings_TextGravity_Get(const DrawInfo *);
+MAGICK_NATIVE_EXPORT void DrawingSettings_TextGravity_Set(DrawInfo *, const GravityType);
 
 MAGICK_NATIVE_EXPORT double DrawingSettings_TextInterlineSpacing_Get(const DrawInfo *);
 MAGICK_NATIVE_EXPORT void DrawingSettings_TextInterlineSpacing_Set(DrawInfo *, const double);

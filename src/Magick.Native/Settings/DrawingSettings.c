@@ -38,14 +38,14 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_FillColor_Set(DrawInfo *instance, cons
     instance->fill = *value;
 }
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_FillRule_Get(const DrawInfo *instance)
+MAGICK_NATIVE_EXPORT FillRule DrawingSettings_FillRule_Get(const DrawInfo *instance)
 {
   return instance->fill_rule;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_FillRule_Set(DrawInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_FillRule_Set(DrawInfo *instance, const FillRule value)
 {
-  instance->fill_rule = (FillRule) value;
+  instance->fill_rule = value;
 }
 
 MAGICK_NATIVE_EXPORT const char *DrawingSettings_Font_Get(const DrawInfo *instance)
@@ -78,14 +78,14 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_FontPointsize_Set(DrawInfo *instance, 
   instance->pointsize = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_FontStyle_Get(const DrawInfo *instance)
+MAGICK_NATIVE_EXPORT StyleType DrawingSettings_FontStyle_Get(const DrawInfo *instance)
 {
   return instance->style;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_FontStyle_Set(DrawInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_FontStyle_Set(DrawInfo *instance, const StyleType value)
 {
-  instance->style = (StyleType) value;
+  instance->style = value;
 }
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_FontWeight_Get(const DrawInfo *instance)
@@ -129,24 +129,24 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeDashOffset_Set(DrawInfo *instanc
   instance->dash_offset = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineCap_Get(const DrawInfo *instance)
+MAGICK_NATIVE_EXPORT LineCap DrawingSettings_StrokeLineCap_Get(const DrawInfo *instance)
 {
   return instance->linecap;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineCap_Set(DrawInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineCap_Set(DrawInfo *instance, const LineCap value)
 {
-  instance->linecap = (LineCap) value;
+  instance->linecap = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeLineJoin_Get(const DrawInfo *instance)
+MAGICK_NATIVE_EXPORT LineJoin DrawingSettings_StrokeLineJoin_Get(const DrawInfo *instance)
 {
   return instance->linejoin;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineJoin_Set(DrawInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_StrokeLineJoin_Set(DrawInfo *instance, const LineJoin value)
 {
-  instance->linejoin = (LineJoin) value;
+  instance->linejoin = value;
 }
 
 MAGICK_NATIVE_EXPORT size_t DrawingSettings_StrokeMiterLimit_Get(const DrawInfo *instance)
@@ -179,14 +179,14 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_TextAntiAlias_Set(DrawInfo *instance, 
   instance->text_antialias = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_TextDirection_Get(const DrawInfo *instance)
+MAGICK_NATIVE_EXPORT DirectionType DrawingSettings_TextDirection_Get(const DrawInfo *instance)
 {
   return instance->direction;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_TextDirection_Set(DrawInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_TextDirection_Set(DrawInfo *instance, const DirectionType value)
 {
-  instance->direction = (DirectionType) value;
+  instance->direction = value;
 }
 
 MAGICK_NATIVE_EXPORT const char *DrawingSettings_TextEncoding_Get(const DrawInfo *instance)
@@ -199,14 +199,14 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_TextEncoding_Set(DrawInfo *instance, c
   CloneString(&instance->encoding, value);
 }
 
-MAGICK_NATIVE_EXPORT size_t DrawingSettings_TextGravity_Get(const DrawInfo *instance)
+MAGICK_NATIVE_EXPORT GravityType DrawingSettings_TextGravity_Get(const DrawInfo *instance)
 {
-  return (size_t) instance->gravity;
+  return instance->gravity;
 }
 
-MAGICK_NATIVE_EXPORT void DrawingSettings_TextGravity_Set(DrawInfo *instance, const size_t value)
+MAGICK_NATIVE_EXPORT void DrawingSettings_TextGravity_Set(DrawInfo *instance, const GravityType value)
 {
-  instance->gravity = (GravityType) value;
+  instance->gravity = value;
 }
 
 MAGICK_NATIVE_EXPORT double DrawingSettings_TextInterlineSpacing_Get(const DrawInfo *instance)
