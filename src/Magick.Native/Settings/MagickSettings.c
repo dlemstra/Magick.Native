@@ -142,7 +142,7 @@ MAGICK_NATIVE_EXPORT void MagickSettings_FontPointsize_Set(ImageInfo *instance, 
   instance->pointsize = value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickSettings_Interlace_Get(const ImageInfo *instance)
+MAGICK_NATIVE_EXPORT InterlaceType MagickSettings_Interlace_Get(const ImageInfo *instance)
 {
   return instance->interlace;
 }
