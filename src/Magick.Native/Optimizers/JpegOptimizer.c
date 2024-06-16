@@ -781,7 +781,7 @@ static void JpegThrowException(ClientData *client_data, ExceptionInfo *exception
     (void) ThrowException(exception, CorruptImageError, message, (const char *) NULL);
 }
 
-static void JpegOptimizer_Compress(ClientData *client_data, const MagickBooleanType progressive, const MagickBooleanType lossless, const MagickBooleanType quality, ExceptionInfo *exception)
+static void JpegOptimizer_Compress(ClientData *client_data, const MagickBooleanType progressive, const MagickBooleanType lossless, const size_t quality, ExceptionInfo *exception)
 {
   struct jpeg_decompress_struct
     decompress_info;
@@ -820,7 +820,7 @@ static void JpegOptimizer_Compress(ClientData *client_data, const MagickBooleanT
   TerminateClientData(client_data);
 }
 
-MAGICK_NATIVE_EXPORT void JpegOptimizer_CompressFile(const char *input, const char *output, const MagickBooleanType progressive, const MagickBooleanType lossless, const MagickBooleanType quality, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void JpegOptimizer_CompressFile(const char *input, const char *output, const MagickBooleanType progressive, const MagickBooleanType lossless, const size_t quality, ExceptionInfo **exception)
 {
   ClientData
     client_data;
@@ -835,7 +835,7 @@ MAGICK_NATIVE_EXPORT void JpegOptimizer_CompressFile(const char *input, const ch
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void JpegOptimizer_CompressStream(const CustomStreamHandler reader, const CustomStreamHandler writer, const MagickBooleanType progressive, const MagickBooleanType lossless, const MagickBooleanType quality, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void JpegOptimizer_CompressStream(const CustomStreamHandler reader, const CustomStreamHandler writer, const MagickBooleanType progressive, const MagickBooleanType lossless, const size_t quality, ExceptionInfo **exception)
 {
   ClientData
     client_data;
