@@ -27,7 +27,7 @@ jobs:
       working-directory: build/linux-x64
 
     - name: Update ImageMagick.commit to latest commit
-      run: echo -n "latest" > ImageMagick.commit
+      run: ./update.imagemagick.sh
       if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
       working-directory: src/ImageMagick
 
