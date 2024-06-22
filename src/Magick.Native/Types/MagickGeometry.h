@@ -10,13 +10,13 @@ MAGICK_NATIVE_EXPORT GeometryInfo *MagickGeometry_Create(void);
 
 MAGICK_NATIVE_EXPORT void MagickGeometry_Dispose(GeometryInfo *);
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_X_Get(const GeometryInfo *);
+MAGICK_NATIVE_EXPORT ssize_t MagickGeometry_X_Get(const GeometryInfo *);
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_Y_Get(const GeometryInfo *);
+MAGICK_NATIVE_EXPORT ssize_t MagickGeometry_Y_Get(const GeometryInfo *);
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_Width_Get(const GeometryInfo *);
+MAGICK_NATIVE_EXPORT size_t MagickGeometry_Width_Get(const GeometryInfo *);
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_Height_Get(const GeometryInfo *);
+MAGICK_NATIVE_EXPORT size_t MagickGeometry_Height_Get(const GeometryInfo *);
 
 MAGICK_NATIVE_EXPORT MagickStatusType MagickGeometry_Initialize(GeometryInfo *, const char *);
 

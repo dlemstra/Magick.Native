@@ -3,6 +3,7 @@
 
 #include "Stdafx.h"
 #include "MagickGeometry.h"
+#include "MagickCore/image-private.h"
 
 MAGICK_NATIVE_EXPORT GeometryInfo *MagickGeometry_Create(void)
 {
@@ -21,24 +22,24 @@ MAGICK_NATIVE_EXPORT void MagickGeometry_Dispose(GeometryInfo *instance)
   RelinquishMagickMemory(instance);
 }
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_X_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT ssize_t MagickGeometry_X_Get(const GeometryInfo *instance)
 {
-  return instance->xi;
+  return CastDoubleToLong(instance->xi);
 }
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_Y_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT ssize_t MagickGeometry_Y_Get(const GeometryInfo *instance)
 {
-  return instance->psi;
+  return CastDoubleToLong(instance->psi);
 }
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_Width_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT size_t MagickGeometry_Width_Get(const GeometryInfo *instance)
 {
-  return instance->rho;
+  return CastDoubleToUnsigned(instance->rho);
 }
 
-MAGICK_NATIVE_EXPORT double MagickGeometry_Height_Get(const GeometryInfo *instance)
+MAGICK_NATIVE_EXPORT size_t MagickGeometry_Height_Get(const GeometryInfo *instance)
 {
-  return instance->sigma;
+  return CastDoubleToUnsigned(instance->sigma);
 }
 
 MAGICK_NATIVE_EXPORT MagickStatusType MagickGeometry_Initialize(GeometryInfo *instance, const char *geometry)
