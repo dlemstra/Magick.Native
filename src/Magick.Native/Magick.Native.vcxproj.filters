@@ -17,9 +17,6 @@
     <ClCompile Include="Drawables\DrawingWand.c">
       <Filter>Drawables</Filter>
     </ClCompile>
-    <ClCompile Include="Drawables\PointInfoCollection.c">
-      <Filter>Drawables</Filter>
-    </ClCompile>
     <ClCompile Include="Exceptions\MagickExceptionHelper.c">
       <Filter>Exceptions</Filter>
     </ClCompile>
@@ -92,6 +89,9 @@
     <ClCompile Include="Types\PointInfo.c">
       <Filter>Types</Filter>
     </ClCompile>
+    <ClCompile Include="Types\PointInfoCollection.c">
+      <Filter>Types</Filter>
+    </ClCompile>
     <ClCompile Include="Types\PrimaryInfo.c">
       <Filter>Types</Filter>
     </ClCompile>
@@ -120,9 +120,6 @@
       <Filter>Colors</Filter>
     </ClInclude>
     <ClInclude Include="Drawables\DrawingWand.h">
-      <Filter>Drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="Drawables\PointInfoCollection.h">
       <Filter>Drawables</Filter>
     </ClInclude>
     <ClInclude Include="Exceptions\MagickExceptionHelper.h">
@@ -195,6 +192,9 @@
       <Filter>Types</Filter>
     </ClInclude>
     <ClInclude Include="Types\PointInfo.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\PointInfoCollection.h">
       <Filter>Types</Filter>
     </ClInclude>
     <ClInclude Include="Types\PrimaryInfo.h">
