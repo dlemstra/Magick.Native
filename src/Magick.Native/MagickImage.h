@@ -48,19 +48,19 @@ MAGICK_NATIVE_EXPORT void MagickImage_ChromaRed_Set(Image *, const PrimaryInfo *
 MAGICK_NATIVE_EXPORT PrimaryInfo *MagickImage_ChromaWhite_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhite_Set(Image *, const PrimaryInfo *);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ClassType_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT size_t MagickImage_ClassType_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ClassType_Set(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT double MagickImage_ColorFuzz_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ColorFuzz_Set(Image *, const double);
 
-MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ColormapSize_Set(Image *, const ssize_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ColorSpace_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT size_t MagickImage_ColorSpace_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ColorSpace_Set(Image *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ColorType_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT size_t MagickImage_ColorType_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ColorType_Set(Image *, const size_t value, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_Compose_Get(const Image *);
@@ -91,7 +91,7 @@ MAGICK_NATIVE_EXPORT double MagickImage_Gamma_Get(const Image *);
 MAGICK_NATIVE_EXPORT size_t MagickImage_GifDisposeMethod_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_GifDisposeMethod_Set(Image *, const size_t);
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_HasAlpha_Set(Image *, const MagickBooleanType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_Height_Get(const Image *);
@@ -109,7 +109,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_MatteColor_Set(Image *, const PixelInfo *)
 
 MAGICK_NATIVE_EXPORT double MagickImage_MeanErrorPerPixel_Get(const Image *);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_MetaChannelCount_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT size_t MagickImage_MetaChannelCount_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_MetaChannelCount_Set(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT double MagickImage_NormalizedMaximumError_Get(const Image *);
@@ -141,7 +141,7 @@ MAGICK_NATIVE_EXPORT const char *MagickImage_Signature_Get(Image *, ExceptionInf
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_TotalColors_Get(const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_VirtualPixelMethod_Get(const Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT size_t MagickImage_VirtualPixelMethod_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_VirtualPixelMethod_Set(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_Width_Get(const Image *);

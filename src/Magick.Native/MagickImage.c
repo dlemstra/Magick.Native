@@ -258,10 +258,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_ChromaWhite_Set(Image *instance, const Pri
     instance->chromaticity.white_point = *value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ClassType_Get(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT size_t MagickImage_ClassType_Get(const Image *instance)
 {
-  (void) exception;
-
   return instance->storage_class;
 }
 
@@ -299,10 +297,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_ColorFuzz_Set(Image *instance, const doubl
   instance->fuzz = value;
 }
 
-MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *instance)
 {
-  (void) exception;
-
   if (instance->colormap == (PixelInfo *) NULL)
     return -1;
 
@@ -319,10 +315,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_ColormapSize_Set(Image *instance, const ss
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ColorSpace_Get(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT size_t MagickImage_ColorSpace_Get(const Image *instance)
 {
-  (void) exception;
-
   return (size_t) instance->colorspace;
 }
 
@@ -336,10 +330,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_ColorSpace_Set(Image *instance, const size
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_ColorType_Get(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT size_t MagickImage_ColorType_Get(const Image *instance)
 {
-  (void) exception;
-
   return (size_t) GetImageType(instance);
 }
 
@@ -452,10 +444,9 @@ MAGICK_NATIVE_EXPORT void MagickImage_GifDisposeMethod_Set(Image *instance, cons
   instance->dispose = (DisposeType) value;
 }
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *instance)
 {
-  (void) (exception);
-  return instance->alpha_trait == BlendPixelTrait ? MagickTrue : MagickFalse;
+  return ((instance->alpha_trait & BlendPixelTrait) == 0) ? MagickTrue : MagickFalse;
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_HasAlpha_Set(Image *instance, const MagickBooleanType value, ExceptionInfo **exception)
@@ -523,9 +514,8 @@ MAGICK_NATIVE_EXPORT double MagickImage_MeanErrorPerPixel_Get(const Image *insta
   return instance->error.mean_error_per_pixel;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_MetaChannelCount_Get(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT size_t MagickImage_MetaChannelCount_Get(const Image *instance)
 {
-  (void) (exception);
   return GetPixelMetaChannels(instance);
 }
 
@@ -650,10 +640,8 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_TotalColors_Get(const Image *instance, E
   return colors;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_VirtualPixelMethod_Get(const Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT size_t MagickImage_VirtualPixelMethod_Get(const Image *instance)
 {
-  (void) exception;
-
   return GetImageVirtualPixelMethod(instance);
 }
 
