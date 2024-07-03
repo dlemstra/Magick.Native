@@ -546,16 +546,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_Orientation_Set(Image *instance, const siz
   instance->orientation = (OrientationType) value;
 }
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_RenderingIntent_Get(const Image *instance)
-{
-  return (size_t) instance->rendering_intent;
-}
-
-MAGICK_NATIVE_EXPORT void MagickImage_RenderingIntent_Set(Image *instance, const size_t value)
-{
-  instance->rendering_intent = (RenderingIntent) value;
-}
-
 MAGICK_NATIVE_EXPORT RectangleInfo *MagickImage_Page_Get(const Image *instance)
 {
   RectangleInfo
@@ -581,6 +571,16 @@ MAGICK_NATIVE_EXPORT size_t MagickImage_Quality_Get(const Image *instance)
 MAGICK_NATIVE_EXPORT void MagickImage_Quality_Set(Image *instance, const size_t value)
 {
   instance->quality = value;
+}
+
+MAGICK_NATIVE_EXPORT size_t MagickImage_RenderingIntent_Get(const Image *instance)
+{
+  return (size_t) instance->rendering_intent;
+}
+
+MAGICK_NATIVE_EXPORT void MagickImage_RenderingIntent_Set(Image *instance, const size_t value)
+{
+  instance->rendering_intent = (RenderingIntent) value;
 }
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ResolutionUnits_Get(const Image *instance)

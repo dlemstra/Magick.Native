@@ -119,14 +119,14 @@ MAGICK_NATIVE_EXPORT double MagickImage_NormalizedMeanError_Get(const Image *);
 MAGICK_NATIVE_EXPORT size_t MagickImage_Orientation_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_Orientation_Set(Image *, const size_t);
 
-MAGICK_NATIVE_EXPORT size_t MagickImage_RenderingIntent_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_RenderingIntent_Set(Image *, const size_t);
-
 MAGICK_NATIVE_EXPORT RectangleInfo *MagickImage_Page_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_Page_Set(Image *, const RectangleInfo *);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_Quality_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_Quality_Set(Image *, const size_t);
+
+MAGICK_NATIVE_EXPORT size_t MagickImage_RenderingIntent_Get(const Image *);
+MAGICK_NATIVE_EXPORT void MagickImage_RenderingIntent_Set(Image *, const size_t);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ResolutionUnits_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ResolutionUnits_Set(Image *, const size_t);
