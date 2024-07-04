@@ -446,7 +446,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_GifDisposeMethod_Set(Image *instance, cons
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_HasAlpha_Get(const Image *instance)
 {
-  return ((instance->alpha_trait & BlendPixelTrait) == 0) ? MagickTrue : MagickFalse;
+  return ((instance->alpha_trait & BlendPixelTrait) == BlendPixelTrait) ? MagickTrue : MagickFalse;
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_HasAlpha_Set(Image *instance, const MagickBooleanType value, ExceptionInfo **exception)
