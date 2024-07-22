@@ -63,7 +63,9 @@ function writeLibraryVersions($fileName) {
 
         $resourceFiles = Get-ChildItem -Path $folder -Filter "ImageMagick.version.h" -Recurse
         if ($resourceFiles.Count -eq 0) {
-            Write-Error "Unable to get version for: $dependencyName"
+            if ($dependencyName -ne 'jpeg-turbo-12' -and $dependencyName -ne 'jpeg-turbo-16') {
+                Write-Error "Unable to get version for: $dependencyName"
+            }
         } else {
             foreach ($resourceFile in $resourceFiles) {
                 $parentFolder = Split-Path -Path $resourceFile.FullName -Parent
