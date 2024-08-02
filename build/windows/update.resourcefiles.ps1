@@ -38,14 +38,6 @@ function updateResourceFile($fileName, $version) {
     [IO.File]::WriteAllText($fileName, $content, [System.Text.Encoding]::Unicode)
 }
 
-function updateResourceFiles($version) {
-    $path = fullPath "src\Magick.Native\Resources"
-
-    Get-ChildItem -Path $path -Filter *.rc -Recurse -File -Name | ForEach-Object {
-        updateResourceFile "$path\$_" $version
-    }
-}
-
 function getVersion($fileName, $start, $padding) {
     $lines = [System.IO.File]::ReadAllLines($fileName)
     foreach ($line in $lines) {
@@ -71,5 +63,6 @@ function getImageMagickVersion() {
 $version = getImageMagickVersion
 
 if ($version -ne $null) {
-    updateResourceFiles $version
+    $resourceFile = fullPath "src\Magick.Native\Resources\Magick.Native.rc"
+    updateResourceFile $resourceFile $version
 }
