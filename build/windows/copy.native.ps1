@@ -24,7 +24,7 @@ function copyNative($config, $quantumName, $platformName, $destination) {
 
     $source = fullPath "src\Magick.Native\Resources\xml\*.xml"
     Copy-Item $source $resourcesFolder
-    $source = fullPath "src\ImageMagick\output\resources\$config$quantumName\$platformName\*.xml"
+    $source = fullPath "src\ImageMagick\artifacts\resources\$config$quantumName\$platformName\*.xml"
     Copy-Item $source $resourcesFolder
 }
 

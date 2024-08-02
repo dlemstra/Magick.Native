@@ -2,7 +2,6 @@
 .vscode
 publish/**/files/*
 src/ImageMagick/imagemagick-windows
-src/ImageMagick/output/*
 src/Magick.Native/lib
 src/Magick.Native/bin
 src/Magick.Native/Q8
@@ -10,7 +9,7 @@ src/Magick.Native/Q16
 src/Magick.Native/Q16-HDRI
 src/wasm-file-creator/lib
 src/wasm-file-creator/node_modules
-**/output/*
+**/artifacts/*
 **/tools/*
 *.aps
 *.log

@@ -31,7 +31,7 @@ function createSolution($configureOptions) {
 
 function copyIncludes($folder) {
     $source = fullPath "src\ImageMagick\imagemagick-windows"
-    $destination = fullPath "src\ImageMagick\output\includes\$folder"
+    $destination = fullPath "src\ImageMagick\artifacts\includes\$folder"
     Remove-Item $destination -Recurse -ErrorAction Ignore
     [void](New-Item -ItemType directory -Path "$destination\MagickCore")
     Copy-Item "$source\ImageMagick\MagickCore\*.h" "$destination\MagickCore"
@@ -46,8 +46,8 @@ function copyIncludes($folder) {
 }
 
 function copyResources($folder) {
-    $source = fullPath "src\ImageMagick\imagemagick-windows\Output\bin"
-    $destination = fullPath "src\ImageMagick\output\resources\$folder"
+    $source = fullPath "src\ImageMagick\imagemagick-windows\Artifacts\bin"
+    $destination = fullPath "src\ImageMagick\artifacts\resources\$folder"
     Remove-Item $destination -Recurse -ErrorAction Ignore
     [void](New-Item -ItemType directory -Path "$destination")
     foreach ($xmlFile in [IO.Directory]::GetFiles($source, "*.xml")) {
@@ -60,8 +60,8 @@ function copyResources($folder) {
 }
 
 function copyLibraries($config, $folder) {
-    $source = fullPath "src\ImageMagick\imagemagick-windows\Output\lib"
-    $destination = fullPath "src\ImageMagick\output\libraries\$folder"
+    $source = fullPath "src\ImageMagick\imagemagick-windows\Artifacts\lib"
+    $destination = fullPath "src\ImageMagick\artifacts\libraries\$folder"
     Remove-Item $destination -Recurse -ErrorAction Ignore
     [void](New-Item -ItemType directory -Path $destination)
     if ($config -eq "Debug") {
@@ -73,7 +73,7 @@ function copyLibraries($config, $folder) {
     }
 }
 
-function copyOutput($config, $name, $platformName) {
+function copyArtifacts($config, $name, $platformName) {
     $folder = "$config$name\$platformName"
     copyIncludes $folder
     copyResources $folder
@@ -105,7 +105,7 @@ function buildImageMagick($config, $name, $platformName) {
 
     $options = "Configuration=$config,Platform=$($platformName),VCBuildAdditionalOptions=/#arch:SSE"
     build "src\ImageMagick\imagemagick-windows\IM7.Static.$($platformName).sln" $options
-    copyOutput $config $name $platformName
+    copyArtifacts $config $name $platformName
 }
 
 function buildConfigure() {

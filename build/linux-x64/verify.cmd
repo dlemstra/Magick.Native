@@ -16,4 +16,4 @@ rem set image=mcr.microsoft.com/dotnet/runtime:latest
 rem set image=amazon/aws-lambda-dotnet:6
 rem set image=public.ecr.aws/lambda/dotnet:6-x86_64
 
-docker run -v %~dp0../:/build %image% /build/shared/verify.Native.sh /build/%config%-%arch%/output %config% %arch% %openmp%
+docker run -v %~dp0../:/build %image% /build/shared/verify.Native.sh /build/%config%-%arch%/artifacts %config% %arch% %openmp%

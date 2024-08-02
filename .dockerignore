@@ -1,11 +1,11 @@
 src/ImageMagick/imagemagick-windows
-src/ImageMagick/output
+src/ImageMagick/artifacts
 src/Magick.Native/.vs
 src/Magick.Native/bin
 src/Magick.Native/lib
 src/wasm-file-creator/lib
 src/wasm-file-creator/node_modules
-build/**/output
+build/**/artifacts
 publish
 tools
 .git
