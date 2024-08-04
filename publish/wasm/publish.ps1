@@ -2,16 +2,13 @@
 # Licensed under the Apache License, Version 2.0.
 
 param (
-    [parameter(mandatory=$true)][string]$destination
+    [parameter(mandatory=$true)][string]$version
 )
 
 . $PSScriptRoot\..\..\tools\windows\utils.ps1
 
-function createNpmPackage($now)
+function createNpmPackage($version)
 {
-  $info = $now.split('.')
-  $version = "0.$($info[0])$($info[1]).$($info[2])$($info[3])"
-
   $path = FullPath "publish\wasm\package.json"
   $content = [IO.File]::ReadAllText($path)
   $content = $content.replace("""version"": """"", """version"": ""$version""")
@@ -24,5 +21,4 @@ function createNpmPackage($now)
   & npm pack
 }
 
-$now = (Get-Date).ToUniversalTime().ToString("yyyy.MM.dd.HHmm")
-createNpmPackage $now
+createNpmPackage $version

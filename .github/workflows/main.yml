@@ -553,6 +553,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Set version
+      run: |
+        $date = Get-Date -Format "yyyy.M.d.ffff"
+        echo "::set-output name=version::$date"
+      shell: pwsh
+
     - name: Install build tools
       run: ./install.build-tools.ps1
       working-directory: build/windows
@@ -641,7 +647,7 @@ jobs:
         path: publish\dotnet\files\metadata
 
     - name: Create NuGet package
-      run: ./publish.ps1 -destination ../../artifacts
+      run: ./publish.ps1 -version ${{ needs.metadata.outputs.version }} -destination ../../artifacts
       working-directory: publish/dotnet
 
     - name: Upload NuGet package
@@ -681,7 +687,7 @@ jobs:
         scope: '@dlemstra'
 
     - name: Create NPM package
-      run: ./publish.ps1 -destination artifacts
+      run: ./publish.ps1 -version ${{ needs.metadata.outputs.version }}
       working-directory: publish/wasm
 
     - name: Publish NPM package
