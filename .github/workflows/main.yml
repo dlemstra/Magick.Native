@@ -547,6 +547,8 @@ jobs:
       - wasm-x86
       - windows
     runs-on: windows-latest
+    outputs:
+      version: ${{ steps.set-version.outputs.version }}
 
     steps:
 
@@ -554,6 +556,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set version
+      id: set-version
       run: |
         $version = Get-Date -Format "yyyy.M.d.ffff"
         echo "version=$version" >> "$GITHUB_OUTPUT"
