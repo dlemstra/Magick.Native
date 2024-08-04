@@ -555,8 +555,8 @@ jobs:
 
     - name: Set version
       run: |
-        $date = Get-Date -Format "yyyy.M.d.ffff"
-        echo "::set-output name=version::$date"
+        $version = Get-Date -Format "yyyy.M.d.ffff"
+        echo "version=$version" >> "$GITHUB_OUTPUT"
       shell: pwsh
 
     - name: Install build tools
