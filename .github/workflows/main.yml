@@ -559,7 +559,7 @@ jobs:
       id: set-version
       run: |
         $version = Get-Date -Format "yyyy.M.d.ffff"
-        echo "version=$version" >> "$GITHUB_OUTPUT"
+        echo "version=$version" >> $env:GITHUB_OUTPUT
       shell: pwsh
 
     - name: Install build tools
