@@ -22,8 +22,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Evaluate(const Image *, const 
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Fx(Image *, const char *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImageCollection_Map(Image *, const QuantizeInfo *, const Image *, ExceptionInfo **);
-
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Merge(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Montage(const Image *, const MontageInfo *, ExceptionInfo **);
@@ -45,6 +43,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadBlob(const ImageInfo *, co
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadFile(ImageInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadStream(ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, void *, ExceptionInfo **);
+
+MAGICK_NATIVE_EXPORT void MagickImageCollection_Remap(Image *, const QuantizeInfo *, const Image *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Smush(const Image *, const ssize_t, const MagickBooleanType, ExceptionInfo **);
 

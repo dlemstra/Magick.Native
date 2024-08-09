@@ -119,13 +119,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Fx(Image *images, const char *
   return image;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImageCollection_Map(Image *images, const QuantizeInfo *settings, const Image *remapImage, ExceptionInfo **exception)
-{
-  MAGICK_NATIVE_GET_EXCEPTION;
-  RemapImages(settings, images, remapImage, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-}
-
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Merge(Image *images, const size_t method, ExceptionInfo **exception)
 {
   Image
@@ -248,6 +241,13 @@ MAGICK_NATIVE_EXPORT Image *MagickImageCollection_ReadStream(ImageInfo *settings
   info = DestroyCustomStreamInfo(info);
   MAGICK_NATIVE_SET_EXCEPTION;
   return images;
+}
+
+MAGICK_NATIVE_EXPORT void MagickImageCollection_Remap(Image *images, const QuantizeInfo *settings, const Image *remapImage, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  RemapImages(settings, images, remapImage, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
 }
 
 MAGICK_NATIVE_EXPORT Image *MagickImageCollection_Smush(const Image *image, const ssize_t offset, const MagickBooleanType stack, ExceptionInfo **exception)
