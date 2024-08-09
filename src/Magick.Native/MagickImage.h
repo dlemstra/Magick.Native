@@ -347,8 +347,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_LocalContrast(Image *, const double, con
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Magnify(const Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_Map(Image *, const Image *, const QuantizeInfo *, ExceptionInfo **);
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_MeanShift(const Image *, const size_t, const size_t, const double, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Minify(const Image *, ExceptionInfo **);
@@ -398,6 +396,8 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_ReadPixels(const size_t, const size_t, c
 MAGICK_NATIVE_EXPORT Image *MagickImage_ReadStream(ImageInfo *, const CustomStreamHandler, const CustomStreamSeeker, const CustomStreamTeller, void *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_RegionMask(Image *, const RectangleInfo *, ExceptionInfo **);
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_Remap(Image *, const Image *, const QuantizeInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_RemoveArtifact(Image *, const char *);
 

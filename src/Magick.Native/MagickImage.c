@@ -1734,17 +1734,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Magnify(const Image *instance, Exception
   return image;
 }
 
-MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_Map(Image *instance, const Image *image, const QuantizeInfo *settings, ExceptionInfo **exception)
-{
-  MagickBooleanType
-    result;
-
-  MAGICK_NATIVE_GET_EXCEPTION;
-  result = RemapImage(settings, instance, image, exceptionInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-  return result;
-}
-
 MAGICK_NATIVE_EXPORT Image *MagickImage_MeanShift(const Image *instance, const size_t width, const size_t height, const double colorDistance, ExceptionInfo **exception)
 {
   Image
@@ -2012,6 +2001,17 @@ MAGICK_NATIVE_EXPORT void MagickImage_RegionMask(Image *instance, const Rectangl
   (void) SetImageRegionMask(instance, ReadPixelMask, region, exceptionInfo);
   (void) SetImageRegionMask(instance, WritePixelMask, region, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
+}
+
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_Remap(Image *instance, const Image *image, const QuantizeInfo *settings, ExceptionInfo **exception)
+{
+  MagickBooleanType
+    result;
+
+  MAGICK_NATIVE_GET_EXCEPTION;
+  result = RemapImage(settings, instance, image, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return result;
 }
 
 MAGICK_NATIVE_EXPORT void MagickImage_RemoveArtifact(Image *instance, const char *name)
