@@ -30,6 +30,8 @@ verifyNative() {
         exit 1
     fi
 
+    echo $output
+
     if [ "$openmp" == "OpenMP" ]; then
         if [[ "$output" != *"libgomp.so"* ]]; then
             echo "Libgomp should be linked in $file"
