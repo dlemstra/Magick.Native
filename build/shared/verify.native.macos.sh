@@ -30,8 +30,6 @@ verifyNative() {
         exit 1
     fi
 
-    echo $output
-
     if echo "$output" | grep "is architecture: $ld_arch"; then
         echo "Verified architecture $file"
     else
