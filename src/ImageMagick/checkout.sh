@@ -107,14 +107,14 @@ function getImagemagickVersion()
 
 function createNotice()
 {
-    local output=$1
+    local $noticeFolder=$1
 
-    if [ -z "$output" ]; then
-        output="output"
+    if [ -z "$noticeFolder" ]; then
+        noticeFolder="artifacts"
     fi
 
-    mkdir -p $output
-    notice=$output/NOTICE
+    mkdir -p $noticeFolder
+    notice=$noticeFolder/NOTICE
 
     echo -e "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n" > $notice
     echo -e "[ Magick.Native ] copyright:\n" >> $notice
