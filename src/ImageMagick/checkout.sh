@@ -107,7 +107,7 @@ function getImagemagickVersion()
 
 function createNotice()
 {
-    local $noticeFolder=$1
+    local noticeFolder=$1
 
     if [ -z "$noticeFolder" ]; then
         noticeFolder="artifacts"
