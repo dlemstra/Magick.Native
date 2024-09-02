@@ -20,6 +20,8 @@ MAGICK_NATIVE_EXPORT const char *Magick_GetFontName(const TypeInfo **, const siz
 
 MAGICK_NATIVE_EXPORT void Magick_DisposeFonts(TypeInfo **);
 
+MAGICK_NATIVE_EXPORT void Magick_ResetRandomSeed();
+
 MAGICK_NATIVE_EXPORT void Magick_SetDefaultFontFile(const char *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void Magick_SetLogDelegate(const MagickLogMethod);
