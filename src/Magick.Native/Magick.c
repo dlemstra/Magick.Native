@@ -51,7 +51,7 @@ MAGICK_NATIVE_EXPORT void Magick_DisposeFonts(TypeInfo **list)
   RelinquishMagickMemory((void *) list);
 }
 
-MAGICK_NATIVE_EXPORT void Magick_ResetRandomSeed()
+MAGICK_NATIVE_EXPORT void Magick_ResetRandomSeed(void)
 {
   SetRandomSecretKey(ULONG_MAX);
 }
