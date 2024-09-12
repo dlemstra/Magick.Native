@@ -33,5 +33,5 @@ brew uninstall --ignore-dependencies zstd
 brew install automake libtool gnu-sed nasm ossp-uuid ragel
 
 pip3 install setuptools
-pip3 install meson==0.61.5
-pip3 install ninja==1.10.0.post2
+pip3 install meson==1.5.1
+pip3 install ninja==1.11.1.1
