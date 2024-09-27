@@ -38,6 +38,6 @@ export OPENEXR_OPTIONS=""
 export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
 export IMAGEMAGICK_OPTIONS=""
 
-# Linux ARM64 options
+# ARM64 options
 export CC=aarch64-linux-gnu-gcc
 export CXX=aarch64-linux-gnu-g++
