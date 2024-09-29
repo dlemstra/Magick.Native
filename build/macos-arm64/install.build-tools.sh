@@ -38,6 +38,7 @@ packages=(
     "cairo"
     "fontconfig"
     "freetype"
+    "ghostscript"
     "glib"
     "harfbuzz"
     "highway"
