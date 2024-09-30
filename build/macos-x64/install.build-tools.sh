@@ -19,6 +19,9 @@ brew uninstall selenium-server
 brew uninstall sbt
 brew uninstall r
 brew uninstall colima
+brew uninstall openjdk
+brew uninstall ghostscript
+brew uninstall harfbuzz
 
 brew uninstall libxft
 brew uninstall sox
