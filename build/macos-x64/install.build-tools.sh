@@ -28,6 +28,7 @@ brew uninstall sox
 brew uninstall gobject-introspection
 brew uninstall libxext
 
+brew uninstall glib
 brew uninstall jpeg-xl
 brew uninstall libpng
 
