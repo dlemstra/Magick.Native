@@ -31,6 +31,7 @@ brew uninstall libxext
 brew uninstall glib
 brew uninstall jpeg-xl
 brew uninstall libpng
+brew uninstall libraw
 
 brew uninstall --ignore-dependencies brotli
 brew uninstall --ignore-dependencies xz
@@ -43,6 +44,7 @@ packages=(
     "cairo"
     "fontconfig"
     "freetype"
+    "fribidi"
     "ghostscript"
     "glib"
     "harfbuzz"
@@ -68,12 +70,17 @@ packages=(
 )
 
 # Check if all packages are uninstalled
+should_exit=false
 for package in "${packages[@]}"; do
     if brew list --formula | grep -q "^${package}\$"; then
         echo "${package} should not be installed"
-        exit 1
+        should_exit=true
     fi
 done
+
+if [ "$should_exit" = true ]; then
+    exit 1
+fi
 
 # Install build tools
 brew install automake libtool gnu-sed nasm ossp-uuid ragel
