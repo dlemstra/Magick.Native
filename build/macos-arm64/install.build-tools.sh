@@ -32,6 +32,9 @@ brew uninstall glib
 brew uninstall jpeg-xl
 brew uninstall libpng
 brew uninstall libraw
+brew uninstall libtiff
+brew uninstall libzip
+brew uninstall jpeg-turbo
 
 brew uninstall --ignore-dependencies brotli
 brew uninstall --ignore-dependencies xz
