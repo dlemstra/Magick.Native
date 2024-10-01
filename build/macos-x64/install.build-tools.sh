@@ -25,6 +25,7 @@ brew uninstall harfbuzz
 
 brew uninstall libxft
 brew uninstall sox
+brew uninstall gobject-introspection
 brew uninstall libxext
 
 brew uninstall jpeg-xl
