@@ -78,7 +78,7 @@ set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a ${LIB_DIR}/libwebp
 set(LIBXML ${LIB_DIR}/libxml2.a)
 set(LIBZ ${LIB_DIR}/libz.a)
 
-set(LIBEXR_VERSION 3_2)
+set(LIBEXR_VERSION 3_3)
 set(LIBMATH_VERSION 3_1)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRUtil-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRCore-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libImath-${LIBMATH_VERSION}_d.a ${LIB_DIR}/libIex-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libIlmThread-${LIBEXR_VERSION}_d.a)
