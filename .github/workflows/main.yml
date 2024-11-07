@@ -488,8 +488,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
-          - 'public.ecr.aws/lambda/dotnet:6-arm64'
+          - 'mcr.microsoft.com/dotnet/sdk:8.0-jammy-arm64v8'
 
     steps:
 
@@ -509,8 +508,8 @@ jobs:
     - name: Verify Native
       run: |
         export path=$(pwd)
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64
-        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64 OpenMP
+        docker run -v $path:/Magick.Native ${{ matrix.image }} Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64
+        docker run -v $path:/Magick.Native ${{ matrix.image }} Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64 OpenMP
 
   verify-macos:
     name: 'Verify MacOS'
