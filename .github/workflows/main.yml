@@ -303,6 +303,10 @@ jobs:
       run: ./checkout.cmd ../../artifacts/windows
       working-directory: src/ImageMagick
 
+    - name: Build configure
+      run: ./build.configure.cmd
+      working-directory: build/windows
+
     - name: Build Q8
       uses: ./.github/actions/build-windows
       with:

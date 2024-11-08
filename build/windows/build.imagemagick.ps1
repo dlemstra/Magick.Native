@@ -108,9 +108,4 @@ function buildImageMagick($config, $name, $platformName) {
     copyArtifacts $config $name $platformName
 }
 
-function buildConfigure() {
-    build "src\ImageMagick\imagemagick-windows\Configure\Configure.sln" "Configuration=Release,Platform=x64"
-}
-
-buildConfigure
 buildImageMagick $config $quantumName $platformName
