@@ -26,6 +26,10 @@ function fullPath($path)
 
 function build($fileName, $properties)
 {
+    $path = fullPath $fileName
+    $directory = Split-Path -parent $path
+    $file = Split-Path -leaf $path
+
     $location = $(Get-Location)
     Set-Location $directory
 
