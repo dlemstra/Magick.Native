@@ -7,8 +7,6 @@ brew list --formula
 
 # Uninstall already installed development libraries
 
-brew uninstall imagemagick
-
 brew uninstall composer
 brew uninstall php
 brew uninstall ant
@@ -16,29 +14,9 @@ brew uninstall gradle
 brew uninstall maven
 brew uninstall kotlin
 brew uninstall selenium-server
-brew uninstall sbt
-brew uninstall r
-brew uninstall colima
-brew uninstall openjdk
-brew uninstall ghostscript
-brew uninstall harfbuzz
-
-brew uninstall libxft
-brew uninstall sox
-brew uninstall gobject-introspection
-brew uninstall libxext
-
-brew uninstall glib
-brew uninstall jpeg-xl
-brew uninstall libpng
-brew uninstall libraw
-brew uninstall libtiff
-brew uninstall libzip
-brew uninstall jpeg-turbo
 
 brew uninstall --ignore-dependencies brotli
 brew uninstall --ignore-dependencies xz
-brew uninstall --ignore-dependencies zlib
 brew uninstall --ignore-dependencies zstd
 
 packages=(
