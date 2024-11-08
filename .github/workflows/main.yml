@@ -313,6 +313,18 @@ jobs:
         platformName: ${{ matrix.platformName }}
         quantumName: Q8
 
+    - name: Build Q16
+      uses: ./.github/actions/build-windows
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q16
+
+    - name: Build Q16-HDRI
+      uses: ./.github/actions/build-windows
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q16-HDRI
+
     - name: Build Q8-OpenMP
       if: matrix.platformName != 'x86'
       uses: ./.github/actions/build-windows
@@ -320,24 +332,12 @@ jobs:
         platformName: ${{ matrix.platformName }}
         quantumName: Q8-OpenMP
 
-    - name: Build Q16
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q16
-
     - name: Build Q16-OpenMP
       if: matrix.platformName != 'x86'
       uses: ./.github/actions/build-windows
       with:
         platformName: ${{ matrix.platformName }}
         quantumName: Q16-OpenMP
-
-    - name: Build Q16-HDRI
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q16-HDRI
 
     - name: Build Q16-HDRI-OpenMP
       if: matrix.platformName != 'x86'
