@@ -1,0 +1,29 @@
+on: [workflow_call]
+
+inputs:
+  platformName:
+    required: true
+    type: string
+  quantumName:
+    required: true
+    type: string
+
+jobs:
+  build-native: 
+    runs-on: windows-2022
+    steps:
+      - name: Build ImageMagick
+        run: ./build.imagemagick.cmd ${{ inputs.quantumName }} ${{ inputs.platformName }}
+        working-directory: build/windows
+
+      - name: Update resource files
+        run: ./update.resourcefiles.ps1
+        working-directory: build/windows
+
+      - name: Build Native
+        run: ./build.native.cmd ${{ inputs.quantumName }} ${{ inputs.platformName }}
+        working-directory: build/windows
+
+      - name: Copy Native
+        run: ./copy.native.ps1 -quantumName ${{ inputs.quantumName }} -platformName ${{ inputs.platformName }} -destination ../../artifacts
+        working-directory: build/windows

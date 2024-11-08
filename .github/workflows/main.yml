@@ -274,7 +274,7 @@ jobs:
         path: artifacts
 
   windows:
-    name: 'Windows'
+    name: 'Windows (${{ matrix.platformName }})'
     runs-on: windows-2022
 
     permissions:
@@ -283,15 +283,7 @@ jobs:
 
     strategy:
       matrix:
-        quantumName: [Q8, Q8-OpenMP, Q16, Q16-OpenMP, Q16-HDRI, Q16-HDRI-OpenMP]
         platformName: [x86, x64, arm64]
-        exclude:
-        - quantumName: Q8-OpenMP
-          platformName: x86
-        - quantumName: Q16-OpenMP
-          platformName: x86
-        - quantumName: Q16-HDRI-OpenMP
-          platformName: x86
 
     steps:
 
@@ -311,32 +303,55 @@ jobs:
       run: ./checkout.cmd ../../artifacts/windows
       working-directory: src/ImageMagick
 
-    - name: Build ImageMagick
-      run: ./build.imagemagick.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
-      working-directory: build/windows
+    - name: Build Q8
+      uses: ./.github/workflow-templates/build-windows.yml
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q8
 
-    - name: Update resource files
-      run: ./update.resourcefiles.ps1
-      working-directory: build/windows
+    - name: Build Q8-OpenMP
+      if: ${{ matrix.platformName }} != 'x86'
+      uses: ./.github/workflow-templates/build-windows.yml
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q8-OpenMP
 
-    - name: Build Native
-      run: ./build.native.cmd ${{ matrix.quantumName }} ${{ matrix.platformName }}
-      working-directory: build/windows
+    - name: Build Q16
+      uses: ./.github/workflow-templates/build-windows.yml
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q16
 
-    - name: Copy Native
-      run: ./copy.native.ps1 -quantumName ${{ matrix.quantumName }} -platformName ${{ matrix.platformName }} -destination ../../artifacts
-      working-directory: build/windows
+    - name: Build Q16-OpenMP
+      if: ${{ matrix.platformName }} != 'x86'
+      uses: ./.github/workflow-templates/build-windows.yml
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q16-OpenMP
+
+    - name: Build Q16-HDRI
+      uses: ./.github/workflow-templates/build-windows.yml
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q16-HDRI
+
+    - name: Build Q16-HDRI-OpenMP
+      if: ${{ matrix.platformName }} != 'x86'
+      uses: ./.github/workflow-templates/build-windows.yml
+      with:
+        platformName: ${{ matrix.platformName }}
+        quantumName: Q16-HDRI-OpenMP
 
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: windows
+        name: windows-${{ matrix.platformName }}
         path: artifacts/windows
 
     - name: Upload resources
       uses: actions/upload-artifact@v4
       with:
-        name: resources
+        name: windows-${{ matrix.platformName }}-resources
         path: artifacts/resources
 
   wasm-x86:
@@ -626,16 +641,40 @@ jobs:
         name: macos-arm64
         path: publish\dotnet\files\macos
 
-    - name: Download windows libraries
+    - name: Download windows-x64 libraries
       uses: actions/download-artifact@v4
       with:
-        name: windows
+        name: windows-x64
         path: publish\dotnet\files\windows
 
-    - name: Download resources
+    - name: Download windows-x64 resources
       uses: actions/download-artifact@v4
       with:
-        name: resources
+        name: windows-x64-resources
+        path: publish\dotnet\files\resources
+
+    - name: Download windows-arm64 libraries
+      uses: actions/download-artifact@v4
+      with:
+        name: windows-arm64
+        path: publish\dotnet\files\windows
+
+    - name: Download windows-arm64 resources
+      uses: actions/download-artifact@v4
+      with:
+        name: windows-arm64-resources
+        path: publish\dotnet\files\resources
+
+    - name: Download windows-x86 libraries
+      uses: actions/download-artifact@v4
+      with:
+        name: windows-x86
+        path: publish\dotnet\files\windows
+
+    - name: Download windows-x86 resources
+      uses: actions/download-artifact@v4
+      with:
+        name: windows-x86-resources
         path: publish\dotnet\files\resources
 
     - name: Download metadata
