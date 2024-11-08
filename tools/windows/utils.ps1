@@ -29,7 +29,7 @@ function build($fileName, $properties)
     $location = $(Get-Location)
     Set-Location $directory
 
-    msbuild $file /t:Rebuild /m ("/p:$($properties)")
+    msbuild $file /t:Build /m ("/p:$($properties)")
     checkExitCode "Failed to build: $($path)"
 
     Set-Location $location
