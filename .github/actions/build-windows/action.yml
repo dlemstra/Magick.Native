@@ -13,16 +13,20 @@ runs:
   steps:
     - name: Build ImageMagick
       run: ./build.imagemagick.cmd ${{ inputs.quantumName }} ${{ inputs.platformName }}
+      shell: powershell
       working-directory: build/windows
 
     - name: Update resource files
       run: ./update.resourcefiles.ps1
+      shell: powershell
       working-directory: build/windows
 
     - name: Build Native
       run: ./build.native.cmd ${{ inputs.quantumName }} ${{ inputs.platformName }}
+      shell: powershell
       working-directory: build/windows
 
     - name: Copy Native
       run: ./copy.native.ps1 -quantumName ${{ inputs.quantumName }} -platformName ${{ inputs.platformName }} -destination ../../artifacts
+      shell: powershell
       working-directory: build/windows
