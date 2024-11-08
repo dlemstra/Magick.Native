@@ -26,13 +26,6 @@ function fullPath($path)
 
 function build($fileName, $properties)
 {
-    $path = fullPath $fileName
-    $directory = Split-Path -parent $path
-    $file = Split-Path -leaf $path
-    $nuget = fullPath "tools\windows\nuget.exe"
-
-    & $nuget restore $path
-
     $location = $(Get-Location)
     Set-Location $directory
 
