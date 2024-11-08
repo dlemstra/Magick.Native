@@ -304,40 +304,40 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build Q8
-      uses: ./.github/workflow-templates/build-windows.yml
+      uses: dlemstra/Magick.Native/.github/workflow-templates/build-windows.yml@main
       with:
         platformName: ${{ matrix.platformName }}
         quantumName: Q8
 
     - name: Build Q8-OpenMP
       if: ${{ matrix.platformName }} != 'x86'
-      uses: ./.github/workflow-templates/build-windows.yml
+      uses: dlemstra/Magick.Native/.github/workflow-templates/build-windows.yml@main
       with:
         platformName: ${{ matrix.platformName }}
         quantumName: Q8-OpenMP
 
     - name: Build Q16
-      uses: ./.github/workflow-templates/build-windows.yml
+      uses: dlemstra/Magick.Native/.github/workflow-templates/build-windows.yml@main
       with:
         platformName: ${{ matrix.platformName }}
         quantumName: Q16
 
     - name: Build Q16-OpenMP
       if: ${{ matrix.platformName }} != 'x86'
-      uses: ./.github/workflow-templates/build-windows.yml
+      uses: dlemstra/Magick.Native/.github/workflow-templates/build-windows.yml@main
       with:
         platformName: ${{ matrix.platformName }}
         quantumName: Q16-OpenMP
 
     - name: Build Q16-HDRI
-      uses: ./.github/workflow-templates/build-windows.yml
+      uses: dlemstra/Magick.Native/.github/workflow-templates/build-windows.yml@main
       with:
         platformName: ${{ matrix.platformName }}
         quantumName: Q16-HDRI
 
     - name: Build Q16-HDRI-OpenMP
       if: ${{ matrix.platformName }} != 'x86'
-      uses: ./.github/workflow-templates/build-windows.yml
+      uses: dlemstra/Magick.Native/.github/workflow-templates/build-windows.yml@main
       with:
         platformName: ${{ matrix.platformName }}
         quantumName: Q16-HDRI-OpenMP

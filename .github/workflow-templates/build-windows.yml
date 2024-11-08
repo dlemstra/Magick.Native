@@ -1,12 +1,12 @@
-on: [workflow_call]
-
-inputs:
-  platformName:
-    required: true
-    type: string
-  quantumName:
-    required: true
-    type: string
+on:
+  workflow_call:
+    inputs:
+      platformName:
+        required: true
+        type: string
+      quantumName:
+        required: true
+        type: string
 
 jobs:
   build-native: 
