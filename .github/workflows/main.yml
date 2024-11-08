@@ -314,7 +314,7 @@ jobs:
         quantumName: Q8
 
     - name: Build Q8-OpenMP
-      if: ${{ matrix.platformName }} != 'x86'
+      if: matrix.platformName != 'x86'
       uses: ./.github/actions/build-windows
       with:
         platformName: ${{ matrix.platformName }}
@@ -327,7 +327,7 @@ jobs:
         quantumName: Q16
 
     - name: Build Q16-OpenMP
-      if: ${{ matrix.platformName }} != 'x86'
+      if: matrix.platformName != 'x86'
       uses: ./.github/actions/build-windows
       with:
         platformName: ${{ matrix.platformName }}
@@ -340,7 +340,7 @@ jobs:
         quantumName: Q16-HDRI
 
     - name: Build Q16-HDRI-OpenMP
-      if: ${{ matrix.platformName }} != 'x86'
+      if: matrix.platformName != 'x86'
       uses: ./.github/actions/build-windows
       with:
         platformName: ${{ matrix.platformName }}
