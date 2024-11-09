@@ -126,6 +126,37 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType limit)
   SetMagickResourceLimit(WidthResource, limit);
 }
 
+static unsigned long long GetContainerMemoryLimit()
+{
+  int
+    fd;
+
+  unsigned long long
+    memory_limit;
+
+  memory_limit = 0;
+  fd = _open("/sys/fs/cgroup/memory/memory.limit_in_bytes", O_RDONLY);
+  if (fd == -1)
+    fd = _open("/sys/fs/cgroup/memory.max", O_RDONLY);
+  if (fd != -1)
+  {
+    char
+      buffer[256];
+
+    int
+      count;
+
+    count = _read(fd, buffer, sizeof(buffer) - 1);
+    if (count != -1)
+    {
+      buffer[count] = '\0';
+      memory_limit = strtoull(buffer, NULL, 10);
+    }
+  }
+
+  return memory_limit;
+}
+
 MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
 {
   double
@@ -137,8 +168,15 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
   ssize_t
     pagesize;
 
+  unsigned long long
+    memory_limit;
+
   pagesize = GetMagickPageSize();
-  pages = (double) sysconf(_SC_PHYS_PAGES) * percentage;
+  pages = (double) sysconf(_SC_PHYS_PAGES);
+  memory_limit = GetContainerMemoryLimit();
+  if (memory_limit != 0 && (double) memory_limit < pages)
+    pages = (double) memory_limit;
+  pages *= percentage;
   memory = (MagickSizeType) pages * pagesize;
   ResourceLimits_Area_Set(memory * 4);
   ResourceLimits_Memory_Set(memory);
