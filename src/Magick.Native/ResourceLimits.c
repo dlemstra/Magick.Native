@@ -128,6 +128,9 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType limit)
 
 static unsigned long long GetContainerMemoryLimit()
 {
+#if defined(MAGICK_NATIVE_WINDOWS)
+  return 0;
+#else
   int
     fd;
 
@@ -135,9 +138,9 @@ static unsigned long long GetContainerMemoryLimit()
     memory_limit;
 
   memory_limit = 0;
-  fd = _open("/sys/fs/cgroup/memory/memory.limit_in_bytes", O_RDONLY);
+  fd = open("/sys/fs/cgroup/memory/memory.limit_in_bytes", O_RDONLY);
   if (fd == -1)
-    fd = _open("/sys/fs/cgroup/memory.max", O_RDONLY);
+    fd = open("/sys/fs/cgroup/memory.max", O_RDONLY);
   if (fd != -1)
   {
     char
@@ -146,15 +149,17 @@ static unsigned long long GetContainerMemoryLimit()
     int
       count;
 
-    count = _read(fd, buffer, sizeof(buffer) - 1);
+    count = read(fd, buffer, sizeof(buffer) - 1);
     if (count != -1)
     {
       buffer[count] = '\0';
       memory_limit = strtoull(buffer, NULL, 10);
     }
+    close(fd);
   }
 
   return memory_limit;
+#endif
 }
 
 MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
