@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED}"
 	ProjectSection(SolutionItems) = preProject
+		build\windows\build.configure.cmd = build\windows\build.configure.cmd
+		build\windows\build.configure.ps1 = build\windows\build.configure.ps1
 		build\windows\build.imagemagick.cmd = build\windows\build.imagemagick.cmd
 		build\windows\build.imagemagick.ps1 = build\windows\build.imagemagick.ps1
 		build\windows\build.native.cmd = build\windows\build.native.cmd
@@ -218,6 +220,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-mus
 		.devcontainer\linux-musl-x64\devcontainer.json = .devcontainer\linux-musl-x64\devcontainer.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{2950B739-CB99-4D64-89E3-BA7FCC57A72C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build-windows", "build-windows", "{1FA96809-8074-48AC-987B-D4BBC0CB8743}"
+	ProjectSection(SolutionItems) = preProject
+		.github\actions\build-windows\action.yml = .github\actions\build-windows\action.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|arm64 = DebugQ16|arm64
@@ -328,6 +337,8 @@ Global
 		{5F1BF474-B859-455E-8922-356BEDD90521} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 		{9990A9C0-C8EA-444B-8594-EF7888779B1D} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 		{C354B5EC-5E74-4929-8520-4205E296918B} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
+		{2950B739-CB99-4D64-89E3-BA7FCC57A72C} = {4B73C473-ECF3-4683-A81A-47E85061A7C6}
+		{1FA96809-8074-48AC-987B-D4BBC0CB8743} = {2950B739-CB99-4D64-89E3-BA7FCC57A72C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
