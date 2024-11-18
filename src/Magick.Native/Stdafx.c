@@ -3,11 +3,11 @@
 
 #include "Stdafx.h"
 
-#if defined(MAGICK_NATIVE_LINUX)
-  #define GLIBC_SYMVER_VERSION "2.2.5"
-#elif defined(MAGICK_NATIVE_LINUX_ARM64)
-  #define GLIBC_SYMVER_VERSION "2.17"
-#endif
+//#if defined(MAGICK_NATIVE_LINUX)
+//  #define GLIBC_SYMVER_VERSION "2.2.5"
+//#elif defined(MAGICK_NATIVE_LINUX_ARM64)
+//  #define GLIBC_SYMVER_VERSION "2.17"
+//#endif
 
 #if defined GLIBC_SYMVER_VERSION
   #if defined(__cplusplus) || defined(c_plusplus)
