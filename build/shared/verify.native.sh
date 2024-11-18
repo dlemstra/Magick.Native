@@ -23,8 +23,6 @@ verifyNative() {
         exit 1
     fi
 
-    ldd --version
-
     exit_code=0
     output=$(ldd $file 2>&1) || exit_code=$?
     if [ $exit_code -ne 0 ]; then
@@ -92,6 +90,8 @@ else
         apt-get install -y binutils
     fi
 fi
+
+ldd --version
 
 for quantum in ${QUANTUMS[@]}; do
     verifyNative $quantum
