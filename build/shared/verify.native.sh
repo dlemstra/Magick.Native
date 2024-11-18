@@ -91,7 +91,7 @@ else
     fi
 fi
 
-ldd --version
+ldd --version || true
 
 for quantum in ${QUANTUMS[@]}; do
     verifyNative $quantum
