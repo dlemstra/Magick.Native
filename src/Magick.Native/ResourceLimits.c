@@ -165,24 +165,19 @@ static unsigned long long GetContainerMemoryLimit()
 MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
 {
   double
-    pages;
+    total_memory;
 
   MagickSizeType
     memory;
 
-  ssize_t
-    pagesize;
-
   unsigned long long
-    memory_limit;
+    container_memory_limit;
 
-  pagesize = GetMagickPageSize();
-  pages = (double) sysconf(_SC_PHYS_PAGES);
-  memory_limit = GetContainerMemoryLimit();
-  if (memory_limit != 0 && (double) memory_limit < pages)
-    pages = (double) memory_limit;
-  pages *= percentage;
-  memory = (MagickSizeType) pages * pagesize;
+  total_memory = (double) GetMagickPageSize() * (double) sysconf(_SC_PHYS_PAGES);
+  container_memory_limit = GetContainerMemoryLimit();
+  if (container_memory_limit != 0 && (double) container_memory_limit < total_memory)
+    total_memory = (double) container_memory_limit;
+  memory = (MagickSizeType) (container_memory_limit * percentage);
   ResourceLimits_Area_Set(memory * 4);
   ResourceLimits_Memory_Set(memory);
 }
