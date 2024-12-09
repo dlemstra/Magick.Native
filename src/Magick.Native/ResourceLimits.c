@@ -177,7 +177,7 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
   container_memory_limit = GetContainerMemoryLimit();
   if (container_memory_limit != 0 && (double) container_memory_limit < total_memory)
     total_memory = (double) container_memory_limit;
-  memory = (MagickSizeType) (container_memory_limit * percentage);
+  memory = (MagickSizeType) (total_memory * percentage);
   ResourceLimits_Area_Set(memory * 4);
   ResourceLimits_Memory_Set(memory);
 }
