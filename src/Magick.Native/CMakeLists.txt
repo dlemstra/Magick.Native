@@ -71,6 +71,7 @@ set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libjxl_threads.a ${LIB_DIR}/libjxl_
 set(LIBLCMS ${LIB_DIR}/liblcms2.a)
 set(LIBLQR ${LIB_DIR}/liblqr-1.a)
 set(LIBOPENJPEG ${LIB_DIR}/libopenjp2.a)
+set(LIBOPENH264 ${LIB_DIR}/libopenh264.a)
 set(LIBPNG ${LIB_DIR}/libpng.a)
 set(LIBRAW ${LIB_DIR}/libraw_r.a)
 set(LIBTIFF ${LIB_DIR}/libtiff.a)
@@ -123,6 +124,7 @@ target_link_libraries(
     ${LIBWEBP}
     ${LIBOPENJPEG}
     ${LIBLCMS}
+    ${LIBOPENH264}
     ${LIBHEIF}
     ${LIBRAW}
     ${LIBZIP}
