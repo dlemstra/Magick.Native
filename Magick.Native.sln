@@ -117,6 +117,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencie
 		build\dependencies\build.lcms.sh = build\dependencies\build.lcms.sh
 		build\dependencies\build.lqr.sh = build\dependencies\build.lqr.sh
 		build\dependencies\build.lzma.sh = build\dependencies\build.lzma.sh
+		build\dependencies\build.openh264.sh = build\dependencies\build.openh264.sh
 		build\dependencies\build.openjpeg.sh = build\dependencies\build.openjpeg.sh
 		build\dependencies\build.pango.sh = build\dependencies\build.pango.sh
 		build\dependencies\build.pixman.sh = build\dependencies\build.pixman.sh
