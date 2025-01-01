@@ -5,8 +5,7 @@ cd openh264
 
 mkdir __build
 cd __build
-export CFLAGS="$FLAGS"
-meson $MESON_OPTIONS --prefix=/usr/local --buildtype=$MESON_BUILD_TYPE --default-library=static ..
+CFLAGS=$FLAGS CXXFLAGS=$FLAGS meson $MESON_OPTIONS --prefix=/usr/local --buildtype=$MESON_BUILD_TYPE --default-library=static -Dtests=disabled ..
 ninja install
 
 if [ -d /usr/local/lib/x86_64-linux-gnu ]; then
