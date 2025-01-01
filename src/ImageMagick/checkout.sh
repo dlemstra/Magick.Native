@@ -36,6 +36,7 @@ function cloneRepositories()
          rm -rf imagemagick-windows/Dependencies/fribidi/.ImageMagick
          rm -rf imagemagick-windows/Dependencies/harfbuzz/.ImageMagick
          rm -rf imagemagick-windows/Dependencies/lzma/.ImageMagick
+         rm -rf imagemagick-windows/Dependencies/openh264/.ImageMagick
          rm -rf imagemagick-windows/Dependencies/pango/.ImageMagick
          rm -rf imagemagick-windows/Dependencies/pixman/.ImageMagick
          rm -rf imagemagick-windows/Dependencies/raqm/.ImageMagick
