@@ -163,8 +163,6 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AffineTransform(Image *, const double, c
 
 MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *, const DrawInfo *, const char *, const char *, const size_t, const double, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *, const DrawInfo *, const char *, const size_t, ExceptionInfo **);
-
 MAGICK_NATIVE_EXPORT void MagickImage_AutoGamma(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_AutoLevel(Image *, const size_t, ExceptionInfo **);

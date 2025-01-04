@@ -768,23 +768,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *instance, const DrawInfo *
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *instance, const DrawInfo *settings, const char *text, const size_t gravity, ExceptionInfo **exception)
-{
-  DrawInfo
-    *drawInfo;
-
-  drawInfo = CloneDrawInfo((const ImageInfo *) NULL, settings);
-  drawInfo->text = DestroyString(drawInfo->text);
-  drawInfo->text = (char *) text;
-  drawInfo->gravity = (GravityType) gravity;
-
-  MAGICK_NATIVE_GET_EXCEPTION;
-  AnnotateImage(instance, drawInfo, exceptionInfo);
-  drawInfo->text = (char *) NULL;
-  DestroyDrawInfo(drawInfo);
-  MAGICK_NATIVE_SET_EXCEPTION;
-}
-
 MAGICK_NATIVE_EXPORT void MagickImage_AutoGamma(Image *instance, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
