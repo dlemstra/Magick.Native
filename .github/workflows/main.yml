@@ -15,7 +15,7 @@ jobs:
     name: 'Linux (x64)'
     container:
       image: ubuntu:20.04
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
 
@@ -73,7 +73,7 @@ jobs:
     name: 'Linux musl (x64)'
     container:
       image: alpine:3.12
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
 
@@ -131,7 +131,7 @@ jobs:
     name: 'Linux (arm64)'
     container:
       image: ubuntu:20.04
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
 
@@ -362,7 +362,7 @@ jobs:
     name: 'WASM (x86)'
     container:
       image: emscripten/emsdk:3.1.74
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
 
@@ -412,7 +412,7 @@ jobs:
     name: 'Verify Linux (x64)'
     needs:
       - linux-x64
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -460,7 +460,7 @@ jobs:
     name: 'Verify Linux musl (x64)'
     needs:
       - linux-musl-x64
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -494,7 +494,7 @@ jobs:
     name: 'Verify Linux (arm64)'
     needs:
       - linux-arm64
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     strategy:
       fail-fast: false
@@ -512,16 +512,10 @@ jobs:
       with:
         name: linux-arm64
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@master
-      with:
-        platforms: arm64
-
     - name: Verify Native
       run: |
-        export path=$(pwd)
-        docker run -v $path:/Magick.Native ${{ matrix.image }} Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64
-        docker run -v $path:/Magick.Native ${{ matrix.image }} Magick.Native/build/shared/verify.native.sh /Magick.Native linux arm64 OpenMP
+        build/shared/verify.native.sh . linux arm64
+        build/shared/verify.native.sh . linux arm64 OpenMP
 
   verify-macos:
     name: 'Verify MacOS'
@@ -557,7 +551,7 @@ jobs:
       - verify-macos
       - wasm-x86
       - windows
-    runs-on: windows-latest
+    runs-on: windows-2025
     outputs:
       version: ${{ steps.set-version.outputs.version }}
 
@@ -601,7 +595,7 @@ jobs:
     if: github.event_name != 'schedule'
     needs:
       - metadata
-    runs-on: windows-latest
+    runs-on: windows-2025
 
     steps:
 
@@ -701,7 +695,7 @@ jobs:
     if: github.event_name != 'schedule'
     needs:
       - metadata
-    runs-on: windows-latest
+    runs-on: windows-2025
 
     steps:
 
