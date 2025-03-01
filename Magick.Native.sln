@@ -12,7 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{
 		build\linux-x64\build.dependencies.sh = build\linux-x64\build.dependencies.sh
 		build\linux-x64\install.build-tools.sh = build\linux-x64\install.build-tools.sh
 		build\linux-x64\settings.sh = build\linux-x64\settings.sh
-		build\linux-x64\verify.cmd = build\linux-x64\verify.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-x64", "macos-x64", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
@@ -137,7 +136,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-mus
 		build\linux-musl-x64\build.dependencies.sh = build\linux-musl-x64\build.dependencies.sh
 		build\linux-musl-x64\install.build-tools.sh = build\linux-musl-x64\install.build-tools.sh
 		build\linux-musl-x64\settings.sh = build\linux-musl-x64\settings.sh
-		build\linux-musl-x64\verify.cmd = build\linux-musl-x64\verify.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64", "{950C68AA-029F-4213-BCC8-20CB145E15CA}"
@@ -147,7 +145,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm64", "linux-arm64"
 		build\linux-arm64\cross-compilation.meson = build\linux-arm64\cross-compilation.meson
 		build\linux-arm64\install.build-tools.sh = build\linux-arm64\install.build-tools.sh
 		build\linux-arm64\settings.sh = build\linux-arm64\settings.sh
-		build\linux-arm64\verify.cmd = build\linux-arm64\verify.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4B73C473-ECF3-4683-A81A-47E85061A7C6}"
