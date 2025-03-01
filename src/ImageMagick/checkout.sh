@@ -57,7 +57,7 @@ function cloneFontconfig()
             cd fontconfig
             git reset --hard
             git pull origin main
-            git checkout ecfea75d552d246db21435cf4f75c634226a13b7
+            git checkout 2adedce5722148b012823c57e7afb7adcc8262f1
             cd ..
         fi
         cd ../../
