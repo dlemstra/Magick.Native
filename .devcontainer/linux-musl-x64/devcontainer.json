@@ -4,7 +4,7 @@
     "dockerfile": "../Dockerfile",
     "context": "../..",
     "args": {
-      "image": "alpine:3.12",
+      "image": "alpine:3.18",
       "config": "linux-musl",
       "arch": "x64",
       "debugBuild": "", // Set to yes to build with debug symbols
