@@ -5,6 +5,7 @@
     "context": "../..",
     "args": {
       "image": "ubuntu:20.04",
+      "platform": "linux",
       "config": "linux",
       "arch": "arm64",
       "debugBuild": "", // Set to yes to build with debug symbols

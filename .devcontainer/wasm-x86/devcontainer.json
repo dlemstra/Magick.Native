@@ -5,6 +5,7 @@
     "context": "../..",
     "args": {
       "image": "emscripten/emsdk:3.1.74",
+      "platform": "wasm",
       "config": "wasm",
       "arch": "x86",
       "debugBuild": "" // Set to yes to build with debug symbols

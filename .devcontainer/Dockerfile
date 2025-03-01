@@ -1,6 +1,8 @@
 ARG image
 FROM $image
 
+ARG platform
+
 ARG config
 ENV DC_CONFIG=${config}
 
@@ -13,7 +15,7 @@ RUN /install.build-tools.sh
 
 COPY src/ImageMagick /ImageMagick
 
-RUN cd /ImageMagick; ./checkout.sh ${config}
+RUN cd /ImageMagick; ./checkout.sh ${platform}
 
 RUN mkdir /build && mkdir /build/dependencies && mkdir /build/shared && mkdir /build/${config}-${arch}
 
