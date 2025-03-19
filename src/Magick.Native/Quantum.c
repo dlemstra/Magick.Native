@@ -13,8 +13,3 @@ MAGICK_NATIVE_EXPORT Quantum Quantum_Max_Get(void)
 {
   return QuantumRange;
 }
-
-MAGICK_NATIVE_EXPORT unsigned char Quantum_ScaleToByte(const Quantum value)
-{
-  return ScaleQuantumToChar(value);
-}
