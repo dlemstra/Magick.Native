@@ -1028,7 +1028,7 @@ MAGICK_NATIVE_EXPORT double MagickImage_CompareDistortion(Image *instance, Image
   GetImageDistortion(instance, reference, (const MetricType) metric, &result, exceptionInfo);
   RestoreChannelMask(reference);
   MAGICK_NATIVE_SET_EXCEPTION;
-  if (result < MagickEpsilon)
+  if (fabs(result) < MagickEpsilon)
     return 0.0;
   return result;
 }
