@@ -24,22 +24,22 @@ MAGICK_NATIVE_EXPORT void MagickGeometry_Dispose(GeometryInfo *instance)
 
 MAGICK_NATIVE_EXPORT ssize_t MagickGeometry_X_Get(const GeometryInfo *instance)
 {
-  return CastDoubleToLong(instance->xi);
+  return CastDoubleToSsizeT(instance->xi);
 }
 
 MAGICK_NATIVE_EXPORT ssize_t MagickGeometry_Y_Get(const GeometryInfo *instance)
 {
-  return CastDoubleToLong(instance->psi);
+  return CastDoubleToSsizeT(instance->psi);
 }
 
 MAGICK_NATIVE_EXPORT size_t MagickGeometry_Width_Get(const GeometryInfo *instance)
 {
-  return CastDoubleToUnsigned(instance->rho);
+  return CastDoubleToSizeT(instance->rho);
 }
 
 MAGICK_NATIVE_EXPORT size_t MagickGeometry_Height_Get(const GeometryInfo *instance)
 {
-  return CastDoubleToUnsigned(instance->sigma);
+  return CastDoubleToSizeT(instance->sigma);
 }
 
 MAGICK_NATIVE_EXPORT MagickStatusType MagickGeometry_Initialize(GeometryInfo *instance, const char *geometry)
