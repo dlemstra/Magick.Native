@@ -125,6 +125,7 @@ export class CodeParser {
             case 'ExceptionType':
             case 'EndianType':
             case 'FillRule':
+            case 'FilterType':
             case 'GravityType':
             case 'ImageType':
             case 'InterlaceType':
