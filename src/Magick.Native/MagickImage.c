@@ -2027,18 +2027,18 @@ MAGICK_NATIVE_EXPORT void MagickImage_ResetProfileIterator(const Image *instance
   ResetImageProfileIterator(instance);
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Resample(const Image *instance, const double resolutionX, const double resolutionY, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_Resample(const Image *instance, const double resolutionX, const double resolutionY, const FilterType filter, ExceptionInfo **exception)
 {
   Image
     *image;
 
   MAGICK_NATIVE_GET_EXCEPTION;
-  image = ResampleImage(instance, resolutionX, resolutionY, instance->filter, exceptionInfo);
+  image = ResampleImage(instance, resolutionX, resolutionY, filter, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Resize(const Image *instance, const char *geometry, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_Resize(const Image *instance, const char *geometry, const FilterType filter, ExceptionInfo **exception)
 {
   Image
     *image;
@@ -2050,7 +2050,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Resize(const Image *instance, const char
   ParseMetaGeometry(geometry, &rectangle.x, &rectangle.y, &rectangle.width, &rectangle.height);
 
   MAGICK_NATIVE_GET_EXCEPTION;
-  image = ResizeImage(instance, rectangle.width, rectangle.height, instance->filter, exceptionInfo);
+  image = ResizeImage(instance, rectangle.width, rectangle.height, filter, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }

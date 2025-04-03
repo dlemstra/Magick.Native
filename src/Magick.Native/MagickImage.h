@@ -409,9 +409,9 @@ MAGICK_NATIVE_EXPORT void MagickImage_ResetAttributeIterator(const Image *);
 
 MAGICK_NATIVE_EXPORT void MagickImage_ResetProfileIterator(const Image *);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Resample(const Image *, const double, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_Resample(const Image *, const double, const double, const FilterType, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Resize(const Image *, const char *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_Resize(const Image *, const char *, const FilterType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Roll(const Image *, const ssize_t, const ssize_t, ExceptionInfo **);
 
