@@ -282,6 +282,7 @@ jobs:
       contents: read
 
     strategy:
+      fail-fast: false
       matrix:
         platformName: [x86, x64, arm64]
 
