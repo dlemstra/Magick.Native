@@ -20,11 +20,11 @@ MAGICK_NATIVE_EXPORT size_t PdfInfo_PageCount(const char *fileName, const char *
 #if defined(MAGICKCORE_WINDOWS_SUPPORT)
   NTGhostscriptEXE(path, MagickPathExtent);
   (void) FormatLocaleString(command, MagickPathExtent,
-    "\"%s\" -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT --permit-file-read=\"%s\" -sPDFPassword=\"%s\" -c \"(%s) (r) file runpdfbegin pdfpagecount = quit\"",
+    "\"%s\" -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT -dNODISPLAY --permit-file-read=\"%s\" -sPDFPassword=\"%s\" -c \"(%s) (r) file runpdfbegin pdfpagecount = quit\"",
 #else
   CopyMagickString(path, "gs", MagickPathExtent);
   (void) FormatLocaleString(command, MagickPathExtent,
-    "'%s' -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT --permit-file-read='%s' -sPDFPassword='%s' -c '(%s) (r) file runpdfbegin pdfpagecount = quit'",
+    "'%s' -q -dQUIET -dSAFER -dBATCH -dNOPAUSE -dNOPROMPT -dNODISPLAY --permit-file-read='%s' -sPDFPassword='%s' -c '(%s) (r) file runpdfbegin pdfpagecount = quit'",
 #endif
     path, fileName, sanitize_passphrase, fileName);
   sanitize_passphrase = DestroyString(sanitize_passphrase);
