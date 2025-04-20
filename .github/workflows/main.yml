@@ -305,7 +305,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build configure
-      run: ./build.configure.cmd
+      run: ./build.configure.cmd ${{ matrix.platformName }}
       working-directory: build/windows
 
     - name: Build Q8
