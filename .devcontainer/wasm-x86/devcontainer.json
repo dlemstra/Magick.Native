@@ -4,7 +4,7 @@
     "dockerfile": "../Dockerfile",
     "context": "../..",
     "args": {
-      "image": "emscripten/emsdk:4.0.6",
+      "image": "emscripten/emsdk:4.0.7",
       "platform": "wasm",
       "config": "wasm",
       "arch": "x86",

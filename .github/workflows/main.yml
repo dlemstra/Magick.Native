@@ -362,7 +362,7 @@ jobs:
   wasm-x86:
     name: 'WASM (x86)'
     container:
-      image: emscripten/emsdk:4.0.6
+      image: emscripten/emsdk:4.0.7
     runs-on: ubuntu-24.04
 
     steps:
