@@ -28,8 +28,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED}"
 	ProjectSection(SolutionItems) = preProject
-		build\windows\build.configure.cmd = build\windows\build.configure.cmd
-		build\windows\build.configure.ps1 = build\windows\build.configure.ps1
 		build\windows\build.imagemagick.cmd = build\windows\build.imagemagick.cmd
 		build\windows\build.imagemagick.ps1 = build\windows\build.imagemagick.ps1
 		build\windows\build.native.cmd = build\windows\build.native.cmd

@@ -24,7 +24,7 @@ function createSolution($configureOptions) {
 
     $options = "/smt /noWizard /VS2022 $configureOptions"
     Write-Host "Options: $configureOptions"
-    Start-Process .\configure.exe -ArgumentList $options -wait
+    Start-Process .\Configure.Release.x64.exe -ArgumentList $options -wait
 
     Set-Location $location
 }
