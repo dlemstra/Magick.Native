@@ -11,12 +11,12 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{c,h,nuspec,yml}]
+[*.{c,h,nuspec,sh,yml}]
 
 indent_size = 2
 tab_width = 2
 
-[*.{ps1,sh,txt}]
+[*.{ps1,txt}]
 
 indent_size = 4
 tab_width = 4
