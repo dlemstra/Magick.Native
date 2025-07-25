@@ -311,10 +311,12 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
+      shell: cmd
       run: checkout-release.cmd
       working-directory: src/ImageMagick
 
     - name: Build
+      shell: cmd
       run: build.cmd Release ${{matrix.quantum}} ${{ matrix.architecture}} ${{matrix.hdri}} ${{matrix.openmp}}
       working-directory: build/windows
 
