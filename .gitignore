@@ -1,7 +1,11 @@
 .vs
 .vscode
 publish/**/files/*
-src/ImageMagick/imagemagick-windows
+src/ImageMagick/Configure
+src/ImageMagick/Dependencies
+src/ImageMagick/Imagemagick
+src/ImageMagick/ProjectFiles
+src/ImageMagick/*.sln
 src/Magick.Native/lib
 src/Magick.Native/bin
 src/Magick.Native/Q8
