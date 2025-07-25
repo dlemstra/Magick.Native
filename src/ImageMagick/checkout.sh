@@ -68,16 +68,23 @@ clone_dependencies()
 
 download_dependencies()
 {
-  ./ImageMagick/.github/build/windows/download-dependencies.sh
+  local dependencies_artifact=$1
+
+  ./ImageMagick/.github/build/windows/download-dependencies.sh --dependencies-artifact $dependencies_artifact
 }
 
 development=false
+dependencies_artifact=""
 
 while [[ $# -gt 0 ]]; do
   case $1 in
     --development)
       development=true
       shift 1
+      ;;
+    --dependencies-artifact)
+      dependencies_artifact=$2
+      shift 2
       ;;
     *)
       echo "Unknown option: $1"
@@ -92,5 +99,5 @@ download_configure
 if [ "$development" == true ]; then
   clone_dependencies
 else
-  download_dependencies
+  download_dependencies $dependencies_artifact
 fi
