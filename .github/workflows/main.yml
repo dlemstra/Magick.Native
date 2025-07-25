@@ -274,7 +274,7 @@ jobs:
         path: artifacts
 
   windows:
-    name: 'Windows (${{ matrix.platformName }})'
+    name: Windows ${{matrix.quantum}}${{matrix.hdri_flag}} (${{matrix.architecture}})
     runs-on: windows-2022
 
     permissions:
@@ -284,7 +284,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platformName: [x86, x64, arm64]
+        architecture: [x86, x64, arm64]
+        quantum: [ Q8, Q16 ]
+        openmp: [ openMP, noOpenMP ]
+        hdri: [ hdri, noHdri ]
+        exclude:
+          - quantum: Q8
+            hdri: hdri
+        include:
+          - hdri: hdri
+            hdri_flag: '-HDRI'
+
 
     steps:
 
@@ -301,58 +311,28 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
-      run: ./checkout.cmd ../../artifacts/windows
+      run: checkout-release.cmd
       working-directory: src/ImageMagick
 
-    - name: Build Q8
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q8
+    - name: Build
+      run: build.cmd Release ${{matrix.quantum}} ${{ matrix.architecture}} ${{matrix.hdri}} ${{matrix.openmp}}
+      working-directory: build/windows
 
-    - name: Build Q16
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q16
-
-    - name: Build Q16-HDRI
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q16-HDRI
-
-    - name: Build Q8-OpenMP
-      if: matrix.platformName != 'x86'
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q8-OpenMP
-
-    - name: Build Q16-OpenMP
-      if: matrix.platformName != 'x86'
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q16-OpenMP
-
-    - name: Build Q16-HDRI-OpenMP
-      if: matrix.platformName != 'x86'
-      uses: ./.github/actions/build-windows
-      with:
-        platformName: ${{ matrix.platformName }}
-        quantumName: Q16-HDRI-OpenMP
+    - name: Copy Native
+      run: ./copy.native.ps1 -quantumName ${{matrix.quantum}}${{matrix.hdri_flag}} -platformName ${{matrix.architecture}} -destination ../../artifacts
+      shell: powershell
+      working-directory: build/windows
 
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: windows-${{ matrix.platformName }}
+        name: windows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.openmp}}
         path: artifacts/windows
 
     - name: Upload resources
       uses: actions/upload-artifact@v4
       with:
-        name: windows-${{ matrix.platformName }}-resources
+        name: wwindows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.openmp}}-resources
         path: artifacts/resources
 
   wasm-x86:
