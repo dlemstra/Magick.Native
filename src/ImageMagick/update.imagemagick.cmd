@@ -1,8 +1,7 @@
 @echo off
 
-call set.bash.cmd
+set "SCRIPT_DIR=%~dp0"
 
-if not ERRORLEVEL 1 (
-    %BASH% --login -i -c "./update.imagemagick.sh"
-)
+call "%SCRIPT_DIR%..\..\.github\build\windows\find-bash.cmd"
 
+%BASH% --login -i -c "./update.imagemagick.sh"
