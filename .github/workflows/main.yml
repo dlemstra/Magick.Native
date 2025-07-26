@@ -274,7 +274,7 @@ jobs:
         path: artifacts
 
   windows:
-    name: Windows ${{matrix.quantum}}${{matrix.hdri_flag}} ${{matrix.openmp}} (${{matrix.architecture}})
+    name: Windows ${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     runs-on: windows-2022
 
     permissions:
@@ -294,15 +294,13 @@ jobs:
         include:
           - hdri: hdri
             hdri_flag: '-HDRI'
+          - hdri: openMP
+            openmp_flag: '-OpenMP'
 
     steps:
 
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Install build tools
-      run: ./install.build-tools.ps1
-      working-directory: build/windows
 
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.cmd
@@ -320,21 +318,17 @@ jobs:
       working-directory: build/windows
 
     - name: Copy Native
-      run: ./copy.native.ps1 -quantumName ${{matrix.quantum}}${{matrix.hdri_flag}} -platformName ${{matrix.architecture}} -destination ../../artifacts
-      shell: powershell
+      shell: cmd
+      run: |
+        copy-resources.cmd ..\..\artifacts
+        copy /Y ..\..\src\Magick.Native\bin\Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}}\${{matrix.architecture}}\*.dll ..\..\artifacts
       working-directory: build/windows
 
-    - name: Upload library
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: windows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.openmp}}
-        path: artifacts/windows
-
-    - name: Upload resources
-      uses: actions/upload-artifact@v4
-      with:
-        name: wwindows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.openmp}}-resources
-        path: artifacts/resources
+        name: windows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}}
+        path: artifacts
 
   wasm-x86:
     name: 'WASM (x86)'
