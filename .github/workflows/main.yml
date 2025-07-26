@@ -277,10 +277,6 @@ jobs:
     name: Windows ${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     runs-on: windows-2022
 
-    permissions:
-      id-token: write
-      contents: read
-
     strategy:
       fail-fast: false
       matrix:
@@ -294,7 +290,7 @@ jobs:
         include:
           - hdri: hdri
             hdri_flag: '-HDRI'
-          - hdri: openMP
+          - openmp: openMP
             openmp_flag: '-OpenMP'
 
     steps:
@@ -320,7 +316,7 @@ jobs:
     - name: Copy Native
       shell: cmd
       run: |
-        copy-resources.cmd ..\..\artifacts
+        call copy-resources.cmd ..\..\artifacts
         copy /Y ..\..\src\Magick.Native\bin\Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}}\${{matrix.architecture}}\*.dll ..\..\artifacts
       working-directory: build/windows
 
