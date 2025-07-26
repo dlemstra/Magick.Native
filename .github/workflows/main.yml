@@ -282,11 +282,13 @@ jobs:
       matrix:
         architecture: [x86, x64, arm64]
         quantum: [ Q8, Q16 ]
-        openmp: [ openMP, noOpenMP ]
-        hdri: [ hdri, noHdri ]
+        openmp: [ noOpenMP, openMP ]
+        hdri: [ noHdri, hdri ]
         exclude:
           - quantum: Q8
             hdri: hdri
+          - architecture: x86
+            openmp: openMP
         include:
           - hdri: hdri
             hdri_flag: '-HDRI'
