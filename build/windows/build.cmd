@@ -18,7 +18,7 @@ if "%openMP%"=="" goto invalid
 cd ..\..\src\ImageMagick\Configure
 
 set options=/noWizard /VS2022 /static /%quantum% /opencl /noDpc /%hdri% /%openMP% /%architecture% /linkRuntime
-echo "Running configure with the following options: %options%"
+echo Running configure with the following options: %options%
 Configure.Release.x64.exe %options%
 
 cd ..
