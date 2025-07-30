@@ -53,7 +53,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux ${{matrix.architecture}}
+      run: ../../build/shared/copy.native.sh ../../artifacts linux ${{matrix.architecture}} ${{matrix.openmp}}
       working-directory: src/Magick.Native
 
     - name: Upload library
