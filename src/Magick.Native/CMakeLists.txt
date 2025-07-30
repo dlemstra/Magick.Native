@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 2.8...3.22)
 
 project(${LIBRARY_NAME})
 
-set(OPENMP false BOOL)
-
 add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DMAGICKCORE_HDRI_ENABLE=${HDRI_ENABLE})
 
 include_directories(. /tmp/dependencies/include /usr/local/include/ImageMagick-7)
@@ -57,9 +55,6 @@ elseif (NOT PLATFORM STREQUAL "WASM")
 
     set(STDCPLUSPLUS -static-libstdc++ -static-libgcc)
     set(LIBTHREAD Threads::Threads)
-    if (OPENMP)
-        set(LIBOPENMP -fopenmp)
-    endif()
 endif()
 
 set(LIBAOM libaom.a)
@@ -135,7 +130,6 @@ target_link_libraries(
 
     ${LIBSOCKFS}
     ${LIBRESOLV}
-    ${LIBOPENMP}
     ${LIBTHREAD}
     ${STDCPLUSPLUS}
 )
