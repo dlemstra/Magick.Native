@@ -12,7 +12,7 @@ on:
 name: main
 jobs:
   linux:
-    name: Linux ${{matrix.architecture }} ${{matrix.openmp}}
+    name: Linux ${{matrix.openmp_flag}} (${{matrix.architecture}})
     container:
       image: ubuntu:20.04
     runs-on: ubuntu-24.04
@@ -22,6 +22,9 @@ jobs:
       matrix:
         architecture: [x64, arm64]
         openmp: [ noOpenMP, OpenMP ]
+        include:
+          - openmp: OpenMP
+            openmp_flag: OpenMP
 
     steps:
 
@@ -30,7 +33,7 @@ jobs:
 
     - name: Install build tools
       run: ./install.build-tools.sh
-      working-directory: build/linux-x64
+      working-directory: build/linux-${{matrix.architecture}}
 
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.sh
@@ -50,7 +53,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux x64
+      run: ../../build/shared/copy.native.sh ../../artifacts linux ${{matrix.architecture}}
       working-directory: src/Magick.Native
 
     - name: Upload library
