@@ -49,7 +49,7 @@ jobs:
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.native.sh linux ${{matrix.architecture}}
+      run: ../../build/shared/build.native.sh linux ${{matrix.architecture}} ${{matrix.openmp}}
       working-directory: src/Magick.Native
 
     - name: Copy Native
@@ -425,7 +425,7 @@ jobs:
         build/shared/verify.native.sh . linux x64 OpenMP
 
   verify-linux-arm64:
-    name: 'Verify Linux (arm64)'
+    name: Verify Linux (arm64)
     needs:
       - linux
     runs-on: ubuntu-24.04-arm
