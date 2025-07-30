@@ -36,7 +36,6 @@ clone_imagemagick()
 {
   commit=$(<ImageMagick.commit)
 
-  echo "Cloning ImageMagick"
   clone ImageMagick
   cd ImageMagick
 
@@ -71,8 +70,14 @@ download_dependencies()
   local dependencies_artifact=$1
 
   ./ImageMagick/.github/build/windows/download-dependencies.sh --dependencies-artifact $dependencies_artifact
+  if [[ "$OSTYPE" != "msys" ]]; then
+    echo "Moving Artifacts directory to /tmp/dependencies"
+    rm -Rf /tmp/dependencies
+    mv Artifacts /tmp/dependencies
+  fi
 }
 
+configure=true
 development=false
 dependencies_artifact=""
 
@@ -86,6 +91,10 @@ while [[ $# -gt 0 ]]; do
       dependencies_artifact=$2
       shift 2
       ;;
+    --no-configure)
+      configure=false
+      shift 1
+      ;;
     *)
       echo "Unknown option: $1"
       exit 1
@@ -94,7 +103,9 @@ while [[ $# -gt 0 ]]; do
 done
 
 clone_imagemagick
-download_configure
+if [ "$configure" == true ]; then
+  download_configure
+fi
 
 if [ "$development" == true ]; then
   clone_dependencies

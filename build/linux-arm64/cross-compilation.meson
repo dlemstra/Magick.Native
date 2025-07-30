@@ -1,8 +1,0 @@
-[binaries]
-pkgconfig = ['pkg-config']
-
-[host_machine]
-system = 'linux'
-cpu_family = 'aarch64'
-cpu = 'arm64'
-endian = 'little'

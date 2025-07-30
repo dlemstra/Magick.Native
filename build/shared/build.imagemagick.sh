@@ -9,42 +9,41 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/../$config-$arch/settings.sh
 
 buildImageMagick() {
-    local quantum=$1
+  local quantum=$1
 
-    # Set ImageMagick variables
-    local hdri=no
-    local depth=8
-    local disable_openmp=--disable-openmp
-    local enable_64bit_channel_masks="--enable-64bit-channel-masks --enable-force-cpp"
-    if [ "$quantum" == "Q16" ]; then
-        depth=16
-    elif [ "$quantum" == "Q16-HDRI" ]; then
-        quantum_name=Q16HDRI
-        depth=16
-        hdri=yes
-    fi
-    if [ "$openmp" == "OpenMP" ]; then
-        unset disable_openmp
-    fi
-    if [ "$config" == "wasm" ]; then
-        unset enable_64bit_channel_masks
-    fi
+  local hdri=no
+  local depth=8
+  local disable_openmp=--disable-openmp
+  local enable_64bit_channel_masks="--enable-64bit-channel-masks --enable-force-cpp"
+  if [ "$quantum" == "Q16" ]; then
+    depth=16
+  elif [ "$quantum" == "Q16-HDRI" ]; then
+    quantum_name=Q16HDRI
+    depth=16
+    hdri=yes
+  fi
+  if [ "$openmp" == "OpenMP" ]; then
+    unset disable_openmp
+  fi
+  if [ "$config" == "wasm" ]; then
+    unset enable_64bit_channel_masks
+  fi
 
-    $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --disable-deprecated --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $enable_64bit_channel_masks $disable_openmp $IMAGEMAGICK_OPTIONS CFLAGS="$STRICT_FLAGS" CXXFLAGS="$STRICT_FLAGS" PKG_CONFIG_PATH="$PKG_PATH"
-    $MAKE install
+  $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --disable-deprecated --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --without-perl --without-python --without-magick-plus-plus --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $enable_64bit_channel_masks $disable_openmp $IMAGEMAGICK_OPTIONS
+  $MAKE install
 }
 
 copyPrivateIncludes() {
-    local imageMagickInclude=`pkg-config --variable includedir ImageMagick`
-    cp MagickCore/*-private.h $imageMagickInclude/MagickCore/
-    if [ ! -d $imageMagickInclude/coders ]; then
-        mkdir $imageMagickInclude/coders
-    fi
-    cp coders/*-private.h $imageMagickInclude/coders/
+  local imageMagickInclude=`pkg-config --variable includedir ImageMagick`
+  cp MagickCore/*-private.h $imageMagickInclude/MagickCore/
+  if [ ! -d $imageMagickInclude/coders ]; then
+    mkdir $imageMagickInclude/coders
+  fi
+  cp coders/*-private.h $imageMagickInclude/coders/
 }
 
 autoreconf -fiv
 for quantum in ${QUANTUMS[@]}; do
-    buildImageMagick $quantum
+  buildImageMagick $quantum
 done
 copyPrivateIncludes

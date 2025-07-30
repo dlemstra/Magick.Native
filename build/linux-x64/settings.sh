@@ -1,39 +1,25 @@
-SCRIPT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
-
 # Compiler settings
 if [[ "${DEBUG_BUILD}" ]]; then
-    export FLAGS="-g3 -O0 -fPIC -DDEBUG"
-    export CMAKE_BUILD_TYPE="Debug"
-    export MESON_BUILD_TYPE="debug"
+  export FLAGS="-g3 -O0 -fPIC -Wall -DDEBUG"
+  export CMAKE_BUILD_TYPE="Debug"
 else
-    export FLAGS="-O3 -fPIC -DNDEBUG"
-    export CMAKE_BUILD_TYPE="Release"
-    export MESON_BUILD_TYPE="release"
+  export FLAGS="-O3 -fPIC -Wall -DNDEBUG"
+  export CMAKE_BUILD_TYPE="Release"
 fi
+export INSTALL_PREFIX="/tmp/dependencies"
+export CFLAGS=$FLAGS
+export CXXFLAGS=$FLAGS
+export CPPFLAGS="-I$INSTALL_PREFIX/include"
+export LDFLAGS="-L$INSTALL_PREFIX/lib -L$INSTALL_PREFIX/lib/x86_64-linux-gnu/"
+export PKG_CONFIG_PATH=$INSTALL_PREFIX/lib/pkgconfig:$INSTALL_PREFIX/lib/x86_64-linux-gnu/pkgconfig
 
-# Shared options
-export PLATFORM=LINUX
-export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
-export EXTENSION="so"
-export STRICT_FLAGS="${FLAGS} -Wall"
-export CONFIGURE="./configure"
-export CONFIGURE_OPTIONS=""
+# Settings
 export CMAKE_COMMAND="cmake"
 export CMAKE_OPTIONS=""
-export MAKE="make"
-export MAKEFLAGS="-j$(nproc)"
-export MESON_OPTIONS=""
-export CPPFLAGS="-I/usr/local/include"
-export LDFLAGS="-L/usr/local/lib"
-export PKG_PATH="/usr/local/lib/pkgconfig"
-export SIMD_OPTIONS="-DWITH_SIMD=1"
-export SSE_OPTIONS=""
-
-# Library specific options
-export FFI_OPTIONS=""
-export FONTCONFIG_OPTIONS=""
-export HEIF_OPTIONS=""
-export LCMS_OPTIONS=""
-export OPENEXR_OPTIONS=""
-export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
+export CONFIGURE="./configure"
+export CONFIGURE_OPTIONS=""
+export EXTENSION="so"
 export IMAGEMAGICK_OPTIONS=""
+export PLATFORM=LINUX
+export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
+export MAKE="make -j$(nproc)"
