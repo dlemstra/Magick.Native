@@ -22,9 +22,9 @@ export CONFIGURE="./configure"
 export CONFIGURE_OPTIONS="--host aarch64-linux-gnu"
 export EXTENSION="so"
 export IMAGEMAGICK_OPTIONS=""
+export MAKE="make -j$(nproc)"
 export PLATFORM=LINUX
 export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
-export MAKE="make -j$(nproc)"
 
 # Set compiler for cross-compilation
 export CC=aarch64-linux-gnu-gcc
