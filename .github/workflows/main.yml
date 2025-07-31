@@ -120,64 +120,6 @@ jobs:
         name: linux-musl-x64
         path: artifacts
 
-  linux-arm64:
-    name: 'Linux (arm64)'
-    container:
-      image: ubuntu:20.04
-    runs-on: ubuntu-24.04
-
-    steps:
-
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/linux-arm64
-
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.sh
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
-
-    - name: Clone ImageMagick libraries
-      run: ./checkout.sh linux ../../artifacts
-      working-directory: src/ImageMagick
-
-    - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies linux arm64
-      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
-
-    - name: Build ImageMagick
-      run: ../../../../build/shared/build.imagemagick.sh linux arm64
-      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
-
-    - name: Build Native
-      run: ../../build/shared/build.native.sh linux arm64
-      working-directory: src/Magick.Native
-
-    - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux arm64
-      working-directory: src/Magick.Native
-
-    - name: Build ImageMagick
-      run: ../../../../build/shared/build.imagemagick.sh linux arm64 OpenMP
-      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
-
-    - name: Build Native
-      run: ../../build/shared/build.native.sh linux arm64 OpenMP
-      working-directory: src/Magick.Native
-
-    - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux arm64 OpenMP
-      working-directory: src/Magick.Native
-
-    - name: Upload library
-      uses: actions/upload-artifact@v4
-      with:
-        name: linux-arm64
-        path: artifacts
-
   macos-x64:
     name: 'MacOS (x64)'
     runs-on: macos-13
@@ -519,11 +461,11 @@ jobs:
       run: build/shared/verify.native.macos.sh . macos ${{ matrix.arch }}
 
   metadata:
-    name: 'Metadata'
+    name: Metadata
     needs:
       - verify-linux-x64
-      - verify-linux-musl-x64
       - verify-linux-arm64
+      - verify-linux-musl-x64
       - verify-macos
       - wasm-x86
       - windows
