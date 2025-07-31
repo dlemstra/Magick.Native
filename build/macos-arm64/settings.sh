@@ -1,43 +1,25 @@
-SCRIPT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
-
 # Compiler settings
 if [[ "${DEBUG_BUILD}" ]]; then
-    export FLAGS="-g3 -O0 -fPIC -DDEBUG -arch arm64"
-    export CMAKE_BUILD_TYPE="Debug"
-    export MESON_BUILD_TYPE="debug"
+  export FLAGS="-g3 -O0 -fPIC -Wall -DDEBUG -arch arm64"
+  export CMAKE_BUILD_TYPE="Debug"
 else
-    export FLAGS="-O3 -fPIC -DNDEBUG -arch arm64"
-    export CMAKE_BUILD_TYPE="Release"
-    export MESON_BUILD_TYPE="release"
+  export FLAGS="-O3 -fPIC -Wall -DNDEBUG -arch arm64"
+  export CMAKE_BUILD_TYPE="Release"
 fi
+export INSTALL_PREFIX="/tmp/dependencies"
+export CFLAGS=$FLAGS
+export CXXFLAGS=$FLAGS
+export CPPFLAGS="-I$INSTALL_PREFIX/include"
+export LDFLAGS="-L$INSTALL_PREFIX/lib"
+export PKG_CONFIG_PATH="$INSTALL_PREFIX/lib/pkgconfig"
 
-# Shared options
-export PLATFORM=MACOS
-export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
-export EXTENSION="dylib"
-export STRICT_FLAGS="${FLAGS} -Wall"
-export CONFIGURE="./configure"
-export CONFIGURE_OPTIONS="--host arm64-apple-macos11"
+# Settings
 export CMAKE_COMMAND="cmake"
 export CMAKE_OPTIONS="-DCMAKE_OSX_ARCHITECTURES=arm64"
-export MAKE="make"
-export MAKEFLAGS="-j$(sysctl -n hw.logicalcpu)"
-export MESON_OPTIONS="--cross-file=$SCRIPT_PATH/cross-compilation.meson"
-export CPPFLAGS="-I/usr/local/include"
-export LDFLAGS="-L/usr/local/lib"
-export PKG_PATH="/usr/local/lib/pkgconfig"
-export SIMD_OPTIONS="-DWITH_SIMD=1"
-export SSE_OPTIONS=""
-
-# Library specific options
-export FFI_OPTIONS=""
-export FONTCONFIG_OPTIONS="--with-add-fonts=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts"
-export HEIF_OPTIONS=""
-export OPENEXR_OPTIONS=""
-export LCMS_OPTIONS=""
-export WEBP_OPTIONS="--enable-libwebpmux --enable-libwebpdemux"
+export CONFIGURE="./configure"
+export CONFIGURE_OPTIONS="--host arm64-apple-macos13"
+export EXTENSION="dylib"
 export IMAGEMAGICK_OPTIONS=""
-
-# MacOS options
-export GTKDOCIZE=true
-export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin
+export PLATFORM=MACOS
+export MAKE="make -j$(sysctl -n hw.logicalcpu)"
+export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
