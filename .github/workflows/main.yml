@@ -134,10 +134,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/macos-${{matrix.architecture}}
-
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.sh
       if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
@@ -146,6 +142,10 @@ jobs:
     - name: Clone ImageMagick libraries
       run: ./checkout.sh --no-configure --dependencies-artifact macos-${{matrix.architecture}}-static.zip
       working-directory: src/ImageMagick
+
+    - name: Install build tools
+      run: ./install.build-tools.sh
+      working-directory: build/macos-${{matrix.architecture}}
 
     - name: Build ImageMagick
       run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}}
