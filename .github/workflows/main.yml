@@ -166,7 +166,7 @@ jobs:
         path: artifacts
 
   wasm:
-    name: 'Wasm (${{matrix.architecture}})'
+    name: Wasm (${{matrix.architecture}})
     container:
       image: emscripten/emsdk:4.0.7
     runs-on: ubuntu-24.04
@@ -390,15 +390,16 @@ jobs:
         build/shared/verify.native.sh . linux-musl x64 OpenMP
 
   verify-macos:
-    name: 'Verify MacOS'
+    name: Verify MacOS
     needs:
       - macos
+    runs-on: ${{ matrix.os }}
+
     strategy:
       fail-fast: false
       matrix:
+        architecture: [x64, arm64]
         os: [macos-13, macos-14]
-        arch: [x64, arm64]
-    runs-on: ${{ matrix.os }}
 
     steps:
 
@@ -408,10 +409,10 @@ jobs:
     - name: Download macos library
       uses: actions/download-artifact@v4
       with:
-        name: macos-${{ matrix.arch }}
+        name: macos-${{matrix.architecture}}
 
     - name: Verify MacOS
-      run: build/shared/verify.native.macos.sh . macos ${{ matrix.arch }}
+      run: build/shared/verify.native.macos.sh . macos ${{matrix.architecture}}
 
   metadata:
     name: Metadata
