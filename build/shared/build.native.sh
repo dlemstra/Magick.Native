@@ -47,7 +47,7 @@ buildNative() {
   mkdir $quantum
   cd $quantum
 
-  $CMAKE_COMMAND $CMAKE_OPTIONS -DDEPTH=$depth -DHDRI_ENABLE=$hdri_enable -DOPENMP=$openmp_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM -DCMAKE_CXX_FLAGS="$STRICT_FLAGS -Wno-unused-function" -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
+  $CMAKE_COMMAND $CMAKE_OPTIONS -DDEPTH=$depth -DHDRI_ENABLE=$hdri_enable -DOPENMP=$openmp_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
   make
 
   cd ..

@@ -172,7 +172,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        architecture: [x86, x64, arm64]
+        architecture: [ x86, x64, arm64 ]
         quantum: [ Q8, Q16 ]
         openmp: [ noOpenMP, openMP ]
         hdri: [ noHdri, hdri ]
@@ -220,20 +220,21 @@ jobs:
         name: windows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}}
         path: artifacts
 
-  wasm-x86:
-    name: 'WASM (x86)'
+  wasm:
+    name: 'Wasm (${{matrix.architecture}})'
     container:
       image: emscripten/emsdk:4.0.7
     runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture: [ x86 ]
 
     steps:
 
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/wasm-x86
 
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.sh
@@ -241,33 +242,29 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
-      run: ./checkout.sh wasm ../../artifacts
+      run: ./checkout.sh --no-configure --dependencies-artifact wasm-${{matrix.architecture}}-static.zip
       working-directory: src/ImageMagick
 
-    - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies wasm x86
-      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
+    - name: Install build tools
+      run: ./install.build-tools.sh
+      working-directory: build/wasm-${{matrix.architecture}}
 
     - name: Build ImageMagick
-      run: ../../../../build/shared/build.imagemagick.sh wasm x86
-      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
+      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}}
+      working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.native.sh wasm x86
+      run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}}
       working-directory: src/Magick.Native
 
-    - name: Create wasm files
-      run: npm install && npm run publish
-      working-directory: src/wasm-file-creator
-
     - name: Copy Native
-      run: ../../build/wasm-x86/copy.native.sh ../../artifacts
+      run: ../../build/shared/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
       working-directory: src/Magick.Native
 
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: wasm-x86
+        name: wasm-${{matrix.architecture}}
         path: artifacts
 
   verify-linux-x64:
@@ -423,7 +420,7 @@ jobs:
       - verify-linux-arm64
       - verify-linux-musl-x64
       - verify-macos
-      - wasm-x86
+      - wasm
       - windows
     runs-on: windows-2025
     outputs:
