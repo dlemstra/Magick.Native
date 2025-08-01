@@ -165,6 +165,53 @@ jobs:
         name: macos-${{matrix.architecture}}
         path: artifacts
 
+  wasm:
+    name: 'Wasm (${{matrix.architecture}})'
+    container:
+      image: emscripten/emsdk:4.0.7
+    runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture: [ x86 ]
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
+
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh --no-configure --dependencies-artifact wasm-${{matrix.architecture}}-static.zip
+      working-directory: src/ImageMagick
+
+    - name: Install build tools
+      run: ./install.build-tools.sh
+      working-directory: build/wasm-${{matrix.architecture}}
+
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}}
+      working-directory: src/ImageMagick/ImageMagick
+
+    - name: Build Native
+      run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}}
+      working-directory: src/Magick.Native
+
+    - name: Copy Native
+      run: ../../build/wasm-86/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
+      working-directory: src/Magick.Native
+
+    - name: Upload library
+      uses: actions/upload-artifact@v4
+      with:
+        name: wasm-${{matrix.architecture}}
+        path: artifacts
+
   windows:
     name: Windows ${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     runs-on: windows-2022
@@ -218,53 +265,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: windows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}}
-        path: artifacts
-
-  wasm:
-    name: 'Wasm (${{matrix.architecture}})'
-    container:
-      image: emscripten/emsdk:4.0.7
-    runs-on: ubuntu-24.04
-
-    strategy:
-      fail-fast: false
-      matrix:
-        architecture: [ x86 ]
-
-    steps:
-
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.sh
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
-
-    - name: Clone ImageMagick libraries
-      run: ./checkout.sh --no-configure --dependencies-artifact wasm-${{matrix.architecture}}-static.zip
-      working-directory: src/ImageMagick
-
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/wasm-${{matrix.architecture}}
-
-    - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}}
-      working-directory: src/ImageMagick/ImageMagick
-
-    - name: Build Native
-      run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}}
-      working-directory: src/Magick.Native
-
-    - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
-      working-directory: src/Magick.Native
-
-    - name: Upload library
-      uses: actions/upload-artifact@v4
-      with:
-        name: wasm-${{matrix.architecture}}
         path: artifacts
 
   verify-linux-x64:
