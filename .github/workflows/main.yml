@@ -299,6 +299,8 @@ jobs:
 
     - name: Download artifacts
       uses: actions/download-artifact@v4
+      with:
+        merge-multiple: true
 
     - name: Verify Native
       run: |
@@ -327,6 +329,8 @@ jobs:
 
     - name: Download artifacts
       uses: actions/download-artifact@v4
+      with:
+        merge-multiple: true
 
     - name: Verify Native
       run: |
@@ -357,6 +361,8 @@ jobs:
 
     - name: Download artifacts
       uses: actions/download-artifact@v4
+      with:
+        merge-multiple: true
 
     - name: Verify Native
       run: |
