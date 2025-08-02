@@ -22,4 +22,3 @@ export EXTENSION="so"
 export IMAGEMAGICK_OPTIONS=""
 export MAKE="make -j$(nproc)"
 export PLATFORM=LINUX
-export QUANTUMS=("Q8" "Q16" "Q16-HDRI")

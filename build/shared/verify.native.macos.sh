@@ -3,16 +3,16 @@ set -e
 
 folder=$1
 config=$2
-arch=$3
+architecture=$3
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config-$arch/settings.sh
+. $SCRIPT_PATH/../$config-$architecture/settings.sh
 
 
 verifyNative() {
   local name=$1
 
-  local file=${folder}/Release${name}/$arch/Magick.Native-${name}-$arch.dll.$EXTENSION
+  local file=${folder}/Release${name}/$architecture/Magick.Native-${name}-$architecture.dll.$EXTENSION
 
   if [ ! -f $file ]; then
     echo "Unable to find $file"
@@ -21,7 +21,7 @@ verifyNative() {
 
   echo "Verifying $file"
 
-  ld_arch=$arch
+  ld_arch=$architecture
   if [ $ld_arch == "x64" ]; then
       ld_arch="x86_64"
   fi
@@ -59,7 +59,7 @@ verifyNative() {
   fi
 }
 
-for quantum in ${QUANTUMS[@]}; do
+for quantum in Q8 Q16 Q16-HDRI; do
   verifyNative $quantum
 done
 

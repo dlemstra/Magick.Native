@@ -3,11 +3,11 @@ set -e
 
 folder=$1
 config=$2
-arch=$3
+architecture=$3
 openmp=$4
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config-$arch/settings.sh
+. $SCRIPT_PATH/../$config-$architecture/settings.sh
 
 copyNative() {
     local quantum=$1
@@ -17,8 +17,8 @@ copyNative() {
     fi
 
     mkdir -p $folder/Release$name
-    mkdir -p $folder/Release$name/$arch
-    cp $quantum/libMagick.Native-$name-$arch.dll.$EXTENSION $folder/Release$name/$arch/Magick.Native-$name-$arch.dll.$EXTENSION
+    mkdir -p $folder/Release$name/$architecture
+    cp $quantum/libMagick.Native-$name-$architecture.dll.$EXTENSION $folder/Release$name/$architecture/Magick.Native-$name-$architecture.dll.$EXTENSION
 }
 
 [ "$folder" != "" ] && [ ! -d "$folder" ] && mkdir "$folder"

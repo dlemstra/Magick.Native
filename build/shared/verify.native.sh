@@ -3,11 +3,11 @@ set -e
 
 folder=$1
 config=$2
-arch=$3
+architecture=$3
 openmp=$4
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config-$arch/settings.sh
+. $SCRIPT_PATH/../$config-$architecture/settings.sh
 
 
 verifyNative() {
@@ -16,7 +16,7 @@ verifyNative() {
     name=${name}-OpenMP
   fi
 
-  local file=${folder}/Release${name}/$arch/Magick.Native-${name}-$arch.dll.$EXTENSION
+  local file=${folder}/Release${name}/$architecture/Magick.Native-${name}-$architecture.dll.$EXTENSION
 
   if [ ! -f $file ]; then
     echo "Unable to find $file"
@@ -95,7 +95,7 @@ fi
 
 ldd --version || true
 
-for quantum in ${QUANTUMS[@]}; do
+for quantum in Q8 Q16 Q16-HDRI; do
   verifyNative $quantum
 done
 

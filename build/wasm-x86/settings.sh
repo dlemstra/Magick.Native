@@ -22,7 +22,6 @@ export EXTENSION="js"
 export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-bzlib --without-lzma"
 export MAKE="emmake make -j$(nproc)"
 export PLATFORM=WASM
-export QUANTUMS=("Q8")
 
 # Wasm options
 export CC=emcc

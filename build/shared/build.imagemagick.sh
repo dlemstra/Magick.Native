@@ -2,11 +2,12 @@
 set -e
 
 config=$1
-arch=$2
-openmp=$3
+architecture=$2
+quantum=$3
+openmp=$4
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config-$arch/settings.sh
+. $SCRIPT_PATH/../$config-$architecture/settings.sh
 
 buildImageMagick() {
   local quantum=$1
@@ -43,7 +44,5 @@ copyPrivateIncludes() {
 }
 
 autoreconf -fiv
-for quantum in ${QUANTUMS[@]}; do
-  buildImageMagick $quantum
-done
+buildImageMagick $quantum
 copyPrivateIncludes

@@ -12,7 +12,7 @@ on:
 name: main
 jobs:
   linux:
-    name: Linux ${{matrix.openmp_flag}} (${{matrix.architecture}})
+    name: Linux ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     container:
       image: ubuntu:20.04
     runs-on: ubuntu-24.04
@@ -21,10 +21,11 @@ jobs:
       fail-fast: false
       matrix:
         architecture: [x64, arm64]
+        quantum: [ Q8, Q16, Q16-HDRI ]
         openmp: [ noOpenMP, OpenMP ]
         include:
           - openmp: OpenMP
-            openmp_flag: OpenMP
+            openmp_flag: -OpenMP
 
     steps:
 
@@ -45,7 +46,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux ${{matrix.architecture}} ${{matrix.openmp}}
+      run: ../../../build/shared/build.imagemagick.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
@@ -59,11 +60,11 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: linux-${{matrix.architecture}}-${{matrix.openmp}}
+        name: linux-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
         path: artifacts
 
   linux-musl:
-    name: Linux musl ${{matrix.openmp_flag}} (${{matrix.architecture}})
+    name: Linux musl ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     container:
       image: alpine:3.18
     runs-on: ubuntu-24.04
@@ -72,10 +73,11 @@ jobs:
       fail-fast: false
       matrix:
         architecture: [ x64 ]
+        quantum: [ Q8, Q16, Q16-HDRI ]
         openmp: [ noOpenMP, OpenMP ]
         include:
           - openmp: OpenMP
-            openmp_flag: OpenMP
+            openmp_flag: -OpenMP
 
     steps:
 
@@ -96,7 +98,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux-musl ${{matrix.architecture}} ${{matrix.openmp}}
+      run: ../../../build/shared/build.imagemagick.sh linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
@@ -110,17 +112,18 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: linux-musl-${{matrix.architecture}}-${{matrix.openmp}}
+        name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
         path: artifacts
 
   macos:
-    name: macOS (${{matrix.architecture}})
+    name: macOS ${{matrix.quantum}} (${{matrix.architecture}})
     runs-on: macos-13
 
     strategy:
       fail-fast: false
       matrix:
-        architecture: [x64, arm64]
+        architecture: [ x64, arm64 ]
+        quantum: [ Q8, Q16, Q16-HDRI ]
 
     steps:
 
@@ -141,7 +144,7 @@ jobs:
       working-directory: build/macos-${{matrix.architecture}}
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}}
+      run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
@@ -155,7 +158,7 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: macos-${{matrix.architecture}}
+        name: macos-${{matrix.quantum}}-${{matrix.architecture}}
         path: artifacts
 
   wasm:
@@ -168,6 +171,7 @@ jobs:
       fail-fast: false
       matrix:
         architecture: [ x86 ]
+        quantum: [ Q8 ]
 
     steps:
 
@@ -188,7 +192,7 @@ jobs:
       working-directory: build/wasm-${{matrix.architecture}}
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}}
+      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}$
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
@@ -202,7 +206,7 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: wasm-${{matrix.architecture}}
+        name: wasm-${{matrix.quantum}}$-${{matrix.architecture}}
         path: artifacts
 
   windows:
@@ -257,7 +261,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: windows-${{matrix.architecture}}-${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}}
+        name: windows-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.architecture}}${{matrix.openmp_flag}}
         path: artifacts
 
   verify-linux-x64:
@@ -284,29 +288,13 @@ jobs:
 
     steps:
 
-    - name: Install dependencies
-      run: |
-        if [ -f "/bin/yum" ]; then
-          yum install -y gzip tar
-        fi
-        if [ -f "/bin/dnf" ]; then
-          dnf install -y gzip tar
-        fi
-
     - name: Checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: 1
 
-    - name: Download linux library
+    - name: Download artifacts
       uses: actions/download-artifact@v4
-      with:
-        name: linux-x64-noOpenMP
-
-    - name: Download linux library
-      uses: actions/download-artifact@v4
-      with:
-        name: linux-x64-OpenMP
 
     - name: Verify Native
       run: |
@@ -333,15 +321,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Download linux library
+    - name: Download artifacts
       uses: actions/download-artifact@v4
-      with:
-        name: linux-arm64-noOpenMP
-
-    - name: Download linux library
-      uses: actions/download-artifact@v4
-      with:
-        name: linux-arm64-OpenMP
 
     - name: Verify Native
       run: |
@@ -370,15 +351,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Download linux-musl library
+    - name: Download artifacts
       uses: actions/download-artifact@v4
-      with:
-        name: linux-musl-x64-noOpenMP
-
-    - name: Download linux library
-      uses: actions/download-artifact@v4
-      with:
-        name: linux-musl-x64-OpenMP
 
     - name: Verify Native
       run: |
@@ -404,10 +378,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Download macos library
+    - name: Download artifacts
       uses: actions/download-artifact@v4
-      with:
-        name: macos-${{matrix.architecture}}
 
     - name: Verify MacOS
       run: build/shared/verify.native.macos.sh . macos ${{matrix.architecture}}

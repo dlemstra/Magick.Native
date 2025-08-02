@@ -22,4 +22,3 @@ export EXTENSION="dylib"
 export IMAGEMAGICK_OPTIONS=""
 export MAKE="make -j$(sysctl -n hw.logicalcpu)"
 export PLATFORM=MACOS
-export QUANTUMS=("Q8" "Q16" "Q16-HDRI")
