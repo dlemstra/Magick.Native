@@ -2,17 +2,17 @@
 set -e
 
 folder=$1
-config=$2
+platform=$2
 architecture=$3
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-. $SCRIPT_PATH/../$config-$architecture/settings.sh
+. $SCRIPT_PATH/../$platform-$architecture/settings.sh
 
 
 verifyNative() {
   local name=$1
 
-  local file=${folder}/Release${name}/$architecture/Magick.Native-${name}-$architecture.dll.$EXTENSION
+  local file=${folder}/Release${name}/$platform-$architecture/Magick.Native-${name}-$architecture.dll.$EXTENSION
 
   if [ ! -f $file ]; then
     echo "Unable to find $file"
