@@ -12,7 +12,7 @@ on:
 name: main
 jobs:
   linux:
-    name: Linux ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
+    name: linux ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     container:
       image: ubuntu:20.04
     runs-on: ubuntu-24.04
@@ -64,7 +64,7 @@ jobs:
         path: artifacts
 
   linux-musl:
-    name: Linux musl ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
+    name: linux musl ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     container:
       image: alpine:3.18
     runs-on: ubuntu-24.04
@@ -162,7 +162,7 @@ jobs:
         path: artifacts
 
   wasm:
-    name: Wasm (${{matrix.architecture}})
+    name: wasm (${{matrix.architecture}})
     container:
       image: emscripten/emsdk:4.0.7
     runs-on: ubuntu-24.04
@@ -214,7 +214,7 @@ jobs:
         path: artifacts
 
   windows:
-    name: Windows ${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} (${{matrix.architecture}})
+    name: windows ${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     runs-on: windows-2022
 
     strategy:
