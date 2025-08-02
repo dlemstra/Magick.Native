@@ -62,11 +62,20 @@ jobs:
         name: linux-${{matrix.architecture}}-${{matrix.openmp}}
         path: artifacts
 
-  linux-musl-x64:
-    name: 'Linux musl (x64)'
+  linux-musl:
+    name: Linux musl ${{matrix.openmp_flag}} (${{matrix.architecture}})
     container:
       image: alpine:3.18
     runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture: [ x64 ]
+        openmp: [ noOpenMP, OpenMP ]
+        include:
+          - openmp: OpenMP
+            openmp_flag: OpenMP
 
     steps:
 
@@ -75,7 +84,7 @@ jobs:
 
     - name: Install build tools
       run: ./install.build-tools.sh
-      working-directory: build/linux-musl-x64
+      working-directory: build/linux-musl-${{matrix.architecture}}
 
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.sh
@@ -83,41 +92,25 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Clone ImageMagick libraries
-      run: ./checkout.sh linux ../../artifacts
+      run: ./checkout.sh --no-configure --dependencies-artifact linux-musl-${{matrix.architecture}}-static.zip
       working-directory: src/ImageMagick
 
-    - name: Build dependencies
-      run: ../../../../build/shared/build.dependencies.sh ../../../../build/dependencies linux-musl x64
-      working-directory: src/ImageMagick/imagemagick-windows/Dependencies
-
     - name: Build ImageMagick
-      run: ../../../../build/shared/build.imagemagick.sh linux-musl x64
-      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
+      run: ../../../build/shared/build.imagemagick.sh linux-musl ${{matrix.architecture}} ${{matrix.openmp}}
+      working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.native.sh linux-musl x64
+      run: ../../build/shared/build.native.sh linux-musl ${{matrix.architecture}} ${{matrix.openmp}}
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux-musl x64
-      working-directory: src/Magick.Native
-
-    - name: Build ImageMagick
-      run: ../../../../build/shared/build.imagemagick.sh linux-musl x64 OpenMP
-      working-directory: src/ImageMagick/imagemagick-windows/ImageMagick
-
-    - name: Build Native
-      run: ../../build/shared/build.native.sh linux-musl x64 OpenMP
-      working-directory: src/Magick.Native
-
-    - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux-musl x64 OpenMP
+      run: ../../build/shared/copy.native.sh ../../artifacts linux-musl ${{matrix.architecture}} ${{matrix.openmp}}
       working-directory: src/Magick.Native
 
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: linux-musl-x64
+        name: linux-musl-${{matrix.architecture}}-${{matrix.openmp}}
         path: artifacts
 
   macos:
@@ -356,9 +349,9 @@ jobs:
         build/shared/verify.native.sh . linux arm64 OpenMP
 
   verify-linux-musl-x64:
-    name: 'Verify Linux musl (x64)'
+    name: Verify Linux musl (x64) (${{matrix.image}})
     needs:
-      - linux-musl-x64
+      - linux-musl
     runs-on: ubuntu-24.04
 
     strategy:
@@ -380,7 +373,12 @@ jobs:
     - name: Download linux-musl library
       uses: actions/download-artifact@v4
       with:
-        name: linux-musl-x64
+        name: linux-musl-x64-noOpenMP
+
+    - name: Download linux library
+      uses: actions/download-artifact@v4
+      with:
+        name: linux-musl-x64-OpenMP
 
     - name: Verify Native
       run: |
@@ -390,7 +388,7 @@ jobs:
         build/shared/verify.native.sh . linux-musl x64 OpenMP
 
   verify-macos:
-    name: Verify MacOS
+    name: Verify MacOS (${{matrix.architecture}}) (${{matrix.os}})
     needs:
       - macos
     runs-on: ${{ matrix.os }}
