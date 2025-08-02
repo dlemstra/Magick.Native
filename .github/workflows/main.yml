@@ -199,6 +199,10 @@ jobs:
       run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}
       working-directory: src/Magick.Native
 
+    - name: Create wasm files
+      run: npm install && npm run publish
+      working-directory: src/wasm-file-creator
+
     - name: Copy Native
       run: ../../build/wasm-x86/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
       working-directory: src/Magick.Native
