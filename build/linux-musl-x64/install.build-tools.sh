@@ -3,7 +3,7 @@ set -e
 
 apk update
 
-apk add autoconf automake bash curl file g++ gcc gettext-tiny git gperf libtool make musl-libintl nasm pkgconf python3 py3-lxml py3-pip ragel texinfo unzip
+apk add autoconf automake bash curl file g++ gcc git libtool make pkgconf python3 py3-pip unzip
 apk del ninja
 
 pip3 install --upgrade pip
