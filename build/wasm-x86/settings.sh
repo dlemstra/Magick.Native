@@ -1,9 +1,9 @@
 # Compiler settings
 if [[ "${DEBUG_BUILD}" ]]; then
-    export FLAGS="-g3 -O0 -Wall -DDEBUG -Wno-unused-function"
+    export FLAGS="-g3 -O0 -Wall -DDEBUG"
     export CMAKE_BUILD_TYPE="Debug"
 else
-    export FLAGS="-O3 -Wall -DNDEBUG -Wno-unused-function"
+    export FLAGS="-O3 -Wall -DNDEBUG"
     export CMAKE_BUILD_TYPE="Release"
 fi
 export CFLAGS=$FLAGS

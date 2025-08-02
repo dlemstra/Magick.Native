@@ -10,6 +10,8 @@ include_directories(. /tmp/dependencies/include /usr/local/include/ImageMagick-7
 link_directories(/tmp/dependencies/lib)
 link_directories(/tmp/dependencies/lib/x86_64-linux-gnu)
 
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wno-unused-function")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wno-unused-function")
 if (NOT (PLATFORM STREQUAL "MACOS") AND NOT (PLATFORM STREQUAL "WASM"))
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
