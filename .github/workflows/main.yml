@@ -292,6 +292,17 @@ jobs:
 
     steps:
 
+    - name: Install git
+      run: |
+        if [ -f "/bin/yum" ]; then
+          yum install -y git
+        elif [ -f "/bin/dnf" ]; then
+          dnf install -y git
+        else
+          apt-get update -y
+          apt-get install -y git
+        fi
+
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -324,6 +335,11 @@ jobs:
 
     steps:
 
+    - name: Install git
+      run: |
+        apt-get update -y
+        apt-get install -y git
+
     - name: Checkout
       uses: actions/checkout@v4
 
@@ -347,14 +363,19 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - 'alpine:latest'
-          - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
-          - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
+          - alpine:latest
+          - mcr.microsoft.com/dotnet/aspnet:8.0-alpine
+          - mcr.microsoft.com/dotnet/runtime:8.0-alpine
 
     container:
       image: ${{ matrix.image }}
 
     steps:
+
+    - name: Install git and bash
+      run: |
+        apk update
+        apk add bash git
 
     - name: Checkout
       uses: actions/checkout@v4
@@ -366,8 +387,6 @@ jobs:
 
     - name: Verify Native
       run: |
-        apk update
-        apk add bash
         build/shared/verify.native.sh . linux-musl x64
         build/shared/verify.native.sh . linux-musl x64 OpenMP
 

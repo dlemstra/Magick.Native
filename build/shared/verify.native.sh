@@ -74,7 +74,6 @@ elif [ -f "/bin/dnf" ]; then
     dnf install -y binutils
   fi
 elif [ -f "/sbin/apk" ]; then
-  apk update
   if [ "$openmp" == "OpenMP" ]; then
     apk add libgomp
   fi
@@ -83,7 +82,6 @@ elif [ -f "/sbin/apk" ]; then
     apk add binutils
   fi
 else
-  apt-get update -y
   if [ "$openmp" == "OpenMP" ]; then
     apt-get install -y libgomp1
   fi
