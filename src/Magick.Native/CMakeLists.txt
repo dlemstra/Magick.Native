@@ -8,7 +8,10 @@ add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} 
 
 include_directories(. /tmp/dependencies/include /usr/local/include/ImageMagick-7)
 link_directories(/tmp/dependencies/lib)
-link_directories(/tmp/dependencies/lib/x86_64-linux-gnu)
+
+if (NOT PLATFORM STREQUAL "MACOS")
+  link_directories(/tmp/dependencies/lib/x86_64-linux-gnu)
+endif()
 
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wno-unused-function")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wno-unused-function")
