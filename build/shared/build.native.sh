@@ -3,7 +3,8 @@ set -e
 
 config=$1
 architecture=$2
-openmp=$3
+quantum=$3
+openmp=$4
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/../$config-$architecture/settings.sh
@@ -53,6 +54,4 @@ buildNative() {
   cd ..
 }
 
-for quantum in ${QUANTUMS[@]}; do
-  buildNative $quantum
-done
+buildNative $quantum

@@ -50,7 +50,7 @@ jobs:
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.native.sh linux ${{matrix.architecture}} ${{matrix.openmp}}
+      run: ../../build/shared/build.native.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
       working-directory: src/Magick.Native
 
     - name: Copy Native
@@ -102,7 +102,7 @@ jobs:
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.native.sh linux-musl ${{matrix.architecture}} ${{matrix.openmp}}
+      run: ../../build/shared/build.native.sh linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
       working-directory: src/Magick.Native
 
     - name: Copy Native
@@ -148,7 +148,7 @@ jobs:
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.native.sh macos ${{matrix.architecture}}
+      run: ../../build/shared/build.native.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
       working-directory: src/Magick.Native
 
     - name: Copy Native
@@ -196,7 +196,7 @@ jobs:
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
-      run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}}
+      run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}
       working-directory: src/Magick.Native
 
     - name: Copy Native
