@@ -196,7 +196,7 @@ jobs:
       working-directory: src/Magick.Native
 
     - name: Copy Native
-      run: ../../build/wasm-86/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
+      run: ../../build/wasm-x86/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
       working-directory: src/Magick.Native
 
     - name: Upload library
