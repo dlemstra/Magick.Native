@@ -210,7 +210,7 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v4
       with:
-        name: wasm-${{matrix.quantum}}$-${{matrix.architecture}}
+        name: wasm-${{matrix.quantum}}-${{matrix.architecture}}
         path: artifacts
 
   windows:
