@@ -21,9 +21,19 @@ set options=/noWizard /VS2022 /static /%quantum% /opencl /noDpc /%hdri% /%openMP
 echo Running configure with the following options: %options%
 Configure.Release.x64.exe %options%
 
+if %ERRORLEVEL% neq 0 (
+    cd %SCRIPT_DIR%
+    exit /b %ERRORLEVEL%
+)
+
 cd ..
 
 msbuild IM7.Static.%architecture%.sln /m /t:Rebuild /p:Configuration=%config%,Platform=%architecture%
+
+if %ERRORLEVEL% neq 0 (
+    cd %SCRIPT_DIR%
+    exit /b %ERRORLEVEL%
+)
 
 cd ..\..
 
@@ -32,6 +42,11 @@ if not "%hdri%"=="noHdri" set configuration=%configuration%-HDRI
 if not "%openMP%"=="noOpenMP" set configuration=%configuration%-OpenMP
 
 msbuild Magick.Native.sln /m /t:Rebuild /p:Configuration=%configuration%,Platform=%architecture%
+
+if %ERRORLEVEL% neq 0 (
+    cd %SCRIPT_DIR%
+    exit /b %ERRORLEVEL%
+)
 
 goto done
 
