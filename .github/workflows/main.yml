@@ -288,7 +288,7 @@ jobs:
           - public.ecr.aws/lambda/dotnet:8-x86_64
 
     container:
-      image: ${{ matrix.image }}
+      image: ${{matrix.image}}
 
     steps:
 
@@ -331,7 +331,7 @@ jobs:
           - mcr.microsoft.com/dotnet/sdk:8.0-jammy-arm64v8
 
     container:
-      image: ${{ matrix.image }}
+      image: ${{matrix.image}}
 
     steps:
 
@@ -368,7 +368,7 @@ jobs:
           - mcr.microsoft.com/dotnet/runtime:8.0-alpine
 
     container:
-      image: ${{ matrix.image }}
+      image: ${{matrix.image}}
 
     steps:
 
@@ -394,7 +394,7 @@ jobs:
     name: Verify MacOS (${{matrix.architecture}}) (${{matrix.os}})
     needs:
       - macos
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{matrix.os}}
 
     strategy:
       fail-fast: false
@@ -426,7 +426,7 @@ jobs:
       - windows
     runs-on: windows-2025
     outputs:
-      version: ${{ steps.set-version.outputs.version }}
+      version: ${{steps.set-version.outputs.version}}
 
     steps:
 
@@ -552,7 +552,7 @@ jobs:
         path: publish\dotnet\files\metadata
 
     - name: Create NuGet package
-      run: ./publish.ps1 -version ${{ needs.metadata.outputs.version }} -destination ../../artifacts
+      run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ../../artifacts
       working-directory: publish/dotnet
 
     - name: Upload NuGet package
@@ -561,7 +561,7 @@ jobs:
       run: |
         dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
         $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
-        dotnet nuget push $file.FullName --api-key ${{ secrets.PUBLISH_PACKAGE_PAT }} --source "github"
+        dotnet nuget push $file.FullName --api-key ${{secrets.PUBLISH_PACKAGE_PAT}} --source "github"
 
   publish-wasm-x86:
     name: 'Publish WASM library'
@@ -592,7 +592,7 @@ jobs:
         scope: '@dlemstra'
 
     - name: Create NPM package
-      run: ./publish.ps1 -version ${{ needs.metadata.outputs.version }}
+      run: ./publish.ps1 -version ${{needs.metadata.outputs.version}}
       working-directory: publish/wasm
 
     - name: Publish NPM package
@@ -600,4 +600,4 @@ jobs:
       run: npm publish
       working-directory: publish/wasm/files
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_PACKAGE_PAT }}
+        NODE_AUTH_TOKEN: ${{secrets.PUBLISH_PACKAGE_PAT}}
