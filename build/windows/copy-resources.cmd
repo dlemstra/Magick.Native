@@ -11,7 +11,6 @@ if not exist "%folder%" mkdir "%folder%"
 cd %folder%
 
 copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\bin\*.xml" .
-copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\NOTICE.txt" .
 copy /Y "%SCRIPT_DIR%..\..\src\Magick.Native\Resources\xml\*.xml" .
 
 goto done
@@ -21,6 +20,7 @@ goto done
 echo.
 echo Do not use this script directly.
 echo.
+exit /b 1
 
 :done
 

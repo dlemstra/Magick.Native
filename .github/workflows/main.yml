@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        architecture: [x64, arm64]
+        architecture: [ x64, arm64 ]
         quantum: [ Q8, Q16, Q16-HDRI ]
         openmp: [ noOpenMP, OpenMP ]
         include:
@@ -258,8 +258,7 @@ jobs:
     - name: Copy Native
       shell: cmd
       run: |
-        call copy-resources.cmd ..\..\artifacts
-        copy /Y ..\..\src\Magick.Native\bin\Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}}\${{matrix.architecture}}\*.dll ..\..\artifacts
+        call copy-native.cmd ..\..\artifacts Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} ${{matrix.architecture}}
       working-directory: build/windows
 
     - name: Upload artifacts
@@ -399,8 +398,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        architecture: [x64, arm64]
-        os: [macos-13, macos-14]
+        architecture: [ x64, arm64 ]
+        os: [ macos-13, macos-14 ]
 
     steps:
 
