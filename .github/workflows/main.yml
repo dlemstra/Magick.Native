@@ -417,13 +417,8 @@ jobs:
   metadata:
     name: Metadata
     needs:
-      - verify-linux-x64
-      - verify-linux-arm64
-      - verify-linux-musl-x64
-      - verify-macos
-      - wasm
       - windows
-    runs-on: windows-2025
+    runs-on: ubuntu-24.04
     outputs:
       version: ${{steps.set-version.outputs.version}}
 
@@ -432,29 +427,26 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: windows-Q8-arm64
+
     - name: Set version
       id: set-version
       run: |
-        $version = Get-Date -Format "yyyy.Mdd.HHmm"
-        echo "version=$version" >> $env:GITHUB_OUTPUT
-      shell: pwsh
+        version=$(date +"yyyy.Mdd.HHmm")
+        echo "version=$version" >> $GITHUB_OUTPUT
 
-    - name: Install build tools
-      run: ./install.build-tools.ps1
-      working-directory: build/windows
-
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.cmd
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
-
-    - name: Clone ImageMagick libraries
-      run: ./checkout.cmd
-      working-directory: src/ImageMagick
-
-    - name: Create metadata
-      run: ./create.metadata.ps1 -destination ../../artifacts
-      working-directory: build/metadata
+    - name: Create libraries.md
+      run: |
+        mkdir -p artifacts/metadata
+        cd artifacts/metadata
+        commit=$(git rev-parse HEAD)
+        echo "# Libraries" >> libraries.md
+        echo "Magick.Native [$commit](https://github.com/dlemstra/Magick.Native/commit/$commit) is build with the following libraries:" >> libraries.md
+        echo "" >> libraries.md
+        sed -n 's/^\[ \(.*\) \]/- \1/p' NOTICE.txt >> libraries.md
 
     - name: Upload metadata
       uses: actions/upload-artifact@v4
@@ -466,117 +458,43 @@ jobs:
     name: 'Publish .NET library'
     if: github.event_name != 'schedule'
     needs:
+      - verify-linux-x64
+      - verify-linux-arm64
+      - verify-linux-musl-x64
+      - verify-macos
       - metadata
-    runs-on: windows-2025
+    runs-on: windows-2022
 
     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Install build tools
-      run: ./install.build-tools.ps1
-      working-directory: build/windows
-
-    - name: Download linux-x64 library
+    - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
-        name: linux-x64
-        path: publish\dotnet\files\linux
-
-    - name: Download linux-arm64 library
-      uses: actions/download-artifact@v4
-      with:
-        name: linux-arm64
-        path: publish\dotnet\files\linux
-
-    - name: Download linux-musl-x64 library
-      uses: actions/download-artifact@v4
-      with:
-        name: linux-musl-x64
-        path: publish\dotnet\files\linux-musl
-
-    - name: Download macos-x64 library
-      uses: actions/download-artifact@v4
-      with:
-        name: macos-x64
-        path: publish\dotnet\files\macos
-
-    - name: Download macos-arm64 library
-      uses: actions/download-artifact@v4
-      with:
-        name: macos-arm64
-        path: publish\dotnet\files\macos
-
-    - name: Download windows-x64 libraries
-      uses: actions/download-artifact@v4
-      with:
-        name: windows-x64
-        path: publish\dotnet\files\windows
-
-    - name: Download windows-x64 resources
-      uses: actions/download-artifact@v4
-      with:
-        name: windows-x64-resources
-        path: publish\dotnet\files\resources
-
-    - name: Download windows-arm64 libraries
-      uses: actions/download-artifact@v4
-      with:
-        name: windows-arm64
-        path: publish\dotnet\files\windows
-
-    - name: Download windows-arm64 resources
-      uses: actions/download-artifact@v4
-      with:
-        name: windows-arm64-resources
-        path: publish\dotnet\files\resources
-
-    - name: Download windows-x86 libraries
-      uses: actions/download-artifact@v4
-      with:
-        name: windows-x86
-        path: publish\dotnet\files\windows
-
-    - name: Download windows-x86 resources
-      uses: actions/download-artifact@v4
-      with:
-        name: windows-x86-resources
-        path: publish\dotnet\files\resources
-
-    - name: Download metadata
-      uses: actions/download-artifact@v4
-      with:
-        name: metadata
-        path: publish\dotnet\files\metadata
+        merge-multiple: true
 
     - name: Create NuGet package
       run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ../../artifacts
       working-directory: publish/dotnet
 
-    - name: Upload NuGet package
-      if: github.event_name != 'pull_request'
-      working-directory: publish/dotnet
-      run: |
-        dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
-        $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
-        dotnet nuget push $file.FullName --api-key ${{secrets.PUBLISH_PACKAGE_PAT}} --source "github"
+  #   - name: Upload NuGet package
+  #     if: github.event_name != 'pull_request'
+  #     working-directory: publish/dotnet
+  #     run: |
+  #       dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
+  #       $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
+  #       dotnet nuget push $file.FullName --api-key ${{secrets.PUBLISH_PACKAGE_PAT}} --source "github"
 
   publish-wasm-x86:
-    name: 'Publish WASM library'
+    name: Publish WASM library
     if: github.event_name != 'schedule'
     needs:
       - metadata
-    runs-on: windows-2025
+    runs-on: windows-2022
 
     steps:
 
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Install build tools
-      run: ./install.build-tools.ps1
-      working-directory: build/windows
 
     - name: Download wasm library
       uses: actions/download-artifact@v4
@@ -594,9 +512,9 @@ jobs:
       run: ./publish.ps1 -version ${{needs.metadata.outputs.version}}
       working-directory: publish/wasm
 
-    - name: Publish NPM package
-      if: github.event_name != 'pull_request'
-      run: npm publish
-      working-directory: publish/wasm/files
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.PUBLISH_PACKAGE_PAT}}
+    # - name: Publish NPM package
+    #   if: github.event_name != 'pull_request'
+    #   run: npm publish
+    #   working-directory: publish/wasm/files
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{secrets.PUBLISH_PACKAGE_PAT}}
