@@ -489,6 +489,7 @@ jobs:
     if: github.event_name != 'schedule'
     needs:
       - metadata
+      - wasm
     runs-on: ubuntu-24.04
 
     steps:
@@ -509,7 +510,7 @@ jobs:
         scope: '@dlemstra'
 
     - name: Create NPM package
-      run: ./publish.sh -version ${{needs.metadata.outputs.version}}
+      run: ./publish.sh --version ${{needs.metadata.outputs.version}}
       working-directory: publish/wasm
 
     # - name: Publish NPM package
