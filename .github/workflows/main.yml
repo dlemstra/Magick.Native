@@ -471,8 +471,8 @@ jobs:
         merge-multiple: true
 
     - name: Create NuGet package
-      run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ../../artifacts
-      working-directory: publish/dotnet
+      run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ..\..\artifacts
+      working-directory: publish\dotnet
 
   #   - name: Upload NuGet package
   #     if: github.event_name != 'pull_request'
@@ -499,7 +499,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: wasm-Q8-x86
-        path: publish\wasm\files
+        path: publish/wasm/files
 
     - uses: actions/setup-node@v4
       with:
