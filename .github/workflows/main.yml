@@ -434,9 +434,7 @@ jobs:
 
     - name: Set version
       id: set-version
-      run: |
-        version=$(date +"yyyy.Mdd.HHmm")
-        echo "version=$version" >> $GITHUB_OUTPUT
+      run: echo "version=$(date +'%Y.%-m%d.%-H%M')" >> $GITHUB_OUTPUT
 
     - name: Create libraries.md
       run: |

@@ -5,7 +5,7 @@ create_npm_package() {
     local version="$1"
 
     mkdir files
-    sed 's/"version": ""/"version": "$version"/g' package.json > files/package.json
+    sed 's/"version": ""/"version": "'"$version"'"/g' package.json > files/package.json
 
     cd files
     npm pack
