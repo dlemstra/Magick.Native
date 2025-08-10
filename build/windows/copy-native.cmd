@@ -14,16 +14,18 @@ if not exist "%folder%" mkdir "%folder%"
 
 cd "%folder%"
 
+copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\NOTICE.txt" .
+
 mkdir windows
 cd windows
 
-copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\NOTICE.txt" .
-
 if not exist "%quantumName%" mkdir "%quantumName%"
 cd "%quantumName%"
+if not exist "%architecture%" mkdir "%architecture%"
+cd "%architecture%"
 
 copy /Y "%SCRIPT_DIR%..\..\src\Magick.Native\bin\%quantumName%\%architecture%\*.dll" .
-cd ..
+cd ..\..
 
 if not exist "resources" mkdir "resources"
 cd resources

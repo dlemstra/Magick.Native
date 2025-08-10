@@ -12,7 +12,7 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 verifyNative() {
   local name=$1
 
-  local file=${folder}/Release${name}/$platform-$architecture/Magick.Native-${name}-$architecture.dll.$EXTENSION
+  local file=${folder}/$platform/Release${name}/$architecture/Magick.Native-${name}-$architecture.dll.$EXTENSION
 
   if [ ! -f $file ]; then
     echo "Unable to find $file"
