@@ -472,6 +472,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         merge-multiple: true
+        path: publish/dotnet/files
 
     - name: Create NuGet package
       run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ..\..\artifacts
