@@ -436,10 +436,13 @@ jobs:
       id: set-version
       run: echo "version=$(date +'%Y.%-m%d.%-H%M')" >> $GITHUB_OUTPUT
 
-    - name: Create libraries.md
+    - name: Copy NOTICE.txt and create libraries.md
       run: |
         mkdir -p artifacts/metadata
         cd artifacts/metadata
+
+        cp ../../NOTICE.txt NOTICE.txt
+
         commit=$(git rev-parse HEAD)
         echo "# Libraries" >> libraries.md
         echo "Magick.Native [$commit](https://github.com/dlemstra/Magick.Native/commit/$commit) is build with the following libraries:" >> libraries.md
