@@ -12,6 +12,8 @@ function createNuGetPackage($version, $destination)
 {
   $path = FullPath "publish\dotnet\Magick.Native.nuspec"
   $xml = [xml](Get-Content $path)
+
+  $xml.package.metadata.copyright = "Copyright 2013-$((Get-Date).year) Dirk Lemstra"
   $xml.package.metadata.version = $version
 
   $nuspecFile = FullPath "publish\dotnet\files\Magick.Native.nuspec"
