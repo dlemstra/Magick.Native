@@ -477,7 +477,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_Solarize(Image *, const double, ExceptionI
 
 MAGICK_NATIVE_EXPORT void MagickImage_SortPixels(Image *, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Splice(const Image *, const RectangleInfo *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_Splice(const Image *, const size_t, const RectangleInfo *, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Statistic(const Image *, const size_t, const size_t, const size_t, ExceptionInfo **);
 
