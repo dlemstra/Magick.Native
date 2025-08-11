@@ -2390,7 +2390,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_SortPixels(Image *instance, ExceptionInfo 
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Splice(const Image *instance, const size_t gravity, const RectangleInfo *geometry, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_Splice(const Image *instance, const RectangleInfo *geometry, const size_t gravity, ExceptionInfo **exception)
 {
   GravityType
     original_gravity;
