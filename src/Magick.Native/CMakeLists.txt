@@ -54,7 +54,7 @@ endif()
 
 if (PLATFORM STREQUAL "MACOS")
     set(LIBICONV iconv)
-    set(LIBINTL libintl.a)
+    set(LIBINTL libintl)
     set(CMAKE_MACOSX_RPATH 1)
     set(STDCPLUSPLUS stdc++)
 elseif (NOT PLATFORM STREQUAL "WASM")
