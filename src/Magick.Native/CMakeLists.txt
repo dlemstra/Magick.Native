@@ -109,35 +109,42 @@ target_link_libraries(
     /usr/local/lib/libMagickWand-7.${QUANTUM_NAME}.a
     /usr/local/lib/libMagickCore-7.${QUANTUM_NAME}.a
 
-    ${LIBEXR}
-    ${LIBDEFLATE}
-    ${LIBICONV}
-    ${LIBINTL}
-    ${LIBLQR}
     ${LIBRSVG}
+    ${LIBRAQM}
     ${LIBPANGO}
     ${LIBCAIRO}
-    ${LIBGLIB}
+
     ${LIBFONTCONFIG}
-    ${LIBJPEGXL}
-    ${LIBRAQM}
-    ${LIBFREETYPE}
-    ${LIBFRIBIDI}
     ${LIBHARFBUZZ}
-    ${LIBXML}
-    ${LIBPNG}
-    ${LIBJPEG}
+    ${LIBFRIBIDI}
+    ${LIBFREETYPE}
+
+    ${LIBHEIF}
+    ${LIBJPEGXL}
+    ${LIBEXR}
+    ${LIBRAW}
     ${LIBTIFF}
     ${LIBWEBP}
+    ${LIBPNG}
+    ${LIBJPEG}
     ${LIBOPENJPEG}
+
+    ${LIBLQR}
     ${LIBLCMS}
-    ${LIBOPENH264}
-    ${LIBHEIF}
-    ${LIBRAW}
+    ${LIBDEFLATE}
+
+    ${LIBGLIB}
+    ${LIBXML}
     ${LIBZIP}
+
     ${LIBLZMA}
     ${LIBBZIP2}
     ${LIBZ}
+
+    ${LIBICONV}
+    ${LIBINTL}
+
+    ${LIBOPENH264}
 
     ${LIBSOCKFS}
     ${LIBRESOLV}
