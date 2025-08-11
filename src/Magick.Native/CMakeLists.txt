@@ -6,11 +6,12 @@ set(OPENMP false BOOL)
 
 add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DMAGICKCORE_HDRI_ENABLE=${HDRI_ENABLE})
 
-include_directories(. /tmp/dependencies/include /usr/local/include/ImageMagick-7)
-link_directories(/tmp/dependencies/lib)
+set(DEPENDENCIES_DIR "/tmp/dependencies")
+include_directories(. ${DEPENDENCIES_DIR}/include /usr/local/include/ImageMagick-7)
+link_directories(${DEPENDENCIES_DIR}/lib)
 
 if (NOT PLATFORM STREQUAL "MACOS")
-  link_directories(/tmp/dependencies/lib/x86_64-linux-gnu)
+  link_directories(${DEPENDENCIES_DIR}/lib/x86_64-linux-gnu)
 endif()
 
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wno-unused-function")
