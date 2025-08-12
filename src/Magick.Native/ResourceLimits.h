@@ -41,6 +41,8 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_Width_Set(const MagickSizeType);
 
 MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double);
 
+MAGICK_NATIVE_EXPORT MagickBooleanType ResourceLimits_TrimMemory();
+
 #if defined(__cplusplus) || defined(c_plusplus)
 }
 #endif

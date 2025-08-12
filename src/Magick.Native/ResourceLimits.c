@@ -4,6 +4,13 @@
 #include "Stdafx.h"
 #include "ResourceLimits.h"
 
+#if defined(MAGICK_NATIVE_LINUX)
+  #include <malloc.h>
+#elif defined(MAGICK_NATIVE_MACOS)
+  #include <malloc/malloc.h>
+#endif
+
+
 MAGICK_NATIVE_EXPORT MagickSizeType ResourceLimits_Area_Get(void)
 {
   return GetMagickResourceLimit(AreaResource);
@@ -180,4 +187,16 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
   memory = (MagickSizeType) (total_memory * percentage);
   ResourceLimits_Area_Set(memory * 4);
   ResourceLimits_Memory_Set(memory);
+}
+
+MAGICK_NATIVE_EXPORT MagickBooleanType ResourceLimits_TrimMemory()
+{
+#if defined(MAGICK_NATIVE_LINUX)
+  if (malloc_trim(0))
+    return MagickTrue;
+#elif defined(MAGICK_NATIVE_MACOS)
+  malloc_zone_pressure_relief(NULL, 0);
+  return MagickTrue;
+#endif
+  return MagickFalse;
 }
