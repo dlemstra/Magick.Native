@@ -77,6 +77,9 @@ export class CodeParser {
         const startIndex = line.indexOf('(') + 1;
         const length = line.indexOf(')') - startIndex;
 
+        if (length == 0)
+            return parameters;
+
         for (const type of line.substring(startIndex, startIndex + length).split(', ')) {
             if (type === 'void')
                 continue;
