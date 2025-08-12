@@ -417,6 +417,11 @@ jobs:
   metadata:
     name: Metadata
     needs:
+      - verify-linux-x64
+      - verify-linux-arm64
+      - verify-linux-musl-x64
+      - verify-macos
+      - wasm
       - windows
     runs-on: ubuntu-24.04
     outputs:
@@ -459,10 +464,6 @@ jobs:
     name: 'Publish .NET library'
     if: github.event_name != 'schedule'
     needs:
-      - verify-linux-x64
-      - verify-linux-arm64
-      - verify-linux-musl-x64
-      - verify-macos
       - metadata
     runs-on: windows-2022
 
@@ -494,7 +495,6 @@ jobs:
     if: github.event_name != 'schedule'
     needs:
       - metadata
-      - wasm
     runs-on: ubuntu-24.04
 
     steps:
