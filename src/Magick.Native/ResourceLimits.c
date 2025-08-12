@@ -191,7 +191,7 @@ MAGICK_NATIVE_EXPORT void ResourceLimits_LimitMemory(const double percentage)
 
 MAGICK_NATIVE_EXPORT MagickBooleanType ResourceLimits_TrimMemory()
 {
-#if (defined(MAGICK_NATIVE_LINUX) && !defined(__MUSL__)) || defined(MAGICK_NATIVE_WASM))
+#if (defined(MAGICK_NATIVE_LINUX) && !defined(__MUSL__)) || defined(MAGICK_NATIVE_WASM)
   if (malloc_trim(0))
     return MagickTrue;
 #elif defined(MAGICK_NATIVE_MACOS)
