@@ -4,7 +4,7 @@
 #include "Stdafx.h"
 #include "ResourceLimits.h"
 
-#if defined(MAGICK_NATIVE_LINUX)
+#if defined(MAGICK_NATIVE_LINUX) || defined(MAGICK_NATIVE_WASM)
   #include <malloc.h>
 #elif defined(MAGICK_NATIVE_MACOS)
   #include <malloc/malloc.h>
