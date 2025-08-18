@@ -30,7 +30,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Install build tools
       run: ./install.build-tools.sh
@@ -82,7 +82,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Install build tools
       run: ./install.build-tools.sh
@@ -128,7 +128,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.sh
@@ -176,7 +176,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.sh
@@ -238,7 +238,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Update ImageMagick.commit to latest commit
       run: ./update.imagemagick.cmd
@@ -303,7 +303,7 @@ jobs:
         fi
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 1
 
@@ -340,7 +340,7 @@ jobs:
         apt-get install -y git
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Download artifacts
       uses: actions/download-artifact@v5
@@ -377,7 +377,7 @@ jobs:
         apk add bash git
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Download artifacts
       uses: actions/download-artifact@v5
@@ -404,7 +404,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Download artifacts
       uses: actions/download-artifact@v5
@@ -430,7 +430,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Download artifacts
       uses: actions/download-artifact@v5
@@ -470,7 +470,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Download artifacts
       uses: actions/download-artifact@v5
@@ -500,7 +500,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Download wasm library
       uses: actions/download-artifact@v5
