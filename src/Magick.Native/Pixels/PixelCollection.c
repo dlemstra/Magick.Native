@@ -38,13 +38,13 @@ MAGICK_NATIVE_EXPORT const Quantum *PixelCollection_GetArea(const CacheView *ins
   return pixels;
 }
 
-MAGICK_NATIVE_EXPORT const Quantum *PixelCollection_GetReadOnlyArea(Image *image, const ssize_t x, const ssize_t y, const size_t width, const size_t height, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT const Quantum *PixelCollection_GetReadOnlyArea(Image *instance, const ssize_t x, const ssize_t y, const size_t width, const size_t height, ExceptionInfo **exception)
 {
   const Quantum
     *pixels;
 
   MAGICK_NATIVE_GET_EXCEPTION;
-  pixels = GetAuthenticPixels(image, x, y, width, height, exceptionInfo);
+  pixels = GetAuthenticPixels(instance, x, y, width, height, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
   return pixels;
 }
