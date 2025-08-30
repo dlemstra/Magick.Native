@@ -5,6 +5,7 @@ src/ImageMagick/Configure
 src/ImageMagick/Dependencies
 src/ImageMagick/Imagemagick
 src/ImageMagick/ProjectFiles
+src/ImageMagick/Directory.Build.targets
 src/ImageMagick/*.sln
 src/Magick.Native/lib
 src/Magick.Native/bin
