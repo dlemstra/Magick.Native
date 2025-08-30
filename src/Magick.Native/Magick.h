@@ -18,6 +18,8 @@ MAGICK_NATIVE_EXPORT const char *Magick_GetFontFamily(const TypeInfo **, const s
 
 MAGICK_NATIVE_EXPORT const char *Magick_GetFontName(const TypeInfo **, const size_t);
 
+MAGICK_NATIVE_EXPORT unsigned char *Magick_GetWindowsResource(const char *);
+
 MAGICK_NATIVE_EXPORT void Magick_DisposeFonts(TypeInfo **);
 
 MAGICK_NATIVE_EXPORT void Magick_ResetRandomSeed(void);

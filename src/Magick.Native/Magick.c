@@ -46,6 +46,15 @@ MAGICK_NATIVE_EXPORT const char *Magick_GetFontName(const TypeInfo **list, const
   return list[index]->name;
 }
 
+MAGICK_NATIVE_EXPORT unsigned char *Magick_GetWindowsResource(const char *id)
+{
+#if defined(MAGICK_NATIVE_WINDOWS)
+  return NTResourceToBlob(id);
+#else
+  return (unsigned char *) NULL;
+#endif
+}
+
 MAGICK_NATIVE_EXPORT void Magick_DisposeFonts(TypeInfo **list)
 {
   RelinquishMagickMemory((void *) list);
