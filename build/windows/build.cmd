@@ -28,7 +28,13 @@ if %ERRORLEVEL% neq 0 (
 
 cd ..
 
-msbuild IM7.Static.%architecture%.sln /m /t:Rebuild /p:Configuration=%config%,Platform=%architecture%
+set quantumName=%quantum%
+if not "%hdri%"=="noHdri" set quantumName=%quantumName%-HDRI
+if not "%openMP%"=="noOpenMP" set quantumName=%quantumName%-OpenMP
+
+set library_name=Magick.Native-%quantumName%-%architecture%
+
+msbuild IM7.Static.%architecture%.sln /m /t:Rebuild /p:Configuration=%config%,Platform=%architecture%,PreprocessorDefinitions="%(PreprocessorDefinitions);MAGICKCORE_LIBRARY_NAME=\"%library_name%\""
 
 if %ERRORLEVEL% neq 0 (
     cd %SCRIPT_DIR%
@@ -37,9 +43,7 @@ if %ERRORLEVEL% neq 0 (
 
 cd ..\..
 
-set configuration=%config%%quantum%
-if not "%hdri%"=="noHdri" set configuration=%configuration%-HDRI
-if not "%openMP%"=="noOpenMP" set configuration=%configuration%-OpenMP
+set configuration=%config%%quantumName%
 
 msbuild Magick.Native.sln /m /t:Rebuild /p:Configuration=%configuration%,Platform=%architecture%
 
