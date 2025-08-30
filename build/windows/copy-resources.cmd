@@ -2,16 +2,22 @@
 
 set "SCRIPT_DIR=%~dp0"
 
-set folder=%1
+set quantumName=%1
+set architecture=%2
 
-if "%folder%"=="" goto invalid
+if "%quantumName%"=="" goto invalid
+if "%architecture%"=="" goto invalid
 
-if not exist "%folder%" mkdir "%folder%"
+if not exist "%quantumName%" mkdir "%quantumName%"
 
 cd %folder%
 
-copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\bin\*.xml" .
-copy /Y "%SCRIPT_DIR%..\..\src\Magick.Native\Resources\xml\*.xml" .
+if not exist "%architecture%" mkdir "%architecture%"
+
+cd %architecture%
+
+copy /Y "%SCRIPT_DIR%..\..\..\src\ImageMagick\Artifacts\bin\*.xml" .
+copy /Y "%SCRIPT_DIR%..\..\..\src\Magick.Native\Resources\xml\*.xml" .
 
 goto done
 

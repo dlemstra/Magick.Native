@@ -30,7 +30,7 @@ cd ..\..\..
 if not exist "resources" mkdir "resources"
 cd resources
 
-call "%SCRIPT_DIR%copy-resources.cmd" "%quantumName%"
+call "%SCRIPT_DIR%copy-resources.cmd" "%quantumName%" "%architecture%"
 
 goto done
 
