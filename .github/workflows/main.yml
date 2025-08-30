@@ -461,7 +461,7 @@ jobs:
         path: artifacts
 
   publish-dotnet:
-    name: 'Publish .NET library'
+    name: Publish .NET library
     if: github.event_name != 'schedule'
     needs:
       - metadata
