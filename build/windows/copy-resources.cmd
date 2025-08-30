@@ -10,7 +10,7 @@ if "%architecture%"=="" goto invalid
 
 if not exist "%quantumName%" mkdir "%quantumName%"
 
-cd %folder%
+cd %quantumName%
 
 if not exist "%architecture%" mkdir "%architecture%"
 
