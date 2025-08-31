@@ -16,8 +16,8 @@ if not exist "%architecture%" mkdir "%architecture%"
 
 cd %architecture%
 
-copy /Y "%SCRIPT_DIR%..\..\..\src\ImageMagick\Artifacts\bin\*.xml" .
-copy /Y "%SCRIPT_DIR%..\..\..\src\Magick.Native\Resources\xml\*.xml" .
+copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\bin\*.xml" .
+copy /Y "%SCRIPT_DIR%..\..\src\Magick.Native\Resources\xml\*.xml" .
 
 goto done
 
