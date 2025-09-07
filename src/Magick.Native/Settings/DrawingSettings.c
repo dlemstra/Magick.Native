@@ -275,12 +275,14 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokeDashArray(DrawInfo *instance,
     isTerminated;
 
   instance->dash_pattern = (double *) RelinquishMagickMemory(instance->dash_pattern);
-  isTerminated = (length > 0 && value[length - 1] == 0.0) ? MagickTrue : MagickFalse;
-  instance->dash_pattern = (double *) AcquireMagickMemory((length + (isTerminated == MagickFalse ? 1 : 0)) * sizeof(double));
   if (length > 0)
+  {
+    isTerminated = value[length - 1] == 0.0 ? MagickTrue : MagickFalse;
+    instance->dash_pattern = (double *) AcquireMagickMemory((length + (isTerminated == MagickFalse ? 1 : 0)) * sizeof(double));
     memcpy(instance->dash_pattern, value, length * sizeof(double));
-  if (isTerminated == MagickFalse)
-    instance->dash_pattern[length] = 0.0;
+    if (isTerminated == MagickFalse)
+      instance->dash_pattern[length] = 0.0;
+  }
 }
 
 MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokePattern(DrawInfo *instance, const Image *value, ExceptionInfo **exception)
