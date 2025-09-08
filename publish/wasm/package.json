@@ -21,6 +21,7 @@
     "magick.constants.ts",
     "magick.d.ts",
     "magick.js",
-    "magick.wasm"
+    "magick.wasm",
+    "NOTICE"
   ]
 }
