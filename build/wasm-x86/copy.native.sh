@@ -21,9 +21,9 @@ if [ "$is_beta" != "n" ]; then
   echo -n " (Beta)" >> $1/NOTICE
 fi
 echo " ($imagemagick_release_date) ]" >> $1/NOTICE
-echo >> NOTICE
-(cat ../ImageMagick/LICENSE;echo) >> NOTICE
+echo >> $1/NOTICE
+(cat ../ImageMagick/LICENSE;echo) >> $1/NOTICE
 
 for file in /tmp/dependencies/license/*; do
-  (cat $file;echo) >> NOTICE
+  (cat $file;echo) >> $1/NOTICE
 done
