@@ -10,6 +10,8 @@ on:
     - cron:  '0 2 * * *'
 
 name: main
+permissions:
+  contents: read
 jobs:
   linux:
     name: linux ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
