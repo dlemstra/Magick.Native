@@ -35,7 +35,7 @@ jobs:
       working-directory: src/ImageMagick
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+      run: sudo ../../../build/shared/build.imagemagick.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
