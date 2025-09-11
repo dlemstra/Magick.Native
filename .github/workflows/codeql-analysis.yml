@@ -10,7 +10,49 @@ on:
 
 name: CodeQL analysis
 jobs:
-  codeql:
+  codeql_c_cpp:
+    name:  CodeQL analysis (C/C++)
+    runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture: [ x64 ]
+        quantum: [ Q16-HDRI ]
+        openmp: [ OpenMP ]
+        include:
+          - openmp: OpenMP
+            openmp_flag: -OpenMP
+
+    permissions:
+      security-events: write
+
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh --no-configure --dependencies-artifact linux-${{matrix.architecture}}-static.zip
+      working-directory: src/ImageMagick
+
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.imagemagick.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+      working-directory: src/ImageMagick/ImageMagick
+
+    - name: Build Native
+      run: ../../build/shared/build.native.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+      working-directory: src/Magick.Native
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: c-cpp
+        source-root: src/Magick.Native
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+
+  codeql_actions:
+    name:  CodeQL analysis (GitHub Actions)
     runs-on: ubuntu-24.04
 
     permissions:
@@ -22,7 +64,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: c-cpp, actions
+        languages: actions
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
