@@ -10,7 +10,7 @@ on:
 
 name: CodeQL analysis
 jobs:
-  codeql_c_cpp:
+  c_cpp:
     name: CodeQL analysis (C/C++)
     runs-on: ubuntu-24.04
 
@@ -41,7 +41,7 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
 
-  codeql_actions:
+  actions:
     name: CodeQL analysis (GitHub Actions)
     runs-on: ubuntu-24.04
 
