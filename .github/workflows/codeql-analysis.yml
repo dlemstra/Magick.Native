@@ -17,9 +17,6 @@ jobs:
     name: CodeQL analysis (C/C++)
     runs-on: ubuntu-24.04
 
-    permissions:
-      security-events: write
-
     steps:
     - uses: actions/checkout@v5
 
@@ -47,9 +44,6 @@ jobs:
   actions:
     name: CodeQL analysis (GitHub Actions)
     runs-on: ubuntu-24.04
-
-    permissions:
-      security-events: write
 
     steps:
     - uses: actions/checkout@v5
