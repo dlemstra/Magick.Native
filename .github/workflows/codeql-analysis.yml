@@ -9,6 +9,9 @@ on:
     - .github/workflows/codeql-analysis.yml
 
 name: CodeQL analysis
+permissions:
+  contents: read
+  security-events: write
 jobs:
   c_cpp:
     name: CodeQL analysis (C/C++)
