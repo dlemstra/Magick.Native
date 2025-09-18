@@ -15,9 +15,9 @@ permissions:
 jobs:
   linux:
     name: linux ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
+    runs-on: ubuntu-24.04
     container:
       image: ubuntu:20.04
-    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -67,9 +67,9 @@ jobs:
 
   linux-musl:
     name: linux musl ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
+    runs-on: ubuntu-24.04
     container:
       image: alpine:3.18
-    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -165,9 +165,9 @@ jobs:
 
   wasm:
     name: wasm (${{matrix.architecture}})
+    runs-on: ubuntu-24.04
     container:
       image: emscripten/emsdk:4.0.7
-    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -271,9 +271,9 @@ jobs:
 
   verify-linux-x64:
     name: Verify Linux (x64)
+    runs-on: ubuntu-24.04
     needs:
       - linux
-    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -321,9 +321,9 @@ jobs:
 
   verify-linux-arm64:
     name: Verify Linux (arm64)
+    runs-on: ubuntu-24.04-arm
     needs:
       - linux
-    runs-on: ubuntu-24.04-arm
 
     strategy:
       fail-fast: false
@@ -356,9 +356,9 @@ jobs:
 
   verify-linux-musl-x64:
     name: Verify Linux musl (x64) (${{matrix.image}})
+    runs-on: ubuntu-24.04
     needs:
       - linux-musl
-    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -393,9 +393,9 @@ jobs:
 
   verify-macos:
     name: Verify MacOS (${{matrix.architecture}}) (${{matrix.os}})
+    runs-on: ${{matrix.os}}
     needs:
       - macos
-    runs-on: ${{matrix.os}}
 
     strategy:
       fail-fast: false
@@ -418,6 +418,7 @@ jobs:
 
   metadata:
     name: Metadata
+    runs-on: ubuntu-24.04
     needs:
       - verify-linux-x64
       - verify-linux-arm64
@@ -425,7 +426,6 @@ jobs:
       - verify-macos
       - wasm
       - windows
-    runs-on: ubuntu-24.04
     outputs:
       version: ${{steps.set-version.outputs.version}}
 
@@ -465,9 +465,13 @@ jobs:
   publish-dotnet:
     name: Publish .NET library
     if: github.event_name != 'schedule'
+    runs-on: windows-2022
     needs:
       - metadata
-    runs-on: windows-2022
+
+    permissions:
+      contents: read
+      packages: write
 
     steps:
 
@@ -490,14 +494,18 @@ jobs:
       run: |
         dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
         $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
-        dotnet nuget push $file.FullName --api-key ${{secrets.PUBLISH_PACKAGE_PAT}} --source "github"
+        dotnet nuget push $file.FullName --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
 
   publish-wasm-x86:
     name: Publish WASM library
     if: github.event_name != 'schedule'
+    runs-on: ubuntu-24.04
     needs:
       - metadata
-    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: read
+      packages: write
 
     steps:
 
@@ -525,4 +533,4 @@ jobs:
       run: npm publish
       working-directory: publish/wasm/files
       env:
-        NODE_AUTH_TOKEN: ${{secrets.PUBLISH_PACKAGE_PAT}}
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
