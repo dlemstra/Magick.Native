@@ -194,7 +194,7 @@ jobs:
       working-directory: build/wasm-${{matrix.architecture}}
 
     - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}$
+      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}
       working-directory: src/ImageMagick/ImageMagick
 
     - name: Build Native
