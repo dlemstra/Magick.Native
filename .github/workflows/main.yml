@@ -30,40 +30,39 @@ jobs:
             openmp_flag: -OpenMP
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Install build tools
+        run: ./install.build-tools.sh
+        working-directory: build/linux-${{matrix.architecture}}
 
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/linux-${{matrix.architecture}}
+      - name: Update ImageMagick.commit to latest commit
+        run: ./update.imagemagick.sh
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: src/ImageMagick
 
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.sh
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
+      - name: Clone ImageMagick libraries
+        run: ./checkout.sh --no-configure --dependencies-artifact linux-${{matrix.architecture}}-static.zip
+        working-directory: src/ImageMagick
 
-    - name: Clone ImageMagick libraries
-      run: ./checkout.sh --no-configure --dependencies-artifact linux-${{matrix.architecture}}-static.zip
-      working-directory: src/ImageMagick
+      - name: Build ImageMagick
+        run: ../../../build/shared/build.imagemagick.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+        working-directory: src/ImageMagick/ImageMagick
 
-    - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
-      working-directory: src/ImageMagick/ImageMagick
+      - name: Build Native
+        run: ../../build/shared/build.native.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+        working-directory: src/Magick.Native
 
-    - name: Build Native
-      run: ../../build/shared/build.native.sh linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
-      working-directory: src/Magick.Native
+      - name: Copy Native
+        run: ../../build/shared/copy.native.sh ../../artifacts linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+        working-directory: src/Magick.Native
 
-    - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
-      working-directory: src/Magick.Native
-
-    - name: Upload library
-      uses: actions/upload-artifact@v4
-      with:
-        name: linux-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
-        path: artifacts
+      - name: Upload library
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
+          path: artifacts
 
   linux-musl:
     name: linux musl ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
@@ -82,40 +81,39 @@ jobs:
             openmp_flag: -OpenMP
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Install build tools
+        run: ./install.build-tools.sh
+        working-directory: build/linux-musl-${{matrix.architecture}}
 
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/linux-musl-${{matrix.architecture}}
+      - name: Update ImageMagick.commit to latest commit
+        run: ./update.imagemagick.sh
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: src/ImageMagick
 
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.sh
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
+      - name: Clone ImageMagick libraries
+        run: ./checkout.sh --no-configure --dependencies-artifact linux-musl-${{matrix.architecture}}-static.zip
+        working-directory: src/ImageMagick
 
-    - name: Clone ImageMagick libraries
-      run: ./checkout.sh --no-configure --dependencies-artifact linux-musl-${{matrix.architecture}}-static.zip
-      working-directory: src/ImageMagick
+      - name: Build ImageMagick
+        run: ../../../build/shared/build.imagemagick.sh linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+        working-directory: src/ImageMagick/ImageMagick
 
-    - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
-      working-directory: src/ImageMagick/ImageMagick
+      - name: Build Native
+        run: ../../build/shared/build.native.sh linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+        working-directory: src/Magick.Native
 
-    - name: Build Native
-      run: ../../build/shared/build.native.sh linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
-      working-directory: src/Magick.Native
+      - name: Copy Native
+        run: ../../build/shared/copy.native.sh ../../artifacts linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
+        working-directory: src/Magick.Native
 
-    - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts linux-musl ${{matrix.architecture}} ${{matrix.quantum}} ${{matrix.openmp}}
-      working-directory: src/Magick.Native
-
-    - name: Upload library
-      uses: actions/upload-artifact@v4
-      with:
-        name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
-        path: artifacts
+      - name: Upload library
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
+          path: artifacts
 
   macos:
     name: macOS ${{matrix.quantum}} (${{matrix.architecture}})
@@ -128,40 +126,39 @@ jobs:
         quantum: [ Q8, Q16, Q16-HDRI ]
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Update ImageMagick.commit to latest commit
+        run: ./update.imagemagick.sh
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: src/ImageMagick
 
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.sh
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
+      - name: Clone ImageMagick libraries
+        run: ./checkout.sh --no-configure --dependencies-artifact macos-${{matrix.architecture}}-static.zip
+        working-directory: src/ImageMagick
 
-    - name: Clone ImageMagick libraries
-      run: ./checkout.sh --no-configure --dependencies-artifact macos-${{matrix.architecture}}-static.zip
-      working-directory: src/ImageMagick
+      - name: Install build tools
+        run: ./install.build-tools.sh
+        working-directory: build/macos-${{matrix.architecture}}
 
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/macos-${{matrix.architecture}}
+      - name: Build ImageMagick
+        run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/ImageMagick/ImageMagick
 
-    - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
-      working-directory: src/ImageMagick/ImageMagick
+      - name: Build Native
+        run: ../../build/shared/build.native.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/Magick.Native
 
-    - name: Build Native
-      run: ../../build/shared/build.native.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
-      working-directory: src/Magick.Native
+      - name: Copy Native
+        run: ../../build/shared/copy.native.sh ../../artifacts macos ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/Magick.Native
 
-    - name: Copy Native
-      run: ../../build/shared/copy.native.sh ../../artifacts macos ${{matrix.architecture}} ${{matrix.quantum}}
-      working-directory: src/Magick.Native
-
-    - name: Upload library
-      uses: actions/upload-artifact@v4
-      with:
-        name: macos-${{matrix.quantum}}-${{matrix.architecture}}
-        path: artifacts
+      - name: Upload library
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-${{matrix.quantum}}-${{matrix.architecture}}
+          path: artifacts
 
   wasm:
     name: wasm (${{matrix.architecture}})
@@ -176,44 +173,43 @@ jobs:
         quantum: [ Q8 ]
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Update ImageMagick.commit to latest commit
+        run: ./update.imagemagick.sh
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: src/ImageMagick
 
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.sh
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
+      - name: Clone ImageMagick libraries
+        run: ./checkout.sh --no-configure --dependencies-artifact wasm-${{matrix.architecture}}-static.zip
+        working-directory: src/ImageMagick
 
-    - name: Clone ImageMagick libraries
-      run: ./checkout.sh --no-configure --dependencies-artifact wasm-${{matrix.architecture}}-static.zip
-      working-directory: src/ImageMagick
+      - name: Install build tools
+        run: ./install.build-tools.sh
+        working-directory: build/wasm-${{matrix.architecture}}
 
-    - name: Install build tools
-      run: ./install.build-tools.sh
-      working-directory: build/wasm-${{matrix.architecture}}
+      - name: Build ImageMagick
+        run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/ImageMagick/ImageMagick
 
-    - name: Build ImageMagick
-      run: ../../../build/shared/build.imagemagick.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}
-      working-directory: src/ImageMagick/ImageMagick
+      - name: Build Native
+        run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/Magick.Native
 
-    - name: Build Native
-      run: ../../build/shared/build.native.sh wasm ${{matrix.architecture}} ${{matrix.quantum}}
-      working-directory: src/Magick.Native
+      - name: Create wasm files
+        run: npm install && npm run publish
+        working-directory: src/wasm-file-creator
 
-    - name: Create wasm files
-      run: npm install && npm run publish
-      working-directory: src/wasm-file-creator
+      - name: Copy Native
+        run: ../../build/wasm-x86/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
+        working-directory: src/Magick.Native
 
-    - name: Copy Native
-      run: ../../build/wasm-x86/copy.native.sh ../../artifacts wasm ${{matrix.architecture}}
-      working-directory: src/Magick.Native
-
-    - name: Upload library
-      uses: actions/upload-artifact@v4
-      with:
-        name: wasm-${{matrix.quantum}}-${{matrix.architecture}}
-        path: artifacts
+      - name: Upload library
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-${{matrix.quantum}}-${{matrix.architecture}}
+          path: artifacts
 
   windows:
     name: windows ${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} (${{matrix.architecture}})
@@ -238,36 +234,35 @@ jobs:
             openmp_flag: '-OpenMP'
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Update ImageMagick.commit to latest commit
+        run: ./update.imagemagick.cmd
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: src/ImageMagick
 
-    - name: Update ImageMagick.commit to latest commit
-      run: ./update.imagemagick.cmd
-      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-      working-directory: src/ImageMagick
+      - name: Clone ImageMagick libraries
+        shell: cmd
+        run: checkout-release.cmd ${{matrix.architecture}} ${{matrix.openmp}}
+        working-directory: src/ImageMagick
 
-    - name: Clone ImageMagick libraries
-      shell: cmd
-      run: checkout-release.cmd ${{matrix.architecture}} ${{matrix.openmp}}
-      working-directory: src/ImageMagick
+      - name: Build
+        shell: cmd
+        run: build.cmd Release ${{matrix.quantum}} ${{matrix.architecture}} ${{matrix.hdri}} ${{matrix.openmp}}
+        working-directory: build/windows
 
-    - name: Build
-      shell: cmd
-      run: build.cmd Release ${{matrix.quantum}} ${{matrix.architecture}} ${{matrix.hdri}} ${{matrix.openmp}}
-      working-directory: build/windows
+      - name: Copy Native
+        shell: cmd
+        run: |
+          call copy-native.cmd ..\..\artifacts Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} ${{matrix.architecture}}
+        working-directory: build/windows
 
-    - name: Copy Native
-      shell: cmd
-      run: |
-        call copy-native.cmd ..\..\artifacts Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} ${{matrix.architecture}}
-      working-directory: build/windows
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: windows-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.architecture}}${{matrix.openmp_flag}}
-        path: artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.architecture}}${{matrix.openmp_flag}}
+          path: artifacts
 
   verify-linux-x64:
     name: Verify Linux (x64)
@@ -335,24 +330,23 @@ jobs:
       image: ${{matrix.image}}
 
     steps:
+      - name: Install git
+        run: |
+          apt-get update -y
+          apt-get install -y git
 
-    - name: Install git
-      run: |
-        apt-get update -y
-        apt-get install -y git
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          merge-multiple: true
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v6
-      with:
-        merge-multiple: true
-
-    - name: Verify Native
-      run: |
-        build/shared/verify.native.sh . linux arm64
-        build/shared/verify.native.sh . linux arm64 OpenMP
+      - name: Verify Native
+        run: |
+          build/shared/verify.native.sh . linux arm64
+          build/shared/verify.native.sh . linux arm64 OpenMP
 
   verify-linux-musl-x64:
     name: Verify Linux musl (x64)
@@ -372,24 +366,23 @@ jobs:
       image: ${{matrix.image}}
 
     steps:
+      - name: Install git and bash
+        run: |
+          apk update
+          apk add bash git
 
-    - name: Install git and bash
-      run: |
-        apk update
-        apk add bash git
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          merge-multiple: true
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v6
-      with:
-        merge-multiple: true
-
-    - name: Verify Native
-      run: |
-        build/shared/verify.native.sh . linux-musl x64
-        build/shared/verify.native.sh . linux-musl x64 OpenMP
+      - name: Verify Native
+        run: |
+          build/shared/verify.native.sh . linux-musl x64
+          build/shared/verify.native.sh . linux-musl x64 OpenMP
 
   verify-macos:
     name: Verify MacOS (${{matrix.architecture}}) (${{matrix.os}})
@@ -404,17 +397,16 @@ jobs:
         os: [ macos-13, macos-14 ]
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          merge-multiple: true
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v6
-      with:
-        merge-multiple: true
-
-    - name: Verify MacOS
-      run: build/shared/verify.native.macos.sh . macos ${{matrix.architecture}}
+      - name: Verify MacOS
+        run: build/shared/verify.native.macos.sh . macos ${{matrix.architecture}}
 
   metadata:
     name: Metadata
@@ -430,37 +422,36 @@ jobs:
       version: ${{steps.set-version.outputs.version}}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: windows-Q8-arm64
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v6
-      with:
-        name: windows-Q8-arm64
+      - name: Set version
+        id: set-version
+        run: echo "version=$(date +'%Y.%-m%d.%-H%M')" >> $GITHUB_OUTPUT
 
-    - name: Set version
-      id: set-version
-      run: echo "version=$(date +'%Y.%-m%d.%-H%M')" >> $GITHUB_OUTPUT
+      - name: Copy NOTICE.txt and create libraries.md
+        run: |
+          mkdir -p artifacts/metadata
+          cd artifacts/metadata
 
-    - name: Copy NOTICE.txt and create libraries.md
-      run: |
-        mkdir -p artifacts/metadata
-        cd artifacts/metadata
+          cp ../../NOTICE.txt NOTICE.txt
 
-        cp ../../NOTICE.txt NOTICE.txt
+          commit=$(git rev-parse HEAD)
+          echo "# Libraries" >> libraries.md
+          echo "Magick.Native [$commit](https://github.com/dlemstra/Magick.Native/commit/$commit) is build with the following libraries:" >> libraries.md
+          echo "" >> libraries.md
+          sed -n 's/^\[ \(.*\) \]/- \1/p' ../../NOTICE.txt >> libraries.md
 
-        commit=$(git rev-parse HEAD)
-        echo "# Libraries" >> libraries.md
-        echo "Magick.Native [$commit](https://github.com/dlemstra/Magick.Native/commit/$commit) is build with the following libraries:" >> libraries.md
-        echo "" >> libraries.md
-        sed -n 's/^\[ \(.*\) \]/- \1/p' ../../NOTICE.txt >> libraries.md
-
-    - name: Upload metadata
-      uses: actions/upload-artifact@v4
-      with:
-        name: metadata
-        path: artifacts
+      - name: Upload metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: metadata
+          path: artifacts
 
   publish-dotnet:
     name: Publish .NET library
@@ -474,27 +465,26 @@ jobs:
       packages: write
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          merge-multiple: true
+          path: publish/dotnet/files
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v6
-      with:
-        merge-multiple: true
-        path: publish/dotnet/files
+      - name: Create NuGet package
+        run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ..\..\artifacts
+        working-directory: publish/dotnet
 
-    - name: Create NuGet package
-      run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ..\..\artifacts
-      working-directory: publish/dotnet
-
-    - name: Upload NuGet package
-      if: github.event_name != 'pull_request'
-      working-directory: publish/dotnet
-      run: |
-        dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
-        $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
-        dotnet nuget push $file.FullName --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+      - name: Upload NuGet package
+        if: github.event_name != 'pull_request'
+        working-directory: publish/dotnet
+        run: |
+          dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
+          $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
+          dotnet nuget push $file.FullName --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
 
   publish-wasm-x86:
     name: Publish WASM library
@@ -508,29 +498,28 @@ jobs:
       packages: write
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-    - name: Checkout
-      uses: actions/checkout@v5
+      - name: Download wasm library
+        uses: actions/download-artifact@v6
+        with:
+          name: wasm-Q8-x86
+          path: publish/wasm/files
 
-    - name: Download wasm library
-      uses: actions/download-artifact@v6
-      with:
-        name: wasm-Q8-x86
-        path: publish/wasm/files
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: '@dlemstra'
 
-    - uses: actions/setup-node@v6
-      with:
-        node-version: 20
-        registry-url: https://npm.pkg.github.com
-        scope: '@dlemstra'
+      - name: Create NPM package
+        run: ./publish.sh --version ${{needs.metadata.outputs.version}}
+        working-directory: publish/wasm
 
-    - name: Create NPM package
-      run: ./publish.sh --version ${{needs.metadata.outputs.version}}
-      working-directory: publish/wasm
-
-    - name: Publish NPM package
-      if: github.event_name != 'pull_request'
-      run: npm publish
-      working-directory: publish/wasm/files
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish NPM package
+        if: github.event_name != 'pull_request'
+        run: npm publish
+        working-directory: publish/wasm/files
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -18,40 +18,40 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-    - name: Clone ImageMagick libraries
-      run: ./checkout.sh --no-configure --dependencies-artifact linux-x64-static.zip
-      working-directory: src/ImageMagick
+      - name: Clone ImageMagick libraries
+        run: ./checkout.sh --no-configure --dependencies-artifact linux-x64-static.zip
+        working-directory: src/ImageMagick
 
-    - name: Build ImageMagick
-      run: sudo ../../../build/shared/build.imagemagick.sh linux x64 Q16-HDRI OpenMP
-      working-directory: src/ImageMagick/ImageMagick
+      - name: Build ImageMagick
+        run: sudo ../../../build/shared/build.imagemagick.sh linux x64 Q16-HDRI OpenMP
+        working-directory: src/ImageMagick/ImageMagick
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v4
-      with:
-        languages: c-cpp
-        source-root: src/Magick.Native
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: c-cpp
+          source-root: src/Magick.Native
 
-    - name: Build Native
-      run: ../../build/shared/build.native.sh linux x64 Q16-HDRI OpenMP
-      working-directory: src/Magick.Native
+      - name: Build Native
+        run: ../../build/shared/build.native.sh linux x64 Q16-HDRI OpenMP
+        working-directory: src/Magick.Native
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v4
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
 
   actions:
     name: CodeQL analysis (GitHub Actions)
     runs-on: ubuntu-24.04
 
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v4
-      with:
-        languages: actions
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: actions
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v4
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
