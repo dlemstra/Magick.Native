@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Install build tools
         run: ./install.build-tools.sh
@@ -83,6 +85,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Install build tools
         run: ./install.build-tools.sh
@@ -128,6 +132,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.sh
@@ -175,6 +181,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.sh
@@ -236,6 +244,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.cmd
@@ -287,32 +297,31 @@ jobs:
       image: ${{matrix.image}}
 
     steps:
+      - name: Install git
+        run: |
+          if [ -f "/bin/yum" ]; then
+            yum install -y git
+          elif [ -f "/bin/dnf" ]; then
+            dnf install -y git
+          else
+            apt-get update -y
+            apt-get install -y git
+          fi
 
-    - name: Install git
-      run: |
-        if [ -f "/bin/yum" ]; then
-          yum install -y git
-        elif [ -f "/bin/dnf" ]; then
-          dnf install -y git
-        else
-          apt-get update -y
-          apt-get install -y git
-        fi
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
-    - name: Checkout
-      uses: actions/checkout@v5
-      with:
-        fetch-depth: 1
+      - name: Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          merge-multiple: true
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v6
-      with:
-        merge-multiple: true
-
-    - name: Verify Native
-      run: |
-        build/shared/verify.native.sh . linux x64
-        build/shared/verify.native.sh . linux x64 OpenMP
+      - name: Verify Native
+        run: |
+          build/shared/verify.native.sh . linux x64
+          build/shared/verify.native.sh . linux x64 OpenMP
 
   verify-linux-arm64:
     name: Verify Linux (arm64)
@@ -337,6 +346,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Download artifacts
         uses: actions/download-artifact@v6
@@ -373,6 +384,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Download artifacts
         uses: actions/download-artifact@v6
@@ -399,6 +412,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Download artifacts
         uses: actions/download-artifact@v6
@@ -424,6 +439,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Download artifacts
         uses: actions/download-artifact@v6
@@ -467,6 +484,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Download artifacts
         uses: actions/download-artifact@v6
@@ -502,6 +521,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Download wasm library
         uses: actions/download-artifact@v6
