@@ -475,7 +475,9 @@ jobs:
           path: publish/dotnet/files
 
       - name: Create NuGet package
-        run: ./publish.ps1 -version ${{needs.metadata.outputs.version}} -destination ..\..\artifacts
+        env:
+          VERSION: ${{needs.metadata.outputs.version}}
+        run: ./publish.ps1 -version $env:VERSION -destination ..\..\artifacts
         working-directory: publish/dotnet
 
       - name: Upload NuGet package
@@ -484,7 +486,7 @@ jobs:
         run: |
           dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
           $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
-          dotnet nuget push $file.FullName --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+          dotnet nuget push $file.FullName --api-key ${{secrets.GITHUB_TOKEN}} --source "github"
 
   publish-wasm-x86:
     name: Publish WASM library
@@ -514,7 +516,9 @@ jobs:
           scope: '@dlemstra'
 
       - name: Create NPM package
-        run: ./publish.sh --version ${{needs.metadata.outputs.version}}
+        env:
+          VERSION: ${{needs.metadata.outputs.version}}
+        run: ./publish.sh --version $VERSION
         working-directory: publish/wasm
 
       - name: Publish NPM package
@@ -522,4 +526,4 @@ jobs:
         run: npm publish
         working-directory: publish/wasm/files
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
