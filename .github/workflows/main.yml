@@ -355,7 +355,7 @@ jobs:
         build/shared/verify.native.sh . linux arm64 OpenMP
 
   verify-linux-musl-x64:
-    name: Verify Linux musl (x64) (${{matrix.image}})
+    name: Verify Linux musl (x64)
     runs-on: ubuntu-24.04
     needs:
       - linux-musl
