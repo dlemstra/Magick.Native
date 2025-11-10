@@ -76,8 +76,9 @@ set(LIBJPEG libturbojpeg.a)
 set(LIBJPEGXL libjxl.a libjxl_threads.a libjxl_cms.a libbrotlienc.a libbrotlidec.a libbrotlicommon.a libhwy.a)
 set(LIBLCMS liblcms2.a)
 set(LIBLQR liblqr-1.a)
-set(LIBOPENJPEG libopenjp2.a)
 set(LIBOPENH264 libopenh264.a)
+set(LIBOPENJPEG libopenjp2.a)
+set(LIBOPENJPH libopenjph.a)
 set(LIBPNG libpng.a)
 set(LIBRAW libraw_r.a)
 set(LIBTIFF libtiff.a)
@@ -121,6 +122,7 @@ target_link_libraries(
 
     ${LIBHEIF}
     ${LIBJPEGXL}
+    ${LIBOPENJPH}
     ${LIBEXR}
     ${LIBRAW}
     ${LIBTIFF}
