@@ -122,8 +122,8 @@ target_link_libraries(
 
     ${LIBHEIF}
     ${LIBJPEGXL}
-    ${LIBOPENJPH}
     ${LIBEXR}
+    ${LIBOPENJPH}
     ${LIBRAW}
     ${LIBTIFF}
     ${LIBWEBP}
