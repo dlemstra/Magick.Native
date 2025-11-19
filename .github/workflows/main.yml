@@ -119,6 +119,53 @@ jobs:
           name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
           path: artifacts
 
+  macos-x64:
+    name: macOS ${{matrix.quantum}} (${{matrix.architecture}})
+    runs-on: macos-13
+
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture: [ x64, arm64 ]
+        quantum: [ Q8, Q16, Q16-HDRI ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Update ImageMagick.commit to latest commit
+        run: ./update.imagemagick.sh
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: src/ImageMagick
+
+      - name: Clone ImageMagick libraries
+        run: ./checkout.sh --no-configure --dependencies-artifact macos-${{matrix.architecture}}-static.zip
+        working-directory: src/ImageMagick
+
+      - name: Install build tools
+        run: ./install.build-tools.sh
+        working-directory: build/macos-${{matrix.architecture}}
+
+      - name: Build ImageMagick
+        run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/ImageMagick/ImageMagick
+
+      - name: Build Native
+        run: ../../build/shared/build.native.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/Magick.Native
+
+      - name: Copy Native
+        run: ../../build/shared/copy.native.sh ../../artifacts macos ${{matrix.architecture}} ${{matrix.quantum}}
+        working-directory: src/Magick.Native
+
+      - name: Upload library
+        uses: actions/upload-artifact@v5
+        with:
+          name: macos-${{matrix.quantum}}-${{matrix.architecture}}
+          path: artifacts
+
   macos:
     name: macOS ${{matrix.quantum}} (${{matrix.architecture}})
     runs-on: macos-13
@@ -397,16 +444,15 @@ jobs:
           build/shared/verify.native.sh . linux-musl x64
           build/shared/verify.native.sh . linux-musl x64 OpenMP
 
-  verify-macos:
-    name: Verify MacOS (${{matrix.architecture}}) (${{matrix.os}})
+  verify-macos-x64:
+    name: Verify MacOS x64 (${{matrix.os}})
     runs-on: ${{matrix.os}}
     needs:
-      - macos
+      - macos-x64
 
     strategy:
       fail-fast: false
       matrix:
-        architecture: [ x64, arm64 ]
         os: [ macos-13, macos-14 ]
 
     steps:
@@ -421,7 +467,32 @@ jobs:
           merge-multiple: true
 
       - name: Verify MacOS
-        run: build/shared/verify.native.macos.sh . macos ${{matrix.architecture}}
+        run: build/shared/verify.native.macos.sh . macos x64
+
+  verify-macos:
+    name: Verify MacOS arm64 (${{matrix.os}})
+    runs-on: ${{matrix.os}}
+    needs:
+      - macos
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-13, macos-14 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          merge-multiple: true
+
+      - name: Verify MacOS
+        run: build/shared/verify.native.macos.sh . macos arm64
 
   metadata:
     name: Metadata
