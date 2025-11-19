@@ -120,13 +120,12 @@ jobs:
           path: artifacts
 
   macos-x64:
-    name: macOS ${{matrix.quantum}} (${{matrix.architecture}})
+    name: macOS ${{matrix.quantum}} x64
     runs-on: macos-13
 
     strategy:
       fail-fast: false
       matrix:
-        architecture: [ x64, arm64 ]
         quantum: [ Q8, Q16, Q16-HDRI ]
 
     steps:
@@ -141,39 +140,38 @@ jobs:
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
-        run: ./checkout.sh --no-configure --dependencies-artifact macos-${{matrix.architecture}}-static.zip
+        run: ./checkout.sh --no-configure --dependencies-artifact macos-x64-static.zip
         working-directory: src/ImageMagick
 
       - name: Install build tools
         run: ./install.build-tools.sh
-        working-directory: build/macos-${{matrix.architecture}}
+        working-directory: build/macos-x64
 
       - name: Build ImageMagick
-        run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        run: ../../../build/shared/build.imagemagick.sh macos x64 ${{matrix.quantum}}
         working-directory: src/ImageMagick/ImageMagick
 
       - name: Build Native
-        run: ../../build/shared/build.native.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        run: ../../build/shared/build.native.sh macos x64 ${{matrix.quantum}}
         working-directory: src/Magick.Native
 
       - name: Copy Native
-        run: ../../build/shared/copy.native.sh ../../artifacts macos ${{matrix.architecture}} ${{matrix.quantum}}
+        run: ../../build/shared/copy.native.sh ../../artifacts macos x64 ${{matrix.quantum}}
         working-directory: src/Magick.Native
 
       - name: Upload library
         uses: actions/upload-artifact@v5
         with:
-          name: macos-${{matrix.quantum}}-${{matrix.architecture}}
+          name: macos-${{matrix.quantum}}-x64
           path: artifacts
 
   macos:
-    name: macOS ${{matrix.quantum}} (${{matrix.architecture}})
+    name: macOS ${{matrix.quantum}}
     runs-on: macos-13
 
     strategy:
       fail-fast: false
       matrix:
-        architecture: [ x64, arm64 ]
         quantum: [ Q8, Q16, Q16-HDRI ]
 
     steps:
@@ -188,29 +186,29 @@ jobs:
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
-        run: ./checkout.sh --no-configure --dependencies-artifact macos-${{matrix.architecture}}-static.zip
+        run: ./checkout.sh --no-configure --dependencies-artifact macos-arm64-static.zip
         working-directory: src/ImageMagick
 
       - name: Install build tools
         run: ./install.build-tools.sh
-        working-directory: build/macos-${{matrix.architecture}}
+        working-directory: build/macos-arm64
 
       - name: Build ImageMagick
-        run: ../../../build/shared/build.imagemagick.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        run: ../../../build/shared/build.imagemagick.sh macos arm64 ${{matrix.quantum}}
         working-directory: src/ImageMagick/ImageMagick
 
       - name: Build Native
-        run: ../../build/shared/build.native.sh macos ${{matrix.architecture}} ${{matrix.quantum}}
+        run: ../../build/shared/build.native.sh macos arm64 ${{matrix.quantum}}
         working-directory: src/Magick.Native
 
       - name: Copy Native
-        run: ../../build/shared/copy.native.sh ../../artifacts macos ${{matrix.architecture}} ${{matrix.quantum}}
+        run: ../../build/shared/copy.native.sh ../../artifacts macos arm64 ${{matrix.quantum}}
         working-directory: src/Magick.Native
 
       - name: Upload library
         uses: actions/upload-artifact@v5
         with:
-          name: macos-${{matrix.quantum}}-${{matrix.architecture}}
+          name: macos-${{matrix.quantum}}-arm64
           path: artifacts
 
   wasm:
