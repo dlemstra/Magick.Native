@@ -66,4 +66,4 @@ fi
 # Install build tools
 brew install automake libtool gnu-sed ossp-uuid
 
-pip3 install setuptools
+pip3 install --break-system-packages setuptools

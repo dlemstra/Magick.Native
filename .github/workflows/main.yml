@@ -121,7 +121,7 @@ jobs:
 
   macos-x64:
     name: macOS ${{matrix.quantum}} x64
-    runs-on: macos-13
+    runs-on: macos-15-intel
 
     strategy:
       fail-fast: false
@@ -451,7 +451,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-13, macos-14 ]
+        os: [ macos-14, macos-15, macos-15-intel ]
 
     steps:
       - name: Checkout
