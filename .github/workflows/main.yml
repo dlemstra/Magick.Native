@@ -167,7 +167,7 @@ jobs:
 
   macos:
     name: macOS ${{matrix.quantum}}
-    runs-on: macos-13
+    runs-on: macos-14
 
     strategy:
       fail-fast: false
@@ -476,7 +476,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-13, macos-14 ]
+        os: [ macos-14, macos-15 ]
 
     steps:
       - name: Checkout

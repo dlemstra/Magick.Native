@@ -7,8 +7,6 @@ brew list --formula
 
 # Uninstall already installed development libraries
 
-brew uninstall composer
-brew uninstall php
 brew uninstall ant
 brew uninstall gradle
 brew uninstall maven
@@ -66,4 +64,4 @@ fi
 # Install build tools
 brew install automake libtool gnu-sed ossp-uuid
 
-pip3 install setuptools
+pip3 install --break-system-packages setuptools
