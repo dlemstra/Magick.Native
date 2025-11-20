@@ -30,16 +30,14 @@ buildImageMagick() {
     unset enable_64bit_channel_masks
   fi
 
-  $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --disable-deprecated --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --without-perl --without-python --without-magick-plus-plus --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $enable_64bit_channel_masks $disable_openmp $IMAGEMAGICK_OPTIONS
+  $CONFIGURE $CONFIGURE_OPTIONS --disable-shared --disable-opencl --disable-dpc --disable-assert --disable-deprecated --enable-static --enable-delegate-build --without-magick-plus-plus --without-utilities --disable-docs --without-x --without-perl --without-python --without-magick-plus-plus --with-rsvg --with-jxl --with-quantum-depth=$depth --enable-hdri=$hdri $enable_64bit_channel_masks $disable_openmp $IMAGEMAGICK_OPTIONS --prefix=/tmp/imagemagick
   $MAKE install
 }
 
 copyPrivateIncludes() {
-  local imageMagickInclude=`pkg-config --variable includedir ImageMagick`
+  local imageMagickInclude="/tmp/ImageMagick/include/ImageMagick-7/"
   cp MagickCore/*-private.h $imageMagickInclude/MagickCore/
-  if [ ! -d $imageMagickInclude/coders ]; then
-    mkdir $imageMagickInclude/coders
-  fi
+  mkdir -p $imageMagickInclude/coders
   cp coders/*-private.h $imageMagickInclude/coders/
 }
 

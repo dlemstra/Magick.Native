@@ -7,7 +7,7 @@ set(OPENMP false BOOL)
 add_definitions(-DMAGICK_NATIVE_${PLATFORM} -DMAGICKCORE_QUANTUM_DEPTH=${DEPTH} -DMAGICKCORE_HDRI_ENABLE=${HDRI_ENABLE})
 
 set(DEPENDENCIES_DIR "/tmp/dependencies")
-include_directories(. ${DEPENDENCIES_DIR}/include /usr/local/include/ImageMagick-7)
+include_directories(. ${DEPENDENCIES_DIR}/include /tmp/imagemagick/include/ImageMagick-7)
 link_directories(${DEPENDENCIES_DIR}/lib)
 
 if (NOT PLATFORM STREQUAL "MACOS")
@@ -107,8 +107,8 @@ endif()
 target_link_libraries(
     ${LIBRARY_NAME}
 
-    /usr/local/lib/libMagickWand-7.${QUANTUM_NAME}.a
-    /usr/local/lib/libMagickCore-7.${QUANTUM_NAME}.a
+    /tmp/imagemagick/lib/libMagickWand-7.${QUANTUM_NAME}.a
+    /tmp/imagemagick/lib/libMagickCore-7.${QUANTUM_NAME}.a
 
     ${LIBRSVG}
     ${LIBRAQM}
