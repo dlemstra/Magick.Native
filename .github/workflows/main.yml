@@ -501,6 +501,7 @@ jobs:
       - verify-linux-arm64
       - verify-linux-musl-x64
       - verify-macos
+      - verify-macos-x64
       - wasm
       - windows
     outputs:
