@@ -7,11 +7,12 @@ on:
     - main
   workflow_dispatch:
   schedule:
-    - cron:  '0 2 * * *'
-
-name: main
+    - cron: 0 2 * * *
+  
 permissions:
   contents: read
+
+name: main
 jobs:
   linux:
     name: linux ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
