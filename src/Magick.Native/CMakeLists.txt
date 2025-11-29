@@ -69,7 +69,6 @@ elseif (NOT PLATFORM STREQUAL "WASM")
 endif()
 
 set(LIBAOM libaom.a)
-set(LIBDEFLATE libdeflate.a)
 set(LIBGLIB libgio-2.0.a libgobject-2.0.a libgmodule-2.0.a libffi.a libglib-2.0.a)
 set(LIBHEIF libheif.a ${LIBAOM} libde265.a)
 set(LIBJPEG libturbojpeg.a)
@@ -133,7 +132,6 @@ target_link_libraries(
 
     ${LIBLQR}
     ${LIBLCMS}
-    ${LIBDEFLATE}
 
     ${LIBGLIB}
     ${LIBXML}
