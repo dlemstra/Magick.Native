@@ -156,6 +156,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-x64", "linux-mus
 		.devcontainer\linux-musl-x64\devcontainer.json = .devcontainer\linux-musl-x64\devcontainer.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.clang-format = .clang-format
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Building.md = Building.md
+		License.txt = License.txt
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|arm64 = DebugQ16|arm64
