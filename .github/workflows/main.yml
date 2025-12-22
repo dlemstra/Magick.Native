@@ -62,7 +62,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: linux-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
           path: artifacts
@@ -115,7 +115,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
           path: artifacts
@@ -161,7 +161,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: macos-${{matrix.quantum}}-x64
           path: artifacts
@@ -207,7 +207,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: macos-${{matrix.quantum}}-arm64
           path: artifacts
@@ -260,7 +260,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: wasm-${{matrix.quantum}}-${{matrix.architecture}}
           path: artifacts
@@ -315,7 +315,7 @@ jobs:
         working-directory: build/windows
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: windows-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.architecture}}${{matrix.openmp_flag}}
           path: artifacts
@@ -536,7 +536,7 @@ jobs:
           sed -n 's/^\[ \(.*\) \]/- \1/p' ../../NOTICE.txt >> libraries.md
 
       - name: Upload metadata
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: metadata
           path: artifacts
