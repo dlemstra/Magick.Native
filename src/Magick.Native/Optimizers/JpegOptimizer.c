@@ -149,9 +149,10 @@ static inline boolean FillInputBuffer(j_decompress_ptr decompress_info)
 
   source = (SourceManager *) decompress_info->src;
 
+  source->manager.bytes_in_buffer=0;
   if (source->inputFile != (FILE *) NULL)
     source->manager.bytes_in_buffer = (size_t) fread(source->buffer, 1, MaxBufferExtent, source->inputFile);
-  else
+  else if (source->reader != (CustomStreamHandler) NULL)
     source->manager.bytes_in_buffer = (size_t) source->reader(source->buffer, MaxBufferExtent, (void *) NULL);
   if (source->manager.bytes_in_buffer == 0)
   {
@@ -569,8 +570,11 @@ static boolean EmptyOutputBuffer(j_compress_ptr compress_info)
   destination = (DestinationManager *) compress_info->dest;
   if (destination->outputFile != (FILE *) NULL)
     destination->manager.free_in_buffer = fwrite((const char *) destination->buffer, 1, MaxBufferExtent, destination->outputFile);
-  else
+  else if (destination->writer != (CustomStreamHandler) NULL)
     destination->manager.free_in_buffer = (size_t) destination->writer((unsigned char *) destination->buffer, MaxBufferExtent, (void *) NULL);
+  else
+    return TRUE;
+
   if (destination->manager.free_in_buffer != MaxBufferExtent)
     ERREXIT(compress_info, JERR_FILE_WRITE);
   destination->manager.next_output_byte = destination->buffer;
@@ -603,7 +607,7 @@ static void TerminateDestination(j_compress_ptr compress_info)
       if (fwrite((const char *) destination->buffer, 1, count, destination->outputFile) != count)
         ERREXIT(compress_info, JERR_FILE_WRITE);
     }
-    else
+    else if (destination->writer != (CustomStreamHandler) NULL)
       destination->writer((unsigned char *) destination->buffer, count, (void *) NULL);
   }
   CloseDestinationFile(destination);
