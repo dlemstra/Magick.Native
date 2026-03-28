@@ -8,9 +8,7 @@ on:
     paths:
     - .github/workflows/codeql-analysis.yml
 
-permissions:
-  contents: read
-  security-events: write
+permissions: {}
 
 name: codeql analysis
 jobs:
@@ -18,8 +16,12 @@ jobs:
     name: CodeQL analysis (C/C++)
     runs-on: ubuntu-24.04
 
+    permissions:
+      contents: read
+      security-events: write
+
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
@@ -32,7 +34,7 @@ jobs:
         working-directory: src/ImageMagick/ImageMagick
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v4
+        uses: github/codeql-action/init@0d579ffd059c29b07949a3cce3983f0780820c98 #v4.32.6
         with:
           languages: c-cpp
           source-root: src/Magick.Native
@@ -42,21 +44,25 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4
+        uses: github/codeql-action/analyze@0d579ffd059c29b07949a3cce3983f0780820c98 #v4.32.6
 
   actions:
     name: CodeQL analysis (GitHub Actions)
     runs-on: ubuntu-24.04
 
+    permissions:
+      contents: read
+      security-events: write
+
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v4
+        uses: github/codeql-action/init@0d579ffd059c29b07949a3cce3983f0780820c98 #v4.32.6
         with:
           languages: actions
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4
+        uses: github/codeql-action/analyze@0d579ffd059c29b07949a3cce3983f0780820c98 #v4.32.6
