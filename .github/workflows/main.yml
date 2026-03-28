@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 0 2 * * *
-  
+
 permissions:
   contents: read
 
@@ -31,8 +31,7 @@ jobs:
             openmp_flag: -OpenMP
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
@@ -62,7 +61,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
         with:
           name: linux-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
           path: artifacts
@@ -84,8 +83,7 @@ jobs:
             openmp_flag: -OpenMP
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
@@ -115,7 +113,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
         with:
           name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
           path: artifacts
@@ -130,8 +128,7 @@ jobs:
         quantum: [ Q8, Q16, Q16-HDRI ]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
@@ -161,7 +158,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
         with:
           name: macos-${{matrix.quantum}}-x64
           path: artifacts
@@ -176,8 +173,7 @@ jobs:
         quantum: [ Q8, Q16, Q16-HDRI ]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
@@ -207,7 +203,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
         with:
           name: macos-${{matrix.quantum}}-arm64
           path: artifacts
@@ -225,8 +221,7 @@ jobs:
         quantum: [ Q8 ]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
@@ -260,7 +255,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Upload library
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
         with:
           name: wasm-${{matrix.quantum}}-${{matrix.architecture}}
           path: artifacts
@@ -288,8 +283,7 @@ jobs:
             openmp_flag: '-OpenMP'
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
@@ -315,7 +309,7 @@ jobs:
         working-directory: build/windows
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
         with:
           name: windows-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.architecture}}${{matrix.openmp_flag}}
           path: artifacts
@@ -354,13 +348,12 @@ jobs:
             apt-get install -y git
           fi
 
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           merge-multiple: true
 
@@ -390,13 +383,12 @@ jobs:
           apt-get update -y
           apt-get install -y git
 
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           merge-multiple: true
 
@@ -428,13 +420,12 @@ jobs:
           apk update
           apk add bash git
 
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           merge-multiple: true
 
@@ -455,13 +446,12 @@ jobs:
         os: [ macos-14, macos-15, macos-15-intel ]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           merge-multiple: true
 
@@ -480,13 +470,12 @@ jobs:
         os: [ macos-14, macos-15 ]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           merge-multiple: true
 
@@ -508,13 +497,12 @@ jobs:
       version: ${{steps.set-version.outputs.version}}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           name: windows-Q8-arm64
 
@@ -536,7 +524,7 @@ jobs:
           sed -n 's/^\[ \(.*\) \]/- \1/p' ../../NOTICE.txt >> libraries.md
 
       - name: Upload metadata
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
         with:
           name: metadata
           path: artifacts
@@ -553,13 +541,12 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           merge-multiple: true
           path: publish/dotnet/files
@@ -590,18 +577,17 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           persist-credentials: false
 
       - name: Download wasm library
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           name: wasm-Q8-x86
           path: publish/wasm/files
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f #v6.3.0
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com
