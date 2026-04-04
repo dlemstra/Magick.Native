@@ -531,7 +531,7 @@ jobs:
 
   publish-dotnet:
     name: Publish .NET library
-    if: github.event_name != 'schedule'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: windows-2022
     needs:
       - metadata
@@ -567,7 +567,7 @@ jobs:
 
   publish-wasm-x86:
     name: Publish WASM library
-    if: github.event_name != 'schedule'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     needs:
       - metadata
