@@ -41,7 +41,7 @@ jobs:
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.sh
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule'
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
@@ -93,7 +93,7 @@ jobs:
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.sh
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule'
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
@@ -134,7 +134,7 @@ jobs:
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.sh
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule'
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
@@ -179,7 +179,7 @@ jobs:
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.sh
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule'
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
@@ -227,7 +227,7 @@ jobs:
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.sh
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule'
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
@@ -289,7 +289,7 @@ jobs:
 
       - name: Update ImageMagick.commit to latest commit
         run: ./update.imagemagick.cmd
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule'
         working-directory: src/ImageMagick
 
       - name: Clone ImageMagick libraries
