@@ -119,7 +119,7 @@ jobs:
           path: artifacts
 
   macos-x64:
-    name: macOS ${{matrix.quantum}} x64
+    name: macOS ${{matrix.quantum}} (x64)
     runs-on: macos-15-intel
 
     strategy:
@@ -164,7 +164,7 @@ jobs:
           path: artifacts
 
   macos:
-    name: macOS ${{matrix.quantum}}
+    name: macOS ${{matrix.quantum}} (arm64)
     runs-on: macos-14
 
     strategy:
