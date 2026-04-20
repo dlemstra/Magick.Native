@@ -8,6 +8,7 @@
       "platform": "linux",
       "config": "linux-musl",
       "arch": "x64",
+      "quantum": "Q8",
       "debugBuild": "", // Set to yes to build with debug symbols
       "openMP": "" // Set to OpenMP to build with OpenMP support
     }

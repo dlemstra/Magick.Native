@@ -1,11 +1,8 @@
 #!/bin/bash
 set -e
 
-rm -f dependencies
-ln -s /ImageMagick/dependencies dependencies
-
 cd src/Magick.Native
-../../build/shared/build.Native.sh wasm x86
+../../build/shared/build.Native.sh wasm x86 $DC_QUANTUM
 
 # we don't want to build this in the devcontainer
 touch Q8/magick.d.ts

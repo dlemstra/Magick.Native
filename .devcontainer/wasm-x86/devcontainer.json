@@ -8,6 +8,7 @@
       "platform": "wasm",
       "config": "wasm",
       "arch": "x86",
+      "quantum": "Q8",
       "debugBuild": "" // Set to yes to build with debug symbols
     }
   },
