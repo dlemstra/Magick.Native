@@ -70,7 +70,7 @@ jobs:
     name: linux musl ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})
     runs-on: ubuntu-24.04
     container:
-      image: alpine:3.18
+      image: alpine:3.21
 
     strategy:
       fail-fast: false
