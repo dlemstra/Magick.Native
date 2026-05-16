@@ -12,7 +12,7 @@ on:
 permissions:
   contents: read
 
-name: main
+name: Main
 jobs:
   linux:
     name: linux ${{matrix.quantum}}${{matrix.openmp_flag}} (${{matrix.architecture}})

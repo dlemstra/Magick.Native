@@ -10,7 +10,7 @@ on:
 
 permissions: {}
 
-name: codeql analysis
+name: Codeql analysis
 jobs:
   c_cpp:
     name: CodeQL analysis (C/C++)
