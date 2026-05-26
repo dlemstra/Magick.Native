@@ -133,7 +133,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <OutDir>$(ProjectDir)bin\$(Configuration)\$(PlatformName)\</OutDir>
     <IntDir>$(ProjectDir)lib\$(Configuration)\$(PlatformName)\</IntDir>
