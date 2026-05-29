@@ -159,6 +159,7 @@
       <AdditionalLibraryDirectories>..\ImageMagick\Artifacts\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <DelayLoadDLLs>bcrypt.dll;DNSAPI.dll;GDI32.dll;gdiplus.dll;IPHLPAPI.DLL;MSIMG32.dll;ole32.dll;SHELL32.dll;urlmon.dll;WS2_32.dll</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="$(Configuration.Contains('Debug'))">
