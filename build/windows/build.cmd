@@ -35,7 +35,7 @@ if not "%openMP%"=="noOpenMP" set quantumName=%quantumName%-OpenMP
 set library_name=Magick.Native-%quantumName%-%architecture%.dll
 echo ^<Project^>^<ItemDefinitionGroup Condition="'$(MSBuildProjectName)' == 'CORE_MagickCore'"^>^<ClCompile^>^<PreprocessorDefinitions^>%%(PreprocessorDefinitions);MAGICKCORE_LIBRARY_NAME="%library_name%"^</PreprocessorDefinitions^>^</ClCompile^>^</ItemDefinitionGroup^>^</Project^> > Directory.Build.targets
 
-msbuild IM7.Static.%architecture%.sln /m /t:Rebuild /p:Configuration=%config%,Platform=%architecture%
+msbuild IM7.Static.%architecture%.sln /verbosity:minimal /m /t:Rebuild /p:Configuration=%config%,Platform=%architecture%
 
 if %ERRORLEVEL% neq 0 (
     cd %SCRIPT_DIR%
@@ -46,7 +46,7 @@ cd ..\..
 
 set configuration=%config%%quantumName%
 
-msbuild Magick.Native.sln /m /t:Rebuild /p:Configuration=%configuration%,Platform=%architecture%
+msbuild Magick.Native.sln /verbosity:minimal /m /t:Rebuild /p:Configuration=%configuration%,Platform=%architecture%
 
 if %ERRORLEVEL% neq 0 (
     cd %SCRIPT_DIR%
