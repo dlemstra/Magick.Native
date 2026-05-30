@@ -62,7 +62,7 @@ download_release()
 
 download_configure()
 {
-  local version="2026.05.29.1731"
+  local version="2026.05.30.1026"
 
   mkdir -p "Configure"
   cd "Configure"
@@ -89,7 +89,7 @@ clone_dependencies()
 
 download_dependencies()
 {
-  local version="2026.05.30.0631"
+  local version="2026.05.30.1055"
   local artifact=$1
 
   mkdir -p "Dependencies"
