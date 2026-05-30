@@ -600,8 +600,8 @@ jobs:
           VERSION: ${{needs.metadata.outputs.version}}
         run: |
           gh release create "$VERSION" \
-            --title "$VERSION" \
-            --notes " " \
+            --title "Release $VERSION" \
+            --notes "Release $VERSION" \
             ${{github.workspace}}/artifacts/*.zip \
 
   publish-wasm-x86:
