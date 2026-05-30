@@ -565,8 +565,8 @@ jobs:
           $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
           dotnet nuget push $file.FullName --api-key ${{secrets.GITHUB_TOKEN}} --source "github"
 
-  release:
-    name: Create Release
+  publish-release:
+    name: Publish release
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     needs:
@@ -598,7 +598,7 @@ jobs:
       - name: Publish release
         env:
           GH_TOKEN: ${{github.token}}
-          VERSION: ${{needs.version.outputs.version}}
+          VERSION: ${{needs.metadata.outputs.version}}
         run: |
           gh release create $VERSION \
             --title "$VERSION" \
