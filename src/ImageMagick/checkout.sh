@@ -89,7 +89,7 @@ clone_dependencies()
 
 download_dependencies()
 {
-  local version="2026.05.29.1836"
+  local version="2026.05.30.0631"
   local artifact=$1
 
   mkdir -p "Dependencies"
