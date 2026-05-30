@@ -588,7 +588,6 @@ jobs:
       - name: Create and push tag
         env:
           VERSION: ${{needs.metadata.outputs.version}}
-        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
