@@ -583,6 +583,7 @@ jobs:
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
         with:
           path: artifacts
+          skip-decompress: true
 
       - name: Create and push tag
         env:
@@ -594,16 +595,15 @@ jobs:
           git tag $VERSION
           git push origin $VERSION
 
-      - name: Create release
+      - name: Publish release
         env:
           GH_TOKEN: ${{github.token}}
-          VERSION: ${{needs.metadata.outputs.version}}
+          VERSION: ${{needs.version.outputs.version}}
         run: |
-          files=$(find artifacts -type f -not -path 'artifacts/wasm-*' | tr '\n' ' ')
-          gh release create "$VERSION" \
+          gh release create $VERSION \
             --title "$VERSION" \
             --notes " " \
-            $files
+            ${{github.workspace}}/artifacts/*.zip \
 
   publish-wasm-x86:
     name: Publish WASM library
