@@ -599,7 +599,7 @@ jobs:
           GH_TOKEN: ${{github.token}}
           VERSION: ${{needs.metadata.outputs.version}}
         run: |
-          gh release create $VERSION \
+          gh release create "$VERSION" \
             --title "$VERSION" \
             --notes " " \
             ${{github.workspace}}/artifacts/*.zip \
