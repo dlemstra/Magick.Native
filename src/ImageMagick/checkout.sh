@@ -49,31 +49,9 @@ clone_imagemagick()
   cd ..
 }
 
-download_release()
-{
-  local project=$1
-  local release=$2
-  local file=$3
-
-  echo "Downloading $file from release $release of $project"
-
-  curl -sS -L "https://github.com/ImageMagick/$project/releases/download/$release/$file" -o "$file"
-}
-
 download_configure()
 {
-  local version="2026.05.30.1026"
-
-  mkdir -p "Configure"
-  cd "Configure"
-
-  download_release "Configure" "$version" "Configure.Release.x64.exe"
-  download_release "Configure" "$version" "Configure.Release.arm64.exe"
-  download_release "Configure" "$version" "Configure.Release.x86.exe"
-  download_release "Configure" "$version" "files.zip"
-  unzip -o "files.zip" || rm "files.zip"
-
-  cd ..
+  ./ImageMagick/.github/build/windows/download-configure.sh
 }
 
 clone_dependencies()
@@ -89,23 +67,9 @@ clone_dependencies()
 
 download_dependencies()
 {
-  local version="2026.05.30.1055"
-  local artifact=$1
+  local dependencies_artifact=$1
 
-  mkdir -p "Dependencies"
-  cd "Dependencies"
-
-  download_release "Dependencies" "$version" "$artifact"
-  unzip -o "$artifact" -d "../Artifacts" || {
-    exit_code=$?
-    if [[ $exit_code -ne 0 && $exit_code -ne 1 ]]; then
-      echo "Unzip failed with exit code $exit_code"
-      exit $exit_code
-    fi
-  }
-
-  cd ..
-
+  ./ImageMagick/.github/build/windows/download-dependencies.sh --dependencies-artifact $dependencies_artifact
   if [[ ! "$(uname -s)" =~ ^(CYGWIN|MINGW|MSYS) ]]; then
     echo "Moving Artifacts directory to /tmp/dependencies"
     rm -Rf /tmp/dependencies
