@@ -443,7 +443,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-14, macos-15, macos-15-intel ]
+        os: [ macos-14, macos-15, macos-15-intel, macos-26 ]
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
@@ -467,7 +467,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-14, macos-15 ]
+        os: [ macos-14, macos-15, macos-26 ]
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
