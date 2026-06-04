@@ -602,7 +602,7 @@ jobs:
           gh release create "$VERSION" \
             --title "Release $VERSION" \
             --notes "Release $VERSION" \
-            ${{github.workspace}}/artifacts/*.zip \
+            ${{github.workspace}}/artifacts/**/*.zip \
 
   publish-wasm-x86:
     name: Publish WASM library
