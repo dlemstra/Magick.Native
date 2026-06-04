@@ -41,6 +41,7 @@ verifyNative() {
     exit 1
   fi
 
+  macos_version=$(sw_vers -productVersion)
   # Use -dylib to indicate that this is a dynamic library so no entry point is required
   output=$(ld $file -arch $ld_arch -platform_version macos $macos_version $macos_version -dylib 2>&1) || exit_code=$?
   if [ $exit_code -ne 0 ]; then
