@@ -7,17 +7,17 @@ brew list --formula
 
 # Uninstall already installed development libraries
 
-brew uninstall composer
-brew uninstall php
-brew uninstall ant
-brew uninstall gradle
-brew uninstall maven
-brew uninstall kotlin
-brew uninstall selenium-server
+brew uninstall -q composer
+brew uninstall -q php
+brew uninstall -q ant
+brew uninstall -q gradle
+brew uninstall -q maven
+brew uninstall -q kotlin
+brew uninstall -q selenium-server
 
-brew uninstall --ignore-dependencies brotli
-brew uninstall --ignore-dependencies xz
-brew uninstall --ignore-dependencies zstd
+brew uninstall -q --ignore-dependencies brotli
+brew uninstall -q --ignore-dependencies xz
+brew uninstall -q --ignore-dependencies zstd
 
 packages=(
     "aom"
@@ -64,6 +64,6 @@ if [ "$should_exit" = true ]; then
 fi
 
 # Install build tools
-brew install automake libtool gnu-sed ossp-uuid
+brew install -q automake libtool gnu-sed ossp-uuid
 
-pip3 install --break-system-packages setuptools
+pip3 install --break-system-packages setuptools -q
