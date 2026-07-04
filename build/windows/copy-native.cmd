@@ -26,12 +26,6 @@ if not exist "%architecture%" mkdir "%architecture%"
 cd "%architecture%"
 
 copy /Y "%SCRIPT_DIR%..\..\src\Magick.Native\bin\%quantumName%\%architecture%\*.dll" .
-cd ..\..\..
-
-if not exist "resources" mkdir "resources"
-cd resources
-
-call "%SCRIPT_DIR%copy-resources.cmd" "%quantumName%" "%architecture%"
 
 goto done
 

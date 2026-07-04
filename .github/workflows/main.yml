@@ -302,6 +302,18 @@ jobs:
         run: build.cmd Release ${{matrix.quantum}} ${{matrix.architecture}} ${{matrix.hdri}} ${{matrix.openmp}}
         working-directory: build/windows
 
+      - name: Copy Resources
+        shell: cmd
+        run: |
+          call copy-resources.cmd ..\..\resources-artifacts Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} ${{matrix.architecture}}
+        working-directory: build/windows
+
+      - name: Upload resources
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
+        with:
+          name: resources-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.architecture}}${{matrix.openmp_flag}}
+          path: resources-artifacts
+
       - name: Copy Native
         shell: cmd
         run: |

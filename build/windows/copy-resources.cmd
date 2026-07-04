@@ -3,11 +3,20 @@ setlocal
 
 set "SCRIPT_DIR=%~dp0"
 
-set quantumName=%1
-set architecture=%2
+set folder=%1
+set quantumName=%2
+set architecture=%3
 
+if "%folder%"=="" goto invalid
 if "%quantumName%"=="" goto invalid
 if "%architecture%"=="" goto invalid
+
+if not exist "%folder%" mkdir "%folder%"
+
+cd "%folder%"
+
+if not exist "resources" mkdir "resources"
+cd resources
 
 if not exist "%quantumName%" mkdir "%quantumName%"
 
