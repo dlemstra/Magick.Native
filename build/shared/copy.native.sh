@@ -18,9 +18,7 @@ copyNative() {
     name=${name}-OpenMP
   fi
 
-  local targetFolder="$folder/$platform"
-  mkdir -p $targetFolder
-  cp $quantum/libMagick.Native-$name-$architecture.dll.$EXTENSION $targetFolder/Magick.Native-$name-$architecture.dll.$EXTENSION
+  cp $quantum/libMagick.Native-$name-$architecture.dll.$EXTENSION $folder/Magick.Native-$name-$architecture.dll.$EXTENSION
 }
 
 [ "$folder" != "" ] && [ ! -d "$folder" ] && mkdir "$folder"
