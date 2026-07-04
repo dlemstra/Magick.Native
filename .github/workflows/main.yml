@@ -541,42 +541,6 @@ jobs:
           name: metadata
           path: artifacts
 
-  publish-dotnet:
-    name: Publish .NET library
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: windows-2025-vs2026
-    needs:
-      - metadata
-
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 #v7.0.0
-        with:
-          persist-credentials: false
-
-      - name: Download artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
-        with:
-          merge-multiple: true
-          path: publish/dotnet/files
-
-      - name: Create NuGet package
-        env:
-          VERSION: ${{needs.metadata.outputs.version}}
-        run: ./publish.ps1 -version $env:VERSION -destination ..\..\artifacts
-        working-directory: publish/dotnet
-
-      - name: Upload NuGet package
-        if: github.event_name != 'pull_request'
-        working-directory: publish/dotnet
-        run: |
-          dotnet nuget add source --name github "https://nuget.pkg.github.com/dlemstra/index.json"
-          $file = Get-ChildItem -Path . -Recurse -Filter *.nupkg | Select -First 1
-          dotnet nuget push $file.FullName --api-key ${{secrets.GITHUB_TOKEN}} --source "github"
-
   publish-release:
     name: Publish release
     if: github.event_name == 'workflow_dispatch'
