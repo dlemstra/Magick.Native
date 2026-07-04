@@ -63,7 +63,7 @@ jobs:
       - name: Upload library
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
         with:
-          name: linux-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
+          name: linux-${{matrix.quantum}}-${{matrix.architecture}}${{matrix.openmp_flag}}
           path: artifacts
 
   linux-musl:
@@ -115,7 +115,7 @@ jobs:
       - name: Upload library
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
         with:
-          name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}-${{matrix.openmp}}
+          name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}${{matrix.openmp_flag}}
           path: artifacts
 
   macos-x64:
