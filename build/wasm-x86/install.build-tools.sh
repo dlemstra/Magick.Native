@@ -3,7 +3,7 @@ set -e
 
 apt-get update -qq
 
-apt-get install -y -qq autogen autoconf libtool locales pkg-config shtool
+apt-get install -y -qq autogen autoconf libtool locales pkg-config shtool > /dev/null
 
 locale-gen en_US.UTF-8
 
