@@ -17,9 +17,6 @@ cd "%folder%"
 
 copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\NOTICE.txt" .
 
-mkdir windows
-cd windows
-
 if not exist "%quantumName%" mkdir "%quantumName%"
 cd "%quantumName%"
 if not exist "%architecture%" mkdir "%architecture%"
