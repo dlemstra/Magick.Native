@@ -317,7 +317,8 @@ jobs:
       - name: Copy Native
         shell: cmd
         run: |
-          call copy-native.cmd ..\..\artifacts Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} ${{matrix.architecture}}
+          mkdir ..\..\artifacts
+          call copy-native.cmd ..\..\artifacts
         working-directory: build/windows
 
       - name: Upload artifacts
