@@ -305,7 +305,7 @@ jobs:
       - name: Copy Resources
         shell: cmd
         run: |
-          call copy-resources.cmd ..\..\resources-artifacts Release${{matrix.quantum}}${{matrix.hdri_flag}}${{matrix.openmp_flag}} ${{matrix.architecture}}
+          call copy-resources.cmd ..\..\resources-artifacts
         working-directory: build/windows
 
       - name: Upload resources
