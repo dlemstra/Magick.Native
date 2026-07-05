@@ -11,7 +11,10 @@ if "%folder%"=="" goto invalid
 if "%quantumName%"=="" goto invalid
 if "%architecture%"=="" goto invalid
 
-if not exist "%folder%" mkdir "%folder%"
+if not exist "%folder%" (
+    echo Warning: folder "%folder%" does not exist.
+    exit /b 1
+)
 
 cd "%folder%"
 
