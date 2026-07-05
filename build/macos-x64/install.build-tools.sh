@@ -3,6 +3,8 @@ set -e
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+brew untap aws/tap || true
+
 brew list --formula
 
 # Uninstall already installed development libraries
