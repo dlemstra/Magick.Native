@@ -15,17 +15,6 @@ if not exist "%folder%" mkdir "%folder%"
 
 cd "%folder%"
 
-if not exist "resources" mkdir "resources"
-cd resources
-
-if not exist "%quantumName%" mkdir "%quantumName%"
-
-cd %quantumName%
-
-if not exist "%architecture%" mkdir "%architecture%"
-
-cd %architecture%
-
 copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\bin\*.xml" .
 copy /Y "%SCRIPT_DIR%..\..\src\Magick.Native\Resources\xml\*.xml" .
 
