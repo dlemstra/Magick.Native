@@ -15,6 +15,7 @@ if not exist "%folder%" mkdir "%folder%"
 
 cd "%folder%"
 
+copy /Y "%SCRIPT_DIR%..\..\src\ImageMagick\Artifacts\NOTICE.txt" .
 copy /Y "%SCRIPT_DIR%..\..\src\Magick.Native\bin\%quantumName%\%architecture%\*.dll" .
 
 goto done
