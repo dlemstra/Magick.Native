@@ -317,7 +317,6 @@ jobs:
       - name: Copy Native
         shell: cmd
         run: |
-          mkdir ..\..\artifacts
           call copy-native.cmd ..\..\artifacts
         working-directory: build/windows
 
