@@ -71,17 +71,18 @@ MAGICK_NATIVE_EXPORT void PixelCollection_SetArea(CacheView *instance, const ssi
   image = GetCacheViewImage(instance);
   q = values;
   row_size = image->number_channels * width;
+  remaining = length;
   for (r = 0; r < (ssize_t) height; r++)
   {
     pixels = QueueCacheViewAuthenticPixels(instance, x, y + r, width, 1, exceptionInfo);
     if (pixels == (Quantum *) NULL)
       break;
-    remaining = length - (row_size * r);
     memcpy(pixels, q, (row_size < remaining ? row_size : remaining) * sizeof(*pixels));
     if (SyncCacheViewAuthenticPixels(instance, exceptionInfo) == MagickFalse)
       break;
     if (row_size > remaining)
       break;
+    remaining -= row_size;
     q += row_size;
   }
   MAGICK_NATIVE_SET_EXCEPTION;
