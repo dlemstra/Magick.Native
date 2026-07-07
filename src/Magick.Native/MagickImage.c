@@ -305,14 +305,18 @@ MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *instance)
   return (ssize_t) instance->colors;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_ColormapSize_Set(Image *instance, const ssize_t value, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_ColormapSize_Set(Image *instance, const ssize_t value, ExceptionInfo **exception)
 {
+  MagickBooleanType
+    status;
+
   if (value < 0 || value > (const ssize_t) MaxColormapSize)
-    return;
+    return MagickFalse;
 
   MAGICK_NATIVE_GET_EXCEPTION;
-  AcquireImageColormap(instance, (size_t) value, exceptionInfo);
+  status = AcquireImageColormap(instance, (size_t) value, exceptionInfo);
   MAGICK_NATIVE_SET_EXCEPTION;
+  return status;
 }
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ColorSpace_Get(const Image *instance)

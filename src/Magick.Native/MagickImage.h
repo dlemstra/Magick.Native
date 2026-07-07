@@ -55,7 +55,7 @@ MAGICK_NATIVE_EXPORT double MagickImage_ColorFuzz_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ColorFuzz_Set(Image *, const double);
 
 MAGICK_NATIVE_EXPORT ssize_t MagickImage_ColormapSize_Get(const Image *);
-MAGICK_NATIVE_EXPORT void MagickImage_ColormapSize_Set(Image *, const ssize_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickImage_ColormapSize_Set(Image *, const ssize_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT size_t MagickImage_ColorSpace_Get(const Image *);
 MAGICK_NATIVE_EXPORT void MagickImage_ColorSpace_Set(Image *, const size_t, ExceptionInfo **);
