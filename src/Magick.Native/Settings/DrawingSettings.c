@@ -278,7 +278,7 @@ MAGICK_NATIVE_EXPORT void DrawingSettings_SetStrokeDashArray(DrawInfo *instance,
   if (length > 0)
   {
     isTerminated = value[length - 1] == 0.0 ? MagickTrue : MagickFalse;
-    instance->dash_pattern = (double *) AcquireMagickMemory((length + (isTerminated == MagickFalse ? 1 : 0)) * sizeof(double));
+    instance->dash_pattern = (double *) AcquireQuantumMemory((length + (isTerminated == MagickFalse ? 1 : 0)), sizeof(double));
     memcpy(instance->dash_pattern, value, length * sizeof(double));
     if (isTerminated == MagickFalse)
       instance->dash_pattern[length] = 0.0;

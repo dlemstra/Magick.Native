@@ -14,7 +14,7 @@
       channel_index, \
       channel_length; \
     channel_length = GetImageListLength(images); \
-    channel_masks = (ChannelType *) AcquireMagickMemory(channel_length * sizeof(*channel_masks)); \
+    channel_masks = (ChannelType *) AcquireQuantumMemory(channel_length, sizeof(*channel_masks)); \
     channel_index = 0; \
     channel_image = images; \
     while (channel_image != (Image *) NULL) \

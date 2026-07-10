@@ -6,7 +6,7 @@
 
 MAGICK_NATIVE_EXPORT PointInfo *PointInfoCollection_Create(const size_t length)
 {
-  return (PointInfo *) AcquireMagickMemory(sizeof(PointInfo) * length);
+  return (PointInfo *) AcquireQuantumMemory(length, sizeof(PointInfo));
 }
 
 MAGICK_NATIVE_EXPORT void PointInfoCollection_Dispose(PointInfo *instance)
