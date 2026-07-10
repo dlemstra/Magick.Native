@@ -4,7 +4,6 @@
 #include "Stdafx.h"
 #include "MagickImage.h"
 #include "Colors/MagickColor.h"
-#include "Settings/DrawingSettings.h"
 #include "Settings/QuantizeSettings.h"
 #include "Types/PrimaryInfo.h"
 #include "Types/MagickRectangle.h"
@@ -2215,8 +2214,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_SetColormapColor(Image *instance, const si
     return;
 
   const size_t size = index + 1;
-  if (instance->colors < size)
-    MagickImage_ColormapSize_Set(instance, (const ssize_t) size, exception);
+  if (instance->colors < size && MagickImage_ColormapSize_Set(instance, (const ssize_t) size, exception) == MagickFalse)
+    return;
 
   instance->colormap[index] = *color;
 }
