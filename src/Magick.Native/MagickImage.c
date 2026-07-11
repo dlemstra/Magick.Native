@@ -1593,6 +1593,56 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Implode(const Image *instance, const dou
   return image;
 }
 
+MAGICK_NATIVE_EXPORT void MagickImage_ImportIndexedPixels(Image *instance, const size_t width, const size_t height, const PixelInfo *colors, const size_t colorCount, const size_t storageType, const void *data, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  instance->channels = IndexChannel;
+  instance->colorspace = GRAYColorspace;
+  if (SetImageExtent(instance, width, height, exceptionInfo) != MagickFalse &&
+      AcquireImageColormap(instance, colorCount, exceptionInfo) != MagickFalse)
+  {
+    size_t
+      index;
+
+    ssize_t
+      x,
+      y;
+
+    unsigned char
+      *charIndex;
+
+    unsigned short
+      *shortIndex;
+
+    for (index = 0; index < colorCount; index++)
+      instance->colormap[index] = *colors++;
+
+    charIndex = (unsigned char *) data;
+    shortIndex = (unsigned short *) data;
+    for (y = 0; y < (ssize_t) instance->rows; y++)
+    {
+      Quantum
+        *q;
+
+      q = QueueAuthenticPixels(instance, 0, y, instance->columns, 1, exceptionInfo);
+      if (q == (Quantum *) NULL)
+        break;
+
+      if (storageType == CharPixel)
+      {
+        for (x = 0; x < (ssize_t) instance->columns; x++)
+          SetPixelIndex(instance, (Quantum) *charIndex++, q++);
+      }
+      else if (storageType == ShortPixel)
+      {
+        for (x = 0; x < (ssize_t) instance->columns; x++)
+          SetPixelIndex(instance, (Quantum) *shortIndex++, q++);
+      }
+    }
+  }
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
+
 MAGICK_NATIVE_EXPORT void MagickImage_ImportPixels(Image *instance, const ssize_t x, const ssize_t y, const size_t width, const size_t height, const char *map, const size_t storageType, const void *data, const size_t offsetInBytes, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
