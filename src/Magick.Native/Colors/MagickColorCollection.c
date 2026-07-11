@@ -5,12 +5,22 @@
 #include "MagickColor.h"
 #include "MagickColorCollection.h"
 
-MAGICK_NATIVE_EXPORT void MagickColorCollection_DisposeList(PixelInfo *list)
+MAGICK_NATIVE_EXPORT PixelInfo *MagickColorCollection_Create(const size_t length)
 {
-  RelinquishMagickMemory(list);
+  return (PixelInfo *) AcquireQuantumMemory(length, sizeof(PixelInfo));
 }
 
-MAGICK_NATIVE_EXPORT PixelInfo *MagickColorCollection_GetInstance(const PixelInfo *list, const size_t index)
+MAGICK_NATIVE_EXPORT void MagickColorCollection_Dispose(PixelInfo *instance)
 {
-  return MagickColor_Clone(&list[index]);
+  RelinquishMagickMemory(instance);
+}
+
+MAGICK_NATIVE_EXPORT PixelInfo *MagickColorCollection_Get(const PixelInfo *instance, const size_t index)
+{
+  return MagickColor_Clone(&instance[index]);
+}
+
+MAGICK_NATIVE_EXPORT void MagickColorCollection_Set(PixelInfo *instance, const size_t index, const PixelInfo *value)
+{
+  instance[index] = *value;
 }
