@@ -1638,6 +1638,8 @@ MAGICK_NATIVE_EXPORT void MagickImage_ImportIndexedPixels(Image *instance, const
         for (x = 0; x < (ssize_t) instance->columns; x++)
           SetPixelIndex(instance, (Quantum) *shortIndex++, q++);
       }
+      if (SyncAuthenticPixels(instance, exceptionInfo) == MagickFalse)
+        break;
     }
   }
   MAGICK_NATIVE_SET_EXCEPTION;
