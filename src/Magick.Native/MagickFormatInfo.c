@@ -84,6 +84,11 @@ MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsWriting_Get(cons
   return GetImageEncoder(instance) != (EncodeImageHandler *) NULL ? MagickTrue : MagickFalse;
 }
 
+MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Version_Get(const MagickInfo *instance)
+{
+  return instance->version;
+}
+
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **list, const size_t index, ExceptionInfo **exception)
 {
   return GetInfoByName(list[index], exception);

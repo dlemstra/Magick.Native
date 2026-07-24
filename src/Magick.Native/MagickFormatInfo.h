@@ -28,6 +28,8 @@ MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsReading_Get(cons
 
 MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_SupportsWriting_Get(const MagickInfo *);
 
+MAGICK_NATIVE_EXPORT const char *MagickFormatInfo_Version_Get(const MagickInfo *);
+
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfo(char **, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoByName(const char *, ExceptionInfo **);
