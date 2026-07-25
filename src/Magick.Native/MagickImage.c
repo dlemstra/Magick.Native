@@ -1597,7 +1597,7 @@ MAGICK_NATIVE_EXPORT void MagickImage_ImportIndexedPixels(Image *instance, const
 {
   MAGICK_NATIVE_GET_EXCEPTION;
   instance->channels = IndexChannel;
-  instance->colorspace = GRAYColorspace;
+  instance->colorspace = colors->colorspace;
   if (AcquireImageColormap(instance, colorCount, exceptionInfo) != MagickFalse &&
       SetImageExtent(instance, width, height, exceptionInfo) != MagickFalse)
   {
