@@ -1613,15 +1613,16 @@ MAGICK_NATIVE_EXPORT void MagickImage_ImportIndexedPixels(Image *instance, const
     unsigned short
       *shortIndex;
 
-    for (index = 0; index < colorCount; index++)
-      instance->colormap[index] = *colors++;
-
     charIndex = (unsigned char *) data;
     shortIndex = (unsigned short *) data;
     if (storageType == CharPixel)
       instance->colorspace = colors[*charIndex].colorspace;
     else if (storageType == ShortPixel)
       instance->colorspace = colors[*shortIndex].colorspace;
+
+    for (index = 0; index < colorCount; index++)
+      instance->colormap[index] = *colors++;
+
     for (y = 0; y < (ssize_t) instance->rows; y++)
     {
       Quantum
