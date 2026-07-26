@@ -1597,7 +1597,6 @@ MAGICK_NATIVE_EXPORT void MagickImage_ImportIndexedPixels(Image *instance, const
 {
   MAGICK_NATIVE_GET_EXCEPTION;
   instance->channels = IndexChannel;
-  instance->colorspace = colors->colorspace;
   if (AcquireImageColormap(instance, colorCount, exceptionInfo) != MagickFalse &&
       SetImageExtent(instance, width, height, exceptionInfo) != MagickFalse)
   {
@@ -1619,6 +1618,10 @@ MAGICK_NATIVE_EXPORT void MagickImage_ImportIndexedPixels(Image *instance, const
 
     charIndex = (unsigned char *) data;
     shortIndex = (unsigned short *) data;
+    if (storageType == CharPixel)
+      instance->colorspace = colors[*charIndex].colorspace;
+    else if (storageType == ShortPixel)
+      instance->colorspace = colors[*shortIndex].colorspace;
     for (y = 0; y < (ssize_t) instance->rows; y++)
     {
       Quantum
