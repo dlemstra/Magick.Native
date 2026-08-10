@@ -34,7 +34,7 @@ jobs:
         working-directory: src/ImageMagick/ImageMagick
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@f205ea1c3313d32999d8d6a48b4f6530d4437b38 #v4.37.4
+        uses: github/codeql-action/init@d1ba80a13dd99fba24a470575428917156a28b43 #v4.37.5
         with:
           languages: c-cpp
           source-root: src/Magick.Native
@@ -44,7 +44,7 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@f205ea1c3313d32999d8d6a48b4f6530d4437b38 #v4.37.4
+        uses: github/codeql-action/analyze@d1ba80a13dd99fba24a470575428917156a28b43 #v4.37.5
 
   actions:
     name: CodeQL analysis (GitHub Actions)
@@ -60,9 +60,9 @@ jobs:
           persist-credentials: false
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@f205ea1c3313d32999d8d6a48b4f6530d4437b38 #v4.37.4
+        uses: github/codeql-action/init@d1ba80a13dd99fba24a470575428917156a28b43 #v4.37.5
         with:
           languages: actions
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@f205ea1c3313d32999d8d6a48b4f6530d4437b38 #v4.37.4
+        uses: github/codeql-action/analyze@d1ba80a13dd99fba24a470575428917156a28b43 #v4.37.5
