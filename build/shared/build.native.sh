@@ -25,6 +25,7 @@ getLibraryName() {
 buildNative() {
   local quantum=$1
 
+  local architecture=$architecture
   local quantum_name=$quantum
   local library_name=$(getLibraryName $quantum)
   local depth=8
@@ -48,7 +49,7 @@ buildNative() {
   mkdir $quantum
   cd $quantum
 
-  $CMAKE_COMMAND $CMAKE_OPTIONS -DDEPTH=$depth -DHDRI_ENABLE=$hdri_enable -DOPENMP=$openmp_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
+  $CMAKE_COMMAND $CMAKE_OPTIONS -DDEPTH=$depth -DHDRI_ENABLE=$hdri_enable -DOPENMP=$openmp_enable -DQUANTUM_NAME=$quantum_name -DLIBRARY_NAME=$library_name -DPLATFORM=$PLATFORM -DARCHITECTURE=$architecture -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
   make
 
   cd ..

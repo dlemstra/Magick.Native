@@ -217,7 +217,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        architecture: [ x86 ]
+        architecture: [ x64, x86 ]
         quantum: [ Q8 ]
 
     steps:
