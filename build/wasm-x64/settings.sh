@@ -1,9 +1,9 @@
 # Compiler settings
 if [[ "${DEBUG_BUILD}" ]]; then
-    export FLAGS="-g3 -O0 -Wall -DDEBUG -w64"
+    export FLAGS="-g3 -O0 -Wall -DDEBUG -m64"
     export CMAKE_BUILD_TYPE="Debug"
 else
-    export FLAGS="-O3 -Wall -DNDEBUG -w64"
+    export FLAGS="-O3 -Wall -DNDEBUG -m64"
     export CMAKE_BUILD_TYPE="Release"
 fi
 export CFLAGS=$FLAGS
