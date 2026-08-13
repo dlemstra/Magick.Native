@@ -7,7 +7,6 @@ apt-get install -y -qq autogen autoconf libtool locales pkg-config shtool > /dev
 
 locale-gen en_US.UTF-8
 
-pip3 install --upgrade pip -q
-pip3 install cmake==3.30.3 -q
+pip3 install --break-system-packages cmake==3.30.3 -q
 
 emconfigure || true
