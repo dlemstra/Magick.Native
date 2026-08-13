@@ -212,7 +212,7 @@ jobs:
     name: wasm (${{matrix.architecture}})
     runs-on: ubuntu-24.04
     container:
-      image: emscripten/emsdk:4.0.7
+      image: emscripten/emsdk:6.0.6
 
     strategy:
       fail-fast: false

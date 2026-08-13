@@ -100,8 +100,9 @@ if (PLATFORM STREQUAL "WASM")
     unset(LIBOPENH264)
 else()
     add_library(${LIBRARY_NAME} SHARED ${ALL_FILES})
-    set_target_properties(${LIBRARY_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 endif()
+
+set_target_properties(${LIBRARY_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 target_link_libraries(
     ${LIBRARY_NAME}
