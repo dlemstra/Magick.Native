@@ -11,12 +11,22 @@ export class TypeDefinitionWriter {
     async write(fileName: string) {
         let data = `export type quantum = number;
 export type quantumArray = Uint8Array;
+export type size = number;
 
 /** @internal */
 export type NativePointer = number;
 
 /** @internal */
-export type NativeSizeT = number;
+export const NativeNullPointer: NativePointer;
+
+/** @internal */
+export const NativePointerSize: number;
+
+/** @internal */
+export const NativePointerType: string;
+
+/** @internal */
+export function CreateNativePointer(instance: number): NativePointer;
 
 /** @internal */
 export interface FileStream {}

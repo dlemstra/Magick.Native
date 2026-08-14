@@ -144,13 +144,14 @@ export class CodeParser {
             case 'MagickSizeType':
             case 'MagickStatusType':
             case 'PaintMethod':
-            case 'size_t':
-            case 'ssize_t':
             case 'StretchType':
             case 'StyleType':
                 return 'number';
             case 'Quantum':
                 return 'quantum';
+            case 'size_t':
+            case 'ssize_t':
+                return 'size';
             default:
                 throw new Error(`Unknown type name: "${typeName}"`);
         }
