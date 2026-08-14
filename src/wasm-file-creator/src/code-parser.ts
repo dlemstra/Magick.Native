@@ -105,7 +105,7 @@ export class CodeParser {
         typeName = this.removeStartKeywords(typeName);
 
         if (typeName.endsWith('*'))
-            return 'number';
+            return 'pointer';
 
         switch (typeName) {
             case 'void':

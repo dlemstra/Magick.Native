@@ -11,6 +11,7 @@ export class TypeDefinitionWriter {
     async write(fileName: string) {
         let data = `export type quantum = number;
 export type quantumArray = Uint8Array;
+export type pointer = number;
 
 /** @internal */
 export interface FileStream {}
@@ -31,16 +32,16 @@ export interface VirtualFileSystem {
 
 /** @internal */
 export interface ImageMagickApi {
-    _malloc(size: number): number;
-    _free(instance: number): void;
+    _malloc(size: number): pointer;
+    _free(instance: pointer): void;
     HEAPU8: Uint8Array;
     FS: VirtualFileSystem;
-    addFunction(method: (...args: any[]) => void, signature: string): number;
-    getValue(instance: number, type: string): number;
+    addFunction(method: (...args: any[]) => void, signature: string): pointer;
+    getValue(instance: pointer, type: string): pointer;
     lengthBytesUTF8(str: string): number;
-    setValue(instance: number, value: number, type: string): void;
-    stringToUTF8(str: string, outPtr: number, maxBytesToWrite: number): void;
-    UTF8ToString(ptr: number): string;
+    setValue(instance: pointer, value: pointer, type: string): void;
+    stringToUTF8(str: string, outPtr: pointer, maxBytesToWrite: number): void;
+    UTF8ToString(ptr: pointer): string;
 `;
 
     for (const method of this.methods) {
