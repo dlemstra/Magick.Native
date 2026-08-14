@@ -66,7 +66,7 @@ export class CodeParser {
 
     private getReturnType(returnType: string, methodName: string) {
         if (methodName[0] === '*')
-            return 'number'
+            return 'pointer'
 
         return this.getType(returnType);
     }
@@ -92,7 +92,7 @@ export class CodeParser {
                 while (name.startsWith('*'))
                     name = name.substring(1);
 
-                parameters.push({ name, type: 'number' });
+                parameters.push({ name, type: 'pointer' });
             } else {
                 parameters.push({ name, type: this.getType(typeName) });
             }
