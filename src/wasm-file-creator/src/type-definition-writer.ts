@@ -9,9 +9,13 @@ export class TypeDefinitionWriter {
     constructor(private methods: Method[]) { }
 
     async write(fileName: string) {
-        let data = `export type NativePointer = number;
-export type NativeQuantum = number;
-export type NativeQuantumArray = Uint8Array;
+        let data = `export type quantum = number;
+export type quantumArray = Uint8Array;
+
+/** @internal */
+export type NativePointer = number;
+
+/** @internal */
 export type NativeSizeT = number;
 
 /** @internal */
@@ -32,16 +36,10 @@ export interface VirtualFileSystem {
 }
 
 /** @internal */
-export interface HEAPU8 {
-    set(array: ByteArray, offset: NativeSizeT): void;
-    subarray(instance: NativePointer, length: NativeSizeT): Uint8Array;
-}
-
-/** @internal */
 export interface ImageMagickApi {
     _malloc(size: number): NativePointer;
     _free(instance: NativePointer): void;
-    HEAPU8: HEAPU8;
+    HEAPU8: Uint8Array;
     FS: VirtualFileSystem;
     addFunction(method: (...args: any[]) => void, signature: string): NativePointer;
     getValue(instance: NativePointer, type: string): NativePointer;

@@ -150,7 +150,7 @@ export class CodeParser {
             case 'StyleType':
                 return 'number';
             case 'Quantum':
-                return 'NativeQuantum';
+                return 'quantum';
             default:
                 throw new Error(`Unknown type name: "${typeName}"`);
         }
