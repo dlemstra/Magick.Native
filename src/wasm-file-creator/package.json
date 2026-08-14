@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p .",
-    "create-wasm-files": "node lib/index.js ../Magick.Native ../Magick.Native/Q8"
+    "create-wasm-files": "node dist/index.js ../Magick.Native ../Magick.Native/Q8"
   },
   "keywords": [],
   "author": "Dirk Lemstra",

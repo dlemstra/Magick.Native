@@ -3,7 +3,8 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "types": [ "node" ],
-    "rootDir": ".",
+    "rootDir": "src",
+    "outDir": "dist",
     "strict": true
   },
   "exclude": []
