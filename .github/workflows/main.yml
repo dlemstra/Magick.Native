@@ -247,7 +247,10 @@ jobs:
         working-directory: src/Magick.Native
 
       - name: Create wasm files
-        run: npm install && npm run publish
+        run: |
+          npm install
+          npm run build
+          npm run create-wasm-files
         working-directory: src/wasm-file-creator
 
       - name: Copy Native
