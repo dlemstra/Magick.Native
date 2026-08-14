@@ -9,9 +9,10 @@ export class TypeDefinitionWriter {
     constructor(private methods: Method[]) { }
 
     async write(fileName: string) {
-        let data = `export type quantum = number;
-export type quantumArray = Uint8Array;
-export type pointer = number;
+        let data = `export type NativePointer = number;
+export type NativeQuantum = number;
+export type NativeQuantumArray = Uint8Array;
+export type NativeSizeT = number;
 
 /** @internal */
 export interface FileStream {}
@@ -31,17 +32,23 @@ export interface VirtualFileSystem {
 }
 
 /** @internal */
+export interface HEAPU8 {
+    set(array: ByteArray, offset: NativeSizeT): void;
+    subarray(instance: NativePointer, length: NativeSizeT): Uint8Array;
+}
+
+/** @internal */
 export interface ImageMagickApi {
-    _malloc(size: number): pointer;
-    _free(instance: pointer): void;
-    HEAPU8: Uint8Array;
+    _malloc(size: number): NativePointer;
+    _free(instance: NativePointer): void;
+    HEAPU8: HEAPU8;
     FS: VirtualFileSystem;
-    addFunction(method: (...args: any[]) => void, signature: string): pointer;
-    getValue(instance: pointer, type: string): pointer;
+    addFunction(method: (...args: any[]) => void, signature: string): NativePointer;
+    getValue(instance: NativePointer, type: string): NativePointer;
     lengthBytesUTF8(str: string): number;
-    setValue(instance: pointer, value: pointer, type: string): void;
-    stringToUTF8(str: string, outPtr: pointer, maxBytesToWrite: number): void;
-    UTF8ToString(ptr: pointer): string;
+    setValue(instance: NativePointer, value: NativePointer, type: string): void;
+    stringToUTF8(str: string, outPtr: NativePointer, maxBytesToWrite: number): void;
+    UTF8ToString(ptr: NativePointer): string;
 `;
 
     for (const method of this.methods) {

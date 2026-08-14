@@ -66,7 +66,7 @@ export class CodeParser {
 
     private getReturnType(returnType: string, methodName: string) {
         if (methodName[0] === '*')
-            return 'pointer'
+            return 'NativePointer';
 
         return this.getType(returnType);
     }
@@ -92,7 +92,7 @@ export class CodeParser {
                 while (name.startsWith('*'))
                     name = name.substring(1);
 
-                parameters.push({ name, type: 'pointer' });
+                parameters.push({ name, type: 'NativePointer' });
             } else {
                 parameters.push({ name, type: this.getType(typeName) });
             }
@@ -105,7 +105,7 @@ export class CodeParser {
         typeName = this.removeStartKeywords(typeName);
 
         if (typeName.endsWith('*'))
-            return 'pointer';
+            return 'NativePointer';
 
         switch (typeName) {
             case 'void':
@@ -150,7 +150,7 @@ export class CodeParser {
             case 'StyleType':
                 return 'number';
             case 'Quantum':
-                return 'quantum';
+                return 'NativeQuantum';
             default:
                 throw new Error(`Unknown type name: "${typeName}"`);
         }
