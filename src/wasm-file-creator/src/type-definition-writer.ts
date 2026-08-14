@@ -17,7 +17,7 @@ export type size = number;
 export type NativePointer = number;
 
 /** @internal */
-export const NativeNullPointer: NativePointer;
+export const NativeZero: size;
 
 /** @internal */
 export const NativePointerSize: number;
