@@ -37,16 +37,16 @@ export interface VirtualFileSystem {
 
 /** @internal */
 export interface ImageMagickApi {
-    _malloc(size: number): NativePointer;
-    _free(instance: NativePointer): void;
+    _malloc(size: number): number;
+    _free(instance: number): void;
     HEAPU8: Uint8Array;
     FS: VirtualFileSystem;
-    addFunction(method: (...args: any[]) => void, signature: string): NativePointer;
-    getValue(instance: NativePointer, type: string): NativePointer;
+    addFunction(method: (...args: any[]) => void, signature: string): number;
+    getValue(instance: number, type: string): number;
     lengthBytesUTF8(str: string): number;
-    setValue(instance: NativePointer, value: NativePointer, type: string): void;
-    stringToUTF8(str: string, outPtr: NativePointer, maxBytesToWrite: number): void;
-    UTF8ToString(ptr: NativePointer): string;
+    setValue(instance: number, value: number, type: string): void;
+    stringToUTF8(str: string, outPtr: number, maxBytesToWrite: number): void;
+    UTF8ToString(ptr: number): string;
 `;
 
     for (const method of this.methods) {
