@@ -140,13 +140,14 @@ export class CodeParser {
             case 'MagickCLDeviceType':
             case 'KernelProfileRecord':
             case 'MagickLogMethod':
-            case 'MagickProgressMonitor':
             case 'MagickSizeType':
             case 'MagickStatusType':
             case 'PaintMethod':
             case 'StretchType':
             case 'StyleType':
                 return 'number';
+            case 'MagickProgressMonitor':
+                return 'NativePointer';
             case 'Quantum':
                 return 'quantum';
             case 'size_t':
