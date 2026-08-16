@@ -8,10 +8,6 @@ extern "C" {
 
 MAGICK_NATIVE_EXPORT void Environment_Initialize(void);
 
-#if defined(MAGICK_NATIVE_WASM)
-MAGICK_NATIVE_EXPORT MagickBooleanType Environment_Is64Bit(void);
-#endif
-
 MAGICK_NATIVE_EXPORT char *Environment_GetEnv(const char *name);
 
 MAGICK_NATIVE_EXPORT void Environment_SetEnv(const char *name, const char *value);

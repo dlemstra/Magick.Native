@@ -29,13 +29,6 @@ MAGICK_NATIVE_EXPORT void Environment_Initialize(void)
   MagickCoreGenesis((const char *) NULL, MagickFalse);
 }
 
-#if defined(MAGICK_NATIVE_WASM)
-MAGICK_NATIVE_EXPORT MagickBooleanType Environment_Is64Bit(void)
-{
-  return sizeof(void *) == 8 ? MagickTrue : MagickFalse;
-}
-#endif
-
 MAGICK_NATIVE_EXPORT char *Environment_GetEnv(const char *name)
 {
   return GetEnvironmentValue(name);
