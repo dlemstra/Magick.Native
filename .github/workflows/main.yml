@@ -581,7 +581,7 @@ jobs:
             ${{github.workspace}}/artifacts/**/*.zip \
 
   publish-wasm-x86:
-    name: Publish WASM library
+    name: Publish wasm library
     runs-on: ubuntu-24.04
     needs:
       - metadata
@@ -625,12 +625,6 @@ jobs:
           VERSION: ${{needs.metadata.outputs.version}}
         run: ./publish.sh --version $VERSION
         working-directory: publish/wasm
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
-        with:
-          name: wasm-package
-          path: publish/wasm/files/dlemstra-magick-native-${{needs.metadata.outputs.version}}.tgz
 
       - name: Publish NPM package
         if: github.event_name == 'workflow_dispatch'
