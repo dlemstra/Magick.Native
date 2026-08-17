@@ -147,9 +147,10 @@ export class CodeParser {
                 return 'number';
             case 'MagickProgressMonitor':
                 return 'NativePointer';
+            case 'MagickSizeType':
+                return 'bigint';
             case 'Quantum':
                 return 'quantum';
-            case 'MagickSizeType':
             case 'size_t':
             case 'ssize_t':
                 return 'size';
