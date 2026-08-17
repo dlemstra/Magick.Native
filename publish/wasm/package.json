@@ -7,6 +7,14 @@
       "types": "./magick.d.ts",
       "default": "./magick.js"
     },
+    "./x64": {
+      "types": "./x64/magick.d.ts",
+      "import": "./x64/magick.js"
+    },
+    "./x86": {
+      "types": "./x86/magick.d.ts",
+      "import": "./x86/magick.js"
+    },
     "./magick.constants": "./magick.constants.ts"
   },
   "module": "./magick.js",
@@ -16,16 +24,5 @@
     "url": "git+https://github.com/dlemstra/Magick.Native.git"
   },
   "author": "Dirk Lemstra",
-  "license": "Apache-2.0",
-  "files": [
-    "magick.constants.ts",
-    "magick.d.ts",
-    "x64/magick.d.ts",
-    "x64/magick.js",
-    "x64/magick.wasm",
-    "x86/magick.d.ts",
-    "x86/magick.js",
-    "x86/magick.wasm",
-    "NOTICE"
-  ]
+  "license": "Apache-2.0"
 }
