@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.2.11415.280 d18.0
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Magick.Native", "src\Magick.Native\Magick.Native.vcxproj", "{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A}"
 EndProject
@@ -168,6 +168,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{02EA681E
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x64", "wasm-x64", "{E72A598E-8664-4671-B1D6-A356D863A2BE}"
+	ProjectSection(SolutionItems) = preProject
+		build\wasm-x64\copy.native.sh = build\wasm-x64\copy.native.sh
+		build\wasm-x64\install.build-tools.sh = build\wasm-x64\install.build-tools.sh
+		build\wasm-x64\pre.js = build\wasm-x64\pre.js
+		build\wasm-x64\settings.sh = build\wasm-x64\settings.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|arm64 = DebugQ16|arm64
@@ -276,6 +284,7 @@ Global
 		{5F1BF474-B859-455E-8922-356BEDD90521} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 		{9990A9C0-C8EA-444B-8594-EF7888779B1D} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 		{C354B5EC-5E74-4929-8520-4205E296918B} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
+		{E72A598E-8664-4671-B1D6-A356D863A2BE} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
