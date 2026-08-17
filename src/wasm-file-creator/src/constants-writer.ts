@@ -6,9 +6,9 @@ const writeFile = util.promisify(fs.writeFile);
 
 export class ConstantsWriter {
 
-    constructor(private xmlResourceFiles: XmlResourceFile[]) { }
+    constructor(private outputDir: string, private xmlResourceFiles: XmlResourceFile[]) { }
 
-    async write(fileName: string) {
+    async write() {
         let data = `/** @internal */
 export const MagickConstants = {
     XmlResourceFiles: {
@@ -23,6 +23,6 @@ export const MagickConstants = {
 }
 `;
 
-        await writeFile(fileName, data);
+        await writeFile(`${this.outputDir}/magick.constants.ts`, data);
     }
 }

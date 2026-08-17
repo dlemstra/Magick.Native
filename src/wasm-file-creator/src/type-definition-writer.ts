@@ -1,34 +1,25 @@
-import fs from 'fs';
-import util from 'util';
+import fs from 'fs/promises';
 import { Method } from './code-parser';
 
-const writeFile = util.promisify(fs.writeFile);
+async function writeFile(directory: string, fileName: string, data: string) {
+    await fs.mkdir(directory, { recursive: true });
+    await fs.writeFile(`${directory}/${fileName}`, data);
+}
+
 
 export class TypeDefinitionWriter {
 
-    constructor(private methods: Method[]) { }
+    constructor(private outputDir: string, private methods: Method[]) { }
 
-    async write(fileName: string) {
+    async writeTypesAndInterfaces() {
         let data = `export type quantum = number;
 export type quantumArray = Uint8Array;
 
 /** @internal */
-export type size = number;
+export type size = number | bigint;
 
 /** @internal */
 export type NativePointer = size;
-
-/** @internal */
-export const NativeZero: size;
-
-/** @internal */
-export const NativePointerSize: number;
-
-/** @internal */
-export const NativePointerType: string;
-
-/** @internal */
-export function CastToSize(value: number): size;
 
 /** @internal */
 export interface FileStream {}
@@ -59,6 +50,9 @@ export interface ImageMagickApi {
     setValue(instance: number, value: number, type: string): void;
     stringToUTF8(str: string, outPtr: number, maxBytesToWrite: number): void;
     UTF8ToString(ptr: number): string;
+    _NullPointer: NativePointer;
+    _PointerSize: number;
+    _CastToSize(value: number): size;
 `;
 
     for (const method of this.methods) {
@@ -80,9 +74,21 @@ export interface IWasmLocator {
     instantiateWasm?: (importObject: WebAssembly.Imports, successCallback: (module: WebAssembly.Instance) => void) => void;
 }
 
-declare const MagickNative: (wasmLocator: IWasmLocator) => Promise<ImageMagickApi>;
-export default MagickNative;`
+/** @internal */
+export type MagickNativeApi = (wasmLocator: IWasmLocator) => Promise<ImageMagickApi>;`
 
-        await writeFile(fileName, data);
+        await writeFile(this.outputDir, 'magick.d.ts', data);
+    }
+
+    async writeWasmExport(architecture: string) {
+        let data = `import type { MagickNativeApi } from '../magick';
+
+/** @internal */
+declare const MagickNative${architecture}: MagickNativeApi;
+
+/** @internal */
+export default MagickNative${architecture};`
+
+        await writeFile(`${this.outputDir}/${architecture}`, 'magick.d.ts', data);
     }
 }

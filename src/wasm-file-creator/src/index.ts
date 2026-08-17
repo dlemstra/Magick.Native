@@ -30,13 +30,15 @@ async function main(dir: string, outputDir: string) {
     const codeParser = new CodeParser(codeFiles);
     const methods = await codeParser.getMethods();
 
-    const typeDefinitionWriter = new TypeDefinitionWriter(methods);
-    await typeDefinitionWriter.write(`${outputDir}/magick.d.ts`);
+    const typeDefinitionWriter = new TypeDefinitionWriter(outputDir, methods);
+    await typeDefinitionWriter.writeTypesAndInterfaces();
+    await typeDefinitionWriter.writeWasmExport('x64');
+    await typeDefinitionWriter.writeWasmExport('x86');
 
     const xmlResourceFiles = [new XmlResourceFile(dir, 'log'), new XmlResourceFile(dir, 'policy')];
 
-    const constantsWriter = new ConstantsWriter(xmlResourceFiles);
-    constantsWriter.write(`${outputDir}/magick.constants.ts`);
+    const constantsWriter = new ConstantsWriter(outputDir, xmlResourceFiles);
+    constantsWriter.write();
 }
 
 const dir = process.argv[2];

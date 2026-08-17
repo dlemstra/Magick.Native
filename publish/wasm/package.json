@@ -20,8 +20,12 @@
   "files": [
     "magick.constants.ts",
     "magick.d.ts",
-    "magick.js",
-    "magick.wasm",
+    "x64/magick.d.ts",
+    "x64/magick.js",
+    "x64/magick.wasm",
+    "x86/magick.d.ts",
+    "x86/magick.js",
+    "x86/magick.wasm",
     "NOTICE"
   ]
 }
