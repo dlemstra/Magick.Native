@@ -19,7 +19,7 @@ export CMAKE_OPTIONS=""
 export CONFIGURE="emconfigure ./configure"
 export CONFIGURE_OPTIONS="--host=wasm64-unknown-emscripten"
 export EXTENSION="js"
-export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-bzlib --without-lzma"
+export IMAGEMAGICK_OPTIONS="--disable-openmp --without-threads --without-lzma"
 export MAKE="emmake make -j$(nproc)"
 export PLATFORM=WASM
 
