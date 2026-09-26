@@ -75,6 +75,7 @@
   MAGICK_NATIVE_LINK_LIB(webp)
   MAGICK_NATIVE_LINK_LIB(zip)
   MAGICK_NATIVE_LINK_LIB(zlib)
+  MAGICK_NATIVE_LINK_LIB(zstd)
 
   #pragma comment(lib, "ws2_32.lib")
   #pragma comment(lib, "urlmon.lib")

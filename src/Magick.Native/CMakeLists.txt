@@ -90,6 +90,7 @@ set(LIBTIFF libtiff.a)
 set(LIBWEBP libwebpmux.a libwebpdemux.a libwebp.a libsharpyuv.a)
 set(LIBXML libxml2.a)
 set(LIBZ libz.a)
+set(LIBZSTD libzstd.a)
 
 set(LIBEXR_VERSION 3_4)
 set(LIBIMATH_VERSION 3_2)
@@ -146,6 +147,7 @@ target_link_libraries(
 
     ${LIBLZMA}
     ${LIBBZIP2}
+    ${LIBZSTD}
     ${LIBZ}
 
     ${LIBICONV}
