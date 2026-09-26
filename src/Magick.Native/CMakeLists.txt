@@ -92,7 +92,7 @@ set(LIBXML libxml2.a)
 set(LIBZ libz.a)
 set(LIBZSTD libzstd.a)
 
-set(LIBEXR_VERSION 3_4)
+set(LIBEXR_VERSION 3_5)
 set(LIBIMATH_VERSION 3_2)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(LIBEXR libOpenEXR-${LIBEXR_VERSION}_d.a libOpenEXRUtil-${LIBEXR_VERSION}_d.a libOpenEXRCore-${LIBEXR_VERSION}_d.a libImath-${LIBIMATH_VERSION}_d.a libIex-${LIBEXR_VERSION}_d.a libIlmThread-${LIBEXR_VERSION}_d.a)
