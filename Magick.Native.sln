@@ -13,12 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{
 		build\linux-x64\settings.sh = build\linux-x64\settings.sh
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-x64", "macos-x64", "{12B5113A-B68A-4DDF-8A74-A5D615AFF49A}"
-	ProjectSection(SolutionItems) = preProject
-		build\macos-x64\install.build-tools.sh = build\macos-x64\install.build-tools.sh
-		build\macos-x64\settings.sh = build\macos-x64\settings.sh
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", "metadata", "{C8420103-07D2-459E-9EFD-8FC57AA569E0}"
 	ProjectSection(SolutionItems) = preProject
 		build\metadata\create.metadata.ps1 = build\metadata\create.metadata.ps1
@@ -265,7 +259,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{74E62AD0-D2F5-41F0-97A7-2D1E8BDE595A} = {AA38A23D-B639-4B56-BBCC-43446386FE8B}
 		{DBA3E7EC-F1B9-46E3-92D4-BB3001734A90} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
-		{12B5113A-B68A-4DDF-8A74-A5D615AFF49A} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{C8420103-07D2-459E-9EFD-8FC57AA569E0} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{5B17570E-CC0B-40D4-A4FE-2FDCD1E55DED} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 		{8DAB5BB6-E6EF-46C2-9F45-D779E1D1AACC} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}

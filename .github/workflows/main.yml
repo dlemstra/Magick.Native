@@ -118,51 +118,6 @@ jobs:
           name: linux-musl-${{matrix.quantum}}-${{matrix.architecture}}${{matrix.openmp_flag}}
           path: artifacts
 
-  macos-x64:
-    name: macOS ${{matrix.quantum}} (x64)
-    runs-on: macos-15-intel
-
-    strategy:
-      fail-fast: false
-      matrix:
-        quantum: [ Q8, Q16, Q16-HDRI ]
-
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Update ImageMagick.commit to latest commit
-        run: ./update.imagemagick.sh
-        if: github.event_name == 'schedule'
-        working-directory: src/ImageMagick
-
-      - name: Clone ImageMagick libraries
-        run: ./checkout.sh --no-configure --dependencies-artifact macos-x64-static.zip
-        working-directory: src/ImageMagick
-
-      - name: Install build tools
-        run: ./install.build-tools.sh
-        working-directory: build/macos-x64
-
-      - name: Build ImageMagick
-        run: ../../../build/shared/build.imagemagick.sh macos x64 ${{matrix.quantum}}
-        working-directory: src/ImageMagick/ImageMagick
-
-      - name: Build Native
-        run: ../../build/shared/build.native.sh macos x64 ${{matrix.quantum}}
-        working-directory: src/Magick.Native
-
-      - name: Copy Native
-        run: ../../build/shared/copy.native.sh ../../artifacts macos x64 ${{matrix.quantum}}
-        working-directory: src/Magick.Native
-
-      - name: Upload library
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a #v7.0.1
-        with:
-          name: macos-${{matrix.quantum}}-x64
-          path: artifacts
-
   macos:
     name: macOS ${{matrix.quantum}} (arm64)
     runs-on: macos-14
@@ -445,31 +400,6 @@ jobs:
           build/shared/verify.native.sh . linux-musl x64
           build/shared/verify.native.sh . linux-musl x64 OpenMP
 
-  verify-macos-x64:
-    name: Verify MacOS x64 (${{matrix.os}})
-    runs-on: ${{matrix.os}}
-    needs:
-      - macos-x64
-
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ macos-14, macos-15, macos-15-intel, macos-26 ]
-
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Download artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c #v8.0.1
-        with:
-          pattern: macos-Q*-x64
-          merge-multiple: true
-
-      - name: Verify MacOS
-        run: build/shared/verify.native.macos.sh . macos x64
-
   verify-macos:
     name: Verify MacOS arm64 (${{matrix.os}})
     runs-on: ${{matrix.os}}
@@ -503,7 +433,6 @@ jobs:
       - verify-linux-arm64
       - verify-linux-musl-x64
       - verify-macos
-      - verify-macos-x64
       - wasm
       - windows
     outputs:
