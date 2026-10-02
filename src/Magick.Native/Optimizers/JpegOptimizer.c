@@ -147,13 +147,19 @@ static inline boolean FillInputBuffer(j_decompress_ptr decompress_info)
   SourceManager
     *source;
 
+  ssize_t
+    bytes_in_buffer;
+
   source = (SourceManager *) decompress_info->src;
 
-  source->manager.bytes_in_buffer=0;
+  bytes_in_buffer = 0;
   if (source->inputFile != (FILE *) NULL)
-    source->manager.bytes_in_buffer = (size_t) fread(source->buffer, 1, MaxBufferExtent, source->inputFile);
+    bytes_in_buffer = (ssize_t) fread(source->buffer, 1, MaxBufferExtent, source->inputFile);
   else if (source->reader != (CustomStreamHandler) NULL)
-    source->manager.bytes_in_buffer = (size_t) source->reader(source->buffer, MaxBufferExtent, (void *) NULL);
+    bytes_in_buffer = source->reader(source->buffer, MaxBufferExtent, (void *) NULL);
+  if (bytes_in_buffer < 0)
+    return FALSE;
+  source->manager.bytes_in_buffer = (size_t) bytes_in_buffer;
   if (source->manager.bytes_in_buffer == 0)
   {
     if (source->startOfBlob != FALSE)
