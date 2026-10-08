@@ -18,6 +18,7 @@ if "%openMP%"=="" goto invalid
 cd ..\..\src\ImageMagick\Configure
 
 set options=/noWizard /VS2026 /static /%quantum% /opencl /noDpc /%hdri% /%openMP% /%architecture% /linkRuntime
+if /I "%config%"=="Debug" set "options=%options% /asan"
 echo Running configure with the following options: %options%
 Configure.Release.x64.exe %options%
 
