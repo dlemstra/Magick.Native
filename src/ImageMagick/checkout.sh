@@ -69,7 +69,7 @@ download_dependencies()
 {
   local dependencies_artifact=$1
 
-  ./ImageMagick/.github/build/windows/download-dependencies.sh --dependencies-artifact $dependencies_artifact
+  ./ImageMagick/.github/build/shared/download-dependencies.sh --dependencies-artifact $dependencies_artifact
   if [[ ! "$(uname -s)" =~ ^(CYGWIN|MINGW|MSYS) ]]; then
     echo "Moving Artifacts directory to /tmp/dependencies"
     rm -Rf /tmp/dependencies
