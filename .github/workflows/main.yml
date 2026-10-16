@@ -277,24 +277,38 @@ jobs:
           name: windows-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.architecture}}${{matrix.openmp_flag}}
           path: artifacts
 
-  verify-linux-x64:
-    name: Verify Linux (x64)
-    runs-on: ubuntu-24.04
+  verify-linux:
+    name: Verify Linux ${{matrix.architecture}} (${{matrix.image}})
+    runs-on: ${{matrix.architecture == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04'}}
     needs:
       - linux
 
     strategy:
       fail-fast: false
       matrix:
-        image:
-          - ubuntu:20.04
-          - ubuntu:22.04
-          - ubuntu:24.04
-          - tgagor/centos:stream9
-          - mcr.microsoft.com/dotnet/aspnet:latest
-          - mcr.microsoft.com/dotnet/runtime:10.0
-          - amazon/aws-lambda-dotnet:8
-          - public.ecr.aws/lambda/dotnet:8-x86_64
+        include:
+          - architecture: x64
+            image: ubuntu:20.04
+          - architecture: x64
+            image: ubuntu:22.04
+          - architecture: x64
+            image: ubuntu:24.04
+          - architecture: x64
+            image: tgagor/centos:stream9
+          - architecture: x64
+            image: mcr.microsoft.com/dotnet/aspnet:latest
+          - architecture: x64
+            image: mcr.microsoft.com/dotnet/runtime:10.0
+          - architecture: x64
+            image: amazon/aws-lambda-dotnet:10
+          - architecture: x64
+            image: public.ecr.aws/lambda/dotnet:10-x86_64
+          - architecture: arm64
+            image: mcr.microsoft.com/dotnet/sdk:10.0-jammy-arm64v8
+          - architecture: arm64
+            image: public.ecr.aws/lambda/dotnet:latest-arm64
+          - architecture: arm64
+            image: public.ecr.aws/lambda/dotnet:10-arm64
 
     container:
       image: ${{matrix.image}}
@@ -318,49 +332,13 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 #v8.0.2
         with:
-          pattern: linux-Q*-x64*
+          pattern: linux-Q*-${{matrix.architecture}}*
           merge-multiple: true
 
       - name: Verify Native
         run: |
-          build/shared/verify.native.sh . linux x64
-          build/shared/verify.native.sh . linux x64 OpenMP
-
-  verify-linux-arm64:
-    name: Verify Linux (arm64)
-    runs-on: ubuntu-24.04-arm
-    needs:
-      - linux
-
-    strategy:
-      fail-fast: false
-      matrix:
-        image:
-          - mcr.microsoft.com/dotnet/sdk:10.0-jammy-arm64v8
-
-    container:
-      image: ${{matrix.image}}
-
-    steps:
-      - name: Install git
-        run: |
-          apt-get update -y
-          apt-get install -y git
-
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Download artifacts
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 #v8.0.2
-        with:
-          pattern: linux-Q*-arm64*
-          merge-multiple: true
-
-      - name: Verify Native
-        run: |
-          build/shared/verify.native.sh . linux arm64
-          build/shared/verify.native.sh . linux arm64 OpenMP
+          build/shared/verify.native.sh . linux ${{matrix.architecture}}
+          build/shared/verify.native.sh . linux ${{matrix.architecture}} OpenMP
 
   verify-linux-musl-x64:
     name: Verify Linux musl (x64)
@@ -429,8 +407,7 @@ jobs:
     name: Metadata
     runs-on: ubuntu-24.04
     needs:
-      - verify-linux-x64
-      - verify-linux-arm64
+      - verify-linux
       - verify-linux-musl-x64
       - verify-macos
       - wasm
