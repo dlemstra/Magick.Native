@@ -5,7 +5,7 @@ if [[ "${DEBUG_BUILD}" ]]; then
   export FLAGS="-g3 -O0 -fPIC -Wall -DDEBUG"
   export CMAKE_BUILD_TYPE="Debug"
 else
-  export FLAGS="-O3 -fPIC  -Wall -DNDEBUG"
+  export FLAGS="-O3 -fPIC -Wall -DNDEBUG"
   export CMAKE_BUILD_TYPE="Release"
 fi
 export CFLAGS=$FLAGS

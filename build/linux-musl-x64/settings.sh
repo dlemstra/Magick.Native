@@ -10,8 +10,8 @@ export CFLAGS=$FLAGS
 export CXXFLAGS=$FLAGS
 export INSTALL_PREFIX="/tmp/dependencies"
 export CPPFLAGS="-I$INSTALL_PREFIX/include"
-export LDFLAGS="-L$INSTALL_PREFIX/lib -L$INSTALL_PREFIX/lib64"
-export PKG_CONFIG_PATH="$INSTALL_PREFIX/lib/pkgconfig:$INSTALL_PREFIX/lib64/pkgconfig"
+export LDFLAGS="-L$INSTALL_PREFIX/lib"
+export PKG_CONFIG_PATH="$INSTALL_PREFIX/lib/pkgconfig"
 
 # Settings
 export CMAKE_COMMAND="cmake"
