@@ -278,7 +278,7 @@ jobs:
           path: artifacts
 
   verify-linux:
-    name: Verify Linux ${{matrix.architecture}} (${{matrix.image}})
+    name: Verify Linux ${{matrix.architecture}}
     runs-on: ${{matrix.architecture == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04'}}
     needs:
       - linux
@@ -288,27 +288,20 @@ jobs:
       matrix:
         include:
           - architecture: x64
-            image: ubuntu:20.04
-          - architecture: x64
-            image: ubuntu:22.04
-          - architecture: x64
-            image: ubuntu:24.04
-          - architecture: x64
-            image: tgagor/centos:stream9
-          - architecture: x64
-            image: mcr.microsoft.com/dotnet/aspnet:latest
-          - architecture: x64
-            image: mcr.microsoft.com/dotnet/runtime:10.0
-          - architecture: x64
-            image: public.ecr.aws/lambda/dotnet:latest-x86_64
-          - architecture: x64
-            image: public.ecr.aws/lambda/dotnet:10-x86_64
+            images: >-
+              ubuntu:20.04
+              ubuntu:22.04
+              ubuntu:24.04
+              tgagor/centos:stream9
+              mcr.microsoft.com/dotnet/aspnet:latest
+              mcr.microsoft.com/dotnet/runtime:10.0
+              public.ecr.aws/lambda/dotnet:latest-x86_64
+              public.ecr.aws/lambda/dotnet:10-x86_64
           - architecture: arm64
-            image: mcr.microsoft.com/dotnet/sdk:10.0-noble-arm64v8
-          - architecture: arm64
-            image: public.ecr.aws/lambda/dotnet:latest-arm64
-          - architecture: arm64
-            image: public.ecr.aws/lambda/dotnet:10-arm64
+            images: >-
+              mcr.microsoft.com/dotnet/sdk:10.0-noble-arm64v8
+              public.ecr.aws/lambda/dotnet:latest-arm64
+              public.ecr.aws/lambda/dotnet:10-arm64
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
@@ -322,18 +315,30 @@ jobs:
           merge-multiple: true
 
       - name: Verify Native
+        env:
+          IMAGES: ${{matrix.images}}
         run: |
-          docker run --rm \
-            --volume "$GITHUB_WORKSPACE:/workspace" \
-            --workdir /workspace \
-            --entrypoint /bin/bash \
-            "${{matrix.image}}" -ec '
-              build/shared/verify.native.sh . linux ${{matrix.architecture}}
-              build/shared/verify.native.sh . linux ${{matrix.architecture}} OpenMP
-            '
+          read -r -a images <<< "$IMAGES"
+          status=0
+          for image in "${images[@]}"; do
+            echo "::group::Verify $image"
+            if ! docker run --rm \
+              --volume "$GITHUB_WORKSPACE:/workspace" \
+              --workdir /workspace \
+              --entrypoint /bin/bash \
+              "$image" -ec '
+                build/shared/verify.native.sh . linux ${{matrix.architecture}}
+                build/shared/verify.native.sh . linux ${{matrix.architecture}} OpenMP
+              '; then
+              echo "::error::Verification failed for $image"
+              status=1
+            fi
+            echo "::endgroup::"
+          done
+          exit "$status"
 
-  verify-linux-musl-x64:
-    name: Verify Linux musl (x64)
+  verify-linux-musl:
+    name: Verify Linux musl (${{matrix.architecture}})
     runs-on: ubuntu-24.04
     needs:
       - linux-musl
@@ -341,10 +346,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image:
-          - alpine:latest
-          - mcr.microsoft.com/dotnet/aspnet:10.0-alpine
-          - mcr.microsoft.com/dotnet/runtime:10.0-alpine
+        include:
+          - architecture: x64
+            images: >-
+              alpine:latest
+              mcr.microsoft.com/dotnet/aspnet:10.0-alpine
+              mcr.microsoft.com/dotnet/runtime:10.0-alpine
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
@@ -354,20 +361,32 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 #v8.0.2
         with:
-          pattern: linux-musl-Q*-x64*
+          pattern: linux-musl-Q*-${{matrix.architecture}}*
           merge-multiple: true
 
       - name: Verify Native
+        env:
+          IMAGES: ${{matrix.images}}
         run: |
-          docker run --rm \
-            --volume "$GITHUB_WORKSPACE:/workspace" \
-            --workdir /workspace \
-            --entrypoint /bin/sh \
-            "${{matrix.image}}" -ec '
-              apk add --no-cache bash
-              build/shared/verify.native.sh . linux-musl x64
-              build/shared/verify.native.sh . linux-musl x64 OpenMP
-            '
+          read -r -a images <<< "$IMAGES"
+          status=0
+          for image in "${images[@]}"; do
+            echo "::group::Verify $image"
+            if ! docker run --rm \
+              --volume "$GITHUB_WORKSPACE:/workspace" \
+              --workdir /workspace \
+              --entrypoint /bin/sh \
+              "$image" -ec '
+                apk add --no-cache bash
+                build/shared/verify.native.sh . linux-musl ${{matrix.architecture}}
+                build/shared/verify.native.sh . linux-musl ${{matrix.architecture}} OpenMP
+              '; then
+              echo "::error::Verification failed for $image"
+              status=1
+            fi
+            echo "::endgroup::"
+          done
+          exit "$status"
 
   verify-macos:
     name: Verify MacOS arm64 (${{matrix.os}})
@@ -399,7 +418,7 @@ jobs:
     runs-on: ubuntu-24.04
     needs:
       - verify-linux
-      - verify-linux-musl-x64
+      - verify-linux-musl
       - verify-macos
       - wasm
       - windows
