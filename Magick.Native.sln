@@ -105,6 +105,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos-arm64", "macos-arm64", "{BFCD9FE6-479F-4D5E-B4BA-046317AD8334}"
 	ProjectSection(SolutionItems) = preProject
 		build\macos-arm64\install.build-tools.sh = build\macos-arm64\install.build-tools.sh
+		build\macos-arm64\settings.openmp.sh = build\macos-arm64\settings.openmp.sh
 		build\macos-arm64\settings.sh = build\macos-arm64\settings.sh
 	EndProjectSection
 EndProject

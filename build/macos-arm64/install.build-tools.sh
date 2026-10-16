@@ -64,6 +64,6 @@ if [ "$should_exit" = true ]; then
 fi
 
 # Install build tools
-brew install -q automake libtool gnu-sed ossp-uuid
+brew install -q automake libtool gnu-sed ossp-uuid libomp
 
 pip3 install --break-system-packages setuptools -q

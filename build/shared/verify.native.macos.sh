@@ -4,6 +4,11 @@ set -e
 folder=$1
 platform=$2
 architecture=$3
+openmp=$4
+
+if [ "$openmp" == "OpenMP" ]; then
+  brew install -q libomp
+fi
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPT_PATH/../$platform-$architecture/settings.sh
@@ -11,6 +16,9 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 verifyNative() {
   local name=$1
+  if [ "$openmp" == "OpenMP" ]; then
+    name=${name}-OpenMP
+  fi
 
   local file=${folder}/Magick.Native-${name}-$architecture.dll.$EXTENSION
 
@@ -20,6 +28,18 @@ verifyNative() {
   fi
 
   echo "Verifying $file"
+
+  output=$(otool -L "$file")
+  if [ "$openmp" == "OpenMP" ]; then
+    if [[ "$output" != *"libomp.dylib"* ]]; then
+      echo "Libomp should be linked in $file"
+      echo "$output"
+      exit 1
+    fi
+  elif [[ "$output" == *"libomp.dylib"* ]]; then
+    echo "Libomp should not be linked in $file"
+    exit 1
+  fi
 
   ld_arch=$architecture
   if [ $ld_arch == "x64" ]; then
@@ -59,4 +79,3 @@ verifyNative() {
 for quantum in Q8 Q16 Q16-HDRI; do
   verifyNative $quantum
 done
-

@@ -22,3 +22,7 @@ export EXTENSION="dylib"
 export IMAGEMAGICK_OPTIONS=""
 export MAKE="make -j$(sysctl -n hw.logicalcpu)"
 export PLATFORM=MACOS
+
+if [ "$openmp" == "OpenMP" ]; then
+  . "$(dirname "${BASH_SOURCE[0]}")/settings.openmp.sh"
+fi
