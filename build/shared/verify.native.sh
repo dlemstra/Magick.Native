@@ -35,14 +35,17 @@ verifyNative() {
   if [ "$openmp" == "OpenMP" ]; then
     if [[ "$output" != *"libgomp.so"* && "$output" != *"libomp.so"* ]]; then
       echo "Libgomp or libomp should be linked in $file"
+      echo "$output"
       exit 1
     fi
   elif [[ "$output" == *"libgomp.so"* || "$output" == *"libomp.so"* ]]; then
     echo "Libgomp or libomp should not be linked in $file"
+    echo "$output"
     exit 1
   fi
 
   if echo "$output" | grep "not found"; then
+    echo "$output"
     exit 1
   else
     echo "Verified ldd status for $file"
@@ -55,6 +58,7 @@ verifyNative() {
   fi
 
   if echo "$output" | grep "undefined reference"; then
+    echo "$output"
     exit 1
   else
     echo "Verified ld status for $file"
