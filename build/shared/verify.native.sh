@@ -82,6 +82,8 @@ elif [ -f "/sbin/apk" ]; then
     apk add binutils
   fi
 else
+  apt-get update -y
+
   if [ "$openmp" == "OpenMP" ]; then
     apt-get install -y libgomp1
   fi
@@ -96,4 +98,3 @@ ldd --version || true
 for quantum in Q8 Q16 Q16-HDRI; do
   verifyNative $quantum
 done
-

@@ -310,21 +310,7 @@ jobs:
           - architecture: arm64
             image: public.ecr.aws/lambda/dotnet:10-arm64
 
-    container:
-      image: ${{matrix.image}}
-
     steps:
-      - name: Install git
-        run: |
-          if [ -f "/bin/yum" ]; then
-            yum install -y git
-          elif [ -f "/bin/dnf" ]; then
-            dnf install -y git
-          else
-            apt-get update -y
-            apt-get install -y git
-          fi
-
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
         with:
           persist-credentials: false
@@ -337,8 +323,14 @@ jobs:
 
       - name: Verify Native
         run: |
-          build/shared/verify.native.sh . linux ${{matrix.architecture}}
-          build/shared/verify.native.sh . linux ${{matrix.architecture}} OpenMP
+          docker run --rm \
+            --volume "$GITHUB_WORKSPACE:/workspace" \
+            --workdir /workspace \
+            --entrypoint /bin/bash \
+            "${{matrix.image}}" -ec '
+              build/shared/verify.native.sh . linux ${{matrix.architecture}}
+              build/shared/verify.native.sh . linux ${{matrix.architecture}} OpenMP
+            '
 
   verify-linux-musl-x64:
     name: Verify Linux musl (x64)
@@ -354,15 +346,7 @@ jobs:
           - mcr.microsoft.com/dotnet/aspnet:10.0-alpine
           - mcr.microsoft.com/dotnet/runtime:10.0-alpine
 
-    container:
-      image: ${{matrix.image}}
-
     steps:
-      - name: Install git and bash
-        run: |
-          apk update
-          apk add bash git
-
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
         with:
           persist-credentials: false
@@ -375,8 +359,15 @@ jobs:
 
       - name: Verify Native
         run: |
-          build/shared/verify.native.sh . linux-musl x64
-          build/shared/verify.native.sh . linux-musl x64 OpenMP
+          docker run --rm \
+            --volume "$GITHUB_WORKSPACE:/workspace" \
+            --workdir /workspace \
+            --entrypoint /bin/sh \
+            "${{matrix.image}}" -ec '
+              apk add --no-cache bash
+              build/shared/verify.native.sh . linux-musl x64
+              build/shared/verify.native.sh . linux-musl x64 OpenMP
+            '
 
   verify-macos:
     name: Verify MacOS arm64 (${{matrix.os}})
