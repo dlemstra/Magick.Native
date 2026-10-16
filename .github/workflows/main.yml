@@ -292,7 +292,7 @@ jobs:
           - ubuntu:24.04
           - tgagor/centos:stream9
           - mcr.microsoft.com/dotnet/aspnet:latest
-          - mcr.microsoft.com/dotnet/runtime:8.0
+          - mcr.microsoft.com/dotnet/runtime:10.0
           - amazon/aws-lambda-dotnet:8
           - public.ecr.aws/lambda/dotnet:8-x86_64
 
@@ -336,7 +336,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - mcr.microsoft.com/dotnet/sdk:8.0-jammy-arm64v8
+          - mcr.microsoft.com/dotnet/sdk:10.0-jammy-arm64v8
 
     container:
       image: ${{matrix.image}}
@@ -373,8 +373,8 @@ jobs:
       matrix:
         image:
           - alpine:latest
-          - mcr.microsoft.com/dotnet/aspnet:8.0-alpine
-          - mcr.microsoft.com/dotnet/runtime:8.0-alpine
+          - mcr.microsoft.com/dotnet/aspnet:10.0-alpine
+          - mcr.microsoft.com/dotnet/runtime:10.0-alpine
 
     container:
       image: ${{matrix.image}}
