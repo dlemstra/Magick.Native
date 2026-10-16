@@ -278,7 +278,7 @@ jobs:
           path: artifacts
 
   verify-linux:
-    name: Verify Linux ${{matrix.architecture}}
+    name: Verify Linux (${{matrix.architecture}})
     runs-on: ${{matrix.architecture == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04'}}
     needs:
       - linux
@@ -389,15 +389,15 @@ jobs:
           exit "$status"
 
   verify-macos:
-    name: Verify MacOS arm64 (${{matrix.os}})
-    runs-on: ${{matrix.os}}
+    name: Verify MacOS ${{matrix.version}} (arm64)
+    runs-on: macos-${{matrix.version}}
     needs:
       - macos
 
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-14, macos-15, macos-26 ]
+        version: [ 14, 15, 26 ]
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
