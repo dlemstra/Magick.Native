@@ -37,6 +37,9 @@ verifyNative() {
       echo "Libgomp or libomp should be linked in $file"
       exit 1
     fi
+  elif [[ "$output" == *"libgomp.so"* || "$output" == *"libomp.so"* ]]; then
+    echo "Libgomp or libomp should not be linked in $file"
+    exit 1
   fi
 
   if echo "$output" | grep "not found"; then
