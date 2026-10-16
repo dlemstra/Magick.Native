@@ -33,8 +33,9 @@ verifyNative() {
   fi
 
   if [ "$openmp" == "OpenMP" ]; then
-    if [[ "$output" != *"libgomp.so"* ]]; then
-      echo "Libgomp should be linked in $file"
+    if [[ "$output" != *"libgomp.so"* && "$output" != *"libomp.so"* ]]; then
+      echo "Libgomp or libomp should be linked in $file"
+      exit 1
     fi
   fi
 
@@ -75,7 +76,11 @@ elif [ -f "/bin/dnf" ]; then
   fi
 elif [ -f "/sbin/apk" ]; then
   if [ "$openmp" == "OpenMP" ]; then
-    apk add libgomp
+    if [[ "$CC" == *clang* ]]; then
+      apk add openmp
+    else
+      apk add libgomp
+    fi
   fi
 
   if [ ! -f "/usr/bin/ld" ]; then

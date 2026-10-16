@@ -75,7 +75,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        architecture: [ x64 ]
+        architecture: [ x64, arm64 ]
         quantum: [ Q8, Q16, Q16-HDRI ]
         openmp: [ noOpenMP, OpenMP ]
         include:
@@ -339,7 +339,7 @@ jobs:
 
   verify-linux-musl:
     name: Verify Linux musl (${{matrix.architecture}})
-    runs-on: ubuntu-24.04
+    runs-on: ${{matrix.architecture == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04'}}
     needs:
       - linux-musl
 
@@ -352,6 +352,11 @@ jobs:
               alpine:latest
               mcr.microsoft.com/dotnet/aspnet:10.0-alpine
               mcr.microsoft.com/dotnet/runtime:10.0-alpine
+          - architecture: arm64
+            images: >-
+              arm64v8/alpine:latest
+              mcr.microsoft.com/dotnet/aspnet:10.0-alpine-arm64v8
+              mcr.microsoft.com/dotnet/runtime:10.0-alpine-arm64v8
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1

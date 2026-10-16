@@ -170,6 +170,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wasm-x64", "wasm-x64", "{E7
 		build\wasm-x64\settings.sh = build\wasm-x64\settings.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-musl-arm64", "linux-musl-arm64", "{C3C00651-4D7C-4DCA-950F-81E80DB884D8}"
+	ProjectSection(SolutionItems) = preProject
+		build\linux-musl-arm64\cross-compilation.cmake = build\linux-musl-arm64\cross-compilation.cmake
+		build\linux-musl-arm64\install.build-tools.sh = build\linux-musl-arm64\install.build-tools.sh
+		build\linux-musl-arm64\settings.sh = build\linux-musl-arm64\settings.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugQ16|arm64 = DebugQ16|arm64
@@ -278,6 +285,7 @@ Global
 		{9990A9C0-C8EA-444B-8594-EF7888779B1D} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 		{C354B5EC-5E74-4929-8520-4205E296918B} = {A1FC197D-F3DB-4735-BAFF-52D176C097E8}
 		{E72A598E-8664-4671-B1D6-A356D863A2BE} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
+		{C3C00651-4D7C-4DCA-950F-81E80DB884D8} = {6C3DBF08-7B17-4B45-BA79-E3DB64032574}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA164FEE-1EC8-4842-A763-6E19BE5E3E51}
