@@ -1852,13 +1852,15 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Morphology(Image *instance, const size_t
   return image;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_MotionBlur(const Image *instance, const double radius, const double sigma, const double angle, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_MotionBlur(Image *instance, const double radius, const double sigma, const double angle, const size_t channels, ExceptionInfo **exception)
 {
   Image
     *image;
 
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   image = MotionBlurImage(instance, radius, sigma, angle, exceptionInfo);
+  RestoreChannelMask(instance, image);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }

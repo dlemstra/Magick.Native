@@ -359,7 +359,7 @@ MAGICK_NATIVE_EXPORT ChannelMoments *MagickImage_Moments(const Image *, Exceptio
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Morphology(Image *, const size_t, const char *, const size_t, const ssize_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_MotionBlur(const Image *, const double, const double, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_MotionBlur(Image *, const double, const double, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_Negate(Image *, const MagickBooleanType, const size_t, ExceptionInfo **);
 
