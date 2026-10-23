@@ -35,6 +35,7 @@ export interface VirtualFileSystem {
     close(stream: FileStream): void;
     mkdir(path: string): void;
     open(path: string, mode: string): FileStream;
+    unlink(path: string): void;
     write(stream: FileStream, buffer: Uint8Array, offset: number, length: number): void;
 }
 
