@@ -1830,7 +1830,7 @@ MAGICK_NATIVE_EXPORT ChannelMoments *MagickImage_Moments(const Image *instance, 
   return result;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_Morphology(Image *instance, const size_t method, const char *kernel, const size_t channels, const ssize_t iterations, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_Morphology(Image *instance, const size_t method, const char *kernel, const ssize_t iterations, const size_t channels, ExceptionInfo **exception)
 {
   Image
     *image;
