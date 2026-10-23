@@ -127,7 +127,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <EnableASAN Condition="!$(Configuration.Contains('OpenMP'))">true</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.Contains('Release'))">
     <UseDebugLibraries>false</UseDebugLibraries>
