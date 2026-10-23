@@ -1874,10 +1874,12 @@ MAGICK_NATIVE_EXPORT void MagickImage_Negate(Image *instance, const MagickBoolea
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT void MagickImage_Normalize(Image *instance, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT void MagickImage_Normalize(Image *instance, const size_t channels, ExceptionInfo **exception)
 {
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   NormalizeImage(instance, exceptionInfo);
+  RestoreChannelMask(instance);
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 

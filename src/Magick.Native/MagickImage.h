@@ -363,7 +363,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_MotionBlur(Image *, const double, const 
 
 MAGICK_NATIVE_EXPORT void MagickImage_Negate(Image *, const MagickBooleanType, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickImage_Normalize(Image *, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_Normalize(Image *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_OilPaint(const Image *, const double, const double, ExceptionInfo **);
 
