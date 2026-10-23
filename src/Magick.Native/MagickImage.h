@@ -171,7 +171,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AutoOrient(const Image *, ExceptionInfo 
 
 MAGICK_NATIVE_EXPORT void MagickImage_AutoThreshold(Image *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_BilateralBlur(const Image *, const size_t, const size_t, const double, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_BilateralBlur(Image *, const size_t, const size_t, const double, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_BlackThreshold(Image *, const char *, const size_t, ExceptionInfo **);
 

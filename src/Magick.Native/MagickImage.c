@@ -807,13 +807,15 @@ MAGICK_NATIVE_EXPORT void MagickImage_AutoThreshold(Image *instance, const size_
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-MAGICK_NATIVE_EXPORT Image *MagickImage_BilateralBlur(const Image *instance, const size_t width, const size_t height, const double intensitySigma, const double spatialSigma, ExceptionInfo **exception)
+MAGICK_NATIVE_EXPORT Image *MagickImage_BilateralBlur(Image *instance, const size_t width, const size_t height, const double intensitySigma, const double spatialSigma, const size_t channels, ExceptionInfo **exception)
 {
   Image
     *image;
 
   MAGICK_NATIVE_GET_EXCEPTION;
+  SetChannelMask(instance, channels);
   image = BilateralBlurImage(instance, width, height, intensitySigma, spatialSigma, exceptionInfo);
+  RestoreChannelMask(instance, image);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
