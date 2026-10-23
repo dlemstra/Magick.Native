@@ -815,7 +815,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_BilateralBlur(Image *instance, const siz
   MAGICK_NATIVE_GET_EXCEPTION;
   SetChannelMask(instance, channels);
   image = BilateralBlurImage(instance, width, height, intensitySigma, spatialSigma, exceptionInfo);
-  RestoreChannelMask(instance, image);
+  RestoreChannelMasks(instance, image);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
@@ -1860,7 +1860,7 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_MotionBlur(Image *instance, const double
   MAGICK_NATIVE_GET_EXCEPTION;
   SetChannelMask(instance, channels);
   image = MotionBlurImage(instance, radius, sigma, angle, exceptionInfo);
-  RestoreChannelMask(instance, image);
+  RestoreChannelMasks(instance, image);
   MAGICK_NATIVE_SET_EXCEPTION;
   return image;
 }
