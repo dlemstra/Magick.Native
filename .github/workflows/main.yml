@@ -120,7 +120,7 @@ jobs:
 
   macos:
     name: macOS ${{matrix.quantum}}${{matrix.openmp_flag}} (arm64)
-    runs-on: macos-14
+    runs-on: macos-15
 
     strategy:
       fail-fast: false
@@ -406,7 +406,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [ 14, 15, 26 ]
+        version: [ 15, 26 ]
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
