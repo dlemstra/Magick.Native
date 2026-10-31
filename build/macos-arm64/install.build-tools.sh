@@ -7,6 +7,9 @@ brew untap aws/tap || true
 
 brew list --formula
 
+# Install build tools
+brew install -q automake libtool gnu-sed ossp-uuid libomp
+
 # Uninstall already installed development libraries
 
 brew uninstall -q ant
@@ -62,8 +65,5 @@ done
 if [ "$should_exit" = true ]; then
     exit 1
 fi
-
-# Install build tools
-brew install -q automake libtool gnu-sed ossp-uuid libomp
 
 pip3 install --break-system-packages setuptools -q
