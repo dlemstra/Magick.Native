@@ -460,7 +460,7 @@ jobs:
           echo "# Libraries" >> libraries.md
           echo "Magick.Native [$commit](https://github.com/dlemstra/Magick.Native/commit/$commit) is build with the following libraries:" >> libraries.md
           echo "" >> libraries.md
-          sed -n 's/^\[ *\(.*[^ ]\) *\]$/- \1/p' ../NOTICE.txt >> libraries.md
+          tr -d '\r' < ../NOTICE.txt | sed -n 's/^\[ *\(.*[^ ]\) *\]$/- \1/p' >> libraries.md
 
       - name: Upload metadata
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 #v7.0.2
