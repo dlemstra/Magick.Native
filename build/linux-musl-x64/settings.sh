@@ -22,3 +22,6 @@ export EXTENSION="so"
 export IMAGEMAGICK_OPTIONS=""
 export MAKE="make -j$(nproc)"
 export PLATFORM=LINUX
+
+export CC=clang-18
+export CXX=clang++-18
