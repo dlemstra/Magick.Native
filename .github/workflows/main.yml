@@ -2,6 +2,8 @@ on:
   push:
     branches:
     - main
+    tags:
+    - '*'
   pull_request:
     branches:
     - main
@@ -448,7 +450,13 @@ jobs:
 
       - name: Set version
         id: set-version
-        run: echo "version=$(date +'%Y.%-m%d.%-H%M')" >> $GITHUB_OUTPUT
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            version="$GITHUB_REF_NAME"
+          else
+            version=$(date +'%Y.%-m%d.%-H%M')
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Copy NOTICE.txt and create libraries.md
         run: |
@@ -470,7 +478,7 @@ jobs:
 
   publish-release:
     name: Publish release
-    if: github.event_name == 'workflow_dispatch'
+    if: github.ref_type == 'tag'
     runs-on: ubuntu-24.04
     needs:
       - metadata
@@ -488,21 +496,13 @@ jobs:
           path: artifacts
           skip-decompress: true
 
-      - name: Create and push tag
-        env:
-          VERSION: ${{needs.metadata.outputs.version}}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag $VERSION
-          git push origin $VERSION
-
       - name: Publish release
         env:
           GH_TOKEN: ${{github.token}}
           VERSION: ${{needs.metadata.outputs.version}}
         run: |
           gh release create "$VERSION" \
+            --verify-tag \
             --title "$VERSION" \
             --notes "$VERSION" \
             ${{github.workspace}}/artifacts/**/*.zip \
@@ -554,7 +554,7 @@ jobs:
         working-directory: publish/wasm
 
       - name: Publish NPM package
-        if: github.event_name == 'workflow_dispatch'
+        if: github.ref_type == 'tag'
         run: npm publish
         working-directory: publish/wasm/files
         env:

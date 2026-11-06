@@ -1,0 +1,27 @@
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
+
+name: Publish release
+jobs:
+  publish:
+    name: Create tag and start release build
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
+        with:
+          ref: main
+
+      - name: Create tag and start release build
+        env:
+          GH_TOKEN: ${{github.token}}
+        run: |
+          set -euo pipefail
+          version=$(date -u +'%Y.%-m%d.%-H%M')
+          git tag "$version"
+          git push origin "$version"
+          gh workflow run main.yml --ref "$version"
