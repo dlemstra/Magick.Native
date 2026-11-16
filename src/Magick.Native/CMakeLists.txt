@@ -60,7 +60,6 @@ endif()
 
 if (PLATFORM STREQUAL "MACOS")
     set(LIBICONV iconv)
-    set(LIBINTL ${DEPENDENCIES_DIR}/lib/libintl.a)
     set(CMAKE_MACOSX_RPATH 1)
     set(STDCPLUSPLUS stdc++)
     if (OPENMP)
@@ -154,7 +153,6 @@ target_link_libraries(
     ${LIBZ}
 
     ${LIBICONV}
-    ${LIBINTL}
 
     ${LIBOPENH264}
 
