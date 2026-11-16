@@ -400,15 +400,15 @@ jobs:
           exit "$status"
 
   verify-macos:
-    name: Verify MacOS ${{matrix.version}} (arm64)
-    runs-on: macos-${{matrix.version}}
+    name: Verify ${{matrix.runner}} (arm64)
+    runs-on: ${{matrix.runner}}
     needs:
       - macos
 
     strategy:
       fail-fast: false
       matrix:
-        version: [ 15, 26 ]
+        runner: [ macos-15, macos-26, xcode-27 ]
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
@@ -421,7 +421,7 @@ jobs:
           pattern: macos-Q*-arm64*
           merge-multiple: true
 
-      - name: Verify MacOS
+      - name: Verify macOS
         run: |
           build/shared/verify.native.macos.sh . macos arm64
           build/shared/verify.native.macos.sh . macos arm64 OpenMP
