@@ -36,7 +36,7 @@ MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoByName(const char
 
 MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoWithBlob(const unsigned char *, const size_t, ExceptionInfo **);
 
-MAGICK_NATIVE_EXPORT void MagickFormatInfo_Unregister(const char *format);
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_Unregister(const char *format);
 
 #if defined(__cplusplus) || defined(c_plusplus)
 }

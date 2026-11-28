@@ -112,7 +112,7 @@ MAGICK_NATIVE_EXPORT const MagickInfo *MagickFormatInfo_GetInfoWithBlob(const un
   return GetInfoByName(GetMagicName(magic_info), exception);
 }
 
-MAGICK_NATIVE_EXPORT void MagickFormatInfo_Unregister(const char *format)
+MAGICK_NATIVE_EXPORT MagickBooleanType MagickFormatInfo_Unregister(const char *format)
 {
-  UnregisterMagickInfo(format);
+  return UnregisterMagickInfo(format);
 }
