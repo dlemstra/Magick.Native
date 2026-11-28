@@ -42,12 +42,15 @@ MAGICK_NATIVE_EXPORT void Environment_SetEnv(const char *name, const char *value
     *wide_value;
 
   wide_name = create_wchar_string(name);
-  wide_value = create_wchar_string(value);
+  wide_value = create_wchar_string(value == (const char *) NULL ? "" : value);
   if (wide_name != (wchar_t *) NULL && wide_value != (wchar_t *) NULL)
     _wputenv_s(wide_name, wide_value);
   wide_name = (wchar_t *) RelinquishMagickMemory(wide_name);
   wide_value = (wchar_t *) RelinquishMagickMemory(wide_value);
 #else
-  (void) setenv(name, value, 1);
+  if (value == (const char *) NULL)
+    (void) unsetenv(name);
+  else
+    (void) setenv(name, value, 1);
 #endif
 }
